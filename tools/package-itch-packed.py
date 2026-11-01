@@ -55,7 +55,7 @@ UI_PATCHES = [
 FORBIDDEN_IN_JS = ('"ui/', "'ui/", "`ui/", "url(cards/", "cards/icons/", "cards/frames/", "cards/textures/",
                    "cards/foils/", "cards/effects/")
 MIME = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-        ".webp": "image/webp", ".woff2": "font/woff2", ".woff": "font/woff", ".ttf": "font/ttf"}
+        ".webp": "image/webp", ".avif": "image/avif", ".woff2": "font/woff2", ".woff": "font/woff", ".ttf": "font/ttf"}
 UI_RUN = re.compile(r"M(\d+) (\d+)h(\d+)v1h-\3z")
 UI_PATH = re.compile(r'<path fill="#([0-9a-f]{6})" d="([^"]*)"/>')
 UI_HEAD = re.compile(r'^<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 (\d+) (\d+)" width="\1" height="\2" '

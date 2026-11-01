@@ -53,6 +53,8 @@ function serve() {
         '.js': 'text/javascript',
         '.css': 'text/css',
         '.png': 'image/png',
+        '.webp': 'image/webp',
+        '.avif': 'image/avif',
         '.svg': 'image/svg+xml', // without it the browser refuses every SVG (the card kit, the HUD art)
         '.json': 'application/json',
         '.ttf': 'font/ttf',

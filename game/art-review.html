@@ -74,20 +74,22 @@ const ART_FOCUS={ember_dart:'50% 30%'};
 // Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
 // collection rendering does not repeatedly force layout, and do not retain removed image elements.
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
+// a card-kit file under cards/ as a CSS url() (the packed release build points this at its packed copy)
+const kitURL=p=>'url(cards/'+p+')';
 // a card's frame colour (cards/palettes.json) and its one of three material textures, picked by its id
 function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
-  return {kc, tex:'url(cards/textures/card/'+kc+'-'+t+'.svg)'}; }
+  return {kc, tex:kitURL('textures/card/'+kc+'-'+t+'.svg')}; }
 function cardEl(c,extra,locked,mode,opts={}){
   const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
   el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
-  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame','url(cards/frames/card/'+kc+'.svg)');
+  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/card/'+kc+'.svg'));
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
   if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
-    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/expanded/foil-glints'+mv+'.svg'),u('effects/expanded/foil-shimmer'+mv+'.svg'),u('effects/expanded/foil-etch.svg'),u('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
-    el.style.setProperty('--k-trim',u('foils/card/'+kc+'/trim'+mv+'.svg')); }
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[kitURL('effects/expanded/foil-glints'+mv+'.svg'),kitURL('effects/expanded/foil-shimmer'+mv+'.svg'),kitURL('effects/expanded/foil-etch.svg'),kitURL('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',kitURL('foils/card/'+kc+'/trim'+mv+'.svg')); }
   const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
   const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
   el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;

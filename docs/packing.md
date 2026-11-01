@@ -6,7 +6,7 @@ There are two builds. Both start from `game/`, which never changes during packin
 |---|---|---|
 | Command | `python3 tools/package-itch.py` | `python3 tools/package-itch-packed.py` |
 | What it is | `game/` as it is, minus what a player never loads; card art from the per-colour atlas sheets | The same files, with the small art (UI pictures, card kit parts, fonts) packed into scripts and stylesheets |
-| Files / zip size (v182) | 312 files, 150.6 MB | 171 files, 149.4 MB |
+| Files / zip size (v183) | 312 files, 96.3 MB | 171 files, 95.1 MB |
 | When | Day to day, playtests, the art team's checks | A release for players: when you say **"zip and version up"** |
 
 ## "Zip and version up"
@@ -17,7 +17,7 @@ There are two builds. Both start from `game/`, which never changes during packin
 3. Optional checks before uploading: unzip it into `<somewhere>/game/`, copy `tools/playtest/` to `<somewhere>/tools/playtest/`, and run `node tools/playtest/ui-runner.js` and `node tools/playtest/battle-ui-runner.js` from `<somewhere>`. The runners serve whatever sits beside them, so they test the packed build without any change.
 4. Upload the zip to itch.io.
 
-Almost all of the size is the card art: 114 atlas sheets (WebP 85, a full-card and a thumbnail sheet per 30 cards of a colour). Packing saves file count, not much size.
+Almost all of the size is the card art: 114 atlas sheets (AVIF 20, a full-card and a thumbnail sheet per 30 cards of a colour; AVIF needs iOS 16+ on iPhone and iPad). Packing saves file count, not much size.
 `--art-quality N` sets the WebP quality (default 80).
 
 ## What the release build changes (in its copy only)

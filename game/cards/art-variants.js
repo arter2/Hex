@@ -32,7 +32,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43,7 +43,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87,7 +87,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -98,7 +98,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -142,7 +142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -153,7 +153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -197,7 +197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -208,7 +208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -252,7 +252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -263,7 +263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -307,7 +307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -318,7 +318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -362,7 +362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -373,7 +373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -417,7 +417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -428,7 +428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -472,7 +472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -483,7 +483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -527,7 +527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -538,7 +538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -582,7 +582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -593,7 +593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -637,7 +637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -648,7 +648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -692,7 +692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -703,7 +703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -747,7 +747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -758,7 +758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -802,7 +802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -813,7 +813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -857,7 +857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -868,7 +868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -912,7 +912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -923,7 +923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -967,7 +967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -978,7 +978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1022,7 +1022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1033,7 +1033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1077,7 +1077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1088,7 +1088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1132,7 +1132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1143,7 +1143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1187,7 +1187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1198,7 +1198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1242,7 +1242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1253,7 +1253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1297,7 +1297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1308,7 +1308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1352,7 +1352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1363,7 +1363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1407,7 +1407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1418,7 +1418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1462,7 +1462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1473,7 +1473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1517,7 +1517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1528,7 +1528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1572,7 +1572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1583,7 +1583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1627,7 +1627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1638,7 +1638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1682,7 +1682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1693,7 +1693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1737,7 +1737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1748,7 +1748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1792,7 +1792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1803,7 +1803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1847,7 +1847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1858,7 +1858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1902,7 +1902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1913,7 +1913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -1957,7 +1957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -1968,7 +1968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2012,7 +2012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2023,7 +2023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2067,7 +2067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2078,7 +2078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2122,7 +2122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2133,7 +2133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2177,7 +2177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2188,7 +2188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2232,7 +2232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2243,7 +2243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2287,7 +2287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2298,7 +2298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2342,7 +2342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2353,7 +2353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2397,7 +2397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2408,7 +2408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2452,7 +2452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2463,7 +2463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2507,7 +2507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2518,7 +2518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2562,7 +2562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2573,7 +2573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2617,7 +2617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2628,7 +2628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2672,7 +2672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2683,7 +2683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2727,7 +2727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": true,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2738,7 +2738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2782,7 +2782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2793,7 +2793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2837,7 +2837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2848,7 +2848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2892,7 +2892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2903,7 +2903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -2947,7 +2947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -2958,7 +2958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3002,7 +3002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3013,7 +3013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3057,7 +3057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3068,7 +3068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3112,7 +3112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3123,7 +3123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3167,7 +3167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -3178,7 +3178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -3222,7 +3222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3233,7 +3233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3277,7 +3277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -3288,7 +3288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -3332,7 +3332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3343,7 +3343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3387,7 +3387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3398,7 +3398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3442,7 +3442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3453,7 +3453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3497,7 +3497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3508,7 +3508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3552,7 +3552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3563,7 +3563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3607,7 +3607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3618,7 +3618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3662,7 +3662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3673,7 +3673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3717,7 +3717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3728,7 +3728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3772,7 +3772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -3783,7 +3783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -3827,7 +3827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3838,7 +3838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3882,7 +3882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3893,7 +3893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3937,7 +3937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -3948,7 +3948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -3992,7 +3992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4003,7 +4003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4047,7 +4047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4058,7 +4058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4102,7 +4102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4113,7 +4113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4157,7 +4157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4168,7 +4168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4212,7 +4212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4223,7 +4223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4267,7 +4267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -4278,7 +4278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -4322,7 +4322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4333,7 +4333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4377,7 +4377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4388,7 +4388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4432,7 +4432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4443,7 +4443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4487,7 +4487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4498,7 +4498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4542,7 +4542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4553,7 +4553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4597,7 +4597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -4608,7 +4608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -4652,7 +4652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -4663,7 +4663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -4707,7 +4707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4718,7 +4718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4762,7 +4762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4773,7 +4773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4817,7 +4817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4828,7 +4828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4872,7 +4872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4883,7 +4883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4927,7 +4927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -4938,7 +4938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -4982,7 +4982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -4993,7 +4993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -5037,7 +5037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5048,7 +5048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5092,7 +5092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5103,7 +5103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5147,7 +5147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5158,7 +5158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5202,7 +5202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5213,7 +5213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5257,7 +5257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -5268,7 +5268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -5312,7 +5312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5323,7 +5323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5367,7 +5367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5378,7 +5378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5422,7 +5422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5433,7 +5433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5477,7 +5477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5488,7 +5488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5532,7 +5532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-2-full.webp",
+        "url": "cards/art/atlas/brown-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5543,7 +5543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-2-thumb.webp",
+        "url": "cards/art/atlas/brown-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5587,7 +5587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -5598,7 +5598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -5642,7 +5642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5653,7 +5653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5697,7 +5697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5708,7 +5708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5752,7 +5752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5763,7 +5763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5807,7 +5807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5818,7 +5818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5862,7 +5862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -5873,7 +5873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -5917,7 +5917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5928,7 +5928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -5972,7 +5972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -5983,7 +5983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6027,7 +6027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6038,7 +6038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6082,7 +6082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -6093,7 +6093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -6137,7 +6137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6148,7 +6148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6192,7 +6192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6203,7 +6203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6247,7 +6247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6258,7 +6258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6302,7 +6302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -6313,7 +6313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -6357,7 +6357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-1-full.webp",
+        "url": "cards/art/atlas/brown-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6368,7 +6368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-1-thumb.webp",
+        "url": "cards/art/atlas/brown-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6412,7 +6412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6423,7 +6423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6467,7 +6467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6478,7 +6478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6522,7 +6522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -6533,7 +6533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -6577,7 +6577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6588,7 +6588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6632,7 +6632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6643,7 +6643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6687,7 +6687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -6698,7 +6698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -6742,7 +6742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6753,7 +6753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6797,7 +6797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6808,7 +6808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6852,7 +6852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6863,7 +6863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -6907,7 +6907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -6918,7 +6918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -6962,7 +6962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -6973,7 +6973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7017,7 +7017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7028,7 +7028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7072,7 +7072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -7083,7 +7083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -7127,7 +7127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7138,7 +7138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7182,7 +7182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7193,7 +7193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7237,7 +7237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -7248,7 +7248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -7292,7 +7292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7303,7 +7303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7347,7 +7347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7358,7 +7358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7402,7 +7402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -7413,7 +7413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -7457,7 +7457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7468,7 +7468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7512,7 +7512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-3-full.webp",
+        "url": "cards/art/atlas/brown-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7523,7 +7523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-3-thumb.webp",
+        "url": "cards/art/atlas/brown-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7567,7 +7567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -7578,7 +7578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -7622,7 +7622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7633,7 +7633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7677,7 +7677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7688,7 +7688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7732,7 +7732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -7743,7 +7743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -7787,7 +7787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7798,7 +7798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7842,7 +7842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7853,7 +7853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7897,7 +7897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7908,7 +7908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -7952,7 +7952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -7963,7 +7963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8007,7 +8007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8018,7 +8018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8062,7 +8062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8073,7 +8073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8117,7 +8117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8128,7 +8128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8172,7 +8172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8183,7 +8183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8227,7 +8227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8238,7 +8238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8282,7 +8282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8293,7 +8293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8337,7 +8337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8348,7 +8348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8392,7 +8392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8403,7 +8403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8447,7 +8447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8458,7 +8458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8502,7 +8502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8513,7 +8513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8557,7 +8557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8568,7 +8568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8612,7 +8612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8623,7 +8623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8667,7 +8667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8678,7 +8678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8722,7 +8722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8733,7 +8733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8777,7 +8777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8788,7 +8788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8832,7 +8832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8843,7 +8843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8887,7 +8887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8898,7 +8898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8942,7 +8942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -8953,7 +8953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -8997,7 +8997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9008,7 +9008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9052,7 +9052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9063,7 +9063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9107,7 +9107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9118,7 +9118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9162,7 +9162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9173,7 +9173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9217,7 +9217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9228,7 +9228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9272,7 +9272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9283,7 +9283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9327,7 +9327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9338,7 +9338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9382,7 +9382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9393,7 +9393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9437,7 +9437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9448,7 +9448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9492,7 +9492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9503,7 +9503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9547,7 +9547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9558,7 +9558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9602,7 +9602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9613,7 +9613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9657,7 +9657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9668,7 +9668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9712,7 +9712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9723,7 +9723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9767,7 +9767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9778,7 +9778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9822,7 +9822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9833,7 +9833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9877,7 +9877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9888,7 +9888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9932,7 +9932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9943,7 +9943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -9987,7 +9987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -9998,7 +9998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10042,7 +10042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10053,7 +10053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10097,7 +10097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10108,7 +10108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10152,7 +10152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10163,7 +10163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10207,7 +10207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10218,7 +10218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10262,7 +10262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10273,7 +10273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10317,7 +10317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10328,7 +10328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10372,7 +10372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10383,7 +10383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10427,7 +10427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-7-full.webp",
+        "url": "cards/art/atlas/brown-7-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10438,7 +10438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-7-thumb.webp",
+        "url": "cards/art/atlas/brown-7-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10482,7 +10482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10493,7 +10493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10537,7 +10537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10548,7 +10548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10592,7 +10592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10603,7 +10603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10647,7 +10647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10658,7 +10658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10702,7 +10702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10713,7 +10713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10757,7 +10757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-4-full.webp",
+        "url": "cards/art/atlas/brown-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10768,7 +10768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-4-thumb.webp",
+        "url": "cards/art/atlas/brown-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10812,7 +10812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10823,7 +10823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10867,7 +10867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10878,7 +10878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10922,7 +10922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10933,7 +10933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -10977,7 +10977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -10988,7 +10988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11032,7 +11032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11043,7 +11043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11087,7 +11087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11098,7 +11098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11142,7 +11142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11153,7 +11153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11197,7 +11197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11208,7 +11208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11252,7 +11252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11263,7 +11263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11307,7 +11307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11318,7 +11318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11362,7 +11362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11373,7 +11373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11417,7 +11417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11428,7 +11428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11472,7 +11472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11483,7 +11483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11527,7 +11527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11538,7 +11538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11582,7 +11582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11593,7 +11593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11637,7 +11637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11648,7 +11648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11692,7 +11692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11703,7 +11703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11747,7 +11747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11758,7 +11758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11802,7 +11802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11813,7 +11813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11857,7 +11857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11868,7 +11868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11912,7 +11912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11923,7 +11923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -11967,7 +11967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -11978,7 +11978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12022,7 +12022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12033,7 +12033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12077,7 +12077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12088,7 +12088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12132,7 +12132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12143,7 +12143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12187,7 +12187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12198,7 +12198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12242,7 +12242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12253,7 +12253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12297,7 +12297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12308,7 +12308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12352,7 +12352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12363,7 +12363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12407,7 +12407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12418,7 +12418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12462,7 +12462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-5-full.webp",
+        "url": "cards/art/atlas/brown-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12473,7 +12473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-5-thumb.webp",
+        "url": "cards/art/atlas/brown-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12517,7 +12517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12528,7 +12528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12572,7 +12572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12583,7 +12583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12627,7 +12627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-6-full.webp",
+        "url": "cards/art/atlas/brown-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12638,7 +12638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-6-thumb.webp",
+        "url": "cards/art/atlas/brown-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12682,7 +12682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -12693,7 +12693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -12737,7 +12737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -12748,7 +12748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -12792,7 +12792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -12803,7 +12803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -12847,7 +12847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/brown-8-full.webp",
+        "url": "cards/art/atlas/brown-8-full.avif",
         "size": [
           609.375,
           407.8049
@@ -12858,7 +12858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/brown-8-thumb.webp",
+        "url": "cards/art/atlas/brown-8-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -12902,7 +12902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12913,7 +12913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -12957,7 +12957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -12968,7 +12968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13012,7 +13012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13023,7 +13023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13067,7 +13067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13078,7 +13078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13122,7 +13122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13133,7 +13133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13177,7 +13177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -13188,7 +13188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -13232,7 +13232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -13243,7 +13243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -13287,7 +13287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13298,7 +13298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13342,7 +13342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13353,7 +13353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13397,7 +13397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13408,7 +13408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13452,7 +13452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -13463,7 +13463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -13507,7 +13507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13518,7 +13518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13562,7 +13562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13573,7 +13573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13617,7 +13617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13628,7 +13628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13672,7 +13672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13683,7 +13683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13727,7 +13727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13738,7 +13738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13782,7 +13782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13793,7 +13793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13837,7 +13837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13848,7 +13848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13892,7 +13892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13903,7 +13903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -13947,7 +13947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -13958,7 +13958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14002,7 +14002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14013,7 +14013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14057,7 +14057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14068,7 +14068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14112,7 +14112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14123,7 +14123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14167,7 +14167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14178,7 +14178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14222,7 +14222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14233,7 +14233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14277,7 +14277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14288,7 +14288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14332,7 +14332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14343,7 +14343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14387,7 +14387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14398,7 +14398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14442,7 +14442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14453,7 +14453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14497,7 +14497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14508,7 +14508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14552,7 +14552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14563,7 +14563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14607,7 +14607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14618,7 +14618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14662,7 +14662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14673,7 +14673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14717,7 +14717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14728,7 +14728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14772,7 +14772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14783,7 +14783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14827,7 +14827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14838,7 +14838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14882,7 +14882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -14893,7 +14893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -14937,7 +14937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -14948,7 +14948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -14992,7 +14992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15003,7 +15003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15047,7 +15047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15058,7 +15058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15102,7 +15102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15113,7 +15113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15157,7 +15157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15168,7 +15168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15212,7 +15212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15223,7 +15223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15267,7 +15267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15278,7 +15278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15322,7 +15322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15333,7 +15333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15377,7 +15377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15388,7 +15388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15432,7 +15432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15443,7 +15443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15487,7 +15487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15498,7 +15498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15542,7 +15542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15553,7 +15553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15597,7 +15597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15608,7 +15608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15652,7 +15652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15663,7 +15663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15707,7 +15707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15718,7 +15718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15762,7 +15762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15773,7 +15773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15817,7 +15817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15828,7 +15828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15872,7 +15872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15883,7 +15883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15927,7 +15927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15938,7 +15938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -15982,7 +15982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -15993,7 +15993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16037,7 +16037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16048,7 +16048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16092,7 +16092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16103,7 +16103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16147,7 +16147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16158,7 +16158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16202,7 +16202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16213,7 +16213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16257,7 +16257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16268,7 +16268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16312,7 +16312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -16323,7 +16323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -16367,7 +16367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16378,7 +16378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16422,7 +16422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16433,7 +16433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16477,7 +16477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16488,7 +16488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16532,7 +16532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16543,7 +16543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16587,7 +16587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16598,7 +16598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16642,7 +16642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16653,7 +16653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16697,7 +16697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16708,7 +16708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16752,7 +16752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16763,7 +16763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16807,7 +16807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16818,7 +16818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16862,7 +16862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16873,7 +16873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16917,7 +16917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16928,7 +16928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -16972,7 +16972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -16983,7 +16983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17027,7 +17027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17038,7 +17038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17082,7 +17082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17093,7 +17093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17137,7 +17137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17148,7 +17148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17192,7 +17192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17203,7 +17203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17247,7 +17247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17258,7 +17258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17302,7 +17302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17313,7 +17313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17357,7 +17357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17368,7 +17368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17412,7 +17412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17423,7 +17423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17467,7 +17467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17478,7 +17478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17522,7 +17522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17533,7 +17533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17577,7 +17577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17588,7 +17588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17632,7 +17632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17643,7 +17643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17687,7 +17687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -17698,7 +17698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -17742,7 +17742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17753,7 +17753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17797,7 +17797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17808,7 +17808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17852,7 +17852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -17863,7 +17863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -17907,7 +17907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17918,7 +17918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -17962,7 +17962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -17973,7 +17973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18017,7 +18017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18028,7 +18028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18072,7 +18072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18083,7 +18083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18127,7 +18127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18138,7 +18138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18182,7 +18182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18193,7 +18193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18237,7 +18237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18248,7 +18248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18292,7 +18292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18303,7 +18303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18347,7 +18347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18358,7 +18358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18402,7 +18402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -18413,7 +18413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -18457,7 +18457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18468,7 +18468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18512,7 +18512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18523,7 +18523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18567,7 +18567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18578,7 +18578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18622,7 +18622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18633,7 +18633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18677,7 +18677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18688,7 +18688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18732,7 +18732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18743,7 +18743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18787,7 +18787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18798,7 +18798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18842,7 +18842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18853,7 +18853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -18897,7 +18897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -18908,7 +18908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -18952,7 +18952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -18963,7 +18963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19007,7 +19007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19018,7 +19018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19062,7 +19062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -19073,7 +19073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -19117,7 +19117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19128,7 +19128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19172,7 +19172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19183,7 +19183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19227,7 +19227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19238,7 +19238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19282,7 +19282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19293,7 +19293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19337,7 +19337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19348,7 +19348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19392,7 +19392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19403,7 +19403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19447,7 +19447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19458,7 +19458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19502,7 +19502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19513,7 +19513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19557,7 +19557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -19568,7 +19568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -19612,7 +19612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19623,7 +19623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19667,7 +19667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19678,7 +19678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19722,7 +19722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19733,7 +19733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19777,7 +19777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -19788,7 +19788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -19832,7 +19832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19843,7 +19843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19887,7 +19887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19898,7 +19898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19942,7 +19942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -19953,7 +19953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -19997,7 +19997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20008,7 +20008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20052,7 +20052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20063,7 +20063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20107,7 +20107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20118,7 +20118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20162,7 +20162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -20173,7 +20173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -20217,7 +20217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20228,7 +20228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20272,7 +20272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20283,7 +20283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20327,7 +20327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20338,7 +20338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20382,7 +20382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -20393,7 +20393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -20437,7 +20437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20448,7 +20448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20492,7 +20492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20503,7 +20503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20547,7 +20547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20558,7 +20558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20602,7 +20602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20613,7 +20613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20657,7 +20657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20668,7 +20668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20712,7 +20712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -20723,7 +20723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -20767,7 +20767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20778,7 +20778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20822,7 +20822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20833,7 +20833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20877,7 +20877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -20888,7 +20888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -20932,7 +20932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20943,7 +20943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -20987,7 +20987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -20998,7 +20998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21042,7 +21042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.webp",
+        "url": "cards/art/atlas/fire-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21053,7 +21053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.webp",
+        "url": "cards/art/atlas/fire-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21097,7 +21097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21108,7 +21108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21152,7 +21152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -21163,7 +21163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -21207,7 +21207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21218,7 +21218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21262,7 +21262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21273,7 +21273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21317,7 +21317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21328,7 +21328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21372,7 +21372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21383,7 +21383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21427,7 +21427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21438,7 +21438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21482,7 +21482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -21493,7 +21493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -21537,7 +21537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21548,7 +21548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21592,7 +21592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21603,7 +21603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21647,7 +21647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21658,7 +21658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21702,7 +21702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21713,7 +21713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21757,7 +21757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21768,7 +21768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21812,7 +21812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21823,7 +21823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21867,7 +21867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21878,7 +21878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -21922,7 +21922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -21933,7 +21933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -21977,7 +21977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -21988,7 +21988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22032,7 +22032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22043,7 +22043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22087,7 +22087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22098,7 +22098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22142,7 +22142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.webp",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22153,7 +22153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.webp",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22197,7 +22197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22208,7 +22208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22252,7 +22252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.webp",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -22263,7 +22263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.webp",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -22307,7 +22307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-2-full.webp",
+        "url": "cards/art/atlas/fire-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22318,7 +22318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-2-thumb.webp",
+        "url": "cards/art/atlas/fire-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22362,7 +22362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22373,7 +22373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22417,7 +22417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22428,7 +22428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22472,7 +22472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22483,7 +22483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22527,7 +22527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22538,7 +22538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22582,7 +22582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22593,7 +22593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22637,7 +22637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22648,7 +22648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22692,7 +22692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22703,7 +22703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22747,7 +22747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22758,7 +22758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22802,7 +22802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22813,7 +22813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22857,7 +22857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22868,7 +22868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22912,7 +22912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22923,7 +22923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -22967,7 +22967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -22978,7 +22978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23022,7 +23022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23033,7 +23033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23077,7 +23077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23088,7 +23088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23132,7 +23132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23143,7 +23143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23187,7 +23187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23198,7 +23198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23242,7 +23242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23253,7 +23253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23297,7 +23297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23308,7 +23308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23352,7 +23352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23363,7 +23363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23407,7 +23407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.webp",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23418,7 +23418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.webp",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23462,7 +23462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23473,7 +23473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23517,7 +23517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23528,7 +23528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23572,7 +23572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23583,7 +23583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23627,7 +23627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23638,7 +23638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23682,7 +23682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23693,7 +23693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23737,7 +23737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-3-full.webp",
+        "url": "cards/art/atlas/fire-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23748,7 +23748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-3-thumb.webp",
+        "url": "cards/art/atlas/fire-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23792,7 +23792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23803,7 +23803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23847,7 +23847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-1-full.webp",
+        "url": "cards/art/atlas/fire-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23858,7 +23858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-1-thumb.webp",
+        "url": "cards/art/atlas/fire-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23902,7 +23902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23913,7 +23913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -23957,7 +23957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -23968,7 +23968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24012,7 +24012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -24023,7 +24023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -24067,7 +24067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -24078,7 +24078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -24122,7 +24122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -24133,7 +24133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -24177,7 +24177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24188,7 +24188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24232,7 +24232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -24243,7 +24243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -24287,7 +24287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -24298,7 +24298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -24342,7 +24342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24353,7 +24353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24397,7 +24397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24408,7 +24408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24452,7 +24452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24463,7 +24463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24507,7 +24507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24518,7 +24518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24562,7 +24562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24573,7 +24573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24617,7 +24617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24628,7 +24628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24672,7 +24672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24683,7 +24683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24727,7 +24727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24738,7 +24738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24782,7 +24782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24793,7 +24793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24837,7 +24837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24848,7 +24848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24892,7 +24892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24903,7 +24903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -24947,7 +24947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -24958,7 +24958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25002,7 +25002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25013,7 +25013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25057,7 +25057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25068,7 +25068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25112,7 +25112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25123,7 +25123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25167,7 +25167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25178,7 +25178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25222,7 +25222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25233,7 +25233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25277,7 +25277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25288,7 +25288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25332,7 +25332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25343,7 +25343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25387,7 +25387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25398,7 +25398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25442,7 +25442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25453,7 +25453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25497,7 +25497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25508,7 +25508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25552,7 +25552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25563,7 +25563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25607,7 +25607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25618,7 +25618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25662,7 +25662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25673,7 +25673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25717,7 +25717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25728,7 +25728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25772,7 +25772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25783,7 +25783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25827,7 +25827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25838,7 +25838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25882,7 +25882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25893,7 +25893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25937,7 +25937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -25948,7 +25948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -25992,7 +25992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -26003,7 +26003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -26047,7 +26047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26058,7 +26058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26102,7 +26102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26113,7 +26113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26157,7 +26157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26168,7 +26168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26212,7 +26212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26223,7 +26223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26267,7 +26267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26278,7 +26278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26322,7 +26322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26333,7 +26333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26377,7 +26377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26388,7 +26388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26432,7 +26432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26443,7 +26443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26487,7 +26487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26498,7 +26498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26542,7 +26542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26553,7 +26553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26597,7 +26597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26608,7 +26608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26652,7 +26652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26663,7 +26663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26707,7 +26707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26718,7 +26718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26762,7 +26762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26773,7 +26773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26817,7 +26817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26828,7 +26828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26872,7 +26872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26883,7 +26883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26927,7 +26927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26938,7 +26938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -26982,7 +26982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -26993,7 +26993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27037,7 +27037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27048,7 +27048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27092,7 +27092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27103,7 +27103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27147,7 +27147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27158,7 +27158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27202,7 +27202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27213,7 +27213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27257,7 +27257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27268,7 +27268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27312,7 +27312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27323,7 +27323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27367,7 +27367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -27378,7 +27378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -27422,7 +27422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27433,7 +27433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27477,7 +27477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27488,7 +27488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27532,7 +27532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27543,7 +27543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27587,7 +27587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27598,7 +27598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27642,7 +27642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27653,7 +27653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27697,7 +27697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27708,7 +27708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27752,7 +27752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27763,7 +27763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27807,7 +27807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27818,7 +27818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27862,7 +27862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27873,7 +27873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27917,7 +27917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27928,7 +27928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -27972,7 +27972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -27983,7 +27983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28027,7 +28027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28038,7 +28038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28082,7 +28082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28093,7 +28093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28137,7 +28137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28148,7 +28148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28192,7 +28192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28203,7 +28203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28247,7 +28247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28258,7 +28258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28302,7 +28302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28313,7 +28313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28357,7 +28357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28368,7 +28368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28412,7 +28412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28423,7 +28423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28467,7 +28467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28478,7 +28478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28522,7 +28522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28533,7 +28533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28577,7 +28577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28588,7 +28588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28632,7 +28632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28643,7 +28643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28687,7 +28687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -28698,7 +28698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -28742,7 +28742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28753,7 +28753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28797,7 +28797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28808,7 +28808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28852,7 +28852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28863,7 +28863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28907,7 +28907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28918,7 +28918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -28962,7 +28962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -28973,7 +28973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29017,7 +29017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29028,7 +29028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29072,7 +29072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29083,7 +29083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29127,7 +29127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29138,7 +29138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29182,7 +29182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29193,7 +29193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29237,7 +29237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29248,7 +29248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29292,7 +29292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29303,7 +29303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29347,7 +29347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29358,7 +29358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29402,7 +29402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29413,7 +29413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29457,7 +29457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29468,7 +29468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29512,7 +29512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29523,7 +29523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29567,7 +29567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29578,7 +29578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29622,7 +29622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29633,7 +29633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29677,7 +29677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29688,7 +29688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29732,7 +29732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29743,7 +29743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29787,7 +29787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29798,7 +29798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29842,7 +29842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29853,7 +29853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29897,7 +29897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -29908,7 +29908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -29952,7 +29952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -29963,7 +29963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -30007,7 +30007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30018,7 +30018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30062,7 +30062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30073,7 +30073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30117,7 +30117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -30128,7 +30128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -30172,7 +30172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30183,7 +30183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30227,7 +30227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30238,7 +30238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30282,7 +30282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30293,7 +30293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30337,7 +30337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30348,7 +30348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30392,7 +30392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30403,7 +30403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30447,7 +30447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30458,7 +30458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30502,7 +30502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30513,7 +30513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30557,7 +30557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30568,7 +30568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30612,7 +30612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30623,7 +30623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30667,7 +30667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30678,7 +30678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30722,7 +30722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30733,7 +30733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30777,7 +30777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -30788,7 +30788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -30832,7 +30832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30843,7 +30843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30887,7 +30887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30898,7 +30898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30942,7 +30942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -30953,7 +30953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -30997,7 +30997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31008,7 +31008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31052,7 +31052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31063,7 +31063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31107,7 +31107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31118,7 +31118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31162,7 +31162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31173,7 +31173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31217,7 +31217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31228,7 +31228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31272,7 +31272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -31283,7 +31283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -31327,7 +31327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31338,7 +31338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31382,7 +31382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31393,7 +31393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31437,7 +31437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -31448,7 +31448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -31492,7 +31492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31503,7 +31503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31547,7 +31547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31558,7 +31558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31602,7 +31602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31613,7 +31613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31657,7 +31657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31668,7 +31668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31712,7 +31712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31723,7 +31723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31767,7 +31767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -31778,7 +31778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -31822,7 +31822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31833,7 +31833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31877,7 +31877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31888,7 +31888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -31932,7 +31932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -31943,7 +31943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -31987,7 +31987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -31998,7 +31998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32042,7 +32042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32053,7 +32053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32097,7 +32097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32108,7 +32108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32152,7 +32152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -32163,7 +32163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -32207,7 +32207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32218,7 +32218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32262,7 +32262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32273,7 +32273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32317,7 +32317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32328,7 +32328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32372,7 +32372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32383,7 +32383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32427,7 +32427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32438,7 +32438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32482,7 +32482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -32493,7 +32493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -32537,7 +32537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32548,7 +32548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32592,7 +32592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32603,7 +32603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32647,7 +32647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -32658,7 +32658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -32702,7 +32702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32713,7 +32713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32757,7 +32757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32768,7 +32768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32812,7 +32812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32823,7 +32823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32867,7 +32867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32878,7 +32878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32922,7 +32922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -32933,7 +32933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -32977,7 +32977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -32988,7 +32988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -33032,7 +33032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33043,7 +33043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33087,7 +33087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33098,7 +33098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33142,7 +33142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33153,7 +33153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33197,7 +33197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.webp",
+        "url": "cards/art/atlas/frost-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -33208,7 +33208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.webp",
+        "url": "cards/art/atlas/frost-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -33252,7 +33252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-1-full.webp",
+        "url": "cards/art/atlas/frost-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33263,7 +33263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-1-thumb.webp",
+        "url": "cards/art/atlas/frost-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33307,7 +33307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-6-full.webp",
+        "url": "cards/art/atlas/frost-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33318,7 +33318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-6-thumb.webp",
+        "url": "cards/art/atlas/frost-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33362,7 +33362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33373,7 +33373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33417,7 +33417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33428,7 +33428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33472,7 +33472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33483,7 +33483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33527,7 +33527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33538,7 +33538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33582,7 +33582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-4-full.webp",
+        "url": "cards/art/atlas/frost-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33593,7 +33593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-4-thumb.webp",
+        "url": "cards/art/atlas/frost-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33637,7 +33637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33648,7 +33648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33692,7 +33692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33703,7 +33703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33747,7 +33747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33758,7 +33758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33802,7 +33802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33813,7 +33813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33857,7 +33857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33868,7 +33868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33912,7 +33912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33923,7 +33923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -33967,7 +33967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -33978,7 +33978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34022,7 +34022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34033,7 +34033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34077,7 +34077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34088,7 +34088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34132,7 +34132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34143,7 +34143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34187,7 +34187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34198,7 +34198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34242,7 +34242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34253,7 +34253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34297,7 +34297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34308,7 +34308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34352,7 +34352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34363,7 +34363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34407,7 +34407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34418,7 +34418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34462,7 +34462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34473,7 +34473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34517,7 +34517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34528,7 +34528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34572,7 +34572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-5-full.webp",
+        "url": "cards/art/atlas/frost-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34583,7 +34583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-5-thumb.webp",
+        "url": "cards/art/atlas/frost-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34627,7 +34627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34638,7 +34638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34682,7 +34682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34693,7 +34693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34737,7 +34737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34748,7 +34748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34792,7 +34792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-3-full.webp",
+        "url": "cards/art/atlas/frost-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34803,7 +34803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-3-thumb.webp",
+        "url": "cards/art/atlas/frost-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34847,7 +34847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-2-full.webp",
+        "url": "cards/art/atlas/frost-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34858,7 +34858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-2-thumb.webp",
+        "url": "cards/art/atlas/frost-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34902,7 +34902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34913,7 +34913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -34957,7 +34957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -34968,7 +34968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35012,7 +35012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35023,7 +35023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35067,7 +35067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -35078,7 +35078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -35122,7 +35122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35133,7 +35133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35177,7 +35177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35188,7 +35188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35232,7 +35232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35243,7 +35243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35287,7 +35287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -35298,7 +35298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -35342,7 +35342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35353,7 +35353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35397,7 +35397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35408,7 +35408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35452,7 +35452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35463,7 +35463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35507,7 +35507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -35518,7 +35518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -35562,7 +35562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35573,7 +35573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35617,7 +35617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35628,7 +35628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35672,7 +35672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35683,7 +35683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35727,7 +35727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -35738,7 +35738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -35782,7 +35782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35793,7 +35793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35837,7 +35837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35848,7 +35848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35892,7 +35892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35903,7 +35903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -35947,7 +35947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -35958,7 +35958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36002,7 +36002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -36013,7 +36013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -36057,7 +36057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36068,7 +36068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36112,7 +36112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36123,7 +36123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36167,7 +36167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36178,7 +36178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36222,7 +36222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -36233,7 +36233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -36277,7 +36277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36288,7 +36288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36332,7 +36332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36343,7 +36343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36387,7 +36387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36398,7 +36398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36442,7 +36442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -36453,7 +36453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -36497,7 +36497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36508,7 +36508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36552,7 +36552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36563,7 +36563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36607,7 +36607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36618,7 +36618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36662,7 +36662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -36673,7 +36673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -36717,7 +36717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36728,7 +36728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36772,7 +36772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36783,7 +36783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36827,7 +36827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36838,7 +36838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36882,7 +36882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -36893,7 +36893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -36937,7 +36937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -36948,7 +36948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -36992,7 +36992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37003,7 +37003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37047,7 +37047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37058,7 +37058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37102,7 +37102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -37113,7 +37113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -37157,7 +37157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-1-full.webp",
+        "url": "cards/art/atlas/gray-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37168,7 +37168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-1-thumb.webp",
+        "url": "cards/art/atlas/gray-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37212,7 +37212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37223,7 +37223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37267,7 +37267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -37278,7 +37278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -37322,7 +37322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37333,7 +37333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37377,7 +37377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37388,7 +37388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37432,7 +37432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37443,7 +37443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37487,7 +37487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37498,7 +37498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37542,7 +37542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37553,7 +37553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37597,7 +37597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37608,7 +37608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37652,7 +37652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37663,7 +37663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37707,7 +37707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37718,7 +37718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37762,7 +37762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37773,7 +37773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37817,7 +37817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37828,7 +37828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37872,7 +37872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37883,7 +37883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37927,7 +37927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37938,7 +37938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -37982,7 +37982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -37993,7 +37993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38037,7 +38037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38048,7 +38048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38092,7 +38092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38103,7 +38103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38147,7 +38147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38158,7 +38158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38202,7 +38202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38213,7 +38213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38257,7 +38257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38268,7 +38268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38312,7 +38312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38323,7 +38323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38367,7 +38367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38378,7 +38378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38422,7 +38422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38433,7 +38433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38477,7 +38477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38488,7 +38488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38532,7 +38532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38543,7 +38543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38587,7 +38587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38598,7 +38598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38642,7 +38642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38653,7 +38653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38697,7 +38697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38708,7 +38708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38752,7 +38752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38763,7 +38763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38807,7 +38807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38818,7 +38818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38862,7 +38862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38873,7 +38873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38917,7 +38917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38928,7 +38928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -38972,7 +38972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -38983,7 +38983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39027,7 +39027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39038,7 +39038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39082,7 +39082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39093,7 +39093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39137,7 +39137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39148,7 +39148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39192,7 +39192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39203,7 +39203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39247,7 +39247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39258,7 +39258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39302,7 +39302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39313,7 +39313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39357,7 +39357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39368,7 +39368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39412,7 +39412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39423,7 +39423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39467,7 +39467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39478,7 +39478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39522,7 +39522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39533,7 +39533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39577,7 +39577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39588,7 +39588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39632,7 +39632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39643,7 +39643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39687,7 +39687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39698,7 +39698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39742,7 +39742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39753,7 +39753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39797,7 +39797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39808,7 +39808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39852,7 +39852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-5-full.webp",
+        "url": "cards/art/atlas/gray-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39863,7 +39863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-5-thumb.webp",
+        "url": "cards/art/atlas/gray-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39907,7 +39907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39918,7 +39918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -39962,7 +39962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -39973,7 +39973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40017,7 +40017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40028,7 +40028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40072,7 +40072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40083,7 +40083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40127,7 +40127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40138,7 +40138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40182,7 +40182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40193,7 +40193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40237,7 +40237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40248,7 +40248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40292,7 +40292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40303,7 +40303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40347,7 +40347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40358,7 +40358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40402,7 +40402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40413,7 +40413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40457,7 +40457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40468,7 +40468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40512,7 +40512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40523,7 +40523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40567,7 +40567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40578,7 +40578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40622,7 +40622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40633,7 +40633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40677,7 +40677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40688,7 +40688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40732,7 +40732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40743,7 +40743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40787,7 +40787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40798,7 +40798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40842,7 +40842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40853,7 +40853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40897,7 +40897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40908,7 +40908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -40952,7 +40952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -40963,7 +40963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41007,7 +41007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41018,7 +41018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41062,7 +41062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41073,7 +41073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41117,7 +41117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41128,7 +41128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41172,7 +41172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41183,7 +41183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41227,7 +41227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41238,7 +41238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41282,7 +41282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41293,7 +41293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41337,7 +41337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41348,7 +41348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41392,7 +41392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41403,7 +41403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41447,7 +41447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41458,7 +41458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41502,7 +41502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-6-full.webp",
+        "url": "cards/art/atlas/gray-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -41513,7 +41513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-6-thumb.webp",
+        "url": "cards/art/atlas/gray-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -41557,7 +41557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41568,7 +41568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41612,7 +41612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41623,7 +41623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41667,7 +41667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41678,7 +41678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41722,7 +41722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41733,7 +41733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41777,7 +41777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41788,7 +41788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41832,7 +41832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41843,7 +41843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41887,7 +41887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41898,7 +41898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41942,7 +41942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -41953,7 +41953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -41997,7 +41997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-7-full.webp",
+        "url": "cards/art/atlas/gray-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -42008,7 +42008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-7-thumb.webp",
+        "url": "cards/art/atlas/gray-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -42052,7 +42052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42063,7 +42063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42107,7 +42107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42118,7 +42118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42162,7 +42162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42173,7 +42173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42217,7 +42217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42228,7 +42228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42272,7 +42272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42283,7 +42283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42327,7 +42327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42338,7 +42338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42382,7 +42382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42393,7 +42393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42437,7 +42437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42448,7 +42448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42492,7 +42492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42503,7 +42503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42547,7 +42547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42558,7 +42558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42602,7 +42602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42613,7 +42613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42657,7 +42657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42668,7 +42668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42712,7 +42712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42723,7 +42723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42767,7 +42767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42778,7 +42778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42822,7 +42822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42833,7 +42833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42877,7 +42877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42888,7 +42888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42932,7 +42932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42943,7 +42943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -42987,7 +42987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -42998,7 +42998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43042,7 +43042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43053,7 +43053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43097,7 +43097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43108,7 +43108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43152,7 +43152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43163,7 +43163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43207,7 +43207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43218,7 +43218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43262,7 +43262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43273,7 +43273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43317,7 +43317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43328,7 +43328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43372,7 +43372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43383,7 +43383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43427,7 +43427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43438,7 +43438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43482,7 +43482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43493,7 +43493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43537,7 +43537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-2-full.webp",
+        "url": "cards/art/atlas/gray-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43548,7 +43548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-2-thumb.webp",
+        "url": "cards/art/atlas/gray-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43592,7 +43592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43603,7 +43603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43647,7 +43647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43658,7 +43658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43702,7 +43702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43713,7 +43713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43757,7 +43757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43768,7 +43768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43812,7 +43812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43823,7 +43823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43867,7 +43867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43878,7 +43878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43922,7 +43922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43933,7 +43933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -43977,7 +43977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -43988,7 +43988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44032,7 +44032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44043,7 +44043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44087,7 +44087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44098,7 +44098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44142,7 +44142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44153,7 +44153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44197,7 +44197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44208,7 +44208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44252,7 +44252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44263,7 +44263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44307,7 +44307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44318,7 +44318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44362,7 +44362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44373,7 +44373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44417,7 +44417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44428,7 +44428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44472,7 +44472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44483,7 +44483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44527,7 +44527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44538,7 +44538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44582,7 +44582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44593,7 +44593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44637,7 +44637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44648,7 +44648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44692,7 +44692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44703,7 +44703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44747,7 +44747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44758,7 +44758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44802,7 +44802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44813,7 +44813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44857,7 +44857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44868,7 +44868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44912,7 +44912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44923,7 +44923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -44967,7 +44967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -44978,7 +44978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45022,7 +45022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-3-full.webp",
+        "url": "cards/art/atlas/gray-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45033,7 +45033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-3-thumb.webp",
+        "url": "cards/art/atlas/gray-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45077,7 +45077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45088,7 +45088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45132,7 +45132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45143,7 +45143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45187,7 +45187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45198,7 +45198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45242,7 +45242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45253,7 +45253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45297,7 +45297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45308,7 +45308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45352,7 +45352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45363,7 +45363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45407,7 +45407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45418,7 +45418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45462,7 +45462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45473,7 +45473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45517,7 +45517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45528,7 +45528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45572,7 +45572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45583,7 +45583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45627,7 +45627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45638,7 +45638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45682,7 +45682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45693,7 +45693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45737,7 +45737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45748,7 +45748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45792,7 +45792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45803,7 +45803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45847,7 +45847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/gray-4-full.webp",
+        "url": "cards/art/atlas/gray-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45858,7 +45858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/gray-4-thumb.webp",
+        "url": "cards/art/atlas/gray-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -45902,7 +45902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -45913,7 +45913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -45957,7 +45957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -45968,7 +45968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46012,7 +46012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46023,7 +46023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46067,7 +46067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -46078,7 +46078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -46122,7 +46122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46133,7 +46133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46177,7 +46177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46188,7 +46188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46232,7 +46232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46243,7 +46243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46287,7 +46287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46298,7 +46298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46342,7 +46342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46353,7 +46353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46397,7 +46397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46408,7 +46408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46452,7 +46452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -46463,7 +46463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -46507,7 +46507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46518,7 +46518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46562,7 +46562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46573,7 +46573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46617,7 +46617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -46628,7 +46628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -46672,7 +46672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46683,7 +46683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46727,7 +46727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46738,7 +46738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46782,7 +46782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46793,7 +46793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46837,7 +46837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -46848,7 +46848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -46892,7 +46892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46903,7 +46903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -46947,7 +46947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -46958,7 +46958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47002,7 +47002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47013,7 +47013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47057,7 +47057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -47068,7 +47068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -47112,7 +47112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47123,7 +47123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47167,7 +47167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47178,7 +47178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47222,7 +47222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47233,7 +47233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47277,7 +47277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -47288,7 +47288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -47332,7 +47332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47343,7 +47343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47387,7 +47387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47398,7 +47398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47442,7 +47442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47453,7 +47453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47497,7 +47497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47508,7 +47508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47552,7 +47552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47563,7 +47563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47607,7 +47607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47618,7 +47618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47662,7 +47662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47673,7 +47673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47717,7 +47717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47728,7 +47728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47772,7 +47772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47783,7 +47783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47827,7 +47827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47838,7 +47838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47882,7 +47882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47893,7 +47893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47937,7 +47937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -47948,7 +47948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -47992,7 +47992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48003,7 +48003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48047,7 +48047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48058,7 +48058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48102,7 +48102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48113,7 +48113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48157,7 +48157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -48168,7 +48168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -48212,7 +48212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48223,7 +48223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48267,7 +48267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48278,7 +48278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48322,7 +48322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48333,7 +48333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48377,7 +48377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48388,7 +48388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48432,7 +48432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48443,7 +48443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48487,7 +48487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48498,7 +48498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48542,7 +48542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48553,7 +48553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48597,7 +48597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48608,7 +48608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48652,7 +48652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -48663,7 +48663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -48707,7 +48707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48718,7 +48718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48762,7 +48762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48773,7 +48773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48817,7 +48817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48828,7 +48828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48872,7 +48872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48883,7 +48883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48927,7 +48927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48938,7 +48938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -48982,7 +48982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -48993,7 +48993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49037,7 +49037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49048,7 +49048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49092,7 +49092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49103,7 +49103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49147,7 +49147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49158,7 +49158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49202,7 +49202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49213,7 +49213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49257,7 +49257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49268,7 +49268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49312,7 +49312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49323,7 +49323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49367,7 +49367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49378,7 +49378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49422,7 +49422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49433,7 +49433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49477,7 +49477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49488,7 +49488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49532,7 +49532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -49543,7 +49543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -49587,7 +49587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49598,7 +49598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49642,7 +49642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49653,7 +49653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49697,7 +49697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49708,7 +49708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49752,7 +49752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49763,7 +49763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49807,7 +49807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49818,7 +49818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49862,7 +49862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49873,7 +49873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49917,7 +49917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49928,7 +49928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -49972,7 +49972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -49983,7 +49983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50027,7 +50027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -50038,7 +50038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -50082,7 +50082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50093,7 +50093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50137,7 +50137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50148,7 +50148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50192,7 +50192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50203,7 +50203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50247,7 +50247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50258,7 +50258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50302,7 +50302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50313,7 +50313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50357,7 +50357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50368,7 +50368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50412,7 +50412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50423,7 +50423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50467,7 +50467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50478,7 +50478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50522,7 +50522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50533,7 +50533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50577,7 +50577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50588,7 +50588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50632,7 +50632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50643,7 +50643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50687,7 +50687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50698,7 +50698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50742,7 +50742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50753,7 +50753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50797,7 +50797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50808,7 +50808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50852,7 +50852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50863,7 +50863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -50907,7 +50907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -50918,7 +50918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -50962,7 +50962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -50973,7 +50973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51017,7 +51017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51028,7 +51028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51072,7 +51072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51083,7 +51083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51127,7 +51127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51138,7 +51138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51182,7 +51182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51193,7 +51193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51237,7 +51237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51248,7 +51248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51292,7 +51292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51303,7 +51303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51347,7 +51347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51358,7 +51358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51402,7 +51402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -51413,7 +51413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -51457,7 +51457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51468,7 +51468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51512,7 +51512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51523,7 +51523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51567,7 +51567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51578,7 +51578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51622,7 +51622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51633,7 +51633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51677,7 +51677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51688,7 +51688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51732,7 +51732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51743,7 +51743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51787,7 +51787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51798,7 +51798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51842,7 +51842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51853,7 +51853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51897,7 +51897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51908,7 +51908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -51952,7 +51952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -51963,7 +51963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52007,7 +52007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52018,7 +52018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52062,7 +52062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52073,7 +52073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52117,7 +52117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -52128,7 +52128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -52172,7 +52172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52183,7 +52183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52227,7 +52227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52238,7 +52238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52282,7 +52282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52293,7 +52293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52337,7 +52337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52348,7 +52348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52392,7 +52392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52403,7 +52403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52447,7 +52447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52458,7 +52458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52502,7 +52502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52513,7 +52513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52557,7 +52557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52568,7 +52568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52612,7 +52612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52623,7 +52623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52667,7 +52667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52678,7 +52678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52722,7 +52722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52733,7 +52733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52777,7 +52777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -52788,7 +52788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -52832,7 +52832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52843,7 +52843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52887,7 +52887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52898,7 +52898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52942,7 +52942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -52953,7 +52953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -52997,7 +52997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53008,7 +53008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53052,7 +53052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53063,7 +53063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53107,7 +53107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53118,7 +53118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53162,7 +53162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53173,7 +53173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53217,7 +53217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53228,7 +53228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53272,7 +53272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53283,7 +53283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53327,7 +53327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53338,7 +53338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53382,7 +53382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -53393,7 +53393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -53437,7 +53437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53448,7 +53448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53492,7 +53492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53503,7 +53503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53547,7 +53547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53558,7 +53558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53602,7 +53602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53613,7 +53613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53657,7 +53657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53668,7 +53668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53712,7 +53712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53723,7 +53723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53767,7 +53767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53778,7 +53778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53822,7 +53822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -53833,7 +53833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -53877,7 +53877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53888,7 +53888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53932,7 +53932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53943,7 +53943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -53987,7 +53987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -53998,7 +53998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54042,7 +54042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54053,7 +54053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54097,7 +54097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54108,7 +54108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54152,7 +54152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -54163,7 +54163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -54207,7 +54207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54218,7 +54218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54262,7 +54262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54273,7 +54273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54317,7 +54317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54328,7 +54328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54372,7 +54372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54383,7 +54383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54427,7 +54427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54438,7 +54438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54482,7 +54482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54493,7 +54493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54537,7 +54537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54548,7 +54548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54592,7 +54592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54603,7 +54603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54647,7 +54647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -54658,7 +54658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -54702,7 +54702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54713,7 +54713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54757,7 +54757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54768,7 +54768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54812,7 +54812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54823,7 +54823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54867,7 +54867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54878,7 +54878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54922,7 +54922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54933,7 +54933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -54977,7 +54977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.webp",
+        "url": "cards/art/atlas/light-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -54988,7 +54988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.webp",
+        "url": "cards/art/atlas/light-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55032,7 +55032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55043,7 +55043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55087,7 +55087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55098,7 +55098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55142,7 +55142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.webp",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -55153,7 +55153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.webp",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -55197,7 +55197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55208,7 +55208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55252,7 +55252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55263,7 +55263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55307,7 +55307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55318,7 +55318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55362,7 +55362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.webp",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55373,7 +55373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.webp",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55417,7 +55417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55428,7 +55428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55472,7 +55472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55483,7 +55483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55527,7 +55527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55538,7 +55538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55582,7 +55582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55593,7 +55593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55637,7 +55637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55648,7 +55648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55692,7 +55692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55703,7 +55703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55747,7 +55747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55758,7 +55758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55802,7 +55802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55813,7 +55813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55857,7 +55857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55868,7 +55868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55912,7 +55912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55923,7 +55923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -55967,7 +55967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -55978,7 +55978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56022,7 +56022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56033,7 +56033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56077,7 +56077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56088,7 +56088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56132,7 +56132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56143,7 +56143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56187,7 +56187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56198,7 +56198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56242,7 +56242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.webp",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56253,7 +56253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.webp",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56297,7 +56297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56308,7 +56308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56352,7 +56352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56363,7 +56363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56407,7 +56407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.webp",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56418,7 +56418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.webp",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56462,7 +56462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.webp",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56473,7 +56473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.webp",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56517,7 +56517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56528,7 +56528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56572,7 +56572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56583,7 +56583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56627,7 +56627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56638,7 +56638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56682,7 +56682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56693,7 +56693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56737,7 +56737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56748,7 +56748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56792,7 +56792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56803,7 +56803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56847,7 +56847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.webp",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56858,7 +56858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.webp",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56902,7 +56902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56913,7 +56913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -56957,7 +56957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -56968,7 +56968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57012,7 +57012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57023,7 +57023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57067,7 +57067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57078,7 +57078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57122,7 +57122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57133,7 +57133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57177,7 +57177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57188,7 +57188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57232,7 +57232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -57243,7 +57243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -57287,7 +57287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57298,7 +57298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57342,7 +57342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57353,7 +57353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57397,7 +57397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57408,7 +57408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57452,7 +57452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57463,7 +57463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57507,7 +57507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -57518,7 +57518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -57562,7 +57562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57573,7 +57573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57617,7 +57617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57628,7 +57628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57672,7 +57672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57683,7 +57683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57727,7 +57727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57738,7 +57738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57782,7 +57782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -57793,7 +57793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -57837,7 +57837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57848,7 +57848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57892,7 +57892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57903,7 +57903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -57947,7 +57947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -57958,7 +57958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58002,7 +58002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58013,7 +58013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58057,7 +58057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -58068,7 +58068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -58112,7 +58112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58123,7 +58123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58167,7 +58167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58178,7 +58178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58222,7 +58222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58233,7 +58233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58277,7 +58277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -58288,7 +58288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -58332,7 +58332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58343,7 +58343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58387,7 +58387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58398,7 +58398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58442,7 +58442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58453,7 +58453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58497,7 +58497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58508,7 +58508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58552,7 +58552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58563,7 +58563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58607,7 +58607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58618,7 +58618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58662,7 +58662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58673,7 +58673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58717,7 +58717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58728,7 +58728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58772,7 +58772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58783,7 +58783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58827,7 +58827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58838,7 +58838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58882,7 +58882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58893,7 +58893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58937,7 +58937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -58948,7 +58948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -58992,7 +58992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59003,7 +59003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59047,7 +59047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59058,7 +59058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59102,7 +59102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59113,7 +59113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59157,7 +59157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -59168,7 +59168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -59212,7 +59212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59223,7 +59223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59267,7 +59267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59278,7 +59278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59322,7 +59322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59333,7 +59333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59377,7 +59377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59388,7 +59388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59432,7 +59432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59443,7 +59443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59487,7 +59487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59498,7 +59498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59542,7 +59542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59553,7 +59553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59597,7 +59597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59608,7 +59608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59652,7 +59652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -59663,7 +59663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -59707,7 +59707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59718,7 +59718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59762,7 +59762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59773,7 +59773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59817,7 +59817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59828,7 +59828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59872,7 +59872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59883,7 +59883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59927,7 +59927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59938,7 +59938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -59982,7 +59982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -59993,7 +59993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60037,7 +60037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60048,7 +60048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60092,7 +60092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60103,7 +60103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60147,7 +60147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60158,7 +60158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60202,7 +60202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60213,7 +60213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60257,7 +60257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60268,7 +60268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60312,7 +60312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60323,7 +60323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60367,7 +60367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60378,7 +60378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60422,7 +60422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60433,7 +60433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60477,7 +60477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60488,7 +60488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60532,7 +60532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -60543,7 +60543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -60587,7 +60587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60598,7 +60598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60642,7 +60642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60653,7 +60653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60697,7 +60697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60708,7 +60708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60752,7 +60752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60763,7 +60763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60807,7 +60807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60818,7 +60818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60862,7 +60862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60873,7 +60873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60917,7 +60917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60928,7 +60928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -60972,7 +60972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -60983,7 +60983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61027,7 +61027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -61038,7 +61038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -61082,7 +61082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61093,7 +61093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61137,7 +61137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61148,7 +61148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61192,7 +61192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61203,7 +61203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61247,7 +61247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -61258,7 +61258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -61302,7 +61302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61313,7 +61313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61357,7 +61357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61368,7 +61368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61412,7 +61412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61423,7 +61423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61467,7 +61467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61478,7 +61478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61522,7 +61522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61533,7 +61533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61577,7 +61577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61588,7 +61588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61632,7 +61632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61643,7 +61643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61687,7 +61687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61698,7 +61698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61742,7 +61742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61753,7 +61753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61797,7 +61797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61808,7 +61808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61852,7 +61852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61863,7 +61863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -61907,7 +61907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -61918,7 +61918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -61962,7 +61962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -61973,7 +61973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62017,7 +62017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62028,7 +62028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62072,7 +62072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62083,7 +62083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62127,7 +62127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -62138,7 +62138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -62182,7 +62182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62193,7 +62193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62237,7 +62237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62248,7 +62248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62292,7 +62292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62303,7 +62303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62347,7 +62347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62358,7 +62358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62402,7 +62402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -62413,7 +62413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -62457,7 +62457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62468,7 +62468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62512,7 +62512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62523,7 +62523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62567,7 +62567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62578,7 +62578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62622,7 +62622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -62633,7 +62633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -62677,7 +62677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62688,7 +62688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62732,7 +62732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62743,7 +62743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62787,7 +62787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62798,7 +62798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62842,7 +62842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62853,7 +62853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62897,7 +62897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62908,7 +62908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -62952,7 +62952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -62963,7 +62963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63007,7 +63007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63018,7 +63018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63062,7 +63062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63073,7 +63073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63117,7 +63117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -63128,7 +63128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -63172,7 +63172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63183,7 +63183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63227,7 +63227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63238,7 +63238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63282,7 +63282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63293,7 +63293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63337,7 +63337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -63348,7 +63348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -63392,7 +63392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63403,7 +63403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63447,7 +63447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63458,7 +63458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63502,7 +63502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63513,7 +63513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63557,7 +63557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63568,7 +63568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63612,7 +63612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63623,7 +63623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63667,7 +63667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63678,7 +63678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63722,7 +63722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63733,7 +63733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63777,7 +63777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -63788,7 +63788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -63832,7 +63832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63843,7 +63843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63887,7 +63887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -63898,7 +63898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -63942,7 +63942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -63953,7 +63953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -63997,7 +63997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64008,7 +64008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64052,7 +64052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64063,7 +64063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64107,7 +64107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64118,7 +64118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64162,7 +64162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64173,7 +64173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64217,7 +64217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64228,7 +64228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64272,7 +64272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64283,7 +64283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64327,7 +64327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64338,7 +64338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64382,7 +64382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64393,7 +64393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64437,7 +64437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -64448,7 +64448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -64492,7 +64492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64503,7 +64503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64547,7 +64547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64558,7 +64558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64602,7 +64602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64613,7 +64613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64657,7 +64657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64668,7 +64668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64712,7 +64712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64723,7 +64723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64767,7 +64767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64778,7 +64778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64822,7 +64822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.webp",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64833,7 +64833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.webp",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64877,7 +64877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64888,7 +64888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -64932,7 +64932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.webp",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -64943,7 +64943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.webp",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -64987,7 +64987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -64998,7 +64998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65042,7 +65042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65053,7 +65053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65097,7 +65097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65108,7 +65108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65152,7 +65152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65163,7 +65163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65207,7 +65207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65218,7 +65218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65262,7 +65262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65273,7 +65273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65317,7 +65317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65328,7 +65328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65372,7 +65372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65383,7 +65383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65427,7 +65427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65438,7 +65438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65482,7 +65482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65493,7 +65493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65537,7 +65537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65548,7 +65548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65592,7 +65592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65603,7 +65603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65647,7 +65647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65658,7 +65658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65702,7 +65702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65713,7 +65713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65757,7 +65757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65768,7 +65768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65812,7 +65812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65823,7 +65823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65867,7 +65867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.webp",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65878,7 +65878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.webp",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65922,7 +65922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65933,7 +65933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -65977,7 +65977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -65988,7 +65988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66032,7 +66032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66043,7 +66043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66087,7 +66087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.webp",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66098,7 +66098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.webp",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66142,7 +66142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66153,7 +66153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66197,7 +66197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66208,7 +66208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66252,7 +66252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66263,7 +66263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66307,7 +66307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66318,7 +66318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66362,7 +66362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.webp",
+        "url": "cards/art/atlas/shadow-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66373,7 +66373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.webp",
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66417,7 +66417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66428,7 +66428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66472,7 +66472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66483,7 +66483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66527,7 +66527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66538,7 +66538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66582,7 +66582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66593,7 +66593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66637,7 +66637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66648,7 +66648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66692,7 +66692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66703,7 +66703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66747,7 +66747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66758,7 +66758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66802,7 +66802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66813,7 +66813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66857,7 +66857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66868,7 +66868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66912,7 +66912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66923,7 +66923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -66967,7 +66967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -66978,7 +66978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67022,7 +67022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67033,7 +67033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67077,7 +67077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67088,7 +67088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67132,7 +67132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67143,7 +67143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67187,7 +67187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67198,7 +67198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67242,7 +67242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67253,7 +67253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67297,7 +67297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67308,7 +67308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67352,7 +67352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67363,7 +67363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67407,7 +67407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.webp",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67418,7 +67418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.webp",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67462,7 +67462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67473,7 +67473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67517,7 +67517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67528,7 +67528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67572,7 +67572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67583,7 +67583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67627,7 +67627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67638,7 +67638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67682,7 +67682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67693,7 +67693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67737,7 +67737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67748,7 +67748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67792,7 +67792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67803,7 +67803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67847,7 +67847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.webp",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67858,7 +67858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.webp",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67902,7 +67902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67913,7 +67913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -67957,7 +67957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -67968,7 +67968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68012,7 +68012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68023,7 +68023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68067,7 +68067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68078,7 +68078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68122,7 +68122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68133,7 +68133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68177,7 +68177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68188,7 +68188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68232,7 +68232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -68243,7 +68243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -68287,7 +68287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68298,7 +68298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68342,7 +68342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68353,7 +68353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68397,7 +68397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68408,7 +68408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68452,7 +68452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -68463,7 +68463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -68507,7 +68507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -68518,7 +68518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -68562,7 +68562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68573,7 +68573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68617,7 +68617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68628,7 +68628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68672,7 +68672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68683,7 +68683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68727,7 +68727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -68738,7 +68738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -68782,7 +68782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -68793,7 +68793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -68837,7 +68837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68848,7 +68848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68892,7 +68892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68903,7 +68903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -68947,7 +68947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -68958,7 +68958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69002,7 +69002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69013,7 +69013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69057,7 +69057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -69068,7 +69068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -69112,7 +69112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69123,7 +69123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69167,7 +69167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69178,7 +69178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69222,7 +69222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69233,7 +69233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69277,7 +69277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -69288,7 +69288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -69332,7 +69332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69343,7 +69343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69387,7 +69387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69398,7 +69398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69442,7 +69442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69453,7 +69453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69497,7 +69497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69508,7 +69508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69552,7 +69552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69563,7 +69563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69607,7 +69607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69618,7 +69618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69662,7 +69662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69673,7 +69673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69717,7 +69717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69728,7 +69728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69772,7 +69772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69783,7 +69783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69827,7 +69827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69838,7 +69838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69882,7 +69882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69893,7 +69893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69937,7 +69937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -69948,7 +69948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -69992,7 +69992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70003,7 +70003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70047,7 +70047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70058,7 +70058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70102,7 +70102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -70113,7 +70113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -70157,7 +70157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70168,7 +70168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70212,7 +70212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70223,7 +70223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70267,7 +70267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70278,7 +70278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70322,7 +70322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70333,7 +70333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70377,7 +70377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70388,7 +70388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70432,7 +70432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70443,7 +70443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70487,7 +70487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70498,7 +70498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70542,7 +70542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70553,7 +70553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70597,7 +70597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70608,7 +70608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70652,7 +70652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -70663,7 +70663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -70707,7 +70707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70718,7 +70718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70762,7 +70762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70773,7 +70773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70817,7 +70817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70828,7 +70828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70872,7 +70872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70883,7 +70883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70927,7 +70927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70938,7 +70938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -70982,7 +70982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -70993,7 +70993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71037,7 +71037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71048,7 +71048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71092,7 +71092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71103,7 +71103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71147,7 +71147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71158,7 +71158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71202,7 +71202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71213,7 +71213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71257,7 +71257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71268,7 +71268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71312,7 +71312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71323,7 +71323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71367,7 +71367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71378,7 +71378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71422,7 +71422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71433,7 +71433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71477,7 +71477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -71488,7 +71488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -71532,7 +71532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71543,7 +71543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71587,7 +71587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71598,7 +71598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71642,7 +71642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71653,7 +71653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71697,7 +71697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -71708,7 +71708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -71752,7 +71752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71763,7 +71763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71807,7 +71807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71818,7 +71818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71862,7 +71862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71873,7 +71873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71917,7 +71917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71928,7 +71928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -71972,7 +71972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -71983,7 +71983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72027,7 +72027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -72038,7 +72038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -72082,7 +72082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72093,7 +72093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72137,7 +72137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72148,7 +72148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72192,7 +72192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72203,7 +72203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72247,7 +72247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -72258,7 +72258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -72302,7 +72302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72313,7 +72313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72357,7 +72357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72368,7 +72368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72412,7 +72412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72423,7 +72423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72467,7 +72467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72478,7 +72478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72522,7 +72522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72533,7 +72533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72577,7 +72577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72588,7 +72588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72632,7 +72632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72643,7 +72643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72687,7 +72687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72698,7 +72698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72742,7 +72742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72753,7 +72753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72797,7 +72797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -72808,7 +72808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -72852,7 +72852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72863,7 +72863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72907,7 +72907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72918,7 +72918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -72962,7 +72962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -72973,7 +72973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73017,7 +73017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -73028,7 +73028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -73072,7 +73072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73083,7 +73083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73127,7 +73127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73138,7 +73138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73182,7 +73182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73193,7 +73193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73237,7 +73237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73248,7 +73248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73292,7 +73292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73303,7 +73303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73347,7 +73347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73358,7 +73358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73402,7 +73402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -73413,7 +73413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -73457,7 +73457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73468,7 +73468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73512,7 +73512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73523,7 +73523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73567,7 +73567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73578,7 +73578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73622,7 +73622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -73633,7 +73633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -73677,7 +73677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73688,7 +73688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73732,7 +73732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73743,7 +73743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73787,7 +73787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73798,7 +73798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73842,7 +73842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73853,7 +73853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73897,7 +73897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73908,7 +73908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -73952,7 +73952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -73963,7 +73963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74007,7 +74007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74018,7 +74018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74062,7 +74062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -74073,7 +74073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -74117,7 +74117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74128,7 +74128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74172,7 +74172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74183,7 +74183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74227,7 +74227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74238,7 +74238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74282,7 +74282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -74293,7 +74293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -74337,7 +74337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74348,7 +74348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74392,7 +74392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74403,7 +74403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74447,7 +74447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74458,7 +74458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74502,7 +74502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74513,7 +74513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74557,7 +74557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74568,7 +74568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74612,7 +74612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74623,7 +74623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74667,7 +74667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74678,7 +74678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74722,7 +74722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74733,7 +74733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74777,7 +74777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.webp",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -74788,7 +74788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.webp",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -74832,7 +74832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74843,7 +74843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74887,7 +74887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74898,7 +74898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74942,7 +74942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -74953,7 +74953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -74997,7 +74997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75008,7 +75008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75052,7 +75052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75063,7 +75063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75107,7 +75107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75118,7 +75118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75162,7 +75162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75173,7 +75173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75217,7 +75217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75228,7 +75228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75272,7 +75272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75283,7 +75283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75327,7 +75327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75338,7 +75338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75382,7 +75382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75393,7 +75393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75437,7 +75437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75448,7 +75448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75492,7 +75492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75503,7 +75503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75547,7 +75547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75558,7 +75558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75602,7 +75602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75613,7 +75613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75657,7 +75657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75668,7 +75668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75712,7 +75712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75723,7 +75723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75767,7 +75767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75778,7 +75778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75822,7 +75822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75833,7 +75833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75877,7 +75877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75888,7 +75888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75932,7 +75932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75943,7 +75943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -75987,7 +75987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -75998,7 +75998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76042,7 +76042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76053,7 +76053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76097,7 +76097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76108,7 +76108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76152,7 +76152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76163,7 +76163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76207,7 +76207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76218,7 +76218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76262,7 +76262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76273,7 +76273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76317,7 +76317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76328,7 +76328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76372,7 +76372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76383,7 +76383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76427,7 +76427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76438,7 +76438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76482,7 +76482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76493,7 +76493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76537,7 +76537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76548,7 +76548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76592,7 +76592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76603,7 +76603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76647,7 +76647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76658,7 +76658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76702,7 +76702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76713,7 +76713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76757,7 +76757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76768,7 +76768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76812,7 +76812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76823,7 +76823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76867,7 +76867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76878,7 +76878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76922,7 +76922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76933,7 +76933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -76977,7 +76977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.webp",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -76988,7 +76988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.webp",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77032,7 +77032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77043,7 +77043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77087,7 +77087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77098,7 +77098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77142,7 +77142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77153,7 +77153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77197,7 +77197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77208,7 +77208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77252,7 +77252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.webp",
+        "url": "cards/art/atlas/storm-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77263,7 +77263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.webp",
+        "url": "cards/art/atlas/storm-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77307,7 +77307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.webp",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77318,7 +77318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.webp",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77362,7 +77362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77373,7 +77373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77417,7 +77417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77428,7 +77428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77472,7 +77472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77483,7 +77483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77527,7 +77527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77538,7 +77538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77582,7 +77582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77593,7 +77593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77637,7 +77637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77648,7 +77648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77692,7 +77692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77703,7 +77703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77747,7 +77747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77758,7 +77758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77802,7 +77802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77813,7 +77813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77857,7 +77857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77868,7 +77868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77912,7 +77912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77923,7 +77923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -77967,7 +77967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -77978,7 +77978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78022,7 +78022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78033,7 +78033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78077,7 +78077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78088,7 +78088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78132,7 +78132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78143,7 +78143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78187,7 +78187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78198,7 +78198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78242,7 +78242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78253,7 +78253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78297,7 +78297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.webp",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78308,7 +78308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.webp",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78352,7 +78352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78363,7 +78363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78407,7 +78407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78418,7 +78418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78462,7 +78462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.webp",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78473,7 +78473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.webp",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78517,7 +78517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78528,7 +78528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78572,7 +78572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78583,7 +78583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78627,7 +78627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78638,7 +78638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78682,7 +78682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78693,7 +78693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78737,7 +78737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78748,7 +78748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78792,7 +78792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78803,7 +78803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78847,7 +78847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.webp",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78858,7 +78858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.webp",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78902,7 +78902,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78913,7 +78913,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -78957,7 +78957,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -78968,7 +78968,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79012,7 +79012,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79023,7 +79023,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79067,7 +79067,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79078,7 +79078,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79122,7 +79122,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79133,7 +79133,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79177,7 +79177,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79188,7 +79188,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79232,7 +79232,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79243,7 +79243,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79287,7 +79287,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79298,7 +79298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79342,7 +79342,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79353,7 +79353,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79397,7 +79397,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79408,7 +79408,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79452,7 +79452,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -79463,7 +79463,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -79507,7 +79507,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79518,7 +79518,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79562,7 +79562,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79573,7 +79573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79617,7 +79617,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79628,7 +79628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79672,7 +79672,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79683,7 +79683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79727,7 +79727,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79738,7 +79738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79782,7 +79782,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79793,7 +79793,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79837,7 +79837,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -79848,7 +79848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -79892,7 +79892,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -79903,7 +79903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -79947,7 +79947,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -79958,7 +79958,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -80002,7 +80002,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80013,7 +80013,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80057,7 +80057,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80068,7 +80068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80112,7 +80112,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -80123,7 +80123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -80167,7 +80167,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80178,7 +80178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80222,7 +80222,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80233,7 +80233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80277,7 +80277,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80288,7 +80288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80332,7 +80332,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -80343,7 +80343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -80387,7 +80387,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80398,7 +80398,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80442,7 +80442,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80453,7 +80453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80497,7 +80497,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80508,7 +80508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80552,7 +80552,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80563,7 +80563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80607,7 +80607,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80618,7 +80618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80662,7 +80662,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80673,7 +80673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80717,7 +80717,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80728,7 +80728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80772,7 +80772,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80783,7 +80783,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80827,7 +80827,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80838,7 +80838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80882,7 +80882,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80893,7 +80893,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80937,7 +80937,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -80948,7 +80948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -80992,7 +80992,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81003,7 +81003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81047,7 +81047,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81058,7 +81058,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81102,7 +81102,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81113,7 +81113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81157,7 +81157,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81168,7 +81168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81212,7 +81212,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -81223,7 +81223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -81267,7 +81267,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81278,7 +81278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81322,7 +81322,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81333,7 +81333,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81377,7 +81377,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81388,7 +81388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81432,7 +81432,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81443,7 +81443,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81487,7 +81487,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81498,7 +81498,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81542,7 +81542,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81553,7 +81553,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81597,7 +81597,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81608,7 +81608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81652,7 +81652,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -81663,7 +81663,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -81707,7 +81707,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81718,7 +81718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81762,7 +81762,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81773,7 +81773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81817,7 +81817,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81828,7 +81828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81872,7 +81872,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81883,7 +81883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -81927,7 +81927,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -81938,7 +81938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -81982,7 +81982,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -81993,7 +81993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82037,7 +82037,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82048,7 +82048,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82092,7 +82092,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82103,7 +82103,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82147,7 +82147,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82158,7 +82158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82202,7 +82202,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82213,7 +82213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82257,7 +82257,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82268,7 +82268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82312,7 +82312,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82323,7 +82323,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82367,7 +82367,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82378,7 +82378,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82422,7 +82422,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82433,7 +82433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82477,7 +82477,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82488,7 +82488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82532,7 +82532,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -82543,7 +82543,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -82587,7 +82587,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82598,7 +82598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82642,7 +82642,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82653,7 +82653,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82697,7 +82697,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82708,7 +82708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82752,7 +82752,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82763,7 +82763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82807,7 +82807,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -82818,7 +82818,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -82862,7 +82862,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82873,7 +82873,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82917,7 +82917,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82928,7 +82928,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -82972,7 +82972,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -82983,7 +82983,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83027,7 +83027,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -83038,7 +83038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -83082,7 +83082,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83093,7 +83093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83137,7 +83137,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83148,7 +83148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83192,7 +83192,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83203,7 +83203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83247,7 +83247,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83258,7 +83258,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83302,7 +83302,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -83313,7 +83313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -83357,7 +83357,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83368,7 +83368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83412,7 +83412,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83423,7 +83423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83467,7 +83467,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83478,7 +83478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83522,7 +83522,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83533,7 +83533,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83577,7 +83577,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83588,7 +83588,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83632,7 +83632,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83643,7 +83643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83687,7 +83687,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83698,7 +83698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83742,7 +83742,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83753,7 +83753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83797,7 +83797,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83808,7 +83808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83852,7 +83852,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83863,7 +83863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -83907,7 +83907,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -83918,7 +83918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -83962,7 +83962,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -83973,7 +83973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84017,7 +84017,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84028,7 +84028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84072,7 +84072,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84083,7 +84083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84127,7 +84127,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84138,7 +84138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84182,7 +84182,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -84193,7 +84193,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -84237,7 +84237,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84248,7 +84248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84292,7 +84292,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84303,7 +84303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84347,7 +84347,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84358,7 +84358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84402,7 +84402,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -84413,7 +84413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -84457,7 +84457,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84468,7 +84468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84512,7 +84512,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84523,7 +84523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84567,7 +84567,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84578,7 +84578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84622,7 +84622,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -84633,7 +84633,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -84677,7 +84677,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84688,7 +84688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84732,7 +84732,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84743,7 +84743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84787,7 +84787,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84798,7 +84798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84842,7 +84842,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84853,7 +84853,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84897,7 +84897,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84908,7 +84908,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -84952,7 +84952,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -84963,7 +84963,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85007,7 +85007,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85018,7 +85018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85062,7 +85062,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85073,7 +85073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85117,7 +85117,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -85128,7 +85128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -85172,7 +85172,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85183,7 +85183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85227,7 +85227,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85238,7 +85238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85282,7 +85282,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -85293,7 +85293,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -85337,7 +85337,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85348,7 +85348,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85392,7 +85392,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85403,7 +85403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85447,7 +85447,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85458,7 +85458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85502,7 +85502,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85513,7 +85513,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85557,7 +85557,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85568,7 +85568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85612,7 +85612,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85623,7 +85623,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85667,7 +85667,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85678,7 +85678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85722,7 +85722,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85733,7 +85733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85777,7 +85777,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -85788,7 +85788,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -85832,7 +85832,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85843,7 +85843,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85887,7 +85887,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85898,7 +85898,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85942,7 +85942,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -85953,7 +85953,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -85997,7 +85997,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86008,7 +86008,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86052,7 +86052,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86063,7 +86063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86107,7 +86107,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86118,7 +86118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86162,7 +86162,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86173,7 +86173,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86217,7 +86217,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86228,7 +86228,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86272,7 +86272,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86283,7 +86283,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86327,7 +86327,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.webp",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           407.8049
@@ -86338,7 +86338,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.webp",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           415.6098
@@ -86382,7 +86382,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86393,7 +86393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86437,7 +86437,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86448,7 +86448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86492,7 +86492,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86503,7 +86503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86547,7 +86547,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86558,7 +86558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86602,7 +86602,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86613,7 +86613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86657,7 +86657,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86668,7 +86668,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86712,7 +86712,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86723,7 +86723,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86767,7 +86767,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86778,7 +86778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86822,7 +86822,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86833,7 +86833,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86877,7 +86877,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86888,7 +86888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86932,7 +86932,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86943,7 +86943,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -86987,7 +86987,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -86998,7 +86998,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87042,7 +87042,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87053,7 +87053,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87097,7 +87097,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87108,7 +87108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87152,7 +87152,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87163,7 +87163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87207,7 +87207,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87218,7 +87218,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87262,7 +87262,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87273,7 +87273,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87317,7 +87317,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87328,7 +87328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87372,7 +87372,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87383,7 +87383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87427,7 +87427,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.webp",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87438,7 +87438,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.webp",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87482,7 +87482,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87493,7 +87493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87537,7 +87537,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87548,7 +87548,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87592,7 +87592,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87603,7 +87603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87647,7 +87647,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87658,7 +87658,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87702,7 +87702,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87713,7 +87713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87757,7 +87757,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87768,7 +87768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87812,7 +87812,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87823,7 +87823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87867,7 +87867,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87878,7 +87878,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87922,7 +87922,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87933,7 +87933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -87977,7 +87977,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -87988,7 +87988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88032,7 +88032,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.webp",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88043,7 +88043,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.webp",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88087,7 +88087,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88098,7 +88098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88142,7 +88142,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88153,7 +88153,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88197,7 +88197,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88208,7 +88208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88252,7 +88252,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88263,7 +88263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88307,7 +88307,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88318,7 +88318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88362,7 +88362,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.webp",
+        "url": "cards/art/atlas/verdant-1-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88373,7 +88373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.webp",
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88417,7 +88417,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88428,7 +88428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88472,7 +88472,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88483,7 +88483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88527,7 +88527,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88538,7 +88538,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88582,7 +88582,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88593,7 +88593,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88637,7 +88637,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88648,7 +88648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88692,7 +88692,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88703,7 +88703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88747,7 +88747,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88758,7 +88758,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88802,7 +88802,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88813,7 +88813,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88857,7 +88857,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88868,7 +88868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88912,7 +88912,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88923,7 +88923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -88967,7 +88967,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -88978,7 +88978,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89022,7 +89022,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89033,7 +89033,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89077,7 +89077,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89088,7 +89088,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89132,7 +89132,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89143,7 +89143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89187,7 +89187,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89198,7 +89198,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89242,7 +89242,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89253,7 +89253,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89297,7 +89297,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89308,7 +89308,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89352,7 +89352,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89363,7 +89363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89407,7 +89407,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89418,7 +89418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89462,7 +89462,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89473,7 +89473,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89517,7 +89517,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.webp",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89528,7 +89528,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.webp",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89572,7 +89572,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.webp",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89583,7 +89583,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.webp",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89627,7 +89627,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89638,7 +89638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89682,7 +89682,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89693,7 +89693,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89737,7 +89737,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89748,7 +89748,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89792,7 +89792,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89803,7 +89803,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
@@ -89847,7 +89847,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.webp",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
@@ -89858,7 +89858,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.webp",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122

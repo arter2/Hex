@@ -4,11 +4,13 @@
 // Also packs the crops into per-colour atlas sheets (game/cards/art/atlas): a full-card sheet from the 512 crop and
 // a thumbnail sheet from the 256 crop, at most ATLAS_MAX cards each, so the game loads a few sheets instead of
 // hundreds of files. Each cell is drawn straight from the master like its crop, so the art is encoded only once.
-// Sheets are WebP 85 (chosen against 96 by eye on the compression proof; about 40% smaller). The loose crops stay 96/93.
+// Sheets are AVIF 20 (chosen against WebP 85 by eye on the AVIF proof: about the same detail, about a third smaller).
+// In @napi-rs/canvas a lower AVIF number is higher quality. AVIF needs iOS 16+ on iPhone and iPad. The loose crops stay WebP 96/93.
+// Masters are only read here: sheets and crops are cut from them in memory and encoded once.
 'use strict';
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const ROOT=path.resolve(__dirname,'..');
-const ATLAS_MAX=30, ATLAS_COLS=6, ATLAS_PAD=4, ATLAS_SIZES={full:[512,85],thumb:[256,85]};
+const ATLAS_MAX=30, ATLAS_COLS=6, ATLAS_PAD=4, ATLAS_SIZES={full:[512,20],thumb:[256,20]}, ATLAS_EXT='avif';
 let canvas;
 try { canvas=require(process.env.CARD_ART_CANVAS_MODULE||'./card-art/node_modules/@napi-rs/canvas'); }
 catch (error) {
@@ -80,10 +82,10 @@ async function main(){
      x.drawImage(p.master,0,p.y,512,p.ch,x0,y0,w,h);
      x.drawImage(c,x0,y0,1,h,x0-g,y0,g,h); x.drawImage(c,x0+w-1,y0,1,h,x0+w,y0,g,h);   // left and right edges, stretched out
      x.drawImage(c,x0-g,y0,pw,1,x0-g,y0-g,pw,g); x.drawImage(c,x0-g,y0+h-1,pw,1,x0-g,y0+h,pw,g);   // then top and bottom, corners too
-     const url='cards/art/atlas/'+name+'-'+kind+'.webp';
+     const url='cards/art/atlas/'+name+'-'+kind+'.'+ATLAS_EXT;
      (variants[p.id].atlas=variants[p.id].atlas||{})[kind]={url,size:[pct(W/w),pct(H/h)],pos:[W>w?pct(x0/(W-w)):0,H>h?pct(y0/(H-h)):0]};
     });
-    fs.writeFileSync(path.join(atlasDir,name+'-'+kind+'.webp'),c.toBuffer('image/webp',quality));
+    fs.writeFileSync(path.join(atlasDir,name+'-'+kind+'.'+ATLAS_EXT),c.toBuffer('image/avif',{quality}));
     sheets.push({name:name+'-'+kind,width:W,height:H});
    }
   }

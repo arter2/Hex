@@ -1,7 +1,7 @@
 # Multiplayer: the local duel
 
 Two players on the same local network fight each other, mage against mage, in the normal real-time hex battle. No
-internet server is involved. This page describes build v182. It covers how to start a duel, how it plays, the timing
+internet server is involved. This page describes build v183. It covers how to start a duel, how it plays, the timing
 settings in the debug menu and how to run the tests.
 
 Code: `game/netplay.js` (message format and checks), `game/netduel.js` (the duel session), `game/nettransport.js`

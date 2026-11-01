@@ -3683,5 +3683,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. This is a true four-legged bull, distinct from the humanoid Minotaur; full horns, face and eyes stay visible, and scorched ground supports its charge. Lower legs are incidental crop detail. Painterly fur texture and warm directional light."
+  },
+  {
+    "cardId": "fire_summon_19",
+    "name": "Goblin Sapper",
+    "prompt": "Paint “Goblin Sapper,” a wiry medieval fantasy goblin demolitions scout in patched leather and rough iron bits, crouched behind a low stone and holding a small sealed clay fire-charge with a clearly visible fuse in one hand; alert goblin face and pointed ears visible, a few harmless sparks suggest his role. His hands and complete clay charge stay together in frame. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced leather, iron and clay, dramatic warm firelight, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Center the goblin horizontally; keep full face/eyes, both hands and entire named portable charge inside x24…488,y105…407 for the 206:141 card crop; quiet smoky stone atmosphere above and below. Strong readable silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee8b90d9-0586-4623-9da0-1233c13906a3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop gives modest headroom around the complete goblin hood, face and ears; the bomb and gripping hands remain visible in the 206:141 crop and 128px thumb. Painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_20",
+    "name": "Goblin Gunner",
+    "prompt": "Paint “Goblin Gunner,” a stocky goblin marksman in rugged medieval leather and iron armor, bracing a compact hand cannon made from an iron tube, wooden stock and brass fittings. The gunner’s sharp goblin face, both hands and the complete short cannon are clear; a glowing piercing bolt exits the barrel and bursts into a small star of sparks. The weapon is unmistakably a primitive fantasy hand cannon, not a modern firearm. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced materials and dramatic warm light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the goblin and cannon horizontally; keep full face, eyes, hands and complete cannon safely inside x24…488,y105…407 for the true 206:141 crop. Quiet stone battlement background above and below; bold silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-908c72a9-624b-47df-bd52-eb812767ab33.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Gunner’s face, both hands and complete hand cannon remain readable in the 206:141 crop and 128px thumbnail; bolt and sparks extend into atmosphere. Painterly medieval fantasy treatment. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_21",
+    "name": "Goblin Chieftain",
+    "prompt": "Paint “Goblin Chieftain,” a grim, battle-hardened goblin leader with olive-green skin, sharp ears, a rugged face, rough iron-and-leather armor, red war paint and a small bone-and-bronze crown. He stands prominently on a rock, shouting a rallying cry and raising one clenched fist while fierce goblin followers gather behind him in soft focus. His face and raised hand are fully visible; a warm red banner and ember-lit sky suggest fury and command. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced iron, leather and cloth, dramatic directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Center chieftain horizontally; keep face, eyes, fist and crown inside x24…488,y105…407 for the 206:141 crop. Quiet smoky stone backdrop above and below; clear silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-58313bfb-351a-47be-a1aa-6a809aa6e88f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the chieftain’s whole face, crown and full raised fist; lower body and followers are incidental. Clear at 128px with painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_22",
+    "name": "Gremlin",
+    "prompt": "Paint “Gremlin,” a small, wiry cave gremlin darting sideways in a quick zigzag, distinct from a goblin: slate-gray skin, narrow sharp face, oversized pointed ears, long nimble fingers, ragged fur vest and bony limbs. It carries no equipment; its frosty breath and a thin icy glimmer around its quick-moving hand suggest its chilling presence. Keep the gremlin’s complete face, eyes and both hands readable; only a faint painterly motion trail behind it. Painterly medieval high-fantasy collectible-card art with visible brush texture, grounded creature anatomy, nuanced stone and fur, dramatic cool directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Place the creature horizontally in the center; keep full face/eyes and hands inside x24…488,y105…407 for the true 206:141 crop. Quiet dark cavern above and below; clear silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37880e59-3d80-4bcb-aa1c-586450bd7b80.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains both complete gremlin ear tips, face and eyes, with both hands still visible in the 206:141 crop and 128px thumb. Painterly icy cave light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_23",
+    "name": "Gremlin Tinkerer",
+    "prompt": "Paint “Gremlin Tinkerer,” a clever small gremlin with dusky green-gray skin, sharp pointed ears and a bright calculating face, wearing a rough leather apron and a tiny brass-lensed monocle. It carefully harvests a glowing amber crystal from a cracked stone with narrow brass tongs, carrying a compact hand-forged tool roll at its belt. Keep the gremlin’s full face, both hands, tongs and whole crystal clearly together; no modern machinery. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded creature anatomy, nuanced brass, leather and stone, warm alchemical light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange gremlin horizontally in the center; keep full face/eyes, hands and all named tools/crystal inside x24…488,y105…407 for the true 206:141 crop. Quiet old-workshop cave atmosphere above and below; clear silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d5a1c30-6417-4168-9997-21df3b739914.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Gremlin’s full face, monocle, both hands, brass tongs and crystal remain clear in the 206:141 crop and 128px thumb. Warm painterly workshop light. Awaiting parent review."
   }
 ]

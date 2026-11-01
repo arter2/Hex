@@ -3688,5 +3688,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the white ibis head, amber eye, long curved black beak, both hands, reed stylus and blank scroll remain fully readable; the luminous ibis-shaped spirit and temple archive are incidental atmosphere."
+  },
+  {
+    "cardId": "storm_summon_29",
+    "name": "Frilled Lizard",
+    "prompt": "Create original illustration-only art for the storm summon card Frilled Lizard, whose traits are a quick zigzag movement and lifesteal. Show a real quadrupedal frilled lizard with its unmistakable circular neck frill fully fanned around the head, complete snout, both bright eyes and every frill edge clearly visible; not a dragon, salamander or humanoid. The lizard skitters in a quick zigzag across a rain-dark medieval stone ledge, one small blue lightning pulse illuminating its scales and a faint blue glint in the eyes suggesting storm energy. Let its long tail trail into expendable scenery. Painterly medieval fantasy collectible-card illustration with visible brush texture and simplified matte scale patterns, believable small-animal anatomy, cool blue-white lightning, warm distant torchlight and atmospheric depth, matching the supplied Hexmancers storm reference. Avoid glossy photographic scales, 3D render shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; keep the entire head, eyes and complete flared frill inside x24..488,y105..407 for the 206:141 crop, with quiet rain and stone above/below. No text, lettering, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-e1f9c8f2-5ed2-4dd0-9462-c9900779214b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the exact 512-square source, wide crop and thumbnail. The full fanned frill and head remain clear; the lizard's visible eye and snout read well in profile. The tail extends into incidental scenery. Painterly scale texture and storm lighting."
+  },
+  {
+    "cardId": "storm_summon_30",
+    "name": "Horned Viper",
+    "prompt": "Paint original illustration-only art for the storm summon Horned Viper, a sturdy serpent with a quick lightning-bolt strike, lifesteal and a forceful push. Show a real horned viper snake: broad triangular viper head, paired short horn-like scales directly above the eyes, slit pupils, keeled patterned scales and a compact coiled body. Three-quarter head view faces the viewer as it launches in a quick strike from a rain-dark rocky ledge; its complete head, both tiny horns, both eyes and full muzzle are the central focus, with a restrained blue lightning flash behind it suggesting storm energy. No cobra hood and no lizard frill. Painterly medieval fantasy collectible-card illustration with visible brush texture, simplified matte scales, believable snake anatomy, cool blue-white lightning and a warm distant torch rim, atmospheric depth matching the supplied Hexmancers storm master. Avoid glossy photographic detail, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master; keep head, eyes and both horn scales fully within x24..488,y105..407 for the 206:141 crop; body coils may trail into quiet scenery above/below. No words, lettering, border, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-a7cb6cd5-20af-4e19-b578-13c013316ad0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The broad viper head, both brow horns, eyes and muzzle remain intact; the coiled snake and storm bolt support its quick strike. The tongue trails toward the lower crop edge; textured scale detail and storm light."
+  },
+  {
+    "cardId": "storm_summon_31",
+    "name": "Uraeus Cobra",
+    "prompt": "Paint original illustration-only art for the storm summon Uraeus Cobra, a noble, quick serpent with a greedy glint and a stunning strike. Depict an unmistakable real cobra rearing from a compact coil, its complete symmetrical hood spread wide around the head; keep the entire hood outline, both eyes, brow, full muzzle and forked tongue visible together. Give the hood a subtle ancient Egyptian uraeus character through restrained bronze-gold scale markings, while keeping it a living snake, not a statue, pharaoh or humanoid. A sharp blue-white lightning arc traces the serpent's zigzag coil in rain over old sandstone. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales and aged stone, attractive directional storm light and atmospheric depth matching the supplied Hexmancers storm master. Avoid glossy photographic rendering, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 source; position the complete hooded head in x24..488,y105..407 for the 206:141 crop, quiet cloudy stone above and below. The serpent body may coil out of frame. No crown, jewelry, text, glyphs, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-05d9f3af-4627-4bd4-8c1b-72a162fef7dc.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The entire spread cobra hood, face and eyes remain clear; restrained gold scale markings suggest the noble uraeus identity while lightning gives the storm setting. Coil and tongue trail below. Textured scale painting and directional storm light."
+  },
+  {
+    "cardId": "storm_summon_32",
+    "name": "Plumed Serpent",
+    "prompt": "Paint original illustration-only art for the storm summon Plumed Serpent, a wild serpentine creature that strikes like a bolt, sustains itself through lifesteal and confuses foes. Depict a living feathered serpent: unmistakable scaled snake body and serpentine jaw, with a crown and mane of long layered jade, turquoise and gold feathers sweeping back from its head and along its neck. No legs, no wings, no beak, no cobra hood. The complete head, eyes, muzzle and defining feather crest form the central focus as it darts in an S-curve through a mountain storm; restrained blue lightning follows the coil and a few loose feathers suggest its wild motion. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scale and feather forms, attractive cool stormlight with warm gold accents and atmospheric depth matching the supplied Hexmancers storm reference. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master. Keep the whole head and all identity-defining plumes within x24..488,y105..407 for the 206:141 crop; tail and body coil may extend into quiet scenery above and below. No frame, text, letters, symbols, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-d077c3c0-9970-4024-abe1-0b93ed98490a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The scaled serpent head, eye, complete jade-and-gold feather crest and serpentine neck remain readable; it is distinct from the hooded cobra. Trailing coil and loose feathers are incidental. Painterly feather and scale texture with storm light."
+  },
+  {
+    "cardId": "storm_summon_33",
+    "name": "Chupacabra",
+    "prompt": "Paint original illustration-only art for the storm summon Chupacabra, a quick folkloric cryptid that surges forward with empowered strength. Show a lean, hairless, quadrupedal reptilian mammal known from Latin American night legends: narrow elongated muzzle, large bright eyes, pointed ears and a distinct ridge of short spines running from neck down the back. Its hunched shoulders and powerful hindquarters coil for a sudden spring beside an old mountain goat pen during a stormy night; faint goat silhouettes far behind give folklore context without violence. Keep it unmistakably a chupacabra, not a dog, vampire, dragon, lizard or serpent; no wings or humanoid body. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte leathery hide and spines, cool blue stormlight, warm lantern accents and atmospheric depth matching the supplied Hexmancers storm reference. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master; keep the full cryptid head, eyes, muzzle and defining spine crest inside x24..488,y105..407 for the 206:141 crop; tail and incidental legs may extend into quiet scenery. No frame, text, letters, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-ce1b19be-942a-45f1-96b2-412388a65561.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The lean quadrupedal cryptid’s narrow muzzle, visible eye and full dorsal spine ridge remain readable; distant goats establish folklore context without violence. Storm lighting, textured hide and a quick forward spring."
   }
 ]

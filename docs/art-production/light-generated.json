@@ -3771,5 +3771,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, true wide crop and 128px thumbnail. The knight’s full face/eyes and sword hand remain visible as he guards the fellowship; the shield clearly identifies his protective stance, while his shield hand is positioned behind it and the round table is supporting context."
+  },
+  {
+    "cardId": "light_summon_33",
+    "name": "Sir Galahad, the Pure",
+    "prompt": "Paint an original Arthurian fantasy illustration for the exact card Sir Galahad, the Pure. Depict Sir Galahad as a young, calm, resolute medieval knight in bright but matte ivory plate and a plain white surcoat, his head uncovered so his handsome youthful face and clear eyes are fully visible. In a compact horizontal chest-up composition, one hand rests on the hilt of a simple straight sword and the other reaches to comfort a wounded squire; a subtle warm glow gathers between them, rallying the squire. A white cloak and gentle clear light convey purity without making him a glowing angel. The face, both hands and sword hilt sit close together at the same height and are the main focus. Painterly medieval fantasy collectible-card art, believable 13th-century armor, textured cloth and steel, layered brushwork, dramatic but gentle chapel-window light. Exact 1:1 SQUARE 512x512 editable master; keep complete face/eyes, both hands and named sword hilt within x24..488,y105..407 for 206:141 crop; quiet stone and light above/below. No helmet covering the face, frame, writing, letters, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7e97adb-2705-4085-a09c-1c75852eb152.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: Galahad's complete face/eyes, sword hand and hand on the squire's shoulder all remain clear; the squire's face is also readable."
+  },
+  {
+    "cardId": "light_summon_34",
+    "name": "El Cid Campeador",
+    "prompt": "Paint an original historically grounded medieval fantasy illustration for the exact card El Cid Campeador, Rodrigo Díaz de Vivar, the 11th-century Castilian knight and commander. Show a mature Castilian warrior with a strong recognizable bearded face and focused eyes, wearing period-appropriate mail hauberk, leather belts and a simple conical nasal helmet carried under one arm rather than hiding his face. His other gloved hand grips the hilt of a straight Iberian sword at chest level; a restrained pale blue aura chills the wind and a few tired Castilian soldiers rally behind him beneath a red-gold standard with no writing. Keep the main face, both hands, sword hilt and helmet grouped compactly at mid-height; no Renaissance plate, crusader costume or fantasy crown. Painterly medieval fantasy collectible-card art, tactile mail, leather and wool, 11th-century Iberian frontier setting, cinematic sunset and visible brush texture. Exact 1:1 SQUARE for 512x512 master; all face/eyes/hands and key sword features within x24..488,y105..407 for 206:141 crop; quiet sky and field above/below. No text, heraldic letters, frame, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-abe71d0e-4201-4a76-a656-ed434c79f42a.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: El Cid's complete face/eyes, sword hand and hand holding the nasal helmet remain clear; the standard and lower armor crop incidentally."
+  },
+  {
+    "cardId": "light_summon_35",
+    "name": "Longbowman",
+    "prompt": "Paint an original illustration for the exact card Longbowman: a focused medieval English longbow archer in a green-brown wool arming coat and leather bracer, drawing a tall yew longbow on a windy field. His uncovered face and alert eyes are clear, the string hand anchors the arrow at his cheek and the other hand holds the grip; place his face and both working hands compactly together at the same height. Arrange the longbow diagonally across the square so its upper and lower tips may extend incidentally beyond the crop while the arrow, fingers, bow grip and archer's eyes remain visible. Weathered English soldiers and hedgerows soften into the distance; no Robin Hood costume or modern archery gear. Painterly medieval fantasy collectible-card art with believable wool, leather and yew, layered brushwork, dramatic overcast light and readable action. Exact 1:1 SQUARE 512x512 editable master; keep complete face/eyes, arrow-nocking fingers, string hand and bow grip within x24..488,y105..407 for the 206:141 crop. Quiet sky and field margins. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee1efb3f-19c5-46f3-b839-faa9e8924bf1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: archer's complete face/eyes, arrow-nocking fingers, string hand and bow grip are clear; bow ends and lower body crop incidentally."
+  },
+  {
+    "cardId": "light_summon_36",
+    "name": "Inca Stonemason",
+    "prompt": "Paint an original historically grounded illustration for the exact card Inca Stonemason. Show an Andean Inca artisan of the 15th century at work on precisely fitted granite masonry high above the Sacred Valley. He wears an authentic woven wool tunic (unku) with geometric borders and a simple woven headband, no Aztec feather headdress. His attentive face and eyes are visible in profile as both hands guide a small bronze-copper chisel and stone hammer against a granite block; tiny chips fly and pale static light glints along the cut. Arrange the face close to both working hands and tools at the same height; beautifully fitted polygonal Inca stones and mountain terraces establish the place. Painterly medieval fantasy collectible-card art, tactile woven cloth and granite, culturally respectful Andean features, atmospheric highland morning light and visible brush texture. Exact 1:1 SQUARE for 512x512 master; keep full face/eyes, hands, hammer and chisel within x24..488,y105..407 for 206:141 crop, with quiet mountain and stone margins. No conquistadors, modern tools, wheels, writing, frame, logos, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9c95bb1-de55-440b-b69b-fa354a99b5f3.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: artisan's full headband, face/eyes, both working hands, stone hammer, chisel and fitted Inca masonry remain readable; lower torso crops."
   }
 ]

@@ -3687,5 +3687,96 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Upward-adjusted 206:141 crop keeps Arthur’s full face, eyes, crown, protective hands and Excalibur hilt clear at 128px; lower hilt/body extends below crop. Painterly forest light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_33",
+    "name": "Gwyn ap Nudd",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Gwyn ap Nudd, the pale king of the Welsh Otherworld Annwn. Show one legendary Welsh knight and otherworldly ruler in a grounded human form: pale weathered face, dark flowing hair, watchful eyes, ancient mail under a deep green cloak, and a subtle silver crown shaped like intertwined leaves. He rides alone along a misty forest track at twilight, one hand resting calmly on his sword hilt; luminous green healing motes and camouflage-like leaves dissolve around his cloak, hinting at his mending and hidden nature. Keep his face, eyes, sword hand and upper body clearly visible, with no extra riders or army. Ancient oak forest and a faint spectral gateway to Annwn behind him, not a modern or generic knight scene. Visible painterly brush texture in mail, cloth, bark and mist, dramatic warm lantern-like rim light against deep forest greens, matching supplied Hexmancers verdant style; no slick photographic gloss. Explicit 1:1 SQUARE canvas for a 512x512 editable master, horizontal composition for the 206:141 crop; keep face, eyes, hand and head/shoulders inside x24..488,y105..407, quiet canopy and forest path beyond. No frame, lettering, heraldic text, runes or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d6b74b4b-cea7-4b63-9d24-02566b1a0e98.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_33.png",
+    "sourceNative": [
+      1495,
+      1052
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Gwyn's pale face, eyes, sword hand and green-cloaked Welsh Otherworld knight identity are clear; horse and forest gateway remain supporting elements."
+  },
+  {
+    "cardId": "verdant_summon_34",
+    "name": "Cwn Annwn Hound",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Cwn Annwn Hound, one of the Cŵn Annwn of Welsh folklore. Show one unmistakable spectral Welsh Otherworld hound: a lean powerful scent hound with a pure white coat and TWO unmistakable deep crimson-red ears, not a wolf, fox, or ordinary brown dog. Its pale elongated hound muzzle, dark nose, focused amber eyes and both red ears are prominent as it dashes through low mist beside a moonlit Welsh river; ghostly water and a narrow silver wake suggest its uncanny Otherworld passage. Grounded hound anatomy, long low-set ears colored red from base to tip, pale fur rim-lit by cool moonlight and a restrained warm reflection, old standing stones and distant hills. Visible painterly brush texture in fur, river mist, and stones, dramatic but readable light in the supplied Hexmancers verdant style; avoid glossy photoreal finish or gore. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontally composed for a 206:141 crop; keep full head, both red ears, eyes, muzzle and shoulder inside x24..488,y105..407, quiet mist and river beyond. No collar, extra animals, frame, text, Celtic letters or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-857a92ca-73da-4c4c-97fd-33a104162c28.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_34.png",
+    "sourceNative": [
+      1469,
+      1071
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: spectral hound reads as pure white with both long deep-red ears, amber eyes and long muzzle visible; leading paw and river wake read clearly, hindquarters crop incidentally."
+  },
+  {
+    "cardId": "verdant_summon_35",
+    "name": "Herne the Hunter",
+    "prompt": "Repaint this card for the exact legendary figure Herne the Hunter. The main subject MUST be a clearly human forest huntsman, not a stag or other deer: one weathered adult man with an entirely human face, visible alert eyes, rugged features and shoulder-length dark hair, wearing an ancient moss-green hunting cloak and a fitted antlered headpiece with a clear natural branching rack. He stands in an old English oak forest and holds a compact yew hunting bow close beside his face at chest height, one hand gripping the bow and the other drawing a short arrow; show both relevant hands and the complete small bow clearly. A few luminous green leaves and faint regrowing vines follow the arrow toward a distant target, suggesting Herne's supernatural forest power. Compact horizontal composition: human face, eyes, antler rack, bow and both hands all grouped within x65..440,y130..375 on the square, safely inside a 206:141 wide crop; head and gear must not touch the top edge. Use believable human anatomy and hunting gear, no animal head, no stag body, no second person, no extra deer. Painterly visible brush texture in face, worn green cloth, oak bark and mist, directional moonlit-gold light against deep forest green, grounded medieval-fantasy art matching supplied Hexmancers references; not glossy or photoreal. Explicit 1:1 SQUARE canvas for an editable 512x512 master, with quiet scenery above and below. No text, frame, runes or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a583302d-fbac-4493-86e6-5348a6e70076.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Repainted as the human antlered huntsman per parent review. Inspected replacement 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Herne’s full human face, eyes, antlered headgear and both bow hands are clear; lower bow limb may crop. Previous source retained at /tmp/verdant-03-repairs/verdant_summon_35-before-repaint.png.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-95f56cc3-1684-4657-bae9-2819331e85b0.png"
+  },
+  {
+    "cardId": "verdant_summon_36",
+    "name": "Tapio, King of the Forest",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Tapio, King of the Forest, the ancient forest deity of Finnish folklore. Show one tall, regal old forest king with a human elder's calm weathered face, wise green-gray eyes, a long beard of moss and lichen, and a crown of pine and birch boughs; his cloak is woven from bark, dark green leaves and spruce needles, not a Slavic goblin or ordinary druid. He stands among Finnish boreal pines and silver birches, raising one weathered hand as a curved protective shield of living roots and leaves rises beside him. Small points of green light flow back from the roots into his chest, subtly suggesting lifesteal. Keep face, eyes, raised hand and shield edge prominent; any wildlife is tiny and secondary. Painterly visible brush texture in moss beard, bark, needles and mist, directional golden light through deep green forest, grounded materials and atmospheric depth matching supplied Hexmancers verdant art, never glossy or photo-real. Explicit 1:1 SQUARE canvas for a 512x512 editable master, composed horizontally for 206:141 crop; keep face, eyes, hand and shield edge inside x24..488,y105..407 with quiet canopy above and forest floor below. No text, runes, frame, lettering or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ba028fab-8e31-411d-9c8c-1044e7cadd84.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Tapio's bearded Finnish forest-king face, eyes and raised shielding hand are fully visible with moss, pine-bough crown and living root arc."
+  },
+  {
+    "cardId": "verdant_summon_37",
+    "name": "Sasquatch",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Sasquatch, the elusive North American forest giant of legend. Show one unmistakable tall, powerfully built upright hominid, fully covered in long dark russet-brown fur, with a broad humanlike face, deep-set amber eyes, flat wide nose and heavy brow; it must read as a secretive bipedal forest being, not a gorilla, bear, troll or ape. Sasquatch steps through a Pacific Northwest cedar forest, one large hand parting thorny vines and poisonous red berries as green mist and bramble shadows trail the movement. Face, eyes and reaching hand dominate; keep expression watchful and intelligent rather than monstrous. Painterly visible brush texture in fur, bark, ferns and wet stone, dramatic soft shaft of woodland light against cool deep greens, grounded anatomy and atmospheric depth matching supplied Hexmancers verdant art, no glossy photographic look. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition for the 206:141 crop; keep full face, eyes and reaching hand within x24..488,y105..407; shoulders may extend beyond. No extra monsters, text, frame, clothing, modern objects or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9f630a49-985c-45a9-a44a-311b79ba306c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_37.png",
+    "sourceNative": [
+      1512,
+      1040
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.34] and 128-pixel thumbnail: complete broad humanlike face, eyes and reaching hand are visible; the shaggy upright forest giant, thorny berries and cedar setting read clearly, lower body crops."
   }
 ]

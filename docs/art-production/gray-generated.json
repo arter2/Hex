@@ -3697,20 +3697,20 @@
   {
     "cardId": "gray_summon_180",
     "name": "Arjuna",
-    "prompt": "Paint an illustration for the exact card Arjuna, the noble archer prince and hero of the Indian Mahabharata. Show a focused adult South Asian warrior with warm brown skin, dark hair beneath a royal diadem, wearing refined ancient Indian mail and patterned sash, drawing his distinctive ornate golden composite bow Gandiva. A few luminous arrows rest ready, not obscuring the hero. Face, eyes, bow hand and arrow hand fully visible inside x24..488 y105..407; horizontal waist-up heroic composition. His appearance and attire evoke epic-era India, not medieval European armor. Painterly medieval fantasy collectible-card art with visible brushwork, nuanced painted metal and cloth, atmospheric depth; avoid photographic gloss. Dramatic dawn light and a distant Indian palace rampart, dignified heroic mood. Square 1:1 for editable 512 master and 206:141 crop. No frame, text, UI, anime, Disney proportions, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-c1e7311f-830e-4035-b241-093e31d2f176.png",
+    "prompt": "Recompose and repaint this same mythic archer as a square 1:1 card-art illustration for Arjuna of the Indian Mahabharata. Preserve his recognizable South Asian features, jeweled royal diadem, ancient Indian scale armor, blue-and-gold sash, sunrise palace setting, and ornate golden composite bow Gandiva. Change the pose so the hand gripping the bow sits close beside his face and upper shoulder; bend his extended arm inward instead of stretching it to the square's edge. The entire gripping hand, thumb and fingertips, the entire face and eyes, and his arrow-drawing hand must all fit comfortably within x24..488,y105..407 of the resulting 512-square master. Show one complete readable bow and an arrow; no hand or face near the canvas border. Painterly medieval fantasy collectible-card art with visible brushwork and tactile metal, cloth and carved gold, not photographic gloss. Clear dramatic dawn light and atmospheric depth. 1:1 square composition, no frame, text, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-728a6d98-abf2-4eef-ba82-e871e15a3e04.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_180.png",
     "sourceNative": [
-      1478,
-      1064
+      1254,
+      1254
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.391
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Arjuna is a jeweled Indian epic archer drawing Gandiva; face, eyes, and drawing hand are readable."
+    "reviewNote": "512-square replacement source, upward-adjusted 206:141 crop, and 128x88 thumbnail reviewed. Arjuna retains full head/face, eyes, complete bow-gripping hand and arrow-drawing hand; saved prior master at /tmp/gray-03-review/gray_summon_180-previous.png."
   },
   {
     "cardId": "gray_summon_181",
@@ -3724,11 +3724,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.342
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Sigurd reads as the Norse dragon-slayer through his saga sword, mail, red cloak, and dragon remains; face and sword grip are clear."
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Sigurd’s complete hair/head, face, and eyes remain in frame with his sword grip and dragon-slayer cues."
   },
   {
     "cardId": "gray_summon_182",
@@ -3742,11 +3742,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.342
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Ilya reads as an older Rus bogatyr with white beard, scale armor, and iron-spiked mace; face and mace-gripping hand remain visible."
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Ilya’s complete conical helmet, head, face, and eyes remain in frame with his mace-gripping hand and Rus bogatyr identity."
   },
   {
     "cardId": "gray_summon_183",
@@ -3760,11 +3760,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.342
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Lancelot is a bareheaded Arthurian knight in silver plate and blue mantle beside a lake; face, eyes, and sword grip are visible."
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Lancelot’s complete hair/head, face, and eyes remain in frame beside his sword grip and Arthurian lake setting."
   },
   {
     "cardId": "gray_summon_184",
@@ -3783,5 +3783,41 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "512-square replacement source, crop shifted upward to retain full face, eyes and shield grip, and 128x88 thumbnail reviewed. Gawain is a human Arthurian knight with a visible red pentangle shield; earlier source preserved at /tmp/gray-03-review/gray_summon_184-previous.png."
+  },
+  {
+    "cardId": "gray_summon_185",
+    "name": "El Cid",
+    "prompt": "Paint an illustration for the exact card El Cid, Rodrigo Díaz de Vivar, the 11th-century Castilian knight and commander. Portray a mature Iberian nobleman in historically grounded mail hauberk, nasal helmet and red-gold Castilian mantle, holding his famous sword Tizona upright beside his face; the distinctive hilt and strong blade are visible. A quiet Mediterranean sea and the stone walls of Valencia appear behind him, with a small unfurled red-and-gold Castilian banner. Keep full head, face, eyes, and sword-gripping hand safely inside x24..488,y105..407; low horizontal waist-up portrait, El Cid dominant. Painterly medieval fantasy collectible-card art with visible brush texture, believable iron, cloth and sea-mist; no photographic gloss. Warm dawn rimlight and cool coastal atmosphere, clear value structure. Square 1:1 editable 512 master, composed for 206:141 crop with quiet scenery above and below. No card frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3b154a1-ce6c-4ffe-a2c2-21766c3b142a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_185.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. El Cid’s full nasal helmet/head and face, eyes, and Tizona-gripping hand remain inside the crop; Valencia and the Castilian mantle establish his identity."
+  },
+  {
+    "cardId": "gray_summon_186",
+    "name": "Roland",
+    "prompt": "Paint an illustration for the exact card Roland, the Frankish paladin from the Song of Roland. Show a brave Carolingian knight in early medieval mail and a red cloak at the mountain pass of Roncevaux. He holds his ivory oliphant war horn in both hands at chest height beside his face; the entire horn, his face, eyes, and both hands are safely within x24..488,y105..407. Durendal's hilt is clearly visible at his hip. Roland is the dominant subject, not a generic later plate-armored crusader. Horizontal waist-up composition, quiet rocky pass and a distant Frankish banner. Painterly medieval fantasy collectible-card art with visible brush texture, believable ivory, mail and wool, no glossy photographic finish. Dramatic cool mountain light and warm sunset rim, readable values and atmospheric depth. Square 1:1 editable 512 master composed for 206:141 wide crop, with quiet scenery above and below. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3f2e6691-83ae-489f-a0bf-ccf8f72d1217.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_186.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Roland’s complete head/face, eyes, hands on the oliphant, and Durendal hilt remain visible; the left rim of the horn bell touches the normalized square edge."
   }
 ]

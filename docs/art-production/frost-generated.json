@@ -3771,5 +3771,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Repainted and inspected replacement 512-square source, centered 206:141 crop and 128-pixel thumbnail: the real narwhal has a clearly visible eye and one complete spiral-grained upper-jaw tusk ending with safe margin inside the right edge; old attempt preserved at /tmp/frost-03-repairs/frost_summon_20-before-repaint.png."
+  },
+  {
+    "cardId": "frost_summon_21",
+    "name": "Orca",
+    "prompt": "Paint an illustration for the exact card name “Orca.” Show one powerful killer whale surfacing through cold blue water, unmistakably an orca with a glossy black back, crisp white eye patch and white belly, a tall curved dorsal fin and broad tail. Its intelligent eye is clearly visible as it drives a curling tidal wave toward a distant ship, an action suggested by spray and water movement rather than a beam of blinding magic. Keep the orca’s full head and characteristic white markings dominant. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushwork, luminous cold water, mist, subtle warm light breaking through storm clouds, atmospheric depth and natural animal anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep its eye, full head and dorsal-fin identity inside x24–488,y105–407 for the 206:141 crop; incidental tail and spray may extend. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-df957efb-7ceb-4b3f-8739-a88bcf18d200.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Orca’s full head, eye, white eye patch and dorsal-fin identity remain clear; water spray and tail are incidental."
+  },
+  {
+    "cardId": "frost_summon_22",
+    "name": "Hammerhead Shark",
+    "prompt": "Paint an illustration for the exact card name “Hammerhead Shark.” Depict a real great hammerhead shark swimming in clear northern sea water, its entire broad T-shaped hammer head spanning the center of the square and both small lateral eyes plainly visible at the far ends of the cephalofoil. Keep the complete hammerhead width inside the intended landscape crop, with the unmistakable flattened head dominating rather than a generic pointed shark face. Show subtle gill slits, gray-brown dorsal surface and pale underside; one smaller fish swims nearby for scale. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced water and reflected arctic light, atmospheric depth and biologically grounded anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep the whole hammer head, both eyes and full face inside x24–488,y105–407 for the 206:141 crop; tail and fins may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6bef6221-53ea-4e48-93af-7ddb776b6e41.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Both eyes and the full broad hammer-shaped head are visible; the cephalofoil approaches the outer left/right margins, with no visible cut to either eye or head."
+  },
+  {
+    "cardId": "frost_summon_23",
+    "name": "Great White Shark",
+    "prompt": "Paint an illustration for the exact card name “Great White Shark.” A large great white shark surges upward through cold coastal water, clearly identifiable by its broad conical snout, small black eye, gray upper body, stark white belly and tall triangular dorsal fin. Its jaws are slightly parted in a natural feeding display as it turns toward a distant school of fish; no gore or attack on people. Keep the shark’s face and eye unmistakable and the head dominant. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, dramatic cold sea light with a warm glint on the water, atmospheric bubbles and spray, natural shark proportions and depth. Explicit 1:1 square canvas for an editable 512×512 master; keep the full snout, eye and recognizable head safely within x24–488,y105–407 for a 206:141 landscape crop; incidental tail and fin tips may crop. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a1940782-98c2-402c-9a57-f689d3e827e0.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Great white’s full conical snout, eye and head remain within the crop; mouth is slightly open and the small reddish mark on the snout is nonprominent, with no depicted prey or person."
+  },
+  {
+    "cardId": "frost_summon_24",
+    "name": "Sea Turtle",
+    "prompt": "Paint an illustration for the exact card name “Sea Turtle.” Depict a graceful green sea turtle gliding through a cold, clear coastal current, its domed mottled olive shell and patterned front flippers visible, with a gentle alert face, clear eye and beaked mouth. The turtle guides a small school of fish and shelters them beneath one flipper as the current carries them past kelp. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced shell scutes, skin, water and kelp, soft arctic light, atmospheric depth and biologically grounded proportions. Explicit 1:1 square canvas intended for a 512×512 master; keep the full head/eyes, mouth and defining shell edge safely inside x24–488,y105–407 for a 206:141 landscape crop; flipper tips may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a765483e-fa23-4604-8cc6-de8e60c70f58.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Sea turtle’s full face/eye, beaked mouth and domed shell remain clear; front-flipper tips approach the lower/left edges as permitted."
+  },
+  {
+    "cardId": "frost_summon_25",
+    "name": "Zaratan the Island Turtle",
+    "prompt": "Paint an illustration for the exact legendary card name “Zaratan the Island Turtle.” Depict Zaratan as an immense ancient sea turtle so vast that a small green island with windswept trees, a few old stone ruins and a tiny lighthouse rises from its broad weathered shell. Show the turtle’s unmistakable head, calm clear eye, beaked mouth and one massive scaled foreflipper emerging from cold ocean water; the giant living animal is the primary subject, with the island scale made clear by tiny trees and a distant boat. Give it aged shell plates like rugged cliffs but keep them visibly turtle-shaped, not a generic floating island. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushwork, nuanced shell, scales, stone and water, dramatic pale northern light with warm sunset glints, atmospheric mist and natural anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep Zaratan’s full face/eye, beak and defining shell/head silhouette within x24–488,y105–407 for a 206:141 landscape crop; flipper tips, island trees and waves may extend. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-deccfabc-9a0f-4171-a3fb-b1ae76e078ca.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Zaratan’s full head, eye, beak and island-bearing turtle shell remain unmistakable; island trees and foreground flipper/waves are supporting scale and may crop."
   }
 ]

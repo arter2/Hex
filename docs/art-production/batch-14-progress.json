@@ -2,15 +2,499 @@
   "batch": 14,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 0,
-  "reviewedSources": 0,
-  "missingSources": 200,
-  "reviewedPackets": 0,
+  "generatedSources": 40,
+  "reviewedSources": 35,
+  "missingSources": 160,
+  "reviewedPackets": 7,
   "requiresRepaint": [],
   "baselineActive": 1634,
   "targetActive": 1834,
   "runtimeActive": 1634,
+  "catalogueTotal": 1953,
+  "catalogueRemainingBeforeBatch": 319,
+  "catalogueRemainingAfterBatch": 119,
   "baselineRuntimeImageCount": 6600,
   "baselineGeneratedRecordCount": 1584,
-  "savedCards": []
+  "savedCards": [
+    {
+      "cardId": "fire_charge_16",
+      "name": "Wineskin of Flame",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_16.png",
+      "sha256": "2500df5c72f1b4901bfe8ca30a53d55268c0b9970642fda0a1ea84cd15f3cf1c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_17",
+      "name": "Meteorite Fragments",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_17.png",
+      "sha256": "ae5ac2be010cc3362b83fda1294c9d4e36570325322aa3420e90d67792748c86",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_18",
+      "name": "Bottomless Powder Keg",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_18.png",
+      "sha256": "89b5262b74c3c53f6b18257cb7a198ce74ba56f88d92d9fb9b109018b1bf0b8b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_12",
+      "name": "Ember Coyote",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_12.png",
+      "sha256": "c34c23285fe3e7667d77d0d37f41b8708b23e0e6f89f3e884f66c4ae67150b55",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_13",
+      "name": "Shishi Lion-Dog",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_13.png",
+      "sha256": "39a09b82d883b3e97b29b071ca84223722e14efb8b32923434915fffcf4dbfcd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_15",
+      "name": "Rusalka's Tears",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_15.png",
+      "sha256": "d9510995f9fc60d47f3e9bc8683ce6b10898ec6187b187cadb74b0df8dc69123",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_16",
+      "name": "Ghost Ship Volley",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_16.png",
+      "sha256": "afc59991aa3b6ab26efeb9d11e3df06c528e00276baf9228241bd34a3d52478b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_17",
+      "name": "Sorcerer's Orbs",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_17.png",
+      "sha256": "84d53b338157fe218f7cfceb43232487b2827569335b1910c9c30d5793f29fbf",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_18",
+      "name": "Glass Fishing Floats",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_18.png",
+      "sha256": "aad2957d6b6ccaa76348e2a2d56b8583defafb1b57d47bc751644559e3ceaa3b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_19",
+      "name": "Holy Spring Droplets",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_19.png",
+      "sha256": "1856a28aa5d43066f5999cf8ade8f1463cb98274ce9fd6c148b5cbe865e0156d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_20",
+      "name": "Narwhal Ivory Darts",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_20.png",
+      "sha256": "35091dd7b330cd24cb94b64885b778d1b0154fd5bf531968d0036978676d1ad8",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_13",
+      "name": "Yeti Cub",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_13.png",
+      "sha256": "0484a53c3ce318654acbc952992a3effbb3d758947a4c4f538e8367707238134",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_170",
+      "name": "Cu Chulainn",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_170.png",
+      "sha256": "7ab8bb1fd50c006c560b6ca64ac82d90f91c8064d10b1da9fa5f7d952cff317a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_171",
+      "name": "Sundiata Keita",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_171.png",
+      "sha256": "515ae5b8c433000a558657a2c1a5bfe4db85c285535f771e784374c0a4a8c052",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "gray_summon_172",
+      "name": "Momotaro",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_172.png",
+      "sha256": "f9af2e186693855134caf189fb8b9bbe7155c476d47d3c9a5896534cfa49f696",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_173",
+      "name": "Atalanta",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_173.png",
+      "sha256": "d17ab0f6422fc2600514f43353338fc621ba870ea59ff10110f35ba75d6a4129",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_174",
+      "name": "Heracles",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_174.png",
+      "sha256": "de734ca5f90745b6dac5d647f9354080972000549dd4183ef729f9662ef5ea47",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_175",
+      "name": "Perseus",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_175.png",
+      "sha256": "76a1274c6b7249023ba765ab3e31d2ba2a3fbfe22201b516cc58470e5cfdeff5",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_176",
+      "name": "Theseus",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_176.png",
+      "sha256": "ce40a68244d713cc8d8c3a50733a1c1ddcdf1a664774cb8a04ccd46aaa8e17a9",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_178",
+      "name": "Hector of Troy",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_178.png",
+      "sha256": "c737a4c934870a909d805c07d6c429e3103a73498e2662774f7234c4c53270df",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_18",
+      "name": "Great Sphinx of Giza",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_18.png",
+      "sha256": "fc80407a5e60a2e97af5c47af80467eba4dbda2e3fc1cc97c5547e44fe708672",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "light_summon_19",
+      "name": "White Elephant",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_19.png",
+      "sha256": "802f11f45ae6698bc9851c5a4a34f9a77c4fef2ae0274becf4b794ca72d10f3a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "light_summon_20",
+      "name": "Hannibal's War Elephant",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_20.png",
+      "sha256": "bc5802ccb7865e1b29c2259a2b2fb42d5f511cf2a3364cb0d95d1d0011b18032",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_21",
+      "name": "Qilin",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_21.png",
+      "sha256": "fc01226666ccda9cddb8be0f01ae659f14899ed5d542ee2902d5e8c446a27068",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_22",
+      "name": "Valkyrie Herald",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_22.png",
+      "sha256": "5ccf326839eb2c53578787d25a952fe58dde690b38c5b2f8730e2891ac2f4cf4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
+      "cardId": "shadow_summon_25",
+      "name": "Witch's Toad",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_25.png",
+      "sha256": "61b2f482cb36416d85bd7fc50937e43277e487e9c2c491384ef47cc390478180",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_26",
+      "name": "Black Cat Familiar",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_26.png",
+      "sha256": "bc75e6958cd20607263ec1bd21c5c94d8a800e258918de6990403129c1e031ac",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_27",
+      "name": "Haugbui",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_27.png",
+      "sha256": "d48cd5bb480015d1edfc73558d058edc17ce3e54ad6d4f5d3a47b62faaef477b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_28",
+      "name": "Jiangshi",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_28.png",
+      "sha256": "ff5c50704057bf779bec9de5303e238b5f218832fd495398f9a4b52d30c679c9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.342
+      ]
+    },
+    {
+      "cardId": "shadow_summon_29",
+      "name": "Nachzehrer",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_29.png",
+      "sha256": "bfd31cf4fee5a811e1066804cdb5c5e011b01dc13ed5d57855d35fd195c6194f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_19",
+      "name": "Great River Crocodile",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_19.png",
+      "sha256": "331cdb1c841d3160a4299c13e7a9fa4604bdae61944a6acd636b207a0a8adfbe",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_20",
+      "name": "Roc",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_20.png",
+      "sha256": "0630e9a65234b73f365d976fdcb2409bc3d47552f78ca9b2d133872e31bc8244",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_21",
+      "name": "Simurgh",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_21.png",
+      "sha256": "b80ed5c2122b2349d9e529c372294ef594d05e7b87b59e92e19584c5f8f0f57d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_22",
+      "name": "Great Sphinx",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_22.png",
+      "sha256": "e9fac5635ba85e8426fcffaaa30e1837236bf8ee28d3c8b79a3e8b25f46b04f3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_23",
+      "name": "Riddling Sphinx",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_23.png",
+      "sha256": "f0a5ebd27c4edf08d35ad17743ba500b5aab566479a6b91d64a5a1370aaf000d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_23",
+      "name": "Alux Field Keeper",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_23.png",
+      "sha256": "0a1607ea5b5d2decc43213e1f4712b5d2c3ba146fa666037786e07b5e99b9dd6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_24",
+      "name": "Grove Druid",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_24.png",
+      "sha256": "c61a9d3ec612196ad67c7abb1c7b1c694ae4e6ded3116c34f4ceef8f00092c8e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_25",
+      "name": "Rainforest Curandero",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_25.png",
+      "sha256": "04b8c0984681e47df57bdc68af0a2e380ee57264a98afb010e4263039c7d94b3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_26",
+      "name": "Archdruid of the Oaks",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_26.png",
+      "sha256": "5cbbb7a082cd3e49c5ff92b392f7a18313bcae834c2088aa3c05cc1da660933c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_27",
+      "name": "Greenwood Outlaw",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_27.png",
+      "sha256": "4ddcfee4e13dadf5e6dcdb375435dfcde6eb17d402897cf4efcbbcce7f51e92f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    }
+  ]
 }

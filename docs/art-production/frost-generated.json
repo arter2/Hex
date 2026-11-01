@@ -3501,5 +3501,131 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. All three compact javelins retain their complete crystalline tips, wrapped shafts and butts in frame; the ranger’s casting hand and piercing impact read clearly."
+  },
+  {
+    "cardId": "frost_charge_15",
+    "name": "Rusalka's Tears",
+    "prompt": "Paint an illustration for the frost charge card “Rusalka's Tears.” Depict three or four luminous water droplets falling from the sorrowful face of a Slavic rusalka water spirit, each tear becoming a small clear blue ice jewel as it falls toward a frozen woodland pool; the rusalka's face and the tears are the unmistakable central subject. The effect is a bolt of restorative magic, so imply a gentle healing glow in the droplets without adding a modern object. Painterly medieval fantasy collectible-card art, nuanced wet skin, flowing pale hair, translucent ice and dark water, attractive cold moonlight with a warm reflected lantern glint, atmospheric depth, matching the supplied Hexmancers frost references. Horizontal staging within a 1:1 square canvas for a 512×512 editable master: keep face and entire focal tear droplets in x24..488,y105..407; leave quiet scenery above and below for the 206:141 crop. Strong silhouette, readable at card size. No frame, words, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45bbc95e-e159-47bc-ab05-145be031a44f.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: rusalka face and descending jewel tears remain readable; frost-lit water and quiet glints support the restorative bolt. Strong cinematic detail, though the finish leans glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_16",
+    "name": "Ghost Ship Volley",
+    "prompt": "Paint an illustration for the frost charge card “Ghost Ship Volley.” A compact ghostly medieval longship breaks through a frozen sea mist, its spectral crew loosing a single readable volley of icy blue ghostly cannon-fire/orbs from the ship's side, projectiles arcing toward the viewer; the whole ship and the volley are the clear named subject. Convey a curse through cold ghostlight and a few frost wisps. Painterly medieval fantasy collectible-card art, intricate weathered timber, icy rigging, translucent sails, dramatic moonlit storm and atmospheric depth, grounded materials and attractive blue-white light, consistent with the supplied Hexmancers frost art. Bold horizontal staging in a 1:1 square canvas for a 512×512 master; keep ship silhouette and several projectile orbs wholly within x24..488,y105..407, with quiet cloud and water bands above and below for the 206:141 crop. Readable small. No frame, text, symbols, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ff265ab2-9f98-4f2c-b410-c1f7b8c1d493.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: ghost ship, crew volley and icy projectiles remain legible; mast tops extend beyond the card crop, while the ship and volley remain clear. Strong cinematic detail, with a glossy finish."
+  },
+  {
+    "cardId": "frost_charge_17",
+    "name": "Sorcerer's Orbs",
+    "prompt": "Paint an illustration for the frost charge card “Sorcerer's Orbs.” Three distinct enchanted crystal orbs, one largest and brightest at center, hover beside an elderly frost sorcerer's focused face and one visible gloved hand; elegant internal blue-white light and precise icy bolts make their magic unmistakable. The orbs are the primary named objects, fully visible, with a subtle critical spark at the leading orb. Painterly medieval fantasy collectible-card art, believable crystal facets, aged wool, leather and silver, cinematic cold light against a dusky winter stone tower, atmospheric depth and grounded anatomy, in the supplied Hexmancers frost reference style. Compose horizontally on a 1:1 square canvas for a 512×512 editable master; keep sorcerer's face, hand and all three complete orbs within x24..488,y105..407, quiet scenery at top and bottom for the 206:141 card crop. Strong simple silhouettes, readable at small size. No frame, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a43e09a5-cd75-475c-91f1-a20e340ca7d2.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: sorcerer's face, casting hand and all three orbs remain intact in the card crop. Strong cinematic detail, though the finish leans glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_18",
+    "name": "Glass Fishing Floats",
+    "prompt": "Paint an illustration for the frost charge card “Glass Fishing Floats.” Show three hand-blown glass fishing floats, perfectly round and fully visible, tethered by a short loop of rope and buoying in an icy harbor pool beside a fisherman's cropped but clear mittened hand; the jewel-like floats are the entire named subject, with one frosted orb catching a bright glint. Painterly medieval fantasy collectible-card art, finely rendered clear aqua glass, weathered rope and rough wood, peaceful cold morning light and subtle harbor atmosphere, with the grounded materials and painterly finish of the supplied Hexmancers frost references. Horizontal composition in a 1:1 square canvas for a 512×512 master; keep the full floats and relevant hand inside x24..488,y105..407, quiet sky and water beyond for the 206:141 crop. Keep shapes simple and readable as glass at card size. No modern tackle, frame, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dafc2dd1-9ae6-415c-aa4c-da9c4f290d3d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: all three glass floats are fully visible and read as the named subject; the incidental glove is partly above the wide crop. Strong material highlights, with a glossy finish."
+  },
+  {
+    "cardId": "frost_charge_19",
+    "name": "Holy Spring Droplets",
+    "prompt": "Paint an illustration for the frost charge card “Holy Spring Droplets.” Show a small sacred spring emerging from a carved medieval stone basin in a snowy mountain chapel courtyard; three crystal-clear, luminous droplets leap from the spring in a decisive piercing arc through a dark icy curse-mist, dissolving it into pale silver vapor. The complete spring droplets and their piercing trajectory are the dominant named subject, with a subtle shrine carving and winter stonework as supporting context. Painterly medieval fantasy collectible-card art with visible brush texture, nuanced translucent water, worn stone, moss and frost, strong directional dawn light, restrained blue-white radiance and atmospheric depth, matched to the supplied Hexmancers frost references. 1:1 square composition for an editable 512×512 master; keep the spring, full droplets, and crucial impact arc inside x24..488,y105..407, with quiet snowy stone and pale sky above and below for the 206:141 crop. Clear silhouette, readable at card size. No people needed. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5fce84f-da9f-4621-8762-562edb5c4d22.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, wide crop and thumbnail reviewed: all three luminous droplets and their piercing arc are clear; the spring basin is partly cropped at the lower edge. Strong icy light and material detail, though the finish is glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_20",
+    "name": "Narwhal Ivory Darts",
+    "prompt": "Paint an illustration for the exact card Narwhal Ivory Darts: three compact, fully visible throwing darts carved from pale narwhal ivory, their unmistakable spiral tusk grain and tapered ivory points clearly readable; subtle blue frost gathers on the tips as they arc toward a blurred target. The complete dart heads, shafts and feather fletching are visible, side-by-side in a strong horizontal arrangement inside x24..488 y105..407. Keep the darts the single dominant subject, no people needed. Painterly medieval fantasy collectible-card art with clearly visible brushwork, softly worked edges and tactile carved ivory, avoid glossy photo-real surfaces. Cool window light against a warm candlelit medieval workshop, atmospheric depth and clear values. Square 1:1 composition for editable 512x512 master and 206:141 card crop. No frame, lettering, numbers, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f046806-8ca0-46c0-9e89-f7dae71239bf.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Three full ivory darts with tapered points, feather fletching and carved spiral grain remain inside the crop."
+  },
+  {
+    "cardId": "frost_summon_13",
+    "name": "Yeti Cub",
+    "prompt": "Paint an illustration for the exact card Yeti Cub: a small, unmistakable juvenile yeti, a compact fluffy white ape-like mountain creature with a round expressive face, dark eyes, broad little nose and oversized paws, clambering playfully over a low snow-covered boulder. Clearly a young yeti, with shorter stature and softer downy fur than an adult; face and both paws fully visible inside x24..488 y105..407. One cub is the prominent subject; an adult silhouette may be far in the background only. Painterly medieval fantasy collectible-card art with visibly layered brushwork and tactile snowy fur, avoid photographic gloss. Cool blue snow light and a subtle warm dawn rim, lively readable silhouette and atmospheric depth. Square 1:1 for editable 512 master and 206:141 crop. No frame, lettering, UI, anime, Disney cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86b78568-02cc-441c-beb8-b5c746a32510.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. The small juvenile yeti is distinct from an adult, with full face, eyes, and both oversized paws visible."
   }
 ]

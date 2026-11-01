@@ -3507,5 +3507,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: this reads as a compact rainforest spirit, with a weathered human face, both beckoning hands and two visibly different feet—one bare human foot and one backward-turned hooflike foot. Green summoned wisps and seed pod support its forest-spirit identity."
+  },
+  {
+    "cardId": "verdant_summon_23",
+    "name": "Alux Field Keeper",
+    "prompt": "Illustrate “Alux Field Keeper.” A small, moss-covered Maya-inspired alux, a folkloric forest guardian, tending a lush field. He is clearly an adult-like little woodland spirit, compact humanlike body with warm brown skin, leaf-and-moss garments, expressive face and pointed ears, holding a simple wooden staff at his side; tiny green helpers sprout from the soil around him, secondary and small. Respectful fantasy folklore, not a gnome garden ornament. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: visible brushwork, nuanced natural materials, grounded anatomy, beautiful directional light, atmospheric depth and a readable silhouette. Explicitly request a 1:1 SQUARE canvas for an editable 512×512 master. Arrange the principal figure horizontally within the central area; keep face, eyes, relevant hands and identifying tools/features inside x24…488, y105…407 for the true 206:141 horizontal crop. Quiet natural scenery fills top and bottom. Strong focal subject occupying around 70% of crop, readable at 96px. No border, text, lettering, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7bb7773-eab4-497f-a1ef-817863427288.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The alux’s pointed ears and face, staff and field tending action are clear in the 206:141 crop and 128px thumbnail. Small helpers remain secondary; painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_24",
+    "name": "Grove Druid",
+    "prompt": "Illustrate “Grove Druid.” A weathered human grove druid in simple green-brown robes, focused and calm, using a branch staff to draw a bright green vine or root that pulls a small stone toward him; mature face, both hands and the staff visible, wooded grove setting. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: visible brushwork, nuanced natural materials, grounded anatomy, beautiful directional light, atmospheric depth and a readable silhouette. Explicitly request a 1:1 SQUARE canvas for an editable 512×512 master. Arrange the principal figure horizontally within the central area; keep face, eyes, relevant hands and identifying tools/features inside x24…488, y105…407 for the true 206:141 horizontal crop. Quiet natural scenery fills top and bottom. Strong focal subject occupying around 70% of crop, readable at 96px. No border, text, lettering, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-50b4c777-1e78-4971-b6d9-3ca98b913c8e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Druid’s face, staff, both hands and vine pulling a stone are visible in the 206:141 crop and 128px thumbnail. Strong natural light and painterly materials. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_25",
+    "name": "Rainforest Curandero",
+    "prompt": "Illustrate “Rainforest Curandero.” A rainforest healer-curandero, an adult Indigenous rainforest herbal healer with dignified appearance, medicine pouches and feather-and-leaf adornments, tenderly healing a wounded forest creature with one softly glowing hand and healing herbs; face and hands clear, lush rainforest behind. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: visible brushwork, nuanced natural materials, grounded anatomy, beautiful directional light, atmospheric depth and a readable silhouette. Explicitly request a 1:1 SQUARE canvas for an editable 512×512 master. Arrange the principal figure horizontally within the central area; keep face, eyes, relevant hands and identifying tools/features inside x24…488, y105…407 for the true 206:141 horizontal crop. Quiet natural scenery fills top and bottom. Strong focal subject occupying around 70% of crop, readable at 96px. No border, text, lettering, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-39b96cc1-f62d-4342-a738-957cd5b6b79a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Curandero’s face, medicine adornments and healing hand are visible beside the recovering jaguar in the 206:141 crop and 128px thumbnail. The upper plume is cropped incidentally; painterly rainforest light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_26",
+    "name": "Archdruid of the Oaks",
+    "prompt": "Illustrate “Archdruid of the Oaks.” An ancient archdruid, a wise elderly human with a long silver-brown beard and oak-leaf mantle, standing with both hands raised as an old oak regenerates with fresh leaves behind him; his face, hands and a visible section of trunk with green regrowth are all clear. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: visible brushwork, nuanced natural materials, grounded anatomy, beautiful directional light, atmospheric depth and a readable silhouette. Explicitly request a 1:1 SQUARE canvas for an editable 512×512 master. Arrange the principal figure horizontally within the central area; keep face, eyes, relevant hands and identifying tools/features inside x24…488, y105…407 for the true 206:141 horizontal crop. Quiet natural scenery fills top and bottom. Strong focal subject occupying around 70% of crop, readable at 96px. No border, text, lettering, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1bb75732-2526-46aa-9d67-ee644a50ccf8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Archdruid’s face, raised hands, oak mantle and tree canopy are readable in the 206:141 crop and 128px thumbnail. Strong golden light and painterly forest materials. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_27",
+    "name": "Greenwood Outlaw",
+    "prompt": "Illustrate “Greenwood Outlaw.” A sly young human squire turned woodland outlaw, with a weathered green hooded cloak over simple leather-and-mail, alert face and knowing expression, crouched beside a thorn-covered branch bow, summoning a tiny thorny briar spirit from the undergrowth. Show the outlaw as the clear central character; face, hands, and the thorny bow and briar helper remain visible together. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: visible brushwork, nuanced natural materials, grounded anatomy, beautiful directional light, atmospheric depth and readable silhouette. Explicitly request a 1:1 SQUARE canvas for an editable 512×512 master. Arrange figure horizontally in central area; keep face, eyes, relevant hands and identifying features inside x24…488, y105…407 for the true 206:141 horizontal crop. Quiet woodland scenery fills top and bottom. Strong focal subject occupying around 70% of crop, readable at 96px. No border, text, lettering, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bddf2c3b-f87e-409b-9982-3a57196c84a2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Outlaw’s full face, reaching hand, thorny bow and briar helper are visible in the 206:141 crop and 128px thumbnail; upper hood is incidentally cropped. Painterly forest lighting. Awaiting parent review."
   }
 ]

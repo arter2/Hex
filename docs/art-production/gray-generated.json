@@ -3513,5 +3513,149 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Shifted focal point upward to y=0.44 and inspected the 512-square source, revised wide crop and 128px thumbnail. Hua Mulan’s full face/eyes, bow hand, drawing hand and arrow remain clear; the upper bow limb extends into expendable sky, while her identity and action stay unmistakable."
+  },
+  {
+    "cardId": "gray_summon_170",
+    "name": "Cu Chulainn",
+    "prompt": "Paint an illustration for the exact legendary card name “Cu Chulainn.” Show the Irish hero in a fierce but dignified moment of his ríastrad battle-fury: a red-haired warrior with bronze age Irish gear, an intense human face, and his unmistakable barbed Gáe Bolg spear held close beside him as he unleashes a forceful burst of wind and red-gold light against a shadowy foe. The hero and spear are the unmistakable focus; keep the whole spearhead and his face/hands comfortably within the central crop-safe band. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers style: nuanced bronze, wool, leather and weathered wood, layered painterly brushwork, dramatic warm edge light against cool mist, atmospheric depth, grounded anatomy and restrained mythic energy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep eyes, hands and named spear inside x24–488,y105–407 for a 206:141 landscape crop. Quiet stormy battlefield scenery above and below. No frame, lettering, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b36f88e9-97c2-461d-b6f2-07288cc1c079.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_170.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Cu Chulainn’s face/eyes, both hands and complete barbed spear remain visible; the spear point approaches the crop’s right edge, while the opposing foe and energy trails are incidental."
+  },
+  {
+    "cardId": "gray_summon_171",
+    "name": "Sundiata Keita",
+    "prompt": "Paint an illustration for the exact legendary card name “Sundiata Keita,” the 13th-century founder of the Mali Empire. Depict Sundiata as a mature Mandinka king and front-line protector, wearing historically grounded West African indigo cloth, leather and finely worked gold ornaments, his calm resolute face clearly visible. He braces a tall, elegant shield beside a companion while raising a short spear, the action reading as steadfast protection. Add subtle Sahelian architecture and a small lion motif worked into his shield, not a literal lion companion. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers style: nuanced woven cloth, leather, gold and wood, layered brushwork, warm sunset light with cool shadow, atmospheric depth, human proportions, respectful historical specificity. Explicit 1:1 square canvas for an editable 512×512 master; keep face, hands and full shield face in x24–488,y105–407 for a 206:141 landscape crop. Quiet savanna-city backdrop above and below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5d94716a-d2cf-41a4-8094-ae3ed95a4786.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_171.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Sundiata’s complete crown, forehead, face/eyes and both hands are visible; the raised spear extremity reaches expendable upper scenery and shield base/lower legs crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_172",
+    "name": "Momotaro",
+    "prompt": "Paint an illustration for the exact legendary card name “Momotaro,” the Japanese Peach Boy. Depict a brave young adult Japanese hero in practical medieval travel clothes and light lamellar armor, carrying a peach-shaped charm at his sash as he stands between villagers and danger. His steady face, one raised protective hand and short sword are clearly visible. His three faithful companions—a Japanese dog, a macaque and a pheasant—stand beside him as distinct, believable animals, helping defend the village rather than appearing as mascots. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers style: nuanced silk, lacquered leather, wood and fur, expressive natural anatomy, layered brushwork, warm lantern light against cool dusk, atmospheric depth, brave and grounded rather than cute. Explicit 1:1 square canvas for a 512×512 editable master; compose Momotaro’s face, hands and companions horizontally and keep them within x24–488,y105–407 for a 206:141 landscape crop. Quiet Japanese village roofs above and below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-23999fc8-3448-4b27-8929-3756f93c15d7.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_172.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Momotaro’s face, raised hand and sword remain visible with his dog, macaque and pheasant all distinct; villagers and lower body are supporting context."
+  },
+  {
+    "cardId": "gray_summon_173",
+    "name": "Atalanta",
+    "prompt": "Paint an illustration for the exact legendary card name “Atalanta,” the swift Greek huntress. Depict a strong, unmistakably female heroine in ancient Greek hunting leathers and a wind-touched blue cloak, her focused face and eyes clearly visible as she releases an arrow from a short bow toward a distant threat. A small golden apple hangs at her belt as a quiet mythic cue; do not make it the subject. Keep her complete hands, bow grip and arrow together beside her face. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers style: believable anatomy, nuanced leather, bronze, linen and wood, rich brushwork, bright dawn light through a forest against cool shadows, atmospheric depth and a crisp readable silhouette. Explicit 1:1 square canvas intended for an editable 512×512 master; keep face, hands, bow and arrow inside x24–488,y105–407 for a 206:141 landscape crop. Quiet forest scenery above and below. No text, frame, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d7aff909-6306-4ec8-9b8e-b638f94e9a97.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_173.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Atalanta’s full face/eyes, bow, arrow and both hands remain clear together; the upper bow limb rises into expendable sky and her identity/action remain unmistakable."
+  },
+  {
+    "cardId": "gray_summon_174",
+    "name": "Heracles",
+    "prompt": "Paint an illustration for the exact legendary card name “Heracles.” Depict the Greek hero as a powerful, mature warrior in bronze-age armor and the pelt of the Nemean lion, his resolute face clearly visible as he steps forward to draw a charging monster’s attention away from fleeing companions. He grips his massive wooden club with both hands; keep the full recognizable club head near him rather than extending it to the frame edge. His commanding stance reads as fearless front-line defense, not a generic barbarian. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers style: believable heroic anatomy, nuanced bronze, hide, leather and wood, layered brushwork, strong warm torchlight against cool cave shadows, atmospheric depth, a readable silhouette. Explicit 1:1 square canvas intended for an editable 512×512 master; compose Heracles’s face, both hands and compact club together in the middle band, all inside x24–488,y105–407 for a 206:141 landscape crop. Quiet rocky cave scenery above and below. No text, frame, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-85f29edb-8b5f-4ecb-ad4e-f495dbd4dea8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_174.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Heracles’s face/eyes, both hands and full club remain visible as he draws the monster’s charge away from companions; the monster is a supporting threat."
+  },
+  {
+    "cardId": "gray_summon_175",
+    "name": "Perseus",
+    "generatedPath": "/workspace/generated_images/exec-626bc9ac-19dc-46da-8e87-a6c211a3a76f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_175.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Perseus’s face, reflective shield and sword hand remain visible in the 206:141 crop and 128px thumbnail. Visible painted brush texture and classical light. Awaiting parent review.",
+    "prompt": "Paint “Perseus.” The Greek hero Perseus, youthful and alert, wearing a bronze cap and carrying a polished mirrored shield and short curved sword; he raises the reflective shield defensively as a faint monstrous gaze glances away from it, evoking his clever protection from Medusa without showing gore. Keep shield, face and sword hand distinct. Create a painterly mythic collectible-card illustration with visible hand-painted brush texture, layered painted edges and warm classical pigments. Match Hexmancers' grounded high-fantasy art direction; dramatic directional light, atmospheric depth, believable ancient materials. Avoid photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Place hero horizontally in central area; preserve entire face/eyes, relevant hands and defining weapon or shield inside x24…488, y105…407 for the 206:141 crop. Quiet atmosphere above and below; clear silhouette and identity readable at 96px. No text, frame, UI, anime, Disney proportions or pixel art.",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "status": "generated",
+    "batch": 14
+  },
+  {
+    "cardId": "gray_summon_176",
+    "name": "Theseus",
+    "generatedPath": "/workspace/generated_images/exec-bb3683ff-6936-4957-bb39-d53b11512c51.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_176.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "reviewNote": "Adjusted crop focus to the top edge to retain Theseus’s full face and helmet; red thread and club remain visible in the 206:141 crop and 128px thumbnail. Legs crop incidentally. Painterly classical texture. Awaiting parent review.",
+    "prompt": "Paint “Theseus.” The Greek hero Theseus in a bronze helmet and practical Athenian armor, holding a knotted red thread and a distinctive heavy club as he strides from a stone labyrinth passage; suggest the Minotaur story with a shadowed maze behind him, but Theseus is the clear brave hero. Create a painterly mythic collectible-card illustration with visible hand-painted brush texture, layered painted edges and warm classical pigments. Match Hexmancers' grounded high-fantasy art direction; dramatic directional light, atmospheric depth, believable ancient materials. Avoid photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Place hero horizontally in central area; preserve entire face/eyes, relevant hands and defining weapon or shield inside x24…488, y105…407 for the 206:141 crop. Quiet atmosphere above and below; clear silhouette and identity readable at 96px. No text, frame, UI, anime, Disney proportions or pixel art.",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "status": "generated",
+    "batch": 14
+  },
+  {
+    "cardId": "gray_summon_178",
+    "name": "Hector of Troy",
+    "generatedPath": "/workspace/generated_images/exec-8bcc9149-95e2-46fa-b425-b27fa6c14797.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_178.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Hector’s face, crested helmet, spear hand and shield remain visible in the 206:141 crop and 128px thumbnail; spear tip and crest extend incidentally. Painterly classical lighting and brush texture. Awaiting parent review.",
+    "prompt": "Paint “Hector of Troy.” Hector of Troy, noble Trojan prince and defender, in ornate bronze armor and a tall crested helmet, gripping a long spear while turning protectively toward the walls of Troy; proud composed face, battle cloak, faint Trojan walls and banners behind. Create a painterly mythic collectible-card illustration with visible hand-painted brush texture, layered painted edges and warm classical pigments. Match Hexmancers' grounded high-fantasy art direction; dramatic directional light, atmospheric depth, believable ancient materials. Avoid photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Place hero horizontally in central area; preserve entire face/eyes, relevant hands and defining weapon or shield inside x24…488, y105…407 for the 206:141 crop. Quiet atmosphere above and below; clear silhouette and identity readable at 96px. No text, frame, UI, anime, Disney proportions or pixel art.",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "status": "generated",
+    "batch": 14
   }
 ]

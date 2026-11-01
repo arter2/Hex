@@ -3501,5 +3501,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.38], and 128-pixel crop: the full human face, eyes and nemes headdress are visible above the lion’s body; Giza setting and guardian pose remain clear while lower body crops naturally."
+  },
+  {
+    "cardId": "light_summon_18",
+    "name": "Great Sphinx of Giza",
+    "prompt": "Paint a standalone illustration for the exact summon Great Sphinx of Giza. Show one monumental ancient Egyptian sphinx, unmistakably a crouching limestone lion body with a dignified human pharaoh's face, striped nemes headdress, calm powerful eyes and weathered pale sandstone. A soft golden sacred aura and a few luminous healing motes gather around its chest, suggesting an ancient steadfast guardian that empowers allies. It rests beside a weathered Giza causeway, with pyramids hazy in the distance; keep the face and headdress large, clear and iconic. Painterly medieval fantasy collectible-card art, grounded stone texture, nuanced warm gold light against cool desert dusk, atmospheric depth matching the supplied Hexmancers reference images and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep face, eyes, headdress and lion shoulders within x24..488,y105..407 on the square, with quiet sky and sand beyond; will be viewed as a 206:141 crop. No card frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ba7cf526-e92e-4b71-9e09-9941af02b87c.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, adjusted 206:141 crop at focalPoint [0.5,0.43] and 128-pixel thumbnail: complete pharaoh face and striped nemes headdress remain visible with clear Giza pyramids, lion shoulders and golden aura; lower body crops naturally."
+  },
+  {
+    "cardId": "light_summon_19",
+    "name": "White Elephant",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Elephant. Show one majestic rare pale elephant, unmistakably a real elephant with broad fan-shaped ears, long ivory tusks, trunk and sturdy body, its skin naturally pale ivory-gray rather than pure blank white. It strides serenely through a shallow lotus pond, creating a small rolling tidal surge and restoring ripples of luminous water around its feet, to suggest tidal power and healing. The elephant is the unmistakable dominant subject, noble and peaceful, with full face, eyes, trunk and both tusks clearly visible; no rider, harness or extra elephants. Warm dawn light gleams on textured hide and water, cool turquoise reflections, distant old temple garden in atmospheric depth, style matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep head, eyes, tusks, trunk and shoulder within x24..488,y105..407, quiet scenery above and below; will be viewed as a 206:141 crop. No card frame, text, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-50834b71-97c6-4031-a7a6-419c58d97012.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_19.png",
+    "sourceNative": [
+      1321,
+      1191
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: whole elephant head, eyes and complete trunk tip remain visible; lower legs crop naturally."
+  },
+  {
+    "cardId": "light_summon_20",
+    "name": "Hannibal's War Elephant",
+    "prompt": "Repaint this illustration as standalone painterly medieval fantasy collectible-card art for the exact summon Hannibal's War Elephant. Preserve the historical Carthaginian war-elephant identity, but RECOMPOSE the elephant much more compactly: show one powerful dark-gray war elephant in three-quarter profile filling a horizontal middle-height composition, with its complete head fully inside the frame, both eyes visible, BOTH complete curved tusks with generous space from all edges, and the full curled trunk tip visible. Its head, eye, tusks and curled trunk must all fit comfortably inside the central wide crop region x24..488, y105..407 of the square. Use a compact ornate bronze forehead armor, burgundy-and-gold Carthaginian saddle cloth and a small flag beside the shoulder to signal Hannibal's army; keep these secondary and entirely visible. The elephant is advancing through an alpine pass, but only cropped shoulders/forelegs and a small broken shield may extend below the central band; do not enlarge the head beyond the crop or let either tusk touch the edge. No human rider, no gore. Painterly grounded elephant anatomy, detailed hide and believable aged bronze/leather, warm sunset rim light against cool misty mountains, atmospheric depth matching the supplied Hexmancers style. Explicit 1:1 SQUARE canvas, editable 512x512 master, composed for a 206:141 card crop; leave quiet scenery above and below the central subject. No card frame, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d93ede79-55c9-4632-9c47-30078de510a4.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Repainted and inspected the replacement 512-square master, centered 206:141 crop and 128-pixel thumbnail: complete war-elephant head, eye, both tusks and curled trunk tip are visible with edge margin; lower legs and tail crop naturally. Previous source retained at /tmp/light-01-repairs/light_summon_20-before-repaint.png."
+  },
+  {
+    "cardId": "light_summon_21",
+    "name": "Qilin",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Qilin, the auspicious Chinese qilin / kirin. Show one clearly recognizable gentle mythical hooved creature with a graceful deerlike body, cloven hooves, a single short horn on its brow, flowing mane, luminous scales, a dragonlike whiskered face and a sweeping scaled tail; do not depict a unicorn, horse, dragon, or western deer. It bounds beside a lotus lake through a restrained burst of radiant gold-white energy and swirling water, suggesting its powerful blast and restorative tidal magic. Keep the full distinctive head, eye, single horn, forequarters and one raised hoof readable; elegant rather than fearsome. Painterly layered scales and mane, refined ancient East Asian temple garden and mist, warm light along its body against cool blue-green water, atmospheric depth matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Horizontal composition; keep face/horn/forequarters/raised hoof within x24..488,y105..407; quiet scenery above and below; intended 206:141 crop. No frame, lettering, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f14e96aa-daa8-41cf-94c8-b0669a853bcf.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_21.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128-pixel thumbnail: reads as an auspicious scaled qilin with dragonlike face, horn, hooves, mane, tail and water burst; outer tail and water extend toward edges."
+  },
+  {
+    "cardId": "light_summon_22",
+    "name": "Valkyrie Herald",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Valkyrie Herald. Show one striking Norse Valkyrie, an armored female heavenly warrior with a focused face, windblown golden hair, polished but weathered silver mail and a single pair of large feathered wings. As a herald of courage, she flies low over a rocky battlefield, sounding a small curved golden war horn while raising her other hand to rally a few distant allied shield-bearers beneath her; the allies stay small and secondary. Her face, eyes, horn, raised hand and winged silhouette must read clearly. Swift confident posture, bright warm dawn light on armor and feathers against cool storm haze, restrained radiant golden rallying light around the allies, painterly grounded anatomy and materials, atmospheric depth matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep face, horn, raised hand and wing roots within x24..488,y105..407, outer feathers may extend; quiet sky and ground beyond for the 206:141 crop. No card frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b8ef367-fccb-4992-a243-e05ffec20eb3.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_22.png",
+    "sourceNative": [
+      1315,
+      1197
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop at focalPoint [0.5,0.39] and 128-pixel thumbnail: Valkyrie's face, horn and raised rallying hand all fit clearly with winged silhouette; lower legs and outer wing tips crop naturally."
   }
 ]

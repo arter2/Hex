@@ -3508,5 +3508,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Repaired the first render because its snout tip sat too close to the right edge. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete broad snout/jaws, amber eye and plated head/shoulder remain within the crop; stunned foe and electric impact support the crocodile."
+  },
+  {
+    "cardId": "storm_summon_19",
+    "name": "Great River Crocodile",
+    "prompt": "Paint an original illustration for the exact card Great River Crocodile. Show a colossal dire Nile crocodile lunging sideways from the Great River shallows, its massive armored olive-bronze body in a strong zigzag, broad complete snout and both jaws clearly visible, one amber eye catching the light. The huge crocodile is the unmistakable main subject; a small distant armored traveler recoils as a restrained blue-white storm shock flashes along the crocodile's plated shoulder, suggesting a crushing attack that steals vitality. Natural crocodile anatomy, heavy plated scales, wet hide, reeds, ancient riverbank temples in soft distance; painterly medieval fantasy collectible-card illustration, expressive brushwork, richly tactile materials, cinematic late-day gold and cool storm rim light, atmospheric depth. Exact 1:1 SQUARE composition for editable 512x512 master; keep the entire face, eye, jaws and main shoulder within x24..488,y105..407; horizontal creature silhouette, quiet clouds and water above/below for the 206:141 crop. No frame, text, letters, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2a4cef61-b1bc-4368-9c74-3fe4c8accce8.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: complete crocodile eye, snout and jaws stay visible; the armored river predator and storm-lit lunge read clearly. Incidental tail, lower body, reeds and distant traveler may crop."
+  },
+  {
+    "cardId": "storm_summon_20",
+    "name": "Roc",
+    "prompt": "Paint an original illustration for the exact card Roc: a truly gigantic legendary roc, natural majestic eagle-like bird of prey, bronze-gold hooked beak, fierce clear amber eyes, layered russet and dark-gold feathers, enormous wings sweeping horizontally as it glides above an ancient mountain fortress in a thunderstorm. Its talons reach toward the ramparts and the powerful bird's presence rallies tiny defenders below; the roc dominates the composition and reads instantly as an enormous eagle, not a humanoid or dragon. Painterly medieval fantasy collectible-card artwork, detailed believable feathers and anatomy, dramatic warm light breaking through blue-gray storm clouds, atmospheric depth and grounded brushwork. Exact 1:1 SQUARE composition for 512x512 editable master; keep both eyes, full beak, head and wing roots safely within x24..488,y105..407; wings may extend incidentally but keep a broad readable silhouette. Quiet cloud margins above and below for 206:141 crop. No frame, text, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-522b05b0-5884-47ad-9389-59431fd4be49.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the unmistakable eagle-like roc's head, eyes, hooked beak and body remain clear; wing tips crop incidentally while its great wingspan and fortress approach remain readable."
+  },
+  {
+    "cardId": "storm_summon_21",
+    "name": "Simurgh",
+    "prompt": "Paint an original illustration for the exact legendary card Simurgh, honoring Persian epic mythology: a vast wise mythic bird perched on a wind-carved cypress above ancient Persian mountain ruins. Give it a dignified canine-like face with intelligent bright eyes, graceful hooked beak, lion-like foreclaws, and a magnificent peacock-like fan of long turquoise, lapis, copper and gold feathers with subtle iridescence. Make the complete face and distinctive feathery crest prominent; feathered wings frame the body and glowing storm wind swirls around it as it calls across the mountains, suggesting its bewildering supernatural presence. One singular recognizable bird, natural mythic anatomy, not a phoenix on fire, not a griffin hybrid. Painterly medieval fantasy collectible-card illustration with ornate Persian-inspired feather patterning, rich brushwork, luminous blue-gold sunrise and storm atmosphere. Exact 1:1 SQUARE for 512x512 editable master; keep face, eyes, crest, beak and upper foreclaws within x24..488,y105..407; horizontal composition and quiet sky/rock margins for 206:141 crop. No frame, writing, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7dff2eb-64b0-4510-93e2-64fcee7173bf.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed the wide crop with focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source and revised direct 512×350 crop/128×88 thumbnail: full Simurgh face, eyes, crest and hooked beak now remain visible; tail and wing tips and lower body crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_22",
+    "name": "Great Sphinx",
+    "prompt": "Paint an original illustration for the exact card Great Sphinx: an ancient monumental Egyptian sphinx coming to life and rising from desert sand before colossal sandstone pylons at dusk. Show one imposing winged sphinx with a weathered human face beneath a striped royal nemes headdress, clear calm eyes, broad leonine body and powerful front paws; the aged stone surface is cracking away to reveal living tawny fur beneath, and it rears upward in a slow deliberate rise, scattering sand and a restrained blue-white storm aura. Its face, headdress and paws identify the sphinx; old, vast, regal, monumental presence. Painterly medieval fantasy collectible-card art, tactile sandstone, gold and fur, cinematic amber light under storm clouds, atmospheric brushwork. Exact 1:1 SQUARE composition for 512x512 master; keep full face/eyes/headdress and main paws inside x24..488,y105..407; arrange the head and torso horizontally across the middle, quiet sky and sand at top/bottom for 206:141 crop. No frame, text, hieroglyphic writing, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-900232c1-616d-44c2-b8bc-b291876cdc9c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed the wide crop with focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source and revised direct 512×350 crop/128×88 thumbnail: the full crown, headdress, face and eyes now remain visible; the torso and upper paws read clearly while lower paw tips crop."
+  },
+  {
+    "cardId": "storm_summon_23",
+    "name": "Riddling Sphinx",
+    "prompt": "Paint an original illustration for the exact card Riddling Sphinx, a living mythic sphinx of Greek legend, clearly distinct from a monumental Egyptian Great Sphinx: an elegant tawny lion-bodied creature with a poised human woman's face, thoughtful bright eyes, high cheekbones and folded feathered wings, seated sideways on a ruined marble terrace at twilight. Her expression is clever and inquisitive; one complete forepaw rests beside a smooth unmarked stone tablet while she silently challenges a pair of wary armored travelers. A subtle breath of blue-white storm magic makes the travelers recoil, suggesting the sphinx's dreadful presence and forceful power. Make the complete feminine face and eyes, lion muzzle, mane, wing roots and forward paw readable; no writing or carved marks on the tablet. Natural mythic anatomy, graceful but imposing, not a human-bodied angel, not a statue, not a lion with an animal face. Painterly medieval fantasy collectible-card illustration, detailed fur and feathers, weathered marble, dramatic moonlit amber-blue light and atmospheric brushwork. Exact 1:1 SQUARE composition for editable 512x512 master; keep face/eyes and main paw within x24..488,y105..407, horizontal arrangement with quiet sky and stone margins for the 206:141 crop. No frame, text, letters, runes, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8d2cbe16-f40e-4668-b4b8-094822204055.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the living winged sphinx's feminine face, eyes, lion muzzle, feathers and full forward paw on the blank tablet remain readable; incidental hair tips, wing edges and travelers crop."
   }
 ]

@@ -3506,5 +3506,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. Several distinct crow heads, sharp beaks and eyes read as a phantom flock, with the sentinel face visible through the barrage; wing tips are incidental crop."
+  },
+  {
+    "cardId": "shadow_summon_25",
+    "name": "Witch's Toad",
+    "prompt": "Paint an illustration for the exact card Witch's Toad, a shadow summon: a single large, unmistakable real toad, ancient and mossy, crouched on a witch's wet stone garden wall at night. Its broad warty amphibian body, squat limbs, golden watchful eyes and velvet green moss are clearly visible; a faint supernatural chain of shadow links curls from its back toward a distant iron gate, suggesting it binds and slows foes. Low horizontal composition, toad dominates, face and eyes prominent and fully inside x24..488 y105..407. Quiet moonlit herb garden background. Painterly medieval fantasy collectible card art, believable wet skin, moss and stone, subtle teal moonlight with warm lantern rim, atmospheric depth, attractive dramatic lighting. Square 1:1 composition for editable 512x512 master and 206:141 card crop. No card frame, lettering, symbols, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b53ce076-0613-42c0-8611-17e15b7c117f.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Mossy toad, face, eyes, and shadow-chain identity are clear; no critical clipping."
+  },
+  {
+    "cardId": "shadow_summon_26",
+    "name": "Black Cat Familiar",
+    "prompt": "Paint an illustration for the exact card Black Cat Familiar, shadow summon: a sleek, unmistakably black domestic cat with luminous amber eyes, alert ears, glossy textured fur, arched back and poised paws, caught in a graceful pounce across a medieval witch's shadowy stone windowsill. A tiny curling wisp of violet-black magic follows its paws, secondary to the cat. The cat's entire face, eyes and pouncing forepaws clearly visible and inside x24..488 y105..407; broad horizontal arrangement, prominent single animal. Moonlit cottage window and blurred herbs behind, strong readable silhouette. Painterly medieval fantasy collectible-card painting, rich believable fur, dramatic cool moonlight and warm candle edge light, atmospheric depth. Square 1:1 composition for editable 512x512 master and 206:141 card crop. No frame, lettering, symbols, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a90e6768-f89a-45ea-b98b-27f98a868779.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. The black cat familiar reads clearly with bright eyes and visible pouncing forepaws; no critical clipping."
+  },
+  {
+    "cardId": "shadow_summon_27",
+    "name": "Haugbui",
+    "prompt": "Paint an illustration for the exact card Haugbui, an old Norse barrow-dwelling undead guardian and phantom summoner: a prominent weathered skeleton emerging from a low stone burial mound, wearing ancient rusted ring-mail, tattered wool cloak and a simple Norse helmet, one bony hand raised as three small pale ancestral wisps gather beside him. Clearly skeletal face with glowing cold eyes, weathered bones and unmistakable grave mound; face and raised hand fully within x24..488 y105..407. Horizontal composition, guardian dominates, wisps secondary. Painterly medieval fantasy collectible-card art, tactile bone, iron, wool and moss, blue moonlight with a warm distant torch, attractive directional lighting and atmospheric depth. Square 1:1 composition for editable 512x512 master, also read as a 206:141 horizontal crop. No runes/text, frame, symbols, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aacc40f4-5aac-4a70-97a5-0087ccd16308.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Haugbui reads as an old barrow skeleton in mail and cloak with raised summoning hand and phantom wisps; face and hand remain visible."
+  },
+  {
+    "cardId": "shadow_summon_28",
+    "name": "Jiangshi",
+    "prompt": "Paint an illustration for the exact card Jiangshi: a recognizable Chinese hopping vampire, a reanimated corpse in a weathered Qing-era dark robe and round official hat, with pale gray-green skin, long fingernails, and arms held stiffly forward in the classic hopping posture. A small yellow paper talisman is attached to its forehead without legible writing; it springs forward from a moonlit Chinese courtyard. Keep its whole distinct face, talisman, and both reaching hands clear and inside x24..488 y105..407; horizontal crop-safe portrait-action composition. Painterly medieval fantasy collectible-card painting, respectful historical Chinese garment details, tactile cloth and stone, haunting blue moonlight and a restrained warm lantern, strong light and atmospheric depth. Square 1:1 for 512 master and 206:141 card crop. No frame, text, readable symbols, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ed04e8d-467a-4ac8-9c7e-55b18df9eace.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_28.png",
+    "sourceNative": [
+      1266,
+      1242
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Jiangshi retains its full round official hat, face, paper talisman, and both reaching hands; lower body crops incidentally."
+  },
+  {
+    "cardId": "shadow_summon_29",
+    "name": "Nachzehrer",
+    "prompt": "Paint an illustration for the exact card Nachzehrer, a hungry ghoul of Germanic folklore: an unmistakable recently buried corpse, gaunt and still partly wrapped in a rotting grave shroud, clawing up from a low open grave in a medieval village churchyard. Hollow hungry face and grasping hands dominate; the corpse's mouth worries and tears at the burial cloth, evoking the Nachzehrer's folkloric hunger. A faint cold shadow aura, subdued. Keep face, eyes and both hands clear inside x24..488 y105..407; low horizontal composition with the ghoul as one prominent subject. Painterly medieval fantasy collectible-card art, believable aged skin, earth, linen and stone, dramatic moonlight with warm distant chapel light, atmospheric depth. Square 1:1 composition for editable 512x512 master and 206:141 card crop. No frame, lettering, symbols, UI, generic skeleton substitution, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ad97fdb1-93fd-40c0-8194-9638bb9c93aa.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. The hungry shroud-wrapped corpse, face, mouth, and grasping hands read clearly with no critical clipping."
   }
 ]

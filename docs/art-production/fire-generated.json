@@ -3503,5 +3503,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Dwarf face and hand, complete foamy tankard including handle and base, and healing glow remain clear. Parent review pending."
+  },
+  {
+    "cardId": "fire_charge_16",
+    "name": "Wineskin of Flame",
+    "prompt": "Paint a standalone illustration for the fantasy charge artifact “Wineskin of Flame.” Show one compact, beautifully crafted medieval leather wineskin as the clear dominant subject, arranged horizontally across the middle of the square. Its entire rounded body, neck, stopper, and short spout must be visible together, with nothing clipped. A controlled vivid flame glows through a small translucent inset and curls just from the spout, suggesting a charged burst; keep the bottle itself fully readable and unobscured. Painterly medieval high-fantasy collectible-card illustration, nuanced worn leather, brass fittings and glass, dramatic warm directional light, atmospheric depth, grounded believable materials, strong silhouette, style consistent with painterly Hexmancers reference art. Explicit 1:1 SQUARE canvas, intended as an editable 512×512 master. Keep every identity-critical part of the wineskin within x24…488 and y105…407 of the square; quiet dark workshop atmosphere fills the top and bottom. The wineskin occupies roughly 70% of the future 206:141 horizontal crop. No person or extra props. No card border, lettering, numbers, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5824db66-eb5d-4340-8bca-d9fc4582df98.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Standalone wineskin fully readable in the 206:141 crop and 128px thumbnail; body, stopper and spout are intact. Strong warm lighting and painterly materials. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_charge_17",
+    "name": "Meteorite Fragments",
+    "prompt": "Paint an illustration for “Meteorite Fragments.” A small cluster of jagged, dark iron meteorite fragments, glowing at their molten orange edges, caught mid-flight in a clear arcing lob toward the viewer; fragments distinct and compact, with one lead shard and a few smaller shards, dramatic impact sparks, no generic fireball replacing the stones. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de95a6e1-969f-42b1-bd66-5ce101f2c2ad.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Meteorite fragments and lob trajectory remain distinct in the 206:141 crop and 128px thumbnail; lead fragment fully visible. Painterly fantasy lighting. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_charge_18",
+    "name": "Bottomless Powder Keg",
+    "prompt": "Paint an illustration for “Bottomless Powder Keg.” A single stout, ornate but practical medieval powder keg, clearly a keg rather than a wineskin, with dark oak staves, iron hoops, and a visible open powder vent releasing a small controlled flare; suggest an endlessly replenished charge through a subtle magical glow inside, object remains the dominant fully visible subject. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b4af791-899a-49fc-9bdb-928cded06e92.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Complete oak keg, iron hoops and open vent remain legible in the 206:141 crop and 128px thumbnail. Warm directional light, painterly materials. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_12",
+    "name": "Ember Coyote",
+    "prompt": "Paint an illustration for “Ember Coyote.” A living lean coyote made of natural tawny fur with ember-bright markings and a few restrained glowing embers along its coat, captured in a low forward pounce with alert coyote face, long ears and bushy tail unmistakable; wild rocky firelit terrain. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9ed99c6a-0ed0-4407-815d-f5028bf6ccd8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Coyote face, ears and pouncing body are clear in the 206:141 crop; tail tip extends to the crop edge but identity/action remain intact. Readable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_13",
+    "name": "Shishi Lion-Dog",
+    "prompt": "Paint an illustration for “Shishi Lion-Dog.” A traditional Japanese shishi lion-dog guardian creature, powerful compact canine-lion body with curly mane, broad muzzle, rounded expressive eyes, carved-guardian-inspired fur tufts and sturdy paws, caught in a forward pounce; clearly an animal, not a statue, oriental guardian detail grounded in painterly fantasy. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-839b4020-a620-4e3e-a4d4-a4b3c5962656.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shishi Lion-Dog’s guardian mane, broad face, eyes and pouncing paws remain visible in the 206:141 crop and 128px thumbnail. Painterly fantasy presentation. Awaiting parent review."
   }
 ]

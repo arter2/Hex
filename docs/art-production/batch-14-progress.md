@@ -1,12 +1,8 @@
-# Batch 14 production progress
+# Batch 14 completed artwork
 
-**193 of 200 new 512×512 sources saved; 192 approved.**
+**200 new editable 512×512 sources approved and exported: 29 Fire, 29 Frost, 26 Gray, 29 Light, 29 Shadow, 29 Storm, 29 Verdant.** All 42 packets passed parent crop/thumbnail review. The runtime now contains 1834 illustrations; 119 catalogue cards remain pending.
 
-7 sources remain ungenerated. 0 saved sources require repainting. 40 packets of up to five cards passed parent crop/thumbnail review.
-
-Current runtime: 1634 illustrations. Starting baseline: 1634; target: 1834. No complete batch-14 delivery has been prepared yet.
-
-Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing reserved IDs and explicitly rejected repaints. Save complete exact-name records atomically; parent pins reviewed source hashes. No quota retries, alternate generators or path guessing.
+Delivery: `card-art-deliveries/batch-14-200/` contains 200 sources and 600 display crops, exact-name/ID mapping, checksums and `README_FOR_CLAUDE.md`. Validation is in `batch-14-validation.json`; physical package verification is in `AUDIT.json` inside the delivery. Earlier supplied/generated artwork is unchanged. No ZIP was requested.
 
 ## Saved sources
 
@@ -179,7 +175,10 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Wandering Alchemist | `storm_summon_41` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_41.png) |
 | Bedouin Raider | `storm_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_42.png) |
 | Parthian Horse Archer | `storm_summon_43` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_43.png) |
-| Bazaar Pickpocket | `storm_summon_44` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_44.png) |
+| Bazaar Pickpocket | `storm_summon_44` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_44.png) |
+| Mamluk Lancer | `storm_summon_45` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_45.png) |
+| Persian Immortal | `storm_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_46.png) |
+| Storm Imp | `storm_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_47.png) |
 | Alux Field Keeper | `verdant_summon_23` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_23.png) |
 | Grove Druid | `verdant_summon_24` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_24.png) |
 | Rainforest Curandero | `verdant_summon_25` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_25.png) |
@@ -205,3 +204,7 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Tanuki Drummer | `verdant_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_46.png) |
 | Grizzly Matriarch | `verdant_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_47.png) |
 | Otso the Honey-Paw | `verdant_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_48.png) |
+| Bull Moose | `verdant_summon_49` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_49.png) |
+| Dappled Fawn | `verdant_summon_50` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_50.png) |
+| Balam Jaguar Knight | `verdant_summon_51` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_51.png) |
+| Clouded Leopard | `verdant_summon_52` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_52.png) |

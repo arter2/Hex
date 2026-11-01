@@ -3971,10 +3971,64 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.42
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. A green-gray goblin’s pointed ears, full face/eyes, both nimble hands and entire coin purse are clear in the bazaar theft; merchant and market goods are supporting context."
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Goblin’s full wrapped cap/head, face/eyes, both nimble hands and compact purse now fit together; the merchant’s torso is background context."
+  },
+  {
+    "cardId": "storm_summon_45",
+    "name": "Mamluk Lancer",
+    "prompt": "Paint an illustration for the exact card name “Mamluk Lancer.” Depict a mounted Mamluk cavalryman of 13th-century Egypt or Syria, wearing practical mail with a lamellar cuirass, a steel helmet wrapped in a cream turban and a deep blue riding coat with modest geometric trim. His full face and focused eyes are visible as he rallies his horsemen, gripping a compactly framed long wooden lance near his shoulder; keep the hand-lance grip close to his face and fully within the crop, with the shaft angled back rather than stretching to either edge. The horse’s alert head may appear below, while other riders stay secondary. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, nuanced steel, leather, wool and horse tack, warm desert dawn through dust against cool blue shadows, atmospheric depth and grounded human/horse anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the lancer’s entire head/eyes, lance hand and visible grip safely inside x24–488,y105–407 for a 206:141 crop. Incidental lance ends and horse body may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8917e202-eafc-4e50-af48-957aa5d56eb7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Mamluk lancer’s full turban/helmet, face/eyes, complete lance grip and hand remain clear; lance shaft and horse body extend incidentally."
+  },
+  {
+    "cardId": "storm_summon_46",
+    "name": "Persian Immortal",
+    "prompt": "Paint an illustration for the exact card name “Persian Immortal.” Depict an Achaemenid Persian imperial guard of the 5th century BCE, one of the king’s elite Immortals, not an undead creature. He wears a pleated Persian robe beneath a patterned scale cuirass, a modest crenellated tiara, and a richly woven belt. His proud face and clear eyes remain visible as he advances in disciplined formation with a compact wicker shield in one hand and a short spear in the other; keep his hands and spear grip close to his torso. Other guards and the monumental stone terrace of Persepolis remain softly secondary. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced bronze, woven wool, wicker and stone, warm Persian sunset light against cool shadows, atmospheric depth and historically grounded Achaemenid Persian clothing. Explicit 1:1 square canvas intended for a 512×512 editable master; keep entire head/eyes, shield grip, spear hand and defining tiara within x24–488,y105–407 for a 206:141 landscape crop; spear tip and lower legs may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-78991e2f-6904-437a-84a7-b938655a526c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Achaemenid guard’s entire tiara/head, face/eyes, shield grip, spear hand and both hand positions remain visible; spear tip and lower legs are incidental."
+  },
+  {
+    "cardId": "storm_summon_47",
+    "name": "Storm Imp",
+    "prompt": "Paint an illustration for the exact card name “Storm Imp.” Depict a small, mischievous imp hurtling through a thundercloud, with a compact wiry body, slate-gray skin, two short curled horns, pointed ears, bright storm-blue eyes and a sharp impish grin. One clawed hand reaches forward as a branching flash of lightning lights its face; small batlike wings trail behind, but the demon’s face and reaching hand remain the clear subject. Make it unmistakably an imp, not a human child or a giant dragon. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced skin, horn and membrane, dramatic cool lightning against deep blue-violet storm clouds, atmospheric depth and grounded fantasy anatomy. Explicit 1:1 square canvas intended for a 512×512 editable master; keep full head, horns, eyes and reaching hand inside x24–488,y105–407 for a 206:141 landscape crop; wing tips, legs and lightning trails may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6e5d738-7fc3-4d76-b3c3-222bd12f1b12.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_47.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Both complete horns, full head/face/eyes and the reaching clawed hand now remain together with margin; wing tips and lower body are incidental."
   }
 ]

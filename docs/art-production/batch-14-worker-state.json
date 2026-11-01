@@ -11,7 +11,7 @@
     },
     "/root/b14_worker_3": {
       "packet": "storm-06",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b14_worker_4": {
       "packet": "light-06",
@@ -23,7 +23,7 @@
     },
     "/root/b14_worker_6": {
       "packet": "verdant-06",
-      "state": "running"
+      "state": "idle"
     }
   },
   "completedPackets": [
@@ -66,7 +66,9 @@
     "fire-06",
     "shadow-06",
     "light-06",
-    "verdant-05"
+    "verdant-05",
+    "storm-06",
+    "verdant-06"
   ],
   "reviewedSources": {
     "fire_charge_16": {
@@ -836,6 +838,38 @@
     "verdant_summon_48": {
       "file": "game/cards/art/masters/verdant_summon_48.png",
       "sha256": "4bfcbd24309dc522b7988cc5443479ebadd2db818baf6cc8f75ecde4eb1e0920"
+    },
+    "storm_summon_44": {
+      "file": "game/cards/art/masters/storm_summon_44.png",
+      "sha256": "c3787e86ab289107952a93d96712d82425f1deafbb790354885f7ea73af3deaf"
+    },
+    "storm_summon_45": {
+      "file": "game/cards/art/masters/storm_summon_45.png",
+      "sha256": "777e37232a2376e92bb375be3f505c91c37d29dd521f6e9c0f3a6378b84ef7a5"
+    },
+    "storm_summon_46": {
+      "file": "game/cards/art/masters/storm_summon_46.png",
+      "sha256": "73d9c39639e204cff3f257280837a6c46fb6cbb39fd28b2d5e1e1ceec19187e3"
+    },
+    "storm_summon_47": {
+      "file": "game/cards/art/masters/storm_summon_47.png",
+      "sha256": "5facda1f20430a948842b0cefd60b83566643786914041fea6298b1aaacc2714"
+    },
+    "verdant_summon_49": {
+      "file": "game/cards/art/masters/verdant_summon_49.png",
+      "sha256": "3aa955611ef3312a5be6d426d249c69ff3e13e17912436ab770a464de7b0619b"
+    },
+    "verdant_summon_50": {
+      "file": "game/cards/art/masters/verdant_summon_50.png",
+      "sha256": "8e403de4976454b0eff850dfaac9ba51082fa471fd72621e883a56bae085d4ff"
+    },
+    "verdant_summon_51": {
+      "file": "game/cards/art/masters/verdant_summon_51.png",
+      "sha256": "d75aa90d309adbf4f3cad2fceab39746c45fc48b40f95a3086350efe63aa35ea"
+    },
+    "verdant_summon_52": {
+      "file": "game/cards/art/masters/verdant_summon_52.png",
+      "sha256": "f20e6530fe4c712645632f7e4d20bd12acb839c9f4b32c50cdb71f18f0be53a2"
     }
   }
 }

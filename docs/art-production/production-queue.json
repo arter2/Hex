@@ -1,10 +1,10 @@
 {
   "catalogueVersion": 179,
   "total": 1953,
-  "active": 1634,
-  "remaining": 319,
+  "active": 1834,
+  "remaining": 119,
   "pending": 119,
-  "assigned": 200,
+  "assigned": 0,
   "awaitingReview": 0,
   "countsByColour": {
     "brown": 234,
@@ -3199,8 +3199,8 @@
       "name": "Wineskin of Flame",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3208,8 +3208,8 @@
       "name": "Meteorite Fragments",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3217,8 +3217,8 @@
       "name": "Bottomless Powder Keg",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3658,8 +3658,8 @@
       "name": "Ember Coyote",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3667,8 +3667,8 @@
       "name": "Shishi Lion-Dog",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3676,8 +3676,8 @@
       "name": "Oni Brute",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3685,8 +3685,8 @@
       "name": "Red Oni",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3694,8 +3694,8 @@
       "name": "Oni Warlord",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3703,8 +3703,8 @@
       "name": "Minotaur",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3712,8 +3712,8 @@
       "name": "Fire Bull",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3721,8 +3721,8 @@
       "name": "Goblin Sapper",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3730,8 +3730,8 @@
       "name": "Goblin Gunner",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3739,8 +3739,8 @@
       "name": "Goblin Chieftain",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3748,8 +3748,8 @@
       "name": "Gremlin",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3757,8 +3757,8 @@
       "name": "Gremlin Tinkerer",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3766,8 +3766,8 @@
       "name": "Duende",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3775,8 +3775,8 @@
       "name": "Salamander",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3784,8 +3784,8 @@
       "name": "Lava Golem",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3793,8 +3793,8 @@
       "name": "Magma Elemental",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3802,8 +3802,8 @@
       "name": "Dwarven Smith",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3811,8 +3811,8 @@
       "name": "Dwarven Miner",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3820,8 +3820,8 @@
       "name": "Dwarven Musketeer",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3829,8 +3829,8 @@
       "name": "Dwarven Rocketeer",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3838,8 +3838,8 @@
       "name": "Mountain Hermit",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3847,8 +3847,8 @@
       "name": "Samurai",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3856,8 +3856,8 @@
       "name": "Ronin Archer",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3865,8 +3865,8 @@
       "name": "Mountain Monk",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3874,8 +3874,8 @@
       "name": "Tengu",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -3883,8 +3883,8 @@
       "name": "Lantern Ghost",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5368,8 +5368,8 @@
       "name": "Rusalka's Tears",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5377,8 +5377,8 @@
       "name": "Ghost Ship Volley",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5386,8 +5386,8 @@
       "name": "Sorcerer's Orbs",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5395,8 +5395,8 @@
       "name": "Glass Fishing Floats",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5404,8 +5404,8 @@
       "name": "Holy Spring Droplets",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5413,8 +5413,8 @@
       "name": "Narwhal Ivory Darts",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5872,8 +5872,8 @@
       "name": "Yeti",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5881,8 +5881,8 @@
       "name": "Yeti Cub",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5890,8 +5890,8 @@
       "name": "Yeti Matriarch",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5899,8 +5899,8 @@
       "name": "Snowman",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5908,8 +5908,8 @@
       "name": "Winter Wolf",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5917,8 +5917,8 @@
       "name": "Frost Wolf Alpha",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5926,8 +5926,8 @@
       "name": "Rockhopper Penguin",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5935,8 +5935,8 @@
       "name": "Walrus",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5944,8 +5944,8 @@
       "name": "Narwhal",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5953,8 +5953,8 @@
       "name": "Orca",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5962,8 +5962,8 @@
       "name": "Hammerhead Shark",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5971,8 +5971,8 @@
       "name": "Great White Shark",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5980,8 +5980,8 @@
       "name": "Sea Turtle",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5989,8 +5989,8 @@
       "name": "Zaratan the Island Turtle",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -5998,8 +5998,8 @@
       "name": "King Crab",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6007,8 +6007,8 @@
       "name": "Giant Squid",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6016,8 +6016,8 @@
       "name": "The Kraken",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6025,8 +6025,8 @@
       "name": "Kraken Spawn",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6034,8 +6034,8 @@
       "name": "Leviathan",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6043,8 +6043,8 @@
       "name": "Bunyip of the Billabong",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6052,8 +6052,8 @@
       "name": "Sea Serpent",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6061,8 +6061,8 @@
       "name": "Dragon King of the Deep",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -6070,8 +6070,8 @@
       "name": "River Lung",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8010,8 +8010,8 @@
       "name": "Cu Chulainn",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8019,8 +8019,8 @@
       "name": "Sundiata Keita",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8028,8 +8028,8 @@
       "name": "Momotaro",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8037,8 +8037,8 @@
       "name": "Atalanta",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8046,8 +8046,8 @@
       "name": "Heracles",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8055,8 +8055,8 @@
       "name": "Perseus",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8064,8 +8064,8 @@
       "name": "Theseus",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8073,8 +8073,8 @@
       "name": "Achilles",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8082,8 +8082,8 @@
       "name": "Hector of Troy",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8091,8 +8091,8 @@
       "name": "Rostam",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8100,8 +8100,8 @@
       "name": "Arjuna",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8109,8 +8109,8 @@
       "name": "Sigurd",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8118,8 +8118,8 @@
       "name": "Ilya Muromets",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8127,8 +8127,8 @@
       "name": "Lancelot",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8136,8 +8136,8 @@
       "name": "Gawain",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8145,8 +8145,8 @@
       "name": "El Cid",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8154,8 +8154,8 @@
       "name": "Roland",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8163,8 +8163,8 @@
       "name": "Robin Hood",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8172,8 +8172,8 @@
       "name": "Mwindo",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8181,8 +8181,8 @@
       "name": "Kintaro",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8190,8 +8190,8 @@
       "name": "Fionn mac Cumhaill",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8199,8 +8199,8 @@
       "name": "Scathach",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8208,8 +8208,8 @@
       "name": "Tomoe Gozen",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8217,8 +8217,8 @@
       "name": "Antarah the Poet-Knight",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8226,8 +8226,8 @@
       "name": "Hunahpu and Xbalanque",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -8235,8 +8235,8 @@
       "name": "Glooscap",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10068,8 +10068,8 @@
       "name": "Great Sphinx of Giza",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10077,8 +10077,8 @@
       "name": "White Elephant",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10086,8 +10086,8 @@
       "name": "Hannibal's War Elephant",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10095,8 +10095,8 @@
       "name": "Qilin",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10104,8 +10104,8 @@
       "name": "Valkyrie Herald",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10113,8 +10113,8 @@
       "name": "Valkyrie Shieldmaiden",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10122,8 +10122,8 @@
       "name": "Cherub",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10131,8 +10131,8 @@
       "name": "Guardian Angel",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10140,8 +10140,8 @@
       "name": "Forbidden City Lion",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10149,8 +10149,8 @@
       "name": "Rose-Garden Simurgh",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10158,8 +10158,8 @@
       "name": "Sylph of the Gale",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10167,8 +10167,8 @@
       "name": "Roman Legionary",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10176,8 +10176,8 @@
       "name": "Centurion",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10185,8 +10185,8 @@
       "name": "Crusader Knight",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10194,8 +10194,8 @@
       "name": "Knight of the Round Table",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10203,8 +10203,8 @@
       "name": "Sir Galahad, the Pure",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10212,8 +10212,8 @@
       "name": "El Cid Campeador",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10221,8 +10221,8 @@
       "name": "Longbowman",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10230,8 +10230,8 @@
       "name": "Inca Stonemason",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10239,8 +10239,8 @@
       "name": "Village Physician",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10248,8 +10248,8 @@
       "name": "Battle Cleric",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10257,8 +10257,8 @@
       "name": "Vaidya of Taxila",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10266,8 +10266,8 @@
       "name": "Hanlin Academy Scribe",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10275,8 +10275,8 @@
       "name": "Persian Astronomer",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10284,8 +10284,8 @@
       "name": "Astronomer of Copan",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10293,8 +10293,8 @@
       "name": "Imhotep the Builder",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10302,8 +10302,8 @@
       "name": "Terracotta Warrior",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10311,8 +10311,8 @@
       "name": "Talos, the Bronze Guard",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -10410,8 +10410,8 @@
       "name": "Zhuge Nu Repeater",
       "type": "machine",
       "color": "light",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12295,8 +12295,8 @@
       "name": "Witch's Toad",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12304,8 +12304,8 @@
       "name": "Black Cat Familiar",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12313,8 +12313,8 @@
       "name": "Haugbui",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12322,8 +12322,8 @@
       "name": "Jiangshi",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12331,8 +12331,8 @@
       "name": "Nachzehrer",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12340,8 +12340,8 @@
       "name": "Yurei",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12349,8 +12349,8 @@
       "name": "Vetala",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12358,8 +12358,8 @@
       "name": "Mara",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12367,8 +12367,8 @@
       "name": "Pontianak",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12376,8 +12376,8 @@
       "name": "Bog Revenant",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12385,8 +12385,8 @@
       "name": "Loup-Garou",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12394,8 +12394,8 @@
       "name": "Bayou Rougarou",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12403,8 +12403,8 @@
       "name": "Barghest",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12412,8 +12412,8 @@
       "name": "Black Cadejo",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12421,8 +12421,8 @@
       "name": "Night Mare",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12430,8 +12430,8 @@
       "name": "Black Widow",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12439,8 +12439,8 @@
       "name": "Bog Witch",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12448,8 +12448,8 @@
       "name": "Plague Doctor",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12457,8 +12457,8 @@
       "name": "Necromancer",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12466,8 +12466,8 @@
       "name": "Horned Night Visitor",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12475,8 +12475,8 @@
       "name": "Omen Raven",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12484,8 +12484,8 @@
       "name": "Draugr",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12493,8 +12493,8 @@
       "name": "Onryo",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12502,8 +12502,8 @@
       "name": "Bean Sidhe",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12511,8 +12511,8 @@
       "name": "Lich",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12520,8 +12520,8 @@
       "name": "Ankou",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12529,8 +12529,8 @@
       "name": "Strigoi",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12538,8 +12538,8 @@
       "name": "Aswang",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -12547,8 +12547,8 @@
       "name": "Manananggal",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14506,8 +14506,8 @@
       "name": "Great River Crocodile",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14515,8 +14515,8 @@
       "name": "Roc",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14524,8 +14524,8 @@
       "name": "Simurgh",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14533,8 +14533,8 @@
       "name": "Great Sphinx",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14542,8 +14542,8 @@
       "name": "Riddling Sphinx",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14551,8 +14551,8 @@
       "name": "Bronze Automaton",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14560,8 +14560,8 @@
       "name": "Talos the Bronze Giant",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14569,8 +14569,8 @@
       "name": "Clockwork Falcon",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14578,8 +14578,8 @@
       "name": "Horus the Far-Seeing",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14587,8 +14587,8 @@
       "name": "Ibis Scribe",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14596,8 +14596,8 @@
       "name": "Frilled Lizard",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14605,8 +14605,8 @@
       "name": "Horned Viper",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14614,8 +14614,8 @@
       "name": "Uraeus Cobra",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14623,8 +14623,8 @@
       "name": "Plumed Serpent",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14632,8 +14632,8 @@
       "name": "Chupacabra",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14641,8 +14641,8 @@
       "name": "Foo Dog Sentinel",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14650,8 +14650,8 @@
       "name": "Brass Foo Pup",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14659,8 +14659,8 @@
       "name": "Bahamut",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14668,8 +14668,8 @@
       "name": "Falak the Abyss Serpent",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14677,8 +14677,8 @@
       "name": "Sandworm",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14686,8 +14686,8 @@
       "name": "Linen-Wrapped Sentinel",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14695,8 +14695,8 @@
       "name": "Sand Golem",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14704,8 +14704,8 @@
       "name": "Wandering Alchemist",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14713,8 +14713,8 @@
       "name": "Bedouin Raider",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14722,8 +14722,8 @@
       "name": "Parthian Horse Archer",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14731,8 +14731,8 @@
       "name": "Bazaar Pickpocket",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14740,8 +14740,8 @@
       "name": "Mamluk Lancer",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14749,8 +14749,8 @@
       "name": "Persian Immortal",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -14758,8 +14758,8 @@
       "name": "Storm Imp",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16719,8 +16719,8 @@
       "name": "Alux Field Keeper",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16728,8 +16728,8 @@
       "name": "Grove Druid",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16737,8 +16737,8 @@
       "name": "Rainforest Curandero",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16746,8 +16746,8 @@
       "name": "Archdruid of the Oaks",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16755,8 +16755,8 @@
       "name": "Greenwood Outlaw",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16764,8 +16764,8 @@
       "name": "Hooded Outlaw Captain",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16773,8 +16773,8 @@
       "name": "Mountain Man Trapper",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16782,8 +16782,8 @@
       "name": "Sir Gawain",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16791,8 +16791,8 @@
       "name": "The Green Knight",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16800,8 +16800,8 @@
       "name": "Arthur, the Once King",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16809,8 +16809,8 @@
       "name": "Gwyn ap Nudd",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16818,8 +16818,8 @@
       "name": "Cwn Annwn Hound",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16827,8 +16827,8 @@
       "name": "Herne the Hunter",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16836,8 +16836,8 @@
       "name": "Tapio, King of the Forest",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16845,8 +16845,8 @@
       "name": "Sasquatch",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16854,8 +16854,8 @@
       "name": "Yowie",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16863,8 +16863,8 @@
       "name": "Basajaun",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16872,8 +16872,8 @@
       "name": "Kapre Tree Giant",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16881,8 +16881,8 @@
       "name": "Orang Pendek",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16890,8 +16890,8 @@
       "name": "Mapinguari",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16899,8 +16899,8 @@
       "name": "Old Man of the Forest",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16916,8 +16916,8 @@
       "name": "Monkey King's Vanguard",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16925,8 +16925,8 @@
       "name": "Tanuki Drummer",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16934,8 +16934,8 @@
       "name": "Grizzly Matriarch",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16943,8 +16943,8 @@
       "name": "Otso the Honey-Paw",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16952,8 +16952,8 @@
       "name": "Bull Moose",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16961,8 +16961,8 @@
       "name": "Dappled Fawn",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16970,8 +16970,8 @@
       "name": "Balam Jaguar Knight",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {
@@ -16979,8 +16979,8 @@
       "name": "Clouded Leopard",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 14
     },
     {

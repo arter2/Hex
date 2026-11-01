@@ -3960,5 +3960,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Shifted to focalPoint [0.5,0.38]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: Otso's complete bear face/eyes and honey-bearing paw stay visible together; cubs remain secondary and lower body crops."
+  },
+  {
+    "cardId": "verdant_summon_49",
+    "name": "Bull Moose",
+    "prompt": "Paint an original fantasy wildlife illustration for the exact card Bull Moose. Show one massive mature male North American moose standing in a cool boreal spruce forest at first light, unmistakably an Alces moose rather than an elk or reindeer: enormous broad palmate antlers with natural forked points, long drooping muzzle with a dark bulbous nose, pendulous throat bell, oversized ears, and a shaggy dark-brown shoulder hump. Its calm but powerful head faces three-quarters toward the viewer; green forest light camouflages its coat as it steps through low brush. The entire head, both eyes, both ears, complete muzzle and full palmate antlers are the defining subject. Painterly medieval fantasy collectible-card art, believable moose anatomy and antlers, layered brushwork, wet bark and leaves, atmospheric morning light. Exact 1:1 SQUARE for 512x512 editable master; arrange the broad antlers horizontally and keep their full tips plus face/eyes within x24..488,y105..407 for the 206:141 crop; legs and lower body may crop. Quiet canopy and ground margins. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-639805b7-436d-4525-a7bd-107c515cbe1d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_49.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.34]. Reviewed the full 512-square source, top-aligned direct 512×350 crop and 128×88 thumbnail: full palmate antlers, ears, both eyes and muzzle remain visible; lower body is incidental."
+  },
+  {
+    "cardId": "verdant_summon_50",
+    "name": "Dappled Fawn",
+    "prompt": "Paint an original fantasy wildlife illustration for the exact card Dappled Fawn. Depict one young white-tailed deer fawn standing in a sun-dappled forest glade: delicate narrow deer muzzle, very large alert ears, clear dark gentle eyes, slender neck and a warm russet coat patterned with crisp rows of small white fawn spots across its back and flanks. It lowers its head to nuzzle a small injured woodland rabbit as soft green-gold healing motes gather around them, rallying the glade. The fawn's complete face/eyes, both ears and white-spotted shoulder are prominent; unmistakably a deer fawn, not a goat, lamb or fox. Painterly medieval fantasy collectible-card art, natural deer anatomy, textured fur and grasses, gentle brushwork, soft dawn light and atmospheric depth. Exact 1:1 SQUARE editable 512x512 master; keep full face, eyes, ears and spotted shoulder safely within x24..488,y105..407 for 206:141 crop; lower legs and tail may crop. Quiet leaves and meadow above/below. No frame, writing, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-093e0337-37ac-4235-95b6-37faa43e3ab1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_50.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.34]. Reviewed the full 512-square source, top-aligned direct 512×350 crop and 128×88 thumbnail: full fawn face, both ears and spotted shoulder remain visible along with the rabbit; legs are incidental."
+  },
+  {
+    "cardId": "verdant_summon_51",
+    "name": "Balam Jaguar Knight",
+    "prompt": "Paint an original Maya-inspired mythic fantasy illustration for the exact card Balam Jaguar Knight. Depict Balam as a powerful upright jaguar warrior, the noble spotted cat spirit clad in historically inspired Classic Maya cotton armor, jade ear spools and a short patterned woven mantle, standing guard at a rainforest temple. Give him an unmistakable jaguar face with golden eyes, broad feline muzzle, whiskers, rounded ears and bold black rosettes with spots inside; he grips a wooden macuahuitl edged with obsidian blades in one hand and raises a small hide-covered shield in the other to draw an enemy's attention. Keep his entire jaguar face/eyes and both weapon hands prominent; no European plate armor, steel sword, lion face, leopard spots or human head. Painterly medieval fantasy collectible-card art, researched Maya materials and architecture, lush tropical greens, tactile fur, cotton weave, obsidian and jade, dramatic brushwork and atmospheric light. Exact 1:1 SQUARE 512x512 master; keep face/eyes, both hands, full weapon grip and shield inside x24..488,y105..407 for 206:141 crop; weapon extremities may crop. No text, glyphs, frame, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7a0faec3-e776-4792-8136-b996e273f9e4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_51.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.34]. Reviewed the full 512-square source, top-aligned direct 512×350 crop and 128×88 thumbnail: full jaguar face/eyes and distinctive Maya-inspired gear remain visible; lower weapon/body extremities are incidental."
+  },
+  {
+    "cardId": "verdant_summon_52",
+    "name": "Clouded Leopard",
+    "prompt": "Paint an original fantasy wildlife illustration for the exact card Clouded Leopard. Depict one real Southeast Asian clouded leopard crouched on a rainforest branch before a quick pounce: compact powerful body, short legs, long balancing tail, small rounded ears, amber eyes and a clear tawny-gray coat marked with the species' huge dark-edged cloud-shaped blotches and smaller inner spots along the shoulders and flanks. Give it a broad feline muzzle and long upper canines just visible; its spotted head and shoulder turn toward prey below. This is a clouded leopard of tropical Asian forests, not a snow leopard, jaguar or tiger. Painterly medieval fantasy collectible-card art, accurate cat anatomy and cloud-patterned fur, humid layered foliage, dappled green light, expressive brushwork and atmospheric depth. Exact 1:1 SQUARE for editable 512x512 master; keep entire face, both eyes, muzzle, ears and the defining cloud-patterned shoulders inside x24..488,y105..407 for 206:141 crop; tail, paws and legs may crop incidentally. Horizontal composition, quiet leaves above/below. No frame, text, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5456531d-4dea-4b13-8b30-a4951f79380f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_52.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the full 512-square source, direct 206:141 crop and 128×88 thumbnail: both eyes, muzzle and defining cloud-shaped coat blotches read clearly; legs and tail are incidental."
   }
 ]

@@ -1,0 +1,18 @@
+{
+  "batch": 8,
+  "newAssignedCards": 200,
+  "reviewedPackets": 40,
+  "reviewedSourceHashesUnchanged": 200,
+  "earlierRuntimeImagesUnchanged": 1800,
+  "earlierGeneratedRecordsUnchanged": 384,
+  "suppliedOriginalsUnchanged": 66,
+  "activeCards": 634,
+  "pendingCards": 1319,
+  "runtimeImagesDecoded": 2600,
+  "cardMarkupChecked": 1268,
+  "locked": "pass",
+  "fallback": "pass",
+  "gameplaySelftests": {"passed": 23, "failed": 0},
+  "browserLayout": "not tested",
+  "status": "pass"
+}

@@ -1,0 +1,1133 @@
+{
+  "downloadUrl": "https://github.com/arter2/Hex/archive/refs/heads/art/234-card-download.zip",
+  "downloadBytes": 173063281,
+  "downloadSha256": "9bc3f0af0710964cefcc8bd7c166624be9b40a4dc9f06063552fa1c7e78e5316",
+  "zipRoot": "Hex-art-234-card-download/",
+  "files": 983,
+  "editablePNGFiles": 234,
+  "verifiedImages": 936,
+  "distinctMasterContents": 234,
+  "sourceKinds": {
+    "supplied": 50,
+    "generated": 184
+  },
+  "byColour": {
+    "brown": 73,
+    "fire": 23,
+    "frost": 23,
+    "gray": 23,
+    "light": 23,
+    "shadow": 23,
+    "storm": 23,
+    "verdant": 23
+  },
+  "generatedIllustrations": [
+    {
+      "id": "brown_machine_05",
+      "name": "Clockwork Owl",
+      "file": "masters/brown/clockwork-owl--brown_machine_05.png",
+      "sha256": "5c34df519e3308fe88c13e609c81a61b0fbfdafd6840339f538842d612ba8fda"
+    },
+    {
+      "id": "brown_instant_16",
+      "name": "Sea-Folk Kelp Tea",
+      "file": "masters/brown/sea-folk-kelp-tea--brown_instant_16.png",
+      "sha256": "84af2cf0abcf4dccc186987a436eda917f952330af14418ef55660a42ded668e"
+    },
+    {
+      "id": "brown_machine_01",
+      "name": "Dwarven Cannon Nest",
+      "file": "masters/brown/dwarven-cannon-nest--brown_machine_01.png",
+      "sha256": "e5558f4a2efd79d85aabf5886427f76cf4a8661ea025d46dd6637a05f026671e"
+    },
+    {
+      "id": "brown_sentry_01",
+      "name": "Elven Starglass Spire",
+      "file": "masters/brown/elven-starglass-spire--brown_sentry_01.png",
+      "sha256": "8f83b7e949e1d791a0ac023d6c7402965b244a23716746f8aa2d3f77ff3c77f7"
+    },
+    {
+      "id": "brown_instant_01",
+      "name": "Dwarven Stout",
+      "file": "masters/brown/dwarven-stout--brown_instant_01.png",
+      "sha256": "ab088a34b5c280efdc73130438f3b8e74d40e4746fea3b5edd9a0297bba1c7a9"
+    },
+    {
+      "id": "brown_tinker_01",
+      "name": "Whetstone",
+      "file": "masters/brown/whetstone--brown_tinker_01.png",
+      "sha256": "678c59fd15df908b4fadca00ad6319afdde08db506180f6be3a73cefd2e18d0f"
+    },
+    {
+      "id": "brown_equip_05",
+      "name": "Sea-Folk Trident Head",
+      "file": "masters/brown/sea-folk-trident-head--brown_equip_05.png",
+      "sha256": "ffc41d0a42ad81f7c200ff60c5262643e8759686df58659416ea45e856ecc7e3"
+    },
+    {
+      "id": "brown_trap_01",
+      "name": "Dwarven Pendulum Axe",
+      "file": "masters/brown/dwarven-pendulum-axe--brown_trap_01.png",
+      "sha256": "04530c985723e9f7bfe84551f917d15186e58e5125b6ba8c82b1c04a2d07dd6d"
+    },
+    {
+      "id": "brown_aceup_02",
+      "name": "Black Powder Charge",
+      "file": "masters/brown/black-powder-charge--brown_aceup_02.png",
+      "sha256": "bb0123c239cf5f06873465ed71a7d59cf327407e0f7e710e55383418e64a84e3"
+    },
+    {
+      "id": "iron_corridor",
+      "name": "Iron Corridor",
+      "file": "masters/brown/iron-corridor--iron_corridor.png",
+      "sha256": "3107bad760394e714f3523f53f463872460b383fe302b5cba952d913cd0983e2"
+    },
+    {
+      "id": "brown_machine_02",
+      "name": "Steam Cannon",
+      "file": "masters/brown/steam-cannon--brown_machine_02.png",
+      "sha256": "2503e2fc0b88b78f748053d56f12fd44afd064ea80ea88722dea590251ded20f"
+    },
+    {
+      "id": "brown_instant_02",
+      "name": "Elven Dew",
+      "file": "masters/brown/elven-dew--brown_instant_02.png",
+      "sha256": "066ca240ce4f7aab9aa823ee10b886616deab8413eeac8181d9c61787485609e"
+    },
+    {
+      "id": "brown_equip_06",
+      "name": "Sky-Folk Steel Talons",
+      "file": "masters/brown/sky-folk-steel-talons--brown_equip_06.png",
+      "sha256": "f70e4c5ec2bf94e23fb570c2c2f839b23ce5b0c5dcddb9a2d9edaa7e25731cef"
+    },
+    {
+      "id": "brown_tinker_02",
+      "name": "Gun Oil",
+      "file": "masters/brown/gun-oil--brown_tinker_02.png",
+      "sha256": "d00391e65fab838a2a160bd1c0785d298d23476f654532d6b1738ae237e1ae50"
+    },
+    {
+      "id": "brown_machine_03",
+      "name": "Dwarven Runic Battery",
+      "file": "masters/brown/dwarven-runic-battery--brown_machine_03.png",
+      "sha256": "4d96d1e45bf60b0ea62b871f83e67369ad67eebb2e9666d333dfbd40519044e2"
+    },
+    {
+      "id": "brown_instant_03",
+      "name": "Troll Blood Tonic",
+      "file": "masters/brown/troll-blood-tonic--brown_instant_03.png",
+      "sha256": "a09a2b61095e30e6ecd445d3da655d0e82eb974717e0eecc8b369f7611ec37d8"
+    },
+    {
+      "id": "brown_equip_11",
+      "name": "Elven Leaf Mail",
+      "file": "masters/brown/elven-leaf-mail--brown_equip_11.png",
+      "sha256": "ef6dfb5c392f382908398630e7a87ddbccbcf331472da0931b1edd275d7089da"
+    },
+    {
+      "id": "brown_tinker_03",
+      "name": "Sharpening Wheel",
+      "file": "masters/brown/sharpening-wheel--brown_tinker_03.png",
+      "sha256": "60da1d4ee5897b02f05fffc0d8a2eab895869f4530bccd5854c3af372385729a"
+    },
+    {
+      "id": "brown_trap_02",
+      "name": "Gnomish Clockwork Pendulum",
+      "file": "masters/brown/gnomish-clockwork-pendulum--brown_trap_02.png",
+      "sha256": "be30a143a28d93dbed77820a42ab6aa5efc20f15ea29e3ceba3278bc04a7800b"
+    },
+    {
+      "id": "brown_machine_04",
+      "name": "Gnomish Arc Turret",
+      "file": "masters/brown/gnomish-arc-turret--brown_machine_04.png",
+      "sha256": "76312f8fbb6be47b045fe9812f96b283b0ddef20b32a4103e3254171217075fc"
+    },
+    {
+      "id": "brown_instant_04",
+      "name": "Panacea",
+      "file": "masters/brown/panacea--brown_instant_04.png",
+      "sha256": "365168dd64ec211564ed471924f602a251d766b6d94218b1039ecadf79c518f3"
+    },
+    {
+      "id": "brown_equip_12",
+      "name": "Gnomish Gear Armor",
+      "file": "masters/brown/gnomish-gear-armor--brown_equip_12.png",
+      "sha256": "d51f2ecdf991d6c7ac60f3cf0de055accbfeb368a35fca1c71999f1ad69b10e0"
+    },
+    {
+      "id": "brown_tinker_04",
+      "name": "Tempering Oil",
+      "file": "masters/brown/tempering-oil--brown_tinker_04.png",
+      "sha256": "69f30c0841239987d8a4adcd79637f1c2254fa86bd867766e8864361f306a91a"
+    },
+    {
+      "id": "ember_dart",
+      "name": "Ember Dart",
+      "file": "masters/fire/ember-dart--ember_dart.png",
+      "sha256": "8b369137f1de4f9b96184bf1421301ae273c7680634fe1a5b24a1a63c4f01f56"
+    },
+    {
+      "id": "fire_pot",
+      "name": "Fire Pot",
+      "file": "masters/fire/fire-pot--fire_pot.png",
+      "sha256": "0783c1536b3d81f94f4bb058852f1426f758b0cb17b2a0c6be01ad25fc649586"
+    },
+    {
+      "id": "cinder_lance",
+      "name": "Cinder Lance",
+      "file": "masters/fire/cinder-lance--cinder_lance.png",
+      "sha256": "e70742b21694ee9778d0fdef5df50c873d164b8c1352e7843e34a4c5249e9113"
+    },
+    {
+      "id": "ember_wall",
+      "name": "Ember Wall",
+      "file": "masters/fire/ember-wall--ember_wall.png",
+      "sha256": "362909928f4aa37b75dc3d7905e3c7219652c458bfafcfe9c0348bdea9c68007"
+    },
+    {
+      "id": "brazier",
+      "name": "Brazier",
+      "file": "masters/fire/brazier--brazier.png",
+      "sha256": "5014e34a38416b411fab11b917f8aa6e5cd2cadc90997fa9e60799e30c3cc39c"
+    },
+    {
+      "id": "meteor",
+      "name": "Meteor",
+      "file": "masters/fire/meteor--meteor.png",
+      "sha256": "ba680b2cbec8c666dbb26efe6452ec0b53e7518e45adfd9192df25be70bbd813"
+    },
+    {
+      "id": "kindle",
+      "name": "Kindle",
+      "file": "masters/fire/kindle--kindle.png",
+      "sha256": "239706952c6c6187f1aca56ce559f11f00da6b7935daaae377afcd15f8e1a302"
+    },
+    {
+      "id": "fire_charge_01",
+      "name": "Powder Horn",
+      "file": "masters/fire/powder-horn--fire_charge_01.png",
+      "sha256": "b9cba086e4916a962e86babda6854fcbbe08e82a6e3cdc59de915713686b032d"
+    },
+    {
+      "id": "fire_utility_01",
+      "name": "Prospector's Map",
+      "file": "masters/fire/prospectors-map--fire_utility_01.png",
+      "sha256": "2a98ef2050144f1d5c71d654c2e2d130ec74afc46111811bcb46001fc2a4ea3f"
+    },
+    {
+      "id": "fire_environment_01",
+      "name": "Lava Field",
+      "file": "masters/fire/lava-field--fire_environment_01.png",
+      "sha256": "2b53d6fdf7123c0d4c9313255a881b9b654d3933805685db55d2f3dfb443631d"
+    },
+    {
+      "id": "flame_fan",
+      "name": "Flame Fan",
+      "file": "masters/fire/flame-fan--flame_fan.png",
+      "sha256": "277fd1dcd734cb8ac5983c0e7a90aca0460e672ba688a9ccfb4d367e276f74c3"
+    },
+    {
+      "id": "fire_lob_01",
+      "name": "Dynamite Bundle",
+      "file": "masters/fire/dynamite-bundle--fire_lob_01.png",
+      "sha256": "6410a1ffd762fa0daffbbc07a4d02f1444c5eab11fbb99c67561c4f905011e44"
+    },
+    {
+      "id": "fire_sentry_01",
+      "name": "Bonfire",
+      "file": "masters/fire/bonfire--fire_sentry_01.png",
+      "sha256": "dbf1db263e8db04dcb1b0ba5a0873db31be7f505ef16005be60dcf51f17fa30c"
+    },
+    {
+      "id": "fire_utility_02",
+      "name": "Miner's Lamp",
+      "file": "masters/fire/miners-lamp--fire_utility_02.png",
+      "sha256": "e76b5d74f2e0c2fb1495dfe912e0035fee408b428f055105b8e51ef9ee4c99eb"
+    },
+    {
+      "id": "blaze_bolt",
+      "name": "Blaze Bolt",
+      "file": "masters/fire/blaze-bolt--blaze_bolt.png",
+      "sha256": "f97016df0ab7c721960a84022dc4d48a8e6249bb10dba9feb26ae40b753ed63c"
+    },
+    {
+      "id": "fire_lob_02",
+      "name": "Black Powder Keg",
+      "file": "masters/fire/black-powder-keg--fire_lob_02.png",
+      "sha256": "1087ab02293bc888ceadabd3defdb4f4632ebbbd4d23f30f2eec7b1834acead4"
+    },
+    {
+      "id": "fire_ward_01",
+      "name": "Dwarven Shieldwall",
+      "file": "masters/fire/dwarven-shieldwall--fire_ward_01.png",
+      "sha256": "9ade2b077b3f2e9e12752e8ca27add0e9152f256a2c7c6032deef064b7a56259"
+    },
+    {
+      "id": "fire_sentry_02",
+      "name": "Forge Bellows",
+      "file": "masters/fire/forge-bellows--fire_sentry_02.png",
+      "sha256": "22cac50773188ad0e9839ad8e90e8a08ad2755130e5cacc9cf5e68225a3fe2ac"
+    },
+    {
+      "id": "fire_boon_01",
+      "name": "Battle Fury",
+      "file": "masters/fire/battle-fury--fire_boon_01.png",
+      "sha256": "0b8d4eed32b1e3e18521084e90017058436792ca8e1c55ed0590e6b7ee060e81"
+    },
+    {
+      "id": "fire_strike_01",
+      "name": "Musket Shot",
+      "file": "masters/fire/musket-shot--fire_strike_01.png",
+      "sha256": "0115beb08930123db3f013537229dd4302b8c18ca9689050cf580e88d9e4bf0e"
+    },
+    {
+      "id": "fire_lob_03",
+      "name": "Grenado",
+      "file": "masters/fire/grenado--fire_lob_03.png",
+      "sha256": "5d4f57cafad42c576a35d939002516a7849459ddf40db86d80c86c363ca2ffbb"
+    },
+    {
+      "id": "fire_ward_02",
+      "name": "Forge-Iron Plate",
+      "file": "masters/fire/forge-iron-plate--fire_ward_02.png",
+      "sha256": "cce10f5a340a80b1898876b422b44bbb288a625707d21e7e6c64bed9324cf1a2"
+    },
+    {
+      "id": "fire_sentry_03",
+      "name": "Lava Totem",
+      "file": "masters/fire/lava-totem--fire_sentry_03.png",
+      "sha256": "9e5d06fe3b7a296e13f1413579030abb6a0da4a215566501ce48f2cf610bc10c"
+    },
+    {
+      "id": "frost_aceup_02",
+      "name": "Undertow Charm",
+      "file": "masters/frost/undertow-charm--frost_aceup_02.png",
+      "sha256": "711a0b8aa019c97d8a71f392b523a1f315a066fce9173b17d3a36bdc4dd8450c"
+    },
+    {
+      "id": "frost_strike_27",
+      "name": "Icebreaker Ram",
+      "file": "masters/frost/icebreaker-ram--frost_strike_27.png",
+      "sha256": "d967bbd7ac6f4d0f9e330bf3d94eb2d1601ad1e1494c279fed2d525092aee247"
+    },
+    {
+      "id": "ice_shard",
+      "name": "Ice Shard",
+      "file": "masters/frost/ice-shard--ice_shard.png",
+      "sha256": "2c8576517344126f8f96d3743e42de57c3af062f2cc02da93f8390e1d23c16d5"
+    },
+    {
+      "id": "rime_wall",
+      "name": "Rime Wall",
+      "file": "masters/frost/rime-wall--rime_wall.png",
+      "sha256": "dd547ee3cbf345857cfd1e7c6183a6132ba12a38b1e60c15f387f5d2d6a1f103"
+    },
+    {
+      "id": "glacial_veil",
+      "name": "Glacial Veil",
+      "file": "masters/frost/glacial-veil--glacial_veil.png",
+      "sha256": "323ef1b86e630fc7c28a198a43764f585a102e2eaf3638b8fa15dae6b9e4b456"
+    },
+    {
+      "id": "frost_utility_01",
+      "name": "Mirror Lake",
+      "file": "masters/frost/mirror-lake--frost_utility_01.png",
+      "sha256": "debcee70eca7522e199c23f4a0c15e314d1f3dba16e95d7a3597197edda72def"
+    },
+    {
+      "id": "hail_lob",
+      "name": "Hail Lob",
+      "file": "masters/frost/hail-lob--hail_lob.png",
+      "sha256": "5ab1efa03b01e4bc9dfb65f5321509b514549af26e258c423fce0acf7b92c5de"
+    },
+    {
+      "id": "icicle_spire",
+      "name": "Icicle Spire",
+      "file": "masters/frost/icicle-spire--icicle_spire.png",
+      "sha256": "5d49d896ff48569a992497d36b986a9142b748fae610d7ee33e8ce139c001976"
+    },
+    {
+      "id": "frost_summon_01",
+      "name": "Merrow",
+      "file": "masters/frost/merrow--frost_summon_01.png",
+      "sha256": "8c9f47a1d36567047afc2c17d7ea2e8fbfc15cc845f376ad5a89582de81ce817"
+    },
+    {
+      "id": "frost_environment_01",
+      "name": "Frozen Lake",
+      "file": "masters/frost/frozen-lake--frost_environment_01.png",
+      "sha256": "b3ac5d10745bc8f230254418bf1924940fa4075d5e2a7d7ca20702ef9cee20e6"
+    },
+    {
+      "id": "frost_lance",
+      "name": "Frost Lance",
+      "file": "masters/frost/frost-lance--frost_lance.png",
+      "sha256": "7400782079900be4575044979ad9a9a3e6e31dd17ec0e043ae73be80d6df611a"
+    },
+    {
+      "id": "frost_sentry_01",
+      "name": "Inuksuk Watcher",
+      "file": "masters/frost/inuksuk-watcher--frost_sentry_01.png",
+      "sha256": "ab27e0b58f7a25420d8a34614c263c8ec7ba6244f6e7cc4a0f48f645e4333e2d"
+    },
+    {
+      "id": "frost_boon_01",
+      "name": "Sea Legs",
+      "file": "masters/frost/sea-legs--frost_boon_01.png",
+      "sha256": "cae28e0e682afbb49c863309db27a928f84619d62c98ece2fb61f9253e4e0b7b"
+    },
+    {
+      "id": "frost_trap_01",
+      "name": "Ice Hole",
+      "file": "masters/frost/ice-hole--frost_trap_01.png",
+      "sha256": "315a93fe3c953134df7bc11f61ddbcb91e148db5bd58473fdd34364893db1c63"
+    },
+    {
+      "id": "frost_ward",
+      "name": "Frost Ward",
+      "file": "masters/frost/frost-ward--frost_ward.png",
+      "sha256": "6b891bc39185c0238ae58bcd0b8221ab9161edb46422386de196438bc9000f7d"
+    },
+    {
+      "id": "absolute_zero",
+      "name": "Absolute Zero",
+      "file": "masters/frost/absolute-zero--absolute_zero.png",
+      "sha256": "a82bcb8912a8d500935da678c5eb9724d61dc4e05ab1ef2a140e34635f93dd29"
+    },
+    {
+      "id": "frost_lob_01",
+      "name": "Twelve-Pound Shot",
+      "file": "masters/frost/twelve-pound-shot--frost_lob_01.png",
+      "sha256": "945b04ada91eb121e8bd1f85db30f1caf17ba3f09c33051e8822139eea89f95b"
+    },
+    {
+      "id": "frost_sentry_02",
+      "name": "Lighthouse",
+      "file": "masters/frost/lighthouse--frost_sentry_02.png",
+      "sha256": "5fe088bde25157674b7d0ae648ebb150eabdb842fc77ecdfbedf380ceaea82ea"
+    },
+    {
+      "id": "frost_boon_02",
+      "name": "Fair Winds",
+      "file": "masters/frost/fair-winds--frost_boon_02.png",
+      "sha256": "2506f202b2dce5037a2fbd2638423131cd878ea61edb7e1c187cc74912fb7ff1"
+    },
+    {
+      "id": "frost_strike_01",
+      "name": "Harpoon Throw",
+      "file": "masters/frost/harpoon-throw--frost_strike_01.png",
+      "sha256": "9a32412b6c3c1349a4ec32894e4791f7b5c37e091ae11fb721138c165d44f550"
+    },
+    {
+      "id": "frost_lob_02",
+      "name": "Chain Shot",
+      "file": "masters/frost/chain-shot--frost_lob_02.png",
+      "sha256": "30cff8189ee72604504e395c05c55728dfe7538d6b5aca29cc1a86ff67d00742"
+    },
+    {
+      "id": "frost_ward_01",
+      "name": "Sea Wall",
+      "file": "masters/frost/sea-wall--frost_ward_01.png",
+      "sha256": "a5ee41f7816908c007040d0a26452ee7673c501d694af62aa262a7406ce8bf1b"
+    },
+    {
+      "id": "frost_sentry_03",
+      "name": "Ice Spike Totem",
+      "file": "masters/frost/ice-spike-totem--frost_sentry_03.png",
+      "sha256": "df5048dd029895ba1a5668e09a6780204c429a525d4cb3d093af18d8a49854f3"
+    },
+    {
+      "id": "gray_summon_01",
+      "name": "Living Armor",
+      "file": "masters/gray/living-armor--gray_summon_01.png",
+      "sha256": "0a581674839d86bf7249e657ab9c2bbeb3827fbdcf5117fe3d9fc9aa213b83aa"
+    },
+    {
+      "id": "gray_charge_01",
+      "name": "Sling Stones",
+      "file": "masters/gray/sling-stones--gray_charge_01.png",
+      "sha256": "c48027eef8bb9a9a5b8272c9fbb13011658a126bde353373a1b0f1002786ae01"
+    },
+    {
+      "id": "gray_summon_02",
+      "name": "Empty Helm Sentinel",
+      "file": "masters/gray/empty-helm-sentinel--gray_summon_02.png",
+      "sha256": "9575c1973fbbbdfa41be66f9f25300512026dee8b2d8dbd528f0172b5be7d8d0"
+    },
+    {
+      "id": "gray_ward_01",
+      "name": "Shield Wall",
+      "file": "masters/gray/shield-wall--gray_ward_01.png",
+      "sha256": "60bc13c3207abc27f4f581bfcddda7632e429400fe3ef7950f132adb267364dd"
+    },
+    {
+      "id": "gray_boon_01",
+      "name": "Battle Cry",
+      "file": "masters/gray/battle-cry--gray_boon_01.png",
+      "sha256": "4910dc7d812e46c15f773f32c4481b665c2d54a4988ce0f7e911ce343f2ace63"
+    },
+    {
+      "id": "gray_charge_02",
+      "name": "Hunter's Quiver",
+      "file": "masters/gray/hunters-quiver--gray_charge_02.png",
+      "sha256": "86686aef8cdba45fd69e9a101ae7b7cd0cca53d365bcba44740c1791e3f328ec"
+    },
+    {
+      "id": "gray_summon_03",
+      "name": "Haunted Plate",
+      "file": "masters/gray/haunted-plate--gray_summon_03.png",
+      "sha256": "1b4c2740e730c643df668852f9bf68b49b9f2c2d7fc3c38b98007257da30eff7"
+    },
+    {
+      "id": "gray_ward_02",
+      "name": "Phalanx",
+      "file": "masters/gray/phalanx--gray_ward_02.png",
+      "sha256": "4b7581e63fb0ec56c93973e5e0d3bb769f817a341f854bc2a5b1c5df95c962f4"
+    },
+    {
+      "id": "gray_boon_02",
+      "name": "Rallying Horn",
+      "file": "masters/gray/rallying-horn--gray_boon_02.png",
+      "sha256": "35826a653a1b4625c8f65a94cabf885d32b2a7500307875c3a9417a3f7dd15df"
+    },
+    {
+      "id": "gray_charge_03",
+      "name": "Bag of Rocks",
+      "file": "masters/gray/bag-of-rocks--gray_charge_03.png",
+      "sha256": "d3aeb8884ad62f98913387957d794bf858c0468eb57a18a2d1a57a69444aa419"
+    },
+    {
+      "id": "gray_summon_04",
+      "name": "Rusted Suit of Armor",
+      "file": "masters/gray/rusted-suit-of-armor--gray_summon_04.png",
+      "sha256": "432d2ced1a8d98b3877eeb8cafa46e0d44e0f45c74880df3d3afdec56a2ab10d"
+    },
+    {
+      "id": "gray_ward_03",
+      "name": "Testudo",
+      "file": "masters/gray/testudo--gray_ward_03.png",
+      "sha256": "bfe09c581dc035d2a9fc9061ce9421c02ac7701911d7da146dacff02d6fa0870"
+    },
+    {
+      "id": "gray_boon_03",
+      "name": "Haka War Dance",
+      "file": "masters/gray/haka-war-dance--gray_boon_03.png",
+      "sha256": "20d45bf9805d8c615da115104b1e0200e25900cc7327bf63051410cf93a7c85f"
+    },
+    {
+      "id": "gray_charge_04",
+      "name": "Throwing Axes",
+      "file": "masters/gray/throwing-axes--gray_charge_04.png",
+      "sha256": "e98c2b5e76eadd1aa58b042797b7cea541c948ce2c55506782f9f269dc8af0a6"
+    },
+    {
+      "id": "gray_summon_05",
+      "name": "Gilded Parade Armor",
+      "file": "masters/gray/gilded-parade-armor--gray_summon_05.png",
+      "sha256": "87f474b41fbcddce39d5b29943f48fb64f45be1e468e98a89a2074972b135afb"
+    },
+    {
+      "id": "gray_ward_04",
+      "name": "Schiltron",
+      "file": "masters/gray/schiltron--gray_ward_04.png",
+      "sha256": "8cbccc491cebd3889ef774d0a8f69c171fabd81d5b50999b623634d9c056cbe9"
+    },
+    {
+      "id": "gray_boon_04",
+      "name": "Kiai Shout",
+      "file": "masters/gray/kiai-shout--gray_boon_04.png",
+      "sha256": "cd249129c1834a3da13e924cf40a9b3082f7d01fee63a5a13d742fdb82267de8"
+    },
+    {
+      "id": "gray_charge_05",
+      "name": "Javelin Bundle",
+      "file": "masters/gray/javelin-bundle--gray_charge_05.png",
+      "sha256": "50ab11de4cba9bd8052db1a264e4a99b7ebf89e643ca5207489acfd8fdf20a4a"
+    },
+    {
+      "id": "gray_summon_06",
+      "name": "Black Knight's Armor",
+      "file": "masters/gray/black-knights-armor--gray_summon_06.png",
+      "sha256": "3dc3423176e8c94c10f847fde3a9466f27dac1890970adefa51c58dbfa09a14d"
+    },
+    {
+      "id": "gray_summon_07",
+      "name": "Tin Soldier",
+      "file": "masters/gray/tin-soldier--gray_summon_07.png",
+      "sha256": "8409756f33f10088d74031991f50fef75ead1c34c6fe764ad051d57cea74cf04"
+    },
+    {
+      "id": "gray_ward_05",
+      "name": "Hedge of Spears",
+      "file": "masters/gray/hedge-of-spears--gray_ward_05.png",
+      "sha256": "664334ea50e67d5c72264395617136dbd0d4b1316c52348c2ab337f2ac825f21"
+    },
+    {
+      "id": "gray_boon_05",
+      "name": "Oath of Brotherhood",
+      "file": "masters/gray/oath-of-brotherhood--gray_boon_05.png",
+      "sha256": "c9bf9bc11266fc30fe02871f90d8bf1e950e0518db609f4bcdd353ce55a1a58d"
+    },
+    {
+      "id": "gray_charge_06",
+      "name": "Caltrop Pouch",
+      "file": "masters/gray/caltrop-pouch--gray_charge_06.png",
+      "sha256": "9d1964380918f36b6600cca7ef9b08ba31259df9b44bc83d3151e39b8a1754dc"
+    },
+    {
+      "id": "light_ward_17",
+      "name": "Aegis of Athena",
+      "file": "masters/light/aegis-of-athena--light_ward_17.png",
+      "sha256": "4672ecf280388f8c1497e6b483e06361d727f02564c7f30170ece2b8f4d2a11c"
+    },
+    {
+      "id": "light_sentry_12",
+      "name": "Pharos of Alexandria",
+      "file": "masters/light/pharos-of-alexandria--light_sentry_12.png",
+      "sha256": "02afefa9d13e949f8c302db24f7a3536c683f54db1c87d6cf953ae270275401e"
+    },
+    {
+      "id": "holy_bolt",
+      "name": "Holy Bolt",
+      "file": "masters/light/holy-bolt--holy_bolt.png",
+      "sha256": "1215bbe49dc2435c1bf2313b8cdac094aa10743bd5938d674493eac50657076b"
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "file": "masters/light/sanctuary--sanctuary.png",
+      "sha256": "b78af04c567a7c8393947088f08d1d4def8841aff6988836e813f5021b854890"
+    },
+    {
+      "id": "beacon_hope",
+      "name": "Beacon of Hope",
+      "file": "masters/light/beacon-of-hope--beacon_hope.png",
+      "sha256": "66bb686be805610ed30366a64a3e3806a9192e783d32abb63673d420e87a8486"
+    },
+    {
+      "id": "blessing",
+      "name": "Blessing",
+      "file": "masters/light/blessing--blessing.png",
+      "sha256": "1825cce7171998d348c34f174198115749dc8748ecfd135fdc8cbe4d4399b78c"
+    },
+    {
+      "id": "judgment",
+      "name": "Judgment",
+      "file": "masters/light/judgment--judgment.png",
+      "sha256": "7266369453d437da88f4cbd7cd9928153c9f1db477ed686dfc1dd1b3c792ee92"
+    },
+    {
+      "id": "light_charge_01",
+      "name": "Swan-Feather Quiver",
+      "file": "masters/light/swan-feather-quiver--light_charge_01.png",
+      "sha256": "64368242b82e04781645191c68a83406869b69278fed57f9449c3af4bca5ee7e"
+    },
+    {
+      "id": "light_trap_01",
+      "name": "Roman Caltrops",
+      "file": "masters/light/roman-caltrops--light_trap_01.png",
+      "sha256": "dc15fb850da3faea876b759cccdb8bddaf18940123743a9b81cc7a292e5d0959"
+    },
+    {
+      "id": "light_piece_01",
+      "name": "Crown of the Round Table",
+      "file": "masters/light/crown-of-the-round-table--light_piece_01.png",
+      "sha256": "79221cee295a016e216fa0473a7321ebcbc2db5244b600b48902cf678f516d7e"
+    },
+    {
+      "id": "radiant_motes",
+      "name": "Radiant Motes",
+      "file": "masters/light/radiant-motes--radiant_motes.png",
+      "sha256": "b8bb72c67a34de097c6eefb8e4cd974a6d9301706e4ccffac87ad3f0894635bc"
+    },
+    {
+      "id": "courage",
+      "name": "Courage",
+      "file": "masters/light/courage--courage.png",
+      "sha256": "708d52cb516abd514259e755b1e591b634c1cfe99414701da22f6770e21e2bf4"
+    },
+    {
+      "id": "light_utility_01",
+      "name": "Imperial Scribe's Brush",
+      "file": "masters/light/imperial-scribes-brush--light_utility_01.png",
+      "sha256": "3d43f6e7528c26c0de9cac0d53bc78ea23384933659ede980d23e3cd88c5bbc9"
+    },
+    {
+      "id": "light_ward_01",
+      "name": "Kite Shield",
+      "file": "masters/light/kite-shield--light_ward_01.png",
+      "sha256": "71e23a2681f9bf9e0b65639636861ac0934f4ecade802dfd9b02159ac6999133"
+    },
+    {
+      "id": "intervention",
+      "name": "Divine Intervention",
+      "file": "masters/light/divine-intervention--intervention.png",
+      "sha256": "1d4afb571eba3473b52f5dd055ee2e14efa0fb0bfe5a94aa55dcb9f65580fc9b"
+    },
+    {
+      "id": "dawnbreaker",
+      "name": "Dawnbreaker",
+      "file": "masters/light/dawnbreaker--dawnbreaker.png",
+      "sha256": "0d4c85e821b971e887ddeabd5eaf718d4ed97d253d27af3869ef363275b41f7e"
+    },
+    {
+      "id": "light_lob_01",
+      "name": "Bright Comet",
+      "file": "masters/light/bright-comet--light_lob_01.png",
+      "sha256": "eb2f47a351143d89a4cc980d62d3acdcbc30ea21b9a7a37e5b99132b5a45ad76"
+    },
+    {
+      "id": "light_ward_02",
+      "name": "Tower Shield",
+      "file": "masters/light/tower-shield--light_ward_02.png",
+      "sha256": "6734abbcc34f1d332530fa67155a5e8266654e7b6ebca0eff9bc37679e0dff4b"
+    },
+    {
+      "id": "light_sentry_01",
+      "name": "Harbor Lighthouse",
+      "file": "masters/light/harbor-lighthouse--light_sentry_01.png",
+      "sha256": "9388822b81a586960f99a77ca1041f94ba41783e93ca6e8700b4223feaeb79c8"
+    },
+    {
+      "id": "light_strike_01",
+      "name": "Pilum Volley",
+      "file": "masters/light/pilum-volley--light_strike_01.png",
+      "sha256": "2f9659bbdef7a90f76237893c7e5e65f8b276eb11de0a05dab412d34389150fc"
+    },
+    {
+      "id": "light_lob_02",
+      "name": "Mortar of Bricks",
+      "file": "masters/light/mortar-of-bricks--light_lob_02.png",
+      "sha256": "ec25021447b84748ddc620cce27c35aef182651a1e24bb9b96731af2492c8386"
+    },
+    {
+      "id": "light_ward_03",
+      "name": "Marble Wall",
+      "file": "masters/light/marble-wall--light_ward_03.png",
+      "sha256": "5419eab0338c7487fd080347f3588f0f3ceb17eb39d16767f81971154eeeb9c5"
+    },
+    {
+      "id": "light_sentry_02",
+      "name": "Arrow-Slit Tower",
+      "file": "masters/light/arrow-slit-tower--light_sentry_02.png",
+      "sha256": "a2d116baf3dbdd1c4d3b7e72ee6263f265a727074be116e55da6233a0ee51fd7"
+    },
+    {
+      "id": "shadow_strike_01",
+      "name": "Bone Splinter",
+      "file": "masters/shadow/bone-splinter--shadow_strike_01.png",
+      "sha256": "a8e8a3da3da61eeb355dd7555a28441facd39bed068fc431a6d11627e3f810c1"
+    },
+    {
+      "id": "shadow_strike_16",
+      "name": "Hellfire Lash",
+      "file": "masters/shadow/hellfire-lash--shadow_strike_16.png",
+      "sha256": "79672c11e4e172ee9d5063a90b227076400a85fb5183e13df040558a4788c965"
+    },
+    {
+      "id": "hex_bolt",
+      "name": "Hex Bolt",
+      "file": "masters/shadow/hex-bolt--hex_bolt.png",
+      "sha256": "a0980ace6f79647e7aa1b13763a8cf9f48a35983edf6d6a1e90959eb6e07288c"
+    },
+    {
+      "id": "grave_pit",
+      "name": "Grave Pit",
+      "file": "masters/shadow/grave-pit--grave_pit.png",
+      "sha256": "4ce5d018ae50eba7b0b9db109cd84de42549d775e9f0bb0853cdc1bf489c49df"
+    },
+    {
+      "id": "bone_wall",
+      "name": "Bone Wall",
+      "file": "masters/shadow/bone-wall--bone_wall.png",
+      "sha256": "27d63ff3fa21008d6182420086b2dc464560b8d34b17d856cad4caddf98f4840"
+    },
+    {
+      "id": "shadow_summon_01",
+      "name": "Belfry Bats",
+      "file": "masters/shadow/belfry-bats--shadow_summon_01.png",
+      "sha256": "2050e00bc16465e460bc148522e7cdef1d63798b2acf6bdef4662c45c9b690fd"
+    },
+    {
+      "id": "wraith_totem",
+      "name": "Wraith Totem",
+      "file": "masters/shadow/wraith-totem--wraith_totem.png",
+      "sha256": "2dbb6a0abc92e0e314f84129a478d8a6e65e0f06a0b91af0f1870674924ec4c3"
+    },
+    {
+      "id": "dark_pact",
+      "name": "Dark Pact",
+      "file": "masters/shadow/dark-pact--dark_pact.png",
+      "sha256": "a761131ec07156d83236f10a4106f0d9a9718a47aadf43231db8e277d7530fd2"
+    },
+    {
+      "id": "shadow_charge_01",
+      "name": "Bag of Teeth",
+      "file": "masters/shadow/bag-of-teeth--shadow_charge_01.png",
+      "sha256": "229f72df5269e2843e9ca39f4f003fe255830e0042cfd35ba00e4d97ae2df915"
+    },
+    {
+      "id": "shadow_environment_01",
+      "name": "Haunted Bog",
+      "file": "masters/shadow/haunted-bog--shadow_environment_01.png",
+      "sha256": "be957b425a464db57e5f672642f774d566fbc17cb76169034575e1e0493a1356"
+    },
+    {
+      "id": "shadow_lob_01",
+      "name": "Plague Flask",
+      "file": "masters/shadow/plague-flask--shadow_lob_01.png",
+      "sha256": "771923c4186b1a8b5de8919012efc7a052818fc2fe5fddc24086eb25d8ee11ee"
+    },
+    {
+      "id": "soul_drain",
+      "name": "Soul Drain",
+      "file": "masters/shadow/soul-drain--soul_drain.png",
+      "sha256": "0740192ffd9d3637693c186ff79e80391096709a2020a4b8927e42c3024c6d58"
+    },
+    {
+      "id": "shadow_sentry_01",
+      "name": "Skull Lantern",
+      "file": "masters/shadow/skull-lantern--shadow_sentry_01.png",
+      "sha256": "9e1f224d01bb816fd69ec965cdf05644c2ae1ee818160ea62ec856ae0cbb4fa0"
+    },
+    {
+      "id": "shadow_summon_02",
+      "name": "Mandrake Roots",
+      "file": "masters/shadow/mandrake-roots--shadow_summon_02.png",
+      "sha256": "b51d5db5430c42ba703b95bb6ab946c61312e269ca8fc9ba29739fedf5bf440e"
+    },
+    {
+      "id": "blood_lance",
+      "name": "Blood Lance",
+      "file": "masters/shadow/blood-lance--blood_lance.png",
+      "sha256": "5ed574264a30f27bebd7464508ba33f39bfbc2e52dfbb5c23c234bdf1165d56e"
+    },
+    {
+      "id": "shadow_lob_02",
+      "name": "Skull Bomb",
+      "file": "masters/shadow/skull-bomb--shadow_lob_02.png",
+      "sha256": "f905ced235779ae91c169c5462045fdd542b963ff1827232a9aef63ccf86036f"
+    },
+    {
+      "id": "shadow_ward_01",
+      "name": "Skull-Topped Fence",
+      "file": "masters/shadow/skull-topped-fence--shadow_ward_01.png",
+      "sha256": "0a12278ed585de4f61119431a04846cc613e0a704f6acee6767bfadce3f1d097"
+    },
+    {
+      "id": "shadow_sentry_02",
+      "name": "Stingy Jack's Lantern",
+      "file": "masters/shadow/stingy-jacks-lantern--shadow_sentry_02.png",
+      "sha256": "985aa6040adaa012fc25c2f7c802d6b1808ef30f2a354314c36a46421b0a5d47"
+    },
+    {
+      "id": "shadow_boon_01",
+      "name": "Shadow Step",
+      "file": "masters/shadow/shadow-step--shadow_boon_01.png",
+      "sha256": "4dabf809ba959bb22339519190f72f6124da5fe1a3a5a2ee64865a0b3b9770cc"
+    },
+    {
+      "id": "eclipse",
+      "name": "Eclipse",
+      "file": "masters/shadow/eclipse--eclipse.png",
+      "sha256": "1a4ba1a590e2edf6a5db601f68e2706166bdd45ba9802b1eb53871092071ecf5"
+    },
+    {
+      "id": "shadow_lob_03",
+      "name": "Grave Dirt Handful",
+      "file": "masters/shadow/grave-dirt-handful--shadow_lob_03.png",
+      "sha256": "f466eac2c85d7b866013c15bccdf1f2d96b54c9e5335a5855a34c25d49e9d5b9"
+    },
+    {
+      "id": "shadow_ward_02",
+      "name": "Coffin Lid",
+      "file": "masters/shadow/coffin-lid--shadow_ward_02.png",
+      "sha256": "953c4949124e36576cd3374cd508c2da169681869c58fd8e2a79d2f1dacda4eb"
+    },
+    {
+      "id": "shadow_sentry_03",
+      "name": "Crow Perch",
+      "file": "masters/shadow/crow-perch--shadow_sentry_03.png",
+      "sha256": "cd42dea67edcd3dc6624991a4da298e76da335a3c00b82b1214a18965d5c400f"
+    },
+    {
+      "id": "storm_lob_01",
+      "name": "Lightning in a Bottle",
+      "file": "masters/storm/lightning-in-a-bottle--storm_lob_01.png",
+      "sha256": "cc2e69a0fded168822e3c31fec9711681779d2a02562e7cadc96f9589e1e3d1f"
+    },
+    {
+      "id": "storm_summon_49",
+      "name": "Thunder Hawk",
+      "file": "masters/storm/thunder-hawk--storm_summon_49.png",
+      "sha256": "366614f1b7a14f02f5cf0064b1758c48e0ffa0f53d3058a58c2d276e4ed2f8de"
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "file": "masters/storm/spark--spark.png",
+      "sha256": "3236065a82ad57ee2897866793c0b5252a0c20bb9870b1433f82fa48306a3f69"
+    },
+    {
+      "id": "ball_light",
+      "name": "Ball Lightning",
+      "file": "masters/storm/ball-lightning--ball_light.png",
+      "sha256": "c823c304294929cc94897753e03deb05bef53cb74a25b3bbda7f4d4d5e9ab28f"
+    },
+    {
+      "id": "static_ward",
+      "name": "Static Ward",
+      "file": "masters/storm/static-ward--static_ward.png",
+      "sha256": "34c74adb2dc1acf7a67c7c633d12160701e513ce7e0760930ce5727731ec1662"
+    },
+    {
+      "id": "storm_utility_01",
+      "name": "Astrolabe",
+      "file": "masters/storm/astrolabe--storm_utility_01.png",
+      "sha256": "de75dac263da3197ceea669fc69f51603afd0e45a71b597fa34e84ac39b9df0e"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind",
+      "file": "masters/storm/tailwind--tailwind.png",
+      "sha256": "29048b1ccea9b1fdf037c720f8d6eb0fd24355101cb0b9326126729845148d5a"
+    },
+    {
+      "id": "coil_sentry",
+      "name": "Coil Sentry",
+      "file": "masters/storm/coil-sentry--coil_sentry.png",
+      "sha256": "817599199eb7a62c1adc98438c0a390307cfdad829d659f068f20893698ae578"
+    },
+    {
+      "id": "storm_charge_01",
+      "name": "Leyden Jar Battery",
+      "file": "masters/storm/leyden-jar-battery--storm_charge_01.png",
+      "sha256": "2e6fe11cc0d127bc2d833993787badba59edda9e7807ab830eabe0000ee2456e"
+    },
+    {
+      "id": "storm_piece_01",
+      "name": "Lamp of the Bound Djinn",
+      "file": "masters/storm/lamp-of-the-bound-djinn--storm_piece_01.png",
+      "sha256": "30118e1164f9f0b72c274c75e54a0fa9c4816581639a8207ff1a9054b64c8e0c"
+    },
+    {
+      "id": "thunder_row",
+      "name": "Thunder Row",
+      "file": "masters/storm/thunder-row--thunder_row.png",
+      "sha256": "c9f1348ae722f932291e2e277c14a4d21d3f339b60b5e21d33e16133027a602d"
+    },
+    {
+      "id": "storm_ward_01",
+      "name": "Copper Lattice",
+      "file": "masters/storm/copper-lattice--storm_ward_01.png",
+      "sha256": "f1373a776398e3e4c57b18d518d86b34da6bf7e1e6f6e021f7b01adb54d7866a"
+    },
+    {
+      "id": "storm_sentry_01",
+      "name": "Lightning Rod",
+      "file": "masters/storm/lightning-rod--storm_sentry_01.png",
+      "sha256": "a908baf651f828bd9c4dea5ac0f176e2daf2067bc34b43dd0343fa6867aadf28"
+    },
+    {
+      "id": "storm_trap_01",
+      "name": "Pit of Gold Coins",
+      "file": "masters/storm/pit-of-gold-coins--storm_trap_01.png",
+      "sha256": "817d2ea9d4c56c99ee5c563cbd16f2af6f42a1c163bd3cb1d7dbcaed4003ff09"
+    },
+    {
+      "id": "chain_light",
+      "name": "Chain Lightning",
+      "file": "masters/storm/chain-lightning--chain_light.png",
+      "sha256": "72572bd963d4f4e287608c674aa4f414e8ef9bfcd939809391de2cdb01ffa160"
+    },
+    {
+      "id": "stormcall",
+      "name": "Stormcall",
+      "file": "masters/storm/stormcall--stormcall.png",
+      "sha256": "3eb7e30560945f2a772cc1c2b64844feb87abbf94ba5636b73f3b5e9d6d5a305"
+    },
+    {
+      "id": "storm_ward_02",
+      "name": "Bronze Aegis",
+      "file": "masters/storm/bronze-aegis--storm_ward_02.png",
+      "sha256": "c85446327dea0d85cb87a3806e14c0d97ac590ff42f967efe1dde832a17e53f8"
+    },
+    {
+      "id": "storm_boon_01",
+      "name": "Scorpion Pit Ring",
+      "file": "masters/storm/scorpion-pit-ring--storm_boon_01.png",
+      "sha256": "6cbc63c617477c63f1feca9720e9af18b9eccdcfa1ece6c0212f531665ba97c8"
+    },
+    {
+      "id": "storm_sentry_02",
+      "name": "Tesla Coil",
+      "file": "masters/storm/tesla-coil--storm_sentry_02.png",
+      "sha256": "e2d4472faf7a6348ad9c3e476b3f14deecbd07382707bce7da5b27f06bd37bd8"
+    },
+    {
+      "id": "storm_strike_01",
+      "name": "Lightning Lash",
+      "file": "masters/storm/lightning-lash--storm_strike_01.png",
+      "sha256": "4388cc23d6350844c1a10643994c9cdcdd706457a7133c40205ca596475eeae4"
+    },
+    {
+      "id": "storm_lob_02",
+      "name": "Alembic Flask",
+      "file": "masters/storm/alembic-flask--storm_lob_02.png",
+      "sha256": "1999f8fc40534271b6401e3dcbb46b6630a376439936a3ee6b27c8d93ece5955"
+    },
+    {
+      "id": "storm_ward_03",
+      "name": "Sandbag Wall",
+      "file": "masters/storm/sandbag-wall--storm_ward_03.png",
+      "sha256": "f3286a4a611aff50cb236343eacf59f4571a094a5384f1230ac42888e745378f"
+    },
+    {
+      "id": "storm_sentry_03",
+      "name": "Sun Obelisk",
+      "file": "masters/storm/sun-obelisk--storm_sentry_03.png",
+      "sha256": "e850167f85cc3e68134bd88b8e5e297a1966c8a471969889fe6788256e6051b6"
+    },
+    {
+      "id": "verdant_charge_08",
+      "name": "Monkey's Fruit Stash",
+      "file": "masters/verdant/monkeys-fruit-stash--verdant_charge_08.png",
+      "sha256": "665415484cc4aa3f4dd38bd486a701c2e29905c690041f7f21b5812137fe01d9"
+    },
+    {
+      "id": "verdant_summon_44",
+      "name": "Capuchin Thief",
+      "file": "masters/verdant/capuchin-thief--verdant_summon_44.png",
+      "sha256": "484bdc6fc758e7fb59c3ed755b214201e375c632873ff6fa7e9aeabd5778414a"
+    },
+    {
+      "id": "thorn_dart",
+      "name": "Thorn Dart",
+      "file": "masters/verdant/thorn-dart--thorn_dart.png",
+      "sha256": "00408d2f16048c9bc2ab64ed35e430da0734150ddb8e3893ba275077a23188f2"
+    },
+    {
+      "id": "bramble_wall",
+      "name": "Bramble Wall",
+      "file": "masters/verdant/bramble-wall--bramble_wall.png",
+      "sha256": "cdcccf785fd29f7ede21fccadb52fd6d8b47751725547ce3087eb20b4dafaf84"
+    },
+    {
+      "id": "spore_pod",
+      "name": "Spore Pod",
+      "file": "masters/verdant/spore-pod--spore_pod.png",
+      "sha256": "01929bd1dd2e74f4078fd629c5ec37dc1ed79efdaa25502e4ba2f0834f9de2a1"
+    },
+    {
+      "id": "regrowth",
+      "name": "Regrowth",
+      "file": "masters/verdant/regrowth--regrowth.png",
+      "sha256": "a5e2a3611ec9ffbcd3a097075d76b1ca65b493d4e573e0047c83874b2e1b6cf6"
+    },
+    {
+      "id": "briar_bomb",
+      "name": "Briar Bomb",
+      "file": "masters/verdant/briar-bomb--briar_bomb.png",
+      "sha256": "02320be2a7b0ad33ed92ecefd1c910b8497ccac44b5448352615fb33a29f8462"
+    },
+    {
+      "id": "verdant_summon_01",
+      "name": "Wasp Nest",
+      "file": "masters/verdant/wasp-nest--verdant_summon_01.png",
+      "sha256": "fde9a978d30303910aba58f64a2cd27f005b922cf917897e5c48354aa6b420c6"
+    },
+    {
+      "id": "verdant_charge_01",
+      "name": "Quiver of Yew Arrows",
+      "file": "masters/verdant/quiver-of-yew-arrows--verdant_charge_01.png",
+      "sha256": "0ccd0a7f49bb796db718dcbf91e58dd6bbd4caf2fd40f4a339cb69c3c6f27904"
+    },
+    {
+      "id": "verdant_trap_01",
+      "name": "Hunter's Net",
+      "file": "masters/verdant/hunters-net--verdant_trap_01.png",
+      "sha256": "b3093d9efc785acee39e6c6fa6ebd5189c84dac2e76100865ef874314bdd2325"
+    },
+    {
+      "id": "vine_lash",
+      "name": "Vine Lash",
+      "file": "masters/verdant/vine-lash--vine_lash.png",
+      "sha256": "1be9955515a883a90870f48bb744f306f60942e145ed4ee748ea2d3fdc77f05f"
+    },
+    {
+      "id": "bark_skin",
+      "name": "Bark Skin",
+      "file": "masters/verdant/bark-skin--bark_skin.png",
+      "sha256": "139277d5bf1f503d9cdfe3bf629dd5f7f6f2f9ec9217d7b22112a9a464f4517e"
+    },
+    {
+      "id": "verdant_summon_02",
+      "name": "Felled Oak",
+      "file": "masters/verdant/felled-oak--verdant_summon_02.png",
+      "sha256": "63733770ba7b92d3f8abdd1e4dd47d185b8846c3ba979b527fcc41ede6aab9b3"
+    },
+    {
+      "id": "verdant_sentry_01",
+      "name": "Pitcher Plant",
+      "file": "masters/verdant/pitcher-plant--verdant_sentry_01.png",
+      "sha256": "4d5c252bae2d534b0ff94c7aaaecd63b6d49798e64281837ca7cd8498bd049dc"
+    },
+    {
+      "id": "mend",
+      "name": "Mend",
+      "file": "masters/verdant/mend--mend.png",
+      "sha256": "fefe02f45f66a829022813fffa1a1d88cf44a64c83fc050036c62223e08eb12d"
+    },
+    {
+      "id": "verdant_strike_01",
+      "name": "Hunter's Longbow Shot",
+      "file": "masters/verdant/hunters-longbow-shot--verdant_strike_01.png",
+      "sha256": "13aacf99963049c5584a4c5b7ada1412a6f8e5278865b7926df5f2a7955d5d0b"
+    },
+    {
+      "id": "verdant_lob_01",
+      "name": "Squirting Cucumber",
+      "file": "masters/verdant/squirting-cucumber--verdant_lob_01.png",
+      "sha256": "e33409e130861d734bf4a4b80e5ed22207031ab858ddb6732d5d76d226c00ccd"
+    },
+    {
+      "id": "verdant_ward_01",
+      "name": "Hawthorn Hedge",
+      "file": "masters/verdant/hawthorn-hedge--verdant_ward_01.png",
+      "sha256": "e7407caf82b0a1749dbdcb889ca4a549ddb4d998026a43a656d4d4ae4e45f996"
+    },
+    {
+      "id": "verdant_summon_03",
+      "name": "Strangler Fig Roots",
+      "file": "masters/verdant/strangler-fig-roots--verdant_summon_03.png",
+      "sha256": "e4e258a2661f0ec7a0a0fbdf4b3b16aaea289b037b240a6475ad7b45625a0f31"
+    },
+    {
+      "id": "world_tree",
+      "name": "World Tree",
+      "file": "masters/verdant/world-tree--world_tree.png",
+      "sha256": "559b8199315ba6650c3696ced0bfa699cdf86d8ef3ba9690574d9a3b7eb41a97"
+    },
+    {
+      "id": "verdant_strike_02",
+      "name": "Yew Arrow",
+      "file": "masters/verdant/yew-arrow--verdant_strike_02.png",
+      "sha256": "5b536ec6cb5b7d9f43c3316564880a9535f6b03c8b73814f15adc7bffcd7ceb0"
+    },
+    {
+      "id": "verdant_lob_02",
+      "name": "Bog Belch",
+      "file": "masters/verdant/bog-belch--verdant_lob_02.png",
+      "sha256": "36d314ce3b5f98226706078dbab7da849477d857075a714328ef418208566c04"
+    },
+    {
+      "id": "verdant_ward_02",
+      "name": "Holly Thicket",
+      "file": "masters/verdant/holly-thicket--verdant_ward_02.png",
+      "sha256": "8c494f7232913b8fd87b599b74d2119c450fa9f8658bbb8f9735eee068b88a97"
+    }
+  ],
+  "crc": "pass",
+  "imageDecodeAndDimensions": "pass",
+  "allImageChecksums": "pass"
+}

@@ -1,0 +1,21 @@
+{
+  "batch": 11,
+  "newAssignedCards": 200,
+  "reviewedPackets": 40,
+  "reviewedSourceHashesUnchanged": 200,
+  "earlierRuntimeImagesUnchanged": 4200,
+  "earlierGeneratedRecordsUnchanged": 984,
+  "suppliedOriginalsUnchanged": 66,
+  "activeCards": 1234,
+  "pendingCards": 719,
+  "status": "pass",
+  "runtimeImagesDecoded": 5000,
+  "cardMarkupChecked": 2468,
+  "locked": "pass",
+  "fallback": "pass",
+  "browserLayout": "not tested: sandbox prevents browser launch",
+  "gameplaySelftests": {
+    "passed": 23,
+    "failed": 0
+  }
+}

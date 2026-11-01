@@ -1,15 +1,15 @@
 {
   "batch": 14,
-  "status": "in-progress",
+  "status": "complete",
   "targetNewImages": 200,
-  "generatedSources": 193,
-  "reviewedSources": 192,
-  "missingSources": 7,
-  "reviewedPackets": 40,
+  "generatedSources": 200,
+  "reviewedSources": 200,
+  "missingSources": 0,
+  "reviewedPackets": 42,
   "requiresRepaint": [],
   "baselineActive": 1634,
   "targetActive": 1834,
-  "runtimeActive": 1634,
+  "runtimeActive": 1834,
   "catalogueTotal": 1953,
   "catalogueRemainingBeforeBatch": 319,
   "catalogueRemainingAfterBatch": 119,
@@ -2026,10 +2026,46 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_44.png",
       "sha256": "c3787e86ab289107952a93d96712d82425f1deafbb790354885f7ea73af3deaf",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.5
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_45",
+      "name": "Mamluk Lancer",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_45.png",
+      "sha256": "777e37232a2376e92bb375be3f505c91c37d29dd521f6e9c0f3a6378b84ef7a5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_46",
+      "name": "Persian Immortal",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_46.png",
+      "sha256": "73d9c39639e204cff3f257280837a6c46fb6cbb39fd28b2d5e1e1ceec19187e3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_47",
+      "name": "Storm Imp",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_47.png",
+      "sha256": "5facda1f20430a948842b0cefd60b83566643786914041fea6298b1aaacc2714",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
       ]
     },
     {
@@ -2330,6 +2366,54 @@
       "focalPoint": [
         0.5,
         0.38
+      ]
+    },
+    {
+      "cardId": "verdant_summon_49",
+      "name": "Bull Moose",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_49.png",
+      "sha256": "3aa955611ef3312a5be6d426d249c69ff3e13e17912436ab770a464de7b0619b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "verdant_summon_50",
+      "name": "Dappled Fawn",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_50.png",
+      "sha256": "8e403de4976454b0eff850dfaac9ba51082fa471fd72621e883a56bae085d4ff",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "verdant_summon_51",
+      "name": "Balam Jaguar Knight",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_51.png",
+      "sha256": "d75aa90d309adbf4f3cad2fceab39746c45fc48b40f95a3086350efe63aa35ea",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "verdant_summon_52",
+      "name": "Clouded Leopard",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_52.png",
+      "sha256": "f20e6530fe4c712645632f7e4d20bd12acb839c9f4b32c50cdb71f18f0be53a2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     }
   ]

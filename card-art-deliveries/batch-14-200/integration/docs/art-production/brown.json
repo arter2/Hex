@@ -1,0 +1,1406 @@
+[
+  {
+    "id": "brown_machine_01",
+    "name": "Dwarven Cannon Nest",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_02",
+    "name": "Steam Cannon",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_03",
+    "name": "Dwarven Runic Battery",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_04",
+    "name": "Gnomish Arc Turret",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_05",
+    "name": "Clockwork Owl",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_06",
+    "name": "Elven Moonbow Ballista",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_sentry_01",
+    "name": "Elven Starglass Spire",
+    "type": "sentry",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_07",
+    "name": "Goblin Junk Cannon",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_08",
+    "name": "Harbor Ballista",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_09",
+    "name": "Lighthouse Lens Beam",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_10",
+    "name": "Sky-Ship Deck Gun",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_11",
+    "name": "Djinn Brass Idol",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_12",
+    "name": "Troll Bone Ballista",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_13",
+    "name": "Alchemist's Fire Siphon",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_14",
+    "name": "Brass Crossbow Turret",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_15",
+    "name": "Antikythera Sentinel",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_16",
+    "name": "Gnomish Gatling",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_17",
+    "name": "Brass Hornet Swarm",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_18",
+    "name": "Goblin Rattle-Gun",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_19",
+    "name": "Chu-ko-nu Repeater",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_20",
+    "name": "Elven Spinning Glaive",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_21",
+    "name": "Coral Spitter",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_22",
+    "name": "Sky-Folk Kite Drone",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_23",
+    "name": "Dwarven Rivet Gun",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_24",
+    "name": "Troll Pebble Hurler",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_25",
+    "name": "Al-Jazari's Elephant Clock",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_26",
+    "name": "Siege Mangonel",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_27",
+    "name": "Castle Trebuchet",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_28",
+    "name": "Goblin Rocket Rack",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_29",
+    "name": "Gnomish Bomb Lobber",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_30",
+    "name": "Alchemist's Acid Mortar",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_31",
+    "name": "Troll Boulder Sling",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_32",
+    "name": "Depth Charge Launcher",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_33",
+    "name": "Sky-Folk Bomb Balloon",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_34",
+    "name": "Dwarven Thunder Mortar",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_35",
+    "name": "Byzantine Fire Engine",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_36",
+    "name": "Djinn Sand Cannon",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_37",
+    "name": "Elven Seed Catapult",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_38",
+    "name": "Iron Bastion",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_39",
+    "name": "Dwarven Gate of Iron",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_40",
+    "name": "Gnomish Pop-Up Wall",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_41",
+    "name": "Elven Thornglass Barrier",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_42",
+    "name": "Goblin Scrap Barricade",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_43",
+    "name": "Coral Rampart",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_44",
+    "name": "Sky-Folk Wind Sail Wall",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_45",
+    "name": "Troll Stone Rampart",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_46",
+    "name": "Pike Palisade",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_47",
+    "name": "Alchemist's Glass Bulwark",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_48",
+    "name": "Djinn Mirage Wall",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_machine_49",
+    "name": "Brass Tortoise Wall",
+    "type": "machine",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_01",
+    "name": "Dwarven Stout",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_02",
+    "name": "Elven Dew",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_03",
+    "name": "Troll Blood Tonic",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_04",
+    "name": "Panacea",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_05",
+    "name": "Elixir of Life",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_06",
+    "name": "Peach of Immortality",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_07",
+    "name": "Soma Draught",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_08",
+    "name": "Berserker Brew",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_09",
+    "name": "Giant's Strength Potion",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_10",
+    "name": "Haoma Cup",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_11",
+    "name": "Liquid Courage",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_12",
+    "name": "Mead of Poetry",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_13",
+    "name": "Mana Potion",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_14",
+    "name": "Gnomish Coffee",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_15",
+    "name": "Kahve of the Bazaar",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_16",
+    "name": "Sea-Folk Kelp Tea",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_17",
+    "name": "Smoke Bomb",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_18",
+    "name": "Cat's Eye Tonic",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_19",
+    "name": "Invisibility Draught",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_20",
+    "name": "Bottled Lightning",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_21",
+    "name": "Guardian Angel Vial",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_22",
+    "name": "Goblin Rage Juice",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_23",
+    "name": "Throwing Knives",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_24",
+    "name": "Goblin Firecracker",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_25",
+    "name": "Flash Bang Powder",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_26",
+    "name": "Shock Glove",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_27",
+    "name": "Elven Flechette",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_28",
+    "name": "Bolas",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_29",
+    "name": "Boomerang",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_30",
+    "name": "Chakram",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_31",
+    "name": "Net Gun",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_32",
+    "name": "Coral Shrapnel",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_33",
+    "name": "Djinn Smoke Puff",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_34",
+    "name": "Dwarven Blasting Charge",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_35",
+    "name": "Gnomish Grenade",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_36",
+    "name": "Sticky Tar Bomb",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_37",
+    "name": "Acid Flask",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_38",
+    "name": "Sky-Folk Lightning Jar",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_39",
+    "name": "Troll Snot Bomb",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_40",
+    "name": "Dwarven Rune Grenade",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_41",
+    "name": "Spyglass Peek",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_42",
+    "name": "Pocket Almanac",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_43",
+    "name": "Dwarven Ledger",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_44",
+    "name": "Elven Star Map",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_45",
+    "name": "Gnomish Punch-Card Reader",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_46",
+    "name": "Dowsing Rod",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_47",
+    "name": "Gnomish Card-Finder",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_48",
+    "name": "Smuggler's Map",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_49",
+    "name": "Goblin Rummage Sack",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_50",
+    "name": "Quartermaster's Ledger",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_51",
+    "name": "Weapon Rack Index",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_52",
+    "name": "Armorer's Catalog",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_53",
+    "name": "Shield Rack Index",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_54",
+    "name": "Beast Whistle",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_55",
+    "name": "Kite Signal",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_56",
+    "name": "Rune Compass",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_57",
+    "name": "Lodestone Locator",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_58",
+    "name": "Akashic Lens",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_59",
+    "name": "Clockwork Shuffler",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_60",
+    "name": "Goblin Card Toss",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_61",
+    "name": "Djinn's Whirlwind Deal",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_62",
+    "name": "Tidecaller's Shuffle",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_63",
+    "name": "Elven Sorting Lens",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_64",
+    "name": "Dwarven Sorting Tray",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_65",
+    "name": "Gnomish Sieve",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_66",
+    "name": "Merchant's Scale",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_67",
+    "name": "Lightning Battery",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_68",
+    "name": "Dwarven Forge Bellows",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_69",
+    "name": "Gnomish Wind-Up Key",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_70",
+    "name": "Alchemist's Reagent Kit",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_71",
+    "name": "Storm Jar Generator",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_72",
+    "name": "Troll Rock Grinder",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_73",
+    "name": "Smelling Salts",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_74",
+    "name": "Antidote Kit",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_75",
+    "name": "Elven Purifying Lamp",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_76",
+    "name": "Copying Press",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_77",
+    "name": "Gnomish Duplicator",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_78",
+    "name": "Grappling Hook",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_79",
+    "name": "Pop-Up Umbrella Shield",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_80",
+    "name": "Dwarven Shield Charm",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_81",
+    "name": "Gnomish Force Bubble",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_82",
+    "name": "Elven Glass Ward",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_83",
+    "name": "Sea-Folk Shell Guard",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_instant_84",
+    "name": "Djinn Mirage Cloak",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_01",
+    "name": "Dwarven War Axe",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_02",
+    "name": "Elven Moon Blade",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_03",
+    "name": "Goblin Spiked Collar",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_04",
+    "name": "Troll Bone Club",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_05",
+    "name": "Sea-Folk Trident Head",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_06",
+    "name": "Sky-Folk Steel Talons",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_07",
+    "name": "Damascus Edge",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_08",
+    "name": "Masamune's Edge",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_09",
+    "name": "Khopesh",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_10",
+    "name": "Dwarven Plate",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_11",
+    "name": "Elven Leaf Mail",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_12",
+    "name": "Gnomish Gear Armor",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_13",
+    "name": "Troll Hide Barding",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_14",
+    "name": "Sea-Folk Scale Mail",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_15",
+    "name": "O-yoroi Lacquer Plate",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_16",
+    "name": "Brigandine Coat",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_17",
+    "name": "Clockwork Spurs",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_18",
+    "name": "Gnomish Spring Boots",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_19",
+    "name": "Goblin Rocket Pack",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_20",
+    "name": "Sky-Folk Wing Harness",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_21",
+    "name": "Quicksilver Horseshoes",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_22",
+    "name": "Tower Shield Harness",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_23",
+    "name": "Dwarven Aegis Plate",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_24",
+    "name": "Elven Mirror Shield",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_25",
+    "name": "Gnomish Deflector Dish",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_26",
+    "name": "War Banner Pole",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_27",
+    "name": "Regimental Drum",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_28",
+    "name": "Dwarven Clan Standard",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_29",
+    "name": "Conch War Horn",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_30",
+    "name": "Dwarven Fire Rune",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_31",
+    "name": "Elven Frost Sigil",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_equip_32",
+    "name": "Sky-Folk Spark Coil",
+    "type": "equip",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_01",
+    "name": "Whetstone",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_02",
+    "name": "Gun Oil",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_03",
+    "name": "Sharpening Wheel",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_04",
+    "name": "Tempering Oil",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_05",
+    "name": "Lens Polish",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_06",
+    "name": "Gnomish Overclock",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_07",
+    "name": "Dwarven Forge Upgrade",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_08",
+    "name": "Elven Enchanter's Kit",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_09",
+    "name": "Goblin Duct Tape",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_10",
+    "name": "Alchemical Infusion",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_11",
+    "name": "Fire Rune Etching",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_12",
+    "name": "Frost Coating",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_13",
+    "name": "Spark Plug",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_14",
+    "name": "Silver Plating",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_15",
+    "name": "Counterweight",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_16",
+    "name": "Djinn's Polish",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_17",
+    "name": "Wayland's Bench",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_18",
+    "name": "Goibniu's Hammer",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_19",
+    "name": "Ilmarinen's Forge",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_tinker_20",
+    "name": "Hephaestus's Anvil",
+    "type": "tinker",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_01",
+    "name": "Goblin Bomb Bag",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_lob_01",
+    "name": "Dwarven Blasting Keg",
+    "type": "lob",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_02",
+    "name": "Gnomish Spark Canister",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_03",
+    "name": "Harpoon Rack",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_04",
+    "name": "Pebble Pouch",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_05",
+    "name": "Elven Arrow Pouch",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_06",
+    "name": "Acid Vial Belt",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_07",
+    "name": "Troll Rock Satchel",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_08",
+    "name": "Brass Shot Bundle",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_09",
+    "name": "Djinn Ember Censer",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_10",
+    "name": "Clockwork Bolt Feeder",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_charge_11",
+    "name": "Bottomless Quiver",
+    "type": "charge",
+    "color": "brown"
+  },
+  {
+    "id": "brown_trap_01",
+    "name": "Dwarven Pendulum Axe",
+    "type": "trap",
+    "color": "brown"
+  },
+  {
+    "id": "brown_trap_02",
+    "name": "Gnomish Clockwork Pendulum",
+    "type": "trap",
+    "color": "brown"
+  },
+  {
+    "id": "brown_trap_03",
+    "name": "Goblin Swinging Saw",
+    "type": "trap",
+    "color": "brown"
+  },
+  {
+    "id": "brown_trap_04",
+    "name": "Grand Pendulum Engine",
+    "type": "trap",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_01",
+    "name": "Flintlock Pistol",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_02",
+    "name": "Dwarven Hand Cannon",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_03",
+    "name": "Gnomish Ray Pistol",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_04",
+    "name": "Goblin Boomstick",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_05",
+    "name": "Elven Crystal Sling",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_06",
+    "name": "Harpoon Gun",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_07",
+    "name": "Double-Barrel Blunderbuss",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_08",
+    "name": "Djinn Lamp Blast",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_09",
+    "name": "Thunder Rod",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_10",
+    "name": "Philosopher's Bullet",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_11",
+    "name": "Runic Siege Pistol",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_ace_12",
+    "name": "Troll Bone Crossbow",
+    "type": "ace",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_01",
+    "name": "Silver Bullets",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_02",
+    "name": "Black Powder Charge",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_03",
+    "name": "Gnomish Scope",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_04",
+    "name": "Spread Shot Choke",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_05",
+    "name": "Scattergun Drum",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_06",
+    "name": "Explosive Rounds",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_07",
+    "name": "Frost Shell",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_08",
+    "name": "Alchemical Tracer",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_09",
+    "name": "Elven Mirror Barrel",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_10",
+    "name": "Lightning Capacitor",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_11",
+    "name": "Venom Cartridge",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_12",
+    "name": "Rifled Barrel",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_13",
+    "name": "Bottled Djinn Wind",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_14",
+    "name": "Masterwork Trigger",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "brown_aceup_15",
+    "name": "Troll Hide Grip",
+    "type": "aceup",
+    "color": "brown"
+  },
+  {
+    "id": "potion_heal",
+    "name": "Healing Draught",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "potion_tonic",
+    "name": "Iron Tonic",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "potion_elixir",
+    "name": "Quicksilver Elixir",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "potion_wind",
+    "name": "Second Wind",
+    "type": "instant",
+    "color": "brown"
+  },
+  {
+    "id": "iron_corridor",
+    "name": "Iron Corridor",
+    "type": "ward",
+    "color": "brown"
+  }
+]

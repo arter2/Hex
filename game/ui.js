@@ -112,7 +112,9 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
     +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
-  foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
+  // Target and Range show as their icons alone (the words are in the title); other slots keep their label on a big card
+  foot.forEach(([ic,lab,val],k)=>{ const word=ic!=='target'&&ic!=='range';
+    h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}${word?`<small>${esc(lab)}:</small>`:''}<span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque

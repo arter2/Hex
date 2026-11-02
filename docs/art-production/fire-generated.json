@@ -4191,8 +4191,8 @@
   {
     "cardId": "fire_machine_12",
     "name": "Ember Trebuchet",
-    "prompt": "Create a square 1:1 illustration for the Hexmancers card “Ember Trebuchet”, an unmistakable medieval counterweight trebuchet. Depict a compact but complete wooden trebuchet with its full upright frame, complete pivoting throwing arm, sling, counterweight box and stable base clearly visible together in the middle distance on a fortified stone battlefield. A single glowing ember projectile arcs away toward a distant siege line. Keep the entire arm and base within x24..488,y105..407 for the wide 206:141 crop; do not crop the top of the arm or the base. Medieval wood joinery and iron fittings, no wheels except small carriage detail if needed, no modern mechanism. Painterly high-fantasy collectible-card illustration, material detail, warm firelight, atmospheric distance, crisp readable silhouette. 1:1 square, finished painting, no lettering, frame or UI, no anime/cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-5f4fe513-8877-4501-a03b-8f6d84846b76.png",
+    "prompt": "Recompose the referenced medieval Ember Trebuchet so the complete machine fits a 206:141 horizontal card crop. Scale the trebuchet smaller in the square and lower its profile: show the full throwing arm, sling and tip, counterweight, complete upright frame, all support legs and its full ground base together, with the machine silhouette contained within the center band of the square. The whole machine should occupy at most about 230 pixels in height, with broad quiet sky above and visible platform/ground below. Keep its full silhouette and clear medieval wooden counterweight trebuchet identity. Maintain painterly fantasy siege style, warm embers and distant battlements as subdued context. One distant ember projectile is fine. Do not crop any machine parts. Preserve painterly quality. No words, UI, or frame.",
+    "generatedPath": "/workspace/generated_images/exec-94e1924e-45ae-4d4c-b57b-717134f56f34.png",
     "editableSourcePath": "game/cards/art/masters/fire_machine_12.png",
     "sourceNative": [
       1254,
@@ -4200,10 +4200,10 @@
     ],
     "focalPoint": [
       0.5,
-      0.34
+      0.5
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Focal point shifted to the top limit (y=0 crop) to preserve the complete arm and sling tip. The lower frame/base extends beyond the crop, so the complete machine cannot fit at this crop position; awaiting parent direction before any repaint."
+    "reviewNote": "Recomposed as a low, wide side view. The complete arm, sling tip, counterweight, upright supports and full ground base fit within the centered 206:141 crop; the 128px thumbnail still reads as a trebuchet. Awaiting parent review."
   }
 ]

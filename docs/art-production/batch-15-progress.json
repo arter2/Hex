@@ -2,10 +2,10 @@
   "batch": 15,
   "status": "in-progress",
   "targetNewImages": 119,
-  "generatedSources": 53,
-  "reviewedSources": 35,
-  "missingSources": 66,
-  "reviewedPackets": 7,
+  "generatedSources": 64,
+  "reviewedSources": 60,
+  "missingSources": 55,
+  "reviewedPackets": 12,
   "requiresRepaint": [],
   "baselineActive": 1834,
   "targetActive": 1953,
@@ -22,7 +22,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_machine_11.png",
       "sha256": "1c99355ff05508f49fc8cdcebe4f249585515a300be360c064beaa2891bee0c0",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.56
@@ -33,11 +33,11 @@
       "name": "Ember Trebuchet",
       "colour": "fire",
       "source": "game/cards/art/masters/fire_machine_12.png",
-      "sha256": "4b014643fa4fe350dd310032d49753849f2009752fcf8185cd751a4a8ee6b326",
-      "reviewed": false,
+      "sha256": "ddf1360f48b5e88ae13ebd891c886f81b9cb6fe6cc9b4a9ef602bb503d576c73",
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.34
+        0.5
       ]
     },
     {
@@ -106,7 +106,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_summon_43.png",
       "sha256": "7c070b081728e809e182483eb06b382a9a601572ce250dc67cffea29456eca92",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.37
@@ -118,7 +118,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_summon_44.png",
       "sha256": "829655b04bec53c126ca746b23ab65c503603ad781d95bb32df29a9d0a73aa02",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -130,7 +130,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_summon_45.png",
       "sha256": "620527f989280cffe28e964088e02af7dac264ed2051d0557afd12134798c6e5",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.37
@@ -202,7 +202,7 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_40.png",
       "sha256": "bcb6c2b294f852dce561c4ac3d94d0fc012b5bfc12a45fda4a334e974fafbb10",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -214,10 +214,10 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_41.png",
       "sha256": "01ee720999b4ef7adbdbd646526f02bcf79c608d8c8f9203878ae52fcf2caafb",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.4
+        0.34
       ]
     },
     {
@@ -226,7 +226,7 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_42.png",
       "sha256": "0c27fe017100d7d70a5b57f7cd055832bd6058002fc47a8aaa5ea5ce7c81295f",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
@@ -238,10 +238,22 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_43.png",
       "sha256": "9a5dc9883493a7d40e02c4465fe356aff8065800e73e6a22236a88b196fe0d10",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_44",
+      "name": "Polar Bear",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_44.png",
+      "sha256": "b1d3ef978688359644cccf4e548c168f34be10658facfb51c0c0b774d49c3d97",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -302,6 +314,54 @@
       "focalPoint": [
         0.5,
         0.543
+      ]
+    },
+    {
+      "cardId": "light_machine_17",
+      "name": "Kite of Han Xin",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_17.png",
+      "sha256": "4b16120f477e3ec3b1833e39ad4a88dd0b3cb7355c43e5396ceffdae9ef2034c",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_18",
+      "name": "Polybolos",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_18.png",
+      "sha256": "0271827c7633382120b09d91f41defd16ea67f58cf9bf9e4a5a127216d3709c1",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.54
+      ]
+    },
+    {
+      "cardId": "light_machine_19",
+      "name": "Helepolis",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_19.png",
+      "sha256": "a11943b2bfa51f71624872b8dbac7fc747fcf9a4d7f71638cc813abb1c1b9682",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
+      "cardId": "light_machine_20",
+      "name": "Star Fort Bastion",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_20.png",
+      "sha256": "92b8aa80fb6e2564c99f68941e6e0a75793d696bf0f008b4a2f29135968a84b2",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -370,7 +430,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_summon_59.png",
       "sha256": "675a54d083f7df627617134a28d148e823283f18cb33daa25234f6322b554978",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -382,7 +442,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_summon_60.png",
       "sha256": "c7f4f32756a5944a1fec1898a0d5b2dc14464b335da94499b4a7574a3bb5dd57",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -394,7 +454,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_summon_61.png",
       "sha256": "52ac527ce0fc52d91d67c56e3f758b8674e95f7f00677eb5b157cc5bed2df8f1",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.41
@@ -406,7 +466,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_summon_62.png",
       "sha256": "21aaaca5c397fae8ee6cdb808812906490bd44126e1c64771e21b27e7a0d5e1d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.41
@@ -418,7 +478,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_summon_63.png",
       "sha256": "50be539b326c6d19bb6e6ed37d73f0d8cbd3d31781bd131e7a621dc3c3953326",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.41
@@ -466,7 +526,7 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_machine_15.png",
       "sha256": "844b2333e3517e5ab70a31361c7de494e8b2344a527978b77f48ae6e19ea88aa",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -478,7 +538,7 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_machine_16.png",
       "sha256": "86ef5367a00339dd31f6ee2b2a2562d0bda774383bb4913094e93ad883e0a7b6",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -489,11 +549,11 @@
       "name": "Elephant Clock Automaton",
       "colour": "storm",
       "source": "game/cards/art/masters/storm_machine_17.png",
-      "sha256": "f8a5bd8916c77a1b549c9126a2aba58358e84d2f3830e2bf699ffb39b91ec2e0",
-      "reviewed": false,
+      "sha256": "8d345a72f8f2274bac02ec1b00a1b433e576b9fa6dde5ba44833d1d418ff1b0c",
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.5
+        0.48
       ]
     },
     {
@@ -502,10 +562,22 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_machine_18.png",
       "sha256": "e78a06604623da9fb706259fcac864f7e9507c453ff2d3b00cca3de5d6c1cc8d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_19",
+      "name": "Clockwork Flying Carpet",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_19.png",
+      "sha256": "92fef78674b8f4c5c74e7701e67f9c971d2883d7bb28d96631fb6a5004b68681",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.48
       ]
     },
     {
@@ -646,6 +718,66 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_62.png",
       "sha256": "49f84e52f2692f291c7d1dc047b8b73b8c00b9fb33050a452359142840bda689",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_63",
+      "name": "Giant Forest Hornet",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_63.png",
+      "sha256": "22818ed5d2d20992d9de0051b6873170dc130f73ce84aae69690d32276fe07ff",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_64",
+      "name": "Sporeling Thallid",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_64.png",
+      "sha256": "4e64de027905b10138acb86d9cbec937780d9e09482694ca454f656e97f38e41",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_65",
+      "name": "Thallid Germinator",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_65.png",
+      "sha256": "37599fdf4703aea19d3cabf53c388dfc8ec2d518a0d8b8bc14b5450483cdcb18",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_66",
+      "name": "Fungal Thallid Brute",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_66.png",
+      "sha256": "9d7bce98fca5d327f1915067bb518f8d4917d71386158ae2f3613bc34d0dff25",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_67",
+      "name": "Moss-Shelled Tortoise",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_67.png",
+      "sha256": "9132f6ca0cbeee5e01da598bd20697f7f9e1d371b05daa8869860a8626ee3706",
       "reviewed": true,
       "focalPoint": [
         0.5,

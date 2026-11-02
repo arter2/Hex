@@ -4114,5 +4114,77 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, vertically adjusted 206:141 crop and 128-pixel thumbnail. Automaton face, full head, raised hand, torso and stepping legs read clearly; edge of the near boot is tight against the crop."
+  },
+  {
+    "cardId": "light_machine_17",
+    "name": "Kite of Han Xin",
+    "prompt": "Paint an illustration for Kite of Han Xin, the legendary ancient Chinese military kite, a remarkable framed silk flying machine with bamboo spars, cross-bracing, a broad diamond body, long graceful tail streamers and subtle red-gold dragon motifs. Show the complete kite in flight at a readable three-quarter angle, broad and horizontal with all pointed corners and full tail visible; its silk planes catch warm sunlight above a quiet distant Chinese fortress landscape. Object centered and compact, no human operator. Painterly medieval fantasy collectible-card art with historically inspired Han dynasty Chinese materials, fine silk, bamboo and cord, atmospheric depth and dramatic directional light. Square 1:1 canvas for editable 512x512 master, full kite and tail inside x24..488 y105..407 for a 206:141 wide card crop. No text, writing, border or UI; no anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c03231ac-19e2-467b-a3cb-3678a405e1b0.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full kite body, bamboo spars and dragon-patterned silk are clear; trailing silk ribbons extend toward the lower crop edge."
+  },
+  {
+    "cardId": "light_machine_18",
+    "name": "Polybolos",
+    "prompt": "Paint an illustration for Polybolos, a historically grounded ancient Greek repeating bolt-thrower: a compact, powerful torsion-powered ballista on a sturdy timber carriage, with twin curved bow arms, taut bowstring, a visible magazine of bolts and a mechanical chain-feed loading mechanism. Show the complete engine in a low horizontal three-quarter view, all bow tips, string, magazine, feed and carriage clearly visible; no operators. Set it before quiet sunlit stone ruins. Painterly medieval fantasy collectible-card art, believable ancient bronze, rope, timber, leather and iron details, dramatic directional light, atmospheric depth. Square 1:1 canvas for editable 512x512 master, whole named engine inside x24..488 y105..407 for 206:141 wide crop. No text, writing, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-95065f74-b8b0-4fd9-8d62-e514b80149b5.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, downward-shifted 206:141 crop and 128-pixel thumbnail. Entire repeating bolt-thrower including lower wheels now fits; bow tips, chain feed and carriage remain readable."
+  },
+  {
+    "cardId": "light_machine_20",
+    "name": "Star Fort Bastion",
+    "prompt": "Paint an illustration for Star Fort Bastion, a complete Renaissance star fort seen from a slightly elevated three-quarter angle: a broad low polygonal fortress with angular projecting bastions and sloped earth-and-stone ramparts, symmetrical star-shaped geometry, a central keep and orderly moat. Keep every bastion point, outer wall and base inside the square, the entire fort the clear focal subject, framed compactly with quiet landscape beyond. Historically grounded early-modern Italian trace italienne fortification, atmospheric golden-hour light, painterly medieval fantasy collectible-card art with detailed stone and grass, no modern elements. Square 1:1 canvas for editable 512x512 master, whole fort within x24..488 y105..407 for 206:141 wide crop. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37147ab6-6114-4deb-ab8d-250607af826e.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Full star-fort plan with all angular bastions, walls and moat remains visible and reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_19",
+    "name": "Helepolis",
+    "prompt": "Create a STRICTLY SQUARE 1:1 painterly medieval fantasy card illustration of the Helepolis, an ancient Greek siege tower. A complete compact, broad, squat wooden siege tower on a full row of iron-rimmed wheels, with three low armored fighting levels, hide-covered walls, crenellated roof and one short assault bridge. The whole machine is small enough to occupy only the central 55 percent of the square height; generous clear sky above and ground below. Keep left and right edges well inside the image: every wheel, roof corner, bridge tip and tower wall visible with margin. Three-quarter view approaching a quiet Hellenistic stone wall; no operators. Historically grounded timber engineering, taut ropes, bronze/iron fittings, warm sunlight, textured painterly surfaces, atmospheric depth. Important: output must be a square composition, not landscape; do not crop or enlarge the tower. Full machine within x24..488 y105..407 on the 512-square. No text, lettering, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce052865-eec4-45a9-a752-64b7aca6bd9a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full tower roof, battlements, assault bridge, wheel row and base fit with margin."
   }
 ]

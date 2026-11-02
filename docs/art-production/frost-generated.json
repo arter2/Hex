@@ -4144,11 +4144,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.4
+      0.34
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Snow Maiden’s complete kokoshnik crown, face, eyes and raised gloved hand fit clearly; the Slavic winter-maiden identity is modest and respectful."
+    "reviewNote": "Inspected the 512-square source, focal-y=0.34 horizontal crop and 128px thumbnail. Snow Maiden’s entire kokoshnik crown, face, eyes and raised casting hand/fingers fit clearly; the Slavic winter-maiden identity is modest and respectful."
   },
   {
     "cardId": "frost_summon_42",
@@ -4185,5 +4185,23 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. The Inuit hunter’s complete fur hood, face, eyes and harpoon hand are visible in a traditional skin-covered kayak with paddle; practical Arctic clothing is respectfully depicted."
+  },
+  {
+    "cardId": "frost_summon_44",
+    "name": "Polar Bear",
+    "prompt": "Paint original painterly medieval fantasy card art for the exact card “Polar Bear.” A powerful polar bear pounces through powder snow onto an icy ridge, its massive white body clear against the cold sea and glacier; keep the complete broad bear head, both small dark eyes, ears, muzzle and front paws wholly in the central horizontal action band, with a crisp readable animal silhouette. Frost rims the dense ivory fur and icy breath curls from its muzzle; alert, natural bear anatomy, no collar or human clothing. The face and forepaws dominate, with quiet arctic cliffs and pale glacial light behind. Layered brush texture, rich tactile fur and ice, dramatic cool light with a small warm reflection on snow. Explicit 1:1 square for editable 512x512; complete head and paws within x24..488,y105..407 for the 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b0007fe7-29eb-497b-8639-0d7402507107.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Polar Bear’s entire head, ears, eyes and muzzle are visible, with the pouncing forequarters clear against the arctic sea and glacier."
   }
 ]

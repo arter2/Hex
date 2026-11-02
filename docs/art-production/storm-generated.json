@@ -4160,20 +4160,20 @@
   {
     "cardId": "storm_machine_17",
     "name": "Elephant Clock Automaton",
-    "prompt": "Paint an original 1:1 square illustration for Hexmancers card Elephant Clock Automaton, inspired by the medieval mechanical elephant clock of al-Jazari. Depict the entire intricate clock assembly as a compact tabletop-sized machine, fully visible and centered: a small bronze elephant with ornate saddle housing, a slender tower and domed canopy on its back, a small rotating zodiac sphere above, and a few tiny carved mechanisms along the side. All elements are miniaturized together; no large separate elephant or tower. Grounded painterly medieval fantasy/Islamic clockwork design, finely worked brass, carved wood, enamel accents, atmospheric dramatic light, visible brushstrokes. Keep the whole assembly including dome, sphere, elephant feet and base inside x24–488,y105–407 of the 512-square composition. No operator, no text, frame or UI, no polished toy look, anime, Disney, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-defc0742-5bd5-4e9d-a72c-c453dfaf39da.png",
+    "prompt": "Create a new 1:1 square illustration for Hexmancers card Elephant Clock Automaton. Show the complete al-Jazari-inspired mechanical elephant clock as a SMALL tabletop ornament, taking only the central 42% of the square's height. Leave very large empty margins above and below. All parts fit inside a strict central rectangle x130–382,y150–362 on a 512×512 canvas: tiny star sphere, ornate dome, clock tower, bronze elephant with all feet, and display base. Make the whole assembly no taller than 212 pixels on that 512 canvas; do not enlarge the elephant or tower. Keep width compact as well. The complete object must be readable in a 206:141 landscape crop. Painterly medieval fantasy clockwork, grounded proportion, visible brush texture, aged brass, carved wood, restrained blue enamel, warm directional light and a quiet dark neutral studio background. Historic Islamic mechanical artistry. No clipped components, no tall vertical portrait arrangement, no operator, no toy-like polish, no text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c22161d4-a571-46cb-a729-1ff48d07357e.png",
     "editableSourcePath": "game/cards/art/masters/storm_machine_17.png",
     "sourceNative": [
-      1254,
-      1254
+      1314,
+      1197
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.48
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Initial 512-square source prepared; wide crop clips the top of the celestial sphere and lower base. Repainting to miniaturize the whole clock assembly within the safe band."
+    "reviewNote": "Recomposed the complete al-Jazari-inspired clock assembly smaller after parent review found the first sphere/base unsafe in the crop. Preserved old master at /tmp/storm-02-repair-backup/storm_machine_17-before.png; inspected the replacement 512 square, revised 206:141 crop at focal y=0.48, and 128px thumbnail. Sphere, finial, dome, elephant feet and full base all remain visible."
   },
   {
     "cardId": "storm_machine_18",
@@ -4192,5 +4192,23 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "512-square source and 206:141 crop inspected; complete mortar, carriage, wheels and coin burst remain visible."
+  },
+  {
+    "cardId": "storm_machine_19",
+    "name": "Clockwork Flying Carpet",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Clockwork Flying Carpet. Show one complete rectangular medieval woven carpet floating horizontally above a stormy mountain courtyard, seen at a three-quarter angle. The richly patterned indigo and ochre rug is stretched taut over a discreet bronze clockwork frame; small geared corner vanes and a compact brass control hub beneath it make the flying machine clear. No rider. Entire carpet, all four corners, tassels, mechanisms and frame must fit within x24–488,y105–407 on a square 512×512 composition. Grounded painterly medieval fantasy/clockwork illustration, tactile wool, aged brass, subtle blue storm sparks, visible brushwork, clear silhouette, atmospheric directional light. Keep it a practical fantasy machine, not a toy or modern aircraft. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8cc8c1eb-10f0-452b-88ba-cca61db596a9.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop reviewed. Entire carpet, brass frame, corner vanes and tassels fit; focal point y=0.48 shifts crop slightly upward to protect the upper-left vane. 128px thumbnail remains legible."
   }
 ]

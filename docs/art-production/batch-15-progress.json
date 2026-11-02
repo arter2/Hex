@@ -1,0 +1,19 @@
+{
+  "batch": 15,
+  "status": "in-progress",
+  "targetNewImages": 119,
+  "generatedSources": 0,
+  "reviewedSources": 0,
+  "missingSources": 119,
+  "reviewedPackets": 0,
+  "requiresRepaint": [],
+  "baselineActive": 1834,
+  "targetActive": 1953,
+  "runtimeActive": 1834,
+  "catalogueTotal": 1953,
+  "catalogueRemainingBeforeBatch": 119,
+  "catalogueRemainingAfterBatch": 0,
+  "baselineRuntimeImageCount": 7400,
+  "baselineGeneratedRecordCount": 1784,
+  "savedCards": []
+}

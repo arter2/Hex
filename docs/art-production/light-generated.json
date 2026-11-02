@@ -4294,5 +4294,113 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Brother Aldric’s full face and eyes, raised casting hand and healing hand are all clear and fit with margin."
+  },
+  {
+    "cardId": "hero_ratha",
+    "name": "Ra'tha the Sunspear",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Ra'tha the Sunspear, a noble South Asian fantasy warrior-priestess in layered ivory and deep saffron armor, with a focused expressive face, bright eyes, dark braided hair and a small gold sun-circlet. Compact waist-up three-quarter pose. She holds an elegant golden Sunspear close beside her face so its bright spearhead, her eyes and gripping hand all sit together in the central horizontal composition; sunlight chains from the spearhead into several small streaks of light in the distant background. Keep the long shaft angled down and away, expendable if it reaches the crop edge. Believable anatomy, finely painted cloth, bronze and gold, dramatic warm light, grounded painterly high fantasy. Square 1:1 editable 512x512 canvas, face, eyes, spearhead and hand inside x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bff7954e-8b35-4488-9a56-c646948c90ae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ratha.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop and 128-pixel thumbnail. Ra'tha’s full head and eyes, Sunspear head and gripping hand fit; long shaft continues below the crop."
+  },
+  {
+    "cardId": "hero_prisma",
+    "name": "Prisma the Lightweaver",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Prisma the Lightweaver, a poised young mage with a fully visible thoughtful face and bright eyes, wearing layered violet-blue robes and a delicate crown of faceted crystal. Compact waist-up three-quarter pose; both hands weave three distinct small luminous prism bolts that refract into subtle rainbow color, kept away from her face. Face, crown and hands clearly visible and centered in the horizontal crop. Believable anatomy, richly rendered silk, crystal and gold, elegant dramatic light, atmospheric depth, grounded fantasy illustration rather than cartoon. Square 1:1 editable 512x512 canvas, head, eyes, crown and both hands within x24..488 y105..407 for a 206:141 card crop. No text, lettering, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dc5ed6a-a474-42dd-b934-669ffb03a830.png",
+    "editableSourcePath": "game/cards/art/masters/hero_prisma.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full crystal crown, face, eyes, both hands and three prism bolts remain clear."
+  },
+  {
+    "cardId": "hero_theron",
+    "name": "High Judge Theron",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of High Judge Theron, a dignified older high judge with a weathered intelligent face, steady eyes and a close gray beard, wearing layered ivory judicial robes, deep blue mantle, restrained gold trim and a small circlet. Waist-up three-quarter pose in a solemn stone court. One hand lifts as a narrow pillar of white-gold light descends like a luminous hammer beyond his shoulder, without obscuring his head or hand; the other hand rests near his chest. Face, eyes and relevant hands are fully visible in the central horizontal crop. Grounded anatomy and materials, painterly medieval fantasy, dramatic directional light, rich atmospheric depth. Square 1:1 editable 512x512, head and hands inside x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59d078ad-a173-4e6b-92d4-ae2c91dbe33b.png",
+    "editableSourcePath": "game/cards/art/masters/hero_theron.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted crop and thumbnail. Theron’s full head, eyes and both hands fit clearly; the light hammer falls beside him without obscuring his face."
+  },
+  {
+    "cardId": "hero_celestine",
+    "name": "Mother Celestine",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Mother Celestine, a compassionate older nun and healer with a warm intelligent face, kind visible eyes, silver-streaked hair beneath a simple ivory veil, and humble blue-and-white robes with subtle gold embroidery. Waist-up three-quarter pose in a quiet chapel. One hand calls down a gentle sunlit beam while her other open hand gathers soft healing light near her heart; her face and both hands remain clear, prominent and inside the wide crop. Grounded anatomy, natural cloth textures, luminous but controlled golden light, atmospheric depth, painterly medieval fantasy illustration. Strict square 1:1 editable 512x512 master, head, eyes and hands within x24..488 y105..407 for 206:141 crop. No text, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08d80615-ec37-473b-aa26-2064e63f2435.png",
+    "editableSourcePath": "game/cards/art/masters/hero_celestine.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted crop and thumbnail. Mother Celestine’s full veiled head and eyes, raised casting hand and healing hand all fit clearly."
+  },
+  {
+    "cardId": "halo_arc",
+    "name": "Halo Arc",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Halo Arc, a ward that forms a broad luminous arc-shaped wall of healing light around two allied defenders. The named object is one clearly visible, continuous golden-white semicircular arch or bowed barrier, spanning horizontally across the middle of the scene with its two feet anchored on the ground and a softly rippling healing surface; do not make a full ring or a tiny halo above anyone's head. Inside the arc, two small medieval allies recover in its warm light while arrows or dark spell motes break harmlessly against the outer curve. The full arc from foot to crown and both anchors fits with clear space in the central wide crop; no operator. Rich painterly medieval fantasy materials and dramatic controlled glow, readable silhouette, atmospheric stone courtyard, warm healing light, no excessive glare. Strict square 1:1 editable 512x512 composition, entire named arc within x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88942a09-6022-41a2-8226-036f735c2e5d.png",
+    "editableSourcePath": "game/cards/art/masters/halo_arc.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Continuous golden healing arc from both ground anchors to crown remains intact and readable around two recovering allies."
+  },
+  {
+    "cardId": "prism_cage",
+    "name": "Prism Cage",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Prism Cage, a ward that forms a broad luminous arc-shaped wall of healing light around two allied defenders. The named object is one clearly visible, continuous golden-white semicircular arch or bowed barrier, spanning horizontally across the middle of the scene with its two feet anchored on the ground and a softly rippling healing surface; do not make a full ring or a tiny halo above anyone's head. Inside the arc, two small medieval allies recover in its warm light while arrows or dark spell motes break harmlessly against the outer curve. The full arc from foot to crown and both anchors fits with clear space in the central wide crop; no operator. Rich painterly medieval fantasy materials and dramatic controlled glow, readable silhouette, atmospheric stone courtyard, warm healing light, no excessive glare. Strict square 1:1 editable 512x512 composition, entire named arc within x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c29296d8-a5fa-4f44-b9fb-67de05bb9ec3.png",
+    "editableSourcePath": "game/cards/art/masters/prism_cage.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Complete six-sided transparent prism cage, all corners and base fit; trapped armored foe and controlled shocking sparks are readable."
   }
 ]

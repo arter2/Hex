@@ -30,7 +30,8 @@ async function main(){
   }
   const locked=vm.runInContext("cardEl(testCard,'',true,'expanded')",ctx);assert(!locked.innerHTML.includes('srcset='));assert(!locked.innerHTML.includes(v.master));assert(locked.innerHTML.includes('k-hidden'));
  }
- const fallback=Object.values(cards).find(c=>!variants[c.id]);assert.equal(ctx.cardIllustration(fallback),null);assert.equal(ctx.cardArtVariants(fallback),null);assert.equal(ctx.cardArt(fallback).length,64);
+ // A complete catalogue has no unillustrated card; keep checking unknown-ID fallback.
+ const fallback=Object.values(cards).find(c=>!variants[c.id])||{...Object.values(cards)[0],id:'art_check_unknown'};assert.equal(ctx.cardIllustration(fallback),null);assert.equal(ctx.cardArtVariants(fallback),null);assert.equal(ctx.cardArt(fallback).length,64);
  const all=vm.runInContext('CARD_LIST',ctx);ctx.testCards=Object.keys(variants);ctx.testSizes=[96,120,240,396];
  // Review page loads the real catalogue and card renderer; it can also be opened from the test ZIP.
  const helper=ui.slice(ui.indexOf('const CARD_PAL='),ui.indexOf('function showDetail('));
@@ -70,6 +71,6 @@ document.querySelector('#review-next').onclick=()=>{reviewPage++;renderReview();
 renderReview();
 </script>`;
  fs.writeFileSync(path.join(ROOT,'game/art-review.html'),html);
- console.log(JSON.stringify({catalogue:all.length,registered:Object.keys(variants).length,imagesDecoded:decoded,cardMarkupChecked:rendered,locked:'pass',fallback:'pass',browserLayout:'not tested: sandbox prevents browser launch'}));
+ console.log(JSON.stringify({catalogue:all.length,registered:Object.keys(variants).length,imagesDecoded:decoded,cardMarkupChecked:rendered,locked:'pass',fallback:'pass',browserLayout:'not tested'}));
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

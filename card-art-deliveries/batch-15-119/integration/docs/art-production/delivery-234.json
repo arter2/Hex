@@ -1,0 +1,26 @@
+{
+  "uniqueCards": 234,
+  "imageFiles": 936,
+  "zip": "hexmancers-234-card-art-claude-handoff.zip",
+  "bytes": 173080255,
+  "sha256": "bc697ee8740c2b72e85faecfbcb4b3e58a03d0f708ea338d777f27c56fc6805a",
+  "repositoryCommit": "8004e34",
+  "crc": "pass",
+  "allImageChecksums": "pass",
+  "includes": [
+    "512x512 editable sources",
+    "three display crop sizes",
+    "exact-name and card-ID transfer manifest",
+    "Claude integration README and files"
+  ],
+  "github": {
+    "sourceBranch": "art/234-card-handoff",
+    "sourceCommit": "8004e34f6aff4dcc6e07303ae8a86a8ada430b53",
+    "downloadBranch": "art/234-card-download",
+    "downloadCommit": "76f4915ac3c39668b0ec9941cc55a65388b6f252",
+    "downloadUrl": "https://github.com/arter2/Hex/archive/refs/heads/art/234-card-download.zip",
+    "verifiedHttpStatus": 200,
+    "verifiedContentType": "application/zip"
+  },
+  "archiveNote": "GitHub repackages the same handoff files; the SHA-256 above describes the original local ZIP. Verify individual image checksums using card-images.json."
+}

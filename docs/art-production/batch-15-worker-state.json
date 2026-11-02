@@ -10,8 +10,8 @@
       "state": "idle"
     },
     "/root/b15_artist_3": {
-      "packet": "light-04",
-      "state": "running"
+      "packet": "light-05",
+      "state": "idle"
     },
     "/root/b15_artist_4": {
       "packet": "shadow-04",
@@ -50,7 +50,9 @@
     "frost-04",
     "storm-03",
     "light-03",
-    "storm-04"
+    "storm-04",
+    "light-04",
+    "light-05"
   ],
   "reviewedSources": {
     "fire_summon_38": {
@@ -504,6 +506,30 @@
     "hero_ozone": {
       "file": "game/cards/art/masters/hero_ozone.png",
       "sha256": "287c8acc28fe545c6fbdf91e2db24d85f27dc7b34fa103c9668aaf0f365cb73a"
+    },
+    "hero_ratha": {
+      "file": "game/cards/art/masters/hero_ratha.png",
+      "sha256": "24cc748c68e2b63ffcede1c2e2c1e5253df3074aea433a0e71ce43b0159f0a4c"
+    },
+    "hero_prisma": {
+      "file": "game/cards/art/masters/hero_prisma.png",
+      "sha256": "f86fb9157786888f8f3d4d73eed22af97a3c34a34491a42af46b8544ed5b906b"
+    },
+    "hero_theron": {
+      "file": "game/cards/art/masters/hero_theron.png",
+      "sha256": "ee4a8e6a423e5ec8b095913505bf2912ca3ec714792375c7b05da32b36dc0011"
+    },
+    "hero_celestine": {
+      "file": "game/cards/art/masters/hero_celestine.png",
+      "sha256": "9bf00ba15def3db08fba3696d1e790914785a7120a58e54c3554dc238fb24c98"
+    },
+    "halo_arc": {
+      "file": "game/cards/art/masters/halo_arc.png",
+      "sha256": "cf2c77915a7ae32dce25c6296733f7296acfd18587598694255e9b9b3a5a6ab1"
+    },
+    "prism_cage": {
+      "file": "game/cards/art/masters/prism_cage.png",
+      "sha256": "ef6f5517bfa761a559092ea2c980de35213e54d80795b9163fa111b716ea60bb"
     }
   }
 }

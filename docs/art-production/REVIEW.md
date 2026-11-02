@@ -76,7 +76,6 @@ The registry contains **834 active illustrations: 784 generated and 50 supplied 
 
 The incremental Git delivery is `card-art-deliveries/batch-09-200/` on `art/834-card-handoff`: **exactly 200 new editable 512 × 512 PNG sources and 600 WebP crops**. The physical package audit checks every image's dimensions and SHA-256, exact assigned IDs/names/colours, unique source content, and disjointness from the full 634-card baseline. `AUDIT.json` records its results; `README_FOR_CLAUDE.md` provides the upload and integration instructions. Earlier delivery folders remain preserved.
 
-
 ## Batch 10: 200 additional illustrations
 
 Six lighter artists completed another 200 unique named paintings, 25 per colour, using shared five-card jobs. Parent review inspected all 40 packets in the actual 206:141 crop and as small thumbnails, then pinned all 200 editable source hashes. Composition repairs retain named machines, jars, faces, hands and other key features. Focal adjustments preserve Alpha Wolf and Lynx ear tips and the Raise the Dead casting action. A mistaken duplicate raw-path recovery for Ancestor’s Tale was caught by visual review and the SHA-256 uniqueness check and replaced with a dedicated hearthside scene. Final source hashes are unique and disjoint from all earlier artwork.
@@ -84,7 +83,6 @@ Six lighter artists completed another 200 unique named paintings, 25 per colour,
 The registry contains **1034 active illustrations: 984 generated and 50 supplied matches**. The report covers 1050 square sources and 3150 crops. All **4200 runtime images** decode at their declared dimensions; **2068 compact/expanded markup checks**, locked-art gating and fallback checks pass. All 3400 earlier runtime source/crop files, 784 earlier generated records, 66 supplied originals and 200 newly reviewed source hashes are preserved. The queue contains 919 pending cards and no outstanding assignments. The existing gameplay selftests passed 23 checks. Browser/Safari/device layout remains unverified; image and markup checks are not a browser run.
 
 The incremental Git delivery is `card-art-deliveries/batch-10-200/` on `art/1034-card-handoff`: **exactly 200 new editable 512×512 PNGs and 600 WebP crops**. Its audit checks physical image counts, dimensions, checksums, exact assigned IDs/names/colours and disjointness from the full earlier 834-card manifest. Claude’s upload/integration instructions are in `README_FOR_CLAUDE.md`; `AUDIT.json` records the physical delivery audit. Earlier delivery folders remain untouched. Production paused on an actual usage limit and resumed after the reported reset; partial checkpoints were explicitly labelled incomplete.
-
 
 ## Batch 11: the next 200 paintings
 
@@ -94,7 +92,6 @@ The combined registry contains **1234 active illustrations: 1184 generated and 5
 
 The incremental Git delivery is `card-art-deliveries/batch-11-200/` on `art/1234-card-handoff`: exactly 200 new editable 512×512 PNGs and 600 WebP crops. `AUDIT.json` records physical image counts, checksums, dimensions, exact assigned names/IDs/colours and disjointness from the full earlier 1034-card manifest. Claude's upload/integration instructions are in `README_FOR_CLAUDE.md`. Earlier delivery folders remain untouched.
 
-
 ## Batch 12: the next 200 paintings
 
 Six lighter artists completed 200 additional named paintings, 25 per colour. Parent review inspected all 40 five-card packets in the actual 206:141 crop and as small thumbnails, then pinned all 200 source hashes. Per-card prompts and honest crop/repaint/provenance notes are preserved in the colour manifests. All 200 final source hashes are unique and disjoint from earlier artwork. No image was accepted by timestamp guessing.
@@ -102,7 +99,6 @@ Six lighter artists completed 200 additional named paintings, 25 per colour. Par
 The combined registry contains **1434 active illustrations: 1384 generated and 50 supplied matches**. The export report covers 1450 square sources and 4350 crops. All **5800 runtime images** decode at their declared dimensions; **2868 compact/expanded markup checks**, locked-art gating and fallback checks pass. All 5000 earlier source/crop files, 1184 earlier generated-art records, 66 supplied originals and 200 newly pinned source hashes are preserved. The queue contains 519 pending cards and no outstanding assignments. Browser/Safari/device layout remains unverified; image and markup checks are not a browser run.
 
 The incremental Git delivery is `card-art-deliveries/batch-12-200/` on `art/1434-card-handoff`: exactly 200 new editable 512×512 PNGs and 600 WebP crops. `AUDIT.json` records physical image counts, checksums, dimensions, exact assigned names/IDs/colours and disjointness from the full earlier 1234-card manifest. Claude's upload/integration instructions are in `README_FOR_CLAUDE.md`. Earlier delivery folders remain untouched.
-
 
 ## Batch 13: the next 200 paintings
 
@@ -112,7 +108,6 @@ The combined registry contains 1634 active illustrations (1584 generated and 50 
 
 The delivery `card-art-deliveries/batch-13-200/` on `art/1634-card-handoff` contains exactly 200 editable 512-square PNGs and 600 WebP crops, exact mappings and Claude instructions. Its `AUDIT.json` verifies counts, decoded dimensions, checksums, colour allocation and disjointness from all 1434 earlier cards. Earlier delivery folders remain untouched.
 
-
 ## Batch 14: the next 200 paintings
 
 Six lighter artists completed 200 additional named paintings: 29 Fire, 29 Frost, 26 Gray, 29 Light, 29 Shadow, 29 Storm, 29 Verdant. Parent review inspected all 42 packets in the actual 206:141 crop and as small thumbnails, pinning all 200 source hashes. Prompts and honest crop/repaint/provenance notes are preserved in the colour manifests. Source hashes are unique and disjoint from earlier artwork. No image was accepted by timestamp guessing. Previously completed sources were preserved, and only assigned missing IDs were generated.
@@ -120,3 +115,11 @@ Six lighter artists completed 200 additional named paintings: 29 Fire, 29 Frost,
 The combined registry contains 1834 active illustrations (1784 generated and 50 supplied). All 7400 runtime images decode at declared dimensions; 3668 compact/expanded markup checks, locked-art gating and fallback checks pass. All 6600 earlier source/crop files, 1584 earlier records and 66 supplied originals remain unchanged. The queue contains 119 pending cards and no assignments. Browser/Safari/device layout remains unverified; image and markup checks are not browser tests.
 
 The delivery `card-art-deliveries/batch-14-200/` on `art/1834-card-handoff` contains exactly 200 editable 512-square PNGs and 600 WebP crops, exact mappings and Claude instructions. Its `AUDIT.json` verifies counts, decoded dimensions, checksums, colour allocation and disjointness from all 1634 earlier cards. Earlier delivery folders remain untouched.
+
+## Batch 15: final 119 paintings
+
+Six lighter artists completed 17 Fire, 20 Frost, 21 Light, 20 Shadow, 17 Storm, 24 Verdant. All 26 packets passed parent review in the actual 206:141 crop and thumbnail; all 119 source hashes are pinned. All 1953 catalogue cards now have artwork (1903 generated and 50 supplied matches). All 7876 runtime images decode, all 3906 compact/expanded markup checks and locked/fallback checks pass. The 7400 earlier runtime files, 1784 earlier records and 66 originals are unchanged. No catalogue cards remain pending. Browser/Safari/device layout remains unverified.
+
+The final delivery `card-art-deliveries/batch-15-119/` contains 119 editable 512-square PNGs and 357 WebP crops, exact mappings and Claude instructions. AUDIT.json verifies all 476 images, checksums, dimensions, assignments and disjointness from the earlier 1834. Earlier delivery folders remain unchanged.
+
+The integrity checker previously assumed at least one catalogue card lacked art. It now uses an unregistered synthetic ID when every card is illustrated, retaining coverage of procedural fallback without changing game behavior. The complete-catalogue check passes.

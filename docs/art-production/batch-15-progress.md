@@ -1,12 +1,6 @@
-# Batch 15 production progress
+# Final batch 15 completed
 
-**113 of 119 new 512×512 sources saved; 113 approved.**
-
-6 sources remain ungenerated. 0 saved sources require repainting. 24 packets of up to five cards passed parent crop/thumbnail review.
-
-Current runtime: 1834 illustrations. Starting baseline: 1834; target: 1953. No complete batch-15 delivery has been prepared yet.
-
-Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing reserved IDs and explicitly rejected repaints. Save complete exact-name records atomically; parent pins reviewed source hashes. No quota retries, alternate generators or path guessing.
+**119 new editable 512×512 masters approved and exported, with 357 WebP crops.** All 26 packets passed parent crop/thumbnail review. All 1953 catalogue cards now have artwork; none remain pending. Delivery: `card-art-deliveries/batch-15-119/`, with exact mappings, checksums, audit and Claude instructions. Earlier artwork is unchanged. No ZIP was requested.
 
 ## Saved sources
 
@@ -42,8 +36,10 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Vodyanoy | `frost_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_46.png) |
 | Ahuizotl | `frost_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_47.png) |
 | Taniwha | `frost_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_48.png) |
+| Halo Arc | `halo_arc` | Accepted | [512×512 PNG](../../game/cards/art/masters/halo_arc.png) |
 | Brother Aldric | `hero_aldric` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_aldric.png) |
 | Arachna | `hero_arachna` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_arachna.png) |
+| Mother Celestine | `hero_celestine` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_celestine.png) |
 | Corvina, Raven Witch | `hero_corvina` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_corvina.png) |
 | Crysta the Shardmaid | `hero_crysta` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_crysta.png) |
 | Vinewhip Dara | `hero_dara` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_dara.png) |
@@ -53,12 +49,15 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Nix the Snow Owl | `hero_nix` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_nix.png) |
 | Ozone the Tinker | `hero_ozone` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_ozone.png) |
 | Old Permafrost | `hero_permafrost` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_permafrost.png) |
+| Prisma the Lightweaver | `hero_prisma` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_prisma.png) |
 | Pyrrhus the Bombardier | `hero_pyrrhus` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_pyrrhus.png) |
+| Ra'tha the Sunspear | `hero_ratha` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_ratha.png) |
 | Salamandra | `hero_salamandra` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_salamandra.png) |
 | Scorch, the Red Fox | `hero_scorch` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_scorch.png) |
 | Sleet, the Hail Archer | `hero_sleet` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sleet.png) |
 | The Sporelord | `hero_sporelord` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sporelord.png) |
 | Stati, the Static Witch | `hero_stati` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_stati.png) |
+| High Judge Theron | `hero_theron` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_theron.png) |
 | Thistle the Hedge Knight | `hero_thistle` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_thistle.png) |
 | The Thunderbird | `hero_thunderbird` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_thunderbird.png) |
 | Vulcan the Smith | `hero_vulcan` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_vulcan.png) |
@@ -77,6 +76,7 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Su Song's Clock Tower | `light_machine_23` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_23.png) |
 | Warwolf Trebuchet | `light_machine_24` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_24.png) |
 | Krak des Chevaliers | `light_machine_25` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_25.png) |
+| Prism Cage | `prism_cage` | Accepted | [512×512 PNG](../../game/cards/art/masters/prism_cage.png) |
 | Asanbosam | `shadow_summon_54` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_54.png) |
 | Werewolf | `shadow_summon_55` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_55.png) |
 | Black Shuck | `shadow_summon_56` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_56.png) |

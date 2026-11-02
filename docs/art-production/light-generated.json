@@ -4024,5 +4024,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: entire Zhuge Nu repeater fits with margin, and short stock, bow limbs/string, bolt magazine and linked loading lever are readable as an ancient Chinese repeating crossbow."
+  },
+  {
+    "cardId": "light_machine_12",
+    "name": "Siege Tower",
+    "prompt": "Paint a wide, compact three-story timber siege tower for the card Siege Tower, a massive slow engine that advances to blast fortress walls. Three sturdy stacked fighting decks beneath a low protective roof, broad square timber body on heavy iron-rimmed wheels, hide-covered lower panels and a small projecting wooden battering ram. The siege tower is the singular focal object, shown in a horizontal three-quarter view, with complete roof, every wheel and ram all comfortably visible; make it broad and squat rather than tall, occupying about 65% of square height. Quiet sky above and ground below; distant stone wall for context. Painterly medieval fantasy collectible-card art, detailed wood grain, iron, warm dramatic directional light, atmospheric depth, grounded proportions. 1:1 square canvas for editable 512x512 master, keep full structure inside x24..488 and y105..407 for wide 206:141 crop. No operators, lettering, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcde8518-f617-4c84-bed6-ab9585ccd799.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Compact tower, roof, wheels and battering ram all fit with margin; silhouette and timber/iron details remain readable."
+  },
+  {
+    "cardId": "light_machine_13",
+    "name": "Motte-and-Bailey Palisade",
+    "prompt": "Paint an illustration for Motte-and-Bailey Palisade. Show a clearly recognizable medieval motte-and-bailey fortification in one compact horizontal view: a raised earthen motte with small timber keep and surrounding bailey enclosed by a stout sharpened-log palisade, a simple gate and a few tiny rallying defenders for scale. Keep the whole recognizable fortification central and modest in height, including palisade tips and earthwork base, against quiet countryside at golden dawn. Painterly medieval fantasy collectible-card art, believable timber and earth, directional light, rich atmosphere. 1:1 square canvas for editable 512x512 master, entire named structure within x24..488 y105..407 for a 206:141 crop. No text, lettering, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5e1909b9-f4b7-4fd7-9251-a056b6c5ac57.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Keep roof and flag, complete motte, bailey palisade and gate fit; fort reads at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_14",
+    "name": "Marble Bastion",
+    "prompt": "Paint an illustration for Marble Bastion: a huge pale-marble defensive bastion, low broad horizontal fortress with faceted angled walls, crenellations, stout corner towers and a protected gate, glowing softly in storm-lit ochre dust; a few tiny defenders convey scale. The complete bastion silhouette including tower tops and foundations fits compactly across the center, no cropped tips. Painterly medieval fantasy collectible-card art, carved marble with believable weathering, dramatic warm sunlight breaking through cloud, atmospheric depth. 1:1 square canvas for editable 512x512 master, keep full named structure within x24..488 y105..407 for wide 206:141 card crop. No text, frame, UI, modern hardware, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7030039-b7d4-48ab-b4de-0a1462619f51.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Full bastion towers, walls and base remain visible; marble silhouette and protected gate read clearly."
+  },
+  {
+    "cardId": "light_machine_15",
+    "name": "Turtle Ship Bulwark",
+    "prompt": "Paint an illustration for Turtle Ship Bulwark: a powerful compact Korean medieval turtle ship viewed in a horizontal three-quarter profile at sea, unmistakable armored turtle-shell roof with rows of iron spikes, curved dragon-head prow and stout wooden hull with oar ports. Show its entire hull, stern and dragon prow within the central composition; keep the ship broad and low, no cropped prow or stern. Gentle luminous surf and distant coastal battle haze. Painterly medieval fantasy collectible-card art, richly detailed lacquered wood, bronze and iron, dramatic directional sunrise, atmospheric depth. 1:1 square canvas for editable 512x512 master, all named ship features within x24..488 y105..407 for 206:141 wide crop. No text, border, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e6b489e4-bace-4725-a92e-4f1f16ff9daf.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Entire armored turtle ship with spiked shell, dragon prow, stern and hull fits; identity stays clear at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_16",
+    "name": "Hero's Automaton",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Hero's Automaton, a stout compact heroic bronze-and-ivory construct with a sunburst breastplate and luminous blue eyes. A squat broad-shouldered, short-limbed articulated automaton in a low powerful stepping crouch, one foot crushing loose stones, one arm raised protectively. Its complete figure from crown to both feet occupies only the middle half of the square height with generous clear space above and below; do not make a tall human proportion and do not crop any part. Three-quarter view, clear readable head, arms, torso and feet; luminous warm gold light, aged bronze, ivory, gold and blue cloth, dramatic warm sunlight, atmospheric depth. Square 1:1, editable 512x512 master, complete named subject within x24..488 y105..407 for the 206:141 wide crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-36fd6631-24a7-4648-a4db-e7eb92042f3c.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.543
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, vertically adjusted 206:141 crop and 128-pixel thumbnail. Automaton face, full head, raised hand, torso and stepping legs read clearly; edge of the near boot is tight against the crop."
   }
 ]

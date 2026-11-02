@@ -4115,5 +4115,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "The square source keeps the full shell, head and bright eyes prominent; the true wide crop retains the beetle’s head and forelegs, with its armored silhouette readable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_43",
+    "name": "Imperial Lung Dragon",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Imperial Lung Dragon”. An imperial Chinese lung dragon, unmistakably East Asian in identity: long serpentine body coiled horizontally through the middle, four small clawed legs, fine whiskers, antler-like horns, flowing mane and scaled face with realistic-sized clear eyes. It surges forward above a stone palace roof amid smoke and controlled embers, head and antlers prominent; no wings, no Western dragon body proportions. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-c161bb00-1684-4233-bdc7-b0f0e86278ca.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37 to retain the full antlers, dragon head, eyes and face whiskers in the wide crop; body and legs remain visible; 128px thumb identifies a Chinese lung dragon. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_44",
+    "name": "Firebird",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Firebird”. A noble firebird with a recognizable large eagle-like head, realistic alert eyes, broad feathered wings and long tail, soaring horizontally through a darkening sky. Individual russet and gold feathers catch warm light and a restrained ember trail follows the tail; bird remains primary, with no humanoid form and no engulfing fire. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-53531529-13ad-48fc-9363-ff0e42bdad01.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Wide crop and thumbnail keep the firebird’s head and eye clear with both feathered wings readable; incidental outer feather tips extend beyond the crop. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_45",
+    "name": "Ember Imp",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Ember Imp”. A small wiry medieval fire imp with natural-sized amber eyes, clearly readable face, short swept horns and pointed ears, springing sideways in a quick zigzag leap. One hand reaches forward with a small ember; other hand and body visible. Charred stone and a few sparks support it, no huge cartoon eyes or exaggerated childlike proportions. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-e5dab685-49a6-4cf1-9562-d9d88dc97748.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37; this crop shows the complete head and horn tips while keeping face, eyes and both hands visible. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_11",
+    "name": "Volley Gun",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Volley Gun”. A compact medieval fantasy repeater volley gun on a sturdy wooden field carriage: a cluster of iron barrels in a single coherent frame, visible breech and firing mechanism, two complete carriage wheels, supported on stone rampart. Show it launching a tight volley of small glowing bolts into the distance; entire machine geometry visible, no modern gun design. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-27934f7b-b3d9-483d-bd53-89b787eaee25.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.56
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted down to 0.56; the complete near carriage wheel is now visible with the barrel cluster and firing frame intact. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_12",
+    "name": "Ember Trebuchet",
+    "prompt": "Create a square 1:1 illustration for the Hexmancers card “Ember Trebuchet”, an unmistakable medieval counterweight trebuchet. Depict a compact but complete wooden trebuchet with its full upright frame, complete pivoting throwing arm, sling, counterweight box and stable base clearly visible together in the middle distance on a fortified stone battlefield. A single glowing ember projectile arcs away toward a distant siege line. Keep the entire arm and base within x24..488,y105..407 for the wide 206:141 crop; do not crop the top of the arm or the base. Medieval wood joinery and iron fittings, no wheels except small carriage detail if needed, no modern mechanism. Painterly high-fantasy collectible-card illustration, material detail, warm firelight, atmospheric distance, crisp readable silhouette. 1:1 square, finished painting, no lettering, frame or UI, no anime/cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f4fe513-8877-4501-a03b-8f6d84846b76.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted to the top limit (y=0 crop) to preserve the complete arm and sling tip. The lower frame/base extends beyond the crop, so the complete machine cannot fit at this crop position; awaiting parent direction before any repaint."
   }
 ]

@@ -4034,8 +4034,8 @@
   {
     "cardId": "storm_summon_48",
     "name": "Spark Sprite",
-    "prompt": "Paint an original 1:1 square image for Hexmancers card Spark Sprite. Show two tiny swift spark sprites as vivid golden-blue lightning wisps with delicate expressive faces, dashing across a storm-dark ruined battlefield; their small glowing forms are the unmistakable focus. Painterly medieval fantasy collectible-card illustration, expressive brushwork, grounded light and atmospheric depth, richly detailed but readable at a 128-pixel thumbnail. Keep all sprite faces and forms inside x24–488, y105–407 of the 512-square composition; quiet storm sky and ground above/below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-7b5223f6-6c8f-4f64-8f9f-49f1d3cc7077.png",
+    "prompt": "Create a new original 1:1 square illustration for the fantasy card Spark Sprite. Depict a small, agile humanoid elemental spirit formed from branching blue-white lightning and wisps of storm vapor, darting sideways above a medieval battlefield. Give it a compact angular head, subtle narrow luminous eyes of ordinary proportions, and a focused fierce expression; a compact torso and two clearly shaped lightning-arms reach forward as it dashes. Grounded elemental anatomy and painterly medieval fantasy collectible-card art: visible brush strokes, atmospheric depth, nuanced smoky edges, dramatic directional storm light, strong silhouette. This is an uncanny lightning spirit, not a child, mascot, fairy, animal or cute cartoon. Keep its complete head, eyes, and both relevant hands compact and within x24–488,y105–407 on a square 512×512 composition; expendable lightning trails and quiet clouds may extend beyond. No oversized/baby eyes, no smile, no cute expression, no Disney, no anime, no photorealism, no pixel art, no text, no border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-b8b24220-b0c8-427b-8534-38bfa3a626c0.png",
     "editableSourcePath": "game/cards/art/masters/storm_summon_48.png",
     "sourceNative": [
       1254,
@@ -4047,7 +4047,7 @@
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "512-square source and 206:141 crop inspected; both sprite faces and forms remain visible. Rendering is more cute/cartoon-like than the painterly grounded target; flagged for parent style review."
+    "reviewNote": "Repainted after parent review rejected the previous cute mascot face. The replacement has grounded storm-elemental anatomy, narrow normal-proportion eyes and a focused expression. Prepared a 512x512 source, checked the 206:141 crop and 128px thumbnail; head/face and both lightning hands remain within the crop."
   },
   {
     "cardId": "storm_summon_50",
@@ -4120,5 +4120,77 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "512-square source, 206:141 crop and 128-pixel thumbnail inspected; entire sandstone wall, parapet and buttresses remain visible. Rampart reads clearly at thumbnail size; rendering leans photorealistic, flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_15",
+    "name": "Palm-Log Palisade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Palm-Log Palisade. A compact, broad medieval field palisade made from thick upright palm-tree logs bound with iron and rope, with sharpened uneven tops; a small inset storm-blue wardstone glows among the logs. The complete low defensive barrier is the subject, arranged horizontally. Grounded painterly medieval fantasy art, visible brushwork, believable rough timber and storm light, muted earth tones. Keep both ends and all sharpened log tips inside x24–488,y105–407 of a square 512 master; empty quiet sky and ground outside. No people, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9edb76d6-507b-4758-b75e-c5ef5aab6443.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the whole palm-log barrier, both ends and sharpened tops remain visible."
+  },
+  {
+    "cardId": "storm_machine_16",
+    "name": "Bronze Barricade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Bronze Barricade. Show a compact heavy medieval defensive barricade built from broad overlapping curved bronze plates on a timber frame, with rivets, scuffs and a short central crest; subtle blue electricity ripples along the metal seams. It is a protective wall, broad and low, shown three-quarter view against a storm-lit stone pass. Painterly medieval fantasy, tactile weathered bronze and wood, visible brushwork, dramatic but restrained lighting, grounded proportions. Keep the entire barricade from end to end inside x24–488,y105–407 on a 512-square composition, quiet background above and below. No figures, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-734cd7c5-75ff-494c-ab55-81129c4cee64.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the full bronze barricade is visible end to end."
+  },
+  {
+    "cardId": "storm_machine_17",
+    "name": "Elephant Clock Automaton",
+    "prompt": "Paint an original 1:1 square illustration for Hexmancers card Elephant Clock Automaton, inspired by the medieval mechanical elephant clock of al-Jazari. Depict the entire intricate clock assembly as a compact tabletop-sized machine, fully visible and centered: a small bronze elephant with ornate saddle housing, a slender tower and domed canopy on its back, a small rotating zodiac sphere above, and a few tiny carved mechanisms along the side. All elements are miniaturized together; no large separate elephant or tower. Grounded painterly medieval fantasy/Islamic clockwork design, finely worked brass, carved wood, enamel accents, atmospheric dramatic light, visible brushstrokes. Keep the whole assembly including dome, sphere, elephant feet and base inside x24–488,y105–407 of the 512-square composition. No operator, no text, frame or UI, no polished toy look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-defc0742-5bd5-4e9d-a72c-c453dfaf39da.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Initial 512-square source prepared; wide crop clips the top of the celestial sphere and lower base. Repainting to miniaturize the whole clock assembly within the safe band."
+  },
+  {
+    "cardId": "storm_machine_18",
+    "name": "Coin-Spitting Mortar",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Spitting Mortar. A squat medieval bronze mortar cannon on a sturdy low wheeled carriage, angled upward as it launches a short stream of bright gold coins like buckshot; clearly show the wide mortar mouth, full barrel, carriage and wheels. Compact horizontal silhouette, the complete machine dominates, with only a few coins flying above it. Painterly medieval fantasy and clockwork materials, scuffed bronze, oak and iron, visible brushwork, restrained blue storm sparks and dramatic warm light. Keep the entire mortar and carriage within x24–488,y105–407 on a 512-square composition; quiet background above and below. No operator, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-25d60d21-5633-4274-b887-24be39a34604.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete mortar, carriage, wheels and coin burst remain visible."
   }
 ]

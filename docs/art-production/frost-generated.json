@@ -4108,10 +4108,82 @@
     ],
     "focalPoint": [
       0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.37 horizontal crop and 128px thumbnail. The captain’s full tricorn, face and eyes fit clearly; the raised casting hand and fingers are visible, with the mended sailor secondary."
+  },
+  {
+    "cardId": "frost_summon_40",
+    "name": "Drowned Sailor",
+    "prompt": "Paint original art for the exact card “Drowned Sailor.” A pale, drowned human sailor spirit hauls itself from a dark ice-rimmed harbor beside an old wooden ship, its sodden wool cap, salt-stiff coat and seaweed tangles identifying the drowned deckhand; face calm and haunting, both eyes visible, one hand gripping the frozen pier as ghostly blue mist rises. The sailor remains fully clothed and non-gory, with head, cap, eyes and gripping hand prominent and complete. Painterly medieval fantasy collectible-card illustration, rich brushwork, tactile wet wool, weathered wood, icy water and cold moonlight with a small lantern glow. Exact 1:1 square for editable 512x512; place head, hat and hand within x24..488,y105..407 for the 206:141 crop, quiet fog/sea margins. No modern gear, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3ae42b4f-afc1-4fca-9373-53e9ad80cbe5.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Drowned Sailor’s full cap, face, eyes and gripping hand are clear; wet clothing, ice-rimmed harbor and ship establish the scene."
+  },
+  {
+    "cardId": "frost_summon_41",
+    "name": "Snow Maiden",
+    "prompt": "Create original painterly fantasy art for the exact card “Snow Maiden,” drawing on the Slavic Snegurochka winter-maiden tradition: a gentle, fully clothed young adult woman with a calm face, pale blue eyes, long fair braid and an elegant historically inspired blue-and-white fur-trimmed winter gown and kokoshnik-style crown. She raises one gloved hand as a small burst of snowflakes and soft blue frost light blossoms beside her. Graceful and humane, not seductive, no exposed skin beyond face and hands. Face, crown, eyes and hand fully visible and dominant. Snow-laden birch grove at dusk, a warm distant cottage light. Painterly medieval high-fantasy collectible-card illustration, textured brushwork, rich cloth and snow, atmospheric cool light. Exact 1:1 square editable 512x512; keep crown/head and hand wholly in x24..488,y105..407 for 206:141 crop, quiet snowy margins. No text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1745b6d3-8539-4906-9407-9cbeeb927097.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
       0.4
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Inspected the 512-square source. The captain’s complete spectral face, eyes, tricorn and raised glowing hand are prominent; the smaller mended sailor is a clear secondary figure. Focal y=0.40 brings the hat fully into the horizontal crop."
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Snow Maiden’s complete kokoshnik crown, face, eyes and raised gloved hand fit clearly; the Slavic winter-maiden identity is modest and respectful."
+  },
+  {
+    "cardId": "frost_summon_42",
+    "name": "Yuki-onna",
+    "prompt": "Paint original art for the exact card “Yuki-onna,” respectfully drawing on Japanese winter folklore. A serene adult snow spirit stands in a moonlit blizzard, with a composed Japanese face, dark eyes, long black hair flowing gently in the wind, and a modest fully covering white layered kimono with a pale blue outer robe; no sexualized styling. One graceful hand releases a controlled diagonal stream of frost and snow, hinting at an explosive burst of icy power while she remains the clear focus. Keep full face, eyes, hairline and hand comfortably inside the central horizontal band. Snowy cedar forest and distant shrine roof only as quiet atmospheric context, no sacred symbols or text. Painterly medieval-fantasy card art, layered brushwork, refined fabric folds, dramatic moonlit blue and silver light. Exact 1:1 square for 512x512 master; keep head and relevant hand in x24..488,y105..407 on 206:141 crop, calm margins. No text/frame/UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c1213cb4-1d4a-4911-9cfe-721dbe28e99a.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Yuki-onna’s complete face and eyes, flowing dark hair and casting hand read clearly; modest layered kimono and snowy cedar setting support the Japanese folklore identity."
+  },
+  {
+    "cardId": "frost_summon_43",
+    "name": "Kayak Hunter",
+    "prompt": "Paint original illustration for the exact card “Kayak Hunter.” Show a skilled adult Inuit hunter in historically grounded Arctic clothing, seated in a traditional skin-covered kayak on a cold northern sea, wearing a practical sealskin parka with fur hood and mittens; respectful everyday survival gear, no caricature, sacred motifs, or invented ceremonial dress. The hunter turns alertly toward a distant seal, holding a short harpoon ready in one gloved hand; show clear human face, eyes, hood and hand, with the kayak and paddle visible as context. Painterly medieval fantasy collectible-card art with tactile seal leather, fur, driftwood, icy water and subdued northern light, dignified natural anatomy. Exact 1:1 square for editable 512x512; keep full hood/head and relevant hand inside x24..488,y105..407 for 206:141 crop, quiet pale sky and water margins. No modern equipment, text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d6bc106c-f8fb-4706-a529-f8a2b3a361e6.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. The Inuit hunter’s complete fur hood, face, eyes and harpoon hand are visible in a traditional skin-covered kayak with paddle; practical Arctic clothing is respectfully depicted."
   }
 ]

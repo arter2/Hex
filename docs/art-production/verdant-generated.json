@@ -4122,5 +4122,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the exact 512-square source, actual 206:141 crop and 128px thumbnail. The boar’s complete face, eyes, ears and tusks remain clear with safe margins; the thumbnail retains the legendary boar identity."
+  },
+  {
+    "cardId": "verdant_summon_58",
+    "name": "Komodo Monitor",
+    "prompt": "Paint an illustration for “Komodo Monitor”. A powerful Komodo dragon (large monitor lizard) pounces across a dry tropical forest floor, long muscular body, rough pebbled gray-brown scales, forked tongue and heavy blunt lizard head with alert eyes, tail trailing into the scenery. Leafy Indonesian island forest with warm light. Keep the whole lizard head, eyes, nostrils and front claws inside the central horizontal crop; unmistakably a monitor lizard, not a snake or crocodile. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural textures, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical head, eyes, distinctive anatomy and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-496ec4f3-e785-4bf3-8273-4cf4a0bf56bc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_58.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual 206:141 crop and 128px thumbnail. The named animal’s complete primary head/eyes and distinctive anatomy remain readable with safe margins."
+  },
+  {
+    "cardId": "verdant_summon_59",
+    "name": "Fer-de-Lance",
+    "prompt": "Paint an illustration for “Fer-de-Lance”. A fer-de-lance pit viper (Bothrops asper) strikes from leaf litter in a humid Central American forest, coiled body with intricate brown-and-tan hourglass pattern, broad triangular head, sharp amber eyes and visible heat-sensing pits; a few thorny vines frame the ground. Keep the complete head, eyes and strike posture within the central horizontal crop; accurate venomous viper, no hood or cobra traits. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural textures, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical head, eyes, distinctive anatomy and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-9ad3ac41-1ec0-44c3-b833-e2798858f390.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_59.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual 206:141 crop and 128px thumbnail. The named animal’s complete primary head/eyes and distinctive anatomy remain readable with safe margins."
+  },
+  {
+    "cardId": "verdant_summon_60",
+    "name": "Green Anaconda",
+    "prompt": "Paint an illustration for “Green Anaconda”. A huge green anaconda coils at the waterline in a lush South American swamp, olive-green scales marked with large dark oval spots, broad blunt snake head and alert eyes raised above the water as it surges forward; submerged reeds and floating leaves. Keep the complete head and eyes prominent inside the central horizontal crop; clearly an anaconda, not a venomous cobra. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural textures, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical head, eyes, distinctive anatomy and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-d36ea727-5289-440f-9734-aea52018bacd.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_60.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual 206:141 crop and 128px thumbnail. The named animal’s complete primary head/eyes and distinctive anatomy remain readable with safe margins."
+  },
+  {
+    "cardId": "verdant_summon_61",
+    "name": "Poison Dart Frog",
+    "prompt": "Paint an illustration for “Poison Dart Frog”. A small jewel-bright poison dart frog crouches on a broad rainforest leaf, vivid blue-and-black patterned skin, large expressive golden eyes, tiny toes and delicate amphibian posture; soft jungle light and mist. Choose a plausible tropical poison dart frog coloration, no crown or clothing, no anthropomorphic anatomy. Keep its entire head, eyes, limbs and distinctive patterned body within the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural textures, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical head, eyes, distinctive anatomy and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-a5646f3b-e1ef-42f8-9e33-73d86e6100f0.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_61.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual 206:141 crop and 128px thumbnail. The named animal’s complete primary head/eyes and distinctive anatomy remain readable with safe margins."
+  },
+  {
+    "cardId": "verdant_summon_62",
+    "name": "Army Ant Soldier",
+    "prompt": "Paint an illustration for “Army Ant Soldier”. A single large army ant soldier, unmistakably a real insect with a compact three-part exoskeleton, glossy deep reddish-brown chitin, six jointed legs, bent antennae, enormous hooked mandibles and distinct compound eyes, emerges from a living trail of smaller army ants across a mossy forest floor. Low ground-level heroic view and natural scale exaggeration, but no humanoid stance, face, clothing, armor, weapons or fantasy hands. Keep the ant’s whole head, both compound eyes, antennae and mandibles clear inside the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural textures, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical head, eyes, distinctive anatomy and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-34c28926-e7dc-439c-9d6c-2bf1c5b08631.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_62.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual 206:141 crop and 128px thumbnail. The ant remains unmistakably an insect; full head, compound eyes, antennae and mandibles are clear with safe margins."
   }
 ]

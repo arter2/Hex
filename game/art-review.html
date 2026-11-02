@@ -1,7 +1,7 @@
 <!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title>
 <link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css">
 <style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}nav button,select{font:inherit;padding:8px}</style>
-<h1>Artwork review</h1><p>1634 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
+<h1>Artwork review</h1><p>1953 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
 <nav><label>Colour <select id="review-colour"></select></label><button id="review-prev">Previous</button><button id="review-next">Next</button><span id="review-count"></span></nav><main id="review"></main>
 <script src="cardsets.js"></script><script src="creatures.js"></script><script src="strikes.js"></script><script src="kinds.js"></script><script src="cards.js"></script><script src="cards/card-geo.js"></script><script src="cards/icons.js"></script><script src="cards/illustrations.js"></script><script src="cards/art-variants.js"></script><script src="art.js"></script>
 <script>
@@ -22,7 +22,8 @@ const CARD_PAL={
    Layers, bottom up: the colour's base, its material texture (one of three, fixed per card), the art (and a holo
    foil), the frame with any state glow, then the glyphs and live text. Every functional icon is a shape from
    cards/icons drawn in the card's own colour (a mask), so a Pull is blue on a frost card and orange on a fire one.
-   The 'compact' / 'expanded' mode no longer changes the card: a small card simply hides what it can't show (card.css). */
+   cardEl(c,extra,locked,mode): mode "expanded" is the full card (the detail, a held card); anything else is the short
+   card (v186: contract.json "short", .card.kit.compact), with no rules or footer and bigger rune and rank plates. */
 const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
 // each colour's three material textures (palettes.json variants)
 const KIT_TEX={red:['embers','lava-crust','volcanic-ridges'], blue:['water-ripples','cracked-ice','frost-facets'], yellow:['dune-sand','static-arcs','sandstone'],
@@ -74,20 +75,24 @@ const ART_FOCUS={ember_dart:'50% 30%'};
 // Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
 // collection rendering does not repeatedly force layout, and do not retain removed image elements.
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
+// a card-kit file under cards/ as a CSS url() (the packed release build points this at its packed copy)
+const kitURL=p=>'url(cards/'+p+')';
 // a card's frame colour (cards/palettes.json) and its one of three material textures, picked by its id
-function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
-  return {kc, tex:'url(cards/textures/card/'+kc+'-'+t+'.svg)'}; }
+// (shape: 'card' for the full card, 'short' for the short one: hand, grids, shop)
+function cardKit(c,shape='card'){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
+  return {kc, tex:kitURL('textures/'+shape+'/'+kc+'-'+t+'.svg')}; }
 function cardEl(c,extra,locked,mode,opts={}){
-  const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
+  // the full card (expanded: the detail, a held card) or the short card (everywhere else: no rules or footer, big plates)
+  const big=mode==='expanded', shape=big?'card':'short', el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c,shape);
   el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
-  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame','url(cards/frames/card/'+kc+'.svg)');
+  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/'+shape+'/'+kc+'.svg'));
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
   if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
-    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/expanded/foil-glints'+mv+'.svg'),u('effects/expanded/foil-shimmer'+mv+'.svg'),u('effects/expanded/foil-etch.svg'),u('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
-    el.style.setProperty('--k-trim',u('foils/card/'+kc+'/trim'+mv+'.svg')); }
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[kitURL('effects/expanded/foil-glints'+mv+'.svg'),kitURL('effects/expanded/foil-shimmer'+mv+'.svg'),kitURL('effects/expanded/foil-etch.svg'),kitURL('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',kitURL('foils/'+shape+'/'+kc+'/trim'+mv+'.svg')); }
   const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
   const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
   el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;
@@ -101,7 +106,9 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
     +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
-  foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
+  // Target and Range show as their icons alone (the words are in the title); other slots keep their label on a big card
+  foot.forEach(([ic,lab,val],k)=>{ const word=ic!=='target'&&ic!=='range';
+    h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}${word?`<small>${esc(lab)}:</small>`:''}<span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
@@ -116,7 +123,7 @@ function cardEl(c,extra,locked,mode,opts={}){
    - type line: type · role, whole, 16 down to 10;
    - rules: 18 on 16.5 (3 lines), 16 on 14.5 (4), 14 on 12 (5); longer still, the box scrolls on a big card (a fade
      at its foot), and the full text is in its title either way;
-   - footer value: 14 down to 10; count: 22 down to 14.
+   - footer value: 14 down to 10 (a small card, which drops the labels: 20 down to 10); count: 22 down to 14.
    The faces' vertical ink centring (--ink-dy) is measured here too, once per face. */
 const KIT_FIT={canvas:null, ready:false};
 function kitMeasure(text,px,face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d');
@@ -129,14 +136,20 @@ function kitInk(face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createE
 function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.querySelectorAll) el.querySelectorAll('.card.kit').forEach(kitFit); return; }
   if(!KIT_FIT.ready&&!(document.fonts&&document.fonts.check('12px "Hex Card"')&&document.fonts.check('12px "Hex Card Caps"'))) return;
   if(!KIT_FIT.ready){ KIT_FIT.ready=true; const r=document.documentElement.style; r.setProperty('--ink-dy',kitInk('Hex Card').toFixed(3)); r.setProperty('--ink-dy-caps',kitInk('Hex Card Caps').toFixed(3)); }
-  const G=KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
+  const S=el.classList.contains('compact')&&KIT_GEO.short, G=S?{...KIT_GEO,type:{...KIT_GEO.type,...S.type},w:{...KIT_GEO.w,...S.w}}:KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
   const name=el.dataset.kname, nm=el.querySelector('.k-name'), ns=[29,26,23,20,18].find(s=>kitMeasure(name,s)<=G.w.name-pad);
-  nm.classList.toggle('two',!ns); set(el,'--nfs',ns||15); if(!ns) set(el,'--nlh',14);
+  // a name too long for one line: two lines at 15 on 14
+  // (the short card's taller bar takes two lines at the biggest of 23..15 that fits, whenever that beats one line)
+  const two2=S?[23,22,20,18,16,15].find(s=>kitLines(name,s,G.w.name-pad)<=2&&2*s*.95<=G.w.nameH)||15:15, one=ns&&!(S&&two2>ns)?ns:0, two=one?0:two2;
+  nm.classList.toggle('two',!one); set(el,'--nfs',one||two); if(!one) set(el,'--nlh',S?Math.round(two*.95*10)/10:14);
   const [ty,ro]=el.dataset.ktype.split('|'), tw=s=>kitMeasure((ty+ro).toUpperCase(),s,'Hex Card Caps')+14;   // + the drawn dot and its gaps
   set(el,'--tfs',steps(G.type.type[0],10,1).find(s=>tw(s)<=G.w.type-pad)||10);
   const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];
   set(el,'--rfs',fit[0]); set(el,'--rlh',fit[1]); rb.classList.toggle('scroll',kitLines(rt,fit[0],G.w.rules)*fit[1]>G.w.rulesH);
   el.querySelectorAll('.k-foot>span').forEach(v=>set(v,'--vfs',steps(G.type.footer[0],10,1).find(s=>kitMeasure(v.textContent,s)<=G.w.foot)||10));
+  // a small card: both footer values at one size, the largest that fits the longer of them
+  const fv=[...el.querySelectorAll('.k-foot>span')].map(v=>v.textContent);
+  set(el,'--vfss',steps(20,10,1).find(s=>fv.every(t=>kitMeasure(t,s)<=G.w.footS))||10);
   el.querySelectorAll('.k-count').forEach(b=>set(b,'--cfs',steps(G.type.count[0],14,1).find(s=>kitMeasure(b.textContent,s)<=G.w.count-pad)||14));
   // short glyph runs (rune, rank, count) centre on their own painted ink, measured for the string itself
   el.querySelectorAll(':scope>:is(.k-rune,.k-rank,.k-count)>span').forEach(sp=>{ const o=kitInkOf(sp.textContent); sp.style.transform='translate('+o[0].toFixed(3)+'em,'+o[1].toFixed(3)+'em)'; }); }

@@ -42,7 +42,8 @@ async function main(){
    assert(Math.abs(x-Math.round(x))<.05&&Math.abs(y-Math.round(y))<.05,'Cell off the pixel grid: '+id);
   }
  }
- const fallback=Object.values(cards).find(c=>!variants[c.id]);assert.equal(ctx.cardIllustration(fallback),null);assert.equal(ctx.cardArtVariants(fallback),null);assert.equal(ctx.cardArt(fallback).length,64);
+ // every card is painted now (batch 15): test the fallback on a copy of one under an id with no art
+ const fallback=Object.values(cards).find(c=>!variants[c.id])||Object.assign({},Object.values(cards)[0],{id:'__no_art_test__'});assert.equal(ctx.cardIllustration(fallback),null);assert.equal(ctx.cardArtVariants(fallback),null);assert.equal(ctx.cardArt(fallback).length,64);
  const all=vm.runInContext('CARD_LIST',ctx);ctx.testCards=Object.keys(variants);ctx.testSizes=[96,120,240,396];
  // Review page loads the real catalogue and card renderer; it can also be opened from the test ZIP.
  const helper=ui.slice(ui.indexOf('const CARD_PAL='),ui.indexOf('function showDetail('));

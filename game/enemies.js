@@ -41,6 +41,9 @@ const ENEMY_DEFS={
   spider:   {name:'Cave Spider',   color:'shadow',               hp:32, dmg:7, rate:[2.2,3],   moves:['lunge','shot'], ai:'wander', vermin:true, body:'Spider',   scale:.75},
   bomber:   {name:'Powder Monkey', color:'gray',  weak:'verdant', hp:85,  dmg:15, rate:[3.2,4.2], moves:['bomb'], ai:'back', outlaw:true},
 };
+// a duel's avatar of the other player (battle.js startDuel): its HP comes from the opponent and it never acts on
+// its own; kept out of the enemy lists (not enumerable), so no lab, bestiary or encounter picks it
+Object.defineProperty(ENEMY_DEFS,'rival',{enumerable:false, value:{name:'Rival', color:'gray', hp:120, dmg:0, rate:[1e9,1e9], moves:['shot'], ai:'wander', pvp:true}});
 const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
 const MONSTERS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const HUMANOIDS=['cultist','witch','caller','warden','paladin','knight'];
@@ -86,7 +89,7 @@ function enemyDeck(color,depth){
    colour that beats it and resists its own (cards of its colour do 60%). Bosses keep their own rules. */
 const ELEM_WORD={fire:'Ember', frost:'Rime', storm:'Volt', verdant:'Moss', light:'Gilded', shadow:'Gloom'};
 const RESIST_MULT=.6;
-function enemyElement(d,depth){ if(d.boss||d.mini||d.rare) return null;
+function enemyElement(d,depth){ if(d.boss||d.mini||d.rare||d.pvp) return null;
   const A=typeof areaOf==='function'?areaOf(depth):null, home=A&&SIX.includes(A.color)?A.color:null, x=Math.random();
   if(home&&x<.55) return home;
   if(x<.75) return pick(SIX);
@@ -294,6 +297,7 @@ function zombieAttack(e){ const o=B.enemies.filter(x=>x!==e&&x.hp>0&&!x.under).s
   B.fx.push({kind:'bolt',a:e.tile,b:o.tile,color:'#9be36a',t:0,life:.3}); burst(o.tile,'#9be36a',10,.6);
   hitEnemy(o,Math.round(e.dmg*1.5),null,{raw:true}); floater('bitten',o.tile,'#9be36a'); }
 function updateEnemy(e,dt){
+  if(e.remote) return;   // a duel's avatar: the opponent moves and fights it (battle.js startDuel)
   const b=B;
   e.confuseT=Math.max(0,(e.confuseT||0)-dt); if(e.infectT>0&&(e.infectT-=dt)<=0) floater('cured',e.tile,'#9be36a');
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);

@@ -1,0 +1,637 @@
+{
+  "batch": 15,
+  "packets": [
+    {
+      "packet": "fire-01",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_38",
+          "name": "Fire Vampire"
+        },
+        {
+          "id": "fire_summon_39",
+          "name": "Cinder Bat Swarm"
+        },
+        {
+          "id": "fire_summon_40",
+          "name": "Cinder Hound"
+        },
+        {
+          "id": "fire_summon_41",
+          "name": "Mole Miner"
+        },
+        {
+          "id": "fire_summon_42",
+          "name": "Lava Beetle"
+        }
+      ]
+    },
+    {
+      "packet": "frost-01",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_35",
+          "name": "Frost Giant"
+        },
+        {
+          "id": "frost_summon_36",
+          "name": "Pirate Deckhand"
+        },
+        {
+          "id": "frost_summon_37",
+          "name": "Buccaneer Captain"
+        },
+        {
+          "id": "frost_summon_38",
+          "name": "Powder Monkey"
+        },
+        {
+          "id": "frost_summon_39",
+          "name": "Flying Dutchman's Captain"
+        }
+      ]
+    },
+    {
+      "packet": "light-01",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_machine_12",
+          "name": "Siege Tower"
+        },
+        {
+          "id": "light_machine_13",
+          "name": "Motte-and-Bailey Palisade"
+        },
+        {
+          "id": "light_machine_14",
+          "name": "Marble Bastion"
+        },
+        {
+          "id": "light_machine_15",
+          "name": "Turtle Ship Bulwark"
+        },
+        {
+          "id": "light_machine_16",
+          "name": "Hero's Automaton"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-01",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_54",
+          "name": "Asanbosam"
+        },
+        {
+          "id": "shadow_summon_55",
+          "name": "Werewolf"
+        },
+        {
+          "id": "shadow_summon_56",
+          "name": "Black Shuck"
+        },
+        {
+          "id": "shadow_summon_57",
+          "name": "Antlered Hunger"
+        },
+        {
+          "id": "shadow_summon_58",
+          "name": "Jorogumo"
+        }
+      ]
+    },
+    {
+      "packet": "storm-01",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_48",
+          "name": "Spark Sprite"
+        },
+        {
+          "id": "storm_summon_50",
+          "name": "Coin-Hoard Dragon"
+        },
+        {
+          "id": "storm_machine_12",
+          "name": "Zhuge Repeater"
+        },
+        {
+          "id": "storm_machine_13",
+          "name": "Tortoise War Wagon"
+        },
+        {
+          "id": "storm_machine_14",
+          "name": "Sandstone Rampart"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-01",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_53",
+          "name": "Sundarbans Tiger"
+        },
+        {
+          "id": "verdant_summon_54",
+          "name": "Horangi Mountain Tiger"
+        },
+        {
+          "id": "verdant_summon_55",
+          "name": "Greenwood Wolf Pack"
+        },
+        {
+          "id": "verdant_summon_56",
+          "name": "Wild Tusker Boar"
+        },
+        {
+          "id": "verdant_summon_57",
+          "name": "Twrch Trwyth"
+        }
+      ]
+    },
+    {
+      "packet": "fire-02",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_43",
+          "name": "Imperial Lung Dragon"
+        },
+        {
+          "id": "fire_summon_44",
+          "name": "Firebird"
+        },
+        {
+          "id": "fire_summon_45",
+          "name": "Ember Imp"
+        },
+        {
+          "id": "fire_machine_11",
+          "name": "Volley Gun"
+        },
+        {
+          "id": "fire_machine_12",
+          "name": "Ember Trebuchet"
+        }
+      ]
+    },
+    {
+      "packet": "frost-02",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_40",
+          "name": "Drowned Sailor"
+        },
+        {
+          "id": "frost_summon_41",
+          "name": "Snow Maiden"
+        },
+        {
+          "id": "frost_summon_42",
+          "name": "Yuki-onna"
+        },
+        {
+          "id": "frost_summon_43",
+          "name": "Kayak Hunter"
+        },
+        {
+          "id": "frost_summon_44",
+          "name": "Polar Bear"
+        }
+      ]
+    },
+    {
+      "packet": "light-02",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_machine_17",
+          "name": "Kite of Han Xin"
+        },
+        {
+          "id": "light_machine_18",
+          "name": "Polybolos"
+        },
+        {
+          "id": "light_machine_19",
+          "name": "Helepolis"
+        },
+        {
+          "id": "light_machine_20",
+          "name": "Star Fort Bastion"
+        },
+        {
+          "id": "light_machine_21",
+          "name": "Claw of Archimedes"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-02",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_59",
+          "name": "Rat King"
+        },
+        {
+          "id": "shadow_summon_60",
+          "name": "Black Annis"
+        },
+        {
+          "id": "shadow_summon_61",
+          "name": "Pit Fiend"
+        },
+        {
+          "id": "shadow_summon_62",
+          "name": "Rakshasa"
+        },
+        {
+          "id": "shadow_summon_63",
+          "name": "Morrigan's Raven"
+        }
+      ]
+    },
+    {
+      "packet": "storm-02",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_machine_15",
+          "name": "Palm-Log Palisade"
+        },
+        {
+          "id": "storm_machine_16",
+          "name": "Bronze Barricade"
+        },
+        {
+          "id": "storm_machine_17",
+          "name": "Elephant Clock Automaton"
+        },
+        {
+          "id": "storm_machine_18",
+          "name": "Coin-Spitting Mortar"
+        },
+        {
+          "id": "storm_machine_19",
+          "name": "Clockwork Flying Carpet"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-02",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_58",
+          "name": "Komodo Monitor"
+        },
+        {
+          "id": "verdant_summon_59",
+          "name": "Fer-de-Lance"
+        },
+        {
+          "id": "verdant_summon_60",
+          "name": "Green Anaconda"
+        },
+        {
+          "id": "verdant_summon_61",
+          "name": "Poison Dart Frog"
+        },
+        {
+          "id": "verdant_summon_62",
+          "name": "Army Ant Soldier"
+        }
+      ]
+    },
+    {
+      "packet": "fire-03",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_machine_13",
+          "name": "Stone Bastion"
+        },
+        {
+          "id": "fire_machine_14",
+          "name": "Firework Launcher"
+        },
+        {
+          "id": "fire_machine_15",
+          "name": "The Great Bombard"
+        },
+        {
+          "id": "hero_pyrrhus",
+          "name": "Pyrrhus the Bombardier"
+        },
+        {
+          "id": "hero_scorch",
+          "name": "Scorch, the Red Fox"
+        }
+      ]
+    },
+    {
+      "packet": "frost-03",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_45",
+          "name": "River Mother's Herald"
+        },
+        {
+          "id": "frost_summon_46",
+          "name": "Vodyanoy"
+        },
+        {
+          "id": "frost_summon_47",
+          "name": "Ahuizotl"
+        },
+        {
+          "id": "frost_summon_48",
+          "name": "Taniwha"
+        },
+        {
+          "id": "hero_ymir",
+          "name": "Ymir the Frost Giant"
+        }
+      ]
+    },
+    {
+      "packet": "light-03",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_machine_22",
+          "name": "Al-Jazari's Automaton"
+        },
+        {
+          "id": "light_machine_23",
+          "name": "Su Song's Clock Tower"
+        },
+        {
+          "id": "light_machine_24",
+          "name": "Warwolf Trebuchet"
+        },
+        {
+          "id": "light_machine_25",
+          "name": "Krak des Chevaliers"
+        },
+        {
+          "id": "hero_aldric",
+          "name": "Brother Aldric"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-03",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_64",
+          "name": "Gashadokuro"
+        },
+        {
+          "id": "shadow_summon_65",
+          "name": "La Llorona"
+        },
+        {
+          "id": "shadow_summon_66",
+          "name": "Dullahan"
+        },
+        {
+          "id": "shadow_summon_67",
+          "name": "Grim Reaper"
+        },
+        {
+          "id": "shadow_summon_68",
+          "name": "Baba Yaga"
+        }
+      ]
+    },
+    {
+      "packet": "storm-03",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_machine_20",
+          "name": "Hang-Glider Scout"
+        },
+        {
+          "id": "storm_machine_21",
+          "name": "The Thunder Engine"
+        },
+        {
+          "id": "storm_machine_22",
+          "name": "The Bronze Colossus"
+        },
+        {
+          "id": "hero_stati",
+          "name": "Stati, the Static Witch"
+        },
+        {
+          "id": "hero_kiri",
+          "name": "Squall Rider Kiri"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-03",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_63",
+          "name": "Giant Forest Hornet"
+        },
+        {
+          "id": "verdant_summon_64",
+          "name": "Sporeling Thallid"
+        },
+        {
+          "id": "verdant_summon_65",
+          "name": "Thallid Germinator"
+        },
+        {
+          "id": "verdant_summon_66",
+          "name": "Fungal Thallid Brute"
+        },
+        {
+          "id": "verdant_summon_67",
+          "name": "Moss-Shelled Tortoise"
+        }
+      ]
+    },
+    {
+      "packet": "fire-04",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "hero_salamandra",
+          "name": "Salamandra"
+        },
+        {
+          "id": "hero_vulcan",
+          "name": "Vulcan the Smith"
+        }
+      ]
+    },
+    {
+      "packet": "frost-04",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "hero_sleet",
+          "name": "Sleet, the Hail Archer"
+        },
+        {
+          "id": "hero_crysta",
+          "name": "Crysta the Shardmaid"
+        },
+        {
+          "id": "hero_permafrost",
+          "name": "Old Permafrost"
+        },
+        {
+          "id": "hero_nix",
+          "name": "Nix the Snow Owl"
+        },
+        {
+          "id": "hero_glace",
+          "name": "Lady Glace"
+        }
+      ]
+    },
+    {
+      "packet": "light-04",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "hero_ratha",
+          "name": "Ra'tha the Sunspear"
+        },
+        {
+          "id": "hero_prisma",
+          "name": "Prisma the Lightweaver"
+        },
+        {
+          "id": "hero_theron",
+          "name": "High Judge Theron"
+        },
+        {
+          "id": "hero_celestine",
+          "name": "Mother Celestine"
+        },
+        {
+          "id": "halo_arc",
+          "name": "Halo Arc"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-04",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_69",
+          "name": "The Erlking"
+        },
+        {
+          "id": "shadow_summon_70",
+          "name": "Iron Maiden"
+        },
+        {
+          "id": "hero_arachna",
+          "name": "Arachna"
+        },
+        {
+          "id": "hero_necros",
+          "name": "Necros the Bone Lord"
+        },
+        {
+          "id": "hero_corvina",
+          "name": "Corvina, Raven Witch"
+        }
+      ]
+    },
+    {
+      "packet": "storm-04",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "hero_thunderbird",
+          "name": "The Thunderbird"
+        },
+        {
+          "id": "hero_ozone",
+          "name": "Ozone the Tinker"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-04",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_68",
+          "name": "Galapagos Giant Tortoise"
+        },
+        {
+          "id": "verdant_summon_69",
+          "name": "Resplendent Quetzal"
+        },
+        {
+          "id": "verdant_summon_70",
+          "name": "Mokele-mbembe"
+        },
+        {
+          "id": "hero_sporelord",
+          "name": "The Sporelord"
+        },
+        {
+          "id": "hero_dara",
+          "name": "Vinewhip Dara"
+        }
+      ]
+    },
+    {
+      "packet": "light-05",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "prism_cage",
+          "name": "Prism Cage"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-05",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "hero_thistle",
+          "name": "Thistle the Hedge Knight"
+        },
+        {
+          "id": "brood_imp",
+          "name": "Sprout Imp"
+        },
+        {
+          "id": "brood_snake",
+          "name": "Thorn Serpent"
+        },
+        {
+          "id": "brood_hawk",
+          "name": "Moss Hawk"
+        }
+      ]
+    }
+  ]
+}

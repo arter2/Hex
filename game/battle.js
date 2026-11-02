@@ -99,7 +99,7 @@ function startBattle(list,depth,hooks,opts){ startBattle.n=(startBattle.n||0)+1;
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
   B.waves=(opts&&opts.waves)||makeEncounter(depth); B.wave=0;
   makeTerrain(depth);
-  if(typeof arRuleInit==='function') arRuleInit(depth);   // the area's own rule (arearules.js)
+  if(opts&&opts.noRule) B.ar=null; else if(typeof arRuleInit==='function') arRuleInit(depth);   // the area's own rule (arearules.js); a duel has none
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
   soulInit(opts&&opts.soul);
@@ -190,7 +190,7 @@ function closeCustomScreen(){
   for(const cb of b.piles.combos||[]){ if(cb.kind==='recipe'){ b.hooks.onRecipe&&b.hooks.onRecipe(cb.recipe); continue; } if(cb.kind!=='straight') b.hooks.onCombo&&b.hooks.onCombo(cb.label); }
   b.hooks.onFight&&b.hooks.onFight();
 }
-const gaugeFull=()=>B.gauge>=GAUGE_MAX;
+const gaugeFull=()=>B.gauge>=GAUGE_MAX||!!(B.pvp&&B.pvp.oppGauge>=GAUGE_MAX);   // in a duel, either player's full gauge opens the shared screen
 
 /* ---------------- damage ---------------- */
 function hitEnemy(e,base,card,opts){
@@ -211,6 +211,7 @@ function hitEnemy(e,base,card,opts){
   let dmg=Math.max(1,Math.round(base*mult));
   if(counter) counterHit(e);
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
+  if(e.remote){ if(card&&!opts.raw) duelDotStatus(e,card); return duelHit(e,dmg,card,opts,weak||counter||crit); }   // a duel's avatar: the hit goes to the opponent, who applies it
   e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||weak) shake(dmg>=60?5:3);
   floater(dmg+(crit?' CRIT!':weak?' WEAK!':resisted?' resist':''),e.tile,counter?'#ff8fa3':crit?'#ffb347':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter||crit);
   flash(e.tile,colorOf(card),.8);
@@ -297,7 +298,7 @@ function groundHit(t,c){ if(!c||!SIX.includes(c.color)||t.side!=='e') return;
   if(!rx) return stain(t,c.color);
   t.gT=0; floater(rx.name+'!',t,rx.c,true); shake(3); reactFx(rx.name,t); groundFx(rx.name,t); B.reacts=(B.reacts||0)+1; }
 // Enemies standing on stains or reshaped ground (called every frame from updateTerrain).
-function groundTick(e,dt){ const t=e.tile;
+function groundTick(e,dt){ const t=e.tile; if(e.remote) return;   // a duel's avatar takes no mark or status from my ground (not mirrored in v1)
   if(t.gT>0&&t.gEl&&!(e.markT>0&&e.mark===t.gEl)){ const c=t.gEl; t.gT=0; react(e,{color:c},12,true); if(e.hp<=0) return; }
   if(icy(t)) e.slowT=Math.max(e.slowT,.5);
   if(t.voidT>0) e.curseT=Math.max(e.curseT,.6);
@@ -379,6 +380,7 @@ function cancelAttack(e){
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
+  if(e.remote) return;   // a duel's avatar falls only when the opponent says so (startDuel)
   if(B.lab&&B.lab.foes&&typeof elabSaved==='function'&&elabSaved(e)) return;   // the Enemy lab's Can't die (enemylab.js)
   if(typeof bestiaryKill==='function'&&!e.def.minion&&!B.lab) bestiaryKill(e);
   if(typeof arRuleKill==='function') arRuleKill(e);
@@ -755,6 +757,7 @@ function claimLand(c){
 }
 // clear a tile for the claim: an enemy is driven further back (and the land's effect hits it), its walls crumble
 function clearForClaim(t,land,taking){ const o=t.occ; if(!o) return true;
+  if(o.remote) return false;   // a duel's avatar stands where the opponent's mage is: it is not moved, cursed or trapped, and its tile is not taken
   if(o.kind==='enemy'){ const far=land==='flood'?2:1;
     const to=E_TILES.filter(x=>!x.occ&&!taking.includes(x)&&x.col>t.col).sort((a,b)=>Math.abs(a.r-t.r)*3+Math.abs(a.col-t.col-far)-(Math.abs(b.r-t.r)*3+Math.abs(b.col-t.col-far)))[0];
     if(!to) return false; t.occ=null; o.tile=to; to.occ=o; burst(to,'#e6f4ff',6,.3);
@@ -953,6 +956,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
   const un=soulUnison();
   if(un){ card=un(charged); dmg=Math.round(dmg*1.5); }
+  if(b.pvp) b.pvp.session.sendShot(p.tile.r,card&&COLORS[card.color]?card.color:'gray',!!charged);   // so the other side sees it coming (cosmetic there)
   const row=lineTiles(p.tile,DIRS.E), buff=wandBuff(p), o=()=>({dmg,from:'p',wand:true,big:charged,card,buff});
   // each kind of weapon fires its own way (see WEAPON_KINDS in gear.js)
   switch(w.kind){
@@ -969,6 +973,8 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
 const PACE=.7;
 function update(dt){
   const b=B; if(!b) return;
+  if(b.pvp) duelTick(b);   // a duel: messages, the avatar, hits that arrived (on wall time, so it runs on the card screen too)
+  if(B!==b) return;   // duelTick can end the duel, and its onEnd may null or replace B
   if(b.hitStop>0){ b.hitStop-=dt; dt*=.08; }   // a Counter Hit, a kill or a WEAK hit freezes the moment for a beat
   else if(b.slowMo>0){ b.slowMo-=dt; dt*=.25; }   // the killing blow of a boss fight plays in slow motion
   b.time+=dt;
@@ -994,7 +1000,7 @@ function update(dt){
   if(b.phase!=='fight'){ b.shots=[]; b.teles=[]; return; }
 
   // safety: a fight with nobody left and no wave coming is won
-  if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length&&!(b.lab&&b.lab.foes)){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
+  if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length&&!(b.lab&&b.lab.foes)&&!b.pvp){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
@@ -1017,7 +1023,7 @@ function update(dt){
       if(!s.half&&s.t>=s.dur/2){ if((s.to.occ&&s.to.occ!==p)||s.to.holeT>0){ p.step={from:s.to,to:s.from,t:s.dur-s.t,dur:s.dur,half:true}; p.path=[]; }
         else { s.half=true; s.from.occ=null; p.tile=s.to; s.to.occ=p; } }
       if(p.step&&p.step.t>=p.step.dur){ p.stepOver=p.step.t-p.step.dur; p.step=null; } } }
-  freeTick(p,rdt,haste);
+  freeTick(p,rdt,haste); if(b.pvp) duelMoved(b,rdt);
   p.stepOver=0;   // time left over from a step just ended carries into the next, so a run keeps an even pace
 
   // your shots and enemy shots travel tile by tile
@@ -1058,6 +1064,126 @@ function update(dt){
   for(const e of alive()) updateEnemy(e,dt);
 }
 
+
+/* ---------------- duel ----------------
+   A local duel (netduel.js DuelSession): the one enemy is a remote avatar of the other player's mage, standing on
+   the mirrored tile (my column c is their BOARD_COLS-1-c; the row is kept). Hits are the attacker's to call: a hit
+   on the avatar is sent, and the opponent's game applies it with its own hitPlayer (dodge, barrier, guard), unless
+   their mage had already left that tile (the defender wins close calls: hitLands). The card screen is shared: it
+   opens, pauses and resumes on both. A duel gives and costs nothing: its end goes to hooks.onEnd only. */
+const duelAvatar=()=>B&&B.pvp?B.enemies[0]||null:null;
+const duelSettings=()=>({mpSpell:XLIT.mpSpell, mpDefend:XLIT.mpDefend, mpBackdate:XLIT.mpBackdate, mpSend:XLIT.mpSend, mpSmooth:XLIT.mpSmooth});
+const duelTile=(c,r)=>tileCR(BOARD_COLS-1-c,r);
+// a point on the board as the other player sees it: x turned about the middle, with each row's half-tile offset
+// (eased between rows, so a walk across rows stays smooth); a tile's middle lands on the mirrored tile's middle
+const duelTri=wz=>{ const rr=wz/1.5+(BOARD_ROWS-1)/2, m=((rr%2)+2)%2; return m<=1?[m,1]:[2-m,-1]; };
+function duelMirror(wx,wz){ return SQUARE?[-wx,wz]:[-wx+SQ3*(duelTri(wz)[0]-.5),wz]; }
+function duelMirrorV(vx,vz,wz){ return SQUARE?[-vx,vz]:[-vx+SQ3*duelTri(wz)[1]/1.5*vz,vz]; }
+function duelPlace(e,t){ if(!t||t===e.tile) return; if(e.tile&&e.tile.occ===e) e.tile.occ=null; e.tile=t; if(!t.occ) t.occ=e; }
+
+function startDuel(list,session,hooks){
+  hooks=hooks||{};
+  session._settings=duelSettings;   // every timing is read live from the debug menu's XLIT keys
+  const live=()=>!!(B&&B.pvp&&B.pvp.session===session), on=(ev,fn)=>session.on(ev,m=>{ if(live()) fn(m,B,B.pvp); });
+  // no gear, no area rule, one wave of one avatar; the end comes from the session, never from the board
+  startBattle(list,1,Object.assign({},hooks,{onEnd:()=>{}}),{waves:[['rival']],noRule:true});
+  const b=B, e=b.enemies[0];
+  Object.assign(e,{remote:true, bSeen:true, atkT:1e9, atkMax:1e9, nextMove:null, dmg:0, net:[], step:null});
+  duelPlace(e,duelTile(b.player.tile.col,b.player.tile.r)); e.fx=e.rx=e.tile.wx; e.fz=e.rz=e.tile.wz;   // they start where I start
+  b.pvp={session, inbox:[], oppHp:e.hp, oppMaxHp:e.maxHp, oppBarrier:0, oppGauge:0, spellLeft:null, history:new PosHistory(),
+    onEnd:hooks.onEnd, wall:session.now(), last:null, stepSent:null, gaugeAfter:-Infinity, wantFight:false, ended:false, result:null, reason:null};
+  // their mage's positions, kept in time order for a short while (the avatar is drawn mpSmooth ms behind them)
+  on('pos',(m,b)=>{ const e=duelAvatar(); if(!e) return; const N=e.net, last=N[N.length-1];
+    const fx=clamp(m.fx,-20,20), fz=clamp(m.fz,-10,10), [x,z]=duelMirror(fx,fz), [vx,vz]=duelMirrorV(clamp(m.vx,-50,50),clamp(m.vz,-50,50),fz);
+    N.push({x,z,vx,vz,ts:m.localTs}); if(last&&last.ts>m.localTs) N.sort((a,c)=>a.ts-c.ts);   // the fast channel can reorder
+    while(N.length>2&&N[1].ts<m.localTs-1000) N.shift();
+    e.step=null; if(N[N.length-1].ts===m.localTs){ const t=nearestTile(fx,fz); if(t) duelPlace(e,duelTile(t.col,t.r)); } });
+  on('step',(m,b)=>{ const e=duelAvatar(), f=duelTile(m.from.c,m.from.r), t=duelTile(m.to.c,m.to.r); if(!e||!f||!t) return;
+    duelPlace(e,f); e.step={from:f,to:t,t:Math.max(0,session.now()-m.localTs)/1000,dur:m.dur,half:false}; e.net.length=0; });
+  on('sync',(m,b,v)=>{ const e=duelAvatar(), mx=clamp(m.maxHp,1,1000), h=clamp(m.hp,0,mx);   // the codec only checks these are numbers
+    v.oppMaxHp=mx; v.oppHp=h; v.oppBarrier=Math.max(0,m.barrier); if(m.localTs>=v.gaugeAfter) v.oppGauge=m.gauge;
+    if(e){ e.maxHp=mx; e.hp=h; } });
+  // judged as it arrives (the history only goes back a second), applied once the fight runs
+  on('hit',(m,b,v)=>{ if(!hitLands(v.history,m.tile,m.localTs,session.setting('mpDefend'))){ floater('dodge',b.player.tile,'#9fdcff'); return; }
+    v.inbox.push({dmg:m.dmg,color:m.color}); });
+  // a shot of theirs on its way along my row: cosmetic only (no damage, no tiles, not in B.shots); damage comes by 'hit'
+  on('shot',(m,b)=>{ const e=duelAvatar(), me=b.player.tile, r=m.r;
+    const a=e&&e.tile&&e.tile.r===r?e.tile:tileCR(BOARD_COLS-1,r), z=me.r===r?me:tileCR(0,r); if(!a||!z) return;
+    const life=Math.max(.05,Math.abs(a.col-z.col)*.045), lag=Math.max(0,session.now()-m.localTs)/1000; if(lag>=life) return;
+    b.fx.push({kind:'shot',r,ax:a.wx,bx:z.wx,wz:a.wz,color:COLORS[m.color]?COLORS[m.color].c:'#e6f4ff',big:!!m.big,t:lag,life}); });
+  on('fight',()=>{ if(!session.spell.open) session.openSpell(); });   // the opening card screen is shared too
+  on('spellopen',(m,b,v)=>{ if(b.phase==='fight') openCustomScreen(); if(b.phase!=='custom') return;
+    b.gauge=0; v.oppGauge=0; v.gaugeAfter=session.now();   // opening uses both gauges up
+    if(v.wantFight){ v.wantFight=false; session.spellDone(); } });
+  on('spellresume',(m,b,v)=>{ v.wantFight=false; v.oppGauge=0; v.gaugeAfter=session.now(); v.spellLeft=null; if(b.phase==='custom') closeCustomScreen(); });
+  on('end',(m,b,v)=>{ if(v.ended) return; v.ended=true; v.result=m.result; v.reason=m.reason;
+    b.phase=m.result==='win'?'win':'lose'; b.player.charging=false; b.player.path=[]; b.player.free=null; v.inbox.length=0; v.spellLeft=null;
+    if(v.onEnd) v.onEnd(m.result,m.reason); });
+  session.ready();
+  return b;
+}
+// burn and poison are the attacker's damage over time, ticked here (duelTick) and sent as raw hits; curse, slow, stun
+// and freeze would act on the opponent's own sim, so the avatar never takes them
+function duelDotStatus(e,c){
+  if(c.burn) e.burnT=Math.max(e.burnT||0,c.burn);
+  if(c.poison){ e.poisonT=8; e.poisonAmt=Math.max(e.poisonAmt||0,c.poison); }
+}
+// the avatar's burn and poison, on the same rates as updateEnemy and stepEnemy (enemies.js): burn 5 a second,
+// poison its amount for each tile the avatar steps onto while it lasts
+function duelDot(b,e,dt){
+  const v=b.pvp;
+  e.curseT=0; e.slowT=0; e.stunT=0; e.freezeT=0;   // a backstop: none of these belong on the avatar
+  if(b.phase!=='fight'||e.hp<=0){ v.dotTile=e.tile; return; }
+  e.poisonT=Math.max(0,(e.poisonT||0)-dt);
+  if(e.burnT>0){ e.burnT-=dt; e.burnAcc=(e.burnAcc||0)+5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); } }
+  if(e.tile!==v.dotTile){ if(v.dotTile&&e.poisonT>0&&e.hp>0) hitEnemy(e,e.poisonAmt,null,{raw:true}); v.dotTile=e.tile; }
+}
+// a hit on the avatar, after its damage is worked out: sent to the opponent (in my own columns; the session turns
+// them), shown here, and the avatar's HP is left for the opponent's next sync. Raw hits (damage over time) carry no tile.
+function duelHit(e,dmg,card,opts,big){
+  dmg=Math.min(500,Math.max(1,Math.round(dmg)));
+  B.pvp.session.sendHit(dmg,card&&COLORS[card.color]?card.color:'gray',opts.raw?undefined:{c:e.tile.col,r:e.tile.r});
+  e.hitT=.18; floater(String(dmg),e.tile,opts.raw?'#b8ffb0':'#fff',big); flash(e.tile,colorOf(card),.8);
+  return dmg;
+}
+// every update, on the session's wall clock (not the fight's paced, paused time)
+function duelTick(b){
+  const v=b.pvp, s=v.session, p=b.player, now=s.now(), wdt=Math.max(0,Math.min(.25,(now-v.wall)/1000)); v.wall=now;
+  v.history.record(now,p.tile.col,p.tile.r);
+  if(b.phase==='fight') while(v.inbox.length&&b.phase==='fight'){ const h=v.inbox.shift(); hitPlayer(h.dmg,{kind:'pvp',color:h.color}); }
+  if(b.phase==='lose'&&!v.ended) s.iDied();
+  s.sendSync(p.hp,p.maxHp,p.barrier,b.gauge);
+  s.tick();
+  if(B!==b) return;
+  v.spellLeft=s.spell.open&&b.phase==='custom'?Math.max(0,s.spell.sec-(now-s.spell.openedAt)/1000):null;
+  const e=duelAvatar(); if(!e) return;
+  duelDot(b,e,wdt);
+  const st=e.step;
+  if(st){ st.t+=wdt; if(!st.half&&st.t>=st.dur/2){ st.half=true; duelPlace(e,st.to); }   // on the tile it enters from halfway, as yours does
+    const f=Math.min(1,st.t/st.dur); e.fx=st.from.wx+(st.to.wx-st.from.wx)*f; e.fz=st.from.wz+(st.to.wz-st.from.wz)*f;
+    if(st.t>=st.dur){ e.step=null; e.net=[{x:st.to.wx,z:st.to.wz,vx:0,vz:0,ts:now}]; } return; }
+  const N=e.net; if(!N.length) return;
+  /* Drawn where their mage was mpSmooth ms ago (a buffer of 2 frames): between the two positions around that
+     moment, or, when the next one is late or they stood still in between, the one before carried on by its speed
+     (at most 100 ms). */
+  const T=now-Math.max(0,XLIT.mpSmooth||0); let i=N.length-1; while(i>0&&N[i].ts>T) i--;
+  const a=N[i], c=N[i+1];
+  if(a.ts>T){ e.fx=a.x; e.fz=a.z; return; }
+  if(c&&c.ts-a.ts<=50){ const f=(T-a.ts)/(c.ts-a.ts||1); e.fx=a.x+(c.x-a.x)*f; e.fz=a.z+(c.z-a.z)*f; return; }
+  const ahead=clamp(((c?Math.min(T,c.ts):T)-a.ts)/1000,0,.1); e.fx=a.x+a.vx*ahead; e.fz=a.z+a.vz*ahead;
+}
+// right after my mage moves: where it is and how fast it goes (the session sends only changes), and a tile walk
+function duelMoved(b,rdt){
+  const v=b.pvp, s=v.session, p=b.player, x=p.fx??p.tile.wx, z=p.fz??p.tile.wz, l=v.last, r3=n=>Math.round(n*1000)/1000;
+  const vx=l&&rdt>0?(x-l[0])/rdt:0, vz=l&&rdt>0?(z-l[1])/rdt:0; v.last=[x,z];
+  if(p.step&&p.step!==v.stepSent){ v.stepSent=p.step; const st=p.step; s.sendStep({c:st.from.col,r:st.from.r},{c:st.to.col,r:st.to.r},clamp(st.dur,.05,2)); }
+  s.sendPos(r3(x),r3(z),r3(vx),r3(vz));
+  v.history.record(s.now(),p.tile.col,p.tile.r);
+}
+// Fight! on the shared card screen: done here, and the screen waits for the opponent (or the countdown)
+function duelFight(){ const v=B&&B.pvp; if(!v||B.phase!=='custom') return; if(v.session.spell.open) v.session.spellDone(); else v.wantFight=true; }
+function duelFightText(){ const v=B&&B.pvp; if(!v||B.phase!=='custom') return '';
+  return (v.session.spell.mineDone||v.wantFight?'Waiting for opponent…':'Fight!')+(v.spellLeft==null?'':' '+Math.ceil(v.spellLeft)+'s'); }
 
 /* ---------------- input helpers ---------------- */
 // Aiming lobs: tap an enemy-side tile (again to clear it). A lob card uses the aim once; a lob charge keeps it.
@@ -1797,6 +1923,8 @@ function render(){
     const col=colorOf(l.card); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=14; ctx.beginPath(); ctx.arc(x,y,S*.24,0,TAU); ctx.fill(); ctx.shadowBlur=0; }
   for(const f of b.fx){
     if(f.kind==='palfx'){ const fr=palFrame(f.id,f.anim,Math.floor(f.t*14)); if(fr){ const [x,y]=proj(f.a.wx,1,f.a.wz), H=palH(scaleAt(f.a.wx,f.a.wz),f.id); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.drawImage(fr.img,x-H/2,y-H/2,H,H); ctx.restore(); } continue; }
+    if(f.kind==='shot'){ const k=Math.min(1,f.t/f.life), [x,y]=proj(f.ax+(f.bx-f.ax)*k,1,f.wz), S2=scaleAt(f.ax+(f.bx-f.ax)*k,f.wz);
+      ctx.fillStyle=f.color; ctx.shadowColor=f.color; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S2*(f.big?.26:.13),0,TAU); ctx.fill(); ctx.shadowBlur=0; continue; }
     if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=scaleAt(...posOf(b.player))*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
       ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); ctx.globalAlpha=1; continue; }
     const a=proj(f.a.wx,f.y0||1,f.a.wz), c=proj((f.b||f.a).wx,1,(f.b||f.a).wz), al=1-f.t/f.life;
@@ -1841,7 +1969,7 @@ function tinted(img,c){ let m=TINTS.get(img); if(!m) TINTS.set(img,m={}); if(m[c
   const cv=document.createElement('canvas'); cv.width=img.width; cv.height=img.height; const x=cv.getContext('2d');
   x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=c; x.fillRect(0,0,cv.width,cv.height); return m[c]=cv; }
 function drawSprite(ctx,u,T,S,o){
-  const spr=typeof unitSprite==='function'?unitSprite(u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
+  const spr=typeof unitSprite==='function'?unitSprite(u.remote?{kind:'player',view:'front',lookId:B.pvp&&B.pvp.session.opp&&B.pvp.session.opp.look||undefined}:u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
   const sc=(o.scale||1)*((spr&&spr.zoom)||1), H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
   if(!spr){ if(gl3()) return {x,top:y-H};
     const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');

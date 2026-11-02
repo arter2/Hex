@@ -31,7 +31,8 @@ const CARD_PAL={
    Layers, bottom up: the colour's base, its material texture (one of three, fixed per card), the art (and a holo
    foil), the frame with any state glow, then the glyphs and live text. Every functional icon is a shape from
    cards/icons drawn in the card's own colour (a mask), so a Pull is blue on a frost card and orange on a fire one.
-   The 'compact' / 'expanded' mode no longer changes the card: a small card simply hides what it can't show (card.css). */
+   cardEl(c,extra,locked,mode): mode "expanded" is the full card (the detail, a held card); anything else is the short
+   card (v186: contract.json "short", .card.kit.compact), with no rules or footer and bigger rune and rank plates. */
 const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
 // each colour's three material textures (palettes.json variants)
 const KIT_TEX={red:['embers','lava-crust','volcanic-ridges'], blue:['water-ripples','cracked-ice','frost-facets'], yellow:['dune-sand','static-arcs','sandstone'],
@@ -83,20 +84,24 @@ const ART_FOCUS={ember_dart:'50% 30%'};
 // Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
 // collection rendering does not repeatedly force layout, and do not retain removed image elements.
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
+// a card-kit file under cards/ as a CSS url() (the packed release build points this at its packed copy)
+const kitURL=p=>'url(cards/'+p+')';
 // a card's frame colour (cards/palettes.json) and its one of three material textures, picked by its id
-function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
-  return {kc, tex:'url(cards/textures/card/'+kc+'-'+t+'.svg)'}; }
+// (shape: 'card' for the full card, 'short' for the short one: hand, grids, shop)
+function cardKit(c,shape='card'){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
+  return {kc, tex:kitURL('textures/'+shape+'/'+kc+'-'+t+'.svg')}; }
 function cardEl(c,extra,locked,mode,opts={}){
-  const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
+  // the full card (expanded: the detail, a held card) or the short card (everywhere else: no rules or footer, big plates)
+  const big=mode==='expanded', shape=big?'card':'short', el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c,shape);
   el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
-  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame','url(cards/frames/card/'+kc+'.svg)');
+  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/'+shape+'/'+kc+'.svg'));
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
   if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
-    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/expanded/foil-glints'+mv+'.svg'),u('effects/expanded/foil-shimmer'+mv+'.svg'),u('effects/expanded/foil-etch.svg'),u('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
-    el.style.setProperty('--k-trim',u('foils/card/'+kc+'/trim'+mv+'.svg')); }
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[kitURL('effects/expanded/foil-glints'+mv+'.svg'),kitURL('effects/expanded/foil-shimmer'+mv+'.svg'),kitURL('effects/expanded/foil-etch.svg'),kitURL('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',kitURL('foils/'+shape+'/'+kc+'/trim'+mv+'.svg')); }
   const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
   const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
   el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;
@@ -110,7 +115,9 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
     +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
-  foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
+  // Target and Range show as their icons alone (the words are in the title); other slots keep their label on a big card
+  foot.forEach(([ic,lab,val],k)=>{ const word=ic!=='target'&&ic!=='range';
+    h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}${word?`<small>${esc(lab)}:</small>`:''}<span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
@@ -125,7 +132,7 @@ function cardEl(c,extra,locked,mode,opts={}){
    - type line: type · role, whole, 16 down to 10;
    - rules: 18 on 16.5 (3 lines), 16 on 14.5 (4), 14 on 12 (5); longer still, the box scrolls on a big card (a fade
      at its foot), and the full text is in its title either way;
-   - footer value: 14 down to 10; count: 22 down to 14.
+   - footer value: 14 down to 10 (a small card, which drops the labels: 20 down to 10); count: 22 down to 14.
    The faces' vertical ink centring (--ink-dy) is measured here too, once per face. */
 const KIT_FIT={canvas:null, ready:false};
 function kitMeasure(text,px,face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d');
@@ -138,14 +145,20 @@ function kitInk(face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createE
 function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.querySelectorAll) el.querySelectorAll('.card.kit').forEach(kitFit); return; }
   if(!KIT_FIT.ready&&!(document.fonts&&document.fonts.check('12px "Hex Card"')&&document.fonts.check('12px "Hex Card Caps"'))) return;
   if(!KIT_FIT.ready){ KIT_FIT.ready=true; const r=document.documentElement.style; r.setProperty('--ink-dy',kitInk('Hex Card').toFixed(3)); r.setProperty('--ink-dy-caps',kitInk('Hex Card Caps').toFixed(3)); }
-  const G=KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
+  const S=el.classList.contains('compact')&&KIT_GEO.short, G=S?{...KIT_GEO,type:{...KIT_GEO.type,...S.type},w:{...KIT_GEO.w,...S.w}}:KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
   const name=el.dataset.kname, nm=el.querySelector('.k-name'), ns=[29,26,23,20,18].find(s=>kitMeasure(name,s)<=G.w.name-pad);
-  nm.classList.toggle('two',!ns); set(el,'--nfs',ns||15); if(!ns) set(el,'--nlh',14);
+  // a name too long for one line: two lines at 15 on 14
+  // (the short card's taller bar takes two lines at the biggest of 23..15 that fits, whenever that beats one line)
+  const two2=S?[23,22,20,18,16,15].find(s=>kitLines(name,s,G.w.name-pad)<=2&&2*s*.95<=G.w.nameH)||15:15, one=ns&&!(S&&two2>ns)?ns:0, two=one?0:two2;
+  nm.classList.toggle('two',!one); set(el,'--nfs',one||two); if(!one) set(el,'--nlh',S?Math.round(two*.95*10)/10:14);
   const [ty,ro]=el.dataset.ktype.split('|'), tw=s=>kitMeasure((ty+ro).toUpperCase(),s,'Hex Card Caps')+14;   // + the drawn dot and its gaps
   set(el,'--tfs',steps(G.type.type[0],10,1).find(s=>tw(s)<=G.w.type-pad)||10);
   const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];
   set(el,'--rfs',fit[0]); set(el,'--rlh',fit[1]); rb.classList.toggle('scroll',kitLines(rt,fit[0],G.w.rules)*fit[1]>G.w.rulesH);
   el.querySelectorAll('.k-foot>span').forEach(v=>set(v,'--vfs',steps(G.type.footer[0],10,1).find(s=>kitMeasure(v.textContent,s)<=G.w.foot)||10));
+  // a small card: both footer values at one size, the largest that fits the longer of them
+  const fv=[...el.querySelectorAll('.k-foot>span')].map(v=>v.textContent);
+  set(el,'--vfss',steps(20,10,1).find(s=>fv.every(t=>kitMeasure(t,s)<=G.w.footS))||10);
   el.querySelectorAll('.k-count').forEach(b=>set(b,'--cfs',steps(G.type.count[0],14,1).find(s=>kitMeasure(b.textContent,s)<=G.w.count-pad)||14));
   // short glyph runs (rune, rank, count) centre on their own painted ink, measured for the string itself
   el.querySelectorAll(':scope>:is(.k-rune,.k-rank,.k-count)>span').forEach(sp=>{ const o=kitInkOf(sp.textContent); sp.style.transform='translate('+o[0].toFixed(3)+'em,'+o[1].toFixed(3)+'em)'; }); }
@@ -398,6 +411,7 @@ function openCamp(){
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
+  $('#goDuel').classList.toggle('off',!v.ok);   // still tappable: it says why it can't duel
   $('#campGold').innerHTML=uiIcon('coin',32)+save.gold; xpBar($('#campLevel'));
   $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+'<span class="campshard">'+uiIcon('shard',28)+(save.shards||0)+'</span>'+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
   $('#campDeck').textContent=d.name;
@@ -454,6 +468,7 @@ $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>enterExplore(pickDepth);
 $('#btnQuick').onclick=()=>fight(pickDepth);   // the battle on its own, no dungeon
 $('#goBuilder').onclick=()=>openBuilder();
+$('#goDuel').onclick=()=>{ const why=duelDeckProblem(); if(why) return tip(why); openDuel('camp'); };
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();
 $('#goChar').onclick=()=>openCharacter();
@@ -464,7 +479,7 @@ function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; 
   setTimeout(()=>{ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; } },3000); }
 // Settings › Save › Erase: wherever you are, everything stops and the game returns to the menu
 $('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase',()=>{
-  closeSettings(); ['#pause','#reveal','#custom','#detail','#pick','#xDialog'].forEach(k=>$(k).classList.remove('on')); paused=false; B=null;
+  closeSettings(); ['#pause','#reveal','#custom','#detail','#pick','#xDialog'].forEach(k=>$(k).classList.remove('on')); paused=false; duelLeave(true); B=null;
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   clearSave(); clearPoint(); save=null; campLog.length=0; pickDepth=null; openMenu(); tip('Save erased'); });
 document.querySelectorAll('.back').forEach(b=>b.onclick=openCamp);
@@ -744,7 +759,7 @@ function runLootPool(){ const out=[];
   if(B&&B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap) for(const id in save.owned){ if(CARDS[id]&&save.owned[id]-(XRUN.snap.owned[id]||0)>0&&CARDS[id].rarity!=='hero') out.push(id); }
   if(!out.length) for(const id in save.owned) if(CARDS[id]&&CARDS[id].rarity!=='hero'&&!CARDS[id].mastery&&spareCopies(save,id)>0) out.push(id);
   return out; }
-const runBlocked=()=>!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
+const runBlocked=()=>B&&B.pvp?'You can’t run from a duel':!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
 function openRun(){ if(!B||(B.phase!=='custom'&&B.phase!=='fight')) return; const why=runBlocked(); if(why) return tip(why);
   paused=true; B.player.charging=false; $('#btnWand').classList.remove('charging');
   const cost=runCost(), pool=runLootPool(), found=B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap&&pool.some(id=>save.owned[id]-(XRUN.snap.owned[id]||0)>0);
@@ -754,7 +769,8 @@ function openRun(){ if(!B||(B.phase!=='custom'&&B.phase!=='fight')) return; cons
   if(g.disabled&&c.disabled){ g.disabled=false; g.innerHTML=uiIcon('coin',22)+' Drop all '+save.gold+' gold'; }
   $('#runSheet').classList.add('on'); }
 function closeRun(){ $('#runSheet').classList.remove('on'); paused=false; }
-function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||(b.phase!=='custom'&&b.phase!=='fight')){ paused=false; return; }
+function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(b&&b.pvp){ paused=false; return; }   // a duel has no Run: it costs gold and ends the battle without leaving the session
+  if(!b||(b.phase!=='custom'&&b.phase!=='fight')){ paused=false; return; }
   $('#custom').classList.remove('on');
   let lost;
   if(kind==='gold'){ const c=Math.min(save.gold,runCost()); save.gold-=c; lost=c+' gold'; }
@@ -807,7 +823,9 @@ function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contain
   L.textContent=w==='trial'?'End the test':w==='battle'||w==='xfight'?'Give up the fight':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
   L.hidden=(w==='battle'||w==='xfight')&&!runBlocked();   // to get out of an ordinary fight, Run (here or on the Spell screen)
   $('#mRun').hidden=!((w==='battle'||w==='xfight')&&B&&!B.lab&&!runBlocked());
-  pausePoint(); $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
+  pausePoint();
+  if(B&&B.pvp&&w==='battle'){ L.textContent='Leave the duel'; L.hidden=false; $('#mRun').hidden=true; $('#mSave').disabled=$('#mLoad').disabled=true; }   // a duel: no Run (it costs gold), no save points, Leave gives up and tells the other player
+  $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
 // the save point line and buttons on the pause screen (savepoint.js)
 function pausePoint(){ const P=peekPoint(), why=canSavePoint(), S=$('#mSave'), L=$('#mLoad'); delete S.dataset.armed; delete L.dataset.armed; S.textContent='Save game'; L.textContent='Load save';
   S.disabled=!!why; L.disabled=!P;
@@ -824,6 +842,7 @@ $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
   if(w==='map'&&EX.pc===EX.up){ closePause(); return xToCamp(); }   // free from the stairs up, and the floor waits for you
   armed(e.currentTarget,w==='battle'||w==='trial'?'Tap again to leave':'Tap again to flee',()=>{ $('#pause').classList.remove('on');
     if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; openCamp(); }
+    else if(B&&B.pvp) duelLeave();
     else leaveFight(); }); };
 const isFull=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
 let fullByUs=false;   // true while the player asked to leave full screen, so that exit does not pause
@@ -952,7 +971,7 @@ function renderCustom(){
   $('#custAce').innerHTML=B.sidearm?`<b>♠ Sidearm:</b> ${esc(B.sidearm.name)} ×${B.sidearm.mult.toFixed(1)}`:(B.acePending||[]).length?`<b>♤</b> ${B.acePending.length} Ace Enchantment${B.acePending.length>1?'s':''} waiting for an Ace`:'';
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
-  $('#btnFight').textContent='Fight!';   // (empty slots no longer draw extra: the hand holds 6 at most)
+  $('#btnFight').textContent=duelFightText()||'Fight!';   // a duel's shared screen: its countdown, then Waiting for opponent (empty slots no longer draw extra: the hand holds 6 at most)
 }
 // a Charge card's uses, big on the card: white while it has plenty, yellow at half, red at a quarter or its last one
 function chargeBadge(left,max){ const f=left/Math.max(1,max), cls=left<=1||f<=.25?' low':f<=.5?' mid':''; return `<span class="chg${cls}" title="${left} of ${max} uses left">${left}/${max}</span>`; }
@@ -1082,7 +1101,7 @@ function dragCard(el,inst){
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
 function dropTarget(x,y){ const el=document.elementFromPoint(x,y); return el&&el.closest('#custom [data-zone]'); }
-$('#btnFight').onclick=()=>{ choose=null; closeCustomScreen(); };
+$('#btnFight').onclick=()=>{ choose=null; if(B&&B.pvp) return duelFight(); closeCustomScreen(); };
 /* The Custom button acts on the finger going down, so the screen opens while the finger is still
    on the glass, and the tap's click (sent when the finger lifts, however long it was held) lands on
    whatever is under it now. So a click on the Custom screen only counts when its press also began
@@ -1146,6 +1165,7 @@ function hud(force){
     if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
+  if(b.pvp) set('duel',duelFightText(),()=>{ if(b.phase==='custom') $('#btnFight').textContent=duelFightText()||'Fight!'; });   // the shared card screen's countdown
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ for(const bt of [$('#btnCustom'),$('#btnSpell')]){ bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom); } });
 }
 
@@ -1176,7 +1196,7 @@ function trySoul(){ if(!soulReady()) return; const m=$('#soulMenu'); soulMenu(!m
 /* ---------------- battle input ---------------- */
 function tryCustom(){ if(!(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles))) return;
   if(B.player.charging){ wandUp(); $('#btnWand').classList.remove('charging'); }   // a shot you were charging goes off first
-  openCustomScreen(); }
+  if(B.pvp) B.pvp.session.openSpell(); else openCustomScreen(); }   // a duel opens the shared screen on both (startDuel)
 /* Mobile browsers never make a click from a touch while another finger is down, so with the
    thumb holding Fire a tap on Cast did nothing. Battle buttons act on their own pointerdown
    instead (each finger is its own pointer); click is kept only for keyboard/assistive presses. */
@@ -1304,7 +1324,7 @@ window.addEventListener('keydown',e=>{
     if(n>=1&&n<=9&&B.piles.hand[n-1]){ const h=B.piles.hand[n-1]; if(isInstant(h.card)) tapInstant(h); else { toggleQueue(B.piles,h.uid); renderCustom(); } }
     else if(k==='u'){ const t=B.piles.queue.find(c=>isDeckTool(c.card)); if(t) fireTool(t); }   // use the deck tool in your slots
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
-    else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
+    else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); if(B.pvp) duelFight(); else closeCustomScreen(); }
     return;
   }
   if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);
@@ -1339,8 +1359,9 @@ function frame(now){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
     let updates=0;
-    if(!document.hidden&&!paused&&!DBG.pause){ const battle=B, steps=Math.max(1,Math.ceil(dt/.05)), step=dt/steps;
-      for(let i=0;i<steps&&B===battle&&!paused&&!DBG.pause&&$('#scrBattle').classList.contains('on');i++){
+    const hold=DBG.pause&&!B.pvp;   // the debug pause never holds a duel: it would stall the opponent
+    if(!document.hidden&&!paused&&!hold){ const battle=B, steps=Math.max(1,Math.ceil(dt/.05)), step=dt/steps;
+      for(let i=0;i<steps&&B===battle&&!paused&&!(DBG.pause&&!B.pvp)&&$('#scrBattle').classList.contains('on');i++){
         heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(step); update(step); updates++;
       } }   // the debug menu's pause holds the fight but keeps drawing it
     perfTick(now,updates);
@@ -1516,3 +1537,154 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;
     e.preventDefault(); e.stopImmediatePropagation(); CLOSERS[top.id](); return; }
   const back=document.querySelector('.screen.on .back:not([hidden]), .screen.on #dkBack');
   if(back){ e.preventDefault(); e.stopImmediatePropagation(); back.click(); } },true);
+
+/* ---------------- local duel ----------------
+   Camp's Duel a friend (or Debug › Multiplayer › Start a duel) opens #scrDuel: Host or Join, then a Wi-Fi code (WebRTC, nettransport.js: the
+   host's code goes to the guest, the guest's code comes back) or a Room (the LAN relay, http pages only), then the
+   lobby and the duel itself (battle.js startDuel, netduel.js DuelSession). A duel ends in one place, duelOver, with
+   a result card; leaving (Back, the pause menu's Leave) is duelLeave. Both stop the session, the transport and the
+   timers, so nothing of a duel outlives it. */
+const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false};
+const DU_NAME_KEY='hexmancers-mpname', DU_SLOW_MSG='Could not connect. Check you are on the same Wi-Fi and try again.', DU_PROBE='hexmancers-hi';
+const DU_STEPS={role:'duRole', how:'duHow', hostcode:'duHostCode', joincode:'duJoinCode', answer:'duAnswerStep', room:'duRoomStep', wait:'duWait', lobby:'duLobby'};
+// Room (the relay) needs a page served over http: by something that runs it; itch.io pages are https and cannot reach it
+const duelRoomOk=(proto,host)=>proto==='http:'&&!/itch\.(io|zone)$/i.test(host||'');
+const duMsg=t=>{ $('#duMsg').textContent=t||''; };
+const DU_TRACK={role:0, lobby:2};   // every other step is Connect (1)
+function duStep(name,msg){ DU.step=name; for(const k in DU_STEPS) $('#'+DU_STEPS[k]).hidden=k!==name; duMsg(msg);
+  const at=name in DU_TRACK?DU_TRACK[name]:1; document.querySelectorAll('#duTrack li').forEach(li=>{ const i=+li.dataset.i; li.classList.toggle('on',i===at); li.classList.toggle('done',i<at); }); }
+// a hexmancer look drawn into one of the screen's canvases, front view
+function duSprite(cv,look){ const x=cv.getContext('2d'); x.clearRect(0,0,cv.width,cv.height); x.imageSmoothingEnabled=false;
+  const sp=typeof lookSprite==='function'?lookSprite(look||'wizard','front',true):null; if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,cv.width,cv.height); }
+// back where the duel was opened from: camp, or the main menu (the debug menu's Start a duel)
+const duHome=()=>DU.from==='camp'&&save?openCamp():openMenu();
+function duelName(){ const v=($('#duName').value||'').trim().slice(0,20); return v||'Hexmancer'; }
+// '' when the saved deck can duel, else why not
+function duelDeckProblem(){ if(!save) return 'Start or load a game first.'; const d=activeDeck(); if(!d) return 'You have no deck yet.';
+  const v=validateDeck(d.list,CARDS,save.owned); return v.ok?'':'Your saved deck is not valid: '+v.errors[0]+'. Fix it at camp.'; }
+// the debug menu's Start a duel button and the Pause switch follow what is going on
+function duelDbgSync(){ const btn=$('#dbgDuel'), hint=$('#dbgDuelHint'); if(!btn) return;
+  const why=DU.session||DU.tr?'A duel is already set up.':(B||(typeof EX!=='undefined'&&EX&&EX.active))?'Finish this fight or dungeon run first.':duelDeckProblem();
+  btn.disabled=!!why; hint.textContent=why; }
+function duelPauseSync(){ const pz=$('#dbgPause'), note=$('#dbgPauseNote'), on=!!DU.session;
+  if(pz){ if(on&&typeof DBG!=='undefined'&&DBG.pause){ DBG.pause=false; pz.checked=false; document.body.classList.remove('dbgPaused'); } pz.disabled=on; }
+  if(note) note.hidden=!on; duelDbgSync(); }
+// everything of a connection and a duel: timers, the session (which says bye and closes the transport) or the bare transport
+function duStop(){ clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeout(DU.waitT); DU.timer=DU.startT=DU.waitT=0;
+  const s=DU.session, tr=DU.tr; DU.session=DU.tr=DU.accept=null; DU.gen++;
+  try{ if(s) s.leave(); else if(tr) tr.close(); }catch(e){}
+  duelPauseSync(); }
+// leave a duel (or its pairing) at any point: the local battle stops and the game is back at the menu (quiet: no menu)
+function duelLeave(quiet){ duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false;
+  if(B&&B.pvp) B=null; DU.over=false; if(!quiet) duHome(); }
+function openDuel(from){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catch(e){}
+  DU.from=from==='camp'?'camp':'menu';
+  try{ $('#duName').value=localStorage.getItem(DU_NAME_KEY)||''; }catch(e){}
+  duSprite($('#duMe'),playerLook());
+  const d=save&&activeDeck(), why=duelDeckProblem(), dk=$('#duDeck'); dk.classList.toggle('bad',!!why);
+  dk.innerHTML=why?esc(why):'Deck: <b>'+esc(d.name||'My deck')+'</b> · '+d.list.length+' cards';
+  duStep('role'); show('scrDuel'); }
+const duRace=(p,ms)=>new Promise((res,rej)=>{ const t=setTimeout(()=>rej(new Error(DU_SLOW_MSG)),ms); p.then(v=>{ clearTimeout(t); res(v); },e=>{ clearTimeout(t); rej(e); }); });
+function duFail(g,msg){ if(g!==DU.gen) return; duStop(); duStep('how',msg instanceof Error?msg.message:msg||DU_SLOW_MSG); }
+
+// the duel session over a transport that is open (both ends): lobby, start, result
+function duBegin(tr,host){
+  const d=activeDeck(), s=new DuelSession(tr,{name:duelName(),deck:d.list.slice(),host,look:playerLook()});
+  try{ localStorage.setItem(DU_NAME_KEY,$('#duName').value.trim().slice(0,20)); }catch(e){}
+  DU.session=s; DU.tr=tr; DU.list=d.list.slice(); DU.over=false; DU.closed=false;
+  const g=DU.gen, oc=tr.onclose; tr.onclose=()=>{ DU.closed=true; if(oc) oc(); };   // a bye comes before a close; a close alone is a lost connection
+  // the session needs a tick at least once a second (its heartbeat) even when the page is hidden, the pause menu is open
+  // or the phone is locked, and the frame loop is not running then: a timer does it
+  DU.timer=setInterval(()=>{ try{ s.tick(); }catch(e){ console.error('duel tick:',e); } },500);
+  duelPauseSync();
+  clearTimeout(DU.waitT); DU.waitT=setTimeout(()=>{ if(DU.session===s&&s.state==='connecting') duFail(g,DU_SLOW_MSG); },DU.timeout);
+  s.on('lobby',m=>{ if(DU.session!==s) return; clearTimeout(DU.waitT); duStep('lobby');
+    $('#duVsMeName').textContent=duelName(); $('#duLobbyTxt').textContent=m.name||'Hexmancer';
+    duSprite($('#duVsMe'),playerLook()); duSprite($('#duVsOpp'),m.look||'wizard'); });
+  s.on('refused',m=>{ if(DU.session!==s) return;
+    const why=m.reason==='timeout'?DU_SLOW_MSG:m.reason==='peer left'?'The other player left.':'Duel refused: '+m.reason+(m.reason==='invalid deck size'?' (a duel deck has 45 to 60 cards)':'')+'.';
+    duStop(); $('#duWaitTxt').textContent=''; duMsg(why); });
+  s.on('start',()=>{ if(DU.session!==s) return; clearTimeout(DU.startT); DU.startT=setTimeout(()=>duRun(s),1200); });   // a beat on the lobby, so the names can be read
+  s.on('end',m=>duelOver(s,m.result,m.reason));
+}
+function duRun(s){ if(DU.session!==s||DU.over) return;
+  try{
+    prev=performance.now(); show('scrBattle');
+    startDuel(DU.list,s,{
+      onCustom:renderCustom,
+      onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
+      onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
+      onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+      onCombo:label=>{ B.combos=(B.combos||0)+1; B.hitStop=Math.max(B.hitStop||0,.09); banner('✦ '+label.split(':')[0],'#ffe066'); },
+    });
+    hud(true);
+  }catch(e){ console.error('duel start:',e); duelLeave(); tip('The duel could not start.'); }
+}
+// the one end of a duel: close the card screen, stop everything, show the result
+function duelOver(s,result,reason){ if(DU.session!==s||DU.over) return; DU.over=true;
+  const title=result==='draw'?'Draw':result==='lose'?'You lost':reason==='timeout'||(reason==='left'&&DU.closed)?'Connection lost':reason==='left'?'Opponent left':'You won';
+  const text={'Draw':'You both fell at the same moment.','You lost':'Their spell found you first.','You won':'You outlasted them.','Opponent left':'The other player left the duel.','Connection lost':'The other phone stopped answering.'}[title];
+  duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false; dragAbort();
+  reveal(title,text+' A duel gives nothing and costs nothing.',[],[[DU.from==='camp'?'Back to camp':'Back to menu',()=>{ B=null; DU.over=false; duHome(); }]]); }
+
+// ---- the pairing screen ----
+function duCopy(btn,ta){ ta.focus(); ta.select(); let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+  const label=btn.dataset.label||(btn.dataset.label=btn.textContent);
+  const done=r=>{ btn.textContent=r?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ btn.textContent=label; },1800); };
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(()=>done(true),()=>done(ok)); else done(ok); }
+$('#duCopy').onclick=()=>duCopy($('#duCopy'),$('#duOffer'));
+// Paste: the clipboard straight into the box, or (no clipboard access) the box focused for a long-press paste
+for(const id of ['duPaste1','duPaste2']) $('#'+id).onclick=async()=>{ const ta=$('#'+$('#'+id).dataset.to);
+  try{ const t=await navigator.clipboard.readText(); if(t){ ta.value=t.trim(); duMsg(''); return; } }catch(e){}
+  ta.focus(); duMsg('Long-press the box and choose Paste.'); };
+$('#duCopy2').onclick=()=>duCopy($('#duCopy2'),$('#duAnswer'));
+$('#duBack').onclick=()=>{ if(DU.step==='role') return duelLeave(); duStop(); if(DU.step==='how') return duStep('role'); duStep('how'); };
+$('#duHost').onclick=()=>{ DU.host=true; duStep('how'); $('#duHowTxt').textContent='You host. How will your friend connect?'; duHow(); };
+$('#duJoin').onclick=()=>{ DU.host=false; duStep('how'); $('#duHowTxt').textContent='You join. How will you connect?'; duHow(); };
+function duHow(){ const ok=duelRoomOk(location.protocol,location.hostname); $('#duRoom').hidden=!ok; $('#duRoomHint').hidden=!ok; }
+$('#duWifi').onclick=()=>{ if(DU.host) return duHostWifi(); $('#duOfferIn').value=''; $('#duAnswer').value=''; $('#duMakeAnswer').disabled=false; duStep('joincode'); };
+async function duHostWifi(){
+  duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; $('#duAccept').disabled=true;
+  if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
+  const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
+  let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
+  if(g!==DU.gen) return;
+  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; $('#duAccept').disabled=false; duMsg('');
+}
+$('#duAccept').onclick=async()=>{ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
+  try{ await acc($('#duAnswerIn').value); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
+  if(g!==DU.gen) return;
+  duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
+  const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
+  if(g===DU.gen) duBegin(tr,true); };
+$('#duMakeAnswer').onclick=async()=>{ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
+  if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
+  btn.disabled=true; $('#duAnswer').value='';
+  const jp=RtcTransport.join($('#duOfferIn').value); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
+  let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message); } return; }   // 'Bad code ...': stay here
+  if(g!==DU.gen) return;
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duStep('answer');
+  // the host has to carry the code across and paste it: that wait is people's, not the network's
+  const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
+  if(g===DU.gen) duBegin(tr,false); };
+$('#duRoom').onclick=()=>{ duStop(); duStep('room'); const host=DU.host, inp=$('#duRoomName'); inp.readOnly=host; $('#duRoomGo').disabled=false;
+  if(host){ const L='ABCDEFGHJKLMNPQRSTUVWXYZ'; inp.value=Array.from({length:4},()=>L[Math.floor(Math.random()*L.length)]).join(''); }
+  else inp.value='';
+  $('#duRoomTxt').textContent=host?'Tell your friend this room name. Connect first, and have them join it.':'Type the room name your host gave you.'; };
+$('#duRoomGo').onclick=async()=>{ const g=DU.gen, room=$('#duRoomName').value.toUpperCase().replace(/[^A-Z]/g,''), host=DU.host; duMsg('');
+  if(room.length!==4) return duMsg('A room name is four letters.');
+  $('#duRoomGo').disabled=true;
+  const wp=WsTransport.connect(room); wp.then(t=>{ if(g!==DU.gen) t.close(); },()=>{});
+  let tr; try{ tr=await duRace(wp,DU.timeout); }catch(e){ if(g===DU.gen){ $('#duRoomGo').disabled=false; duMsg(e.message); } return; }
+  if(g!==DU.gen) return;
+  DU.tr=tr; duStep('wait'); $('#duWaitTxt').textContent='In room '+room+'. Waiting for the other player…';
+  // the relay forwards only to someone already there, so each side says hello and makes its session when it hears the other
+  tr.onmessage=t=>{ if(DU.tr!==tr) return; duBegin(tr,host); tr.onmessage(t); };
+  tr.send(DU_PROBE);
+  DU.waitT=setTimeout(()=>{ if(DU.tr===tr&&!DU.session) duFail(g,DU_SLOW_MSG); },DU.timeout*3); };
+$('#duName').oninput=()=>{ try{ localStorage.setItem(DU_NAME_KEY,$('#duName').value.trim().slice(0,20)); }catch(e){} };
+
+// ---- debug menu ----
+$('#dbgDuel').onclick=()=>{ if($('#dbgDuel').disabled) return; duelDbgSync(); if($('#dbgDuel').disabled) return; openDuel(); };
+new MutationObserver(()=>{ if($('#debug').classList.contains('on')) duelDbgSync(); }).observe($('#debug'),{attributes:true,attributeFilter:['class']});
+duelDbgSync();

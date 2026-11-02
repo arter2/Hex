@@ -28,6 +28,7 @@ async function launch(options = {}) {
     opts.args = [
       '--use-gl=swiftshader',
       '--enable-unsafe-swiftshader',
+      ...(options.args || []),
       ...(options.preciseMemory ? ['--enable-precise-memory-info', '--js-flags=--expose-gc'] : [])
     ];
   return { browser: await pw[engine].launch(opts), engine };
@@ -52,6 +53,8 @@ function serve() {
         '.js': 'text/javascript',
         '.css': 'text/css',
         '.png': 'image/png',
+        '.webp': 'image/webp',
+        '.avif': 'image/avif',
         '.svg': 'image/svg+xml', // without it the browser refuses every SVG (the card kit, the HUD art)
         '.json': 'application/json',
         '.ttf': 'font/ttf',

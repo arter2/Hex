@@ -3508,5 +3508,833 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Repaired the first render because its snout tip sat too close to the right edge. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete broad snout/jaws, amber eye and plated head/shoulder remain within the crop; stunned foe and electric impact support the crocodile."
+  },
+  {
+    "cardId": "storm_summon_19",
+    "name": "Great River Crocodile",
+    "prompt": "Paint an original illustration for the exact card Great River Crocodile. Show a colossal dire Nile crocodile lunging sideways from the Great River shallows, its massive armored olive-bronze body in a strong zigzag, broad complete snout and both jaws clearly visible, one amber eye catching the light. The huge crocodile is the unmistakable main subject; a small distant armored traveler recoils as a restrained blue-white storm shock flashes along the crocodile's plated shoulder, suggesting a crushing attack that steals vitality. Natural crocodile anatomy, heavy plated scales, wet hide, reeds, ancient riverbank temples in soft distance; painterly medieval fantasy collectible-card illustration, expressive brushwork, richly tactile materials, cinematic late-day gold and cool storm rim light, atmospheric depth. Exact 1:1 SQUARE composition for editable 512x512 master; keep the entire face, eye, jaws and main shoulder within x24..488,y105..407; horizontal creature silhouette, quiet clouds and water above/below for the 206:141 crop. No frame, text, letters, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2a4cef61-b1bc-4368-9c74-3fe4c8accce8.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: complete crocodile eye, snout and jaws stay visible; the armored river predator and storm-lit lunge read clearly. Incidental tail, lower body, reeds and distant traveler may crop."
+  },
+  {
+    "cardId": "storm_summon_20",
+    "name": "Roc",
+    "prompt": "Paint an original illustration for the exact card Roc: a truly gigantic legendary roc, natural majestic eagle-like bird of prey, bronze-gold hooked beak, fierce clear amber eyes, layered russet and dark-gold feathers, enormous wings sweeping horizontally as it glides above an ancient mountain fortress in a thunderstorm. Its talons reach toward the ramparts and the powerful bird's presence rallies tiny defenders below; the roc dominates the composition and reads instantly as an enormous eagle, not a humanoid or dragon. Painterly medieval fantasy collectible-card artwork, detailed believable feathers and anatomy, dramatic warm light breaking through blue-gray storm clouds, atmospheric depth and grounded brushwork. Exact 1:1 SQUARE composition for 512x512 editable master; keep both eyes, full beak, head and wing roots safely within x24..488,y105..407; wings may extend incidentally but keep a broad readable silhouette. Quiet cloud margins above and below for 206:141 crop. No frame, text, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-522b05b0-5884-47ad-9389-59431fd4be49.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the unmistakable eagle-like roc's head, eyes, hooked beak and body remain clear; wing tips crop incidentally while its great wingspan and fortress approach remain readable."
+  },
+  {
+    "cardId": "storm_summon_21",
+    "name": "Simurgh",
+    "prompt": "Paint an original illustration for the exact legendary card Simurgh, honoring Persian epic mythology: a vast wise mythic bird perched on a wind-carved cypress above ancient Persian mountain ruins. Give it a dignified canine-like face with intelligent bright eyes, graceful hooked beak, lion-like foreclaws, and a magnificent peacock-like fan of long turquoise, lapis, copper and gold feathers with subtle iridescence. Make the complete face and distinctive feathery crest prominent; feathered wings frame the body and glowing storm wind swirls around it as it calls across the mountains, suggesting its bewildering supernatural presence. One singular recognizable bird, natural mythic anatomy, not a phoenix on fire, not a griffin hybrid. Painterly medieval fantasy collectible-card illustration with ornate Persian-inspired feather patterning, rich brushwork, luminous blue-gold sunrise and storm atmosphere. Exact 1:1 SQUARE for 512x512 editable master; keep face, eyes, crest, beak and upper foreclaws within x24..488,y105..407; horizontal composition and quiet sky/rock margins for 206:141 crop. No frame, writing, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7dff2eb-64b0-4510-93e2-64fcee7173bf.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed the wide crop with focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source and revised direct 512×350 crop/128×88 thumbnail: full Simurgh face, eyes, crest and hooked beak now remain visible; tail and wing tips and lower body crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_22",
+    "name": "Great Sphinx",
+    "prompt": "Paint an original illustration for the exact card Great Sphinx: an ancient monumental Egyptian sphinx coming to life and rising from desert sand before colossal sandstone pylons at dusk. Show one imposing winged sphinx with a weathered human face beneath a striped royal nemes headdress, clear calm eyes, broad leonine body and powerful front paws; the aged stone surface is cracking away to reveal living tawny fur beneath, and it rears upward in a slow deliberate rise, scattering sand and a restrained blue-white storm aura. Its face, headdress and paws identify the sphinx; old, vast, regal, monumental presence. Painterly medieval fantasy collectible-card art, tactile sandstone, gold and fur, cinematic amber light under storm clouds, atmospheric brushwork. Exact 1:1 SQUARE composition for 512x512 master; keep full face/eyes/headdress and main paws inside x24..488,y105..407; arrange the head and torso horizontally across the middle, quiet sky and sand at top/bottom for 206:141 crop. No frame, text, hieroglyphic writing, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-900232c1-616d-44c2-b8bc-b291876cdc9c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed the wide crop with focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source and revised direct 512×350 crop/128×88 thumbnail: the full crown, headdress, face and eyes now remain visible; the torso and upper paws read clearly while lower paw tips crop."
+  },
+  {
+    "cardId": "storm_summon_23",
+    "name": "Riddling Sphinx",
+    "prompt": "Paint an original illustration for the exact card Riddling Sphinx, a living mythic sphinx of Greek legend, clearly distinct from a monumental Egyptian Great Sphinx: an elegant tawny lion-bodied creature with a poised human woman's face, thoughtful bright eyes, high cheekbones and folded feathered wings, seated sideways on a ruined marble terrace at twilight. Her expression is clever and inquisitive; one complete forepaw rests beside a smooth unmarked stone tablet while she silently challenges a pair of wary armored travelers. A subtle breath of blue-white storm magic makes the travelers recoil, suggesting the sphinx's dreadful presence and forceful power. Make the complete feminine face and eyes, lion muzzle, mane, wing roots and forward paw readable; no writing or carved marks on the tablet. Natural mythic anatomy, graceful but imposing, not a human-bodied angel, not a statue, not a lion with an animal face. Painterly medieval fantasy collectible-card illustration, detailed fur and feathers, weathered marble, dramatic moonlit amber-blue light and atmospheric brushwork. Exact 1:1 SQUARE composition for editable 512x512 master; keep face/eyes and main paw within x24..488,y105..407, horizontal arrangement with quiet sky and stone margins for the 206:141 crop. No frame, text, letters, runes, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8d2cbe16-f40e-4668-b4b8-094822204055.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the living winged sphinx's feminine face, eyes, lion muzzle, feathers and full forward paw on the blank tablet remain readable; incidental hair tips, wing edges and travelers crop."
+  },
+  {
+    "cardId": "storm_summon_24",
+    "name": "Bronze Automaton",
+    "prompt": "Paint an original illustration for the exact card Bronze Automaton. Depict a single squat but powerful ancient bronze humanoid guardian standing protectively in a ruined temple doorway, broad segmented breastplate, thick articulated arms and a stern unmistakable face with two clear glowing blue eyes; one open metal hand guards a small traveler while the other reaches forward through a restrained blue-white storm aura that saps an approaching raider's strength. Make the bronze automaton the dominant subject, steady and unyielding, with archaic hand-forged plate seams and rivets, not modern machinery. Painterly medieval fantasy collectible-card art with visibly brushed bronze, layered paint strokes in the background, softly broken edges, matte metallic highlights and atmospheric storm light; expressive hand-painted surface, avoid polished CGI, photographic gloss or hyperreal detail. Exact 1:1 SQUARE for an editable 512x512 master; keep face, eyes and hands within x24..488,y105..407, horizontal staging and quiet stone/smoke above and below for 206:141 crop. No frame, writing, lettering, runes, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-77543655-69cc-465f-821f-be4109618b70.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.42]. Reviewed the 512-square source and revised direct 512×350 crop/128×88 thumbnail: complete bronze face/eyes and both hands remain in frame; protective guard and storm attack read clearly."
+  },
+  {
+    "cardId": "storm_summon_25",
+    "name": "Talos the Bronze Giant",
+    "prompt": "Paint an original mythic illustration for the exact card Talos the Bronze Giant: the legendary colossal bronze automaton guardian of Crete, striding across a rocky shore in an ancient Greek gale. Show a towering broad-shouldered bronze giant in archaic hammered armor, with a strong recognizable human face and bright eyes, great articulated hands and huge feet; his mighty stride scatters rock and sand, disorienting tiny raiders below. Include a subtle sealed bronze channel running down one lower leg as a classical Talos detail, but keep the face and upper body primary. The giant should feel ancient, monumental and alive, not a robot from science fiction. Painterly medieval fantasy collectible-card art with clearly visible hand-brushed strokes across bronze, sea and clouds, matte aged metal, broken painterly edges, dramatic blue-gray storm and warm sunset light; avoid shiny CGI, photographic gloss, hyperrealism. Exact 1:1 SQUARE for 512x512 editable master; keep face, eyes, both hands and upper torso safely inside x24..488,y105..407; legs/feet may extend incidentally. Horizontal wide staging, quiet sky and shore margins for 206:141 crop. No frame, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f69dd9e-dd90-439c-bdf2-ab5be07da40d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.34]. Reviewed the 512-square source and top-aligned direct 512×350 crop/128×88 thumbnail: Talos's face/eyes, torso and both hands are preserved; lower legs, feet and raiders crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_26",
+    "name": "Clockwork Falcon",
+    "prompt": "Paint an original illustration for the exact card Clockwork Falcon: a living falcon-shaped medieval clockwork familiar diving across a stormy castle courtyard. It has a sharp natural falcon profile and clear bright eye, a curved hooked beak, overlapping feather-shaped bronze plates, articulated feathered-metal wings, and a few visible small brass gears at the shoulder; it remains unmistakably a falcon rather than a dragon or generic machine. A focused blue-white bolt fires from its beak toward a distant armored target, while the falcon’s chest clockwork glows as it overcharges. Painterly medieval fantasy collectible-card art, visibly hand-painted brush texture on each feather plate and storm sky, layered matte bronze and steel rather than glossy CGI, expressive brushwork and clear silhouette. Exact 1:1 SQUARE for 512x512 master; keep the whole head, eye, beak and wing roots within x24..488,y105..407; distant wing tips may crop. Horizontal flight, quiet cloud and stone margins for 206:141 crop. No modern technology, frame, text, lettering, numbers, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6cb72aa-7638-4e12-a780-24e1045562a0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: unmistakable falcon face/eye, hooked beak, mechanical feather plates, shoulder gears and bolt remain readable; incidental wing tips crop."
+  },
+  {
+    "cardId": "storm_summon_27",
+    "name": "Horus the Far-Seeing",
+    "prompt": "Paint an original mythic illustration for the exact card Horus the Far-Seeing: the noble Egyptian sky god in his sacred falcon form, a great dark-gold peregrine falcon perched upon a worn temple obelisk above the Nile at stormy dawn. Give him a sharply hooked falcon beak, clear far-seeing amber eyes, regal blue-and-gold double crown of Upper and Lower Egypt, and broad layered wings; a faint blue-white static arc travels from his vigilant eye toward a distant enemy, suggesting precise supernatural vision and a controlled stun. This is the named god Horus, not an ordinary bird: dignified, royal and divine, but anatomically a falcon. Painterly medieval fantasy collectible-card art with visible hand-brushed feather strokes and matte gold-blue pigments, softened edges, atmospheric Nile clouds and dramatic dawn light; avoid photorealistic gloss and polished CGI. Exact 1:1 SQUARE for an editable 512x512 master; keep both eyes, full beak, crown and head completely within x24..488,y105..407; wings may extend incidentally. Horizontal composition with quiet sky and river margins for 206:141 crop. No hieroglyphic writing, frame, text, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-353c9c0d-a6c2-4d99-9039-7d82f070025c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.34]. Reviewed the 512-square source and top-aligned direct 512×350 crop/128×88 thumbnail: Horus's complete crown, falcon head, eyes and hooked beak remain visible; lower perch/body and wing tips crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_28",
+    "name": "Ibis Scribe",
+    "prompt": "Paint an original illustration for the exact card Ibis Scribe: a graceful, slender Egyptian ibis-headed scholar standing in an ancient temple archive at night. Give the figure a distinctively long down-curved black ibis beak, attentive amber eye, white-feathered head and neck, dark wing-feather mantle over simple ivory linen, and two clear humanlike hands: one holds a reed stylus poised over a blank papyrus roll, the other supports a wooden writing palette. The papyrus has no visible marks or writing. A narrow beam of pale blue-white storm light flows from the scribe's beak toward a distant shadow, and a faint upward swirl of feathers and light suggests the risen magical guardian. Keep the ibis face/beak, eye, both hands, stylus and blank scroll unmistakable; this is a bird-headed scribe, not a human in a bird mask. Painterly medieval fantasy collectible-card illustration with clearly visible hand-brushed feather and linen texture, matte pigments, layered expressive strokes, softly broken edges, warm candlelight against storm blue, atmospheric depth. Exact 1:1 SQUARE for an editable 512x512 master; horizontal pose with face, eye, beak, hands, stylus and scroll inside x24..488,y105..407; quiet archive above and below for 206:141 crop. No hieroglyphs, readable marks, frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-499641d3-a944-4804-8107-fee37b2c6853.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the white ibis head, amber eye, long curved black beak, both hands, reed stylus and blank scroll remain fully readable; the luminous ibis-shaped spirit and temple archive are incidental atmosphere."
+  },
+  {
+    "cardId": "storm_summon_29",
+    "name": "Frilled Lizard",
+    "prompt": "Create original illustration-only art for the storm summon card Frilled Lizard, whose traits are a quick zigzag movement and lifesteal. Show a real quadrupedal frilled lizard with its unmistakable circular neck frill fully fanned around the head, complete snout, both bright eyes and every frill edge clearly visible; not a dragon, salamander or humanoid. The lizard skitters in a quick zigzag across a rain-dark medieval stone ledge, one small blue lightning pulse illuminating its scales and a faint blue glint in the eyes suggesting storm energy. Let its long tail trail into expendable scenery. Painterly medieval fantasy collectible-card illustration with visible brush texture and simplified matte scale patterns, believable small-animal anatomy, cool blue-white lightning, warm distant torchlight and atmospheric depth, matching the supplied Hexmancers storm reference. Avoid glossy photographic scales, 3D render shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; keep the entire head, eyes and complete flared frill inside x24..488,y105..407 for the 206:141 crop, with quiet rain and stone above/below. No text, lettering, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-e1f9c8f2-5ed2-4dd0-9462-c9900779214b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the exact 512-square source, wide crop and thumbnail. The full fanned frill and head remain clear; the lizard's visible eye and snout read well in profile. The tail extends into incidental scenery. Painterly scale texture and storm lighting."
+  },
+  {
+    "cardId": "storm_summon_30",
+    "name": "Horned Viper",
+    "prompt": "Paint original illustration-only art for the storm summon Horned Viper, a sturdy serpent with a quick lightning-bolt strike, lifesteal and a forceful push. Show a real horned viper snake: broad triangular viper head, paired short horn-like scales directly above the eyes, slit pupils, keeled patterned scales and a compact coiled body. Three-quarter head view faces the viewer as it launches in a quick strike from a rain-dark rocky ledge; its complete head, both tiny horns, both eyes and full muzzle are the central focus, with a restrained blue lightning flash behind it suggesting storm energy. No cobra hood and no lizard frill. Painterly medieval fantasy collectible-card illustration with visible brush texture, simplified matte scales, believable snake anatomy, cool blue-white lightning and a warm distant torch rim, atmospheric depth matching the supplied Hexmancers storm master. Avoid glossy photographic detail, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master; keep head, eyes and both horn scales fully within x24..488,y105..407 for the 206:141 crop; body coils may trail into quiet scenery above/below. No words, lettering, border, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-a7cb6cd5-20af-4e19-b578-13c013316ad0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The broad viper head, both brow horns, eyes and muzzle remain intact; the coiled snake and storm bolt support its quick strike. The tongue trails toward the lower crop edge; textured scale detail and storm light."
+  },
+  {
+    "cardId": "storm_summon_31",
+    "name": "Uraeus Cobra",
+    "prompt": "Paint original illustration-only art for the storm summon Uraeus Cobra, a noble, quick serpent with a greedy glint and a stunning strike. Depict an unmistakable real cobra rearing from a compact coil, its complete symmetrical hood spread wide around the head; keep the entire hood outline, both eyes, brow, full muzzle and forked tongue visible together. Give the hood a subtle ancient Egyptian uraeus character through restrained bronze-gold scale markings, while keeping it a living snake, not a statue, pharaoh or humanoid. A sharp blue-white lightning arc traces the serpent's zigzag coil in rain over old sandstone. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales and aged stone, attractive directional storm light and atmospheric depth matching the supplied Hexmancers storm master. Avoid glossy photographic rendering, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 source; position the complete hooded head in x24..488,y105..407 for the 206:141 crop, quiet cloudy stone above and below. The serpent body may coil out of frame. No crown, jewelry, text, glyphs, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-05d9f3af-4627-4bd4-8c1b-72a162fef7dc.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The entire spread cobra hood, face and eyes remain clear; restrained gold scale markings suggest the noble uraeus identity while lightning gives the storm setting. Coil and tongue trail below. Textured scale painting and directional storm light."
+  },
+  {
+    "cardId": "storm_summon_32",
+    "name": "Plumed Serpent",
+    "prompt": "Paint original illustration-only art for the storm summon Plumed Serpent, a wild serpentine creature that strikes like a bolt, sustains itself through lifesteal and confuses foes. Depict a living feathered serpent: unmistakable scaled snake body and serpentine jaw, with a crown and mane of long layered jade, turquoise and gold feathers sweeping back from its head and along its neck. No legs, no wings, no beak, no cobra hood. The complete head, eyes, muzzle and defining feather crest form the central focus as it darts in an S-curve through a mountain storm; restrained blue lightning follows the coil and a few loose feathers suggest its wild motion. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scale and feather forms, attractive cool stormlight with warm gold accents and atmospheric depth matching the supplied Hexmancers storm reference. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master. Keep the whole head and all identity-defining plumes within x24..488,y105..407 for the 206:141 crop; tail and body coil may extend into quiet scenery above and below. No frame, text, letters, symbols, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-d077c3c0-9970-4024-abe1-0b93ed98490a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The scaled serpent head, eye, complete jade-and-gold feather crest and serpentine neck remain readable; it is distinct from the hooded cobra. Trailing coil and loose feathers are incidental. Painterly feather and scale texture with storm light."
+  },
+  {
+    "cardId": "storm_summon_33",
+    "name": "Chupacabra",
+    "prompt": "Paint original illustration-only art for the storm summon Chupacabra, a quick folkloric cryptid that surges forward with empowered strength. Show a lean, hairless, quadrupedal reptilian mammal known from Latin American night legends: narrow elongated muzzle, large bright eyes, pointed ears and a distinct ridge of short spines running from neck down the back. Its hunched shoulders and powerful hindquarters coil for a sudden spring beside an old mountain goat pen during a stormy night; faint goat silhouettes far behind give folklore context without violence. Keep it unmistakably a chupacabra, not a dog, vampire, dragon, lizard or serpent; no wings or humanoid body. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte leathery hide and spines, cool blue stormlight, warm lantern accents and atmospheric depth matching the supplied Hexmancers storm reference. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master; keep the full cryptid head, eyes, muzzle and defining spine crest inside x24..488,y105..407 for the 206:141 crop; tail and incidental legs may extend into quiet scenery. No frame, text, letters, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-ce1b19be-942a-45f1-96b2-412388a65561.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The lean quadrupedal cryptid’s narrow muzzle, visible eye and full dorsal spine ridge remain readable; distant goats establish folklore context without violence. Storm lighting, textured hide and a quick forward spring."
+  },
+  {
+    "cardId": "storm_summon_34",
+    "name": "Foo Dog Sentinel",
+    "prompt": "Paint original illustration-only art for the storm summon Foo Dog Sentinel, a loyal East Asian shishi guardian that pounces and draws life from the storm. Show an animated Chinese guardian lion-dog carved from weathered gray granite, unmistakably a foo dog/shishi rather than a natural dog or ordinary lion: broad fanged muzzle, fierce almond eyes, thick mane made of curled stone scrolls, small upright ears and a sturdy curled tail. It springs from a temple gate plinth with one stone paw raised, blue-white storm current glowing in fine cracks along its sculpted mane. Keep the full recognizable head, eyes, complete curled mane and raised paw inside the central wide-card band. Painterly medieval fantasy collectible-card art with visible brush texture, tactile matte carved stone and bronze inlay, warm lantern rim light against cool rain, atmospheric depth consistent with the supplied Hexmancers storm art. Avoid glossy photorealism, toy proportions, modern dog breeds, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; all identity-critical face and shishi features in x24..488,y105..407 for the 206:141 crop, quiet gate sky and stone beyond. No extra characters, writing, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-140b950c-9502-4e88-ad48-8d5716b605aa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. This reads as an animated carved shishi/foo dog: full fanged face and eyes, curled stone mane, granite paws and a pouncing pose. Upper curls touch the crop edge; stormlight and bronze details support the sentinel identity."
+  },
+  {
+    "cardId": "storm_summon_35",
+    "name": "Brass Foo Pup",
+    "prompt": "Paint original illustration-only art for the storm summon Brass Foo Pup, a tiny, frail but swift shishi guardian. Show a small living brass foo-dog pup in a quick diagonal dash across a rain-dark temple roof: lion-dog face with short muzzle, both bright eyes, little fangs, rounded oversized paws, short legs, a curled tail and a miniature mane of carved scroll curls. It must read as a young East Asian guardian lion-dog, not an ordinary puppy, wolf or metal toy. Build it from aged brass with warm highlights and green-brown patina; a few blue static sparks skate across the tiny paws. Keep the entire compact figure, face and defining curled mane comfortably inside the central 60% of the square, with quiet temple mist above and below. Painterly medieval fantasy collectible-card illustration with visible brush strokes, simplified matte brass and stone, attractive warm/cool storm lighting, consistent with the supplied Hexmancers storm refs. Avoid cartoon or toy proportions, glossy photorealism, 3D shine, anime or pixel art. Explicit 1:1 square canvas for a 512x512 editable source; subject and face within x24..488,y105..407 for the 206:141 crop. No text, lettering, numbers, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-864491c3-70d1-4bbc-9e0e-e8c721454d0f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. The compact, big-headed shishi pup has a clear foo-dog face, bright eyes, curled mane, short legs and aged brass/patina, distinct from the granite sentinel. Full face and raised paw remain visible with quick storm sparks."
+  },
+  {
+    "cardId": "storm_summon_36",
+    "name": "Bahamut",
+    "prompt": "Paint original illustration-only art for the legendary storm summon Bahamut, following the catalogue's Middle Eastern myth context: Bahamut is a vast primordial cosmic fish of medieval Arabic cosmology, not a Western fantasy dragon. Show an immense deep-sea fish turning through a storm-dark ocean: broad piscine head, clearly visible gill slits, large intelligent eyes, heavy scales, strong pectoral fins and a huge forked tail. Its immense body bends in a zigzag beneath the surface while blue-white lightning illuminates waves around it, creating awe and dread. Keep unmistakable fish anatomy—no legs, wings, horns or dragon head. Use a low horizontal side-three-quarter view so the entire head, both eyes, gills and near pectoral fin are visible within the card's central band; distant clouds and sea establish vast scale. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales and water, luminous storm light and atmospheric depth matching the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; keep the head, eyes, gills and defining fin in x24..488,y105..407 for the 206:141 crop, with quiet cloud and water above/below. No dragon traits, extra creatures, lettering, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-6b7a2e07-595d-485f-a877-19cf68cbc0ba.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Bahamut reads as a colossal primordial fish from the catalogue’s Middle Eastern myth context, not a Western dragon: full piscine head, eye, gill plates and near fin remain visible amid the storm sea. Long body and tail continue beyond the crop."
+  },
+  {
+    "cardId": "storm_summon_37",
+    "name": "Falak the Abyss Serpent",
+    "prompt": "Paint original illustration-only art for the legendary storm summon Falak the Abyss Serpent. Draw on the catalogue's Middle Eastern desert mythology: Falak is an ancient serpent of the abyss, here a vast sand-burrowing serpentine creature rather than a conventional Western dragon. It rises from a dark chasm beneath storm-swept desert dunes, with an elongated serpent head, clear glowing eyes, broad scaled muzzle and a massive curved coil vanishing into sand. Blue-white lightning runs from its mouth along the coil like a bolt, and a restrained stun flash catches the sand grains. No legs, wings, fins, feathers or cobra hood; the identity is a long-bodied abyss serpent, not a fish or a generic segmented worm. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales, dark indigo and bronze-gold highlights, dramatic lightning and atmospheric desert depth matching the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master. Keep the complete head, eyes, snout and defining serpent anatomy in x24..488,y105..407 for the 206:141 crop; body coil and sand plume may trail into quiet top/bottom scenery. No text, frame, runes, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-e04c07a7-0cae-4c25-a43f-844e334d1069.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Falak reads as a long-bodied abyss serpent emerging through desert sand, with complete head, both eyes and snout visible; a pair of short horn-like brow ridges are present. No wings or legs. Its vast coil and lightning bolt support the legendary storm/desert identity."
+  },
+  {
+    "cardId": "storm_summon_38",
+    "name": "Sandworm",
+    "prompt": "Paint original illustration-only art for the storm summon Sandworm, a slow, sturdy burrower. Make the creature unmistakably a giant worm rather than a snake: a blunt cylindrical head with a round radial maw, concentric fleshy-chitin rings and a few small hooked teeth, two tiny dark sensory eyes above the mouth, and a thick body made of broad segmented sand-colored annuli. It erupts vertically through a dune in a rolling sandstorm, displacing small rocks and dust; a restrained blue lightning flash rims its armored rings. Do not give it horns, fins, limbs, feather crest or a long serpent muzzle. Painterly medieval fantasy collectible-card illustration with visible brush texture, simplified matte sand, chitin and stone, warm desert light against cool stormlight and atmospheric depth consistent with the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master. Keep the complete blunt head, circular mouth and visible eye features inside x24..488,y105..407 for the 206:141 crop; the segmented body and sand plume may extend beyond. No text, frame, writing, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-c2859d66-3407-4164-91fe-7079ee0cfd5e.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The blunt segmented burrower is distinct from Falak’s serpent; its complete circular maw, small eyes and ringed chitin head stay visible as it erupts through sand. Lower body continues beyond the crop with stormlight on the segments."
+  },
+  {
+    "cardId": "storm_summon_39",
+    "name": "Linen-Wrapped Sentinel",
+    "prompt": "Square 1:1 illustration for a medieval fantasy collectible card, composed to remain readable in a wide 206:141 crop: keep the entire primary face, eyes, shoulders and any relevant hands inside the central horizontal safe zone (roughly x 24–488 and y 105–407 of a 512 square). Depict one imposing ancient linen-wrapped sentinel, an Egyptian-inspired funerary guardian knight with layered pale linen bandages over bronze and dark stone armor, face clearly visible through the wrapping, stern alert eyes, one hand holding a short upright spear close to the body. Ancient desert temple doorway, muted ochre and blue storm light behind. Strong, clear silhouette and compact central grouping. Painterly medieval fantasy card art with visible brush texture, carefully simplified matte materials and atmospheric lighting, matching traditional painted tabletop fantasy illustration. Not anime, not Disney, not photorealistic, not glossy 3D. No text, no border, no symbols or lettering. Deliver a square 1:1 image.",
+    "generatedPath": "/workspace/generated_images/exec-a1f5a87c-c23d-4f96-b77a-6fc42205e4fa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The sentinel’s full face, eyes and spear hand remain within the crop; pale linen wrapping, bronze armor and ancient desert-temple setting read clearly."
+  },
+  {
+    "cardId": "storm_summon_40",
+    "name": "Sand Golem",
+    "prompt": "Create original painterly medieval fantasy card art, explicit square 1:1 composition for an editable 512x512 master. One massive Sand Golem formed from compacted ochre sand, sandstone plates and grit, unmistakably a constructed humanoid guardian with broad shoulders, thick arms and a clear head with two bright blue stormlit eyes. Its body is cracking and shedding grains as it trudges through a windblown desert ruin; one heavy fist forward, a small distant lightning fork in the sky. No metal armor, no rocky mountain monster, no loose cloud-shaped elemental: make sand grains and layered sandstone the defining materials. Keep its full head, eyes and primary forearms within central wide-crop safe area x24..488,y105..407 of square image; compact silhouette. Horizontal energy, quiet upper/lower margins. Visible painterly brush texture, matte simplified materials, atmospheric traditional tabletop fantasy illustration, warm sand with restrained cool stormlight. Avoid photorealism, glossy 3D, anime, Disney and pixel art. No text, letters, frame or symbols.",
+    "generatedPath": "/workspace/generated_images/exec-86f7f2d6-c032-48a8-ad69-8a927a164b97.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted wide crop and thumbnail. The complete head and glowing eyes, shoulders and both heavy forearms fit; compacted ochre sand and sandstone are clear in the stormy desert setting."
+  },
+  {
+    "cardId": "storm_summon_41",
+    "name": "Wandering Alchemist",
+    "prompt": "Painterly medieval fantasy card illustration, square 1:1 composition for editable 512x512 master. Depict one wandering medieval alchemist, a road-worn scholar in practical travel cloak and layered leather satchel, mature expressive face and alert eyes, studying a small glowing blue vial held near chest; visible bundled alchemy tools and a few glass bottles at the belt. The character should feel like an itinerant craftsperson, not a wizard with a staff, not a modern scientist. A dusty road through a ruined desert caravanserai, distant storm clouds. Keep full head, face, vial hand and other visible hand inside central horizontal safe zone x24..488,y105..407; compact portrait with shoulders and kit grouped close. Strong face readability at thumbnail. Visible brushwork, matte cloth/leather/glass, atmospheric light, traditional painted tabletop fantasy style. Avoid glossy photorealism, 3D render, anime, Disney, pixel art. No text, writing, labels, symbols, border or UI. Explicit square 1:1 image.",
+    "generatedPath": "/workspace/generated_images/exec-850e273f-6b46-4e87-9636-0c500472f49a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The alchemist’s full face, vial hand and other hand remain visible, with travel cloak, satchel and belt vials clearly reading as a wandering medieval craftsperson."
+  },
+  {
+    "cardId": "storm_summon_42",
+    "name": "Bedouin Raider",
+    "prompt": "Painterly medieval fantasy card art, explicit 1:1 square composition for an editable 512x512 master. A single Bedouin desert raider on foot, a capable Arab warrior in historically grounded loose desert robes and wrapped headcloth, practical leather belt, weathered face and focused eyes; holds a curved saber close to the body, other hand gripping a small round shield. Respectful, specific Middle Eastern desert traveler-warrior design; no caricature, no exoticized costume, no fantasy pirate, no modern gear. Sandstorm moves through a rocky caravan route behind, a restrained glint of blue storm light. Compact chest-up action pose, keep full head/eyes and both gripping hands with weapon hilt and shield grip within central safe zone x24..488,y105..407. Visible brushwork, matte fabric/leather/steel, muted sand and indigo palette, atmospheric traditional tabletop medieval fantasy painting. Avoid glossy photorealism, 3D, anime, Disney, pixel art. No text, labels, symbols, border or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-3869e877-d5dc-4857-859c-ec34ed262c0b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The raider’s entire face, both weapon grips, saber hilt and shield remain clear within the crop; wrapped desert clothing and windblown sand establish the setting."
+  },
+  {
+    "cardId": "storm_summon_43",
+    "name": "Parthian Horse Archer",
+    "prompt": "Create an original painterly medieval fantasy card illustration, explicit square 1:1 composition for an editable 512x512 master. Depict one ancient Parthian horse archer, a mounted Iranian cavalry warrior in historically grounded Parthian riding clothes, scale vest and soft cap, performing the famed Parthian shot: twisting in the saddle to aim a recurved composite bow backward while galloping. The archer’s full face and eyes, bow hand holding the grip, drawing hand pulling the string, and arrow nock must all be clear and entirely inside central safe zone x24..488,y105..407. Keep rider and horse grouped centrally in a compact horizontal silhouette; horse’s head and neck visible beside the rider, legs and bow tips may reach edges. Horse tack and clothing should suggest ancient Parthia, not medieval European knight, Mongol stereotype or modern gear. Dusty steppe with storm clouds and distant hills, restrained blue lightning on bow limbs. Visible painterly brush texture, matte horse coat/leather/cloth, atmospheric traditional tabletop fantasy art. Avoid glossy photorealism, 3D, anime, Disney or pixel art. No text, border, symbols or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-f7fe23c7-142f-4538-b278-f58197adce3f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, slightly upward-shifted wide crop and thumbnail. The mounted Parthian rider’s entire face, bow grip, drawing hand and nocked arrow remain visible; the horse’s head and neck establish the mounted archer identity."
+  },
+  {
+    "cardId": "storm_summon_44",
+    "name": "Bazaar Pickpocket",
+    "prompt": "Paint an illustration for the exact card name “Bazaar Pickpocket.” Depict a small, sly goblin thief in a crowded medieval Persian bazaar, with green-gray skin, pointed ears, alert amber eyes and a sharp, intelligent face. In one nimble hand he lifts a compact coin purse from a merchant’s belt while the other hand discreetly steadies it; his glance checks whether anyone has noticed. Keep the goblin’s complete face, both hands and purse central and unobscured. Layered carpets, brass lamps and spice baskets establish the bazaar without hiding the action; he is clearly a goblin, not a human child. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, tactile wool, leather, brass and woven cloth, warm shafts of light through market awnings, cool shadow and atmospheric depth. Explicit 1:1 square canvas intended for an editable 512×512 master; keep face/eyes, hands and the whole small purse inside x24–488,y105–407 for a 206:141 landscape crop. Quiet awning and paving above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5235017f-1777-4bba-9fe6-c36156d3f55f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Goblin’s full wrapped cap/head, face/eyes, both nimble hands and compact purse now fit together; the merchant’s torso is background context."
+  },
+  {
+    "cardId": "storm_summon_45",
+    "name": "Mamluk Lancer",
+    "prompt": "Paint an illustration for the exact card name “Mamluk Lancer.” Depict a mounted Mamluk cavalryman of 13th-century Egypt or Syria, wearing practical mail with a lamellar cuirass, a steel helmet wrapped in a cream turban and a deep blue riding coat with modest geometric trim. His full face and focused eyes are visible as he rallies his horsemen, gripping a compactly framed long wooden lance near his shoulder; keep the hand-lance grip close to his face and fully within the crop, with the shaft angled back rather than stretching to either edge. The horse’s alert head may appear below, while other riders stay secondary. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, nuanced steel, leather, wool and horse tack, warm desert dawn through dust against cool blue shadows, atmospheric depth and grounded human/horse anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the lancer’s entire head/eyes, lance hand and visible grip safely inside x24–488,y105–407 for a 206:141 crop. Incidental lance ends and horse body may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8917e202-eafc-4e50-af48-957aa5d56eb7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Mamluk lancer’s full turban/helmet, face/eyes, complete lance grip and hand remain clear; lance shaft and horse body extend incidentally."
+  },
+  {
+    "cardId": "storm_summon_46",
+    "name": "Persian Immortal",
+    "prompt": "Paint an illustration for the exact card name “Persian Immortal.” Depict an Achaemenid Persian imperial guard of the 5th century BCE, one of the king’s elite Immortals, not an undead creature. He wears a pleated Persian robe beneath a patterned scale cuirass, a modest crenellated tiara, and a richly woven belt. His proud face and clear eyes remain visible as he advances in disciplined formation with a compact wicker shield in one hand and a short spear in the other; keep his hands and spear grip close to his torso. Other guards and the monumental stone terrace of Persepolis remain softly secondary. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced bronze, woven wool, wicker and stone, warm Persian sunset light against cool shadows, atmospheric depth and historically grounded Achaemenid Persian clothing. Explicit 1:1 square canvas intended for a 512×512 editable master; keep entire head/eyes, shield grip, spear hand and defining tiara within x24–488,y105–407 for a 206:141 landscape crop; spear tip and lower legs may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-78991e2f-6904-437a-84a7-b938655a526c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Achaemenid guard’s entire tiara/head, face/eyes, shield grip, spear hand and both hand positions remain visible; spear tip and lower legs are incidental."
+  },
+  {
+    "cardId": "storm_summon_47",
+    "name": "Storm Imp",
+    "prompt": "Paint an illustration for the exact card name “Storm Imp.” Depict a small, mischievous imp hurtling through a thundercloud, with a compact wiry body, slate-gray skin, two short curled horns, pointed ears, bright storm-blue eyes and a sharp impish grin. One clawed hand reaches forward as a branching flash of lightning lights its face; small batlike wings trail behind, but the demon’s face and reaching hand remain the clear subject. Make it unmistakably an imp, not a human child or a giant dragon. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced skin, horn and membrane, dramatic cool lightning against deep blue-violet storm clouds, atmospheric depth and grounded fantasy anatomy. Explicit 1:1 square canvas intended for a 512×512 editable master; keep full head, horns, eyes and reaching hand inside x24–488,y105–407 for a 206:141 landscape crop; wing tips, legs and lightning trails may crop. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6e5d738-7fc3-4d76-b3c3-222bd12f1b12.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_47.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Both complete horns, full head/face/eyes and the reaching clawed hand now remain together with margin; wing tips and lower body are incidental."
+  },
+  {
+    "cardId": "storm_summon_48",
+    "name": "Spark Sprite",
+    "prompt": "Create a new original 1:1 square illustration for the fantasy card Spark Sprite. Depict a small, agile humanoid elemental spirit formed from branching blue-white lightning and wisps of storm vapor, darting sideways above a medieval battlefield. Give it a compact angular head, subtle narrow luminous eyes of ordinary proportions, and a focused fierce expression; a compact torso and two clearly shaped lightning-arms reach forward as it dashes. Grounded elemental anatomy and painterly medieval fantasy collectible-card art: visible brush strokes, atmospheric depth, nuanced smoky edges, dramatic directional storm light, strong silhouette. This is an uncanny lightning spirit, not a child, mascot, fairy, animal or cute cartoon. Keep its complete head, eyes, and both relevant hands compact and within x24–488,y105–407 on a square 512×512 composition; expendable lightning trails and quiet clouds may extend beyond. No oversized/baby eyes, no smile, no cute expression, no Disney, no anime, no photorealism, no pixel art, no text, no border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-b8b24220-b0c8-427b-8534-38bfa3a626c0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Repainted after parent review rejected the previous cute mascot face. The replacement has grounded storm-elemental anatomy, narrow normal-proportion eyes and a focused expression. Prepared a 512x512 source, checked the 206:141 crop and 128px thumbnail; head/face and both lightning hands remain within the crop."
+  },
+  {
+    "cardId": "storm_summon_50",
+    "name": "Coin-Hoard Dragon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Hoard Dragon. A powerful bronze-gold dragon crouches protectively atop a compact heap of ancient coins, its head and bright eyes clear, greedily gathering coins while a controlled beam of crackling storm energy arcs toward distant foes. Dragon and coin hoard dominate; medieval mountain vault atmosphere, painterly high fantasy collectible-card art, nuanced scales and coin reflections, dramatic directional light, readable silhouette. Keep dragon head, eyes, and hoard within x24–488, y105–407 on the 512 square; wings/tail may extend into quiet upper/lower scenery. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f8de240-a3bb-434f-a63c-82d0d6947592.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_50.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; dragon face, eyes and coin hoard remain intact. Dramatic polished rendering leans photorealistic; flagged for parent style review. Parent crop review found the dragon head/horns too high; shifted focalPoint upward to y=0.42 for the revised card crop."
+  },
+  {
+    "cardId": "storm_machine_12",
+    "name": "Zhuge Repeater",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Zhuge Repeater. Depict a compact ancient Chinese-inspired wooden repeating crossbow mounted on a low wheeled field frame, clearly showing its top magazine box, bow limbs, taut string and short bolt feeding mechanism. It fires a rapid fan of several bolts across a misty medieval battlefield, with subtle blue storm energy along the bolts. The machine is the only primary subject, horizontal composition; painterly high fantasy collectible-card art, richly tactile wood, bronze fittings, dramatic light, strong readable silhouette. Keep the complete named repeater and important mechanism entirely within x24–488, y105–407 on a 512 square; quiet scenery above and below. No operator needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6158b93f-d27c-42a2-bdb1-a4361e44b8af.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete repeater, magazine, bow limbs, wheels and fired bolts remain visible. Strong readable mechanical silhouette."
+  },
+  {
+    "cardId": "storm_machine_13",
+    "name": "Tortoise War Wagon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Tortoise War Wagon. Show a massive low medieval siege wagon with a distinct domed tortoise-shell armored roof, overlapping bronze-edged plates, sturdy wheels, and a narrow guarded firing slit; unmistakably a mobile bulwark, slowly rolling through a stormy mountain pass. The whole wagon is primary and fills the horizontal middle. Painterly high fantasy collectible-card illustration, believable weathered wood and metal, dramatic directional light, atmospheric depth and readable silhouette. Keep entire wagon, all wheels and shell roof within x24–488, y105–407 of the 512-square composition; quiet sky and ground above/below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-945b80cf-6ce6-40b5-8be5-ebe42a8e7644.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; full armored shell, wagon body and all wheels remain visible. Rendering leans photorealistic; flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_14",
+    "name": "Sandstone Rampart",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Sandstone Rampart. Show a monumental low medieval fortress wall of warm ochre sandstone blocks, broad and unambiguously horizontal, with sturdy buttresses and a few crenellations. A compact pair of storm-blue rune lanterns embedded in the parapet glows as the rampart raises a protective shimmering ward along its face. The massive stone rampart itself is the primary subject, not a spell effect. Painterly medieval high-fantasy collectible-card art, visible brushwork, tactile weathered masonry, directional golden light and storm atmosphere, readable bold silhouette. Keep the full wall from both ends, buttresses and parapet inside x24–488,y105–407 on the 512 square, quiet sky/ground above and below. No people needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b02f2f7f-a335-4a03-a9d1-68199f17e06f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128-pixel thumbnail inspected; entire sandstone wall, parapet and buttresses remain visible. Rampart reads clearly at thumbnail size; rendering leans photorealistic, flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_15",
+    "name": "Palm-Log Palisade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Palm-Log Palisade. A compact, broad medieval field palisade made from thick upright palm-tree logs bound with iron and rope, with sharpened uneven tops; a small inset storm-blue wardstone glows among the logs. The complete low defensive barrier is the subject, arranged horizontally. Grounded painterly medieval fantasy art, visible brushwork, believable rough timber and storm light, muted earth tones. Keep both ends and all sharpened log tips inside x24–488,y105–407 of a square 512 master; empty quiet sky and ground outside. No people, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9edb76d6-507b-4758-b75e-c5ef5aab6443.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the whole palm-log barrier, both ends and sharpened tops remain visible."
+  },
+  {
+    "cardId": "storm_machine_16",
+    "name": "Bronze Barricade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Bronze Barricade. Show a compact heavy medieval defensive barricade built from broad overlapping curved bronze plates on a timber frame, with rivets, scuffs and a short central crest; subtle blue electricity ripples along the metal seams. It is a protective wall, broad and low, shown three-quarter view against a storm-lit stone pass. Painterly medieval fantasy, tactile weathered bronze and wood, visible brushwork, dramatic but restrained lighting, grounded proportions. Keep the entire barricade from end to end inside x24–488,y105–407 on a 512-square composition, quiet background above and below. No figures, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-734cd7c5-75ff-494c-ab55-81129c4cee64.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the full bronze barricade is visible end to end."
+  },
+  {
+    "cardId": "storm_machine_17",
+    "name": "Elephant Clock Automaton",
+    "prompt": "Create a new 1:1 square illustration for Hexmancers card Elephant Clock Automaton. Show the complete al-Jazari-inspired mechanical elephant clock as a SMALL tabletop ornament, taking only the central 42% of the square's height. Leave very large empty margins above and below. All parts fit inside a strict central rectangle x130–382,y150–362 on a 512×512 canvas: tiny star sphere, ornate dome, clock tower, bronze elephant with all feet, and display base. Make the whole assembly no taller than 212 pixels on that 512 canvas; do not enlarge the elephant or tower. Keep width compact as well. The complete object must be readable in a 206:141 landscape crop. Painterly medieval fantasy clockwork, grounded proportion, visible brush texture, aged brass, carved wood, restrained blue enamel, warm directional light and a quiet dark neutral studio background. Historic Islamic mechanical artistry. No clipped components, no tall vertical portrait arrangement, no operator, no toy-like polish, no text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c22161d4-a571-46cb-a729-1ff48d07357e.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_17.png",
+    "sourceNative": [
+      1314,
+      1197
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed the complete al-Jazari-inspired clock assembly smaller after parent review found the first sphere/base unsafe in the crop. Preserved old master at /tmp/storm-02-repair-backup/storm_machine_17-before.png; inspected the replacement 512 square, revised 206:141 crop at focal y=0.48, and 128px thumbnail. Sphere, finial, dome, elephant feet and full base all remain visible."
+  },
+  {
+    "cardId": "storm_machine_18",
+    "name": "Coin-Spitting Mortar",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Spitting Mortar. A squat medieval bronze mortar cannon on a sturdy low wheeled carriage, angled upward as it launches a short stream of bright gold coins like buckshot; clearly show the wide mortar mouth, full barrel, carriage and wheels. Compact horizontal silhouette, the complete machine dominates, with only a few coins flying above it. Painterly medieval fantasy and clockwork materials, scuffed bronze, oak and iron, visible brushwork, restrained blue storm sparks and dramatic warm light. Keep the entire mortar and carriage within x24–488,y105–407 on a 512-square composition; quiet background above and below. No operator, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-25d60d21-5633-4274-b887-24be39a34604.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete mortar, carriage, wheels and coin burst remain visible."
+  },
+  {
+    "cardId": "storm_machine_19",
+    "name": "Clockwork Flying Carpet",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Clockwork Flying Carpet. Show one complete rectangular medieval woven carpet floating horizontally above a stormy mountain courtyard, seen at a three-quarter angle. The richly patterned indigo and ochre rug is stretched taut over a discreet bronze clockwork frame; small geared corner vanes and a compact brass control hub beneath it make the flying machine clear. No rider. Entire carpet, all four corners, tassels, mechanisms and frame must fit within x24–488,y105–407 on a square 512×512 composition. Grounded painterly medieval fantasy/clockwork illustration, tactile wool, aged brass, subtle blue storm sparks, visible brushwork, clear silhouette, atmospheric directional light. Keep it a practical fantasy machine, not a toy or modern aircraft. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8cc8c1eb-10f0-452b-88ba-cca61db596a9.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop reviewed. Entire carpet, brass frame, corner vanes and tassels fit; focal point y=0.48 shifts crop slightly upward to protect the upper-left vane. 128px thumbnail remains legible."
+  },
+  {
+    "cardId": "hero_kiri",
+    "name": "Squall Rider Kiri",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Squall Rider Kiri. A young adult nomadic storm archer rides a lean gray steppe horse at a canter through wind-swept highland grass, turning in the saddle to loose three wind-charged arrows. Her determined face, both eyes, bow hand and drawn string hand are clear and close together beside her face; a simple practical hood and braided dark hair, layered blue-gray riding leathers, no modern gear. The horse's head and mane support the story but remain secondary. Painterly medieval fantasy collectible-card art, visible brushwork, believable anatomy and cloth, directional storm light and atmospheric depth. Keep Kiri's complete head, eyes, and both relevant hands within x24–488,y105–407 on the 512-square; horse body/legs may crop. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48d48808-3255-40e3-9710-5e9a19a4bc07.png",
+    "editableSourcePath": "game/cards/art/masters/hero_kiri.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.42 and 128px thumbnail inspected. Kiri's full face, eyes and both archery hands fit; the horse supports the rider without obscuring her."
+  },
+  {
+    "cardId": "hero_stati",
+    "name": "Stati, the Static Witch",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Stati, the Static Witch. A formidable middle-aged storm witch with a grounded human face, alert eyes, windswept dark hair and a weathered indigo hooded mantle. She raises one visible hand beside her face, sending a branching chain of blue-white static lightning toward faint distant enemy silhouettes; her calm focused gaze and hand are the focal identity. Painterly medieval fantasy collectible-card art, nuanced cloth and skin, visible brush strokes, dramatic storm light, atmospheric depth. Keep full head, both eyes and casting hand inside x24–488,y105–407 on the 512 square; lightning trails may extend. No cute expression, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f0570e4-26ba-40d0-8288-0d36d0994ff8.png",
+    "editableSourcePath": "game/cards/art/masters/hero_stati.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and revised crop/128px thumbnail inspected. Shifted crop upward to focal y=0.40 per parent review; full hood, head/eyes and casting fingers remain within frame."
+  },
+  {
+    "cardId": "storm_machine_20",
+    "name": "Hang-Glider Scout",
+    "prompt": "Recompose Hang-Glider Scout for a square 512x512 editable master. Show a COMPLETE small medieval cloth-and-wood hang glider in flight, a compact short-span swept wing with both wing tips set well inside x70..442 and y155..345; do not fill the frame with the wings. Keep the whole glider and one small hooded medieval scout suspended at its center together inside that central rectangle, clear 25+ pixel margins on every side. The scout's face and both gripping hands are visible. The wing is practical timber spars, rope bracing, and taut ochre cloth, with no modern aircraft details. Misty storm sky and distant medieval towers fill the square around it. Grounded painterly fantasy art, visible brushwork, believable fabric and wood, nuanced storm light. The entire wingspan must fit the 206:141 horizontal crop without touching edges. No text/frame/UI, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92162357-c2fc-4e62-bd7b-711197302089.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the first wing tips sat too close to the square edge. Inspected 512-square source, 206:141 crop and 128px thumbnail; full cloth wingspan, scout face and both gripping hands remain visible."
+  },
+  {
+    "cardId": "storm_machine_21",
+    "name": "The Thunder Engine",
+    "prompt": "Recompose The Thunder Engine for a 512×512 square fantasy card master. Show one compact LOW medieval clockwork engine on a complete low timber-and-iron wheeled chassis, taking no more than the central 58% of the square's height. A clearly visible central bronze flywheel and glass lightning core are flanked by TWO short, squat copper coils; no tall finials or spikes. All coils, arcs, gears and the entire chassis with all wheels must fit inside x35–477,y112–400. Keep the machine horizontal and self-contained against a quiet storm-lit castle courtyard. Painterly medieval fantasy, grounded iron/brass/wood, visible brushwork. The entire engine will appear in a 206:141 crop. No operator, no tall vertical assembly, no clipped machinery, no text/frame/UI, no modern hardware, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-32709e2c-f536-4ea9-99b1-a485e01c77c7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the initial tall engine clipped the upper assembly in the card crop. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_21-before.png; inspected replacement 512 square, revised wide crop at focal y=0.55 and 128px thumbnail. Both coils, central flywheel, chassis and all wheels remain visible."
+  },
+  {
+    "cardId": "storm_machine_22",
+    "name": "The Bronze Colossus",
+    "prompt": "Recompose The Bronze Colossus as a compact square portrait illustration. Center a complete bronze automaton head with its entire uncut crown/helmet, both glowing eyes, shoulders and ONE raised hand with all fingers fully visible. The top of the crown begins around y120 on the 512-square, fingertips stay above y390, and the entire hand-to-head cluster fits x70–450,y115–395, leaving visible sky margin above and below. The hand is beside the face rather than reaching toward the viewer; avoid foreshortening. Painterly medieval fantasy, weathered engraved bronze, dark iron joints, subtle blue lightning, visible brushwork and storm-forge light. Keep the full face and full hand legible in the 206:141 crop. Do not crop the crown or fingers. No text, frame, UI, toy proportions, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59afdb9b-0694-4100-bc8a-0a4883a7afc5.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental. Parent square review found the central crown tip above the previous crop; shifted focal point to y=0.36 and checked the revised crop/thumbnail with the complete crown tip and raised fingers visible."
+  },
+  {
+    "cardId": "hero_thunderbird",
+    "name": "The Thunderbird",
+    "prompt": "Paint an original 1:1 square fantasy hero portrait for Hexmancers card The Thunderbird. A majestic great storm bird dives from a dark cloudbank, wings swept back in powerful motion, with its complete noble head, sharp hooked beak and one bright eye clearly visible near the center-right. Layered dark bronze and indigo feathers catch blue-white lightning; golden light rims the face. The bird's face is the primary identity, not the wings; wing tips may extend beyond the frame. Painterly medieval fantasy collectible-card illustration, visible brushwork, believable avian anatomy, dramatic directional storm light and atmospheric depth. Keep full head, eye and beak within x24–488,y105–407 on the 512-square composition, with quiet clouds above and below. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5595eb5b-9ef3-4382-8aac-02562fdd0a75.png",
+    "editableSourcePath": "game/cards/art/masters/hero_thunderbird.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128px thumbnail inspected. Majestic bird head, eye and complete beak remain clear; wing ends are incidental."
+  },
+  {
+    "cardId": "hero_ozone",
+    "name": "Ozone the Tinker",
+    "prompt": "Paint an original 1:1 square hero portrait for Hexmancers card Ozone the Tinker. A focused middle-aged medieval tinkerer in a weathered teal-brown leather workcoat and close-fitting cap, with clear expressive eyes and practical soot marks. Beside their face at the same height, they present a compact charged storm coil: a brass ringed spherical device with a small blue-white lightning core, held securely between both gloved hands as if preparing to lob it. Keep full head, eyes, both hands and the complete coil together in a compact horizontal cluster within x24–488,y105–407 on the 512 square; the coil is only about half the face height. Painterly medieval fantasy, tactile brass, worn leather, visible brushwork and dramatic workshop light. No goggles covering eyes, no giant artifact hanging below face, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42b56439-91e8-4902-9d61-fffc9260ec90.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ozone.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.35 and 128px thumbnail inspected. Full cap/head/eyes, both hands and the compact charged coil remain together at the same height."
   }
 ]

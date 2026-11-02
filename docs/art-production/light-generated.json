@@ -3501,5 +3501,906 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.38], and 128-pixel crop: the full human face, eyes and nemes headdress are visible above the lion’s body; Giza setting and guardian pose remain clear while lower body crops naturally."
+  },
+  {
+    "cardId": "light_summon_18",
+    "name": "Great Sphinx of Giza",
+    "prompt": "Paint a standalone illustration for the exact summon Great Sphinx of Giza. Show one monumental ancient Egyptian sphinx, unmistakably a crouching limestone lion body with a dignified human pharaoh's face, striped nemes headdress, calm powerful eyes and weathered pale sandstone. A soft golden sacred aura and a few luminous healing motes gather around its chest, suggesting an ancient steadfast guardian that empowers allies. It rests beside a weathered Giza causeway, with pyramids hazy in the distance; keep the face and headdress large, clear and iconic. Painterly medieval fantasy collectible-card art, grounded stone texture, nuanced warm gold light against cool desert dusk, atmospheric depth matching the supplied Hexmancers reference images and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep face, eyes, headdress and lion shoulders within x24..488,y105..407 on the square, with quiet sky and sand beyond; will be viewed as a 206:141 crop. No card frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ba7cf526-e92e-4b71-9e09-9941af02b87c.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, adjusted 206:141 crop at focalPoint [0.5,0.43] and 128-pixel thumbnail: complete pharaoh face and striped nemes headdress remain visible with clear Giza pyramids, lion shoulders and golden aura; lower body crops naturally."
+  },
+  {
+    "cardId": "light_summon_19",
+    "name": "White Elephant",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Elephant. Show one majestic rare pale elephant, unmistakably a real elephant with broad fan-shaped ears, long ivory tusks, trunk and sturdy body, its skin naturally pale ivory-gray rather than pure blank white. It strides serenely through a shallow lotus pond, creating a small rolling tidal surge and restoring ripples of luminous water around its feet, to suggest tidal power and healing. The elephant is the unmistakable dominant subject, noble and peaceful, with full face, eyes, trunk and both tusks clearly visible; no rider, harness or extra elephants. Warm dawn light gleams on textured hide and water, cool turquoise reflections, distant old temple garden in atmospheric depth, style matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep head, eyes, tusks, trunk and shoulder within x24..488,y105..407, quiet scenery above and below; will be viewed as a 206:141 crop. No card frame, text, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-50834b71-97c6-4031-a7a6-419c58d97012.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_19.png",
+    "sourceNative": [
+      1321,
+      1191
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: whole elephant head, eyes and complete trunk tip remain visible; lower legs crop naturally."
+  },
+  {
+    "cardId": "light_summon_20",
+    "name": "Hannibal's War Elephant",
+    "prompt": "Repaint this illustration as standalone painterly medieval fantasy collectible-card art for the exact summon Hannibal's War Elephant. Preserve the historical Carthaginian war-elephant identity, but RECOMPOSE the elephant much more compactly: show one powerful dark-gray war elephant in three-quarter profile filling a horizontal middle-height composition, with its complete head fully inside the frame, both eyes visible, BOTH complete curved tusks with generous space from all edges, and the full curled trunk tip visible. Its head, eye, tusks and curled trunk must all fit comfortably inside the central wide crop region x24..488, y105..407 of the square. Use a compact ornate bronze forehead armor, burgundy-and-gold Carthaginian saddle cloth and a small flag beside the shoulder to signal Hannibal's army; keep these secondary and entirely visible. The elephant is advancing through an alpine pass, but only cropped shoulders/forelegs and a small broken shield may extend below the central band; do not enlarge the head beyond the crop or let either tusk touch the edge. No human rider, no gore. Painterly grounded elephant anatomy, detailed hide and believable aged bronze/leather, warm sunset rim light against cool misty mountains, atmospheric depth matching the supplied Hexmancers style. Explicit 1:1 SQUARE canvas, editable 512x512 master, composed for a 206:141 card crop; leave quiet scenery above and below the central subject. No card frame, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d93ede79-55c9-4632-9c47-30078de510a4.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Repainted and inspected the replacement 512-square master, centered 206:141 crop and 128-pixel thumbnail: complete war-elephant head, eye, both tusks and curled trunk tip are visible with edge margin; lower legs and tail crop naturally. Previous source retained at /tmp/light-01-repairs/light_summon_20-before-repaint.png."
+  },
+  {
+    "cardId": "light_summon_21",
+    "name": "Qilin",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Qilin, the auspicious Chinese qilin / kirin. Show one clearly recognizable gentle mythical hooved creature with a graceful deerlike body, cloven hooves, a single short horn on its brow, flowing mane, luminous scales, a dragonlike whiskered face and a sweeping scaled tail; do not depict a unicorn, horse, dragon, or western deer. It bounds beside a lotus lake through a restrained burst of radiant gold-white energy and swirling water, suggesting its powerful blast and restorative tidal magic. Keep the full distinctive head, eye, single horn, forequarters and one raised hoof readable; elegant rather than fearsome. Painterly layered scales and mane, refined ancient East Asian temple garden and mist, warm light along its body against cool blue-green water, atmospheric depth matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Horizontal composition; keep face/horn/forequarters/raised hoof within x24..488,y105..407; quiet scenery above and below; intended 206:141 crop. No frame, lettering, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f14e96aa-daa8-41cf-94c8-b0669a853bcf.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_21.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128-pixel thumbnail: reads as an auspicious scaled qilin with dragonlike face, horn, hooves, mane, tail and water burst; outer tail and water extend toward edges."
+  },
+  {
+    "cardId": "light_summon_22",
+    "name": "Valkyrie Herald",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Valkyrie Herald. Show one striking Norse Valkyrie, an armored female heavenly warrior with a focused face, windblown golden hair, polished but weathered silver mail and a single pair of large feathered wings. As a herald of courage, she flies low over a rocky battlefield, sounding a small curved golden war horn while raising her other hand to rally a few distant allied shield-bearers beneath her; the allies stay small and secondary. Her face, eyes, horn, raised hand and winged silhouette must read clearly. Swift confident posture, bright warm dawn light on armor and feathers against cool storm haze, restrained radiant golden rallying light around the allies, painterly grounded anatomy and materials, atmospheric depth matching supplied Hexmancers references and accepted light creature master. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally; keep face, horn, raised hand and wing roots within x24..488,y105..407, outer feathers may extend; quiet sky and ground beyond for the 206:141 crop. No card frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b8ef367-fccb-4992-a243-e05ffec20eb3.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_22.png",
+    "sourceNative": [
+      1315,
+      1197
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop at focalPoint [0.5,0.39] and 128-pixel thumbnail: Valkyrie's face, horn and raised rallying hand all fit clearly with winged silhouette; lower legs and outer wing tips crop naturally."
+  },
+  {
+    "cardId": "light_summon_23",
+    "name": "Valkyrie Shieldmaiden",
+    "prompt": "Paint an illustration for the exact card name “Valkyrie Shieldmaiden.” A Norse valkyrie warrior stands firm on a windswept ridge, her mature face and steady eyes visible beneath a simple winged helm. She raises a broad round shield to protect a fallen companion while holding a short spear ready at her side; show the entire shield face and the hand gripping its rim. Historically grounded early medieval wool, leather, mail and bronze, with a restrained feathered mantle rather than giant wings. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, layered opaque strokes and softly worked edges, vivid directional dawn light, atmospheric depth and believable anatomy. Explicit 1:1 square canvas for a 512×512 editable master; compose face, hands and shield together in the horizontal middle band, all within x24–488,y105–407 for a 206:141 card crop. Quiet northern sky and ridge above and below. No frame, text, runes, UI, anime, Disney-like cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-6214e26e-dd7f-447f-99b0-c987f8f06f39.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Parent crop review noted forehead/face at the upper edge. Shifted focalPoint upward to y=0.43 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Valkyrie’s full forehead, face/eyes, spear hand and shield hand are now visible; the shield’s lower rim and lower body crop incidentally."
+  },
+  {
+    "cardId": "light_summon_24",
+    "name": "Cherub",
+    "prompt": "Paint an illustration for the exact card name “Cherub.” Depict a small, gentle robed winged angel in the visual language of a medieval illuminated church painting: youthful but serene human face, soft curls, a simple halo, tiny feathered wings and layered pale robes. The cherub floats beside a tired pilgrim and extends both hands, releasing a warm blessing that strengthens the traveler; the angel is the clear subject, not an oversized burst of light. Use believable feather and cloth detail, restrained gold leaf accents, visible painterly brushwork and softly blended tempera-like color, warm candlelight and deep atmospheric shadows. Keep the angel small in stature, dignified and sacred rather than cute or toy-like. Explicit 1:1 square illustration for a 512×512 master; keep the whole face, both hands and winged upper body inside x24–488,y105–407 for a 206:141 landscape crop. Quiet chapel interior above and below. No lettering, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6d519a0-8c79-4604-9e5a-0cbc747cc3c7.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. The small robed cherub’s full face and blessing hands remain visible with the tired pilgrim; fine wing extremities and chapel details are secondary."
+  },
+  {
+    "cardId": "light_summon_25",
+    "name": "Guardian Angel",
+    "prompt": "Paint an illustration for the exact card name “Guardian Angel.” Show a majestic but compassionate armored angel shielding a wounded human knight from dark arrows in a rain-swept medieval battlefield. The angel’s calm face and clear eyes are visible; one outstretched hand sustains a luminous protective ward while the other supports the knight. Her feathered wings frame the scene, but the face, hands and ward remain the focus. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced white-gold mail, feathers, leather and wet stone, strong warm light against cool storm shadows, believable anatomy and atmospheric depth. Explicit 1:1 square canvas for an editable 512×512 master; keep the angel’s face, both hands and the protected knight’s head safely inside x24–488,y105–407 for the 206:141 landscape crop; incidental wing tips may extend beyond. No frame, words, runes, UI, anime, Disney-like cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-dae4156e-27e6-436d-8768-254cc03518c4.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Parent crop review noted the angel’s forehead and raised fingertips at the upper edge. Shifted focalPoint upward to y=0.43 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Full forehead, face/eyes and all raised-hand fingertips now show, along with the supporting hand on the knight; wing tips and lower armor crop incidentally."
+  },
+  {
+    "cardId": "light_summon_26",
+    "name": "Forbidden City Lion",
+    "prompt": "Paint an illustration for the exact card name “Forbidden City Lion.” Depict a massive Chinese imperial guardian lion, a traditional stone shishi with a curly carved mane, alert wide-set eyes and a richly ornamented collar, springing down from a palace terrace to defend its vermilion gate. The lion is clearly a carved stone guardian brought to life, with believable weight and chiseled paw details; its face, both forepaws and mane remain prominent. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, tactile weathered stone and bronze, dramatic golden lantern light against cool blue evening, atmospheric depth, noble rather than cartoonish. Explicit 1:1 square illustration for a 512×512 editable master; keep the lion’s face, eyes, paws and distinctive mane within x24–488,y105–407 for a 206:141 landscape crop. Palace scenery stays quiet above and below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7cc9a844-6236-48b5-9486-3e099e237063.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. The stone shishi’s entire face/eyes, curled mane and both forepaws read clearly as it springs from the palace terrace; lower step detail is incidental."
+  },
+  {
+    "cardId": "light_summon_27",
+    "name": "Rose-Garden Simurgh",
+    "prompt": "Paint an illustration for the exact legendary card name “Rose-Garden Simurgh.” Depict the Simurgh as a single immense, benevolent Persian mythic bird perched above a walled rose garden: a majestic hooked beak, expressive intelligent eyes, crowned crest, powerful feathered body and a long peacock-like tail patterned in emerald, sapphire and muted gold. Rose vines wind among the lower boughs while the bird spreads one radiant wing over a wounded gardener, bathing the person and roses in gentle healing light. The bird’s face, beak, eye and layered plumage dominate; keep the garden subordinate. This is a wise Persian Simurgh, not a generic flaming phoenix. Painterly medieval high-fantasy collectible-card illustration with clearly visible brush texture, layered pigment and soft worked edges, tactile iridescent feathers, warm sunlit gold against cool garden shade, atmospheric depth, grounded natural bird anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; compose the head, eye, breast and radiant wing in the horizontal middle band, keeping face and distinctive feather details inside x24–488,y105–407 for a 206:141 crop; incidental outer wing and tail tips may extend. Quiet Persian garden scenery above and below. No text, frame, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e65e28e8-bbe5-4f4b-8395-4b458f5d5e4c.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, revised true 206:141 crop (focal y=0.34) and 128px thumbnail. Raised the crop to retain the Simurgh’s complete crown crest, eye, beak and upper wing; its lower body/tail and the gardener are subordinate and may crop."
+  },
+  {
+    "cardId": "light_summon_28",
+    "name": "Sylph of the Gale",
+    "prompt": "Paint an illustration for the exact card name “Sylph of the Gale.” A swift, small but clearly legible wind spirit sweeps across an ancient mountaintop battlefield, shown as an elegant translucent humanoid sylph with a distinct face, luminous eyes and hands visible within the flowing air. Her spiraling gust crosses the scene and scatters dust and leaves around distant warriors; keep the spirit’s head and hand as the central focal point so she does not dissolve into a generic wind effect. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced mist, gauzy fabric and windblown leaves, cool silver-blue light with a warm break in the clouds, atmospheric depth and readable silhouette. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the sylph’s full face/eyes and hands within x24–488,y105–407 for a 206:141 landscape crop; incidental trailing wisps may extend. Quiet sky and rock above and below. No frame, text, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de2b5b26-aebd-4496-bcab-468dc1320963.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Raised focalPoint to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Sylph’s full head/face/eyes and extended hand are visible, with the hand clear at card size; lower battlefield and trailing wisps are incidental."
+  },
+  {
+    "cardId": "light_summon_29",
+    "name": "Roman Legionary",
+    "prompt": "Paint an illustration for the exact card name “Roman Legionary.” Depict a disciplined Roman soldier of the early empire in historically grounded lorica segmentata, red wool tunic, leather baltea and a crested helmet, his steady face and eyes visible. He stands with his scutum and pilum beside a companion, gesturing the legion into a close defensive formation as a hard desert wind lifts dust around them; he is the recognizable frontline legionary, not a generic medieval knight. Painterly medieval high-fantasy collectible-card art with visible brush texture, layered brushstrokes, believable iron, leather, wood and cloth, strong warm light through dust against cool shadows, atmospheric depth. Explicit 1:1 square canvas for a 512×512 editable master; compose face, shield grip and signaling hand together in the middle band, keeping the whole face and relevant hands inside x24–488,y105–407 for a 206:141 crop. Quiet camp and sky above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b21f93b0-8aae-45d0-9efa-62df530e30fa.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Raised focalPoint to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Legionary’s full face/eyes, pilum hand and signaling hand are visible; upper plume extremity and lower legs crop incidentally."
+  },
+  {
+    "cardId": "light_summon_30",
+    "name": "Centurion",
+    "prompt": "Paint an illustration for the exact card name “Centurion.” Show an older Roman centurion with weathered but alert eyes and a graying beard, wearing practical iron armor, a transverse-crested helmet and a deep crimson cloak. He stands firm before a cohort, raising one open hand to command the line while holding his short sword low, his authority and veteran experience clear. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushwork, richly worked iron, leather, wool and wood, dramatic torchlight against dusty blue evening, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep his entire face/eyes, commanding hand and sword hand within x24–488,y105–407 for the 206:141 landscape crop. Supporting soldiers stay secondary; quiet standards and dusk above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-368a91d6-02f9-421e-96df-8d77ada1ee14.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, true wide crop and 128px thumbnail. Centurion’s full face/eyes, raised commanding hand and sword hand remain readable; the hand leading the cohort is fully visible, while crest tips and the sword/lower cloak approach crop edges."
+  },
+  {
+    "cardId": "light_summon_31",
+    "name": "Crusader Knight",
+    "prompt": "Paint an illustration for the exact card name “Crusader Knight.” Depict a brave medieval knight in historically grounded mail, a surcoat bearing a small plain red cross and a weathered cloak, his face and clear eyes visible as he turns to shield a wounded traveler from incoming arrows. He braces his kite shield with one hand and holds a sword close in the other; the protective gesture is central and solemn, with no glorification of violence. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced mail, wool, leather and steel, warm lantern light against cool rain and stone, layered brushstrokes, atmospheric depth and realistic proportions. Explicit 1:1 square canvas for a 512×512 editable master; keep face/eyes, shield grip and sword hand within x24–488,y105–407 for a 206:141 crop. Incidental cloak and weapon extremities may crop. No text, card frame, modern symbols, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c269119f-1167-490c-9b4a-3af355ab53e7.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. The knight’s entire head/hair, full face/eyes and modest sky margin now fit; his shield hand remains naturally hidden behind the shield. Traveler, arrows and lower limbs are supporting action."
+  },
+  {
+    "cardId": "light_summon_32",
+    "name": "Knight of the Round Table",
+    "prompt": "Paint an illustration for the exact legendary card name “Knight of the Round Table.” Depict a noble Arthurian knight in practical 12th-century mail and blue wool cloak, his calm face and clear eyes visible as he steps between his companions and danger inside a stone great hall. He braces a kite shield in one hand and holds a sword low in the other, guarding the gathered fellowship around a broad circular oak table visible behind him. His simple shield bears a restrained golden sun emblem; no heraldic writing. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered pigment, believable steel, wool, leather and oak, warm candlelight against cool stone shadows, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; compose face, eyes, shield and relevant hands in the horizontal middle band, all within x24–488,y105–407 for a 206:141 landscape crop. Quiet rafters and floor above/below; incidental lower legs and sword extremity may crop. No frame, text, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-566b59c4-e71d-42a6-9fd6-89dafa04b2cb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, true wide crop and 128px thumbnail. The knight’s full face/eyes and sword hand remain visible as he guards the fellowship; the shield clearly identifies his protective stance, while his shield hand is positioned behind it and the round table is supporting context."
+  },
+  {
+    "cardId": "light_summon_33",
+    "name": "Sir Galahad, the Pure",
+    "prompt": "Paint an original Arthurian fantasy illustration for the exact card Sir Galahad, the Pure. Depict Sir Galahad as a young, calm, resolute medieval knight in bright but matte ivory plate and a plain white surcoat, his head uncovered so his handsome youthful face and clear eyes are fully visible. In a compact horizontal chest-up composition, one hand rests on the hilt of a simple straight sword and the other reaches to comfort a wounded squire; a subtle warm glow gathers between them, rallying the squire. A white cloak and gentle clear light convey purity without making him a glowing angel. The face, both hands and sword hilt sit close together at the same height and are the main focus. Painterly medieval fantasy collectible-card art, believable 13th-century armor, textured cloth and steel, layered brushwork, dramatic but gentle chapel-window light. Exact 1:1 SQUARE 512x512 editable master; keep complete face/eyes, both hands and named sword hilt within x24..488,y105..407 for 206:141 crop; quiet stone and light above/below. No helmet covering the face, frame, writing, letters, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7e97adb-2705-4085-a09c-1c75852eb152.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.36]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: Galahad's complete hair, face/eyes, sword hand and hand on the squire's shoulder remain clear; the squire's face is also readable while sword length crops."
+  },
+  {
+    "cardId": "light_summon_34",
+    "name": "El Cid Campeador",
+    "prompt": "Paint an original historically grounded medieval fantasy illustration for the exact card El Cid Campeador, Rodrigo Díaz de Vivar, the 11th-century Castilian knight and commander. Show a mature Castilian warrior with a strong recognizable bearded face and focused eyes, wearing period-appropriate mail hauberk, leather belts and a simple conical nasal helmet carried under one arm rather than hiding his face. His other gloved hand grips the hilt of a straight Iberian sword at chest level; a restrained pale blue aura chills the wind and a few tired Castilian soldiers rally behind him beneath a red-gold standard with no writing. Keep the main face, both hands, sword hilt and helmet grouped compactly at mid-height; no Renaissance plate, crusader costume or fantasy crown. Painterly medieval fantasy collectible-card art, tactile mail, leather and wool, 11th-century Iberian frontier setting, cinematic sunset and visible brush texture. Exact 1:1 SQUARE for 512x512 master; all face/eyes/hands and key sword features within x24..488,y105..407 for 206:141 crop; quiet sky and field above/below. No text, heraldic letters, frame, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-abe71d0e-4201-4a76-a656-ed434c79f42a.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: El Cid's complete face/eyes, sword hand and hand holding the nasal helmet remain clear; the standard and lower armor crop incidentally."
+  },
+  {
+    "cardId": "light_summon_35",
+    "name": "Longbowman",
+    "prompt": "Paint an original illustration for the exact card Longbowman: a focused medieval English longbow archer in a green-brown wool arming coat and leather bracer, drawing a tall yew longbow on a windy field. His uncovered face and alert eyes are clear, the string hand anchors the arrow at his cheek and the other hand holds the grip; place his face and both working hands compactly together at the same height. Arrange the longbow diagonally across the square so its upper and lower tips may extend incidentally beyond the crop while the arrow, fingers, bow grip and archer's eyes remain visible. Weathered English soldiers and hedgerows soften into the distance; no Robin Hood costume or modern archery gear. Painterly medieval fantasy collectible-card art with believable wool, leather and yew, layered brushwork, dramatic overcast light and readable action. Exact 1:1 SQUARE 512x512 editable master; keep complete face/eyes, arrow-nocking fingers, string hand and bow grip within x24..488,y105..407 for the 206:141 crop. Quiet sky and field margins. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee1efb3f-19c5-46f3-b839-faa9e8924bf1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: archer's complete face/eyes, arrow-nocking fingers, string hand and bow grip are clear; bow ends and lower body crop incidentally."
+  },
+  {
+    "cardId": "light_summon_36",
+    "name": "Inca Stonemason",
+    "prompt": "Paint an original historically grounded illustration for the exact card Inca Stonemason. Show an Andean Inca artisan of the 15th century at work on precisely fitted granite masonry high above the Sacred Valley. He wears an authentic woven wool tunic (unku) with geometric borders and a simple woven headband, no Aztec feather headdress. His attentive face and eyes are visible in profile as both hands guide a small bronze-copper chisel and stone hammer against a granite block; tiny chips fly and pale static light glints along the cut. Arrange the face close to both working hands and tools at the same height; beautifully fitted polygonal Inca stones and mountain terraces establish the place. Painterly medieval fantasy collectible-card art, tactile woven cloth and granite, culturally respectful Andean features, atmospheric highland morning light and visible brush texture. Exact 1:1 SQUARE for 512x512 master; keep full face/eyes, hands, hammer and chisel within x24..488,y105..407 for 206:141 crop, with quiet mountain and stone margins. No conquistadors, modern tools, wheels, writing, frame, logos, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9c95bb1-de55-440b-b69b-fa354a99b5f3.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: artisan's full headband, face/eyes, both working hands, stone hammer, chisel and fitted Inca masonry remain readable; lower torso crops."
+  },
+  {
+    "cardId": "light_summon_37",
+    "name": "Village Physician",
+    "prompt": "Paint an original illustration for the exact card Village Physician: a compassionate medieval village doctor treating an injured farmer inside a small timber-and-stone cottage. Depict a middle-aged woman physician with kind intelligent eyes and an uncovered face framed by a simple linen wimple, practical brown wool gown, apron and leather pouch of dried herbs. In a compact horizontal waist-up composition she holds a small ceramic cup of herbal medicine in one hand and gently places a pale-gold healing cloth on the farmer's forearm with the other; both working hands and her calm face are large and clear, while the patient remains secondary. A gentle healing glow blooms from her hands and a few luminous motes rise around them. Use believable medieval herbs, mortar, linen and wood, not modern medical equipment. Painterly medieval fantasy collectible-card art, expressive brushwork, warm hearth light, matte pigments, tactile cloth and wood and atmospheric depth. Exact 1:1 SQUARE editable 512x512 master; keep the physician's full face/eyes and both working hands/cup/cloth within x24..488,y105..407 for the 206:141 crop, horizontal staging, quiet cottage margins above/below. No frame, lettering, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb7b7396-4fc5-4237-8341-32c6a9abf467.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.38]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: physician's full wimple, face/eyes, cup hand and healing hand with cloth remain visible; patient's face stays secondary."
+  },
+  {
+    "cardId": "light_summon_38",
+    "name": "Battle Cleric",
+    "prompt": "Paint an illustration for the exact card name “Battle Cleric.” Show a brave medieval field cleric in practical mail and a pale wool surcoat, his resolute face and clear eyes visible as he kneels beside a wounded companion under fire. He raises a small round shield to deflect a nearby arrow while pressing a warm healing light from his other hand onto the companion’s shoulder. Keep the cleric’s face, both hands, shield and healing touch together; the light should support the human action rather than overwhelm it. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced mail, wool, leather and wood, warm dawn light against cool battlefield smoke, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the entire face/eyes, hands and shield safe inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlefield sky and ground above/below; incidental weapon tips may crop. No gore, text, cross-shaped religious emblems, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0ec3284-63a9-4d33-8104-0f8e83d85645.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.38 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Cleric’s full head/face/eyes, healing hand and raised shield remain visible together; the shield grip is naturally behind the shield and weapon tips are incidental."
+  },
+  {
+    "cardId": "light_summon_39",
+    "name": "Vaidya of Taxila",
+    "prompt": "Paint an illustration for the exact card name “Vaidya of Taxila.” Depict an experienced ancient Indian physician from Taxila in the Gandhara region, a calm middle-aged man in a simple cream cotton dhoti and draped saffron-edged uttariya, with restrained jewelry and a tied cloth band for practical work. His attentive face and eyes are visible as he gently prepares medicine: one hand grinds healing leaves in a small stone mortar while the other holds a palm-leaf medical manuscript beside a patient’s bandaged arm. The scene suggests a learned vaidya and compassionate healer in an ancient Taxila courtyard, with sober Gandharan stone columns and a few jars, not medieval European robes. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, nuanced cotton, stone, leaves and pottery, warm courtyard light against cool shade, atmospheric depth and historically grounded anatomy/costume. Explicit 1:1 square canvas for an editable 512×512 master; keep the physician’s full face/eyes, both hands and compact mortar/manuscript within x24–488,y105–407 for the 206:141 landscape crop. Quiet courtyard above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-12df8537-72b0-42d2-aa9f-2d70673456e1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Vaidya’s full head, tied hair, face/eyes and both medicine-preparing hands remain visible with the mortar and palm-leaf manuscript; patient is supporting context."
+  },
+  {
+    "cardId": "light_summon_40",
+    "name": "Hanlin Academy Scribe",
+    "prompt": "Paint an illustration for the exact card name “Hanlin Academy Scribe.” Depict a learned scholar-official of the Ming-era Hanlin Academy, wearing a restrained red court robe with a black gauze futou cap and jade belt, seated at a dark wooden writing desk in a Chinese academy hall. His calm face and clear eyes are visible as one hand guides a fine calligraphy brush and the other steadies a long paper scroll; a small stack of folded scholarly papers and inkstone frame the action. Suggest the academy’s learned tradition with shelves and carved timber, but no legible text or modern props. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced silk, paper, ink, wood and jade, warm window light against cool interior shadow, atmospheric depth and historically grounded Chinese dress. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the scribe’s full face/eyes, both hands, brush and compact writing area within x24–488,y105–407 for the 206:141 landscape crop. Quiet rafters and floor above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f97cd6a1-c82f-4bf7-922b-bc338d861422.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Scribe’s complete cap/head, face/eyes and both hands with brush and scroll remain visible; lower desk is incidental."
+  },
+  {
+    "cardId": "light_summon_41",
+    "name": "Persian Astronomer",
+    "prompt": "Paint an illustration for the exact card name “Persian Astronomer.” Depict a learned Persian astronomer of the 13th century at the Maragha observatory, wearing a finely woven indigo robe and a simple cream turban, his thoughtful face and eyes clearly visible. In one hand he holds a compact brass astrolabe at chest height; with the other he aligns its sighting rule toward a bright star above a stone observatory terrace. A parchment star chart and a few instruments rest nearby. His work is precise observation, not magical fortune-telling. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, nuanced brass, wool, parchment and stone, deep blue night light balanced by a warm lamp, atmospheric depth and historically grounded Persian dress and instruments. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the astronomer’s entire head/turban, face/eyes, both hands and complete astrolabe within x24–488,y105–407 for a 206:141 landscape crop. Quiet sky and terrace above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93dbce73-b05a-4430-abc8-b1ec05a2bd5f.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Astronomer’s full turban/head, face/eyes, both hands and complete astrolabe/sighting rule fit together; desk and observatory grounds are secondary."
+  },
+  {
+    "cardId": "light_summon_42",
+    "name": "Astronomer of Copan",
+    "prompt": "Paint an illustration for the exact card name “Astronomer of Copan.” Depict a Classic Maya sky-watcher at Copán around the 8th century, a learned man with dark hair, restrained jade ear spools and a finely woven cotton mantle, his calm face and alert eyes visible on a stepped stone observatory terrace. He compares the bright morning star Venus above the mountain horizon with a compact folded bark-paper codex of painted astronomical tables, holding the codex steady in one hand and indicating a planet glyph with a slender stylus in the other. Behind him stands a Copán-style carved Maya stela with intricate low-relief glyph blocks; avoid Aztec calendar imagery and European instruments. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, tactile cotton, jade, bark paper and carved limestone, warm dawn light against cool blue night, atmospheric depth and culturally grounded Maya clothing/architecture. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the astronomer’s full head/face/eyes, both hands, stylus and compact codex together inside x24–488,y105–407 for a 206:141 landscape crop. Quiet temple court and sky above/below. No legible writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5c23261c-4c1e-45c5-9b96-7f2915b68e79.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Astronomer’s full head/hair, face/eyes, both hands, stylus and painted codex remain visible; carved Copán stela and temple court establish place."
+  },
+  {
+    "cardId": "light_summon_43",
+    "name": "Imhotep the Builder",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Imhotep the Builder, the historical ancient Egyptian architect and vizier associated with Djoser's Step Pyramid. Show one dignified Egyptian scholar-builder, a mature dark-skinned man with a focused human face, shaved or close-cropped head beneath a simple dark linen headcloth, white linen kilt and robe, broad blue-and-gold collar, and a carpenter's measuring cord in one hand. With the other hand he points to a rolled papyrus architectural plan held open beside him; keep both hands, face and measuring tool readable. Behind him rise the monumental limestone steps of Djoser's pyramid at Saqqara, with a few cut blocks and a restrained swirl of desert sand, not a generic European castle. Historically grounded Old Kingdom Egyptian clothing, no Greek costume. Painterly visible brush texture in linen, limestone and sand, warm sun on stone with cool blue shadow, atmospheric depth matching supplied Hexmancers light art and accepted master, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition for a 206:141 card crop; keep face, eyes, hands and plan within x24..488,y105..407, quiet sky and desert beyond. No readable hieroglyphs, text, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f28d571-6faf-44f3-8546-66241f6b4fdb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_43.png",
+    "sourceNative": [
+      1427,
+      1102
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Imhotep's full face/eyes and both measuring/planning hands fit; papyrus plan, measuring cord and Saqqara step pyramid read clearly."
+  },
+  {
+    "cardId": "light_summon_44",
+    "name": "Terracotta Warrior",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Terracotta Warrior, a fired-clay soldier from the Qin dynasty mausoleum army of ancient China. Show one full-sized Chinese infantry warrior made unmistakably from warm gray-brown terracotta clay: sculpted human face with calm dark clay eyes, period topknot, molded mustache, detailed Qin-style lamellar armor and a hand gripping a bronze-tipped spear. Dry clay seams and small kiln cracks are visible across face, fingers and armor; do not make him flesh, stone golem, Roman soldier or Japanese samurai. He strides out from the archaeological rows of the Terracotta Army into a shaft of warm light, while other clay figures remain small and soft in the background. Keep his full face/eyes and spear hand readable. Painterly visible brush texture in clay, bronze and earth, atmospheric depth and dramatic lantern-sunlight matching supplied Hexmancers light art and accepted master, no glossy photorealism. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging for a 206:141 crop; keep head, face, eyes, armor shoulder and hand inside x24..488,y105..407; spear extremities and legs may crop naturally. No text, frame, Chinese writing, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08e9cad6-491a-47f6-b4a5-f98878b16657.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_44.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.36] and 128-pixel thumbnail: full fired-clay Qin warrior face, eyes and topknot now fit; spear grip remains visible, while spear extremities may crop."
+  },
+  {
+    "cardId": "light_summon_45",
+    "name": "Talos, the Bronze Guard",
+    "prompt": "Repaint the exact summon Talos, the Bronze Guard, as the Greek mythic bronze automaton that guarded Crete. FIX THE COMPOSITION so the entire humanlike face and the whole open hand fit comfortably in the horizontal crop. One compact, centered half-body bronze guardian: helmeted head and glowing amber eyes in x140..300,y125..260; complete forward-facing hand, including all five fingertips, in x350..470,y170..330; shoulder and chest connect these features without an arm stretched to the image edge. All important features remain within x24..488,y105..407. Talos is a mythic cast-metal giant, not a modern robot: Greek archaic helmet, articulated hammered bronze plates with dark rivets, curls of bronze hair and aged verdigris. His full open hand calmly bars entry to a temple gateway; a restrained golden protective glow outlines it. Show Aegean shore and Greek temple behind him. Painterly visible brush texture in weathered bronze and stone, warm sunlight against cool sea shadows, grounded Greek mythic style matching supplied Hexmancers light art; no glossy photorealism. Explicit 1:1 SQUARE canvas, editable 512x512 master, composed for 206:141 crop with quiet sky above and sea below. Keep face, eyes and complete palm/fingers far from all edges. No text, lettering, frame, extra figures, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9bff715a-8e3b-45e0-b8b4-2caeb8fccfca.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "previousGeneratedPath": "/workspace/generated_images/exec-c6eb8146-4936-45f8-9583-cac3ec679109.png",
+    "reviewNote": "Repainted to keep the full guardian head and hand within the crop. Inspected replacement 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.34] and 128-pixel thumbnail: bronze face/eyes and the entire forward palm with all five fingertips fit; old source preserved at /tmp/light-06-repairs/light_summon_45-before-repaint.png."
+  },
+  {
+    "cardId": "light_machine_11",
+    "name": "Zhuge Nu Repeater",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact named artifact Zhuge Nu Repeater, the repeating crossbow associated with Zhuge Liang and ancient Chinese military engineering. Show a single complete compact wooden repeating crossbow alone in clear side-on three-quarter view, no operator: a short carved stock, small curved horizontal bow limb at the forward end, clear taut bowstring, trigger grip, and a distinctive box magazine mounted above the stock holding several short bolts nose-forward. Include the simple sliding lever linked to the string beneath the magazine so the repeated loading-and-release mechanism is mechanically readable. It must read unmistakably as a historical Chinese repeating crossbow, never a firearm, pistol, modern machine gun, hand cannon or generic magic device. Keep the entire mechanism intact with visible bow tips, stock butt, grip, magazine and bolts; center it across the composition, occupying about 70% of the image width and 45% of image height. Set it on a dark lacquered workbench in a lamplit ancient Chinese arsenal, with rolled parchment and a blurred bronze bell in the background only. Painterly visible brush texture in warm wood grain, cord, iron fittings and paper; attractive gold light against deep blue shadows, medieval-fantasy craft matching supplied Hexmancers light art, no glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 source intended for 206:141 crop; keep every component of the full named crossbow inside x24..488,y105..407 with quiet wall above and bench below. No text, symbols, lettering, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f47bbd10-e822-4438-8d10-75ab492b2b41.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: entire Zhuge Nu repeater fits with margin, and short stock, bow limbs/string, bolt magazine and linked loading lever are readable as an ancient Chinese repeating crossbow."
+  },
+  {
+    "cardId": "light_machine_12",
+    "name": "Siege Tower",
+    "prompt": "Paint a wide, compact three-story timber siege tower for the card Siege Tower, a massive slow engine that advances to blast fortress walls. Three sturdy stacked fighting decks beneath a low protective roof, broad square timber body on heavy iron-rimmed wheels, hide-covered lower panels and a small projecting wooden battering ram. The siege tower is the singular focal object, shown in a horizontal three-quarter view, with complete roof, every wheel and ram all comfortably visible; make it broad and squat rather than tall, occupying about 65% of square height. Quiet sky above and ground below; distant stone wall for context. Painterly medieval fantasy collectible-card art, detailed wood grain, iron, warm dramatic directional light, atmospheric depth, grounded proportions. 1:1 square canvas for editable 512x512 master, keep full structure inside x24..488 and y105..407 for wide 206:141 crop. No operators, lettering, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcde8518-f617-4c84-bed6-ab9585ccd799.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Compact tower, roof, wheels and battering ram all fit with margin; silhouette and timber/iron details remain readable."
+  },
+  {
+    "cardId": "light_machine_13",
+    "name": "Motte-and-Bailey Palisade",
+    "prompt": "Paint an illustration for Motte-and-Bailey Palisade. Show a clearly recognizable medieval motte-and-bailey fortification in one compact horizontal view: a raised earthen motte with small timber keep and surrounding bailey enclosed by a stout sharpened-log palisade, a simple gate and a few tiny rallying defenders for scale. Keep the whole recognizable fortification central and modest in height, including palisade tips and earthwork base, against quiet countryside at golden dawn. Painterly medieval fantasy collectible-card art, believable timber and earth, directional light, rich atmosphere. 1:1 square canvas for editable 512x512 master, entire named structure within x24..488 y105..407 for a 206:141 crop. No text, lettering, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5e1909b9-f4b7-4fd7-9251-a056b6c5ac57.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Keep roof and flag, complete motte, bailey palisade and gate fit; fort reads at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_14",
+    "name": "Marble Bastion",
+    "prompt": "Paint an illustration for Marble Bastion: a huge pale-marble defensive bastion, low broad horizontal fortress with faceted angled walls, crenellations, stout corner towers and a protected gate, glowing softly in storm-lit ochre dust; a few tiny defenders convey scale. The complete bastion silhouette including tower tops and foundations fits compactly across the center, no cropped tips. Painterly medieval fantasy collectible-card art, carved marble with believable weathering, dramatic warm sunlight breaking through cloud, atmospheric depth. 1:1 square canvas for editable 512x512 master, keep full named structure within x24..488 y105..407 for wide 206:141 card crop. No text, frame, UI, modern hardware, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7030039-b7d4-48ab-b4de-0a1462619f51.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Full bastion towers, walls and base remain visible; marble silhouette and protected gate read clearly."
+  },
+  {
+    "cardId": "light_machine_15",
+    "name": "Turtle Ship Bulwark",
+    "prompt": "Paint an illustration for Turtle Ship Bulwark: a powerful compact Korean medieval turtle ship viewed in a horizontal three-quarter profile at sea, unmistakable armored turtle-shell roof with rows of iron spikes, curved dragon-head prow and stout wooden hull with oar ports. Show its entire hull, stern and dragon prow within the central composition; keep the ship broad and low, no cropped prow or stern. Gentle luminous surf and distant coastal battle haze. Painterly medieval fantasy collectible-card art, richly detailed lacquered wood, bronze and iron, dramatic directional sunrise, atmospheric depth. 1:1 square canvas for editable 512x512 master, all named ship features within x24..488 y105..407 for 206:141 wide crop. No text, border, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e6b489e4-bace-4725-a92e-4f1f16ff9daf.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Entire armored turtle ship with spiked shell, dragon prow, stern and hull fits; identity stays clear at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_16",
+    "name": "Hero's Automaton",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Hero's Automaton, a stout compact heroic bronze-and-ivory construct with a sunburst breastplate and luminous blue eyes. A squat broad-shouldered, short-limbed articulated automaton in a low powerful stepping crouch, one foot crushing loose stones, one arm raised protectively. Its complete figure from crown to both feet occupies only the middle half of the square height with generous clear space above and below; do not make a tall human proportion and do not crop any part. Three-quarter view, clear readable head, arms, torso and feet; luminous warm gold light, aged bronze, ivory, gold and blue cloth, dramatic warm sunlight, atmospheric depth. Square 1:1, editable 512x512 master, complete named subject within x24..488 y105..407 for the 206:141 wide crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-36fd6631-24a7-4648-a4db-e7eb92042f3c.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.543
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, vertically adjusted 206:141 crop and 128-pixel thumbnail. Automaton face, full head, raised hand, torso and stepping legs read clearly; edge of the near boot is tight against the crop."
+  },
+  {
+    "cardId": "light_machine_17",
+    "name": "Kite of Han Xin",
+    "prompt": "Paint an illustration for Kite of Han Xin, the legendary ancient Chinese military kite, a remarkable framed silk flying machine with bamboo spars, cross-bracing, a broad diamond body, long graceful tail streamers and subtle red-gold dragon motifs. Show the complete kite in flight at a readable three-quarter angle, broad and horizontal with all pointed corners and full tail visible; its silk planes catch warm sunlight above a quiet distant Chinese fortress landscape. Object centered and compact, no human operator. Painterly medieval fantasy collectible-card art with historically inspired Han dynasty Chinese materials, fine silk, bamboo and cord, atmospheric depth and dramatic directional light. Square 1:1 canvas for editable 512x512 master, full kite and tail inside x24..488 y105..407 for a 206:141 wide card crop. No text, writing, border or UI; no anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c03231ac-19e2-467b-a3cb-3678a405e1b0.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full kite body, bamboo spars and dragon-patterned silk are clear; trailing silk ribbons extend toward the lower crop edge."
+  },
+  {
+    "cardId": "light_machine_18",
+    "name": "Polybolos",
+    "prompt": "Paint an illustration for Polybolos, a historically grounded ancient Greek repeating bolt-thrower: a compact, powerful torsion-powered ballista on a sturdy timber carriage, with twin curved bow arms, taut bowstring, a visible magazine of bolts and a mechanical chain-feed loading mechanism. Show the complete engine in a low horizontal three-quarter view, all bow tips, string, magazine, feed and carriage clearly visible; no operators. Set it before quiet sunlit stone ruins. Painterly medieval fantasy collectible-card art, believable ancient bronze, rope, timber, leather and iron details, dramatic directional light, atmospheric depth. Square 1:1 canvas for editable 512x512 master, whole named engine inside x24..488 y105..407 for 206:141 wide crop. No text, writing, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-95065f74-b8b0-4fd9-8d62-e514b80149b5.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, downward-shifted 206:141 crop and 128-pixel thumbnail. Entire repeating bolt-thrower including lower wheels now fits; bow tips, chain feed and carriage remain readable."
+  },
+  {
+    "cardId": "light_machine_20",
+    "name": "Star Fort Bastion",
+    "prompt": "Paint an illustration for Star Fort Bastion, a complete Renaissance star fort seen from a slightly elevated three-quarter angle: a broad low polygonal fortress with angular projecting bastions and sloped earth-and-stone ramparts, symmetrical star-shaped geometry, a central keep and orderly moat. Keep every bastion point, outer wall and base inside the square, the entire fort the clear focal subject, framed compactly with quiet landscape beyond. Historically grounded early-modern Italian trace italienne fortification, atmospheric golden-hour light, painterly medieval fantasy collectible-card art with detailed stone and grass, no modern elements. Square 1:1 canvas for editable 512x512 master, whole fort within x24..488 y105..407 for 206:141 wide crop. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37147ab6-6114-4deb-ab8d-250607af826e.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Full star-fort plan with all angular bastions, walls and moat remains visible and reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "light_machine_19",
+    "name": "Helepolis",
+    "prompt": "Create a STRICTLY SQUARE 1:1 painterly medieval fantasy card illustration of the Helepolis, an ancient Greek siege tower. A complete compact, broad, squat wooden siege tower on a full row of iron-rimmed wheels, with three low armored fighting levels, hide-covered walls, crenellated roof and one short assault bridge. The whole machine is small enough to occupy only the central 55 percent of the square height; generous clear sky above and ground below. Keep left and right edges well inside the image: every wheel, roof corner, bridge tip and tower wall visible with margin. Three-quarter view approaching a quiet Hellenistic stone wall; no operators. Historically grounded timber engineering, taut ropes, bronze/iron fittings, warm sunlight, textured painterly surfaces, atmospheric depth. Important: output must be a square composition, not landscape; do not crop or enlarge the tower. Full machine within x24..488 y105..407 on the 512-square. No text, lettering, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce052865-eec4-45a9-a752-64b7aca6bd9a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full tower roof, battlements, assault bridge, wheel row and base fit with margin."
+  },
+  {
+    "cardId": "light_machine_21",
+    "name": "Claw of Archimedes",
+    "prompt": "Paint an illustration for Claw of Archimedes, the legendary ancient Syracusan naval defense engine. Show a complete robust timber crane mounted on a stone harbor wall, with a pivoting horizontal boom, visible counterweight, ropes and pulley block, and a large unmistakable articulated bronze iron grappling claw hanging from the tip over the sea. The entire crane base, boom tip, ropes and claw fit comfortably in a compact horizontal composition; a small ancient warship below gives scale. No operators. Historically inspired ancient Greek engineering, clear readable silhouette, painterly medieval fantasy collectible-card art, warm dramatic light, detailed timber, bronze and rope, atmospheric harbor depth. Strict 1:1 square canvas for editable 512x512 master, named engine features inside x24..488 y105..407 for the 206:141 card crop; leave quiet sky above and water below. No text, labels, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4e9e4671-ec54-454b-8fa8-3bc9ddd25f27.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Complete harbor crane, counterweight, pivoting boom, pulley and articulated claw fit clearly; ship is supporting scale."
+  },
+  {
+    "cardId": "light_machine_22",
+    "name": "Al-Jazari's Automaton",
+    "prompt": "Paint an illustration for Al-Jazari's Automaton, inspired by the ingenious 13th-century Islamic mechanical designs of Al-Jazari. Show one complete noble humanoid guardian automaton, elegantly proportioned and compact in the central square, with articulated brass limbs, dark carved wood panels, visible small gearwork, an ornate water-clock mechanism in its torso and a dignified face-like mask. A hint of flowing water powers its motion; no human operator. Head, hands and feet fully visible with generous margin. Painterly medieval fantasy collectible-card art, historically grounded Islamic geometric ornament, brass, wood, silk and water, warm directional light and rich atmospheric depth. Strict square 1:1 editable 512x512 composition, whole automaton within x24..488 y105..407 for a 206:141 wide card crop. No text or lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1201272f-d7b5-44a7-a8f8-1bd4e55a2e3a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop and 128-pixel thumbnail. Automaton head, eyes, water-clock torso and both articulated hands fit clearly; lower legs are outside the crop."
+  },
+  {
+    "cardId": "light_machine_23",
+    "name": "Su Song's Clock Tower",
+    "prompt": "A square painterly medieval fantasy collectible-card landscape of Su Song's Clock Tower, the historic 11th-century Song dynasty Chinese astronomical water-powered clock. Recompose the tower noticeably smaller than before: the complete three-tier pagoda tower, top finial, bronze armillary sphere, clockwork galleries, stone foundation and entire side waterwheel must fit together in a central band only 56% of the square's height, from about y112 to y400 on a 512-square. Leave generous quiet sky above and calm river below. Distant Kaifeng rooftops provide scale. The full finial and lowest waterwheel/base are both clearly visible with margin; no part touches or crosses the frame. Historically grounded Song timber architecture, layered curved tile eaves, detailed bronze mechanism, warm dawn light, painterly surfaces and atmospheric depth. Strict 1:1 square composition, compact landscape establishing view, not a close crop. Keep the complete named tower within x24..488 and y105..407 for the 206:141 crop. No text, labels, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ebab0d6-a4a7-42e7-b4db-58c31e5eee5e.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.485
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed at a smaller scale after review. Inspected the 512-square source, shifted 206:141 crop and 128-pixel thumbnail: full finial through armillary sphere, clock galleries, stone base and complete waterwheel all fit."
+  },
+  {
+    "cardId": "light_machine_24",
+    "name": "Warwolf Trebuchet",
+    "prompt": "Paint an illustration for Warwolf Trebuchet, a legendary medieval counterweight trebuchet. Show the complete massive but compact timber engine in horizontal three-quarter view: sturdy A-frame base, huge counterweight box, pivoting throwing arm, sling and stone projectile, all fully visible with clear margin. The arm is caught mid-swing, releasing a boulder toward a distant fortress; keep machine geometry the main subject, no operators. Broad low composition with quiet sky and ground. Painterly medieval fantasy collectible-card art, historically plausible timber bracing, iron pins, rope and counterweight, dramatic directional light, atmospheric depth. Strict square 1:1 editable 512x512 canvas; whole throwing arm, base, weight and sling within x24..488 y105..407 for 206:141 card crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b54a6e5a-970c-4f69-a1a5-e6df8af0131c.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.473
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Complete trebuchet arm, sling and projectile, counterweight, A-frame and base fit with margin."
+  },
+  {
+    "cardId": "light_machine_25",
+    "name": "Krak des Chevaliers",
+    "prompt": "Paint an illustration for Krak des Chevaliers, the great Crusader fortress in Syria. Show a complete recognizable hilltop castle in a landscape establishing view, compactly framed and broad rather than tall: concentric massive stone curtain walls, round projecting towers, a strong gate and central keep, with dry mountain hills behind. Entire castle silhouette and base visible with quiet margins; no close-up and no cropped tower tops. Historically grounded 12th-century Hospitaller architecture, pale weathered limestone and warm sunset, painterly medieval fantasy collectible-card art with atmospheric depth. Strict square 1:1 editable 512x512 master; whole fortress within x24..488 y105..407 for wide 206:141 crop. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-179c7dfe-ce26-40e8-b42a-b65fb73ad34a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Complete concentric fortress, towers, central keep, gate and base fit; the castle is readable at thumbnail size."
+  },
+  {
+    "cardId": "hero_aldric",
+    "name": "Brother Aldric",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Brother Aldric, a kindly battle-worn monk-priest and healer in simple ivory robes, a deep blue mantle and modest gold-trimmed mail, with a calm expressive face, clearly visible eyes and a close-cropped tonsure. Waist-up three-quarter composition. One hand is raised and open, calling a narrow radiant pillar of warm white-gold light down beside him; the other hand holds a gentle healing glow near his chest. His face, eyes and both hands are the unmistakable focal points, unobscured and fully inside the central wide crop. Quiet chapel-ruin background with directional golden light, painterly grounded anatomy, believable cloth and armor, rich atmosphere. Strictly square 1:1 editable 512x512 master. Keep head and both hands within x24..488 y105..407 for the 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aa1c4fff-b234-44f8-94dd-bd1f97f3601b.png",
+    "editableSourcePath": "game/cards/art/masters/hero_aldric.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Brother Aldric’s full face and eyes, raised casting hand and healing hand are all clear and fit with margin."
+  },
+  {
+    "cardId": "hero_ratha",
+    "name": "Ra'tha the Sunspear",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Ra'tha the Sunspear, a noble South Asian fantasy warrior-priestess in layered ivory and deep saffron armor, with a focused expressive face, bright eyes, dark braided hair and a small gold sun-circlet. Compact waist-up three-quarter pose. She holds an elegant golden Sunspear close beside her face so its bright spearhead, her eyes and gripping hand all sit together in the central horizontal composition; sunlight chains from the spearhead into several small streaks of light in the distant background. Keep the long shaft angled down and away, expendable if it reaches the crop edge. Believable anatomy, finely painted cloth, bronze and gold, dramatic warm light, grounded painterly high fantasy. Square 1:1 editable 512x512 canvas, face, eyes, spearhead and hand inside x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bff7954e-8b35-4488-9a56-c646948c90ae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ratha.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop and 128-pixel thumbnail. Ra'tha’s full head and eyes, Sunspear head and gripping hand fit; long shaft continues below the crop."
+  },
+  {
+    "cardId": "hero_prisma",
+    "name": "Prisma the Lightweaver",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Prisma the Lightweaver, a poised young mage with a fully visible thoughtful face and bright eyes, wearing layered violet-blue robes and a delicate crown of faceted crystal. Compact waist-up three-quarter pose; both hands weave three distinct small luminous prism bolts that refract into subtle rainbow color, kept away from her face. Face, crown and hands clearly visible and centered in the horizontal crop. Believable anatomy, richly rendered silk, crystal and gold, elegant dramatic light, atmospheric depth, grounded fantasy illustration rather than cartoon. Square 1:1 editable 512x512 canvas, head, eyes, crown and both hands within x24..488 y105..407 for a 206:141 card crop. No text, lettering, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dc5ed6a-a474-42dd-b934-669ffb03a830.png",
+    "editableSourcePath": "game/cards/art/masters/hero_prisma.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full crystal crown, face, eyes, both hands and three prism bolts remain clear."
+  },
+  {
+    "cardId": "hero_theron",
+    "name": "High Judge Theron",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of High Judge Theron, a dignified older high judge with a weathered intelligent face, steady eyes and a close gray beard, wearing layered ivory judicial robes, deep blue mantle, restrained gold trim and a small circlet. Waist-up three-quarter pose in a solemn stone court. One hand lifts as a narrow pillar of white-gold light descends like a luminous hammer beyond his shoulder, without obscuring his head or hand; the other hand rests near his chest. Face, eyes and relevant hands are fully visible in the central horizontal crop. Grounded anatomy and materials, painterly medieval fantasy, dramatic directional light, rich atmospheric depth. Square 1:1 editable 512x512, head and hands inside x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59d078ad-a173-4e6b-92d4-ae2c91dbe33b.png",
+    "editableSourcePath": "game/cards/art/masters/hero_theron.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted crop and thumbnail. Theron’s full head, eyes and both hands fit clearly; the light hammer falls beside him without obscuring his face."
+  },
+  {
+    "cardId": "hero_celestine",
+    "name": "Mother Celestine",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Mother Celestine, a compassionate older nun and healer with a warm intelligent face, kind visible eyes, silver-streaked hair beneath a simple ivory veil, and humble blue-and-white robes with subtle gold embroidery. Waist-up three-quarter pose in a quiet chapel. One hand calls down a gentle sunlit beam while her other open hand gathers soft healing light near her heart; her face and both hands remain clear, prominent and inside the wide crop. Grounded anatomy, natural cloth textures, luminous but controlled golden light, atmospheric depth, painterly medieval fantasy illustration. Strict square 1:1 editable 512x512 master, head, eyes and hands within x24..488 y105..407 for 206:141 crop. No text, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08d80615-ec37-473b-aa26-2064e63f2435.png",
+    "editableSourcePath": "game/cards/art/masters/hero_celestine.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted crop and thumbnail. Mother Celestine’s full veiled head and eyes, raised casting hand and healing hand all fit clearly."
+  },
+  {
+    "cardId": "halo_arc",
+    "name": "Halo Arc",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Halo Arc, a ward that forms a broad luminous arc-shaped wall of healing light around two allied defenders. The named object is one clearly visible, continuous golden-white semicircular arch or bowed barrier, spanning horizontally across the middle of the scene with its two feet anchored on the ground and a softly rippling healing surface; do not make a full ring or a tiny halo above anyone's head. Inside the arc, two small medieval allies recover in its warm light while arrows or dark spell motes break harmlessly against the outer curve. The full arc from foot to crown and both anchors fits with clear space in the central wide crop; no operator. Rich painterly medieval fantasy materials and dramatic controlled glow, readable silhouette, atmospheric stone courtyard, warm healing light, no excessive glare. Strict square 1:1 editable 512x512 composition, entire named arc within x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88942a09-6022-41a2-8226-036f735c2e5d.png",
+    "editableSourcePath": "game/cards/art/masters/halo_arc.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Continuous golden healing arc from both ground anchors to crown remains intact and readable around two recovering allies."
+  },
+  {
+    "cardId": "prism_cage",
+    "name": "Prism Cage",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Prism Cage, a ward that forms a broad luminous arc-shaped wall of healing light around two allied defenders. The named object is one clearly visible, continuous golden-white semicircular arch or bowed barrier, spanning horizontally across the middle of the scene with its two feet anchored on the ground and a softly rippling healing surface; do not make a full ring or a tiny halo above anyone's head. Inside the arc, two small medieval allies recover in its warm light while arrows or dark spell motes break harmlessly against the outer curve. The full arc from foot to crown and both anchors fits with clear space in the central wide crop; no operator. Rich painterly medieval fantasy materials and dramatic controlled glow, readable silhouette, atmospheric stone courtyard, warm healing light, no excessive glare. Strict square 1:1 editable 512x512 composition, entire named arc within x24..488 y105..407 for 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c29296d8-a5fa-4f44-b9fb-67de05bb9ec3.png",
+    "editableSourcePath": "game/cards/art/masters/prism_cage.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Complete six-sided transparent prism cage, all corners and base fit; trapped armored foe and controlled shocking sparks are readable."
   }
 ]

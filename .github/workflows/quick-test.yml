@@ -1,5 +1,5 @@
 # Every push to main (and every pull request): the bot self-checks, then real coordinate taps on phone and tablet
-# sizes - menus, and the battle and hand screens. About 10 minutes. Screenshots are kept when something fails.
+# sizes - menus, the battle and hand screens, and a two-page local duel. About 10 minutes. Screenshots are kept when something fails.
 name: Quick test
 on:
   push:
@@ -31,11 +31,20 @@ jobs:
         run: |
           node tools/playtest/selftest.js
           node tools/playtest/battle-clock-test.js
+          node tools/playtest/netplay-test.js
+      - name: LAN relay checks
+        if: always()
+        env:
+          PLAYWRIGHT_MODULE: ${{ github.workspace }}/tools/playtest/node_modules/playwright
+        run: (cd tools/netplay && npm ci && node relay-test.js)
       - name: Menu taps (phone and tablet)
         run: node tools/playtest/ui-runner.js test-results/ui
       - name: Battle and hand-screen taps (phone and tablet)
         if: always()
         run: node tools/playtest/battle-ui-runner.js test-results/battle-ui
+      - name: Duel between two pages (loopback, WebRTC, relay room)
+        if: always()
+        run: node tools/playtest/duel-runner.js test-results/duel
       - name: Summary
         if: always()
         run: node tools/playtest/test-summary.js test-results >> "$GITHUB_STEP_SUMMARY"

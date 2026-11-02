@@ -1,0 +1,23 @@
+{
+  "batch": 15,
+  "newAssignedCards": 119,
+  "reviewedPackets": 26,
+  "reviewedSourceHashesUnchanged": 119,
+  "earlierRuntimeImagesUnchanged": 7400,
+  "earlierGeneratedRecordsUnchanged": 1784,
+  "suppliedOriginalsUnchanged": 66,
+  "activeCards": 1953,
+  "pendingCards": 0,
+  "status": "pass",
+  "runtimeImagesDecoded": 7876,
+  "cardMarkupChecked": 3906,
+  "locked": "pass",
+  "fallback": "pass",
+  "browserLayout": "not tested",
+  "gameplaySelftests": {
+    "passed": 23,
+    "failed": 0,
+    "command": "node tools/playtest/selftest.js",
+    "status": "pass"
+  }
+}

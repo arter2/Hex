@@ -113,3 +113,17 @@ $('#labRandom').onclick=labRandom;
 $('#labTry').onclick=labTry;
 { const t=document.getElementById('dbgLab'); if(t){ t.checked=labOn(); t.onchange=()=>{ try{ localStorage.setItem(LAB_KEY,t.checked?'1':'0'); }catch(e){} labSync(); }; } }
 labSync();
+
+/* Debug › Card art › Sharpen: an SVG convolution filter over every card's painted art (the .k-art layer), applied on
+   screen only; the art files are untouched. The amount a builds the kernel 0,-a,0 / -a,1+4a,-a / 0,-a,0 (a=0: off). */
+{ const KEY='hex.cardSharpen', s=document.getElementById('dbgSharp'), v=document.getElementById('dbgSharpV');
+  const NS='http://www.w3.org/2000/svg', svg=document.createElementNS(NS,'svg'); svg.setAttribute('width','0'); svg.setAttribute('height','0');
+  svg.setAttribute('aria-hidden','true'); svg.style.cssText='position:absolute;width:0;height:0;overflow:hidden';
+  svg.innerHTML='<filter id="kSharpen" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" edgeMode="duplicate" preserveAlpha="true" kernelMatrix="0 0 0 0 1 0 0 0 0"/></filter>';
+  document.body.append(svg);
+  const st=document.createElement('style'); document.head.append(st);
+  const apply=a=>{ a=Math.max(0,Math.min(2,+a||0));
+    svg.querySelector('feConvolveMatrix').setAttribute('kernelMatrix',`0 ${-a} 0 ${-a} ${1+4*a} ${-a} 0 ${-a} 0`);
+    st.textContent=a>0?'.card.kit>.k-art{filter:url(#kSharpen);}':''; if(v) v.textContent=a.toFixed(2); };
+  let a0=0; try{ a0=+localStorage.getItem(KEY)||0; }catch(e){}
+  apply(a0); if(s){ s.value=a0; s.oninput=()=>{ apply(s.value); try{ localStorage.setItem(KEY,String(s.value)); }catch(e){} }; } }

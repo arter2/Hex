@@ -21,8 +21,8 @@ badges, the 44 colored icons, the hero and rarity stars, and the kit's fonts (ru
 `fonts/`). `layouts.json` and `palettes.json` are the kit's coordinates and colours; `cardEl` in `ui.js` and the
 "cards (v158)" block in `style.css` place every slot from them.
 
-One change from the kit: each texture SVG's `texture-ink` group opacity is 0.05 instead of the kit's 0.12 (the kit's
-own control for texture strength). To change it again: `sed -i 's/id="texture-ink" opacity="0.05"/id="texture-ink" opacity="X"/' game/cards/textures/*/*.svg`.
+One change from the kit: each texture SVG's `texture-ink` group opacity is 0.8 instead of the kit's 0.12 (the kit's
+own control for texture strength). To change it again: `sed -i 's/id="texture-ink" opacity="0.8"/id="texture-ink" opacity="X"/' game/cards/textures/*/*.svg`.
 
 Holo foils (`foils/*/COLOR/`): each colour's hue is pulled 40% of the way round the colour wheel toward that card
 colour's accent (palettes.json), brightness and saturation kept, so the rainbow leans toward the card's colour.
@@ -62,3 +62,7 @@ Copied: frames, backgrounds, textures (compact/expanded), foils, effects, glows,
 - **Texture behind text**: the texture layer now sits above the readability panels (style.css), so it shows faintly in
   the text areas; its strength is still the 0.05 texture-ink.
 - Large cards now use the expanded buffed glow, and enchanted + buffed uses the kit's split rim (style.css "rim states").
+
+## v186: the short card
+
+Hands and grids use the short card: `contract.json` "short" (240x362) replaces the full card's canvas, bands, panels, dividers and slots; `tools/card-build.py` writes its layers under `frames/short`, `textures/short`, `glows/short`, `foils/short` and `badges/short`, and its slots into `card-geo.css` under `.card.kit.compact`. The texture strength is now set by the build (`TEXTURE_INK`, 0.8), so a rebuild keeps it.

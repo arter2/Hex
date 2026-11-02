@@ -2,7 +2,7 @@
   "batch": 15,
   "workers": {
     "/root/b15_artist_1": {
-      "packet": "fire-03",
+      "packet": "fire-04",
       "state": "running"
     },
     "/root/b15_artist_2": {
@@ -22,8 +22,8 @@
       "state": "running"
     },
     "/root/b15_artist_6": {
-      "packet": "verdant-04",
-      "state": "running"
+      "packet": "verdant-05",
+      "state": "idle"
     }
   },
   "completedPackets": [
@@ -41,7 +41,10 @@
     "verdant-03",
     "light-02",
     "shadow-03",
-    "frost-03"
+    "frost-03",
+    "verdant-04",
+    "fire-03",
+    "verdant-05"
   ],
   "reviewedSources": {
     "fire_summon_38": {
@@ -343,6 +346,62 @@
     "hero_ymir": {
       "file": "game/cards/art/masters/hero_ymir.png",
       "sha256": "3112fe45bbc8f4b700613508cc839525357d7b5ad328cde72a0bd1e193f0dc24"
+    },
+    "verdant_summon_68": {
+      "file": "game/cards/art/masters/verdant_summon_68.png",
+      "sha256": "bec07953ef9506502dafd33fc06a584eb9bae09ec1dddd234881a267979423da"
+    },
+    "verdant_summon_69": {
+      "file": "game/cards/art/masters/verdant_summon_69.png",
+      "sha256": "d53422674f3ae0d7772e98432302d0ee4f1441c13ff77f15f3edaca45275f940"
+    },
+    "verdant_summon_70": {
+      "file": "game/cards/art/masters/verdant_summon_70.png",
+      "sha256": "f13dff74475017e670c47b4d4615afd814b0d8917ea87d07c8785c29a67bd32d"
+    },
+    "hero_sporelord": {
+      "file": "game/cards/art/masters/hero_sporelord.png",
+      "sha256": "50975296d3fa85550a1c0ff65d214f55939d00b3e8cc1a2d812590c82e1460cd"
+    },
+    "hero_dara": {
+      "file": "game/cards/art/masters/hero_dara.png",
+      "sha256": "a8ce650ab0b3dda9d616964888847dd3fcc638590aaca1855bd263956f8ea4f0"
+    },
+    "fire_machine_13": {
+      "file": "game/cards/art/masters/fire_machine_13.png",
+      "sha256": "8acad2e2bce8b9a42c4222f7093fc31629c3764e8af866f55f3bbc98c8a9b4dd"
+    },
+    "fire_machine_14": {
+      "file": "game/cards/art/masters/fire_machine_14.png",
+      "sha256": "572c7f9ce41f6c00aaab3b984ced98b05403331d1b14f3d1d016e2ae3f28b842"
+    },
+    "fire_machine_15": {
+      "file": "game/cards/art/masters/fire_machine_15.png",
+      "sha256": "51ec7cb791abf3612c757f351faf993710ab924316ab3dee4de0cf00717a8c9f"
+    },
+    "hero_pyrrhus": {
+      "file": "game/cards/art/masters/hero_pyrrhus.png",
+      "sha256": "5b66f83cf0d5ae71e7e5ce5446fdc9d593972046b4a747345bd47c21b00b8aee"
+    },
+    "hero_scorch": {
+      "file": "game/cards/art/masters/hero_scorch.png",
+      "sha256": "5936dfbc0b3dc806be89f1de4208314f4ccebbd603727c71609cbe1ab0fadfe1"
+    },
+    "hero_thistle": {
+      "file": "game/cards/art/masters/hero_thistle.png",
+      "sha256": "35fff80fbf0f8b97aa2d43c832100f30bbd1b6a149e044660f8b2bfc6f0d2288"
+    },
+    "brood_imp": {
+      "file": "game/cards/art/masters/brood_imp.png",
+      "sha256": "9a66eec98cc75c786bcb9cb68ee56de75ae27f5dbfacf974b60959af21303fc6"
+    },
+    "brood_snake": {
+      "file": "game/cards/art/masters/brood_snake.png",
+      "sha256": "12d50a4a19d0b6aca71ef7b95c538be6fb03d8ab152cf038c42c5f5c5d557092"
+    },
+    "brood_hawk": {
+      "file": "game/cards/art/masters/brood_hawk.png",
+      "sha256": "ba9ebd9bedcccee42e0da6101f38e0e640a8c9d307043906457106bc374b0ade"
     }
   }
 }

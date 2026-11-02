@@ -2,10 +2,10 @@
   "batch": 15,
   "status": "in-progress",
   "targetNewImages": 119,
-  "generatedSources": 79,
-  "reviewedSources": 75,
-  "missingSources": 40,
-  "reviewedPackets": 15,
+  "generatedSources": 107,
+  "reviewedSources": 89,
+  "missingSources": 12,
+  "reviewedPackets": 18,
   "requiresRepaint": [],
   "baselineActive": 1834,
   "targetActive": 1953,
@@ -16,6 +16,42 @@
   "baselineRuntimeImageCount": 7400,
   "baselineGeneratedRecordCount": 1784,
   "savedCards": [
+    {
+      "cardId": "brood_hawk",
+      "name": "Moss Hawk",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_hawk.png",
+      "sha256": "ba9ebd9bedcccee42e0da6101f38e0e640a8c9d307043906457106bc374b0ade",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brood_imp",
+      "name": "Sprout Imp",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_imp.png",
+      "sha256": "9a66eec98cc75c786bcb9cb68ee56de75ae27f5dbfacf974b60959af21303fc6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "brood_snake",
+      "name": "Thorn Serpent",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_snake.png",
+      "sha256": "12d50a4a19d0b6aca71ef7b95c538be6fb03d8ab152cf038c42c5f5c5d557092",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
     {
       "cardId": "fire_machine_11",
       "name": "Volley Gun",
@@ -34,6 +70,42 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_machine_12.png",
       "sha256": "ddf1360f48b5e88ae13ebd891c886f81b9cb6fe6cc9b4a9ef602bb503d576c73",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_13",
+      "name": "Stone Bastion",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_13.png",
+      "sha256": "8acad2e2bce8b9a42c4222f7093fc31629c3764e8af866f55f3bbc98c8a9b4dd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "fire_machine_14",
+      "name": "Firework Launcher",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_14.png",
+      "sha256": "572c7f9ce41f6c00aaab3b984ced98b05403331d1b14f3d1d016e2ae3f28b842",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_15",
+      "name": "The Great Bombard",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_15.png",
+      "sha256": "51ec7cb791abf3612c757f351faf993710ab924316ab3dee4de0cf00717a8c9f",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -305,12 +377,168 @@
       ]
     },
     {
+      "cardId": "hero_arachna",
+      "name": "Arachna",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_arachna.png",
+      "sha256": "99aec025b6cd710455281d7d0e5c1bd251f625f1c53bae07ddf41947255f669c",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
+      "cardId": "hero_corvina",
+      "name": "Corvina, Raven Witch",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_corvina.png",
+      "sha256": "87125ba79b74087227a414a1b82368d91b36d5ff0efb542190a4148f1bab4981",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "hero_crysta",
+      "name": "Crysta the Shardmaid",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_crysta.png",
+      "sha256": "8e15dd21e7c8aa4fb4e041cb6e44e8289092355f84b332e104026d43b5d21124",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_dara",
+      "name": "Vinewhip Dara",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_dara.png",
+      "sha256": "a8ce650ab0b3dda9d616964888847dd3fcc638590aaca1855bd263956f8ea4f0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "hero_kiri",
+      "name": "Squall Rider Kiri",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_kiri.png",
+      "sha256": "8fa1ffc0c5b7a1b5fd27f4be4e0b078fa1c28c763847e605f028af41ca912f69",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "hero_necros",
+      "name": "Necros the Bone Lord",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_necros.png",
+      "sha256": "e96d78b65c1847f3a6e13adb9c8d23beda4406dc7974796ea465d124fb3c0d35",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "hero_nix",
+      "name": "Nix the Snow Owl",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_nix.png",
+      "sha256": "3fdeedc7fdbc0e11242207c8817588f22e2ed782b40dfcbf18dc296163b2fb5d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_permafrost",
+      "name": "Old Permafrost",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_permafrost.png",
+      "sha256": "b0ca5eff2a0805332f0ea2c28547fdeff5c127df8d8c18856435c05b10592b8a",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_pyrrhus",
+      "name": "Pyrrhus the Bombardier",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_pyrrhus.png",
+      "sha256": "5b66f83cf0d5ae71e7e5ce5446fdc9d593972046b4a747345bd47c21b00b8aee",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "hero_scorch",
+      "name": "Scorch, the Red Fox",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_scorch.png",
+      "sha256": "5936dfbc0b3dc806be89f1de4208314f4ccebbd603727c71609cbe1ab0fadfe1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sleet",
+      "name": "Sleet, the Hail Archer",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_sleet.png",
+      "sha256": "b6fa7ebd4fa56fb0213a1aeae327777e558c21e44e097f2cbf8081b7775edd41",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "hero_sporelord",
       "name": "The Sporelord",
       "colour": "verdant",
       "source": "game/cards/art/masters/hero_sporelord.png",
       "sha256": "50975296d3fa85550a1c0ff65d214f55939d00b3e8cc1a2d812590c82e1460cd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "hero_stati",
+      "name": "Stati, the Static Witch",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_stati.png",
+      "sha256": "a67cbfeaf6467fbb959fc183df8a67b40715b0696477f281711c38d321751e15",
       "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_thistle",
+      "name": "Thistle the Hedge Knight",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_thistle.png",
+      "sha256": "35fff80fbf0f8b97aa2d43c832100f30bbd1b6a149e044660f8b2bfc6f0d2288",
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -446,6 +674,54 @@
       "focalPoint": [
         0.5,
         0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_22",
+      "name": "Al-Jazari's Automaton",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_22.png",
+      "sha256": "f5394fd53a990b59b95346e6ea9dd2fd73e4ae549eeee20e2a7e402832a90d25",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_23",
+      "name": "Su Song's Clock Tower",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_23.png",
+      "sha256": "c5658845cb53d7320d5010c36404c895779c7f48a8310d9015323ebd3025f8ef",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.445
+      ]
+    },
+    {
+      "cardId": "light_machine_24",
+      "name": "Warwolf Trebuchet",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_24.png",
+      "sha256": "dace2d3b36e4236edec959d7aafa637076c958c9cb6041e591334d0955d32509",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.473
+      ]
+    },
+    {
+      "cardId": "light_machine_25",
+      "name": "Krak des Chevaliers",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_25.png",
+      "sha256": "4c5df67100d308a09926c7498ff305ad52a6d009f3cad44b1e089f59a493e52b",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -629,6 +905,30 @@
       ]
     },
     {
+      "cardId": "shadow_summon_69",
+      "name": "The Erlking",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_69.png",
+      "sha256": "b8b8946fbac8f79cade9ef1cf0d3c14f2a5f1b69948a54cb05d6ab73a949def3",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_70",
+      "name": "Iron Maiden",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_70.png",
+      "sha256": "16d4cadcdc35096d4100b315a90cd7ae567ff8ee5a7b510e06bf9722b28abccc",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
       "cardId": "storm_machine_12",
       "name": "Zhuge Repeater",
       "colour": "storm",
@@ -722,6 +1022,42 @@
       "focalPoint": [
         0.5,
         0.48
+      ]
+    },
+    {
+      "cardId": "storm_machine_20",
+      "name": "Hang-Glider Scout",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_20.png",
+      "sha256": "4c56878629dd1e556791eee2dae881b78905c4ba0af1b2d8be6932a152f3f49e",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_21",
+      "name": "The Thunder Engine",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_21.png",
+      "sha256": "7dad703e18999a611a85973ce79562cd9c69b4dd7bd53af262336802652ade02",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.55
+      ]
+    },
+    {
+      "cardId": "storm_machine_22",
+      "name": "The Bronze Colossus",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_22.png",
+      "sha256": "a4fe0c21d8bec3631d3ad09f6d0220e74306e3e8637fc8af5f848721b09e56b7",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.39
       ]
     },
     {
@@ -934,7 +1270,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_68.png",
       "sha256": "bec07953ef9506502dafd33fc06a584eb9bae09ec1dddd234881a267979423da",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -946,7 +1282,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_69.png",
       "sha256": "d53422674f3ae0d7772e98432302d0ee4f1441c13ff77f15f3edaca45275f940",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -958,7 +1294,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_70.png",
       "sha256": "f13dff74475017e670c47b4d4615afd814b0d8917ea87d07c8785c29a67bd32d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5

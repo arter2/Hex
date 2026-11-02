@@ -4293,5 +4293,77 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, focal-y=0.35 206:141 crop and 128px thumbnail. Ymir’s complete face, eyes, ice circlet, both hands and glacier boulder fit clearly; his massive armor and fjord convey scale."
+  },
+  {
+    "cardId": "hero_sleet",
+    "name": "Sleet, the Hail Archer",
+    "prompt": "Paint original heroic medieval-fantasy card art for the exact card “Sleet, the Hail Archer.” Depict an adult archer hero in layered pale blue fur-lined winter armor and a practical hood, with a strong focused face, both eyes fully visible, and no face covering. Sleet draws a compact recurved bow with both gloved hands close together near the chest, making the two grips clearly visible within the horizontal card crop; the bow’s outer tips may extend beyond the frame. A few small hail arrows glow with cold light near the bowstring, suggesting a rapid volley without obscuring the face or hands. Snowy mountain pass and stormy sky as quiet context. Painterly medieval fantasy collectible-card illustration with textured brushwork, tactile cloth, leather and wood, dramatic cold light. Exact 1:1 square editable 512x512; keep full head, hood, eyes and both hands/grips inside x24..488,y105..407 for the 206:141 crop. No text, frame, UI, modern weapon, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4bd7e35b-046e-4ce7-ad85-361f5542d4f4.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sleet.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Sleet’s full hooded head and both eyes are visible; both bow grips fit compactly beside the face, while outer bow tips are incidental."
+  },
+  {
+    "cardId": "hero_crysta",
+    "name": "Crysta the Shardmaid",
+    "prompt": "Create original painterly fantasy card art for the exact card “Crysta the Shardmaid.” Show an adult ice-mage heroine in a fully covering pale blue and silver winter gown, with a poised, determined face, both eyes visible and a delicate crystalline diadem. One hand directs a compact chain of luminous ice shards that arcs across the scene toward the distance; keep her face, crown and casting hand clear, with the shards secondary and not crossing her eyes. Frosted stone chamber and drifting snow add atmosphere. Refined but grounded medieval high-fantasy collectible-card style, visible brushwork, nuanced fabric, crystal and cold directional light; dignified, not sexualized. Exact 1:1 square for editable 512x512; complete head/crown, face/eyes and relevant hand within x24..488,y105..407 on the 206:141 crop, quiet margins above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be444885-57aa-40a3-87f9-57aa3600dd3d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_crysta.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Crysta’s full crystalline diadem, face and eyes fit, with her outstretched casting hand and compact chain of ice shards legible."
+  },
+  {
+    "cardId": "hero_permafrost",
+    "name": "Old Permafrost",
+    "prompt": "Paint original heroic painterly fantasy art for the exact card “Old Permafrost.” Depict an ancient winter sage, an imposing but kindly elderly frost spirit with a complete weathered face, both clear eyes, thick white beard and a hood of snow-laden fur; fully clothed in layered furs and old pale-blue robes. He plants one gnarled wooden staff with one gloved hand as a radiant frozen bloom bursts low around the staff’s base, suggesting a freezing healing aura. Keep his face, eyes, hood and hand fully visible and dominant; the bloom stays below and does not obscure him. Ancient ice cavern with carved stone and faint green-blue aurora, no writing or symbols. Medieval high-fantasy collectible-card illustration with textured brushwork, believable fur, wood and ice, warm/cold light contrast. Exact 1:1 square editable 512x512; head, hood and hand fit x24..488,y105..407 for 206:141 crop, quiet margins. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92a41961-ebc8-4c5d-b180-5256952b81da.png",
+    "editableSourcePath": "game/cards/art/masters/hero_permafrost.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Old Permafrost’s full fur hood, face, eyes, beard and staff-holding hand are visible; the frozen bloom remains below the face."
+  },
+  {
+    "cardId": "hero_nix",
+    "name": "Nix the Snow Owl",
+    "prompt": "Paint original naturalistic fantasy card art for the exact card “Nix the Snow Owl.” Depict a real snowy owl in a dynamic but anatomically accurate swoop above a frozen pine forest: round white facial disk, bright yellow eyes, small dark hooked beak, rounded head and white plumage with fine dark barring. Keep both eyes, full facial disk, beak and crown of feathers completely visible in the central horizontal band; wings may extend beyond the crop, but do not anthropomorphize the owl or give it clothing, hands, or a cartoon expression. A subtle icy wake trails behind as it descends. Painterly medieval fantasy collectible-card illustration with layered brushstrokes, detailed feathers, crisp winter light and atmospheric depth, grounded wildlife proportions rather than Disney-like styling. Exact 1:1 square for editable 512x512; keep entire head and eyes within x24..488,y105..407 on the 206:141 crop, calm snowy margins. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-573f8aad-f178-440b-9489-bb4408c6621f.png",
+    "editableSourcePath": "game/cards/art/masters/hero_nix.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Nix reads as a natural snowy owl with full rounded head, facial disk, both yellow eyes and hooked beak; the swooping wings are incidental."
   }
 ]

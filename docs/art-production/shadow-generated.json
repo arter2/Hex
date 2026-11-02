@@ -4298,5 +4298,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "512-square source, crop and thumbnail inspected; focal point moved up so full head and hat remain visible, with both hands readable."
+  },
+  {
+    "cardId": "shadow_summon_69",
+    "name": "The Erlking",
+    "prompt": "Paint an illustration for the Hexmancers card The Erlking: an uncanny fairy king from central European folklore, a pale regal horseman in dark forest-green robes and a delicate ancient crown, riding through a moonlit beech forest. His composed yet ominous face and one gloved hand reaching toward a pale spectral horse's reins are the primary focus; ghostly childlike lights may remain distant and indistinct. Painterly medieval dark fantasy collectible-card art, detailed velvet, horse tack and mist, lyrical moonlight with a subtle eerie glow, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete head/crown, eyes and relevant hand within x24..488,y105..407; compact horizontal composition and quiet scenery above and below for 206:141 crop. No violence, frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42a21573-6427-48fe-b034-8b8de5b32c60.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_69.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up so full crown, face, eyes and reins hand remain visible."
+  },
+  {
+    "cardId": "shadow_summon_70",
+    "name": "Iron Maiden",
+    "prompt": "Paint an illustration for the Hexmancers card Iron Maiden: an animated gothic iron cabinet guardian, clearly a closed upright iron maiden-shaped cabinet with ornate hinges, rivets, small crown-like top and an expressive mask-like faceplate, standing in a shadowy medieval stone hall. Its doors are firmly closed; no person inside, no torture, injury or gore. Subtle articulated iron arms and hands bring it to life without hiding the cabinet identity. Painterly dark medieval fantasy collectible-card art, tactile hammered iron, aged wood and stone, dramatic cool light with warm fire reflections, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep entire defining cabinet top and faceplate within x24..488,y105..407; horizontal staging and quiet space above/below for 206:141 crop. No frame, words, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ed05f6bb-baf9-478b-a513-a22abb609873.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_70.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, crop and thumbnail inspected. Focal point moved up further so full crown and face fit; hands remain visible, lower body crops."
+  },
+  {
+    "cardId": "hero_arachna",
+    "name": "Arachna",
+    "prompt": "Paint an illustration for the Hexmancers hero card Arachna: a commanding spider sorceress in elegant dark fantasy armor, with a clear expressive humanlike face, bright focused eyes, graceful hands and a mantle of spider legs. She casts three fine luminous web strands toward unseen foes while subtle magic bends around her in a protective dodge aura. Strong heroic portrait, poised and dangerous, tasteful and fully clothed. Painterly medieval dark fantasy collectible-card art, nuanced silk, dark metal and mist, dramatic directional lighting and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep full head, eyes and both relevant hands within x24..488,y105..407; spider legs may extend incidentally. Horizontal composition, quiet background above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-fcce0e32-30c7-43e5-a6da-75239e74371e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_arachna.png",
+    "sourceNative": [
+      1464,
+      1074
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source normalized from 1464x1074. Focal point moved up so complete crown, hairline, face and main casting hand fit; left fingertips reach the crop edge."
+  },
+  {
+    "cardId": "hero_necros",
+    "name": "Necros the Bone Lord",
+    "prompt": "Paint an illustration for the Hexmancers hero card Necros the Bone Lord: a majestic undead sorcerer with a sharp readable skull face, luminous eyes, an ancient bone crown and dark layered robes, hurling a compact glowing bone orb from one bony hand while a translucent protective shield forms near his other arm. The skull, crown and hands are the clear focus. Painterly medieval dark fantasy collectible-card art, tactile bone, aged metal and velvet, dramatic cool spell light and warm ember accents, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete skull/crown, eyes and hands within x24..488,y105..407; horizontal staging with quiet scenery above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-73e6b8c6-902e-4b88-9be4-ea9343b06bae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_necros.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up; complete bone crown, skull face and both casting hands fit."
+  },
+  {
+    "cardId": "hero_corvina",
+    "name": "Corvina, Raven Witch",
+    "prompt": "Paint an illustration for the Hexmancers hero card Corvina, Raven Witch: a poised medieval witch in a dark feathered mantle and modest pointed raven-feather hat, her full expressive face and focused eyes clearly visible as she sends several ravens diving from her outstretched hand. Her other hand holds a small charm while shadowy birds spiral behind her, suggesting swift magic and confusion. Grounded, elegant dark fantasy, not cute or theatrical. Painterly medieval fantasy collectible-card art, nuanced feathers, wool, leather and moonlit mist, dramatic directional light and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete head and hat, eyes and both hands within x24..488,y105..407; birds may extend incidentally. Horizontal central portrait, quiet scenery above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-49f30f81-c007-4d4c-a372-9553718834ae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_corvina.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, crop and thumbnail inspected. Focal point moved up so full hat, face and eyes fit; both hands visible; incidental raven wing tips crop."
   }
 ]

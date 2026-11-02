@@ -4210,5 +4210,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "512-square source and 206:141 crop reviewed. Entire carpet, brass frame, corner vanes and tassels fit; focal point y=0.48 shifts crop slightly upward to protect the upper-left vane. 128px thumbnail remains legible."
+  },
+  {
+    "cardId": "hero_kiri",
+    "name": "Squall Rider Kiri",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Squall Rider Kiri. A young adult nomadic storm archer rides a lean gray steppe horse at a canter through wind-swept highland grass, turning in the saddle to loose three wind-charged arrows. Her determined face, both eyes, bow hand and drawn string hand are clear and close together beside her face; a simple practical hood and braided dark hair, layered blue-gray riding leathers, no modern gear. The horse's head and mane support the story but remain secondary. Painterly medieval fantasy collectible-card art, visible brushwork, believable anatomy and cloth, directional storm light and atmospheric depth. Keep Kiri's complete head, eyes, and both relevant hands within x24–488,y105–407 on the 512-square; horse body/legs may crop. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48d48808-3255-40e3-9710-5e9a19a4bc07.png",
+    "editableSourcePath": "game/cards/art/masters/hero_kiri.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.42 and 128px thumbnail inspected. Kiri's full face, eyes and both archery hands fit; the horse supports the rider without obscuring her."
+  },
+  {
+    "cardId": "hero_stati",
+    "name": "Stati, the Static Witch",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Stati, the Static Witch. A formidable middle-aged storm witch with a grounded human face, alert eyes, windswept dark hair and a weathered indigo hooded mantle. She raises one visible hand beside her face, sending a branching chain of blue-white static lightning toward faint distant enemy silhouettes; her calm focused gaze and hand are the focal identity. Painterly medieval fantasy collectible-card art, nuanced cloth and skin, visible brush strokes, dramatic storm light, atmospheric depth. Keep full head, both eyes and casting hand inside x24–488,y105–407 on the 512 square; lightning trails may extend. No cute expression, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f0570e4-26ba-40d0-8288-0d36d0994ff8.png",
+    "editableSourcePath": "game/cards/art/masters/hero_stati.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and revised crop/128px thumbnail inspected. Shifted crop upward to focal y=0.40 per parent review; full hood, head/eyes and casting fingers remain within frame."
+  },
+  {
+    "cardId": "storm_machine_20",
+    "name": "Hang-Glider Scout",
+    "prompt": "Recompose Hang-Glider Scout for a square 512x512 editable master. Show a COMPLETE small medieval cloth-and-wood hang glider in flight, a compact short-span swept wing with both wing tips set well inside x70..442 and y155..345; do not fill the frame with the wings. Keep the whole glider and one small hooded medieval scout suspended at its center together inside that central rectangle, clear 25+ pixel margins on every side. The scout's face and both gripping hands are visible. The wing is practical timber spars, rope bracing, and taut ochre cloth, with no modern aircraft details. Misty storm sky and distant medieval towers fill the square around it. Grounded painterly fantasy art, visible brushwork, believable fabric and wood, nuanced storm light. The entire wingspan must fit the 206:141 horizontal crop without touching edges. No text/frame/UI, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92162357-c2fc-4e62-bd7b-711197302089.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the first wing tips sat too close to the square edge. Inspected 512-square source, 206:141 crop and 128px thumbnail; full cloth wingspan, scout face and both gripping hands remain visible."
+  },
+  {
+    "cardId": "storm_machine_21",
+    "name": "The Thunder Engine",
+    "prompt": "Recompose The Thunder Engine for a 512×512 square fantasy card master. Show one compact LOW medieval clockwork engine on a complete low timber-and-iron wheeled chassis, taking no more than the central 58% of the square's height. A clearly visible central bronze flywheel and glass lightning core are flanked by TWO short, squat copper coils; no tall finials or spikes. All coils, arcs, gears and the entire chassis with all wheels must fit inside x35–477,y112–400. Keep the machine horizontal and self-contained against a quiet storm-lit castle courtyard. Painterly medieval fantasy, grounded iron/brass/wood, visible brushwork. The entire engine will appear in a 206:141 crop. No operator, no tall vertical assembly, no clipped machinery, no text/frame/UI, no modern hardware, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-32709e2c-f536-4ea9-99b1-a485e01c77c7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the initial tall engine clipped the upper assembly in the card crop. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_21-before.png; inspected replacement 512 square, revised wide crop at focal y=0.55 and 128px thumbnail. Both coils, central flywheel, chassis and all wheels remain visible."
+  },
+  {
+    "cardId": "storm_machine_22",
+    "name": "The Bronze Colossus",
+    "prompt": "Recompose The Bronze Colossus as a compact square portrait illustration. Center a complete bronze automaton head with its entire uncut crown/helmet, both glowing eyes, shoulders and ONE raised hand with all fingers fully visible. The top of the crown begins around y120 on the 512-square, fingertips stay above y390, and the entire hand-to-head cluster fits x70–450,y115–395, leaving visible sky margin above and below. The hand is beside the face rather than reaching toward the viewer; avoid foreshortening. Painterly medieval fantasy, weathered engraved bronze, dark iron joints, subtle blue lightning, visible brushwork and storm-forge light. Keep the full face and full hand legible in the 206:141 crop. Do not crop the crown or fingers. No text, frame, UI, toy proportions, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59afdb9b-0694-4100-bc8a-0a4883a7afc5.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental."
   }
 ]

@@ -4369,10 +4369,100 @@
     ],
     "focalPoint": [
       0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Shifted focal point upward to show the full mushroom crown and face while keeping the spore-casting hand in the 206:141 crop. Inspected the unchanged exact 512-square source, revised crop and 128px thumbnail."
+  },
+  {
+    "cardId": "hero_dara",
+    "name": "Vinewhip Dara",
+    "prompt": "Paint an illustration for “Vinewhip Dara”. Vinewhip Dara, an adult forest ranger with a focused expressive face and dark braided hair, in practical moss-green cloak and worn leather bracers, sweeps a living thorned vine whip through a woodland glade. Show one compact firm hand grip around the short vine handle beside her face; a short clear segment of the green whip curls dynamically beside her shoulder through windblown leaves, suggesting a chain strike. Keep her full head/eyes, gripping hand, handle and nearby whip arc within the central horizontal crop; the long whip need not be fully shown. Grounded medieval fantasy, natural anatomy and clothing, no modern gear. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied HexNamedArt reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep the full primary head, eyes and distinctive anatomy/action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-f0625aeb-fdf1-4fad-bc3d-99066ceb7044.png",
+    "editableSourcePath": "game/cards/art/masters/hero_dara.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
       0.43
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Upward focal adjustment keeps the complete mushroom crown, face, eyes and spellcasting hand in the crop; inspected exact source, revised crop and 128px thumbnail."
+    "reviewNote": "Upward focal framing keeps full head/eyes, gripping hand, short handle and nearby whip arc clear. Inspected the exact 512-square source, crop and 128px thumbnail."
+  },
+  {
+    "cardId": "hero_thistle",
+    "name": "Thistle the Hedge Knight",
+    "prompt": "Paint an illustration for “Thistle the Hedge Knight”. Thistle, a resolute adult hedge knight, stands in dense woodland wearing weathered leaf-green brigandine, leather and a mantle of living thorny briars. Her determined face and clear eyes are visible beneath a simple iron brow guard; one armored hand thrusts forward, releasing a straight volley of sharp green thorns down the forest path. Grounded medieval equipment, no full face mask. Keep her complete head/eyes and casting hand with nearby thorn volley within the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied HexNamedArt reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep the full primary head, eyes, ears/horns and relevant hands/action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-75f6703d-ae4f-481b-ae14-551464fb088e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_thistle.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Upward focal placement keeps the full helmet/hair, face/eyes, thorn volley and casting hand together in the crop. Inspected exact source, crop and 128px thumb."
+  },
+  {
+    "cardId": "brood_imp",
+    "name": "Sprout Imp",
+    "prompt": "Paint an illustration for “Sprout Imp”. A small, wild woodland imp emerges from tangled roots: wiry adult-like proportions, rough bark-brown skin, short curved twig horns, pointed leaf-edged ears, alert amber eyes and narrow clawed hands gripping a sprout. Ominous and clever, naturalistic fantasy creature, no cute mascot expression, no baby proportions, no anime, no clothing or human armor. Keep full head, eyes, both horns, ears and relevant hands clearly inside the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied HexNamedArt reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep the full primary head, eyes, ears/horns and relevant hands/action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-d4d26208-8320-432e-9613-baa71a55b9bc.png",
+    "editableSourcePath": "game/cards/art/masters/brood_imp.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Upward focal placement keeps both twig horns, ears, face/eyes and hands in the crop. Inspected exact source, crop and 128px thumb; imp is wild and naturalistic, without cute proportions."
+  },
+  {
+    "cardId": "brood_snake",
+    "name": "Thorn Serpent",
+    "prompt": "Paint an illustration for “Thorn Serpent”. A sinuous green serpent coils through a shadowy forest floor, its unmistakable narrow snake head and bright watchful eyes framed by thornlike spines and bramble vines along its back; a few dew-dark leaves and faint toxic green glimmer suggest venom. Accurate serpent anatomy, no limbs or dragon wings. Keep entire head, eyes, and bristling thorny neck safely inside the central horizontal crop; body may coil out of frame. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied HexNamedArt reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep the full primary head, eyes, ears/horns and relevant hands/action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-85bb7a6d-ba53-4904-9091-f3cefde57364.png",
+    "editableSourcePath": "game/cards/art/masters/brood_snake.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual crop and 128px thumbnail; the complete serpent head/eyes and thorned neck remain legible."
+  },
+  {
+    "cardId": "brood_hawk",
+    "name": "Moss Hawk",
+    "prompt": "Paint an illustration for “Moss Hawk”. A powerful hawk launches from an ancient mossy branch, realistic raptor with sharply hooked beak, keen golden eye, layered brown-and-olive feathers flecked with moss and strong talons; forest canopy and directional light. Accurate bird anatomy, no antlers or fantasy horns. Keep full head, eye and hooked beak clearly inside the central horizontal crop; incidental wing or tail tips may extend. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable natural materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied HexNamedArt reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep the full primary head, eyes, ears/horns and relevant hands/action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-0f2b5d92-d2c4-4287-8128-be9735baa54e.png",
+    "editableSourcePath": "game/cards/art/masters/brood_hawk.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected exact 512-square source, actual crop and 128px thumbnail; full hawk head, eye and hooked beak remain readable. Wing tips may crop."
   }
 ]

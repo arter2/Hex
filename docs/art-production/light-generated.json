@@ -4204,5 +4204,77 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Complete harbor crane, counterweight, pivoting boom, pulley and articulated claw fit clearly; ship is supporting scale."
+  },
+  {
+    "cardId": "light_machine_22",
+    "name": "Al-Jazari's Automaton",
+    "prompt": "Paint an illustration for Al-Jazari's Automaton, inspired by the ingenious 13th-century Islamic mechanical designs of Al-Jazari. Show one complete noble humanoid guardian automaton, elegantly proportioned and compact in the central square, with articulated brass limbs, dark carved wood panels, visible small gearwork, an ornate water-clock mechanism in its torso and a dignified face-like mask. A hint of flowing water powers its motion; no human operator. Head, hands and feet fully visible with generous margin. Painterly medieval fantasy collectible-card art, historically grounded Islamic geometric ornament, brass, wood, silk and water, warm directional light and rich atmospheric depth. Strict square 1:1 editable 512x512 composition, whole automaton within x24..488 y105..407 for a 206:141 wide card crop. No text or lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1201272f-d7b5-44a7-a8f8-1bd4e55a2e3a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop and 128-pixel thumbnail. Automaton head, eyes, water-clock torso and both articulated hands fit clearly; lower legs are outside the crop."
+  },
+  {
+    "cardId": "light_machine_23",
+    "name": "Su Song's Clock Tower",
+    "prompt": "Paint an illustration for Su Song's Clock Tower, the great 11th-century Chinese astronomical water-powered clock tower. Show its complete elegant three-tier timber pagoda tower in a distant landscape establishing view, compactly occupying only the central 55% of square height; full roof, base and surrounding waterwheel structure visible with clear margins. Include a small bronze armillary sphere and a few mechanical clockwork details as accurate focal cues, beside a quiet river and distant Kaifeng rooftops. Painterly medieval fantasy collectible-card art, historically inspired Song dynasty architecture, fine wood joinery, bronze, warm dawn light and atmospheric depth. Strict square 1:1 editable 512x512 master; entire named clock tower within x24..488 y105..407 of wide 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1c420729-ba09-4a46-8736-b19df855c096.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.445
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Entire clock tower from finial to waterwheel base fits; armillary sphere and Song-style eaves stay readable."
+  },
+  {
+    "cardId": "light_machine_24",
+    "name": "Warwolf Trebuchet",
+    "prompt": "Paint an illustration for Warwolf Trebuchet, a legendary medieval counterweight trebuchet. Show the complete massive but compact timber engine in horizontal three-quarter view: sturdy A-frame base, huge counterweight box, pivoting throwing arm, sling and stone projectile, all fully visible with clear margin. The arm is caught mid-swing, releasing a boulder toward a distant fortress; keep machine geometry the main subject, no operators. Broad low composition with quiet sky and ground. Painterly medieval fantasy collectible-card art, historically plausible timber bracing, iron pins, rope and counterweight, dramatic directional light, atmospheric depth. Strict square 1:1 editable 512x512 canvas; whole throwing arm, base, weight and sling within x24..488 y105..407 for 206:141 card crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b54a6e5a-970c-4f69-a1a5-e6df8af0131c.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.473
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Complete trebuchet arm, sling and projectile, counterweight, A-frame and base fit with margin."
+  },
+  {
+    "cardId": "light_machine_25",
+    "name": "Krak des Chevaliers",
+    "prompt": "Paint an illustration for Krak des Chevaliers, the great Crusader fortress in Syria. Show a complete recognizable hilltop castle in a landscape establishing view, compactly framed and broad rather than tall: concentric massive stone curtain walls, round projecting towers, a strong gate and central keep, with dry mountain hills behind. Entire castle silhouette and base visible with quiet margins; no close-up and no cropped tower tops. Historically grounded 12th-century Hospitaller architecture, pale weathered limestone and warm sunset, painterly medieval fantasy collectible-card art with atmospheric depth. Strict square 1:1 editable 512x512 master; whole fortress within x24..488 y105..407 for wide 206:141 crop. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-179c7dfe-ce26-40e8-b42a-b65fb73ad34a.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Complete concentric fortress, towers, central keep, gate and base fit; the castle is readable at thumbnail size."
   }
 ]

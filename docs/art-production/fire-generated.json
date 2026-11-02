@@ -4205,5 +4205,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Recomposed as a low, wide side view. The complete arm, sling tip, counterweight, upright supports and full ground base fit within the centered 206:141 crop; the 128px thumbnail still reads as a trebuchet. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_scorch",
+    "name": "Scorch, the Red Fox",
+    "prompt": "Recompose this exact character as Scorch, the Red Fox, preserving his russet anthropomorphic fox identity, dark red mantle, archer gear, fire darts and medieval fantasy mood. Make a true square 1:1 illustration. Position the entire fox head with both complete ears safely inside the composition, with at least 35px of clear margin above and at the left edge; keep full face and natural-sized amber eyes readable. Put his throwing arm and open dart-casting hand beside the face at similar height, with the three fire darts visible crossing the open right side. Keep head, both eyes, ears and relevant hand fully inside x24..488,y105..407 on the normalized square. Arrange subject horizontally through the middle, quiet expendable scenery above and below. Make the fox hero smaller in frame so no head or hand is cropped. Keep nuanced painterly fantasy illustration, believable fur/leather, strong dusk firelight, no cartoon mascot, no text or frame.",
+    "generatedPath": "/workspace/generated_images/exec-cae949cf-d6ac-47c3-a25e-bcbd9cdc75bf.png",
+    "editableSourcePath": "game/cards/art/masters/hero_scorch.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed to move the complete fox head and both ear tips into the square source. Center wide crop and thumbnail retain full ears, face, eyes and dart-casting hand; secondary arm/hand remains visible. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_13",
+    "name": "Stone Bastion",
+    "prompt": "Create a square 1:1, 512x512-source illustration for the Hexmancers card “Stone Bastion”. A compact but imposing stone bastion with square crenellated tower, thick curtain walls and a sturdy central gate, shown in a low three-quarter view on a volcanic ridge. Distinct masonry blocks and defensive merlons are clear; restrained ember glow from small brazier slits, a few distant sparks. Keep the complete bastion silhouette inside the central horizontal safe band; no people, no modern architecture. Painterly medieval/high-fantasy collectible-card art, visible nuanced brushwork, believable stone/wood/iron/leather, dramatic readable lighting and atmospheric depth. Keep the entire named machine geometry or hero’s full head/eyes/relevant hands and named object within x24..488,y105..407 for the 206:141 crop. Use a horizontal arrangement and quiet expendable scenery above/below. Strong subject, legible at 128px. No card frame, words, letters, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d8faa87-d4ef-4f60-9fdc-8053a53b99c9.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_13.png",
+    "sourceNative": [
+      1627,
+      967
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37 to show the complete tower top and crenellations while keeping the central gate and fortress walls in the wide crop; the 128px thumbnail reads as a bastion. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_pyrrhus",
+    "name": "Pyrrhus the Bombardier",
+    "prompt": "Create a square 1:1, 512x512-source illustration for the Hexmancers card “Pyrrhus the Bombardier”. A seasoned human medieval bombardier hero, determined expressive face with clear eyes, dark russet beard and soot-marked brow, wearing layered leather and iron armor. He holds a compact glass-and-metal firebomb in one hand and steadies it with the other, the glowing bomb beside his face at the same height; a soft translucent protective ember shield arcs behind him. Keep face, both hands and complete bomb within the wide safe area. No oversized weapon. Painterly medieval/high-fantasy collectible-card art, visible nuanced brushwork, believable stone/wood/iron/leather, dramatic readable lighting and atmospheric depth. Keep the entire named machine geometry or hero’s full head/eyes/relevant hands and named object within x24..488,y105..407 for the 206:141 crop. Use a horizontal arrangement and quiet expendable scenery above/below. Strong subject, legible at 128px. No card frame, words, letters, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-27e5da0f-e6d0-4176-a576-a41d567fb5bf.png",
+    "editableSourcePath": "game/cards/art/masters/hero_pyrrhus.png",
+    "sourceNative": [
+      1402,
+      1122
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.42; wide crop retains Pyrrhus’s complete hair/head and clear eyes, both hands and the full firebomb, with the protective ember shield behind him. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_14",
+    "name": "Firework Launcher",
+    "prompt": "Recompose the Firework Launcher as a compact, low-profile medieval wooden catapult, keeping the same fantasy firework motif and painterly siege atmosphere. Show the entire machine in a wide three-quarter side view: complete throwing arm and sling, launch basket loaded with small colored fireworks, full support frame, both wheels and ground base. Make its whole silhouette fit comfortably within y125..385 and x24..488 of a square 512x512 source, occupying less than half the image height. Keep a low angle on the arm so it does not rise into the sky; show quiet night sky above and clear ground below. A few fireworks arc in the background. The full named launcher remains the primary subject; no parts cut by edges. Medieval wood joinery, rope and iron pins, no modern tubes. Painterly medieval fantasy card art. Square composition, no text or frame.",
+    "generatedPath": "/workspace/generated_images/exec-bbcb1cd6-6dee-4990-8ff8-e63ec634e06b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed as a compact low-profile catapult; centered wide crop and 128px thumbnail retain the full throwing arm, sling/basket, support frame, both wheels and ground base. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_15",
+    "name": "The Great Bombard",
+    "prompt": "Recompose this as “The Great Bombard,” preserving the medieval iron cannon and timber siege carriage, but pull the view back enough to show the complete weapon. True square 1:1 composition. Include the full barrel from breech to muzzle, all supporting timber beams, both complete wheels and the full carriage base, together in a low horizontal side view. Keep every part of the cannon within x24..488,y120..390 of the square for the 206:141 crop. Let the whole bombard be smaller in frame, with quiet sky above and visible ground below. Keep the cannon clearly large and legendary, textured iron bands, medieval craftsmanship, one restrained fire blast toward distant fortress. No people needed, no modern cannon design, no cropped wheel or barrel end. Painterly medieval fantasy card art; no words, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-fa3bbc07-eb26-43b4-b915-b082cceb8b95.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed as a pulled-back horizontal side view. The entire barrel, breech, both wheels and carriage base fit inside the centered wide crop and remain identifiable at 128px. Awaiting parent review."
   }
 ]

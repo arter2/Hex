@@ -1,8 +1,8 @@
 # Batch 15 production progress
 
-**107 of 119 new 512×512 sources saved; 89 approved.**
+**111 of 119 new 512×512 sources saved; 106 approved.**
 
-12 sources remain ungenerated. 0 saved sources require repainting. 18 packets of up to five cards passed parent crop/thumbnail review.
+8 sources remain ungenerated. 0 saved sources require repainting. 22 packets of up to five cards passed parent crop/thumbnail review.
 
 Current runtime: 1834 illustrations. Starting baseline: 1834; target: 1953. No complete batch-15 delivery has been prepared yet.
 
@@ -42,20 +42,24 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Vodyanoy | `frost_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_46.png) |
 | Ahuizotl | `frost_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_47.png) |
 | Taniwha | `frost_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_48.png) |
-| Arachna | `hero_arachna` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_arachna.png) |
-| Corvina, Raven Witch | `hero_corvina` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_corvina.png) |
-| Crysta the Shardmaid | `hero_crysta` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_crysta.png) |
+| Brother Aldric | `hero_aldric` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_aldric.png) |
+| Arachna | `hero_arachna` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_arachna.png) |
+| Corvina, Raven Witch | `hero_corvina` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_corvina.png) |
+| Crysta the Shardmaid | `hero_crysta` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_crysta.png) |
 | Vinewhip Dara | `hero_dara` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_dara.png) |
-| Squall Rider Kiri | `hero_kiri` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_kiri.png) |
-| Necros the Bone Lord | `hero_necros` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_necros.png) |
-| Nix the Snow Owl | `hero_nix` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_nix.png) |
-| Old Permafrost | `hero_permafrost` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_permafrost.png) |
+| Lady Glace | `hero_glace` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_glace.png) |
+| Squall Rider Kiri | `hero_kiri` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_kiri.png) |
+| Necros the Bone Lord | `hero_necros` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_necros.png) |
+| Nix the Snow Owl | `hero_nix` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_nix.png) |
+| Old Permafrost | `hero_permafrost` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_permafrost.png) |
 | Pyrrhus the Bombardier | `hero_pyrrhus` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_pyrrhus.png) |
+| Salamandra | `hero_salamandra` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_salamandra.png) |
 | Scorch, the Red Fox | `hero_scorch` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_scorch.png) |
-| Sleet, the Hail Archer | `hero_sleet` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_sleet.png) |
+| Sleet, the Hail Archer | `hero_sleet` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sleet.png) |
 | The Sporelord | `hero_sporelord` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sporelord.png) |
-| Stati, the Static Witch | `hero_stati` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_stati.png) |
+| Stati, the Static Witch | `hero_stati` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_stati.png) |
 | Thistle the Hedge Knight | `hero_thistle` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_thistle.png) |
+| Vulcan the Smith | `hero_vulcan` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_vulcan.png) |
 | Ymir the Frost Giant | `hero_ymir` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_ymir.png) |
 | Siege Tower | `light_machine_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_12.png) |
 | Motte-and-Bailey Palisade | `light_machine_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_13.png) |
@@ -86,8 +90,8 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Dullahan | `shadow_summon_66` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_66.png) |
 | Grim Reaper | `shadow_summon_67` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_67.png) |
 | Baba Yaga | `shadow_summon_68` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_68.png) |
-| The Erlking | `shadow_summon_69` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/shadow_summon_69.png) |
-| Iron Maiden | `shadow_summon_70` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/shadow_summon_70.png) |
+| The Erlking | `shadow_summon_69` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_69.png) |
+| Iron Maiden | `shadow_summon_70` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_70.png) |
 | Zhuge Repeater | `storm_machine_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_12.png) |
 | Tortoise War Wagon | `storm_machine_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_13.png) |
 | Sandstone Rampart | `storm_machine_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_14.png) |
@@ -96,9 +100,9 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Elephant Clock Automaton | `storm_machine_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_17.png) |
 | Coin-Spitting Mortar | `storm_machine_18` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_18.png) |
 | Clockwork Flying Carpet | `storm_machine_19` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_19.png) |
-| Hang-Glider Scout | `storm_machine_20` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_machine_20.png) |
-| The Thunder Engine | `storm_machine_21` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_machine_21.png) |
-| The Bronze Colossus | `storm_machine_22` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_machine_22.png) |
+| Hang-Glider Scout | `storm_machine_20` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_20.png) |
+| The Thunder Engine | `storm_machine_21` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_21.png) |
+| The Bronze Colossus | `storm_machine_22` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_22.png) |
 | Spark Sprite | `storm_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_48.png) |
 | Coin-Hoard Dragon | `storm_summon_50` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_50.png) |
 | Sundarbans Tiger | `verdant_summon_53` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_53.png) |

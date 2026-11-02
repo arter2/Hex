@@ -4295,10 +4295,10 @@
     ],
     "focalPoint": [
       0.5,
-      0.39
+      0.36
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental."
+    "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental. Parent square review found the central crown tip above the previous crop; shifted focal point to y=0.36 and checked the revised crop/thumbnail with the complete crown tip and raised fingers visible."
   }
 ]

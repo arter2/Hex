@@ -4295,5 +4295,41 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Recomposed as a pulled-back horizontal side view. The entire barrel, breech, both wheels and carriage base fit inside the centered wide crop and remain identifiable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_salamandra",
+    "name": "Salamandra",
+    "prompt": "Create a true 1:1 square illustration for the Hexmancers hero card “Salamandra”, intended as a 512x512 editable art source. A mythic fire salamander, an elegant long-bodied lava-scaled lizard with four sturdy legs, ember orange along dark bronze-black scales, luminous natural-sized eyes, and clear searing jaws. It strikes forward to bite, head and full mouth prominent in the middle, a few sparks and a glowing ember trail mark the hit; dark basalt and warm cavern glow behind. Keep the entire head, both eyes and jaws clearly visible, creature silhouette recognizable as salamander not a dragon, no wings. Grounded painterly medieval/high-fantasy collectible-card art, visible brushwork, nuanced believable scales/skin/leather/iron, dramatic directional forge or ember light, atmospheric depth. Keep the primary face/head, realistic-sized eyes and relevant jaws or hands/hammer entirely inside x24..488,y105..407 for the 206:141 crop. Compose horizontally across the middle with quiet scenery above and below; clear at 128px. No card frame, text, lettering, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-009a4407-cbc4-4a19-832a-b08a2749f47e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_salamandra.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Centered wide crop and 128px thumb keep Salamandra’s full head, both eyes, open searing jaws and foreclaws intact; reads clearly as a fire salamander. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_vulcan",
+    "name": "Vulcan the Smith",
+    "prompt": "Create a true 1:1 square illustration for the Hexmancers hero card “Vulcan the Smith”, intended as a 512x512 editable art source. A powerful, seasoned human medieval master smith with a weathered expressive face, clear eyes, soot-dark beard and thick leather apron over ironwork clothes. He lifts a compact but weighty blacksmith’s hammer in one hand at shoulder height while his other hand guides a controlled burst of fiery sparks from an anvil; forged iron and hot metal glow around him. Keep his whole head, eyes, hammer hand and complete hammer clear together, with the hammer beside his face at a similar height. No oversized weapon. Grounded painterly medieval/high-fantasy collectible-card art, visible brushwork, nuanced believable scales/skin/leather/iron, dramatic directional forge or ember light, atmospheric depth. Keep the primary face/head, realistic-sized eyes and relevant jaws or hands/hammer entirely inside x24..488,y105..407 for the 206:141 crop. Compose horizontally across the middle with quiet scenery above and below; clear at 128px. No card frame, text, lettering, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-667c8697-a7b8-4707-276f-7f7a3fc75ffc.png",
+    "editableSourcePath": "game/cards/art/masters/hero_vulcan.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Centered wide crop and thumb retain Vulcan’s full head and eyes, hammer head and gripping hand, plus his working hand and anvil. Awaiting parent review."
   }
 ]

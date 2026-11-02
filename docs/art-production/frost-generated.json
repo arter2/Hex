@@ -4324,11 +4324,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.4
+      0.37
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Crysta’s full crystalline diadem, face and eyes fit, with her outstretched casting hand and compact chain of ice shards legible."
+    "reviewNote": "Inspected the 512-square source, focal-y=0.37 crop and 128px thumbnail. Crysta’s complete fine crystal crown, face and eyes fit clearly, and the outstretched casting hand/fingers remain visible beside the ice shards."
   },
   {
     "cardId": "hero_permafrost",
@@ -4365,5 +4365,23 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Nix reads as a natural snowy owl with full rounded head, facial disk, both yellow eyes and hooked beak; the swooping wings are incidental."
+  },
+  {
+    "cardId": "hero_glace",
+    "name": "Lady Glace",
+    "prompt": "Paint original painterly medieval-fantasy card art for the exact card “Lady Glace.” Depict a regal adult frost sorceress in an elegant fully covering ice-blue gown and a delicate silver crystal crown, with a composed commanding face and both eyes fully visible. She raises one gloved hand and fires a narrow piercing beam of pale blue frost light horizontally across the scene at chest height; her second hand rests clearly near the sternum, both hands visible, the beam does not cross her face or crown. Keep her full head, crown and eyes dominant in the middle of the square, with the beam extending beside her across the row. Snowbound stone hall and soft drifting ice as quiet support. Painterly medieval high-fantasy collectible-card illustration, layered brush texture, nuanced cloth, crystal and silver, dramatic cold light and atmospheric depth; dignified, not sexualized. Exact 1:1 square editable 512x512; complete head/crown/eyes and both hands safely in x24..488,y105..407 for the 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d967ca2b-badf-4bac-a799-4c04f4289ac6.png",
+    "editableSourcePath": "game/cards/art/masters/hero_glace.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Lady Glace’s full crystal crown, face, eyes and both hands fit; a narrow frost beam extends horizontally from her raised hand without crossing her face."
   }
 ]

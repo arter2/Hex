@@ -3,11 +3,11 @@
   "workers": {
     "/root/b15_artist_1": {
       "packet": "fire-04",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b15_artist_2": {
       "packet": "frost-04",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b15_artist_3": {
       "packet": "light-03",
@@ -15,10 +15,10 @@
     },
     "/root/b15_artist_4": {
       "packet": "shadow-04",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b15_artist_5": {
-      "packet": "storm-03",
+      "packet": "storm-04",
       "state": "running"
     },
     "/root/b15_artist_6": {
@@ -44,7 +44,11 @@
     "frost-03",
     "verdant-04",
     "fire-03",
-    "verdant-05"
+    "verdant-05",
+    "shadow-04",
+    "fire-04",
+    "frost-04",
+    "storm-03"
   ],
   "reviewedSources": {
     "fire_summon_38": {
@@ -402,6 +406,74 @@
     "brood_hawk": {
       "file": "game/cards/art/masters/brood_hawk.png",
       "sha256": "ba9ebd9bedcccee42e0da6101f38e0e640a8c9d307043906457106bc374b0ade"
+    },
+    "shadow_summon_69": {
+      "file": "game/cards/art/masters/shadow_summon_69.png",
+      "sha256": "b8b8946fbac8f79cade9ef1cf0d3c14f2a5f1b69948a54cb05d6ab73a949def3"
+    },
+    "shadow_summon_70": {
+      "file": "game/cards/art/masters/shadow_summon_70.png",
+      "sha256": "16d4cadcdc35096d4100b315a90cd7ae567ff8ee5a7b510e06bf9722b28abccc"
+    },
+    "hero_arachna": {
+      "file": "game/cards/art/masters/hero_arachna.png",
+      "sha256": "99aec025b6cd710455281d7d0e5c1bd251f625f1c53bae07ddf41947255f669c"
+    },
+    "hero_necros": {
+      "file": "game/cards/art/masters/hero_necros.png",
+      "sha256": "e96d78b65c1847f3a6e13adb9c8d23beda4406dc7974796ea465d124fb3c0d35"
+    },
+    "hero_corvina": {
+      "file": "game/cards/art/masters/hero_corvina.png",
+      "sha256": "87125ba79b74087227a414a1b82368d91b36d5ff0efb542190a4148f1bab4981"
+    },
+    "hero_salamandra": {
+      "file": "game/cards/art/masters/hero_salamandra.png",
+      "sha256": "6b914862731367d80d283d445393b3c2da5f176b9d02e3c01b12cbd21c0bcd2a"
+    },
+    "hero_vulcan": {
+      "file": "game/cards/art/masters/hero_vulcan.png",
+      "sha256": "53b72a1c0314601792be20dbc739024e7f0d5b28ab356748f428a85acccbf024"
+    },
+    "hero_sleet": {
+      "file": "game/cards/art/masters/hero_sleet.png",
+      "sha256": "b6fa7ebd4fa56fb0213a1aeae327777e558c21e44e097f2cbf8081b7775edd41"
+    },
+    "hero_crysta": {
+      "file": "game/cards/art/masters/hero_crysta.png",
+      "sha256": "8e15dd21e7c8aa4fb4e041cb6e44e8289092355f84b332e104026d43b5d21124"
+    },
+    "hero_permafrost": {
+      "file": "game/cards/art/masters/hero_permafrost.png",
+      "sha256": "b0ca5eff2a0805332f0ea2c28547fdeff5c127df8d8c18856435c05b10592b8a"
+    },
+    "hero_nix": {
+      "file": "game/cards/art/masters/hero_nix.png",
+      "sha256": "3fdeedc7fdbc0e11242207c8817588f22e2ed782b40dfcbf18dc296163b2fb5d"
+    },
+    "hero_glace": {
+      "file": "game/cards/art/masters/hero_glace.png",
+      "sha256": "94c1c004a34dfa9fa8470af2c4ad61ead6700f43fb7916d386b5b5ec5707a182"
+    },
+    "storm_machine_20": {
+      "file": "game/cards/art/masters/storm_machine_20.png",
+      "sha256": "4c56878629dd1e556791eee2dae881b78905c4ba0af1b2d8be6932a152f3f49e"
+    },
+    "storm_machine_21": {
+      "file": "game/cards/art/masters/storm_machine_21.png",
+      "sha256": "7dad703e18999a611a85973ce79562cd9c69b4dd7bd53af262336802652ade02"
+    },
+    "storm_machine_22": {
+      "file": "game/cards/art/masters/storm_machine_22.png",
+      "sha256": "a4fe0c21d8bec3631d3ad09f6d0220e74306e3e8637fc8af5f848721b09e56b7"
+    },
+    "hero_stati": {
+      "file": "game/cards/art/masters/hero_stati.png",
+      "sha256": "a67cbfeaf6467fbb959fc183df8a67b40715b0696477f281711c38d321751e15"
+    },
+    "hero_kiri": {
+      "file": "game/cards/art/masters/hero_kiri.png",
+      "sha256": "8fa1ffc0c5b7a1b5fd27f4be4e0b078fa1c28c763847e605f028af41ca912f69"
     }
   }
 }

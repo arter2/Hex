@@ -4276,5 +4276,23 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail. Complete concentric fortress, towers, central keep, gate and base fit; the castle is readable at thumbnail size."
+  },
+  {
+    "cardId": "hero_aldric",
+    "name": "Brother Aldric",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Brother Aldric, a kindly battle-worn monk-priest and healer in simple ivory robes, a deep blue mantle and modest gold-trimmed mail, with a calm expressive face, clearly visible eyes and a close-cropped tonsure. Waist-up three-quarter composition. One hand is raised and open, calling a narrow radiant pillar of warm white-gold light down beside him; the other hand holds a gentle healing glow near his chest. His face, eyes and both hands are the unmistakable focal points, unobscured and fully inside the central wide crop. Quiet chapel-ruin background with directional golden light, painterly grounded anatomy, believable cloth and armor, rich atmosphere. Strictly square 1:1 editable 512x512 master. Keep head and both hands within x24..488 y105..407 for the 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aa1c4fff-b234-44f8-94dd-bd1f97f3601b.png",
+    "editableSourcePath": "game/cards/art/masters/hero_aldric.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Brother Aldric’s full face and eyes, raised casting hand and healing hand are all clear and fit with margin."
   }
 ]

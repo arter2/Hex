@@ -2,10 +2,10 @@
   "batch": 15,
   "status": "in-progress",
   "targetNewImages": 119,
-  "generatedSources": 0,
-  "reviewedSources": 0,
-  "missingSources": 119,
-  "reviewedPackets": 0,
+  "generatedSources": 25,
+  "reviewedSources": 15,
+  "missingSources": 94,
+  "reviewedPackets": 3,
   "requiresRepaint": [],
   "baselineActive": 1834,
   "targetActive": 1953,
@@ -15,5 +15,306 @@
   "catalogueRemainingAfterBatch": 0,
   "baselineRuntimeImageCount": 7400,
   "baselineGeneratedRecordCount": 1784,
-  "savedCards": []
+  "savedCards": [
+    {
+      "cardId": "fire_summon_38",
+      "name": "Fire Vampire",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_38.png",
+      "sha256": "a36c91312b72b677692cefb12ca21f48c584ae2240e61c85f5025cf55d2ed13b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "fire_summon_39",
+      "name": "Cinder Bat Swarm",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_39.png",
+      "sha256": "d232b8f138cec7a35632377a9f7240754ed16edad9c444c20c368aba88ba1c1f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_40",
+      "name": "Cinder Hound",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_40.png",
+      "sha256": "1f1efa49c331bca638ad95e0626aa6798ab5875dd9afb8619803253e89edad88",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_41",
+      "name": "Mole Miner",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_41.png",
+      "sha256": "de659c4619dfaff18c57e2ed1f24bb191b98e8620e6284452e66822ec14ef5d5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_42",
+      "name": "Lava Beetle",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_42.png",
+      "sha256": "dfb710036dad6ffc6916ea90fff66f47de7981c15563ac3bd8cf0edf433d7293",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_35",
+      "name": "Frost Giant",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_35.png",
+      "sha256": "5af741d014be77658363c8f5fe93582bcacaf847562489a8afb12b7312d460fc",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_36",
+      "name": "Pirate Deckhand",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_36.png",
+      "sha256": "39ae3941a56b1039f3bc6a970da18d38ef4497ca73b4cd2cb38d878078efcec7",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_37",
+      "name": "Buccaneer Captain",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_37.png",
+      "sha256": "6bc986838aebe1c100571d709ec6e5bfd53aa4307f120f39c560a4298ca3ce40",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_38",
+      "name": "Powder Monkey",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_38.png",
+      "sha256": "bc6ce85fda8173813b650049450a20e81a5d98aebe9a043514426e1a76850bc6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_39",
+      "name": "Flying Dutchman's Captain",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_39.png",
+      "sha256": "b53760100e92857afe19ae7c8d6ed01965e58982c2733ad937e4f2fca8d3ecd7",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "shadow_summon_54",
+      "name": "Asanbosam",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_54.png",
+      "sha256": "2a3307057701b227a23e2e0c571937863558c20902e6f2d3ab336381525d509c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_55",
+      "name": "Werewolf",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_55.png",
+      "sha256": "49dbdadbe07c48008321b697c467021c1fdbffa5f416834bdac57d8050ad2a38",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_56",
+      "name": "Black Shuck",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_56.png",
+      "sha256": "b79507280ba7c95ee58007db1339896433e051e24c2bd8db310f86a078786ebb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_57",
+      "name": "Antlered Hunger",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_57.png",
+      "sha256": "887745af1980f646ec1de60cedac25687aab761fea2b814379cb6cfdae113ffc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_58",
+      "name": "Jorogumo",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_58.png",
+      "sha256": "3e5fdb4ff507c53c34ff4da67faf8d8e9bdd08eb2dd9481738c2145dfaa6fb3a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "storm_machine_12",
+      "name": "Zhuge Repeater",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_12.png",
+      "sha256": "1b04f611e4dd9e1c519b383de4d3466fd9abd0411ad2f9cd62ea329c81079618",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_13",
+      "name": "Tortoise War Wagon",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_13.png",
+      "sha256": "466d00187c5eab03f6ab12945e4404bafa6bc8e52027ea01c4d26e2bc4b09855",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_14",
+      "name": "Sandstone Rampart",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_14.png",
+      "sha256": "41423bdf2925386a332fbef5ce078421f7ba2287a8718a15511a894ce7a3c62d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_48",
+      "name": "Spark Sprite",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_48.png",
+      "sha256": "781a5ac752691fa36684cc03ffbeb422f94552e57d49fa6d439fb023aed4fe3d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_50",
+      "name": "Coin-Hoard Dragon",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_50.png",
+      "sha256": "79cf9b1ef550ee1787ebbd5c3a85a4434a153a3c2a2b811312e548e850c33d56",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "verdant_summon_53",
+      "name": "Sundarbans Tiger",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_53.png",
+      "sha256": "cfc4884e007c8c455609b3c5744023965cf9aff320578a328c2337271d879849",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_54",
+      "name": "Horangi Mountain Tiger",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_54.png",
+      "sha256": "75b2751cebe69e44549ac688d08e712282db7a69f2ecc8ea42c98fd9f06d3469",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_55",
+      "name": "Greenwood Wolf Pack",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_55.png",
+      "sha256": "2d23e377ef91a8fe4f21447cc95389582dabdbacbee51ca6aac1e72f7c0df466",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_56",
+      "name": "Wild Tusker Boar",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_56.png",
+      "sha256": "916986ce20f9a73cdc5f15a2f911fedab834694d2209b0735a3890f685573c5f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_57",
+      "name": "Twrch Trwyth",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_57.png",
+      "sha256": "575876f3e27df50e1ec69ee8128e6c9e755100b8f060232b27cb93305fc10e19",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    }
+  ]
 }

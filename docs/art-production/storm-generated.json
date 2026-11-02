@@ -4030,5 +4030,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Both complete horns, full head/face/eyes and the reaching clawed hand now remain together with margin; wing tips and lower body are incidental."
+  },
+  {
+    "cardId": "storm_summon_48",
+    "name": "Spark Sprite",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Spark Sprite. Show two tiny swift spark sprites as vivid golden-blue lightning wisps with delicate expressive faces, dashing across a storm-dark ruined battlefield; their small glowing forms are the unmistakable focus. Painterly medieval fantasy collectible-card illustration, expressive brushwork, grounded light and atmospheric depth, richly detailed but readable at a 128-pixel thumbnail. Keep all sprite faces and forms inside x24–488, y105–407 of the 512-square composition; quiet storm sky and ground above/below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b5223f6-6c8f-4f64-8f9f-49f1d3cc7077.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; both sprite faces and forms remain visible. Rendering is more cute/cartoon-like than the painterly grounded target; flagged for parent style review."
+  },
+  {
+    "cardId": "storm_summon_50",
+    "name": "Coin-Hoard Dragon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Hoard Dragon. A powerful bronze-gold dragon crouches protectively atop a compact heap of ancient coins, its head and bright eyes clear, greedily gathering coins while a controlled beam of crackling storm energy arcs toward distant foes. Dragon and coin hoard dominate; medieval mountain vault atmosphere, painterly high fantasy collectible-card art, nuanced scales and coin reflections, dramatic directional light, readable silhouette. Keep dragon head, eyes, and hoard within x24–488, y105–407 on the 512 square; wings/tail may extend into quiet upper/lower scenery. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f8de240-a3bb-434f-a63c-82d0d6947592.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_50.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; dragon face, eyes and coin hoard remain intact. Dramatic polished rendering leans photorealistic; flagged for parent style review. Parent crop review found the dragon head/horns too high; shifted focalPoint upward to y=0.42 for the revised card crop."
+  },
+  {
+    "cardId": "storm_machine_12",
+    "name": "Zhuge Repeater",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Zhuge Repeater. Depict a compact ancient Chinese-inspired wooden repeating crossbow mounted on a low wheeled field frame, clearly showing its top magazine box, bow limbs, taut string and short bolt feeding mechanism. It fires a rapid fan of several bolts across a misty medieval battlefield, with subtle blue storm energy along the bolts. The machine is the only primary subject, horizontal composition; painterly high fantasy collectible-card art, richly tactile wood, bronze fittings, dramatic light, strong readable silhouette. Keep the complete named repeater and important mechanism entirely within x24–488, y105–407 on a 512 square; quiet scenery above and below. No operator needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6158b93f-d27c-42a2-bdb1-a4361e44b8af.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete repeater, magazine, bow limbs, wheels and fired bolts remain visible. Strong readable mechanical silhouette."
+  },
+  {
+    "cardId": "storm_machine_13",
+    "name": "Tortoise War Wagon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Tortoise War Wagon. Show a massive low medieval siege wagon with a distinct domed tortoise-shell armored roof, overlapping bronze-edged plates, sturdy wheels, and a narrow guarded firing slit; unmistakably a mobile bulwark, slowly rolling through a stormy mountain pass. The whole wagon is primary and fills the horizontal middle. Painterly high fantasy collectible-card illustration, believable weathered wood and metal, dramatic directional light, atmospheric depth and readable silhouette. Keep entire wagon, all wheels and shell roof within x24–488, y105–407 of the 512-square composition; quiet sky and ground above/below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-945b80cf-6ce6-40b5-8be5-ebe42a8e7644.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; full armored shell, wagon body and all wheels remain visible. Rendering leans photorealistic; flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_14",
+    "name": "Sandstone Rampart",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Sandstone Rampart. Show a monumental low medieval fortress wall of warm ochre sandstone blocks, broad and unambiguously horizontal, with sturdy buttresses and a few crenellations. A compact pair of storm-blue rune lanterns embedded in the parapet glows as the rampart raises a protective shimmering ward along its face. The massive stone rampart itself is the primary subject, not a spell effect. Painterly medieval high-fantasy collectible-card art, visible brushwork, tactile weathered masonry, directional golden light and storm atmosphere, readable bold silhouette. Keep the full wall from both ends, buttresses and parapet inside x24–488,y105–407 on the 512 square, quiet sky/ground above and below. No people needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b02f2f7f-a335-4a03-a9d1-68199f17e06f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128-pixel thumbnail inspected; entire sandstone wall, parapet and buttresses remain visible. Rampart reads clearly at thumbnail size; rendering leans photorealistic, flagged for parent style review."
   }
 ]

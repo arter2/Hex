@@ -4032,5 +4032,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the full 512-square source, direct 206:141 crop and 128×88 thumbnail: both eyes, muzzle and defining cloud-shaped coat blotches read clearly; legs and tail are incidental."
+  },
+  {
+    "cardId": "verdant_summon_53",
+    "name": "Sundarbans Tiger",
+    "prompt": "Paint an illustration for “Sundarbans Tiger”. A mighty Royal Bengal tiger pounces through the tangled mangrove roots of the Sundarbans at the edge of a tidal creek, shoulders low, striped face and amber eyes dominant, paws driving through wet leaves; hints of misty estuary and mangrove canopy. Keep the entire head, eyes and forepaws safely inside the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable fur, forest materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical face, eyes, ears and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom. ",
+    "generatedPath": "/workspace/generated_images/exec-71aaf7e9-52f6-45da-8204-3c34f436e8f0.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_53.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the exact 512-square source and actual 206:141 crop at card size. The primary face, eyes and relevant action remain clear with safe margins; the 128px thumbnail retains the named subject."
+  },
+  {
+    "cardId": "verdant_summon_54",
+    "name": "Horangi Mountain Tiger",
+    "prompt": "Paint an illustration for “Horangi Mountain Tiger”. An old Korean mountain tiger (horangi), weathered russet-gold coat with bold black stripes and a few pale whiskers, dashes across a rocky forest ridge at dawn; the animal's broad face and bright watchful eyes are dominant, mountain pine and mist behind. Keep full head, ears and leading paws within the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable fur, forest materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical face, eyes, ears and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom. ",
+    "generatedPath": "/workspace/generated_images/exec-8c5b9b52-a7f5-4e2e-902b-58890dda6fc3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_54.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the exact 512-square source and actual 206:141 crop at card size. The primary face, eyes and relevant action remain clear with safe margins; the 128px thumbnail retains the named subject."
+  },
+  {
+    "cardId": "verdant_summon_55",
+    "name": "Greenwood Wolf Pack",
+    "prompt": "Paint an illustration for “Greenwood Wolf Pack”. A compact pack of three wild gray wolves pounces through an ancient deep green forest clearing, the foremost wolf's intelligent eyes, ears and muzzle crisp and dominant, the two companions clearly supporting its movement; leaves and dappled shafts of sunlight, sturdy natural anatomy. Keep every visible wolf face and ears in the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable fur, forest materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical face, eyes, ears and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom. ",
+    "generatedPath": "/workspace/generated_images/exec-d49136c3-f159-4309-a216-b84f22632032.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_55.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the exact 512-square source and actual 206:141 crop at card size. The primary face, eyes and relevant action remain clear with safe margins; the 128px thumbnail retains the named subject."
+  },
+  {
+    "cardId": "verdant_summon_56",
+    "name": "Wild Tusker Boar",
+    "prompt": "Paint an illustration for “Wild Tusker Boar”. A massive wild tusker boar surges forward through a woodland glade, powerful bristled shoulders and unmistakable curved ivory tusks prominent, head lowered in a trample charge, leaf litter and roots kicked up; dramatic natural forest light. Keep the whole snout, eyes, both tusks and ears safely inside the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable fur, forest materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical face, eyes, ears and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom. ",
+    "generatedPath": "/workspace/generated_images/exec-3227200b-5759-4010-9213-e57364702318.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_56.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the exact 512-square source and actual 206:141 crop at card size. The primary face, eyes and relevant action remain clear with safe margins; the 128px thumbnail retains the named subject."
+  },
+  {
+    "cardId": "verdant_summon_57",
+    "name": "Twrch Trwyth",
+    "prompt": "Paint an illustration for “Twrch Trwyth”. Depict Twrch Trwyth, the legendary Welsh Arthurian boar, as one enormous ancient dire boar with coarse dark bristles, a scarred russet-black hide, fierce intelligent eyes and huge curved ivory tusks, charging out from a shadowy Celtic oakwood. Give the animal a supernatural, legendary presence through faint green-gold light in the drifting mist, while keeping the boar itself dominant and clearly a boar; no extra creatures or human riders. Keep the whole face, eyes, ears and both tusks within the central horizontal crop. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, believable fur, forest materials, attractive directional light, atmospheric depth and grounded anatomy, matching the supplied Hexmancers reference paintings. No anime, Disney-like cartoon proportions, photorealism, pixel art, text, lettering, border or UI. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the named subject horizontally in the central area; keep identity-critical face, eyes, ears and action within x24…488,y105…407 on the square because it will be shown in a 206:141 wide card crop. Quiet scenery fills top and bottom.",
+    "generatedPath": "/workspace/generated_images/exec-9a5bba0e-5126-47fc-9303-71aef37ed84f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_57.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the exact 512-square source, actual 206:141 crop and 128px thumbnail. The boar’s complete face, eyes, ears and tusks remain clear with safe margins; the thumbnail retains the legendary boar identity."
   }
 ]

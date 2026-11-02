@@ -4023,5 +4023,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reworked after the initial crop clipped the River Lung’s antler tips. Inspected the replacement 512-square source, revised true 206:141 crop (focal y=0.42) and 128px thumbnail; the complete short antlers, face/eyes and curled whiskers now fit with margin. The serpentine neck and healing water remain legible, with the deer subordinate."
+  },
+  {
+    "cardId": "frost_summon_35",
+    "name": "Frost Giant",
+    "prompt": "Paint an original illustration for the exact card name “Frost Giant.” A huge pale ogre frost giant dominates the scene, a weathered fur-cloaked colossus with a broad expressive face, icy blue eyes, tangled white beard and frost crusted skin, hurling a massive snow-packed boulder in a high arc toward a distant frozen battlefield. Keep the full head, both eyes, throwing hand and boulder clearly inside the central horizontal action band; a clear readable lob action, no other giant. Painterly medieval fantasy collectible-card illustration, rich brushwork, nuanced fur, stone and ice, dramatic glacial light with a warm torch glow far below. Exact 1:1 square for editable 512x512; keep face, hand and boulder inside x24..488,y105..407 for 206:141 crop, quiet snow sky and ground margins. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d1989a1-5f95-4531-944c-94d407dbcbf9.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and central 206:141 crop/128px thumbnail. Frost Giant reads clearly with full face and eyes, throwing arm and snow-packed boulder; the boulder top and incidental legs/background extend beyond the crop."
+  },
+  {
+    "cardId": "frost_summon_36",
+    "name": "Pirate Deckhand",
+    "prompt": "Paint original art for the exact card name “Pirate Deckhand.” Depict one scrappy young adult pirate deckhand sprinting in a sharp zigzag across the slick deck of an old wooden sailing ship in a cold northern sea, dodging a swinging rope and leaping past a coil of line; salt-stiff wool cap, patched blue coat, lively determined face, a short cutlass safely at their belt. Full head, eyes and both action hands visible, human not animal. Keep the deckhand the clear subject, one or two indistinct crew only far behind. Painterly medieval high fantasy collectible-card art, tactile wood, cloth and icy spray, dramatic cold daylight and warm lantern glow. Exact 1:1 square editable 512x512; keep head, hands and action in x24..488,y105..407 for 206:141 crop, quiet sea and sky margins. No modern ship fittings, no firearms, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b38b717-bf6f-4050-8fbb-c36fb6023d16.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Scrappy human deckhand’s complete head and wool cap, both hands and zigzag leap read clearly; lower legs and distant ship details are incidental."
+  },
+  {
+    "cardId": "frost_summon_37",
+    "name": "Buccaneer Captain",
+    "prompt": "Create original painterly medieval-fantasy collectible-card art for the exact card “Buccaneer Captain.” A sly, battle-hardened buccaneer knight captain stands at the bow of a weather-beaten wooden ship, face sharp and confident beneath a dark feathered hat, blue wool coat over worn mail, one gloved hand driving a slender cutlass forward in a decisive piercing thrust. Keep complete head, eyes, thrusting hand and sword hilt in the central horizontal action band; readable captain first, sword can angle inward and remain fully visible. Cold sea mist and a small crew as background accents. Rich visible brushwork, nuanced cloth, leather and steel, dramatic icy light with warm lantern rim light. Exact 1:1 square editable 512x512; critical face and relevant hand fit x24..488,y105..407 on 206:141 crop, quiet sea and deck margins. No modern nautical gear, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20480569-0f1d-4463-b3c2-35e66ae176b8.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Captain’s complete head, feathered hat, eyes, thrusting hand and hilt are clear; the sword point reaches the edge as incidental weapon extremity."
+  },
+  {
+    "cardId": "frost_summon_38",
+    "name": "Powder Monkey",
+    "prompt": "Paint an original illustration for the exact card name “Powder Monkey,” using the historical nautical meaning: a small, nimble young adult ship's powder runner, not an animal. The compact powder monkey has a human face, bright alert eyes, a patched sailor's cap and oversized wool coat, crouched beside a wooden cannon as a contained burst of powder smoke and orange sparks flares behind them; one hand shields their face, the other holds a small lidded powder flask close to the body. Make their quick, scrappy human identity and the cannon-deck blast unmistakable, with face and both hands clear; no injury. Old wooden sailing vessel in a cold storm, no modern equipment. Painterly high-fantasy card art, rich brushwork, nuanced wood, wool, brass and smoky light. Exact 1:1 square for editable 512x512; fit head, hands and flask in x24..488,y105..407 for 206:141 crop, quiet sea/sky margins. No text/frame/UI, no animal monkey, no modern cannon design, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b893ddf-d012-477f-bee0-0dedf2b4d26a.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Human powder runner’s complete head and cap, shielding hand and flask are clear beside the old cannon’s blast; no animal monkey or modern equipment."
+  },
+  {
+    "cardId": "frost_summon_39",
+    "name": "Flying Dutchman's Captain",
+    "prompt": "Create original painterly medieval fantasy collectible-card art for the exact card “Flying Dutchman's Captain.” Depict the grim ghostly captain of a legendary sailing ship: a spectral human sea captain in a weathered tricorn and torn naval coat, translucent pallid face with both eyes visible, commanding expression, one skeletal hand raised as icy mist and blue-white spectral light flows to mend a wounded ghostly sailor behind him. Dark wooden ship on a moonlit frozen sea, ghostly sails and cold spray; captain’s head and raised hand remain the clear primary subject, background crew subordinate. Keep full face, eyes and hand in the central horizontal action band; eerie yet grounded and solemn. Painterly medieval high-fantasy illustration, layered brush texture, nuanced wet cloth, wood, fog, silver moonlight and restrained warm lantern. Exact 1:1 square for editable 512x512; face and hand safely inside x24..488,y105..407 for 206:141 crop, quiet sky and water margins. No modern gear, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a4cfca3-fe8f-4de6-ad46-a4fe4e443f24.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source. The captain’s complete spectral face, eyes, tricorn and raised glowing hand are prominent; the smaller mended sailor is a clear secondary figure. Focal y=0.40 brings the hat fully into the horizontal crop."
   }
 ]

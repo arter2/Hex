@@ -4025,5 +4025,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Upward-adjusted crop keeps the ghost’s full head and luminous face, both hands and complete paper lantern intact in the 206:141 crop and 128px thumb. Painterly moonlit shrine. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_38",
+    "name": "Fire Vampire",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Fire Vampire”. A lean, striking medieval vampire with pale ash-streaked face, readable eyes, dark auburn hair, and a scorched burgundy cloak; his gloved hand holds a small ember-bright blade beside his face. He turns toward the viewer in a ruined stone hall as ember light catches his expression; grounded, dangerous, elegant. No fangs exaggerated. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked skin, leather, metal and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8546d65d-0879-4f9d-a6b6-994b631d6871.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.42: the wide crop now retains the complete head and hair while keeping the eyes, relevant hand and complete ember blade visible; awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_39",
+    "name": "Cinder Bat Swarm",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Cinder Bat Swarm”. A dense, coordinated swarm of small soot-black bats with ember-red undersides and glowing eyes sweeps across the frame in a curling horizontal wave above a firelit basalt cavern. Make individual bat silhouettes and leathery wings clear, one larger foreground bat anchoring the composition; no humanoid figure. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur, membrane and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-094a093b-b242-4a33-87d6-d2c3136d61b0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop centers the leading bat and keeps its face, eyes and wings legible among the swarm; the 128px thumbnail reads as a coordinated bat wave. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_40",
+    "name": "Cinder Hound",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Cinder Hound”. A powerful charcoal-black hound with ember-lit cracks in its coat lunges forward through volcanic ash, its full alert face and paws clearly visible. A few sparks trail behind; dusky red lava fissure and dark rock support the action. Grounded canine anatomy, no flames obscuring the hound. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a903f579-e344-4713-9441-acc1c5238f24.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop keeps the hound’s entire face, bright eyes and forward paws intact; at 128px its charging canine silhouette and ember markings remain clear. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_41",
+    "name": "Mole Miner",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Mole Miner”. A sturdy anthropomorphic mole miner with expressive muzzle and clear eyes, leather cap and compact pickaxe held beside his face, bursts through dark earth into a warm underground forge. Focus on head, working hand and entire pickaxe; stone and sparks are secondary. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur, leather, metal and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc091f35-b314-4990-bb1f-206fa5d44720.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop keeps the mole’s complete head and eyes, gripping hand and full pickaxe head in frame; the 128px thumbnail reads clearly as a mole miner. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_42",
+    "name": "Lava Beetle",
+    "prompt": "Create one square 1:1 illustration for the Hexmancers card “Lava Beetle”: a massive, memorable beetle with a broad black obsidian carapace, glowing orange seams between plates, six sturdy legs, and bright visible eyes. It braces its low armored body against volcanic rock, facing the viewer at a slight angle; the full shell, head and forelegs are clear and dominate the middle of the image. Emberlit cavern with restrained lava reflections in the background. Painterly medieval/high-fantasy collectible-card art, visible brushwork and softened painted edges, nuanced painted stone and shell surfaces, dramatic directional light, atmospheric depth; clearly hand-painted digital fantasy illustration, not photographic, not 3D-rendered. Compose horizontally with the named creature within x24..488,y105..407 for a 206:141 crop, quiet scenery above and below. Square finished painting, no border/text/UI, no anime/cartoon/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-826a33c0-01c7-4e45-98c9-47845981222b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The square source keeps the full shell, head and bright eyes prominent; the true wide crop retains the beetle’s head and forelegs, with its armored silhouette readable at 128px. Awaiting parent review."
   }
 ]

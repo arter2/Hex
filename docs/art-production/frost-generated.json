@@ -4203,5 +4203,95 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Polar Bear’s entire head, ears, eyes and muzzle are visible, with the pouncing forequarters clear against the arctic sea and glacier."
+  },
+  {
+    "cardId": "frost_summon_45",
+    "name": "River Mother's Herald",
+    "prompt": "Paint original fantasy card art for the exact card “River Mother's Herald.” A noble merfolk herald rises from a moonlit frozen river, an adult humanlike face with calm alert eyes, long dark riverweed hair, graceful blue-green fish-scaled shoulders and a modest layered mantle of pale cloth; the lower body is a fish tail in the water. The herald lifts a carved shell horn to rally unseen river kin, with the full face, eyes, both hands and horn kept clear and complete. The river spirit is dignified, not seductive; no exposed torso. Snow-dusted reeds and river ice frame the figure, with an aurora-like blue glow supporting rather than obscuring the subject. Painterly medieval high-fantasy collectible-card illustration, textured brushwork, nuanced scales, shell, water and cloth, dramatic cold light. Exact 1:1 square editable 512x512; keep head, hands and horn in x24..488,y105..407 for the 206:141 crop, quiet margins above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-edd13522-4ebc-468e-9817-5ce138ed17c8.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 crop/128px thumbnail. River Mother’s Herald’s complete face, eyes, both hands and shell horn are clear; fish tail and icy river establish the merfolk identity."
+  },
+  {
+    "cardId": "frost_summon_46",
+    "name": "Vodyanoy",
+    "prompt": "Create original painterly medieval-fantasy card art for the exact folklore name “Vodyanoy.” Depict the Slavic old water spirit as a squat, sturdy amphibious elder emerging from a dark icy river: broad toad-like face and mouth, small watchful eyes, long wet gray beard, mossy hair and rough green-brown skin, with webbed hands braced on a stone. Keep the complete distinctive toadlike head, both eyes and hands visible; no human pirate or mermaid. Cold river pool, reeds and a half-submerged mill wheel as quiet old-world context. Grounded folkloric fantasy, dignified but eerie, rich visible brushwork, wet skin, moss and dark water, pale winter moonlight and a restrained warm lantern. Exact 1:1 square for editable 512x512; head and hands inside x24..488,y105..407 in the 206:141 crop, quiet margins. No modern items, text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-09772142-1832-459d-b6d7-bcfeca83b4c5.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 crop/128px thumbnail. Vodyanoy’s full toadlike head, watchful eyes and webbed hands are visible; mossy hair, beard and cold river establish the Slavic water-spirit identity."
+  },
+  {
+    "cardId": "frost_summon_47",
+    "name": "Ahuizotl",
+    "prompt": "Paint original respectful folklore-inspired fantasy art for the exact card “Ahuizotl.” Show the Ahuizotl as a distinctive small-to-medium aquatic doglike animal from Mexica/Aztec tradition: sleek dark wet fur, pointed ears, alert canine face and long flexible tail ending in a clearly visible humanlike grasping hand with fingers. It crouches at the edge of a still lake among reeds, using the tail-hand to reach toward the water; keep the full face, eyes and tail-hand together within the central horizontal action band so the identifying hand-at-tail is unmistakable. Natural animal anatomy, not a human hybrid or ordinary otter. Painterly grounded fantasy with layered brushwork, dark fur, cold water and reeds; subtle Mesoamerican landscape context only, no sacred symbols, ritual objects or people. Exact 1:1 square editable 512x512; face, eyes and complete tail-hand fit x24..488,y105..407 for the 206:141 crop, quiet sky/water margins. No text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-63ca9b22-ff59-44d4-abcb-3f5c786ad946.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_47.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Ahuizotl reads as a sleek aquatic canine with pointed ears, alert face and the defining grasping hand at the tip of its long tail, all visible."
+  },
+  {
+    "cardId": "frost_summon_48",
+    "name": "Taniwha",
+    "prompt": "Create original painterly fantasy card art for the exact card “Taniwha,” respectfully inspired by Māori traditions of powerful water guardians and monsters. Depict an ancient serpentine taniwha surging in a pouncing arc from a cold mountain river, with a broad crocodilian head, watchful eyes, strong jaws and a long scaled water-serpent body; no wings, horns, human face, tattoos or cultural regalia. Keep the whole head, eyes and jaw in the central action band; the long body may continue beyond the frame. It breaks a sheet of river ice beside dark volcanic basalt, with a small warm reflection beneath the water suggesting scorched power, not a fireball. Grounded natural history meets mythic fantasy, rich visible brush texture, nuanced scales and spray, dramatic cold light. Exact 1:1 square for editable 512x512; head and eyes inside x24..488,y105..407 on 206:141 crop, quiet margins. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-521aee2e-1f25-469a-8236-701ee96b5ac0.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Taniwha’s complete crocodilian head, eyes and jaws remain prominent; its long serpentine body breaks through ice, with dark basalt and warm under-water light as supporting context."
+  },
+  {
+    "cardId": "hero_ymir",
+    "name": "Ymir the Frost Giant",
+    "prompt": "Paint original heroic medieval Norse-fantasy card art for the exact card “Ymir the Frost Giant.” A colossal frost giant king towers over an icy fjord, shown from waist/chest up at a clear middle distance so his complete head, eyes, shoulders and both hands fit with generous space. He has a weathered blue-gray face, thick frost-white beard, windblown pale hair, a simple ice circlet and ancient fur-lined iron armor, dignified and powerful. Ymir hurls a compact glacier boulder from one raised hand across the fjord; keep the entire boulder and throwing hand beside his head at the same height, fully visible within the card crop. Cold armor glints and the glacier splash below him suggests his protective presence. Painterly high-fantasy collectible-card illustration with visible brushwork, nuanced skin, fur, ice and iron, dramatic glacial light and atmospheric depth. Exact 1:1 square editable 512x512; keep face, eyes, hands and glacier boulder inside x24..488,y105..407 on the 206:141 crop, quiet sky/ice margins above and below. No text, frame, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-81ee960a-f54f-42c5-a185-4569646c46ab.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ymir.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.35 206:141 crop and 128px thumbnail. Ymir’s complete face, eyes, ice circlet, both hands and glacier boulder fit clearly; his massive armor and fjord convey scale."
   }
 ]

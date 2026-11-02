@@ -6,15 +6,15 @@
       "state": "running"
     },
     "/root/b15_artist_2": {
-      "packet": "frost-03",
+      "packet": "frost-04",
       "state": "running"
     },
     "/root/b15_artist_3": {
-      "packet": "light-02",
+      "packet": "light-03",
       "state": "running"
     },
     "/root/b15_artist_4": {
-      "packet": "shadow-03",
+      "packet": "shadow-04",
       "state": "running"
     },
     "/root/b15_artist_5": {
@@ -38,7 +38,10 @@
     "frost-02",
     "fire-02",
     "storm-02",
-    "verdant-03"
+    "verdant-03",
+    "light-02",
+    "shadow-03",
+    "frost-03"
   ],
   "reviewedSources": {
     "fire_summon_38": {
@@ -280,6 +283,66 @@
     "verdant_summon_67": {
       "file": "game/cards/art/masters/verdant_summon_67.png",
       "sha256": "9132f6ca0cbeee5e01da598bd20697f7f9e1d371b05daa8869860a8626ee3706"
+    },
+    "light_machine_17": {
+      "file": "game/cards/art/masters/light_machine_17.png",
+      "sha256": "4b16120f477e3ec3b1833e39ad4a88dd0b3cb7355c43e5396ceffdae9ef2034c"
+    },
+    "light_machine_18": {
+      "file": "game/cards/art/masters/light_machine_18.png",
+      "sha256": "0271827c7633382120b09d91f41defd16ea67f58cf9bf9e4a5a127216d3709c1"
+    },
+    "light_machine_19": {
+      "file": "game/cards/art/masters/light_machine_19.png",
+      "sha256": "a11943b2bfa51f71624872b8dbac7fc747fcf9a4d7f71638cc813abb1c1b9682"
+    },
+    "light_machine_20": {
+      "file": "game/cards/art/masters/light_machine_20.png",
+      "sha256": "92b8aa80fb6e2564c99f68941e6e0a75793d696bf0f008b4a2f29135968a84b2"
+    },
+    "light_machine_21": {
+      "file": "game/cards/art/masters/light_machine_21.png",
+      "sha256": "0971debe65801ec8ec135d62224555c4102879838ebc1a3b1afabcafe81c2a4b"
+    },
+    "shadow_summon_64": {
+      "file": "game/cards/art/masters/shadow_summon_64.png",
+      "sha256": "998ac84073b272a25ebdda125d6a707f2b9848c76c5fe87303531329df0b9ff0"
+    },
+    "shadow_summon_65": {
+      "file": "game/cards/art/masters/shadow_summon_65.png",
+      "sha256": "452064515de160fcb5ae8f457894cdc4101f929b69c962fc01b37c30ec533c93"
+    },
+    "shadow_summon_66": {
+      "file": "game/cards/art/masters/shadow_summon_66.png",
+      "sha256": "602f9e275ca6a8d9433c37d86354b5c3d63fb173f2e332ba30c9bf9e6dc95470"
+    },
+    "shadow_summon_67": {
+      "file": "game/cards/art/masters/shadow_summon_67.png",
+      "sha256": "c8ccf8acb25b269371ffeb01a33cbf0f2945d963ab3d3023ccda4361fdef7e6d"
+    },
+    "shadow_summon_68": {
+      "file": "game/cards/art/masters/shadow_summon_68.png",
+      "sha256": "4b2c880887d31b53c4e08fc692e9bc6d70e9734bef3737044ffb2d806c55bb77"
+    },
+    "frost_summon_45": {
+      "file": "game/cards/art/masters/frost_summon_45.png",
+      "sha256": "99e7c3fdd2fefd3a6bca63c59f746f80c15ecab029d509ce9f77bbeab9431c08"
+    },
+    "frost_summon_46": {
+      "file": "game/cards/art/masters/frost_summon_46.png",
+      "sha256": "9bdcf8f02c78969b1bc733138ffeaef38d246596cfa3409f7edfef82378efe28"
+    },
+    "frost_summon_47": {
+      "file": "game/cards/art/masters/frost_summon_47.png",
+      "sha256": "6470be6d370a064de7eeccf92bd3e85fcd855445feec6a126ccdd7f5493bb631"
+    },
+    "frost_summon_48": {
+      "file": "game/cards/art/masters/frost_summon_48.png",
+      "sha256": "0e2424a250324ca38a3b289e119f9fea9890dad31bd9ec5955d4b89b343a5942"
+    },
+    "hero_ymir": {
+      "file": "game/cards/art/masters/hero_ymir.png",
+      "sha256": "3112fe45bbc8f4b700613508cc839525357d7b5ad328cde72a0bd1e193f0dc24"
     }
   }
 }

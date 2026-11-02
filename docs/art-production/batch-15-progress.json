@@ -2,10 +2,10 @@
   "batch": 15,
   "status": "in-progress",
   "targetNewImages": 119,
-  "generatedSources": 64,
-  "reviewedSources": 60,
-  "missingSources": 55,
-  "reviewedPackets": 12,
+  "generatedSources": 79,
+  "reviewedSources": 75,
+  "missingSources": 40,
+  "reviewedPackets": 15,
   "requiresRepaint": [],
   "baselineActive": 1834,
   "targetActive": 1953,
@@ -257,6 +257,78 @@
       ]
     },
     {
+      "cardId": "frost_summon_45",
+      "name": "River Mother's Herald",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_45.png",
+      "sha256": "99e7c3fdd2fefd3a6bca63c59f746f80c15ecab029d509ce9f77bbeab9431c08",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_46",
+      "name": "Vodyanoy",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_46.png",
+      "sha256": "9bdcf8f02c78969b1bc733138ffeaef38d246596cfa3409f7edfef82378efe28",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_47",
+      "name": "Ahuizotl",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_47.png",
+      "sha256": "6470be6d370a064de7eeccf92bd3e85fcd855445feec6a126ccdd7f5493bb631",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_48",
+      "name": "Taniwha",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_48.png",
+      "sha256": "0e2424a250324ca38a3b289e119f9fea9890dad31bd9ec5955d4b89b343a5942",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sporelord",
+      "name": "The Sporelord",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_sporelord.png",
+      "sha256": "50975296d3fa85550a1c0ff65d214f55939d00b3e8cc1a2d812590c82e1460cd",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "hero_ymir",
+      "name": "Ymir the Frost Giant",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_ymir.png",
+      "sha256": "3112fe45bbc8f4b700613508cc839525357d7b5ad328cde72a0bd1e193f0dc24",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
       "cardId": "light_machine_12",
       "name": "Siege Tower",
       "colour": "light",
@@ -322,7 +394,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_17.png",
       "sha256": "4b16120f477e3ec3b1833e39ad4a88dd0b3cb7355c43e5396ceffdae9ef2034c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.34
@@ -334,7 +406,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_18.png",
       "sha256": "0271827c7633382120b09d91f41defd16ea67f58cf9bf9e4a5a127216d3709c1",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.54
@@ -346,7 +418,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_19.png",
       "sha256": "a11943b2bfa51f71624872b8dbac7fc747fcf9a4d7f71638cc813abb1c1b9682",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.46
@@ -358,10 +430,22 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_20.png",
       "sha256": "92b8aa80fb6e2564c99f68941e6e0a75793d696bf0f008b4a2f29135968a84b2",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "light_machine_21",
+      "name": "Claw of Archimedes",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_21.png",
+      "sha256": "0971debe65801ec8ec135d62224555c4102879838ebc1a3b1afabcafe81c2a4b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
       ]
     },
     {
@@ -482,6 +566,66 @@
       "focalPoint": [
         0.5,
         0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_64",
+      "name": "Gashadokuro",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_64.png",
+      "sha256": "998ac84073b272a25ebdda125d6a707f2b9848c76c5fe87303531329df0b9ff0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "shadow_summon_65",
+      "name": "La Llorona",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_65.png",
+      "sha256": "452064515de160fcb5ae8f457894cdc4101f929b69c962fc01b37c30ec533c93",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_66",
+      "name": "Dullahan",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_66.png",
+      "sha256": "602f9e275ca6a8d9433c37d86354b5c3d63fb173f2e332ba30c9bf9e6dc95470",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_67",
+      "name": "Grim Reaper",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_67.png",
+      "sha256": "c8ccf8acb25b269371ffeb01a33cbf0f2945d963ab3d3023ccda4361fdef7e6d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
+      "cardId": "shadow_summon_68",
+      "name": "Baba Yaga",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_68.png",
+      "sha256": "4b2c880887d31b53c4e08fc692e9bc6d70e9734bef3737044ffb2d806c55bb77",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
       ]
     },
     {
@@ -779,6 +923,42 @@
       "source": "game/cards/art/masters/verdant_summon_67.png",
       "sha256": "9132f6ca0cbeee5e01da598bd20697f7f9e1d371b05daa8869860a8626ee3706",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_68",
+      "name": "Galapagos Giant Tortoise",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_68.png",
+      "sha256": "bec07953ef9506502dafd33fc06a584eb9bae09ec1dddd234881a267979423da",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_69",
+      "name": "Resplendent Quetzal",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_69.png",
+      "sha256": "d53422674f3ae0d7772e98432302d0ee4f1441c13ff77f15f3edaca45275f940",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_70",
+      "name": "Mokele-mbembe",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_70.png",
+      "sha256": "f13dff74475017e670c47b4d4615afd814b0d8917ea87d07c8785c29a67bd32d",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5

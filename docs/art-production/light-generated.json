@@ -4186,5 +4186,23 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Full tower roof, battlements, assault bridge, wheel row and base fit with margin."
+  },
+  {
+    "cardId": "light_machine_21",
+    "name": "Claw of Archimedes",
+    "prompt": "Paint an illustration for Claw of Archimedes, the legendary ancient Syracusan naval defense engine. Show a complete robust timber crane mounted on a stone harbor wall, with a pivoting horizontal boom, visible counterweight, ropes and pulley block, and a large unmistakable articulated bronze iron grappling claw hanging from the tip over the sea. The entire crane base, boom tip, ropes and claw fit comfortably in a compact horizontal composition; a small ancient warship below gives scale. No operators. Historically inspired ancient Greek engineering, clear readable silhouette, painterly medieval fantasy collectible-card art, warm dramatic light, detailed timber, bronze and rope, atmospheric harbor depth. Strict 1:1 square canvas for editable 512x512 master, named engine features inside x24..488 y105..407 for the 206:141 card crop; leave quiet sky above and water below. No text, labels, frame, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4e9e4671-ec54-454b-8fa8-3bc9ddd25f27.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Complete harbor crane, counterweight, pivoting boom, pulley and articulated claw fit clearly; ship is supporting scale."
   }
 ]

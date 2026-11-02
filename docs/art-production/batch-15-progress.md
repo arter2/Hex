@@ -1,8 +1,8 @@
 # Batch 15 production progress
 
-**64 of 119 new 512×512 sources saved; 60 approved.**
+**79 of 119 new 512×512 sources saved; 75 approved.**
 
-55 sources remain ungenerated. 0 saved sources require repainting. 12 packets of up to five cards passed parent crop/thumbnail review.
+40 sources remain ungenerated. 0 saved sources require repainting. 15 packets of up to five cards passed parent crop/thumbnail review.
 
 Current runtime: 1834 illustrations. Starting baseline: 1834; target: 1953. No complete batch-15 delivery has been prepared yet.
 
@@ -32,15 +32,22 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Yuki-onna | `frost_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_42.png) |
 | Kayak Hunter | `frost_summon_43` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_43.png) |
 | Polar Bear | `frost_summon_44` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_44.png) |
+| River Mother's Herald | `frost_summon_45` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_45.png) |
+| Vodyanoy | `frost_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_46.png) |
+| Ahuizotl | `frost_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_47.png) |
+| Taniwha | `frost_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_48.png) |
+| The Sporelord | `hero_sporelord` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_sporelord.png) |
+| Ymir the Frost Giant | `hero_ymir` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_ymir.png) |
 | Siege Tower | `light_machine_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_12.png) |
 | Motte-and-Bailey Palisade | `light_machine_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_13.png) |
 | Marble Bastion | `light_machine_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_14.png) |
 | Turtle Ship Bulwark | `light_machine_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_15.png) |
 | Hero's Automaton | `light_machine_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_16.png) |
-| Kite of Han Xin | `light_machine_17` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_machine_17.png) |
-| Polybolos | `light_machine_18` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_machine_18.png) |
-| Helepolis | `light_machine_19` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_machine_19.png) |
-| Star Fort Bastion | `light_machine_20` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_machine_20.png) |
+| Kite of Han Xin | `light_machine_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_17.png) |
+| Polybolos | `light_machine_18` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_18.png) |
+| Helepolis | `light_machine_19` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_19.png) |
+| Star Fort Bastion | `light_machine_20` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_20.png) |
+| Claw of Archimedes | `light_machine_21` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_21.png) |
 | Asanbosam | `shadow_summon_54` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_54.png) |
 | Werewolf | `shadow_summon_55` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_55.png) |
 | Black Shuck | `shadow_summon_56` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_56.png) |
@@ -51,6 +58,11 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Pit Fiend | `shadow_summon_61` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_61.png) |
 | Rakshasa | `shadow_summon_62` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_62.png) |
 | Morrigan's Raven | `shadow_summon_63` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_63.png) |
+| Gashadokuro | `shadow_summon_64` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_64.png) |
+| La Llorona | `shadow_summon_65` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_65.png) |
+| Dullahan | `shadow_summon_66` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_66.png) |
+| Grim Reaper | `shadow_summon_67` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_67.png) |
+| Baba Yaga | `shadow_summon_68` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_68.png) |
 | Zhuge Repeater | `storm_machine_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_12.png) |
 | Tortoise War Wagon | `storm_machine_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_13.png) |
 | Sandstone Rampart | `storm_machine_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_14.png) |
@@ -76,3 +88,6 @@ Read `batch-15-brief.md` and `batch-15-worker-state.json`. Resume only missing r
 | Thallid Germinator | `verdant_summon_65` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_65.png) |
 | Fungal Thallid Brute | `verdant_summon_66` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_66.png) |
 | Moss-Shelled Tortoise | `verdant_summon_67` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_67.png) |
+| Galapagos Giant Tortoise | `verdant_summon_68` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_68.png) |
+| Resplendent Quetzal | `verdant_summon_69` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_69.png) |
+| Mokele-mbembe | `verdant_summon_70` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_70.png) |

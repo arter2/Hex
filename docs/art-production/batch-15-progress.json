@@ -1,0 +1,1448 @@
+{
+  "batch": 15,
+  "status": "complete",
+  "targetNewImages": 119,
+  "generatedSources": 119,
+  "reviewedSources": 119,
+  "missingSources": 0,
+  "reviewedPackets": 26,
+  "requiresRepaint": [],
+  "baselineActive": 1834,
+  "targetActive": 1953,
+  "runtimeActive": 1953,
+  "catalogueTotal": 1953,
+  "catalogueRemainingBeforeBatch": 119,
+  "catalogueRemainingAfterBatch": 0,
+  "baselineRuntimeImageCount": 7400,
+  "baselineGeneratedRecordCount": 1784,
+  "savedCards": [
+    {
+      "cardId": "brood_hawk",
+      "name": "Moss Hawk",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_hawk.png",
+      "sha256": "ba9ebd9bedcccee42e0da6101f38e0e640a8c9d307043906457106bc374b0ade",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brood_imp",
+      "name": "Sprout Imp",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_imp.png",
+      "sha256": "9a66eec98cc75c786bcb9cb68ee56de75ae27f5dbfacf974b60959af21303fc6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "brood_snake",
+      "name": "Thorn Serpent",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/brood_snake.png",
+      "sha256": "12d50a4a19d0b6aca71ef7b95c538be6fb03d8ab152cf038c42c5f5c5d557092",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_11",
+      "name": "Volley Gun",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_11.png",
+      "sha256": "1c99355ff05508f49fc8cdcebe4f249585515a300be360c064beaa2891bee0c0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.56
+      ]
+    },
+    {
+      "cardId": "fire_machine_12",
+      "name": "Ember Trebuchet",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_12.png",
+      "sha256": "ddf1360f48b5e88ae13ebd891c886f81b9cb6fe6cc9b4a9ef602bb503d576c73",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_13",
+      "name": "Stone Bastion",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_13.png",
+      "sha256": "8acad2e2bce8b9a42c4222f7093fc31629c3764e8af866f55f3bbc98c8a9b4dd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "fire_machine_14",
+      "name": "Firework Launcher",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_14.png",
+      "sha256": "572c7f9ce41f6c00aaab3b984ced98b05403331d1b14f3d1d016e2ae3f28b842",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_15",
+      "name": "The Great Bombard",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_15.png",
+      "sha256": "51ec7cb791abf3612c757f351faf993710ab924316ab3dee4de0cf00717a8c9f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_38",
+      "name": "Fire Vampire",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_38.png",
+      "sha256": "a36c91312b72b677692cefb12ca21f48c584ae2240e61c85f5025cf55d2ed13b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "fire_summon_39",
+      "name": "Cinder Bat Swarm",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_39.png",
+      "sha256": "d232b8f138cec7a35632377a9f7240754ed16edad9c444c20c368aba88ba1c1f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_40",
+      "name": "Cinder Hound",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_40.png",
+      "sha256": "1f1efa49c331bca638ad95e0626aa6798ab5875dd9afb8619803253e89edad88",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_41",
+      "name": "Mole Miner",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_41.png",
+      "sha256": "de659c4619dfaff18c57e2ed1f24bb191b98e8620e6284452e66822ec14ef5d5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_42",
+      "name": "Lava Beetle",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_42.png",
+      "sha256": "dfb710036dad6ffc6916ea90fff66f47de7981c15563ac3bd8cf0edf433d7293",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_43",
+      "name": "Imperial Lung Dragon",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_43.png",
+      "sha256": "7c070b081728e809e182483eb06b382a9a601572ce250dc67cffea29456eca92",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "fire_summon_44",
+      "name": "Firebird",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_44.png",
+      "sha256": "829655b04bec53c126ca746b23ab65c503603ad781d95bb32df29a9d0a73aa02",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_45",
+      "name": "Ember Imp",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_45.png",
+      "sha256": "620527f989280cffe28e964088e02af7dac264ed2051d0557afd12134798c6e5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "frost_summon_35",
+      "name": "Frost Giant",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_35.png",
+      "sha256": "5af741d014be77658363c8f5fe93582bcacaf847562489a8afb12b7312d460fc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_36",
+      "name": "Pirate Deckhand",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_36.png",
+      "sha256": "39ae3941a56b1039f3bc6a970da18d38ef4497ca73b4cd2cb38d878078efcec7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_37",
+      "name": "Buccaneer Captain",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_37.png",
+      "sha256": "6bc986838aebe1c100571d709ec6e5bfd53aa4307f120f39c560a4298ca3ce40",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_38",
+      "name": "Powder Monkey",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_38.png",
+      "sha256": "bc6ce85fda8173813b650049450a20e81a5d98aebe9a043514426e1a76850bc6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_39",
+      "name": "Flying Dutchman's Captain",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_39.png",
+      "sha256": "b53760100e92857afe19ae7c8d6ed01965e58982c2733ad937e4f2fca8d3ecd7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "frost_summon_40",
+      "name": "Drowned Sailor",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_40.png",
+      "sha256": "bcb6c2b294f852dce561c4ac3d94d0fc012b5bfc12a45fda4a334e974fafbb10",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_41",
+      "name": "Snow Maiden",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_41.png",
+      "sha256": "01ee720999b4ef7adbdbd646526f02bcf79c608d8c8f9203878ae52fcf2caafb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "frost_summon_42",
+      "name": "Yuki-onna",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_42.png",
+      "sha256": "0c27fe017100d7d70a5b57f7cd055832bd6058002fc47a8aaa5ea5ce7c81295f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_43",
+      "name": "Kayak Hunter",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_43.png",
+      "sha256": "9a5dc9883493a7d40e02c4465fe356aff8065800e73e6a22236a88b196fe0d10",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_44",
+      "name": "Polar Bear",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_44.png",
+      "sha256": "b1d3ef978688359644cccf4e548c168f34be10658facfb51c0c0b774d49c3d97",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_45",
+      "name": "River Mother's Herald",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_45.png",
+      "sha256": "99e7c3fdd2fefd3a6bca63c59f746f80c15ecab029d509ce9f77bbeab9431c08",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_46",
+      "name": "Vodyanoy",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_46.png",
+      "sha256": "9bdcf8f02c78969b1bc733138ffeaef38d246596cfa3409f7edfef82378efe28",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_summon_47",
+      "name": "Ahuizotl",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_47.png",
+      "sha256": "6470be6d370a064de7eeccf92bd3e85fcd855445feec6a126ccdd7f5493bb631",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_48",
+      "name": "Taniwha",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_48.png",
+      "sha256": "0e2424a250324ca38a3b289e119f9fea9890dad31bd9ec5955d4b89b343a5942",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "halo_arc",
+      "name": "Halo Arc",
+      "colour": "light",
+      "source": "game/cards/art/masters/halo_arc.png",
+      "sha256": "cf2c77915a7ae32dce25c6296733f7296acfd18587598694255e9b9b3a5a6ab1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_aldric",
+      "name": "Brother Aldric",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_aldric.png",
+      "sha256": "ff8c1e6a7207ad1ec6611cc08b0f6e024ab864520d392e77c724b5e4db707ace",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "hero_arachna",
+      "name": "Arachna",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_arachna.png",
+      "sha256": "99aec025b6cd710455281d7d0e5c1bd251f625f1c53bae07ddf41947255f669c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
+      "cardId": "hero_celestine",
+      "name": "Mother Celestine",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_celestine.png",
+      "sha256": "9bf00ba15def3db08fba3696d1e790914785a7120a58e54c3554dc238fb24c98",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_corvina",
+      "name": "Corvina, Raven Witch",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_corvina.png",
+      "sha256": "87125ba79b74087227a414a1b82368d91b36d5ff0efb542190a4148f1bab4981",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "hero_crysta",
+      "name": "Crysta the Shardmaid",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_crysta.png",
+      "sha256": "8e15dd21e7c8aa4fb4e041cb6e44e8289092355f84b332e104026d43b5d21124",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "hero_dara",
+      "name": "Vinewhip Dara",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_dara.png",
+      "sha256": "a8ce650ab0b3dda9d616964888847dd3fcc638590aaca1855bd263956f8ea4f0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "hero_glace",
+      "name": "Lady Glace",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_glace.png",
+      "sha256": "94c1c004a34dfa9fa8470af2c4ad61ead6700f43fb7916d386b5b5ec5707a182",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_kiri",
+      "name": "Squall Rider Kiri",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_kiri.png",
+      "sha256": "8fa1ffc0c5b7a1b5fd27f4be4e0b078fa1c28c763847e605f028af41ca912f69",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "hero_necros",
+      "name": "Necros the Bone Lord",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_necros.png",
+      "sha256": "e96d78b65c1847f3a6e13adb9c8d23beda4406dc7974796ea465d124fb3c0d35",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "hero_nix",
+      "name": "Nix the Snow Owl",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_nix.png",
+      "sha256": "3fdeedc7fdbc0e11242207c8817588f22e2ed782b40dfcbf18dc296163b2fb5d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_ozone",
+      "name": "Ozone the Tinker",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_ozone.png",
+      "sha256": "287c8acc28fe545c6fbdf91e2db24d85f27dc7b34fa103c9668aaf0f365cb73a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
+      "cardId": "hero_permafrost",
+      "name": "Old Permafrost",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_permafrost.png",
+      "sha256": "b0ca5eff2a0805332f0ea2c28547fdeff5c127df8d8c18856435c05b10592b8a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_prisma",
+      "name": "Prisma the Lightweaver",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_prisma.png",
+      "sha256": "f86fb9157786888f8f3d4d73eed22af97a3c34a34491a42af46b8544ed5b906b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_pyrrhus",
+      "name": "Pyrrhus the Bombardier",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_pyrrhus.png",
+      "sha256": "5b66f83cf0d5ae71e7e5ce5446fdc9d593972046b4a747345bd47c21b00b8aee",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "hero_ratha",
+      "name": "Ra'tha the Sunspear",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_ratha.png",
+      "sha256": "24cc748c68e2b63ffcede1c2e2c1e5253df3074aea433a0e71ce43b0159f0a4c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "hero_salamandra",
+      "name": "Salamandra",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_salamandra.png",
+      "sha256": "6b914862731367d80d283d445393b3c2da5f176b9d02e3c01b12cbd21c0bcd2a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_scorch",
+      "name": "Scorch, the Red Fox",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_scorch.png",
+      "sha256": "5936dfbc0b3dc806be89f1de4208314f4ccebbd603727c71609cbe1ab0fadfe1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sleet",
+      "name": "Sleet, the Hail Archer",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_sleet.png",
+      "sha256": "b6fa7ebd4fa56fb0213a1aeae327777e558c21e44e097f2cbf8081b7775edd41",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_sporelord",
+      "name": "The Sporelord",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_sporelord.png",
+      "sha256": "50975296d3fa85550a1c0ff65d214f55939d00b3e8cc1a2d812590c82e1460cd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "hero_stati",
+      "name": "Stati, the Static Witch",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_stati.png",
+      "sha256": "a67cbfeaf6467fbb959fc183df8a67b40715b0696477f281711c38d321751e15",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_theron",
+      "name": "High Judge Theron",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_theron.png",
+      "sha256": "ee4a8e6a423e5ec8b095913505bf2912ca3ec714792375c7b05da32b36dc0011",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_thistle",
+      "name": "Thistle the Hedge Knight",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_thistle.png",
+      "sha256": "35fff80fbf0f8b97aa2d43c832100f30bbd1b6a149e044660f8b2bfc6f0d2288",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "hero_thunderbird",
+      "name": "The Thunderbird",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_thunderbird.png",
+      "sha256": "74fff5548b179661a8bd561f5abfd8a7788c226d09aff45a32677bb82ccf1547",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_vulcan",
+      "name": "Vulcan the Smith",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_vulcan.png",
+      "sha256": "53b72a1c0314601792be20dbc739024e7f0d5b28ab356748f428a85acccbf024",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_ymir",
+      "name": "Ymir the Frost Giant",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_ymir.png",
+      "sha256": "3112fe45bbc8f4b700613508cc839525357d7b5ad328cde72a0bd1e193f0dc24",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
+      "cardId": "light_machine_12",
+      "name": "Siege Tower",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_12.png",
+      "sha256": "3c6f6bb82985fb71086f12710b91eebb8ffb74ffce15038ea672d21ec369519b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_machine_13",
+      "name": "Motte-and-Bailey Palisade",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_13.png",
+      "sha256": "5bb41bffda0348f8892f288f7021d94400d8d21122e9c171ae70b4645e15f9d6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
+      "cardId": "light_machine_14",
+      "name": "Marble Bastion",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_14.png",
+      "sha256": "9c4c066bf9e9752843a775f9e640faee70ade0f0c9fb2422e03e3b649eedd149",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_machine_15",
+      "name": "Turtle Ship Bulwark",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_15.png",
+      "sha256": "26d8b67bff51484a76d3b3dff9e1099d6c74ee760d7b3a326e60ddff4f10b3a8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_machine_16",
+      "name": "Hero's Automaton",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_16.png",
+      "sha256": "ba29dedb560560ec152994609dec617393fd4fe0a54dc387dc4a462733d2eb17",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.543
+      ]
+    },
+    {
+      "cardId": "light_machine_17",
+      "name": "Kite of Han Xin",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_17.png",
+      "sha256": "4b16120f477e3ec3b1833e39ad4a88dd0b3cb7355c43e5396ceffdae9ef2034c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_18",
+      "name": "Polybolos",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_18.png",
+      "sha256": "0271827c7633382120b09d91f41defd16ea67f58cf9bf9e4a5a127216d3709c1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.54
+      ]
+    },
+    {
+      "cardId": "light_machine_19",
+      "name": "Helepolis",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_19.png",
+      "sha256": "a11943b2bfa51f71624872b8dbac7fc747fcf9a4d7f71638cc813abb1c1b9682",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
+      "cardId": "light_machine_20",
+      "name": "Star Fort Bastion",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_20.png",
+      "sha256": "92b8aa80fb6e2564c99f68941e6e0a75793d696bf0f008b4a2f29135968a84b2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_machine_21",
+      "name": "Claw of Archimedes",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_21.png",
+      "sha256": "0971debe65801ec8ec135d62224555c4102879838ebc1a3b1afabcafe81c2a4b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_22",
+      "name": "Al-Jazari's Automaton",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_22.png",
+      "sha256": "f5394fd53a990b59b95346e6ea9dd2fd73e4ae549eeee20e2a7e402832a90d25",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_machine_23",
+      "name": "Su Song's Clock Tower",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_23.png",
+      "sha256": "5df2c80006f89faad0be2e2def630935eb924ab21c665aa2768e38086a11aa19",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.485
+      ]
+    },
+    {
+      "cardId": "light_machine_24",
+      "name": "Warwolf Trebuchet",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_24.png",
+      "sha256": "dace2d3b36e4236edec959d7aafa637076c958c9cb6041e591334d0955d32509",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.473
+      ]
+    },
+    {
+      "cardId": "light_machine_25",
+      "name": "Krak des Chevaliers",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_25.png",
+      "sha256": "4c5df67100d308a09926c7498ff305ad52a6d009f3cad44b1e089f59a493e52b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "prism_cage",
+      "name": "Prism Cage",
+      "colour": "light",
+      "source": "game/cards/art/masters/prism_cage.png",
+      "sha256": "ef6f5517bfa761a559092ea2c980de35213e54d80795b9163fa111b716ea60bb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_54",
+      "name": "Asanbosam",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_54.png",
+      "sha256": "2a3307057701b227a23e2e0c571937863558c20902e6f2d3ab336381525d509c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_55",
+      "name": "Werewolf",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_55.png",
+      "sha256": "49dbdadbe07c48008321b697c467021c1fdbffa5f416834bdac57d8050ad2a38",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_56",
+      "name": "Black Shuck",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_56.png",
+      "sha256": "b79507280ba7c95ee58007db1339896433e051e24c2bd8db310f86a078786ebb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_57",
+      "name": "Antlered Hunger",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_57.png",
+      "sha256": "887745af1980f646ec1de60cedac25687aab761fea2b814379cb6cfdae113ffc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_58",
+      "name": "Jorogumo",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_58.png",
+      "sha256": "3e5fdb4ff507c53c34ff4da67faf8d8e9bdd08eb2dd9481738c2145dfaa6fb3a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_59",
+      "name": "Rat King",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_59.png",
+      "sha256": "675a54d083f7df627617134a28d148e823283f18cb33daa25234f6322b554978",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_60",
+      "name": "Black Annis",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_60.png",
+      "sha256": "c7f4f32756a5944a1fec1898a0d5b2dc14464b335da94499b4a7574a3bb5dd57",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_61",
+      "name": "Pit Fiend",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_61.png",
+      "sha256": "52ac527ce0fc52d91d67c56e3f758b8674e95f7f00677eb5b157cc5bed2df8f1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_62",
+      "name": "Rakshasa",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_62.png",
+      "sha256": "21aaaca5c397fae8ee6cdb808812906490bd44126e1c64771e21b27e7a0d5e1d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_63",
+      "name": "Morrigan's Raven",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_63.png",
+      "sha256": "50be539b326c6d19bb6e6ed37d73f0d8cbd3d31781bd131e7a621dc3c3953326",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_64",
+      "name": "Gashadokuro",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_64.png",
+      "sha256": "998ac84073b272a25ebdda125d6a707f2b9848c76c5fe87303531329df0b9ff0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "shadow_summon_65",
+      "name": "La Llorona",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_65.png",
+      "sha256": "452064515de160fcb5ae8f457894cdc4101f929b69c962fc01b37c30ec533c93",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_66",
+      "name": "Dullahan",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_66.png",
+      "sha256": "602f9e275ca6a8d9433c37d86354b5c3d63fb173f2e332ba30c9bf9e6dc95470",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_67",
+      "name": "Grim Reaper",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_67.png",
+      "sha256": "c8ccf8acb25b269371ffeb01a33cbf0f2945d963ab3d3023ccda4361fdef7e6d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
+      "cardId": "shadow_summon_68",
+      "name": "Baba Yaga",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_68.png",
+      "sha256": "4b2c880887d31b53c4e08fc692e9bc6d70e9734bef3737044ffb2d806c55bb77",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
+      "cardId": "shadow_summon_69",
+      "name": "The Erlking",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_69.png",
+      "sha256": "b8b8946fbac8f79cade9ef1cf0d3c14f2a5f1b69948a54cb05d6ab73a949def3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
+      "cardId": "shadow_summon_70",
+      "name": "Iron Maiden",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_70.png",
+      "sha256": "16d4cadcdc35096d4100b315a90cd7ae567ff8ee5a7b510e06bf9722b28abccc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
+      "cardId": "storm_machine_12",
+      "name": "Zhuge Repeater",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_12.png",
+      "sha256": "1b04f611e4dd9e1c519b383de4d3466fd9abd0411ad2f9cd62ea329c81079618",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_13",
+      "name": "Tortoise War Wagon",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_13.png",
+      "sha256": "466d00187c5eab03f6ab12945e4404bafa6bc8e52027ea01c4d26e2bc4b09855",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_14",
+      "name": "Sandstone Rampart",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_14.png",
+      "sha256": "41423bdf2925386a332fbef5ce078421f7ba2287a8718a15511a894ce7a3c62d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_15",
+      "name": "Palm-Log Palisade",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_15.png",
+      "sha256": "844b2333e3517e5ab70a31361c7de494e8b2344a527978b77f48ae6e19ea88aa",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_16",
+      "name": "Bronze Barricade",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_16.png",
+      "sha256": "86ef5367a00339dd31f6ee2b2a2562d0bda774383bb4913094e93ad883e0a7b6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_17",
+      "name": "Elephant Clock Automaton",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_17.png",
+      "sha256": "8d345a72f8f2274bac02ec1b00a1b433e576b9fa6dde5ba44833d1d418ff1b0c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "cardId": "storm_machine_18",
+      "name": "Coin-Spitting Mortar",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_18.png",
+      "sha256": "e78a06604623da9fb706259fcac864f7e9507c453ff2d3b00cca3de5d6c1cc8d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_19",
+      "name": "Clockwork Flying Carpet",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_19.png",
+      "sha256": "92fef78674b8f4c5c74e7701e67f9c971d2883d7bb28d96631fb6a5004b68681",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "cardId": "storm_machine_20",
+      "name": "Hang-Glider Scout",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_20.png",
+      "sha256": "4c56878629dd1e556791eee2dae881b78905c4ba0af1b2d8be6932a152f3f49e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_21",
+      "name": "The Thunder Engine",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_21.png",
+      "sha256": "7dad703e18999a611a85973ce79562cd9c69b4dd7bd53af262336802652ade02",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.55
+      ]
+    },
+    {
+      "cardId": "storm_machine_22",
+      "name": "The Bronze Colossus",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_22.png",
+      "sha256": "a4fe0c21d8bec3631d3ad09f6d0220e74306e3e8637fc8af5f848721b09e56b7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
+      "cardId": "storm_summon_48",
+      "name": "Spark Sprite",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_48.png",
+      "sha256": "7d7676d55defa0d5877223b1641cdadc66c33e7fe03856898a736709a794d664",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_50",
+      "name": "Coin-Hoard Dragon",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_50.png",
+      "sha256": "79cf9b1ef550ee1787ebbd5c3a85a4434a153a3c2a2b811312e548e850c33d56",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "verdant_summon_53",
+      "name": "Sundarbans Tiger",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_53.png",
+      "sha256": "cfc4884e007c8c455609b3c5744023965cf9aff320578a328c2337271d879849",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_54",
+      "name": "Horangi Mountain Tiger",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_54.png",
+      "sha256": "75b2751cebe69e44549ac688d08e712282db7a69f2ecc8ea42c98fd9f06d3469",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_55",
+      "name": "Greenwood Wolf Pack",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_55.png",
+      "sha256": "2d23e377ef91a8fe4f21447cc95389582dabdbacbee51ca6aac1e72f7c0df466",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_56",
+      "name": "Wild Tusker Boar",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_56.png",
+      "sha256": "916986ce20f9a73cdc5f15a2f911fedab834694d2209b0735a3890f685573c5f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_57",
+      "name": "Twrch Trwyth",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_57.png",
+      "sha256": "575876f3e27df50e1ec69ee8128e6c9e755100b8f060232b27cb93305fc10e19",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_58",
+      "name": "Komodo Monitor",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_58.png",
+      "sha256": "1866c2977c9d03dc3f2f1899ee50eb9f80bc8c371ff14272385bd4c7ede6078f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_59",
+      "name": "Fer-de-Lance",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_59.png",
+      "sha256": "532dcf20cc6385ad5e720e4012a218f8c45d720a9919e3d98688f2444d9e9215",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_60",
+      "name": "Green Anaconda",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_60.png",
+      "sha256": "b925ba5706ba4de54fd7f343bc0c823085ca85e4d6e0fb3bdd5a9f264a7f8e9f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_61",
+      "name": "Poison Dart Frog",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_61.png",
+      "sha256": "91025a16667457e7b7e00cd50dcc8d0684aac018a775f038aa67fe651a8dbd88",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_62",
+      "name": "Army Ant Soldier",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_62.png",
+      "sha256": "49f84e52f2692f291c7d1dc047b8b73b8c00b9fb33050a452359142840bda689",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_63",
+      "name": "Giant Forest Hornet",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_63.png",
+      "sha256": "22818ed5d2d20992d9de0051b6873170dc130f73ce84aae69690d32276fe07ff",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_64",
+      "name": "Sporeling Thallid",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_64.png",
+      "sha256": "4e64de027905b10138acb86d9cbec937780d9e09482694ca454f656e97f38e41",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_65",
+      "name": "Thallid Germinator",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_65.png",
+      "sha256": "37599fdf4703aea19d3cabf53c388dfc8ec2d518a0d8b8bc14b5450483cdcb18",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_66",
+      "name": "Fungal Thallid Brute",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_66.png",
+      "sha256": "9d7bce98fca5d327f1915067bb518f8d4917d71386158ae2f3613bc34d0dff25",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_67",
+      "name": "Moss-Shelled Tortoise",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_67.png",
+      "sha256": "9132f6ca0cbeee5e01da598bd20697f7f9e1d371b05daa8869860a8626ee3706",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_68",
+      "name": "Galapagos Giant Tortoise",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_68.png",
+      "sha256": "bec07953ef9506502dafd33fc06a584eb9bae09ec1dddd234881a267979423da",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_69",
+      "name": "Resplendent Quetzal",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_69.png",
+      "sha256": "d53422674f3ae0d7772e98432302d0ee4f1441c13ff77f15f3edaca45275f940",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_70",
+      "name": "Mokele-mbembe",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_70.png",
+      "sha256": "f13dff74475017e670c47b4d4615afd814b0d8917ea87d07c8785c29a67bd32d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    }
+  ]
+}

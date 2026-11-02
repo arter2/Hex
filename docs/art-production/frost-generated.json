@@ -4023,5 +4023,365 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reworked after the initial crop clipped the River Lung’s antler tips. Inspected the replacement 512-square source, revised true 206:141 crop (focal y=0.42) and 128px thumbnail; the complete short antlers, face/eyes and curled whiskers now fit with margin. The serpentine neck and healing water remain legible, with the deer subordinate."
+  },
+  {
+    "cardId": "frost_summon_35",
+    "name": "Frost Giant",
+    "prompt": "Paint an original illustration for the exact card name “Frost Giant.” A huge pale ogre frost giant dominates the scene, a weathered fur-cloaked colossus with a broad expressive face, icy blue eyes, tangled white beard and frost crusted skin, hurling a massive snow-packed boulder in a high arc toward a distant frozen battlefield. Keep the full head, both eyes, throwing hand and boulder clearly inside the central horizontal action band; a clear readable lob action, no other giant. Painterly medieval fantasy collectible-card illustration, rich brushwork, nuanced fur, stone and ice, dramatic glacial light with a warm torch glow far below. Exact 1:1 square for editable 512x512; keep face, hand and boulder inside x24..488,y105..407 for 206:141 crop, quiet snow sky and ground margins. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d1989a1-5f95-4531-944c-94d407dbcbf9.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and central 206:141 crop/128px thumbnail. Frost Giant reads clearly with full face and eyes, throwing arm and snow-packed boulder; the boulder top and incidental legs/background extend beyond the crop."
+  },
+  {
+    "cardId": "frost_summon_36",
+    "name": "Pirate Deckhand",
+    "prompt": "Paint original art for the exact card name “Pirate Deckhand.” Depict one scrappy young adult pirate deckhand sprinting in a sharp zigzag across the slick deck of an old wooden sailing ship in a cold northern sea, dodging a swinging rope and leaping past a coil of line; salt-stiff wool cap, patched blue coat, lively determined face, a short cutlass safely at their belt. Full head, eyes and both action hands visible, human not animal. Keep the deckhand the clear subject, one or two indistinct crew only far behind. Painterly medieval high fantasy collectible-card art, tactile wood, cloth and icy spray, dramatic cold daylight and warm lantern glow. Exact 1:1 square editable 512x512; keep head, hands and action in x24..488,y105..407 for 206:141 crop, quiet sea and sky margins. No modern ship fittings, no firearms, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b38b717-bf6f-4050-8fbb-c36fb6023d16.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Scrappy human deckhand’s complete head and wool cap, both hands and zigzag leap read clearly; lower legs and distant ship details are incidental."
+  },
+  {
+    "cardId": "frost_summon_37",
+    "name": "Buccaneer Captain",
+    "prompt": "Create original painterly medieval-fantasy collectible-card art for the exact card “Buccaneer Captain.” A sly, battle-hardened buccaneer knight captain stands at the bow of a weather-beaten wooden ship, face sharp and confident beneath a dark feathered hat, blue wool coat over worn mail, one gloved hand driving a slender cutlass forward in a decisive piercing thrust. Keep complete head, eyes, thrusting hand and sword hilt in the central horizontal action band; readable captain first, sword can angle inward and remain fully visible. Cold sea mist and a small crew as background accents. Rich visible brushwork, nuanced cloth, leather and steel, dramatic icy light with warm lantern rim light. Exact 1:1 square editable 512x512; critical face and relevant hand fit x24..488,y105..407 on 206:141 crop, quiet sea and deck margins. No modern nautical gear, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20480569-0f1d-4463-b3c2-35e66ae176b8.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Captain’s complete head, feathered hat, eyes, thrusting hand and hilt are clear; the sword point reaches the edge as incidental weapon extremity."
+  },
+  {
+    "cardId": "frost_summon_38",
+    "name": "Powder Monkey",
+    "prompt": "Paint an original illustration for the exact card name “Powder Monkey,” using the historical nautical meaning: a small, nimble young adult ship's powder runner, not an animal. The compact powder monkey has a human face, bright alert eyes, a patched sailor's cap and oversized wool coat, crouched beside a wooden cannon as a contained burst of powder smoke and orange sparks flares behind them; one hand shields their face, the other holds a small lidded powder flask close to the body. Make their quick, scrappy human identity and the cannon-deck blast unmistakable, with face and both hands clear; no injury. Old wooden sailing vessel in a cold storm, no modern equipment. Painterly high-fantasy card art, rich brushwork, nuanced wood, wool, brass and smoky light. Exact 1:1 square for editable 512x512; fit head, hands and flask in x24..488,y105..407 for 206:141 crop, quiet sea/sky margins. No text/frame/UI, no animal monkey, no modern cannon design, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b893ddf-d012-477f-bee0-0dedf2b4d26a.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 horizontal crop/128px thumbnail. Human powder runner’s complete head and cap, shielding hand and flask are clear beside the old cannon’s blast; no animal monkey or modern equipment."
+  },
+  {
+    "cardId": "frost_summon_39",
+    "name": "Flying Dutchman's Captain",
+    "prompt": "Create original painterly medieval fantasy collectible-card art for the exact card “Flying Dutchman's Captain.” Depict the grim ghostly captain of a legendary sailing ship: a spectral human sea captain in a weathered tricorn and torn naval coat, translucent pallid face with both eyes visible, commanding expression, one skeletal hand raised as icy mist and blue-white spectral light flows to mend a wounded ghostly sailor behind him. Dark wooden ship on a moonlit frozen sea, ghostly sails and cold spray; captain’s head and raised hand remain the clear primary subject, background crew subordinate. Keep full face, eyes and hand in the central horizontal action band; eerie yet grounded and solemn. Painterly medieval high-fantasy illustration, layered brush texture, nuanced wet cloth, wood, fog, silver moonlight and restrained warm lantern. Exact 1:1 square for editable 512x512; face and hand safely inside x24..488,y105..407 for 206:141 crop, quiet sky and water margins. No modern gear, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a4cfca3-fe8f-4de6-ad46-a4fe4e443f24.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.37 horizontal crop and 128px thumbnail. The captain’s full tricorn, face and eyes fit clearly; the raised casting hand and fingers are visible, with the mended sailor secondary."
+  },
+  {
+    "cardId": "frost_summon_40",
+    "name": "Drowned Sailor",
+    "prompt": "Paint original art for the exact card “Drowned Sailor.” A pale, drowned human sailor spirit hauls itself from a dark ice-rimmed harbor beside an old wooden ship, its sodden wool cap, salt-stiff coat and seaweed tangles identifying the drowned deckhand; face calm and haunting, both eyes visible, one hand gripping the frozen pier as ghostly blue mist rises. The sailor remains fully clothed and non-gory, with head, cap, eyes and gripping hand prominent and complete. Painterly medieval fantasy collectible-card illustration, rich brushwork, tactile wet wool, weathered wood, icy water and cold moonlight with a small lantern glow. Exact 1:1 square for editable 512x512; place head, hat and hand within x24..488,y105..407 for the 206:141 crop, quiet fog/sea margins. No modern gear, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3ae42b4f-afc1-4fca-9373-53e9ad80cbe5.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Drowned Sailor’s full cap, face, eyes and gripping hand are clear; wet clothing, ice-rimmed harbor and ship establish the scene."
+  },
+  {
+    "cardId": "frost_summon_41",
+    "name": "Snow Maiden",
+    "prompt": "Create original painterly fantasy art for the exact card “Snow Maiden,” drawing on the Slavic Snegurochka winter-maiden tradition: a gentle, fully clothed young adult woman with a calm face, pale blue eyes, long fair braid and an elegant historically inspired blue-and-white fur-trimmed winter gown and kokoshnik-style crown. She raises one gloved hand as a small burst of snowflakes and soft blue frost light blossoms beside her. Graceful and humane, not seductive, no exposed skin beyond face and hands. Face, crown, eyes and hand fully visible and dominant. Snow-laden birch grove at dusk, a warm distant cottage light. Painterly medieval high-fantasy collectible-card illustration, textured brushwork, rich cloth and snow, atmospheric cool light. Exact 1:1 square editable 512x512; keep crown/head and hand wholly in x24..488,y105..407 for 206:141 crop, quiet snowy margins. No text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1745b6d3-8539-4906-9407-9cbeeb927097.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.34 horizontal crop and 128px thumbnail. Snow Maiden’s entire kokoshnik crown, face, eyes and raised casting hand/fingers fit clearly; the Slavic winter-maiden identity is modest and respectful."
+  },
+  {
+    "cardId": "frost_summon_42",
+    "name": "Yuki-onna",
+    "prompt": "Paint original art for the exact card “Yuki-onna,” respectfully drawing on Japanese winter folklore. A serene adult snow spirit stands in a moonlit blizzard, with a composed Japanese face, dark eyes, long black hair flowing gently in the wind, and a modest fully covering white layered kimono with a pale blue outer robe; no sexualized styling. One graceful hand releases a controlled diagonal stream of frost and snow, hinting at an explosive burst of icy power while she remains the clear focus. Keep full face, eyes, hairline and hand comfortably inside the central horizontal band. Snowy cedar forest and distant shrine roof only as quiet atmospheric context, no sacred symbols or text. Painterly medieval-fantasy card art, layered brushwork, refined fabric folds, dramatic moonlit blue and silver light. Exact 1:1 square for 512x512 master; keep head and relevant hand in x24..488,y105..407 on 206:141 crop, calm margins. No text/frame/UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c1213cb4-1d4a-4911-9cfe-721dbe28e99a.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Yuki-onna’s complete face and eyes, flowing dark hair and casting hand read clearly; modest layered kimono and snowy cedar setting support the Japanese folklore identity."
+  },
+  {
+    "cardId": "frost_summon_43",
+    "name": "Kayak Hunter",
+    "prompt": "Paint original illustration for the exact card “Kayak Hunter.” Show a skilled adult Inuit hunter in historically grounded Arctic clothing, seated in a traditional skin-covered kayak on a cold northern sea, wearing a practical sealskin parka with fur hood and mittens; respectful everyday survival gear, no caricature, sacred motifs, or invented ceremonial dress. The hunter turns alertly toward a distant seal, holding a short harpoon ready in one gloved hand; show clear human face, eyes, hood and hand, with the kayak and paddle visible as context. Painterly medieval fantasy collectible-card art with tactile seal leather, fur, driftwood, icy water and subdued northern light, dignified natural anatomy. Exact 1:1 square for editable 512x512; keep full hood/head and relevant hand inside x24..488,y105..407 for 206:141 crop, quiet pale sky and water margins. No modern equipment, text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d6bc106c-f8fb-4706-a529-f8a2b3a361e6.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. The Inuit hunter’s complete fur hood, face, eyes and harpoon hand are visible in a traditional skin-covered kayak with paddle; practical Arctic clothing is respectfully depicted."
+  },
+  {
+    "cardId": "frost_summon_44",
+    "name": "Polar Bear",
+    "prompt": "Paint original painterly medieval fantasy card art for the exact card “Polar Bear.” A powerful polar bear pounces through powder snow onto an icy ridge, its massive white body clear against the cold sea and glacier; keep the complete broad bear head, both small dark eyes, ears, muzzle and front paws wholly in the central horizontal action band, with a crisp readable animal silhouette. Frost rims the dense ivory fur and icy breath curls from its muzzle; alert, natural bear anatomy, no collar or human clothing. The face and forepaws dominate, with quiet arctic cliffs and pale glacial light behind. Layered brush texture, rich tactile fur and ice, dramatic cool light with a small warm reflection on snow. Explicit 1:1 square for editable 512x512; complete head and paws within x24..488,y105..407 for the 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b0007fe7-29eb-497b-8639-0d7402507107.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Polar Bear’s entire head, ears, eyes and muzzle are visible, with the pouncing forequarters clear against the arctic sea and glacier."
+  },
+  {
+    "cardId": "frost_summon_45",
+    "name": "River Mother's Herald",
+    "prompt": "Paint original fantasy card art for the exact card “River Mother's Herald.” A noble merfolk herald rises from a moonlit frozen river, an adult humanlike face with calm alert eyes, long dark riverweed hair, graceful blue-green fish-scaled shoulders and a modest layered mantle of pale cloth; the lower body is a fish tail in the water. The herald lifts a carved shell horn to rally unseen river kin, with the full face, eyes, both hands and horn kept clear and complete. The river spirit is dignified, not seductive; no exposed torso. Snow-dusted reeds and river ice frame the figure, with an aurora-like blue glow supporting rather than obscuring the subject. Painterly medieval high-fantasy collectible-card illustration, textured brushwork, nuanced scales, shell, water and cloth, dramatic cold light. Exact 1:1 square editable 512x512; keep head, hands and horn in x24..488,y105..407 for the 206:141 crop, quiet margins above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-edd13522-4ebc-468e-9817-5ce138ed17c8.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 crop/128px thumbnail. River Mother’s Herald’s complete face, eyes, both hands and shell horn are clear; fish tail and icy river establish the merfolk identity."
+  },
+  {
+    "cardId": "frost_summon_46",
+    "name": "Vodyanoy",
+    "prompt": "Create original painterly medieval-fantasy card art for the exact folklore name “Vodyanoy.” Depict the Slavic old water spirit as a squat, sturdy amphibious elder emerging from a dark icy river: broad toad-like face and mouth, small watchful eyes, long wet gray beard, mossy hair and rough green-brown skin, with webbed hands braced on a stone. Keep the complete distinctive toadlike head, both eyes and hands visible; no human pirate or mermaid. Cold river pool, reeds and a half-submerged mill wheel as quiet old-world context. Grounded folkloric fantasy, dignified but eerie, rich visible brushwork, wet skin, moss and dark water, pale winter moonlight and a restrained warm lantern. Exact 1:1 square for editable 512x512; head and hands inside x24..488,y105..407 in the 206:141 crop, quiet margins. No modern items, text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-09772142-1832-459d-b6d7-bcfeca83b4c5.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source and focal-y=0.40 crop/128px thumbnail. Vodyanoy’s full toadlike head, watchful eyes and webbed hands are visible; mossy hair, beard and cold river establish the Slavic water-spirit identity."
+  },
+  {
+    "cardId": "frost_summon_47",
+    "name": "Ahuizotl",
+    "prompt": "Paint original respectful folklore-inspired fantasy art for the exact card “Ahuizotl.” Show the Ahuizotl as a distinctive small-to-medium aquatic doglike animal from Mexica/Aztec tradition: sleek dark wet fur, pointed ears, alert canine face and long flexible tail ending in a clearly visible humanlike grasping hand with fingers. It crouches at the edge of a still lake among reeds, using the tail-hand to reach toward the water; keep the full face, eyes and tail-hand together within the central horizontal action band so the identifying hand-at-tail is unmistakable. Natural animal anatomy, not a human hybrid or ordinary otter. Painterly grounded fantasy with layered brushwork, dark fur, cold water and reeds; subtle Mesoamerican landscape context only, no sacred symbols, ritual objects or people. Exact 1:1 square editable 512x512; face, eyes and complete tail-hand fit x24..488,y105..407 for the 206:141 crop, quiet sky/water margins. No text/frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-63ca9b22-ff59-44d4-abcb-3f5c786ad946.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_47.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Ahuizotl reads as a sleek aquatic canine with pointed ears, alert face and the defining grasping hand at the tip of its long tail, all visible."
+  },
+  {
+    "cardId": "frost_summon_48",
+    "name": "Taniwha",
+    "prompt": "Create original painterly fantasy card art for the exact card “Taniwha,” respectfully inspired by Māori traditions of powerful water guardians and monsters. Depict an ancient serpentine taniwha surging in a pouncing arc from a cold mountain river, with a broad crocodilian head, watchful eyes, strong jaws and a long scaled water-serpent body; no wings, horns, human face, tattoos or cultural regalia. Keep the whole head, eyes and jaw in the central action band; the long body may continue beyond the frame. It breaks a sheet of river ice beside dark volcanic basalt, with a small warm reflection beneath the water suggesting scorched power, not a fireball. Grounded natural history meets mythic fantasy, rich visible brush texture, nuanced scales and spray, dramatic cold light. Exact 1:1 square for editable 512x512; head and eyes inside x24..488,y105..407 on 206:141 crop, quiet margins. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-521aee2e-1f25-469a-8236-701ee96b5ac0.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Taniwha’s complete crocodilian head, eyes and jaws remain prominent; its long serpentine body breaks through ice, with dark basalt and warm under-water light as supporting context."
+  },
+  {
+    "cardId": "hero_ymir",
+    "name": "Ymir the Frost Giant",
+    "prompt": "Paint original heroic medieval Norse-fantasy card art for the exact card “Ymir the Frost Giant.” A colossal frost giant king towers over an icy fjord, shown from waist/chest up at a clear middle distance so his complete head, eyes, shoulders and both hands fit with generous space. He has a weathered blue-gray face, thick frost-white beard, windblown pale hair, a simple ice circlet and ancient fur-lined iron armor, dignified and powerful. Ymir hurls a compact glacier boulder from one raised hand across the fjord; keep the entire boulder and throwing hand beside his head at the same height, fully visible within the card crop. Cold armor glints and the glacier splash below him suggests his protective presence. Painterly high-fantasy collectible-card illustration with visible brushwork, nuanced skin, fur, ice and iron, dramatic glacial light and atmospheric depth. Exact 1:1 square editable 512x512; keep face, eyes, hands and glacier boulder inside x24..488,y105..407 on the 206:141 crop, quiet sky/ice margins above and below. No text, frame, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-81ee960a-f54f-42c5-a185-4569646c46ab.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ymir.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.35 206:141 crop and 128px thumbnail. Ymir’s complete face, eyes, ice circlet, both hands and glacier boulder fit clearly; his massive armor and fjord convey scale."
+  },
+  {
+    "cardId": "hero_sleet",
+    "name": "Sleet, the Hail Archer",
+    "prompt": "Paint original heroic medieval-fantasy card art for the exact card “Sleet, the Hail Archer.” Depict an adult archer hero in layered pale blue fur-lined winter armor and a practical hood, with a strong focused face, both eyes fully visible, and no face covering. Sleet draws a compact recurved bow with both gloved hands close together near the chest, making the two grips clearly visible within the horizontal card crop; the bow’s outer tips may extend beyond the frame. A few small hail arrows glow with cold light near the bowstring, suggesting a rapid volley without obscuring the face or hands. Snowy mountain pass and stormy sky as quiet context. Painterly medieval fantasy collectible-card illustration with textured brushwork, tactile cloth, leather and wood, dramatic cold light. Exact 1:1 square editable 512x512; keep full head, hood, eyes and both hands/grips inside x24..488,y105..407 for the 206:141 crop. No text, frame, UI, modern weapon, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4bd7e35b-046e-4ce7-ad85-361f5542d4f4.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sleet.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Sleet’s full hooded head and both eyes are visible; both bow grips fit compactly beside the face, while outer bow tips are incidental."
+  },
+  {
+    "cardId": "hero_crysta",
+    "name": "Crysta the Shardmaid",
+    "prompt": "Create original painterly fantasy card art for the exact card “Crysta the Shardmaid.” Show an adult ice-mage heroine in a fully covering pale blue and silver winter gown, with a poised, determined face, both eyes visible and a delicate crystalline diadem. One hand directs a compact chain of luminous ice shards that arcs across the scene toward the distance; keep her face, crown and casting hand clear, with the shards secondary and not crossing her eyes. Frosted stone chamber and drifting snow add atmosphere. Refined but grounded medieval high-fantasy collectible-card style, visible brushwork, nuanced fabric, crystal and cold directional light; dignified, not sexualized. Exact 1:1 square for editable 512x512; complete head/crown, face/eyes and relevant hand within x24..488,y105..407 on the 206:141 crop, quiet margins above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be444885-57aa-40a3-87f9-57aa3600dd3d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_crysta.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.37 crop and 128px thumbnail. Crysta’s complete fine crystal crown, face and eyes fit clearly, and the outstretched casting hand/fingers remain visible beside the ice shards."
+  },
+  {
+    "cardId": "hero_permafrost",
+    "name": "Old Permafrost",
+    "prompt": "Paint original heroic painterly fantasy art for the exact card “Old Permafrost.” Depict an ancient winter sage, an imposing but kindly elderly frost spirit with a complete weathered face, both clear eyes, thick white beard and a hood of snow-laden fur; fully clothed in layered furs and old pale-blue robes. He plants one gnarled wooden staff with one gloved hand as a radiant frozen bloom bursts low around the staff’s base, suggesting a freezing healing aura. Keep his face, eyes, hood and hand fully visible and dominant; the bloom stays below and does not obscure him. Ancient ice cavern with carved stone and faint green-blue aurora, no writing or symbols. Medieval high-fantasy collectible-card illustration with textured brushwork, believable fur, wood and ice, warm/cold light contrast. Exact 1:1 square editable 512x512; head, hood and hand fit x24..488,y105..407 for 206:141 crop, quiet margins. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92a41961-ebc8-4c5d-b180-5256952b81da.png",
+    "editableSourcePath": "game/cards/art/masters/hero_permafrost.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Old Permafrost’s full fur hood, face, eyes, beard and staff-holding hand are visible; the frozen bloom remains below the face."
+  },
+  {
+    "cardId": "hero_nix",
+    "name": "Nix the Snow Owl",
+    "prompt": "Paint original naturalistic fantasy card art for the exact card “Nix the Snow Owl.” Depict a real snowy owl in a dynamic but anatomically accurate swoop above a frozen pine forest: round white facial disk, bright yellow eyes, small dark hooked beak, rounded head and white plumage with fine dark barring. Keep both eyes, full facial disk, beak and crown of feathers completely visible in the central horizontal band; wings may extend beyond the crop, but do not anthropomorphize the owl or give it clothing, hands, or a cartoon expression. A subtle icy wake trails behind as it descends. Painterly medieval fantasy collectible-card illustration with layered brushstrokes, detailed feathers, crisp winter light and atmospheric depth, grounded wildlife proportions rather than Disney-like styling. Exact 1:1 square for editable 512x512; keep entire head and eyes within x24..488,y105..407 on the 206:141 crop, calm snowy margins. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-573f8aad-f178-440b-9489-bb4408c6621f.png",
+    "editableSourcePath": "game/cards/art/masters/hero_nix.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128px thumbnail. Nix reads as a natural snowy owl with full rounded head, facial disk, both yellow eyes and hooked beak; the swooping wings are incidental."
+  },
+  {
+    "cardId": "hero_glace",
+    "name": "Lady Glace",
+    "prompt": "Paint original painterly medieval-fantasy card art for the exact card “Lady Glace.” Depict a regal adult frost sorceress in an elegant fully covering ice-blue gown and a delicate silver crystal crown, with a composed commanding face and both eyes fully visible. She raises one gloved hand and fires a narrow piercing beam of pale blue frost light horizontally across the scene at chest height; her second hand rests clearly near the sternum, both hands visible, the beam does not cross her face or crown. Keep her full head, crown and eyes dominant in the middle of the square, with the beam extending beside her across the row. Snowbound stone hall and soft drifting ice as quiet support. Painterly medieval high-fantasy collectible-card illustration, layered brush texture, nuanced cloth, crystal and silver, dramatic cold light and atmospheric depth; dignified, not sexualized. Exact 1:1 square editable 512x512; complete head/crown/eyes and both hands safely in x24..488,y105..407 for the 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d967ca2b-badf-4bac-a799-4c04f4289ac6.png",
+    "editableSourcePath": "game/cards/art/masters/hero_glace.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Inspected the 512-square source, focal-y=0.40 crop and 128px thumbnail. Lady Glace’s full crystal crown, face, eyes and both hands fit; a narrow frost beam extends horizontally from her raised hand without crossing her face."
   }
 ]

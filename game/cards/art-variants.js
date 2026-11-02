@@ -12963,8 +12963,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -12974,8 +12974,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -13177,25 +13177,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-8-full.avif",
+        "url": "cards/art/atlas/fire-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          0.1534,
-          99.683
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "url": "cards/art/atlas/fire-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          0.3012,
-          99.3818
+          99.6988,
+          50
         ]
       }
     }
@@ -13232,25 +13232,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-8-full.avif",
+        "url": "cards/art/atlas/fire-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          99.8466,
-          66.561
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "url": "cards/art/atlas/fire-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          99.6988,
-          66.4606
+          79.8193,
+          50
         ]
       }
     }
@@ -13348,8 +13348,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -13359,8 +13359,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -13455,22 +13455,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          33.439
+          20.092,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          33.5394
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -13568,8 +13568,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -13579,8 +13579,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -13623,8 +13623,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -13634,8 +13634,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -13782,25 +13782,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -13843,8 +13843,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -13854,8 +13854,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -13953,8 +13953,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -13964,8 +13964,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -14057,25 +14057,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -14118,8 +14118,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -14129,8 +14129,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -14173,8 +14173,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -14184,8 +14184,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -14277,25 +14277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -14338,8 +14338,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -14349,8 +14349,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          50
         ]
       }
     }
@@ -14503,8 +14503,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -14514,8 +14514,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -14558,8 +14558,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -14569,8 +14569,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          59.9398,
+          50
         ]
       }
     }
@@ -14668,8 +14668,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -14679,8 +14679,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -14717,25 +14717,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.avif",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.avif",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -14940,22 +14940,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          66.561
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          66.4606
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -14998,8 +14998,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -15009,8 +15009,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -15102,25 +15102,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -15163,7 +15163,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           50
         ]
       },
@@ -15174,7 +15174,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           50
         ]
       }
@@ -15328,8 +15328,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -15339,8 +15339,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -15383,8 +15383,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -15394,8 +15394,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          79.8193,
+          50
         ]
       }
     }
@@ -15493,8 +15493,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -15504,8 +15504,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -15548,8 +15548,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -15559,8 +15559,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -15652,25 +15652,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -15713,8 +15713,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -15724,8 +15724,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -15878,8 +15878,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -15889,8 +15889,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -15933,8 +15933,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -15944,8 +15944,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -16043,8 +16043,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -16054,8 +16054,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -16092,25 +16092,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.avif",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.avif",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -16315,22 +16315,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          33.439
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          33.5394
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -16373,8 +16373,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -16384,8 +16384,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -16477,25 +16477,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -16538,8 +16538,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -16549,8 +16549,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -16697,25 +16697,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -16758,8 +16758,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -16769,8 +16769,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -16868,8 +16868,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          79.908,
+          25.119
         ]
       },
       "thumb": {
@@ -16879,8 +16879,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -16923,7 +16923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           99.7619
         ]
       },
@@ -16934,7 +16934,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           99.5349
         ]
       }
@@ -17027,25 +17027,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -17088,8 +17088,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -17099,8 +17099,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -17247,25 +17247,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -17308,8 +17308,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -17319,8 +17319,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -17418,7 +17418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           25.119
         ]
       },
@@ -17429,7 +17429,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           25.2326
         ]
       }
@@ -17467,25 +17467,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.avif",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.avif",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -17690,22 +17690,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          33.439
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          33.5394
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -17742,25 +17742,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.avif",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -17852,25 +17852,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -17913,8 +17913,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -17924,8 +17924,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -18072,25 +18072,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -18133,8 +18133,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -18144,8 +18144,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -18237,25 +18237,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.avif",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.avif",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -18292,25 +18292,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.avif",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -18405,22 +18405,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          0.317
+          20.092,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          0.6182
+          20.1807,
+          50
         ]
       }
     }
@@ -18463,8 +18463,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -18474,8 +18474,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -18622,25 +18622,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -18683,8 +18683,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -18694,8 +18694,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -18787,25 +18787,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-5-full.avif",
+        "url": "cards/art/atlas/fire-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-5-thumb.avif",
+        "url": "cards/art/atlas/fire-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -18900,22 +18900,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          33.439
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          33.5394
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -18952,25 +18952,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.avif",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -19065,22 +19065,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          0.317
+          40.0307,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          0.6182
+          40.0602,
+          50
         ]
       }
     }
@@ -19123,7 +19123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           74.881
         ]
       },
@@ -19134,7 +19134,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           74.7674
         ]
       }
@@ -19282,25 +19282,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-7-full.avif",
+        "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -19343,8 +19343,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -19354,8 +19354,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -19453,7 +19453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           0.2381
         ]
       },
@@ -19464,7 +19464,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           0.4651
         ]
       }
@@ -19557,25 +19557,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-8-full.avif",
+        "url": "cards/art/atlas/fire-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          59.9693,
-          66.561
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "url": "cards/art/atlas/fire-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          59.9398,
-          66.4606
+          20.1807,
+          50
         ]
       }
     }
@@ -19612,25 +19612,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.avif",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -19667,25 +19667,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-4-full.avif",
+        "url": "cards/art/atlas/fire-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "url": "cards/art/atlas/fire-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -19780,22 +19780,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          0.317
+          59.9693,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          0.6182
+          59.9398,
+          50
         ]
       }
     }
@@ -19948,8 +19948,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -19959,8 +19959,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -20058,8 +20058,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -20069,8 +20069,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -20165,22 +20165,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          33.439
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          33.5394
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -20223,7 +20223,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           0.2381
         ]
       },
@@ -20234,7 +20234,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           0.4651
         ]
       }
@@ -20385,22 +20385,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          0.317
+          79.908,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          0.6182
+          79.8193,
+          50
         ]
       }
     }
@@ -20498,8 +20498,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -20509,8 +20509,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -20608,8 +20608,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -20619,8 +20619,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -20715,22 +20715,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          66.561
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          66.4606
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -20773,8 +20773,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -20784,8 +20784,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -20880,22 +20880,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          0.317
+          99.8466,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          0.6182
+          99.6988,
+          50
         ]
       }
     }
@@ -21048,8 +21048,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -21059,8 +21059,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -21155,22 +21155,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          0.317
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          0.6182
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -21378,8 +21378,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -21389,8 +21389,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -21485,22 +21485,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          66.561
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          66.4606
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -21543,8 +21543,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -21554,8 +21554,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -21818,8 +21818,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -21829,8 +21829,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -21922,25 +21922,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-8-full.avif",
+        "url": "cards/art/atlas/fire-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          79.908,
-          66.561
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "url": "cards/art/atlas/fire-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          79.8193,
-          66.4606
+          40.0602,
+          50
         ]
       }
     }
@@ -21983,8 +21983,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -21994,8 +21994,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -22148,8 +22148,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          79.908,
+          25.119
         ]
       },
       "thumb": {
@@ -22159,8 +22159,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -22255,22 +22255,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/fire-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          33.439
+          79.908,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/fire-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          33.5394
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -22368,8 +22368,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          79.908,
+          25.119
         ]
       },
       "thumb": {
@@ -22379,8 +22379,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -22423,7 +22423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           25.119
         ]
       },
@@ -22434,7 +22434,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           25.2326
         ]
       }
@@ -22478,8 +22478,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -22489,8 +22489,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -22533,8 +22533,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -22544,8 +22544,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -22588,8 +22588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -22599,8 +22599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -22643,8 +22643,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -22654,8 +22654,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -22698,8 +22698,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -22709,8 +22709,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          50
         ]
       }
     }
@@ -22753,7 +22753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           50
         ]
       },
@@ -22764,7 +22764,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           50
         ]
       }
@@ -22808,8 +22808,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -22819,8 +22819,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -22863,8 +22863,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -22874,8 +22874,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -22918,8 +22918,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -22929,8 +22929,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -22973,8 +22973,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -22984,8 +22984,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -23028,8 +23028,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -23039,8 +23039,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -23083,7 +23083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           74.881
         ]
       },
@@ -23094,7 +23094,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           74.7674
         ]
       }
@@ -23138,8 +23138,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -23149,8 +23149,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -23193,8 +23193,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -23204,8 +23204,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -23248,8 +23248,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -23259,8 +23259,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -23303,8 +23303,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -23314,8 +23314,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -23358,8 +23358,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -23369,8 +23369,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -23413,7 +23413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           99.7619
         ]
       },
@@ -23424,7 +23424,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           99.5349
         ]
       }
@@ -24073,7 +24073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           25.119
         ]
       },
@@ -24084,7 +24084,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           25.2326
         ]
       }
@@ -24128,8 +24128,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -24139,8 +24139,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -24183,8 +24183,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -24194,8 +24194,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -24238,8 +24238,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -24249,8 +24249,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -24293,8 +24293,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -24304,8 +24304,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          50
         ]
       }
     }
@@ -24348,8 +24348,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -24359,8 +24359,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -24403,7 +24403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           50
         ]
       },
@@ -24414,7 +24414,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           50
         ]
       }
@@ -24458,8 +24458,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -24469,8 +24469,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -24513,8 +24513,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -24524,8 +24524,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -24568,8 +24568,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -24579,8 +24579,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -24623,8 +24623,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -24634,8 +24634,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -24678,8 +24678,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -24689,8 +24689,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -24733,7 +24733,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           74.881
         ]
       },
@@ -24744,7 +24744,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           74.7674
         ]
       }
@@ -24788,8 +24788,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -24799,8 +24799,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -24843,8 +24843,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -24854,8 +24854,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -24898,8 +24898,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -24909,8 +24909,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -24953,8 +24953,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -24964,8 +24964,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -25008,8 +25008,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -25019,8 +25019,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -25063,7 +25063,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           99.7619
         ]
       },
@@ -25074,7 +25074,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           99.5349
         ]
       }
@@ -25112,25 +25112,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.avif",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.avif",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -25167,25 +25167,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.avif",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.avif",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -25222,25 +25222,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.avif",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.avif",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -25277,25 +25277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.avif",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.avif",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -25332,25 +25332,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/fire-6-full.avif",
+        "url": "cards/art/atlas/fire-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/fire-6-thumb.avif",
+        "url": "cards/art/atlas/fire-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -25393,7 +25393,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           0.2381
         ]
       },
@@ -25404,7 +25404,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           0.4651
         ]
       }
@@ -25448,8 +25448,63 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_38": {
+    "master": "cards/art/masters/fire_summon_38.png",
+    "large": "cards/art/display/fire_summon_38-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_38-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_38-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_38-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_38-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -25460,7 +25515,887 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_39": {
+    "master": "cards/art/masters/fire_summon_39.png",
+    "large": "cards/art/display/fire_summon_39-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_39-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_39-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_39-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_39-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_40": {
+    "master": "cards/art/masters/fire_summon_40.png",
+    "large": "cards/art/display/fire_summon_40-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_40-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_40-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_40-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_40-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_41": {
+    "master": "cards/art/masters/fire_summon_41.png",
+    "large": "cards/art/display/fire_summon_41-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_41-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_41-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_41-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_41-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_42": {
+    "master": "cards/art/masters/fire_summon_42.png",
+    "large": "cards/art/display/fire_summon_42-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_42-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_42-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_42-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_42-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          25.2326
+        ]
+      }
+    }
+  },
+  "fire_summon_43": {
+    "master": "cards/art/masters/fire_summon_43.png",
+    "large": "cards/art/display/fire_summon_43-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_43-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_43-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_43-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_43-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "fire_summon_44": {
+    "master": "cards/art/masters/fire_summon_44.png",
+    "large": "cards/art/display/fire_summon_44-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_44-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_44-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_44-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_44-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          50
+        ]
+      }
+    }
+  },
+  "fire_summon_45": {
+    "master": "cards/art/masters/fire_summon_45.png",
+    "large": "cards/art/display/fire_summon_45-512.webp",
+    "thumbnail": "cards/art/display/fire_summon_45-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_summon_45-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_summon_45-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_summon_45-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          50
+        ]
+      }
+    }
+  },
+  "fire_machine_11": {
+    "master": "cards/art/masters/fire_machine_11.png",
+    "large": "cards/art/display/fire_machine_11-512.webp",
+    "thumbnail": "cards/art/display/fire_machine_11-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_machine_11-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_machine_11-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_machine_11-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.56
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
           0.4651
+        ]
+      }
+    }
+  },
+  "fire_machine_12": {
+    "master": "cards/art/masters/fire_machine_12.png",
+    "large": "cards/art/display/fire_machine_12-512.webp",
+    "thumbnail": "cards/art/display/fire_machine_12-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_machine_12-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_machine_12-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_machine_12-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          0.4651
+        ]
+      }
+    }
+  },
+  "hero_scorch": {
+    "master": "cards/art/masters/hero_scorch.png",
+    "large": "cards/art/display/hero_scorch-512.webp",
+    "thumbnail": "cards/art/display/hero_scorch-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_scorch-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_scorch-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_scorch-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-9-full.avif",
+        "size": [
+          609.375,
+          101.9512
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-9-thumb.avif",
+        "size": [
+          618.75,
+          103.9024
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "fire_machine_13": {
+    "master": "cards/art/masters/fire_machine_13.png",
+    "large": "cards/art/display/fire_machine_13-512.webp",
+    "thumbnail": "cards/art/display/fire_machine_13-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_machine_13-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_machine_13-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_machine_13-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "sourceNative": [
+      1627,
+      967
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
+        ]
+      }
+    }
+  },
+  "hero_pyrrhus": {
+    "master": "cards/art/masters/hero_pyrrhus.png",
+    "large": "cards/art/display/hero_pyrrhus-512.webp",
+    "thumbnail": "cards/art/display/hero_pyrrhus-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_pyrrhus-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_pyrrhus-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_pyrrhus-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "sourceNative": [
+      1402,
+      1122
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          99.5349
+        ]
+      }
+    }
+  },
+  "fire_machine_14": {
+    "master": "cards/art/masters/fire_machine_14.png",
+    "large": "cards/art/display/fire_machine_14-512.webp",
+    "thumbnail": "cards/art/display/fire_machine_14-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_machine_14-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_machine_14-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_machine_14-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "fire_machine_15": {
+    "master": "cards/art/masters/fire_machine_15.png",
+    "large": "cards/art/display/fire_machine_15-512.webp",
+    "thumbnail": "cards/art/display/fire_machine_15-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/fire_machine_15-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/fire_machine_15-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/fire_machine_15-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "hero_salamandra": {
+    "master": "cards/art/masters/hero_salamandra.png",
+    "large": "cards/art/display/hero_salamandra-512.webp",
+    "thumbnail": "cards/art/display/hero_salamandra-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_salamandra-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_salamandra-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_salamandra-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          99.5349
+        ]
+      }
+    }
+  },
+  "hero_vulcan": {
+    "master": "cards/art/masters/hero_vulcan.png",
+    "large": "cards/art/display/hero_vulcan-512.webp",
+    "thumbnail": "cards/art/display/hero_vulcan-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_vulcan-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_vulcan-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_vulcan-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/fire-9-full.avif",
+        "size": [
+          609.375,
+          101.9512
+        ],
+        "pos": [
+          59.9693,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/fire-9-thumb.avif",
+        "size": [
+          618.75,
+          103.9024
+        ],
+        "pos": [
+          59.9398,
+          50
         ]
       }
     }
@@ -25607,25 +26542,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          79.908,
-          66.561
+          0.1534,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          79.8193,
-          66.4606
+          0.3012,
+          98.19
         ]
       }
     }
@@ -25662,25 +26597,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          99.683
+          40.0307,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          99.3818
+          40.0602,
+          98.19
         ]
       }
     }
@@ -25720,22 +26655,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          0.317
+          20.092,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          0.6182
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -25778,8 +26713,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -25789,8 +26724,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -25830,22 +26765,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          33.439
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          33.5394
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -25882,25 +26817,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          99.8466,
-          66.561
+          20.092,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          99.6988,
-          66.4606
+          20.1807,
+          98.19
         ]
       }
     }
@@ -26218,8 +27153,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -26229,8 +27164,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          40.0602,
+          50
         ]
       }
     }
@@ -26267,25 +27202,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -26652,25 +27587,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -26872,25 +27807,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -27098,8 +28033,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -27109,8 +28044,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -27153,8 +28088,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -27164,8 +28099,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          59.9398,
+          50
         ]
       }
     }
@@ -27587,25 +28522,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          59.9693,
-          66.561
+          99.8466,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          59.9398,
-          66.4606
+          99.6988,
+          1.81
         ]
       }
     }
@@ -27752,25 +28687,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -27978,8 +28913,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -27989,8 +28924,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -28033,8 +28968,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -28044,8 +28979,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          79.8193,
+          50
         ]
       }
     }
@@ -28247,25 +29182,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -28473,8 +29408,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -28484,8 +29419,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -28528,8 +29463,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -28539,8 +29474,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -28962,25 +29897,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          40.0307,
-          66.561
+          59.9693,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          40.0602,
-          66.4606
+          59.9398,
+          1.81
         ]
       }
     }
@@ -29127,25 +30062,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -29353,8 +30288,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -29364,8 +30299,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -29408,8 +30343,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -29419,8 +30354,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -29622,25 +30557,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -29848,8 +30783,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -29859,8 +30794,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -29903,8 +30838,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -29914,8 +30849,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -30285,22 +31220,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          33.439
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          33.5394
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -30447,25 +31382,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -30667,25 +31602,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -30728,8 +31663,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -30739,8 +31674,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -30997,25 +31932,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -31217,25 +32152,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -31278,8 +32213,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -31289,8 +32224,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -31550,22 +32485,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          33.439
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          33.5394
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -31712,25 +32647,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          50
         ]
       }
     }
@@ -31932,25 +32867,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -31993,8 +32928,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -32004,8 +32939,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -32375,22 +33310,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          0.317
+          40.0307,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          0.6182
+          40.0602,
+          50
         ]
       }
     }
@@ -32592,25 +33527,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-7-full.avif",
+        "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -32653,8 +33588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -32664,8 +33599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -32870,22 +33805,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          33.439
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          33.5394
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -33035,22 +33970,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          0.317
+          59.9693,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          0.6182
+          59.9398,
+          50
         ]
       }
     }
@@ -33362,25 +34297,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          20.092,
-          66.561
+          40.0307,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          20.1807,
-          66.4606
+          40.0602,
+          1.81
         ]
       }
     }
@@ -33530,22 +34465,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          0.317
+          79.908,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          0.6182
+          79.8193,
+          50
         ]
       }
     }
@@ -33750,22 +34685,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          0.317
+          99.8466,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          0.6182
+          99.6988,
+          50
         ]
       }
     }
@@ -34077,25 +35012,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/frost-8-full.avif",
+        "url": "cards/art/atlas/frost-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          66.561
+          20.092,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "url": "cards/art/atlas/frost-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          66.4606
+          20.1807,
+          1.81
         ]
       }
     }
@@ -34245,22 +35180,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          0.317
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          0.6182
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -34575,22 +35510,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          33.439
+          79.908,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          33.5394
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -34795,22 +35730,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/frost-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          33.439
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/frost-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          33.5394
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -38055,6 +38990,1106 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
+          99.5349
+        ]
+      }
+    }
+  },
+  "frost_summon_35": {
+    "master": "cards/art/masters/frost_summon_35.png",
+    "large": "cards/art/display/frost_summon_35-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_35-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_35-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_35-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_35-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_36": {
+    "master": "cards/art/masters/frost_summon_36.png",
+    "large": "cards/art/display/frost_summon_36-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_36-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_36-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_36-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_36-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_37": {
+    "master": "cards/art/masters/frost_summon_37.png",
+    "large": "cards/art/display/frost_summon_37-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_37-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_37-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_37-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_37-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_38": {
+    "master": "cards/art/masters/frost_summon_38.png",
+    "large": "cards/art/display/frost_summon_38-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_38-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_38-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_38-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_38-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_39": {
+    "master": "cards/art/masters/frost_summon_39.png",
+    "large": "cards/art/display/frost_summon_39-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_39-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_39-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_39-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_39-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_40": {
+    "master": "cards/art/masters/frost_summon_40.png",
+    "large": "cards/art/display/frost_summon_40-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_40-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_40-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_40-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_40-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "frost_summon_41": {
+    "master": "cards/art/masters/frost_summon_41.png",
+    "large": "cards/art/display/frost_summon_41-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_41-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_41-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_41-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_41-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_42": {
+    "master": "cards/art/masters/frost_summon_42.png",
+    "large": "cards/art/display/frost_summon_42-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_42-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_42-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_42-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_42-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_43": {
+    "master": "cards/art/masters/frost_summon_43.png",
+    "large": "cards/art/display/frost_summon_43-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_43-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_43-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_43-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_43-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_44": {
+    "master": "cards/art/masters/frost_summon_44.png",
+    "large": "cards/art/display/frost_summon_44-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_44-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_44-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_44-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_44-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_45": {
+    "master": "cards/art/masters/frost_summon_45.png",
+    "large": "cards/art/display/frost_summon_45-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_45-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_45-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_45-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_45-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_46": {
+    "master": "cards/art/masters/frost_summon_46.png",
+    "large": "cards/art/display/frost_summon_46-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_46-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_46-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_46-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_46-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          25.2326
+        ]
+      }
+    }
+  },
+  "frost_summon_47": {
+    "master": "cards/art/masters/frost_summon_47.png",
+    "large": "cards/art/display/frost_summon_47-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_47-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_47-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_47-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_47-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "frost_summon_48": {
+    "master": "cards/art/masters/frost_summon_48.png",
+    "large": "cards/art/display/frost_summon_48-512.webp",
+    "thumbnail": "cards/art/display/frost_summon_48-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/frost_summon_48-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/frost_summon_48-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/frost_summon_48-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          50
+        ]
+      }
+    }
+  },
+  "hero_ymir": {
+    "master": "cards/art/masters/hero_ymir.png",
+    "large": "cards/art/display/hero_ymir-512.webp",
+    "thumbnail": "cards/art/display/hero_ymir-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_ymir-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_ymir-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_ymir-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-9-full.avif",
+        "size": [
+          609.375,
+          203.9024
+        ],
+        "pos": [
+          79.908,
+          0.939
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-9-thumb.avif",
+        "size": [
+          618.75,
+          207.8049
+        ],
+        "pos": [
+          79.8193,
+          1.81
+        ]
+      }
+    }
+  },
+  "hero_sleet": {
+    "master": "cards/art/masters/hero_sleet.png",
+    "large": "cards/art/display/hero_sleet-512.webp",
+    "thumbnail": "cards/art/display/hero_sleet-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_sleet-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_sleet-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_sleet-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-9-full.avif",
+        "size": [
+          609.375,
+          203.9024
+        ],
+        "pos": [
+          0.1534,
+          0.939
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-9-thumb.avif",
+        "size": [
+          618.75,
+          207.8049
+        ],
+        "pos": [
+          0.3012,
+          1.81
+        ]
+      }
+    }
+  },
+  "hero_crysta": {
+    "master": "cards/art/masters/hero_crysta.png",
+    "large": "cards/art/display/hero_crysta-512.webp",
+    "thumbnail": "cards/art/display/hero_crysta-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_crysta-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_crysta-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_crysta-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          99.5349
+        ]
+      }
+    }
+  },
+  "hero_permafrost": {
+    "master": "cards/art/masters/hero_permafrost.png",
+    "large": "cards/art/display/hero_permafrost-512.webp",
+    "thumbnail": "cards/art/display/hero_permafrost-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_permafrost-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_permafrost-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_permafrost-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          99.5349
+        ]
+      }
+    }
+  },
+  "hero_nix": {
+    "master": "cards/art/masters/hero_nix.png",
+    "large": "cards/art/display/hero_nix-512.webp",
+    "thumbnail": "cards/art/display/hero_nix-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_nix-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_nix-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_nix-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          99.5349
+        ]
+      }
+    }
+  },
+  "hero_glace": {
+    "master": "cards/art/masters/hero_glace.png",
+    "large": "cards/art/display/hero_glace-512.webp",
+    "thumbnail": "cards/art/display/hero_glace-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_glace-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_glace-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_glace-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/frost-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/frost-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
           99.5349
         ]
       }
@@ -50522,25 +52557,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          59.9693,
-          66.561
+          99.8466,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          59.9398,
-          66.4606
+          99.6988,
+          1.81
         ]
       }
     }
@@ -50577,25 +52612,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -50639,7 +52674,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -50650,7 +52685,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -50687,25 +52722,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          99.683
+          59.9693,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          99.3818
+          59.9398,
+          98.19
         ]
       }
     }
@@ -50859,7 +52894,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -50870,7 +52905,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -50914,7 +52949,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -50925,7 +52960,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -50968,8 +53003,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -50979,8 +53014,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -51023,8 +53058,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -51034,8 +53069,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -51072,25 +53107,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          99.8466,
-          66.561
+          40.0307,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          99.6988,
-          66.4606
+          40.0602,
+          98.19
         ]
       }
     }
@@ -51182,25 +53217,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -51237,25 +53272,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -51299,7 +53334,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -51310,7 +53345,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -51409,7 +53444,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -51420,7 +53455,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -51460,22 +53495,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          0.317
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          0.6182
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -51518,8 +53553,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -51529,8 +53564,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -51567,25 +53602,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -51629,7 +53664,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -51640,7 +53675,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -51680,22 +53715,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          0.317
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          0.6182
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -51738,8 +53773,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -51749,8 +53784,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -51787,25 +53822,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -51849,7 +53884,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -51860,7 +53895,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -51900,22 +53935,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          0.317
+          79.908,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          0.6182
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -51952,25 +53987,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -52014,7 +54049,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -52025,7 +54060,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -52069,7 +54104,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -52080,7 +54115,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -52117,25 +54152,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -52178,8 +54213,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -52189,8 +54224,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -52227,25 +54262,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -52288,8 +54323,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -52299,8 +54334,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -52337,25 +54372,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -52399,7 +54434,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -52410,7 +54445,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -52454,7 +54489,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -52465,7 +54500,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -52509,7 +54544,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -52520,7 +54555,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -52564,7 +54599,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -52575,7 +54610,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -52618,8 +54653,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -52629,8 +54664,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -52667,25 +54702,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          50
         ]
       }
     }
@@ -52729,7 +54764,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -52740,7 +54775,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -52780,22 +54815,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          0.317
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          0.6182
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -52832,25 +54867,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -52894,7 +54929,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -52905,7 +54940,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -52949,7 +54984,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -52960,7 +54995,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -52997,25 +55032,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -53058,8 +55093,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -53069,8 +55104,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -53107,25 +55142,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -53162,25 +55197,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          50
         ]
       }
     }
@@ -53224,7 +55259,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -53235,7 +55270,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -53275,22 +55310,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          0.317
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          0.6182
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -53327,25 +55362,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -53382,25 +55417,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -53444,7 +55479,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -53455,7 +55490,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -53492,25 +55527,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -53553,8 +55588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -53564,8 +55599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -53602,25 +55637,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -53663,8 +55698,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -53674,8 +55709,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -53712,25 +55747,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          50
         ]
       }
     }
@@ -53774,7 +55809,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -53785,7 +55820,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -53829,7 +55864,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -53840,7 +55875,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -53884,7 +55919,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -53895,7 +55930,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -53939,7 +55974,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -53950,7 +55985,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -53993,7 +56028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -54004,7 +56039,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -54042,25 +56077,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -54104,7 +56139,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -54115,7 +56150,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -54155,22 +56190,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          0.317
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          0.6182
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -54207,25 +56242,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -54262,25 +56297,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -54324,7 +56359,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -54335,7 +56370,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -54372,25 +56407,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -54427,25 +56462,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -54482,25 +56517,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -54537,25 +56572,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -54599,7 +56634,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -54610,7 +56645,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -54650,22 +56685,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          33.439
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          33.5394
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -54702,25 +56737,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -54757,25 +56792,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -54819,7 +56854,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -54830,7 +56865,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -54867,25 +56902,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -54922,25 +56957,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -54977,25 +57012,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -55038,8 +57073,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -55049,8 +57084,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -55087,25 +57122,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          50
         ]
       }
     }
@@ -55142,25 +57177,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -55204,7 +57239,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -55215,7 +57250,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -55259,7 +57294,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -55270,7 +57305,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -55314,7 +57349,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -55325,7 +57360,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -55368,7 +57403,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          99.8466,
           50
         ]
       },
@@ -55379,7 +57414,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          99.6988,
           50
         ]
       }
@@ -55417,25 +57452,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -55479,7 +57514,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -55490,7 +57525,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -55530,22 +57565,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          33.439
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          33.5394
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -55582,25 +57617,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -55637,25 +57672,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -55699,7 +57734,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -55710,7 +57745,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -55747,25 +57782,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -55802,25 +57837,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -55857,25 +57892,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-2-full.avif",
+        "url": "cards/art/atlas/light-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-2-thumb.avif",
+        "url": "cards/art/atlas/light-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -55912,25 +57947,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          50
         ]
       }
     }
@@ -55974,7 +58009,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -55985,7 +58020,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -56025,22 +58060,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          33.439
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          33.5394
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -56077,25 +58112,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -56132,25 +58167,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -56194,7 +58229,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -56205,7 +58240,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -56242,25 +58277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          50
         ]
       }
     }
@@ -56297,25 +58332,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -56359,7 +58394,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -56370,7 +58405,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -56413,8 +58448,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -56424,8 +58459,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -56462,25 +58497,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -56517,25 +58552,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -56578,8 +58613,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -56589,8 +58624,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -56627,25 +58662,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -56689,7 +58724,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -56700,7 +58735,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -56740,22 +58775,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          33.439
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          33.5394
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -56792,25 +58827,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -56847,25 +58882,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-1-full.avif",
+        "url": "cards/art/atlas/light-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-1-thumb.avif",
+        "url": "cards/art/atlas/light-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -56909,7 +58944,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -56920,7 +58955,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -56957,25 +58992,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          50
         ]
       }
     }
@@ -57019,7 +59054,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -57030,7 +59065,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -57067,25 +59102,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -57128,8 +59163,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -57139,8 +59174,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          50
         ]
       }
     }
@@ -57177,25 +59212,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -57232,25 +59267,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -57287,25 +59322,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -57349,7 +59384,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -57360,7 +59395,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -57397,25 +59432,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          79.908,
-          33.439
+          0.1534,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          79.8193,
-          33.5394
+          0.3012,
+          1.81
         ]
       }
     }
@@ -57452,25 +59487,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-4-full.avif",
+        "url": "cards/art/atlas/light-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-4-thumb.avif",
+        "url": "cards/art/atlas/light-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -57514,7 +59549,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -57525,7 +59560,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -57569,7 +59604,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -57580,7 +59615,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -57617,25 +59652,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -57679,7 +59714,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -57690,7 +59725,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -57727,25 +59762,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -57782,25 +59817,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -57843,8 +59878,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -57854,8 +59889,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -57898,8 +59933,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -57909,8 +59944,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -57954,7 +59989,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -57965,7 +60000,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -58002,25 +60037,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          99.8466,
-          33.439
+          20.092,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          99.6988,
-          33.5394
+          20.1807,
+          1.81
         ]
       }
     }
@@ -58064,7 +60099,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -58075,7 +60110,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -58119,7 +60154,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -58130,7 +60165,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -58167,25 +60202,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -58222,25 +60257,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          50
         ]
       }
     }
@@ -58277,25 +60312,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -58338,7 +60373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -58349,7 +60384,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -58393,8 +60428,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -58404,8 +60439,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -58442,25 +60477,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          66.561
+          40.0307,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          66.4606
+          40.0602,
+          1.81
         ]
       }
     }
@@ -58504,7 +60539,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -58515,7 +60550,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -58559,7 +60594,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -58570,7 +60605,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -58614,7 +60649,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -58625,7 +60660,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -58668,8 +60703,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -58679,8 +60714,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -58724,7 +60759,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -58735,7 +60770,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -58772,25 +60807,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          20.092,
-          66.561
+          59.9693,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          20.1807,
-          66.4606
+          59.9398,
+          1.81
         ]
       }
     }
@@ -58834,7 +60869,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -58845,7 +60880,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -58889,7 +60924,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -58900,7 +60935,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -58937,25 +60972,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -58992,25 +61027,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -59047,25 +61082,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-3-full.avif",
+        "url": "cards/art/atlas/light-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-3-thumb.avif",
+        "url": "cards/art/atlas/light-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -59108,7 +61143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -59119,7 +61154,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -59163,8 +61198,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -59174,8 +61209,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -59219,7 +61254,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -59230,7 +61265,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -59267,25 +61302,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          40.0307,
-          66.561
+          79.908,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          40.0602,
-          66.4606
+          79.8193,
+          1.81
         ]
       }
     }
@@ -59329,7 +61364,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -59340,7 +61375,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -59384,7 +61419,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -59395,7 +61430,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -59432,25 +61467,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          50
         ]
       }
     }
@@ -59487,25 +61522,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -59549,7 +61584,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -59560,7 +61595,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -59603,8 +61638,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -59614,8 +61649,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -59658,8 +61693,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -59669,8 +61704,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -59714,7 +61749,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -59725,7 +61760,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -59762,25 +61797,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-8-full.avif",
+        "url": "cards/art/atlas/light-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          79.908,
-          66.561
+          0.1534,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-8-thumb.avif",
+        "url": "cards/art/atlas/light-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          79.8193,
-          66.4606
+          0.3012,
+          98.19
         ]
       }
     }
@@ -59824,7 +61859,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -59835,7 +61870,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -59872,25 +61907,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-7-full.avif",
+        "url": "cards/art/atlas/light-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-7-thumb.avif",
+        "url": "cards/art/atlas/light-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -59933,8 +61968,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -59944,8 +61979,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -59989,7 +62024,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -60000,7 +62035,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -60043,8 +62078,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -60054,8 +62089,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -60098,8 +62133,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -60109,8 +62144,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -60153,8 +62188,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -60164,8 +62199,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -60208,8 +62243,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -60219,8 +62254,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -60263,8 +62298,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -60274,8 +62309,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -60312,25 +62347,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -60367,25 +62402,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -60422,25 +62457,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -60477,25 +62512,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -60532,25 +62567,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -60587,25 +62622,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -60642,25 +62677,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -60697,25 +62732,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -60752,25 +62787,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -60807,25 +62842,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -60862,25 +62897,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-5-full.avif",
+        "url": "cards/art/atlas/light-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-5-thumb.avif",
+        "url": "cards/art/atlas/light-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -60924,7 +62959,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -60935,7 +62970,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -60979,7 +63014,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -60990,7 +63025,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -61034,7 +63069,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -61045,7 +63080,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -61089,7 +63124,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -61100,7 +63135,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -61143,8 +63178,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -61154,8 +63189,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -61198,8 +63233,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -61209,8 +63244,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -61253,8 +63288,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -61264,8 +63299,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -61308,8 +63343,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -61319,8 +63354,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -61363,8 +63398,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -61374,8 +63409,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -61418,8 +63453,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -61429,8 +63464,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -61473,8 +63508,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -61484,8 +63519,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -61528,8 +63563,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -61539,8 +63574,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -61583,8 +63618,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -61594,8 +63629,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -61632,25 +63667,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -61687,25 +63722,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -61742,25 +63777,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -61797,25 +63832,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -61852,25 +63887,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -61907,25 +63942,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -61962,25 +63997,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -62017,25 +64052,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -62072,25 +64107,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -62127,25 +64162,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -62182,25 +64217,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -62237,25 +64272,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -62292,25 +64327,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          50
         ]
       }
     }
@@ -62347,25 +64382,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          50
         ]
       }
     }
@@ -62402,25 +64437,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -62457,25 +64492,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -62512,25 +64547,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -62567,25 +64602,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          50
         ]
       }
     }
@@ -62622,25 +64657,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -62677,25 +64712,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/light-6-full.avif",
+        "url": "cards/art/atlas/light-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/light-6-thumb.avif",
+        "url": "cards/art/atlas/light-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -62738,8 +64773,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -62749,8 +64784,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -62793,8 +64828,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -62804,8 +64839,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -62848,8 +64883,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -62859,8 +64894,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -62903,8 +64938,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -62914,8 +64949,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -62958,8 +64993,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -62969,8 +65004,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -63013,8 +65048,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -63024,8 +65059,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -63069,7 +65104,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -63080,7 +65115,1162 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "light_machine_12": {
+    "master": "cards/art/masters/light_machine_12.png",
+    "large": "cards/art/display/light_machine_12-512.webp",
+    "thumbnail": "cards/art/display/light_machine_12-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_12-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_12-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_12-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          25.2326
+        ]
+      }
+    }
+  },
+  "light_machine_13": {
+    "master": "cards/art/masters/light_machine_13.png",
+    "large": "cards/art/display/light_machine_13-512.webp",
+    "thumbnail": "cards/art/display/light_machine_13-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_13-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_13-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_13-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          25.2326
+        ]
+      }
+    }
+  },
+  "light_machine_14": {
+    "master": "cards/art/masters/light_machine_14.png",
+    "large": "cards/art/display/light_machine_14-512.webp",
+    "thumbnail": "cards/art/display/light_machine_14-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_14-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_14-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_14-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          25.2326
+        ]
+      }
+    }
+  },
+  "light_machine_15": {
+    "master": "cards/art/masters/light_machine_15.png",
+    "large": "cards/art/display/light_machine_15-512.webp",
+    "thumbnail": "cards/art/display/light_machine_15-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_15-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_15-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_15-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_16": {
+    "master": "cards/art/masters/light_machine_16.png",
+    "large": "cards/art/display/light_machine_16-512.webp",
+    "thumbnail": "cards/art/display/light_machine_16-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_16-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_16-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_16-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.543
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_17": {
+    "master": "cards/art/masters/light_machine_17.png",
+    "large": "cards/art/display/light_machine_17-512.webp",
+    "thumbnail": "cards/art/display/light_machine_17-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_17-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_17-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_17-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_18": {
+    "master": "cards/art/masters/light_machine_18.png",
+    "large": "cards/art/display/light_machine_18-512.webp",
+    "thumbnail": "cards/art/display/light_machine_18-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_18-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_18-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_18-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_20": {
+    "master": "cards/art/masters/light_machine_20.png",
+    "large": "cards/art/display/light_machine_20-512.webp",
+    "thumbnail": "cards/art/display/light_machine_20-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_20-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_20-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_20-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_19": {
+    "master": "cards/art/masters/light_machine_19.png",
+    "large": "cards/art/display/light_machine_19-512.webp",
+    "thumbnail": "cards/art/display/light_machine_19-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_19-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_19-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_19-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          50
+        ]
+      }
+    }
+  },
+  "light_machine_21": {
+    "master": "cards/art/masters/light_machine_21.png",
+    "large": "cards/art/display/light_machine_21-512.webp",
+    "thumbnail": "cards/art/display/light_machine_21-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_21-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_21-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_21-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          74.7674
+        ]
+      }
+    }
+  },
+  "light_machine_22": {
+    "master": "cards/art/masters/light_machine_22.png",
+    "large": "cards/art/display/light_machine_22-512.webp",
+    "thumbnail": "cards/art/display/light_machine_22-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_22-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_22-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_22-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          74.7674
+        ]
+      }
+    }
+  },
+  "light_machine_23": {
+    "master": "cards/art/masters/light_machine_23.png",
+    "large": "cards/art/display/light_machine_23-512.webp",
+    "thumbnail": "cards/art/display/light_machine_23-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_23-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_23-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_23-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.485
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          74.7674
+        ]
+      }
+    }
+  },
+  "light_machine_24": {
+    "master": "cards/art/masters/light_machine_24.png",
+    "large": "cards/art/display/light_machine_24-512.webp",
+    "thumbnail": "cards/art/display/light_machine_24-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_24-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_24-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_24-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.473
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          74.7674
+        ]
+      }
+    }
+  },
+  "light_machine_25": {
+    "master": "cards/art/masters/light_machine_25.png",
+    "large": "cards/art/display/light_machine_25-512.webp",
+    "thumbnail": "cards/art/display/light_machine_25-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/light_machine_25-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/light_machine_25-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/light_machine_25-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          74.7674
+        ]
+      }
+    }
+  },
+  "hero_aldric": {
+    "master": "cards/art/masters/hero_aldric.png",
+    "large": "cards/art/display/hero_aldric-512.webp",
+    "thumbnail": "cards/art/display/hero_aldric-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_aldric-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_aldric-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_aldric-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
           0.4651
+        ]
+      }
+    }
+  },
+  "hero_ratha": {
+    "master": "cards/art/masters/hero_ratha.png",
+    "large": "cards/art/display/hero_ratha-512.webp",
+    "thumbnail": "cards/art/display/hero_ratha-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_ratha-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_ratha-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_ratha-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          50
+        ]
+      }
+    }
+  },
+  "hero_prisma": {
+    "master": "cards/art/masters/hero_prisma.png",
+    "large": "cards/art/display/hero_prisma-512.webp",
+    "thumbnail": "cards/art/display/hero_prisma-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_prisma-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_prisma-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_prisma-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          50
+        ]
+      }
+    }
+  },
+  "hero_theron": {
+    "master": "cards/art/masters/hero_theron.png",
+    "large": "cards/art/display/hero_theron-512.webp",
+    "thumbnail": "cards/art/display/hero_theron-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_theron-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_theron-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_theron-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          74.7674
+        ]
+      }
+    }
+  },
+  "hero_celestine": {
+    "master": "cards/art/masters/hero_celestine.png",
+    "large": "cards/art/display/hero_celestine-512.webp",
+    "thumbnail": "cards/art/display/hero_celestine-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_celestine-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_celestine-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_celestine-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "halo_arc": {
+    "master": "cards/art/masters/halo_arc.png",
+    "large": "cards/art/display/halo_arc-512.webp",
+    "thumbnail": "cards/art/display/halo_arc-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/halo_arc-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/halo_arc-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/halo_arc-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
+        ]
+      }
+    }
+  },
+  "prism_cage": {
+    "master": "cards/art/masters/prism_cage.png",
+    "large": "cards/art/display/prism_cage-512.webp",
+    "thumbnail": "cards/art/display/prism_cage-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/prism_cage-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/prism_cage-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/prism_cage-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/light-9-full.avif",
+        "size": [
+          609.375,
+          203.9024
+        ],
+        "pos": [
+          20.092,
+          99.061
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/light-9-thumb.avif",
+        "size": [
+          618.75,
+          207.8049
+        ],
+        "pos": [
+          20.1807,
+          98.19
         ]
       }
     }
@@ -63123,7 +66313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -63134,7 +66324,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -63178,8 +66368,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -63189,8 +66379,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -63233,8 +66423,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -63244,8 +66434,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -63398,8 +66588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -63409,8 +66599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -63447,25 +66637,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          99.683
+          40.0307,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          99.3818
+          40.0602,
+          98.19
         ]
       }
     }
@@ -63563,7 +66753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -63574,7 +66764,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -63618,7 +66808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -63629,7 +66819,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -63673,7 +66863,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -63684,7 +66874,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -63722,25 +66912,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          99.8466,
-          66.561
+          20.092,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          99.6988,
-          66.4606
+          20.1807,
+          98.19
         ]
       }
     }
@@ -63783,8 +66973,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -63794,8 +66984,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -63838,7 +67028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -63849,7 +67039,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -63948,7 +67138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -63959,7 +67149,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -64000,22 +67190,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          0.317
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          0.6182
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -64058,7 +67248,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -64069,7 +67259,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -64113,7 +67303,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -64124,7 +67314,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -64223,7 +67413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -64234,7 +67424,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -64275,22 +67465,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          0.317
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          0.6182
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -64333,7 +67523,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -64344,7 +67534,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -64388,7 +67578,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -64399,7 +67589,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -64443,8 +67633,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -64454,8 +67644,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -64495,22 +67685,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          33.439
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          33.5394
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -64553,7 +67743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -64564,7 +67754,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -64608,7 +67798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -64619,7 +67809,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -64663,8 +67853,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -64674,8 +67864,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -64712,25 +67902,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -64767,25 +67957,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -64828,7 +68018,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -64839,7 +68029,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -64883,7 +68073,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -64894,7 +68084,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -64938,7 +68128,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -64949,7 +68139,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -64993,7 +68183,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -65004,7 +68194,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -65048,7 +68238,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -65059,7 +68249,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -65103,8 +68293,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -65114,8 +68304,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -65158,8 +68348,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -65169,8 +68359,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -65213,8 +68403,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -65224,8 +68414,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -65268,7 +68458,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -65279,7 +68469,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -65323,8 +68513,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -65334,8 +68524,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -65375,22 +68565,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          33.439
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          33.5394
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -65433,8 +68623,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -65444,8 +68634,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -65488,7 +68678,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -65499,7 +68689,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -65543,8 +68733,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -65554,8 +68744,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -65592,25 +68782,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -65647,25 +68837,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -65702,25 +68892,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.avif",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.avif",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -65763,8 +68953,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -65774,8 +68964,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -65818,8 +69008,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -65829,8 +69019,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -65870,22 +69060,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          33.439
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          33.5394
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -65928,8 +69118,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -65939,8 +69129,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -65977,25 +69167,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.avif",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -66038,8 +69228,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -66049,8 +69239,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -66087,25 +69277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          99.6988,
+          50
         ]
       }
     }
@@ -66142,25 +69332,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -66197,25 +69387,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.avif",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.avif",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -66258,7 +69448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -66269,7 +69459,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -66313,7 +69503,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -66324,7 +69514,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -66368,7 +69558,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -66379,7 +69569,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -66423,7 +69613,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -66434,7 +69624,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -66478,8 +69668,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -66489,8 +69679,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -66533,8 +69723,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -66544,8 +69734,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -66588,8 +69778,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -66599,8 +69789,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -66643,8 +69833,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -66654,8 +69844,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -66698,7 +69888,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -66709,7 +69899,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -66750,22 +69940,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          33.439
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          33.5394
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -66808,8 +69998,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -66819,8 +70009,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -66857,25 +70047,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.avif",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -66918,7 +70108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -66929,7 +70119,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -66967,25 +70157,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -67022,25 +70212,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -67077,25 +70267,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-2-full.avif",
+        "url": "cards/art/atlas/shadow-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-2-thumb.avif",
+        "url": "cards/art/atlas/shadow-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -67138,8 +70328,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -67149,8 +70339,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -67193,7 +70383,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -67204,7 +70394,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -67242,25 +70432,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          79.908,
-          33.439
+          0.1534,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          79.8193,
-          33.5394
+          0.3012,
+          1.81
         ]
       }
     }
@@ -67303,7 +70493,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -67314,7 +70504,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -67352,25 +70542,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-1-full.avif",
+        "url": "cards/art/atlas/shadow-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "url": "cards/art/atlas/shadow-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -67413,7 +70603,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -67424,7 +70614,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -67462,25 +70652,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          20.092,
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -67517,25 +70707,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -67578,7 +70768,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -67589,7 +70779,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -67633,7 +70823,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -67644,7 +70834,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -67682,25 +70872,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.avif",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.avif",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -67743,7 +70933,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -67754,7 +70944,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -67798,7 +70988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -67809,7 +70999,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -67853,8 +71043,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -67864,8 +71054,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -67908,7 +71098,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -67919,7 +71109,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -67963,8 +71153,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -67974,8 +71164,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -68018,7 +71208,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -68029,7 +71219,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -68073,7 +71263,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -68084,7 +71274,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -68122,25 +71312,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          99.8466,
-          33.439
+          20.092,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          99.6988,
-          33.5394
+          20.1807,
+          1.81
         ]
       }
     }
@@ -68183,7 +71373,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -68194,7 +71384,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -68238,7 +71428,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -68249,7 +71439,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -68293,7 +71483,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -68304,7 +71494,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -68345,22 +71535,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          0.317
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          0.6182
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -68397,25 +71587,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -68458,7 +71648,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -68469,7 +71659,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -68513,7 +71703,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -68524,7 +71714,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -68568,8 +71758,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -68579,8 +71769,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -68617,25 +71807,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          0.1534,
-          66.561
+          40.0307,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          0.3012,
-          66.4606
+          40.0602,
+          1.81
         ]
       }
     }
@@ -68678,7 +71868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -68689,7 +71879,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -68733,7 +71923,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -68744,7 +71934,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -68788,8 +71978,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -68799,8 +71989,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -68840,22 +72030,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          0.317
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          0.6182
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -68892,25 +72082,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          0.3012,
+          50
         ]
       }
     }
@@ -68953,7 +72143,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -68964,7 +72154,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -69008,8 +72198,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -69019,8 +72209,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -69057,25 +72247,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.avif",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.avif",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -69112,25 +72302,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.avif",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.avif",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -69173,7 +72363,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          79.908,
           25.119
         ]
       },
@@ -69184,7 +72374,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          79.8193,
           25.2326
         ]
       }
@@ -69228,7 +72418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -69239,7 +72429,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -69283,8 +72473,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -69294,8 +72484,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -69332,25 +72522,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          20.092,
-          66.561
+          59.9693,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          20.1807,
-          66.4606
+          59.9398,
+          1.81
         ]
       }
     }
@@ -69393,8 +72583,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -69404,8 +72594,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -69448,7 +72638,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -69459,7 +72649,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -69503,8 +72693,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -69514,8 +72704,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -69555,22 +72745,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          0.317
+          79.908,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          0.6182
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -69607,25 +72797,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          20.1807,
+          50
         ]
       }
     }
@@ -69668,8 +72858,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -69679,8 +72869,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -69723,8 +72913,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -69734,8 +72924,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -69772,25 +72962,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-5-full.avif",
+        "url": "cards/art/atlas/shadow-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-5-thumb.avif",
+        "url": "cards/art/atlas/shadow-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -69827,25 +73017,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.avif",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.avif",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -69882,25 +73072,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.avif",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.avif",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -69943,8 +73133,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -69954,8 +73144,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -69992,25 +73182,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          40.0307,
-          66.561
+          79.908,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          40.0602,
-          66.4606
+          79.8193,
+          1.81
         ]
       }
     }
@@ -70053,8 +73243,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -70064,8 +73254,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -70108,8 +73298,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -70119,8 +73309,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -70160,22 +73350,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          0.317
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          0.6182
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -70218,8 +73408,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -70229,8 +73419,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -70273,8 +73463,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -70284,8 +73474,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -70322,25 +73512,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-7-full.avif",
+        "url": "cards/art/atlas/shadow-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -70383,7 +73573,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -70394,7 +73584,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -70432,25 +73622,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-3-full.avif",
+        "url": "cards/art/atlas/shadow-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-3-thumb.avif",
+        "url": "cards/art/atlas/shadow-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -70493,7 +73683,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -70504,7 +73694,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -70548,8 +73738,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -70559,8 +73749,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -70597,25 +73787,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.avif",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.avif",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -70652,25 +73842,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          59.9693,
-          66.561
+          99.8466,
+          0.939
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          59.9398,
-          66.4606
+          99.6988,
+          1.81
         ]
       }
     }
@@ -70713,7 +73903,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -70724,7 +73914,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -70768,8 +73958,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -70779,8 +73969,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -70823,8 +74013,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -70834,8 +74024,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -70878,8 +74068,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -70889,8 +74079,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -70933,7 +74123,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -70944,7 +74134,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -70988,7 +74178,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
+          99.8466,
           25.119
         ]
       },
@@ -70999,7 +74189,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
+          99.6988,
           25.2326
         ]
       }
@@ -71037,25 +74227,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-4-full.avif",
+        "url": "cards/art/atlas/shadow-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-4-thumb.avif",
+        "url": "cards/art/atlas/shadow-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -71098,7 +74288,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -71109,7 +74299,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -71147,25 +74337,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-8-full.avif",
+        "url": "cards/art/atlas/shadow-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          203.9024
         ],
         "pos": [
-          79.908,
-          66.561
+          0.1534,
+          99.061
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "url": "cards/art/atlas/shadow-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          207.8049
         ],
         "pos": [
-          79.8193,
-          66.4606
+          0.3012,
+          98.19
         ]
       }
     }
@@ -71208,8 +74398,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -71219,8 +74409,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -71263,7 +74453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -71274,7 +74464,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -71318,7 +74508,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -71329,7 +74519,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -71373,7 +74563,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -71384,7 +74574,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -71428,7 +74618,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -71439,7 +74629,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -71483,7 +74673,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -71494,7 +74684,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -71538,7 +74728,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -71549,7 +74739,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -71648,7 +74838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -71659,7 +74849,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -71703,8 +74893,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -71714,8 +74904,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -71758,7 +74948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -71769,7 +74959,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -71813,7 +75003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -71824,7 +75014,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -71868,8 +75058,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -71879,8 +75069,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -71923,7 +75113,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          20.092,
           25.119
         ]
       },
@@ -71934,7 +75124,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          20.1807,
           25.2326
         ]
       }
@@ -71978,7 +75168,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -71989,7 +75179,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -72033,8 +75223,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -72044,8 +75234,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -72088,8 +75278,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -72099,8 +75289,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -72143,8 +75333,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -72154,8 +75344,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -72198,7 +75388,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -72209,7 +75399,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -72253,8 +75443,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -72264,8 +75454,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -72308,8 +75498,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -72319,8 +75509,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -72363,8 +75553,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -72374,8 +75564,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -72418,7 +75608,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          59.9693,
           25.119
         ]
       },
@@ -72429,7 +75619,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          59.9398,
           25.2326
         ]
       }
@@ -72473,8 +75663,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -72484,8 +75674,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -72528,7 +75718,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -72539,7 +75729,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -72583,7 +75773,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -72594,7 +75784,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -72638,7 +75828,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -72649,7 +75839,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -72693,7 +75883,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -72704,7 +75894,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -72748,7 +75938,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -72759,7 +75949,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -72803,8 +75993,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -72814,8 +76004,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -72858,8 +76048,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -72869,8 +76059,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -72913,8 +76103,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -72924,8 +76114,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -72968,7 +76158,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -72979,7 +76169,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -73023,7 +76213,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -73034,7 +76224,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -73078,7 +76268,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -73089,7 +76279,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -73133,8 +76323,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -73144,8 +76334,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -73188,8 +76378,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -73199,8 +76389,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -73243,7 +76433,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -73254,7 +76444,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -73298,7 +76488,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -73309,7 +76499,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -73353,8 +76543,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -73364,8 +76554,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -73408,7 +76598,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -73419,7 +76609,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -73463,8 +76653,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -73474,8 +76664,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -73518,7 +76708,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -73529,7 +76719,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -73573,7 +76763,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -73584,7 +76774,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -73628,8 +76818,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -73639,8 +76829,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -73683,8 +76873,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -73694,8 +76884,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -73738,8 +76928,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -73749,8 +76939,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -73793,8 +76983,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -73804,8 +76994,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -73848,7 +77038,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -73859,7 +77049,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -73903,7 +77093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -73914,7 +77104,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -73958,7 +77148,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -73969,7 +77159,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -74013,8 +77203,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -74024,8 +77214,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -74068,8 +77258,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -74079,8 +77269,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -74123,8 +77313,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -74134,8 +77324,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -74178,7 +77368,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           74.881
         ]
       },
@@ -74189,7 +77379,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           74.7674
         ]
       }
@@ -74233,7 +77423,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           74.881
         ]
       },
@@ -74244,7 +77434,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           74.7674
         ]
       }
@@ -74288,7 +77478,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           74.881
         ]
       },
@@ -74299,7 +77489,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           74.7674
         ]
       }
@@ -74343,8 +77533,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -74354,8 +77544,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -74398,8 +77588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -74409,8 +77599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -74453,8 +77643,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -74464,8 +77654,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -74508,7 +77698,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           99.7619
         ]
       },
@@ -74519,7 +77709,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           99.5349
         ]
       }
@@ -74563,7 +77753,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           99.7619
         ]
       },
@@ -74574,7 +77764,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           99.5349
         ]
       }
@@ -74618,7 +77808,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           99.7619
         ]
       },
@@ -74629,7 +77819,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           99.5349
         ]
       }
@@ -74667,25 +77857,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.avif",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.avif",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -74722,25 +77912,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.avif",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.avif",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -74777,25 +77967,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/shadow-6-full.avif",
+        "url": "cards/art/atlas/shadow-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/shadow-6-thumb.avif",
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -74838,7 +78028,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           0.2381
         ]
       },
@@ -74849,7 +78039,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           0.4651
         ]
       }
@@ -74893,7 +78083,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           0.2381
         ]
       },
@@ -74904,7 +78094,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           0.4651
         ]
       }
@@ -74948,7 +78138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           0.2381
         ]
       },
@@ -74959,7 +78149,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           0.4651
         ]
       }
@@ -75003,8 +78193,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -75014,8 +78204,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -75058,8 +78248,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -75069,8 +78259,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -75113,8 +78303,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -75124,8 +78314,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -75168,7 +78358,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           25.119
         ]
       },
@@ -75179,7 +78369,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           25.2326
         ]
       }
@@ -75223,7 +78413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           25.119
         ]
       },
@@ -75234,7 +78424,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           25.2326
         ]
       }
@@ -75278,7 +78468,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -75289,7 +78479,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -75333,8 +78523,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -75344,8 +78534,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -75388,8 +78578,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -75399,8 +78589,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -75443,8 +78633,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -75454,8 +78644,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -75498,7 +78688,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          59.9693,
           50
         ]
       },
@@ -75509,7 +78699,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          59.9398,
           50
         ]
       }
@@ -75553,7 +78743,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          79.908,
           50
         ]
       },
@@ -75564,7 +78754,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          79.8193,
           50
         ]
       }
@@ -75608,7 +78798,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           50
         ]
       },
@@ -75619,7 +78809,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           50
         ]
       }
@@ -75663,8 +78853,173 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
+          0.1534,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_54": {
+    "master": "cards/art/masters/shadow_summon_54.png",
+    "large": "cards/art/display/shadow_summon_54-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_54-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_54-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_54-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_54-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_55": {
+    "master": "cards/art/masters/shadow_summon_55.png",
+    "large": "cards/art/display/shadow_summon_55-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_55-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_55-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_55-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_55-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_56": {
+    "master": "cards/art/masters/shadow_summon_56.png",
+    "large": "cards/art/display/shadow_summon_56-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_56-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_56-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_56-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_56-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -75675,7 +79030,942 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_57": {
+    "master": "cards/art/masters/shadow_summon_57.png",
+    "large": "cards/art/display/shadow_summon_57-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_57-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_57-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_57-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_57-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_58": {
+    "master": "cards/art/masters/shadow_summon_58.png",
+    "large": "cards/art/display/shadow_summon_58-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_58-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_58-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_58-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_58-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          74.7674
+        ]
+      }
+    }
+  },
+  "shadow_summon_59": {
+    "master": "cards/art/masters/shadow_summon_59.png",
+    "large": "cards/art/display/shadow_summon_59-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_59-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_59-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_59-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_59-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_60": {
+    "master": "cards/art/masters/shadow_summon_60.png",
+    "large": "cards/art/display/shadow_summon_60-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_60-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_60-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_60-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_60-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_61": {
+    "master": "cards/art/masters/shadow_summon_61.png",
+    "large": "cards/art/display/shadow_summon_61-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_61-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_61-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_61-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_61-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1512,
+      1040
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_62": {
+    "master": "cards/art/masters/shadow_summon_62.png",
+    "large": "cards/art/display/shadow_summon_62-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_62-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_62-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_62-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_62-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_63": {
+    "master": "cards/art/masters/shadow_summon_63.png",
+    "large": "cards/art/display/shadow_summon_63-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_63-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_63-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_63-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_63-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_64": {
+    "master": "cards/art/masters/shadow_summon_64.png",
+    "large": "cards/art/display/shadow_summon_64-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_64-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_64-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_64-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_64-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          99.5349
+        ]
+      }
+    }
+  },
+  "shadow_summon_65": {
+    "master": "cards/art/masters/shadow_summon_65.png",
+    "large": "cards/art/display/shadow_summon_65-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_65-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_65-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_65-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_65-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          0.4651
+        ]
+      }
+    }
+  },
+  "shadow_summon_66": {
+    "master": "cards/art/masters/shadow_summon_66.png",
+    "large": "cards/art/display/shadow_summon_66-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_66-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_66-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_66-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_66-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          0.4651
+        ]
+      }
+    }
+  },
+  "shadow_summon_67": {
+    "master": "cards/art/masters/shadow_summon_67.png",
+    "large": "cards/art/display/shadow_summon_67-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_67-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_67-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_67-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_67-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          0.4651
+        ]
+      }
+    }
+  },
+  "shadow_summon_68": {
+    "master": "cards/art/masters/shadow_summon_68.png",
+    "large": "cards/art/display/shadow_summon_68-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_68-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_68-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_68-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_68-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          0.4651
+        ]
+      }
+    }
+  },
+  "shadow_summon_69": {
+    "master": "cards/art/masters/shadow_summon_69.png",
+    "large": "cards/art/display/shadow_summon_69-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_69-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_69-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_69-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_69-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
+        ]
+      }
+    }
+  },
+  "shadow_summon_70": {
+    "master": "cards/art/masters/shadow_summon_70.png",
+    "large": "cards/art/display/shadow_summon_70-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_70-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/shadow_summon_70-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/shadow_summon_70-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/shadow_summon_70-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "hero_arachna": {
+    "master": "cards/art/masters/hero_arachna.png",
+    "large": "cards/art/display/hero_arachna-512.webp",
+    "thumbnail": "cards/art/display/hero_arachna-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_arachna-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_arachna-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_arachna-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "sourceNative": [
+      1464,
+      1074
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "hero_necros": {
+    "master": "cards/art/masters/hero_necros.png",
+    "large": "cards/art/display/hero_necros-512.webp",
+    "thumbnail": "cards/art/display/hero_necros-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_necros-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_necros-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_necros-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
           50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          50
+        ]
+      }
+    }
+  },
+  "hero_corvina": {
+    "master": "cards/art/masters/hero_corvina.png",
+    "large": "cards/art/display/hero_corvina-512.webp",
+    "thumbnail": "cards/art/display/hero_corvina-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_corvina-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_corvina-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_corvina-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/shadow-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/shadow-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -75718,8 +80008,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -75729,8 +80019,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -75773,8 +80063,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -75784,8 +80074,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -75828,7 +80118,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           50
         ]
       },
@@ -75839,7 +80129,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           50
         ]
       }
@@ -75938,8 +80228,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -75949,8 +80239,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -75987,25 +80277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -76042,25 +80332,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          99.8466,
-          66.561
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          99.6988,
-          66.4606
+          79.8193,
+          50
         ]
       }
     }
@@ -76158,7 +80448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           25.119
         ]
       },
@@ -76169,7 +80459,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           25.2326
         ]
       }
@@ -76213,8 +80503,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -76224,8 +80514,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -76262,25 +80552,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          0.1534,
-          99.683
+          99.8466,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          0.3012,
-          99.3818
+          99.6988,
+          50
         ]
       }
     }
@@ -76320,22 +80610,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          0.317
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          0.6182
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -76378,8 +80668,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -76389,8 +80679,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -76433,8 +80723,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -76444,8 +80734,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -76537,25 +80827,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          79.908,
-          66.561
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          79.8193,
-          66.4606
+          59.9398,
+          50
         ]
       }
     }
@@ -76595,22 +80885,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          0.317
+          79.908,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          0.6182
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -76653,8 +80943,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -76664,8 +80954,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -76708,8 +80998,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -76719,8 +81009,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -76757,25 +81047,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -76818,7 +81108,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           25.119
         ]
       },
@@ -76829,7 +81119,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           25.2326
         ]
       }
@@ -76870,22 +81160,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          33.439
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          33.5394
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -76928,8 +81218,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -76939,8 +81229,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -76977,25 +81267,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -77038,7 +81328,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           25.119
         ]
       },
@@ -77049,7 +81339,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           25.2326
         ]
       }
@@ -77090,22 +81380,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          33.439
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          33.5394
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -77148,8 +81438,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -77159,8 +81449,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -77203,8 +81493,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -77214,8 +81504,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -77258,8 +81548,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -77269,8 +81559,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -77307,25 +81597,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          20.1807,
+          50
         ]
       }
     }
@@ -77368,8 +81658,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -77379,8 +81669,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -77423,7 +81713,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           99.7619
         ]
       },
@@ -77434,7 +81724,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           99.5349
         ]
       }
@@ -77478,8 +81768,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -77489,8 +81779,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -77527,25 +81817,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -77588,8 +81878,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -77599,8 +81889,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -77643,8 +81933,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -77654,8 +81944,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -77698,7 +81988,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           74.881
         ]
       },
@@ -77709,7 +81999,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           74.7674
         ]
       }
@@ -77753,8 +82043,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -77764,8 +82054,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -77802,25 +82092,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -77863,8 +82153,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -77874,8 +82164,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -77915,22 +82205,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          33.439
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          33.5394
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -77973,8 +82263,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -77984,8 +82274,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -78028,7 +82318,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           99.7619
         ]
       },
@@ -78039,7 +82329,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           99.5349
         ]
       }
@@ -78083,8 +82373,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -78094,8 +82384,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -78132,25 +82422,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -78187,25 +82477,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -78242,25 +82532,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.avif",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.avif",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -78303,8 +82593,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -78314,8 +82604,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -78352,25 +82642,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -78413,8 +82703,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -78424,8 +82714,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -78465,22 +82755,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          33.439
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          33.5394
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -78523,8 +82813,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -78534,8 +82824,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -78578,7 +82868,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           99.7619
         ]
       },
@@ -78589,7 +82879,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           99.5349
         ]
       }
@@ -78633,8 +82923,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -78644,8 +82934,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -78682,25 +82972,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          59.9693,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          59.9398,
+          50
         ]
       }
     }
@@ -78737,25 +83027,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -78792,25 +83082,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.avif",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.avif",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -78853,8 +83143,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -78864,8 +83154,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -78902,25 +83192,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -78963,8 +83253,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -78974,8 +83264,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -79018,8 +83308,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -79029,8 +83319,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -79073,8 +83363,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -79084,8 +83374,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -79128,7 +83418,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           50
         ]
       },
@@ -79139,7 +83429,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           50
         ]
       }
@@ -79177,25 +83467,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -79238,8 +83528,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -79249,8 +83539,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -79290,22 +83580,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          79.908,
-          33.439
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          79.8193,
-          33.5394
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -79348,8 +83638,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -79359,8 +83649,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -79397,25 +83687,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.avif",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -79458,8 +83748,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -79469,8 +83759,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -79507,25 +83797,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          79.908,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          79.8193,
+          50
         ]
       }
     }
@@ -79562,25 +83852,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -79617,25 +83907,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.avif",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.avif",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -79678,8 +83968,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -79689,8 +83979,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -79727,25 +84017,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -79788,8 +84078,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -79799,8 +84089,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -79840,22 +84130,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          99.8466,
-          33.439
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          99.6988,
-          33.5394
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -79898,8 +84188,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -79909,8 +84199,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -79947,25 +84237,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.avif",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -80008,7 +84298,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           50
         ]
       },
@@ -80019,7 +84309,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           50
         ]
       }
@@ -80060,22 +84350,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          0.317
+          99.8466,
+          50
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          0.6182
+          99.6988,
+          50
         ]
       }
     }
@@ -80112,25 +84402,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -80167,25 +84457,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-2-full.avif",
+        "url": "cards/art/atlas/storm-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-2-thumb.avif",
+        "url": "cards/art/atlas/storm-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -80222,25 +84512,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -80283,8 +84573,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -80294,8 +84584,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -80338,7 +84628,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           74.881
         ]
       },
@@ -80349,7 +84639,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           74.7674
         ]
       }
@@ -80393,8 +84683,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -80404,8 +84694,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -80448,7 +84738,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          59.9693,
           25.119
         ]
       },
@@ -80459,7 +84749,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          59.9398,
           25.2326
         ]
       }
@@ -80497,25 +84787,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -80558,7 +84848,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           50
         ]
       },
@@ -80569,7 +84859,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           50
         ]
       }
@@ -80610,22 +84900,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          0.1534,
-          66.561
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          0.3012,
-          66.4606
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -80662,25 +84952,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -80717,25 +85007,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.avif",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -80778,7 +85068,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           50
         ]
       },
@@ -80789,7 +85079,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           50
         ]
       }
@@ -80830,22 +85120,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          20.092,
-          0.317
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          20.1807,
-          0.6182
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -80882,25 +85172,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -80943,7 +85233,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           0.2381
         ]
       },
@@ -80954,7 +85244,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           0.4651
         ]
       }
@@ -80992,25 +85282,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -81053,7 +85343,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           99.7619
         ]
       },
@@ -81064,7 +85354,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           99.5349
         ]
       }
@@ -81102,25 +85392,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -81163,7 +85453,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           50
         ]
       },
@@ -81174,7 +85464,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           50
         ]
       }
@@ -81212,25 +85502,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          20.092,
-          66.561
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          20.1807,
-          66.4606
+          0.3012,
+          50
         ]
       }
     }
@@ -81267,25 +85557,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -81322,25 +85612,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-1-full.avif",
+        "url": "cards/art/atlas/storm-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "url": "cards/art/atlas/storm-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -81383,8 +85673,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -81394,8 +85684,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -81435,22 +85725,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          40.0307,
-          0.317
+          20.092,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          40.0602,
-          0.6182
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -81487,25 +85777,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -81548,7 +85838,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           0.2381
         ]
       },
@@ -81559,7 +85849,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           0.4651
         ]
       }
@@ -81597,25 +85887,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -81658,7 +85948,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           99.7619
         ]
       },
@@ -81669,7 +85959,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           99.5349
         ]
       }
@@ -81713,7 +86003,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
+          99.8466,
           25.119
         ]
       },
@@ -81724,7 +86014,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
+          99.6988,
           25.2326
         ]
       }
@@ -81762,25 +86052,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -81823,8 +86113,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -81834,8 +86124,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -81872,25 +86162,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          40.0307,
-          66.561
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          40.0602,
-          66.4606
+          20.1807,
+          50
         ]
       }
     }
@@ -81927,25 +86217,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -81988,7 +86278,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           0.2381
         ]
       },
@@ -81999,7 +86289,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           0.4651
         ]
       }
@@ -82043,8 +86333,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -82054,8 +86344,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -82095,22 +86385,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
-          59.9693,
-          0.317
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
-          59.9398,
-          0.6182
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -82147,25 +86437,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -82208,8 +86498,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -82219,8 +86509,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -82257,25 +86547,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          50
         ]
       }
     }
@@ -82312,25 +86602,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.avif",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.avif",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -82422,25 +86712,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          50
         ]
       }
     }
@@ -82477,25 +86767,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -82538,8 +86828,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -82549,8 +86839,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -82587,25 +86877,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-8-full.avif",
+        "url": "cards/art/atlas/storm-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          101.9512
         ],
         "pos": [
-          59.9693,
-          66.561
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-8-thumb.avif",
+        "url": "cards/art/atlas/storm-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          103.9024
         ],
         "pos": [
-          59.9398,
-          66.4606
+          40.0602,
+          50
         ]
       }
     }
@@ -82642,25 +86932,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-4-full.avif",
+        "url": "cards/art/atlas/storm-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "url": "cards/art/atlas/storm-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -82703,7 +86993,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           0.2381
         ]
       },
@@ -82714,7 +87004,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           0.4651
         ]
       }
@@ -82758,8 +87048,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -82769,8 +87059,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -82807,25 +87097,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -82868,8 +87158,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -82879,8 +87169,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -82917,25 +87207,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -82972,25 +87262,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.avif",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.avif",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -83033,8 +87323,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -83044,8 +87334,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -83088,8 +87378,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -83099,8 +87389,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          59.9398,
+          50
         ]
       }
     }
@@ -83143,8 +87433,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -83154,8 +87444,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -83198,8 +87488,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -83209,8 +87499,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -83253,8 +87543,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -83264,8 +87554,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -83308,8 +87598,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -83319,8 +87609,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -83357,25 +87647,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -83418,8 +87708,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -83429,8 +87719,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -83473,8 +87763,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -83484,8 +87774,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          59.9398,
+          50
         ]
       }
     }
@@ -83522,25 +87812,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.avif",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.avif",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -83583,8 +87873,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -83594,8 +87884,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          59.9398,
+          50
         ]
       }
     }
@@ -83638,8 +87928,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -83649,8 +87939,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          79.8193,
+          50
         ]
       }
     }
@@ -83693,8 +87983,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -83704,8 +87994,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -83748,8 +88038,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -83759,8 +88049,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -83803,7 +88093,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           74.881
         ]
       },
@@ -83814,7 +88104,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           74.7674
         ]
       }
@@ -83858,8 +88148,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -83869,8 +88159,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -83913,7 +88203,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           74.881
         ]
       },
@@ -83924,7 +88214,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           74.7674
         ]
       }
@@ -83968,8 +88258,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
@@ -83979,8 +88269,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -84023,7 +88313,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           74.881
         ]
       },
@@ -84034,7 +88324,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           74.7674
         ]
       }
@@ -84072,25 +88362,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -84133,8 +88423,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -84144,8 +88434,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          79.8193,
+          50
         ]
       }
     }
@@ -84182,25 +88472,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-3-full.avif",
+        "url": "cards/art/atlas/storm-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-3-thumb.avif",
+        "url": "cards/art/atlas/storm-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -84298,8 +88588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -84309,8 +88599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -84353,7 +88643,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           74.881
         ]
       },
@@ -84364,7 +88654,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           74.7674
         ]
       }
@@ -84408,8 +88698,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -84419,8 +88709,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -84457,25 +88747,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -84518,8 +88808,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -84529,8 +88819,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -84573,8 +88863,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -84584,8 +88874,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -84628,7 +88918,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           0.2381
         ]
       },
@@ -84639,7 +88929,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           0.4651
         ]
       }
@@ -84683,7 +88973,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          40.0307,
           25.119
         ]
       },
@@ -84694,7 +88984,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          40.0602,
           25.2326
         ]
       }
@@ -84738,8 +89028,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -84749,8 +89039,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -84793,8 +89083,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -84804,8 +89094,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -84848,7 +89138,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           25.119
         ]
       },
@@ -84859,7 +89149,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           25.2326
         ]
       }
@@ -84903,8 +89193,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -84914,8 +89204,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -84952,25 +89242,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-7-full.avif",
+        "url": "cards/art/atlas/storm-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "url": "cards/art/atlas/storm-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -85013,8 +89303,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -85024,8 +89314,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -85068,8 +89358,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
@@ -85079,8 +89369,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -85123,7 +89413,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           0.2381
         ]
       },
@@ -85134,7 +89424,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           0.4651
         ]
       }
@@ -85178,8 +89468,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -85189,8 +89479,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -85233,8 +89523,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -85244,8 +89534,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -85288,8 +89578,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -85299,8 +89589,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -85343,8 +89633,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -85354,8 +89644,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -85398,8 +89688,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -85409,8 +89699,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -85453,8 +89743,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -85464,8 +89754,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -85508,8 +89798,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -85519,8 +89809,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -85563,8 +89853,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -85574,8 +89864,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -85618,8 +89908,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -85629,8 +89919,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -85673,8 +89963,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -85684,8 +89974,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -85722,25 +90012,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -85777,25 +90067,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -85832,25 +90122,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -85887,25 +90177,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -85942,25 +90232,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -85997,25 +90287,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -86052,25 +90342,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -86107,25 +90397,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-5-full.avif",
+        "url": "cards/art/atlas/storm-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-5-thumb.avif",
+        "url": "cards/art/atlas/storm-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -86168,8 +90458,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -86179,8 +90469,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -86223,8 +90513,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -86234,8 +90524,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -86278,7 +90568,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           99.7619
         ]
       },
@@ -86289,7 +90579,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           99.5349
         ]
       }
@@ -86333,8 +90623,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -86344,8 +90634,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -86388,8 +90678,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -86399,8 +90689,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -86443,8 +90733,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -86454,8 +90744,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -86498,8 +90788,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -86509,8 +90799,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -86553,8 +90843,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -86564,8 +90854,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -86608,8 +90898,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          0.1534,
+          99.7619
         ]
       },
       "thumb": {
@@ -86619,8 +90909,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          0.3012,
+          99.5349
         ]
       }
     }
@@ -86663,8 +90953,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          20.092,
+          99.7619
         ]
       },
       "thumb": {
@@ -86674,8 +90964,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          20.1807,
+          99.5349
         ]
       }
     }
@@ -86718,8 +91008,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          40.0307,
+          99.7619
         ]
       },
       "thumb": {
@@ -86729,8 +91019,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          40.0602,
+          99.5349
         ]
       }
     }
@@ -86773,8 +91063,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          50
+          59.9693,
+          99.7619
         ]
       },
       "thumb": {
@@ -86784,8 +91074,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          50
+          59.9398,
+          99.5349
         ]
       }
     }
@@ -86828,8 +91118,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          50
+          79.908,
+          99.7619
         ]
       },
       "thumb": {
@@ -86839,8 +91129,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          50
+          79.8193,
+          99.5349
         ]
       }
     }
@@ -86883,8 +91173,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          50
+          99.8466,
+          99.7619
         ]
       },
       "thumb": {
@@ -86894,8 +91184,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          50
+          99.6988,
+          99.5349
         ]
       }
     }
@@ -86932,25 +91222,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          50
+          0.1534,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          50
+          0.3012,
+          0.4651
         ]
       }
     }
@@ -86987,25 +91277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          50
+          20.092,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          50
+          20.1807,
+          0.4651
         ]
       }
     }
@@ -87042,25 +91332,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          50
+          40.0307,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          50
+          40.0602,
+          0.4651
         ]
       }
     }
@@ -87097,25 +91387,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          74.881
+          59.9693,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          74.7674
+          59.9398,
+          0.4651
         ]
       }
     }
@@ -87152,25 +91442,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          74.881
+          79.908,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          74.7674
+          79.8193,
+          0.4651
         ]
       }
     }
@@ -87207,25 +91497,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          74.881
+          99.8466,
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          74.7674
+          99.6988,
+          0.4651
         ]
       }
     }
@@ -87262,25 +91552,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          74.881
+          0.1534,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          74.7674
+          0.3012,
+          25.2326
         ]
       }
     }
@@ -87317,25 +91607,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          74.881
+          20.092,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          74.7674
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -87372,25 +91662,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          74.881
+          40.0307,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          74.7674
+          40.0602,
+          25.2326
         ]
       }
     }
@@ -87427,25 +91717,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          0.1534,
-          99.7619
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          0.3012,
-          99.5349
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -87482,25 +91772,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          20.092,
-          99.7619
+          79.908,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          20.1807,
-          99.5349
+          79.8193,
+          25.2326
         ]
       }
     }
@@ -87537,25 +91827,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          40.0307,
-          99.7619
+          99.8466,
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          40.0602,
-          99.5349
+          99.6988,
+          25.2326
         ]
       }
     }
@@ -87592,25 +91882,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          59.9693,
-          99.7619
+          0.1534,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          59.9398,
-          99.5349
+          0.3012,
+          50
         ]
       }
     }
@@ -87647,25 +91937,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          79.908,
-          99.7619
+          20.092,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          79.8193,
-          99.5349
+          20.1807,
+          50
         ]
       }
     }
@@ -87702,25 +91992,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/storm-6-full.avif",
+        "url": "cards/art/atlas/storm-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
-          99.8466,
-          99.7619
+          40.0307,
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/storm-6-thumb.avif",
+        "url": "cards/art/atlas/storm-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
-          99.6988,
-          99.5349
+          40.0602,
+          50
         ]
       }
     }
@@ -87763,8 +92053,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          0.2381
+          59.9693,
+          50
         ]
       },
       "thumb": {
@@ -87774,8 +92064,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          0.4651
+          59.9398,
+          50
         ]
       }
     }
@@ -87818,8 +92108,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          0.2381
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -87829,8 +92119,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          0.4651
+          79.8193,
+          50
         ]
       }
     }
@@ -87873,8 +92163,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          0.2381
+          99.8466,
+          50
         ]
       },
       "thumb": {
@@ -87884,8 +92174,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          0.4651
+          99.6988,
+          50
         ]
       }
     }
@@ -87928,8 +92218,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          0.2381
+          0.1534,
+          74.881
         ]
       },
       "thumb": {
@@ -87939,8 +92229,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          0.4651
+          0.3012,
+          74.7674
         ]
       }
     }
@@ -87983,8 +92273,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          74.881
         ]
       },
       "thumb": {
@@ -87994,8 +92284,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          74.7674
         ]
       }
     }
@@ -88038,8 +92328,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          40.0307,
+          74.881
         ]
       },
       "thumb": {
@@ -88049,8 +92339,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          40.0602,
+          74.7674
         ]
       }
     }
@@ -88093,8 +92383,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
-          25.119
+          59.9693,
+          74.881
         ]
       },
       "thumb": {
@@ -88104,8 +92394,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
-          25.2326
+          59.9398,
+          74.7674
         ]
       }
     }
@@ -88148,8 +92438,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
-          25.119
+          79.908,
+          74.881
         ]
       },
       "thumb": {
@@ -88159,8 +92449,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
-          25.2326
+          79.8193,
+          74.7674
         ]
       }
     }
@@ -88203,8 +92493,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          99.8466,
+          74.881
         ]
       },
       "thumb": {
@@ -88214,8 +92504,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          99.6988,
+          74.7674
         ]
       }
     }
@@ -88258,8 +92548,118 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
+          0.1534,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          99.5349
+        ]
+      }
+    }
+  },
+  "storm_summon_48": {
+    "master": "cards/art/masters/storm_summon_48.png",
+    "large": "cards/art/display/storm_summon_48-512.webp",
+    "thumbnail": "cards/art/display/storm_summon_48-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_summon_48-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_summon_48-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_summon_48-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          99.5349
+        ]
+      }
+    }
+  },
+  "storm_summon_50": {
+    "master": "cards/art/masters/storm_summon_50.png",
+    "large": "cards/art/display/storm_summon_50-512.webp",
+    "thumbnail": "cards/art/display/storm_summon_50-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_summon_50-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_summon_50-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_summon_50-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
           59.9693,
-          25.119
+          99.7619
         ]
       },
       "thumb": {
@@ -88270,6 +92670,831 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
+          99.5349
+        ]
+      }
+    }
+  },
+  "storm_machine_12": {
+    "master": "cards/art/masters/storm_machine_12.png",
+    "large": "cards/art/display/storm_machine_12-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_12-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_12-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_12-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_12-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_13": {
+    "master": "cards/art/masters/storm_machine_13.png",
+    "large": "cards/art/display/storm_machine_13-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_13-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_13-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_13-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_13-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_14": {
+    "master": "cards/art/masters/storm_machine_14.png",
+    "large": "cards/art/display/storm_machine_14-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_14-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_14-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_14-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_14-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_15": {
+    "master": "cards/art/masters/storm_machine_15.png",
+    "large": "cards/art/display/storm_machine_15-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_15-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_15-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_15-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_15-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_16": {
+    "master": "cards/art/masters/storm_machine_16.png",
+    "large": "cards/art/display/storm_machine_16-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_16-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_16-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_16-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_16-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_17": {
+    "master": "cards/art/masters/storm_machine_17.png",
+    "large": "cards/art/display/storm_machine_17-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_17-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_17-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_17-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_17-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "sourceNative": [
+      1314,
+      1197
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_18": {
+    "master": "cards/art/masters/storm_machine_18.png",
+    "large": "cards/art/display/storm_machine_18-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_18-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_18-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_18-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_18-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "storm_machine_19": {
+    "master": "cards/art/masters/storm_machine_19.png",
+    "large": "cards/art/display/storm_machine_19-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_19-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_19-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_19-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_19-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          50
+        ]
+      }
+    }
+  },
+  "hero_kiri": {
+    "master": "cards/art/masters/hero_kiri.png",
+    "large": "cards/art/display/hero_kiri-512.webp",
+    "thumbnail": "cards/art/display/hero_kiri-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_kiri-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_kiri-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_kiri-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "hero_stati": {
+    "master": "cards/art/masters/hero_stati.png",
+    "large": "cards/art/display/hero_stati-512.webp",
+    "thumbnail": "cards/art/display/hero_stati-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_stati-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_stati-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_stati-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          25.2326
+        ]
+      }
+    }
+  },
+  "storm_machine_20": {
+    "master": "cards/art/masters/storm_machine_20.png",
+    "large": "cards/art/display/storm_machine_20-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_20-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_20-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_20-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_20-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          50
+        ]
+      }
+    }
+  },
+  "storm_machine_21": {
+    "master": "cards/art/masters/storm_machine_21.png",
+    "large": "cards/art/display/storm_machine_21-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_21-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_21-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_21-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_21-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          50
+        ]
+      }
+    }
+  },
+  "storm_machine_22": {
+    "master": "cards/art/masters/storm_machine_22.png",
+    "large": "cards/art/display/storm_machine_22-512.webp",
+    "thumbnail": "cards/art/display/storm_machine_22-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/storm_machine_22-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/storm_machine_22-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/storm_machine_22-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-4-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-4-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          50
+        ]
+      }
+    }
+  },
+  "hero_thunderbird": {
+    "master": "cards/art/masters/hero_thunderbird.png",
+    "large": "cards/art/display/hero_thunderbird-512.webp",
+    "thumbnail": "cards/art/display/hero_thunderbird-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_thunderbird-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_thunderbird-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_thunderbird-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          50
+        ]
+      }
+    }
+  },
+  "hero_ozone": {
+    "master": "cards/art/masters/hero_ozone.png",
+    "large": "cards/art/display/hero_ozone-512.webp",
+    "thumbnail": "cards/art/display/hero_ozone-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_ozone-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_ozone-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_ozone-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/storm-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/storm-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
           25.2326
         ]
       }
@@ -88314,7 +93539,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -88325,7 +93550,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -88369,7 +93594,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -88380,7 +93605,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -88424,7 +93649,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -88435,7 +93660,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -88534,7 +93759,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -88545,7 +93770,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -88589,7 +93814,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -88600,7 +93825,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -88699,7 +93924,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -88710,7 +93935,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -88754,7 +93979,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -88765,7 +93990,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -88802,25 +94027,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          50
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          50
+          25.2326
         ]
       }
     }
@@ -88857,25 +94082,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           99.8466,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           99.6988,
-          66.4606
+          50
         ]
       }
     }
@@ -88967,25 +94192,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -89029,7 +94254,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -89040,7 +94265,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -89084,7 +94309,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89095,7 +94320,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -89139,7 +94364,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89150,7 +94375,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -89194,7 +94419,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -89205,7 +94430,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -89245,22 +94470,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           99.8466,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           99.6988,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -89297,25 +94522,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -89352,25 +94577,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           0.1534,
-          99.683
+          99.5261
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           0.3012,
-          99.3818
+          99.0783
         ]
       }
     }
@@ -89414,7 +94639,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89425,7 +94650,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -89469,7 +94694,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89480,7 +94705,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -89517,25 +94742,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           0.1534,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           0.3012,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -89579,7 +94804,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89590,7 +94815,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -89634,7 +94859,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -89645,7 +94870,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -89682,25 +94907,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -89737,25 +94962,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           20.092,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           20.1807,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -89792,25 +95017,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -89854,7 +95079,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -89865,7 +95090,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -89909,7 +95134,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -89920,7 +95145,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -89957,25 +95182,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -90012,25 +95237,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          50
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          50
+          25.2326
         ]
       }
     }
@@ -90074,7 +95299,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -90085,7 +95310,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -90129,7 +95354,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -90140,7 +95365,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -90177,25 +95402,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -90239,7 +95464,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -90250,7 +95475,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -90294,7 +95519,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -90305,7 +95530,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -90342,25 +95567,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -90404,7 +95629,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -90415,7 +95640,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -90459,7 +95684,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -90470,7 +95695,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -90514,7 +95739,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -90525,7 +95750,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -90562,25 +95787,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -90617,25 +95842,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           40.0307,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           40.0602,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -90672,25 +95897,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -90734,7 +95959,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -90745,7 +95970,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -90789,7 +96014,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -90800,7 +96025,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -90837,25 +96062,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -90892,25 +96117,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          50
+          25.119
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          50
+          25.2326
         ]
       }
     }
@@ -90954,7 +96179,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -90965,7 +96190,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -91009,7 +96234,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -91020,7 +96245,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -91057,25 +96282,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           59.9693,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           59.9398,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -91119,7 +96344,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -91130,7 +96355,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -91167,25 +96392,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -91222,25 +96447,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -91284,7 +96509,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -91295,7 +96520,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -91332,25 +96557,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -91387,25 +96612,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          74.7674
+          50
         ]
       }
     }
@@ -91449,7 +96674,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -91460,7 +96685,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -91504,7 +96729,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -91515,7 +96740,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -91552,25 +96777,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -91614,7 +96839,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -91625,7 +96850,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -91662,25 +96887,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -91717,25 +96942,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -91778,8 +97003,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          0.2381
+          20.092,
+          25.119
         ]
       },
       "thumb": {
@@ -91789,8 +97014,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          0.4651
+          20.1807,
+          25.2326
         ]
       }
     }
@@ -91834,7 +97059,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -91845,7 +97070,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -91889,7 +97114,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -91900,7 +97125,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -91937,25 +97162,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           79.908,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           79.8193,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -91999,7 +97224,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -92010,7 +97235,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -92047,25 +97272,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-5-full.avif",
+        "url": "cards/art/atlas/verdant-6-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-5-thumb.avif",
+        "url": "cards/art/atlas/verdant-6-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -92102,25 +97327,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -92164,7 +97389,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -92175,7 +97400,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -92215,22 +97440,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           0.1534,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           0.3012,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -92267,25 +97492,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          74.7674
+          50
         ]
       }
     }
@@ -92329,7 +97554,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -92340,7 +97565,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -92384,7 +97609,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -92395,7 +97620,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -92432,25 +97657,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           99.8466,
-          33.439
+          0.4739
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           99.6988,
-          33.5394
+          0.9217
         ]
       }
     }
@@ -92494,7 +97719,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -92505,7 +97730,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -92549,7 +97774,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -92560,7 +97785,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -92604,7 +97829,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -92615,7 +97840,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -92659,7 +97884,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -92670,7 +97895,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -92710,22 +97935,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           20.092,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           20.1807,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -92762,25 +97987,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          74.7674
+          50
         ]
       }
     }
@@ -92824,7 +98049,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -92835,7 +98060,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -92879,7 +98104,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -92890,7 +98115,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -92927,25 +98152,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -92989,7 +98214,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93000,7 +98225,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -93037,25 +98262,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-1-full.avif",
+        "url": "cards/art/atlas/verdant-2-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "url": "cards/art/atlas/verdant-2-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -93099,7 +98324,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -93110,7 +98335,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -93153,8 +98378,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          0.2381
+          59.9693,
+          25.119
         ]
       },
       "thumb": {
@@ -93164,8 +98389,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          0.4651
+          59.9398,
+          25.2326
         ]
       }
     }
@@ -93209,7 +98434,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93220,7 +98445,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -93264,7 +98489,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93275,7 +98500,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -93312,25 +98537,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           0.1534,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           0.3012,
-          66.4606
+          50
         ]
       }
     }
@@ -93374,7 +98599,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -93385,7 +98610,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -93429,7 +98654,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -93440,7 +98665,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -93484,7 +98709,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -93495,7 +98720,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -93539,7 +98764,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -93550,7 +98775,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -93590,22 +98815,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           40.0307,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           40.0602,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -93642,25 +98867,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          74.7674
+          50
         ]
       }
     }
@@ -93704,7 +98929,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93715,7 +98940,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -93759,7 +98984,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93770,7 +98995,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -93807,25 +99032,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           20.092,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           20.1807,
-          66.4606
+          50
         ]
       }
     }
@@ -93869,7 +99094,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -93880,7 +99105,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -93924,7 +99149,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -93935,7 +99160,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -93979,7 +99204,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -93990,7 +99215,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -94030,22 +99255,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           59.9693,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           59.9398,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -94082,25 +99307,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          74.7674
+          50
         ]
       }
     }
@@ -94144,7 +99369,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94155,7 +99380,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94199,7 +99424,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94210,7 +99435,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94254,7 +99479,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94265,7 +99490,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94302,25 +99527,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -94363,8 +99588,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          79.908,
-          25.119
+          40.0307,
+          50
         ]
       },
       "thumb": {
@@ -94374,8 +99599,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          79.8193,
-          25.2326
+          40.0602,
+          50
         ]
       }
     }
@@ -94419,7 +99644,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -94430,7 +99655,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -94474,7 +99699,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -94485,7 +99710,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -94522,25 +99747,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           40.0307,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           40.0602,
-          66.4606
+          50
         ]
       }
     }
@@ -94584,7 +99809,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94595,7 +99820,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94639,7 +99864,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -94650,7 +99875,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -94690,22 +99915,22 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
-          407.8049
+          509.7561
         ],
         "pos": [
           79.908,
-          0.317
+          99.7619
         ]
       },
       "thumb": {
         "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          519.5122
         ],
         "pos": [
           79.8193,
-          0.6182
+          99.5349
         ]
       }
     }
@@ -94742,25 +99967,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          74.881
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          74.7674
+          50
         ]
       }
     }
@@ -94804,7 +100029,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94815,7 +100040,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94859,7 +100084,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94870,7 +100095,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94914,7 +100139,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -94925,7 +100150,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -94968,8 +100193,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          99.8466,
-          25.119
+          79.908,
+          50
         ]
       },
       "thumb": {
@@ -94979,8 +100204,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          99.6988,
-          25.2326
+          79.8193,
+          50
         ]
       }
     }
@@ -95017,25 +100242,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -95072,25 +100297,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -95134,7 +100359,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -95145,7 +100370,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -95182,25 +100407,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           59.9693,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           59.9398,
-          66.4606
+          50
         ]
       }
     }
@@ -95244,7 +100469,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -95255,7 +100480,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -95299,7 +100524,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -95310,7 +100535,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -95347,25 +100572,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -95409,7 +100634,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -95420,7 +100645,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -95464,7 +100689,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -95475,7 +100700,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -95519,7 +100744,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -95530,7 +100755,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -95573,8 +100798,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          59.9693,
-          25.119
+          20.092,
+          50
         ]
       },
       "thumb": {
@@ -95584,8 +100809,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          59.9398,
-          25.2326
+          20.1807,
+          50
         ]
       }
     }
@@ -95622,25 +100847,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -95684,7 +100909,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -95695,7 +100920,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -95732,25 +100957,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-8-full.avif",
+        "url": "cards/art/atlas/verdant-9-full.avif",
         "size": [
           609.375,
-          407.8049
+          305.8537
         ],
         "pos": [
           79.908,
-          66.561
+          50
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "url": "cards/art/atlas/verdant-9-thumb.avif",
         "size": [
           618.75,
-          415.6098
+          311.7073
         ],
         "pos": [
           79.8193,
-          66.4606
+          50
         ]
       }
     }
@@ -95794,7 +101019,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -95805,7 +101030,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -95849,7 +101074,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -95860,7 +101085,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -95897,25 +101122,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -95959,7 +101184,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -95970,7 +101195,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -96014,7 +101239,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -96025,7 +101250,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -96062,25 +101287,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -96124,7 +101349,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -96135,7 +101360,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -96179,7 +101404,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -96190,7 +101415,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -96289,7 +101514,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -96300,7 +101525,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -96344,7 +101569,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -96355,7 +101580,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -96392,25 +101617,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-7-full.avif",
+        "url": "cards/art/atlas/verdant-8-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          74.881
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          74.7674
         ]
       }
     }
@@ -96447,25 +101672,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -96502,25 +101727,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -96564,7 +101789,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -96575,7 +101800,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -96619,7 +101844,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -96630,7 +101855,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -96674,7 +101899,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -96685,7 +101910,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -96729,7 +101954,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -96740,7 +101965,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -96783,8 +102008,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          40.0307,
-          25.119
+          0.1534,
+          50
         ]
       },
       "thumb": {
@@ -96794,8 +102019,8 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          40.0602,
-          25.2326
+          0.3012,
+          50
         ]
       }
     }
@@ -96832,25 +102057,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-4-full.avif",
+        "url": "cards/art/atlas/verdant-5-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-4-thumb.avif",
+        "url": "cards/art/atlas/verdant-5-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -96894,7 +102119,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -96905,7 +102130,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -96942,25 +102167,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-3-full.avif",
+        "url": "cards/art/atlas/verdant-4-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-3-thumb.avif",
+        "url": "cards/art/atlas/verdant-4-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -97004,7 +102229,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97015,7 +102240,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -97052,25 +102277,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -97114,7 +102339,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97125,7 +102350,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -97169,7 +102394,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97180,7 +102405,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -97223,7 +102448,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          0.1534,
+          79.908,
           25.119
         ]
       },
@@ -97234,7 +102459,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          0.3012,
+          79.8193,
           25.2326
         ]
       }
@@ -97279,7 +102504,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -97290,7 +102515,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -97334,7 +102559,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97345,7 +102570,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -97382,25 +102607,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -97444,7 +102669,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97455,7 +102680,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -97499,7 +102724,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97510,7 +102735,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -97553,7 +102778,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           509.7561
         ],
         "pos": [
-          20.092,
+          99.8466,
           25.119
         ]
       },
@@ -97564,7 +102789,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
           519.5122
         ],
         "pos": [
-          20.1807,
+          99.6988,
           25.2326
         ]
       }
@@ -97609,7 +102834,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -97620,7 +102845,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -97657,25 +102882,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -97719,7 +102944,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -97730,7 +102955,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -97774,7 +102999,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -97785,7 +103010,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -97829,7 +103054,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -97840,7 +103065,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -97884,7 +103109,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -97895,7 +103120,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -97939,7 +103164,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -97950,7 +103175,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -97994,7 +103219,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -98005,7 +103230,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -98049,7 +103274,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98060,7 +103285,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          25.2326
+          50
         ]
       }
     }
@@ -98104,7 +103329,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98115,7 +103340,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -98159,7 +103384,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98170,7 +103395,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -98214,7 +103439,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98225,7 +103450,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -98269,7 +103494,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98280,7 +103505,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -98324,7 +103549,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -98335,7 +103560,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -98379,7 +103604,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98390,7 +103615,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -98434,7 +103659,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98445,7 +103670,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -98489,7 +103714,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98500,7 +103725,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -98544,7 +103769,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98555,7 +103780,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -98599,7 +103824,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98610,7 +103835,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -98654,7 +103879,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -98665,7 +103890,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -98709,7 +103934,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -98720,7 +103945,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -98764,7 +103989,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -98775,7 +104000,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -98819,7 +104044,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -98830,7 +104055,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -98874,7 +104099,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -98885,7 +104110,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -98929,7 +104154,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -98940,7 +104165,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -98977,25 +104202,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-2-full.avif",
+        "url": "cards/art/atlas/verdant-3-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-2-thumb.avif",
+        "url": "cards/art/atlas/verdant-3-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -99039,7 +104264,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -99050,7 +104275,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -99094,7 +104319,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -99105,7 +104330,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -99149,7 +104374,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99160,7 +104385,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -99204,7 +104429,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99215,7 +104440,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -99259,7 +104484,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99270,7 +104495,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          50
+          74.7674
         ]
       }
     }
@@ -99314,7 +104539,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99325,7 +104550,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          50
+          74.7674
         ]
       }
     }
@@ -99369,7 +104594,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99380,7 +104605,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          50
+          74.7674
         ]
       }
     }
@@ -99424,7 +104649,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -99435,7 +104660,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          50
+          74.7674
         ]
       }
     }
@@ -99479,7 +104704,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99490,7 +104715,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99534,7 +104759,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99545,7 +104770,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99589,7 +104814,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99600,7 +104825,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99644,7 +104869,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99655,7 +104880,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99699,7 +104924,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99710,7 +104935,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99754,7 +104979,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          74.881
+          99.7619
         ]
       },
       "thumb": {
@@ -99765,7 +104990,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          74.7674
+          99.5349
         ]
       }
     }
@@ -99802,25 +105027,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           0.1534,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           0.3012,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -99857,25 +105082,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           20.092,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           20.1807,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -99912,25 +105137,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           40.0307,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           40.0602,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -99967,25 +105192,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           59.9693,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           59.9398,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -100022,25 +105247,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           79.908,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           79.8193,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -100077,25 +105302,25 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "legacyUpscaled": false,
     "atlas": {
       "full": {
-        "url": "cards/art/atlas/verdant-6-full.avif",
+        "url": "cards/art/atlas/verdant-7-full.avif",
         "size": [
           609.375,
           509.7561
         ],
         "pos": [
           99.8466,
-          99.7619
+          0.2381
         ]
       },
       "thumb": {
-        "url": "cards/art/atlas/verdant-6-thumb.avif",
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
         "size": [
           618.75,
           519.5122
         ],
         "pos": [
           99.6988,
-          99.5349
+          0.4651
         ]
       }
     }
@@ -100139,7 +105364,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100150,7 +105375,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100194,7 +105419,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100205,7 +105430,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100249,7 +105474,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100260,7 +105485,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100304,7 +105529,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100315,7 +105540,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100359,7 +105584,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100370,7 +105595,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100414,7 +105639,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          0.2381
+          25.119
         ]
       },
       "thumb": {
@@ -100425,7 +105650,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          0.4651
+          25.2326
         ]
       }
     }
@@ -100469,7 +105694,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -100480,7 +105705,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          25.2326
+          50
         ]
       }
     }
@@ -100524,7 +105749,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -100535,7 +105760,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
-          25.2326
+          50
         ]
       }
     }
@@ -100579,7 +105804,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9693,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -100590,7 +105815,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           59.9398,
-          25.2326
+          50
         ]
       }
     }
@@ -100634,7 +105859,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.908,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -100645,7 +105870,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           79.8193,
-          25.2326
+          50
         ]
       }
     }
@@ -100689,7 +105914,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.8466,
-          25.119
+          50
         ]
       },
       "thumb": {
@@ -100700,7 +105925,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           99.6988,
-          25.2326
+          50
         ]
       }
     }
@@ -100744,7 +105969,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.1534,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -100755,7 +105980,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           0.3012,
-          50
+          74.7674
         ]
       }
     }
@@ -100799,7 +106024,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.092,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -100810,7 +106035,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           20.1807,
-          50
+          74.7674
         ]
       }
     }
@@ -100854,7 +106079,7 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0307,
-          50
+          74.881
         ]
       },
       "thumb": {
@@ -100865,7 +106090,1327 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         ],
         "pos": [
           40.0602,
+          74.7674
+        ]
+      }
+    }
+  },
+  "verdant_summon_53": {
+    "master": "cards/art/masters/verdant_summon_53.png",
+    "large": "cards/art/display/verdant_summon_53-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_53-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_53-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_53-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_53-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          74.7674
+        ]
+      }
+    }
+  },
+  "verdant_summon_54": {
+    "master": "cards/art/masters/verdant_summon_54.png",
+    "large": "cards/art/display/verdant_summon_54-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_54-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_54-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_54-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_54-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          74.7674
+        ]
+      }
+    }
+  },
+  "verdant_summon_55": {
+    "master": "cards/art/masters/verdant_summon_55.png",
+    "large": "cards/art/display/verdant_summon_55-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_55-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_55-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_55-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_55-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          74.881
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          74.7674
+        ]
+      }
+    }
+  },
+  "verdant_summon_56": {
+    "master": "cards/art/masters/verdant_summon_56.png",
+    "large": "cards/art/display/verdant_summon_56-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_56-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_56-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_56-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_56-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_57": {
+    "master": "cards/art/masters/verdant_summon_57.png",
+    "large": "cards/art/display/verdant_summon_57-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_57-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_57-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_57-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_57-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_58": {
+    "master": "cards/art/masters/verdant_summon_58.png",
+    "large": "cards/art/display/verdant_summon_58-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_58-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_58-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_58-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_58-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_59": {
+    "master": "cards/art/masters/verdant_summon_59.png",
+    "large": "cards/art/display/verdant_summon_59-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_59-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_59-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_59-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_59-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_60": {
+    "master": "cards/art/masters/verdant_summon_60.png",
+    "large": "cards/art/display/verdant_summon_60-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_60-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_60-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_60-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_60-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_61": {
+    "master": "cards/art/masters/verdant_summon_61.png",
+    "large": "cards/art/display/verdant_summon_61-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_61-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_61-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_61-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_61-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-7-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          99.7619
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-7-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          99.5349
+        ]
+      }
+    }
+  },
+  "verdant_summon_62": {
+    "master": "cards/art/masters/verdant_summon_62.png",
+    "large": "cards/art/display/verdant_summon_62-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_62-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_62-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_62-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_62-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_63": {
+    "master": "cards/art/masters/verdant_summon_63.png",
+    "large": "cards/art/display/verdant_summon_63-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_63-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_63-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_63-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_63-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_64": {
+    "master": "cards/art/masters/verdant_summon_64.png",
+    "large": "cards/art/display/verdant_summon_64-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_64-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_64-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_64-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_64-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_65": {
+    "master": "cards/art/masters/verdant_summon_65.png",
+    "large": "cards/art/display/verdant_summon_65-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_65-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_65-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_65-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_65-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_66": {
+    "master": "cards/art/masters/verdant_summon_66.png",
+    "large": "cards/art/display/verdant_summon_66-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_66-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_66-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_66-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_66-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_67": {
+    "master": "cards/art/masters/verdant_summon_67.png",
+    "large": "cards/art/display/verdant_summon_67-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_67-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_67-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_67-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_67-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "verdant_summon_68": {
+    "master": "cards/art/masters/verdant_summon_68.png",
+    "large": "cards/art/display/verdant_summon_68-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_68-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_68-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_68-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_68-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "verdant_summon_69": {
+    "master": "cards/art/masters/verdant_summon_69.png",
+    "large": "cards/art/display/verdant_summon_69-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_69-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_69-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_69-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_69-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          20.092,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          20.1807,
+          25.2326
+        ]
+      }
+    }
+  },
+  "verdant_summon_70": {
+    "master": "cards/art/masters/verdant_summon_70.png",
+    "large": "cards/art/display/verdant_summon_70-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_70-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/verdant_summon_70-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/verdant_summon_70-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/verdant_summon_70-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-8-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-8-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "hero_sporelord": {
+    "master": "cards/art/masters/hero_sporelord.png",
+    "large": "cards/art/display/hero_sporelord-512.webp",
+    "thumbnail": "cards/art/display/hero_sporelord-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_sporelord-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_sporelord-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_sporelord-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          59.9693,
           50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          59.9398,
+          50
+        ]
+      }
+    }
+  },
+  "hero_dara": {
+    "master": "cards/art/masters/hero_dara.png",
+    "large": "cards/art/display/hero_dara-512.webp",
+    "thumbnail": "cards/art/display/hero_dara-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_dara-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_dara-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_dara-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          40.0307,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          40.0602,
+          25.2326
+        ]
+      }
+    }
+  },
+  "hero_thistle": {
+    "master": "cards/art/masters/hero_thistle.png",
+    "large": "cards/art/display/hero_thistle-512.webp",
+    "thumbnail": "cards/art/display/hero_thistle-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/hero_thistle-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/hero_thistle-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/hero_thistle-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          50
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          50
+        ]
+      }
+    }
+  },
+  "brood_imp": {
+    "master": "cards/art/masters/brood_imp.png",
+    "large": "cards/art/display/brood_imp-512.webp",
+    "thumbnail": "cards/art/display/brood_imp-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/brood_imp-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/brood_imp-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/brood_imp-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          99.8466,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          99.6988,
+          0.4651
+        ]
+      }
+    }
+  },
+  "brood_snake": {
+    "master": "cards/art/masters/brood_snake.png",
+    "large": "cards/art/display/brood_snake-512.webp",
+    "thumbnail": "cards/art/display/brood_snake-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/brood_snake-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/brood_snake-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/brood_snake-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          0.1534,
+          25.119
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          0.3012,
+          25.2326
+        ]
+      }
+    }
+  },
+  "brood_hawk": {
+    "master": "cards/art/masters/brood_hawk.png",
+    "large": "cards/art/display/brood_hawk-512.webp",
+    "thumbnail": "cards/art/display/brood_hawk-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 103,
+        "url": "cards/art/display/brood_hawk-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 205,
+        "url": "cards/art/display/brood_hawk-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 410,
+        "url": "cards/art/display/brood_hawk-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false,
+    "atlas": {
+      "full": {
+        "url": "cards/art/atlas/verdant-1-full.avif",
+        "size": [
+          609.375,
+          509.7561
+        ],
+        "pos": [
+          79.908,
+          0.2381
+        ]
+      },
+      "thumb": {
+        "url": "cards/art/atlas/verdant-1-thumb.avif",
+        "size": [
+          618.75,
+          519.5122
+        ],
+        "pos": [
+          79.8193,
+          0.4651
         ]
       }
     }

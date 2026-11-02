@@ -4028,5 +4028,365 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The fully clothed Manananggal’s face, eyes and both hands are clear with wings and silver mist establishing the folkloric spirit; no graphic anatomy or gore."
+  },
+  {
+    "cardId": "shadow_summon_54",
+    "name": "Asanbosam",
+    "prompt": "Paint an illustration for the Hexmancers card Asanbosam: a feral vampire lurking in a dense shadowed forest, a lean humanoid predator with pale weathered skin, alert eyes, and distinctive hooked iron feet dangling from a low branch as it reaches toward a traveler below. Accurate folkloric identity without caricature or gore. One clear readable creature, face, hands and hooked feet arranged horizontally in the central middle portion. Painterly medieval dark fantasy collectible-card art, nuanced bark, cloth, iron and skin, dramatic moonlight and restrained eerie atmosphere, matching the supplied Hexmancers painterly reference illustrations. 1:1 SQUARE canvas for editable 512x512 master; keep face, eyes, hands and hooked feet inside x24..488,y105..407; quiet forest atmosphere above and below, composed for a 206:141 horizontal crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism, pixel art or gore.",
+    "generatedPath": "/workspace/generated_images/exec-2ff0533b-a746-4464-8445-1cce7011de07.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_54.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and crop reviewed; focal point moved upward so the full face and hooked feet remain in the wide crop."
+  },
+  {
+    "cardId": "shadow_summon_55",
+    "name": "Werewolf",
+    "prompt": "Paint an illustration for the Hexmancers card Werewolf: a powerful medieval-fantasy werewolf in the instant of a low pouncing lunge through a moonlit forest clearing, its snarling wolf-like face and reaching clawed hands prominent, ragged dark cloak and fur, grounded anatomy and expressive amber eyes. The face and both hands are clearly readable. Painterly dark fantasy collectible-card art, nuanced fur, leather and moonlit mist, dramatic directional lighting and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master; keep face, eyes, hands and defining silhouette within x24..488,y105..407; quiet scenery above and below, composed for 206:141 horizontal crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism, pixel art or gore.",
+    "generatedPath": "/workspace/generated_images/exec-91959900-a7cc-4948-9793-a122df992e6a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_55.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and crop reviewed; focal point moved upward so both ear tips and face remain visible in the wide crop."
+  },
+  {
+    "cardId": "shadow_summon_56",
+    "name": "Black Shuck",
+    "prompt": "Paint an illustration for the Hexmancers card Black Shuck: a huge legendary black spectral hound with glowing ember-red eyes, charging across a windswept medieval moor at twilight, wet black fur catching a narrow rim of moonlight, jaws open in a threatening bark, paws and head in a strong horizontal silhouette. Distinct, believable hound anatomy; eerie but not gory. Painterly dark fantasy collectible-card art, rich brushwork in fur, heather and fog, cinematic directional light and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master; keep head and eyes inside x24..488,y105..407; quiet moorland atmosphere above and below, composed for 206:141 horizontal crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-40a1f276-53a7-49a2-ac2d-08d732df450f.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_56.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and 128 thumbnail inspected. Black hound head and glowing eyes are fully visible with clear silhouette."
+  },
+  {
+    "cardId": "shadow_summon_57",
+    "name": "Antlered Hunger",
+    "prompt": "Paint an illustration for the Hexmancers card Antlered Hunger: an original gaunt, hungry dark-fantasy creature with a deeply shadowed expressive face, long branching antlers, sinewy shoulders, and thin reaching hands, prowling among dead trees. Its antlers, eyes and hands form one bold readable horizontal composition; no cultural or folkloric attribution. Painterly medieval fantasy collectible-card art, tactile bark, rough fur and weathered skin, dramatic cold moonlight with restrained warm embers, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master; keep face, eyes, hands and entire defining antlers inside x24..488,y105..407; quiet scenery above and below, composed for 206:141 horizontal crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism, pixel art or gore.",
+    "generatedPath": "/workspace/generated_images/exec-c9feee47-bb09-4c7d-a567-1c11f84750a7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_57.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and crop reviewed; focal point moved upward so the complete antlers, face and eyes remain visible."
+  },
+  {
+    "cardId": "shadow_summon_58",
+    "name": "Jorogumo",
+    "prompt": "Create an illustration for the Hexmancers card Jorogumo, inspired respectfully by Japanese folklore: a mysterious spider-woman who appears as an elegant adult woman in a modest, fully clothed layered traditional kimono, seated at the edge of a moonlit mountain shrine, with subtle spider traits and several dark spider legs framing her silhouette. Her human face, eyes and hands are the primary focus, with delicate silk threads suggesting her web; tasteful, composed, non-sensual, no horror gore. Painterly dark medieval fantasy collectible-card art, nuanced silk, lacquered wood, stone and moonlit mist, dramatic but gentle directional lighting, matching the supplied Hexmancers painterly reference illustrations. 1:1 SQUARE canvas for editable 512x512 master. Keep face, eyes, hands and distinctive spider-woman features within x24..488,y105..407, central horizontal arrangement, quiet scenery above and below, composed for 206:141 horizontal crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a82969c-ba91-4632-9829-71f77048956d.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_58.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and 128 thumbnail inspected. Clothed spider-woman face, hands and spider features remain visible."
+  },
+  {
+    "cardId": "shadow_summon_59",
+    "name": "Rat King",
+    "prompt": "Paint an illustration for the Hexmancers card Rat King: a commanding, battle-scarred dire rat at the center of a living cluster of black rats, emerging through broken stones in an old medieval cellar. The central rat’s bright eyes, whiskered face and forepaws dominate; the companion rats reinforce the swarm without obscuring it. Tense, eerie, non-gory. Painterly medieval dark fantasy collectible-card illustration, detailed fur, whiskers, stone and dust, dramatic low warm lantern light with cool shadow, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for an editable 512x512 master. Keep primary face, eyes and forepaws within x24..488,y105..407; compose horizontally with quiet scenery above and below for a 206:141 card crop. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or gore.",
+    "generatedPath": "/workspace/generated_images/exec-0de726ef-1f41-4b3a-8cbf-a0b1ad2c9ab0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_59.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and 128 thumbnail inspected. Central rat face, eyes and forepaws read clearly; the swarm supports it."
+  },
+  {
+    "cardId": "shadow_summon_60",
+    "name": "Black Annis",
+    "prompt": "Paint an illustration for the Hexmancers card Black Annis: an old, powerful folkloric blue hag with a fierce lined face, wild iron-gray hair, long strong hands and subtle iron claws, looming from a shadowed cave entrance among ancient limestone and bare branches. The portrait feels uncanny and formidable, with the hag’s face and hands as clear focal points; no gore. Painterly medieval dark fantasy collectible-card illustration, believable weathered skin, wool and stone, dramatic cold moonlight and subtle warm lantern glow, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep full face, eyes and hands within x24..488,y105..407, horizontal central staging, quiet scenery above and below for 206:141 card crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88087097-9d19-47b7-a58f-99f80eba5531.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_60.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and 128 thumbnail inspected. Face and both hands remain clearly visible."
+  },
+  {
+    "cardId": "shadow_summon_61",
+    "name": "Pit Fiend",
+    "prompt": "Paint an illustration for the Hexmancers card Pit Fiend: a hulking medieval-fantasy demon with a clear menacing face, curled horns, broad shoulders and clawed hands, rising from a deep stone pit through curling shadow and ember light. Give the creature a strong grounded silhouette and readable eyes; no gore. Painterly dark fantasy collectible-card art, tactile basalt, leathery hide and battered metal, dramatic underlighting and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep face, eyes, complete horns and hands within x24..488,y105..407; horizontal portrait arrangement with quiet pit atmosphere above and below, composed for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3e1a7ec-4a19-4f88-8851-6a04568546c3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_61.png",
+    "sourceNative": [
+      1512,
+      1040
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source normalized from a 1512x1040 raw image. Focal point shifted up; complete horns and face visible in crop; hands remain partly visible."
+  },
+  {
+    "cardId": "shadow_summon_62",
+    "name": "Rakshasa",
+    "prompt": "Paint an illustration for the Hexmancers card Rakshasa: a cunning, imposing demon from South Asian folklore, shown as a regal but unsettling humanoid with a clear expressive face, sharp eyes, dark subtle tiger-like markings, and elegant hands, standing in the shadow of an ancient carved stone palace. Use respectful South Asian inspired textile and architectural details, grounded fantasy design and a sly, controlled expression; no caricature or gore. Painterly dark fantasy collectible-card art, nuanced fabric, carved stone and bronze, directional moonlight and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep face, eyes and hands within x24..488,y105..407; horizontal central portrait, quiet setting above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9570b4e0-a444-4649-9d84-f9f6e0556f8e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_62.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up so full head and relevant hand remain visible."
+  },
+  {
+    "cardId": "shadow_summon_63",
+    "name": "Morrigan's Raven",
+    "prompt": "Paint an illustration for the Hexmancers card Morrigan's Raven: a majestic ancient raven, a sacred omen of battle from Celtic folklore, perched on a weathered medieval battlefield standard, glossy black feathers catching cold moonlight and a subtle crimson rim glow. The raven's head, sharp eye and powerful beak are the clear primary subject; distant quiet battlefield silhouettes suggest omen and memory without violence. Painterly dark fantasy collectible-card art, beautifully rendered feathers, worn cloth, mist and stone, dramatic directional lighting and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master; keep raven head and eyes within x24..488,y105..407, horizontal central arrangement, quiet atmosphere above and below, composed for 206:141 card crop. No human figure, gore, frame, lettering, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f176a50-1b14-4add-a7bb-af4ef5c7d726.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_63.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and 128 thumbnail inspected. Focal point moved up so the raven head, eye and beak remain visible."
+  },
+  {
+    "cardId": "shadow_summon_64",
+    "name": "Gashadokuro",
+    "prompt": "Paint an illustration for the Hexmancers card Gashadokuro: a gigantic Japanese folkloric skeleton looming above a moonlit ruined mountain pass, with an enormous clearly readable skull, glowing deep eye sockets and one bony hand reaching down through drifting mist. Respectful folkloric fantasy rather than gore; dramatic scale with the skull and hand as the clear subject. Painterly medieval dark fantasy collectible-card illustration, tactile aged bone, weathered stone and mist, bold moonlit edge light and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete skull, eyes and reaching hand within x24..488,y105..407; central horizontal arrangement and quiet scenery above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art or gore.",
+    "generatedPath": "/workspace/generated_images/exec-df552a87-678c-40c4-9212-1aa60cf11942.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_64.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and crop inspected; focal point moved up to retain the complete skull and the relevant reaching hand."
+  },
+  {
+    "cardId": "shadow_summon_65",
+    "name": "La Llorona",
+    "prompt": "Paint an illustration for the Hexmancers card La Llorona: a sorrowful spectral woman from Mexican folklore, dressed in a flowing pale traditional dress, standing beside a still river at night, her expressive tearful face and delicate hands visible as moonlit mist and water echo her grief. Respectful, dignified, haunting rather than frightening or sensual, no children and no gore. Painterly dark fantasy collectible-card illustration, nuanced cloth, water and reeds, soft moonlight with a restrained cool glow, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep face, eyes and hands within x24..488,y105..407; horizontal central staging with quiet river scenery above and below for 206:141 crop. No frame, lettering, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-63ee0e46-d1dd-4830-a64e-52a68fe15f25.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_65.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up so the full face and hands remain inside the crop."
+  },
+  {
+    "cardId": "shadow_summon_66",
+    "name": "Dullahan",
+    "prompt": "Paint an illustration for the Hexmancers card Dullahan: a headless spectral medieval knight in dark ancient armor, holding his own luminous detached head gently under one arm and toward the viewer. The floating head's skull and ghostly eyes are clearly visible, and the knight's armor and gauntleted hands read clearly; supernatural mist conceals the neck with no wound or gore. Painterly dark fantasy collectible-card art, richly rendered steel, leather and translucent spectral light, dramatic moonlit atmosphere, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep the detached head, its eyes, the knight's relevant hands and helmet silhouette within x24..488,y105..407; compose horizontally for 206:141 crop with quiet scenery above and below. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-c09282e1-7145-48d6-8f88-35ba626a3369.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_66.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Detached spectral head, eyes and holding hand are clear; no wound or gore."
+  },
+  {
+    "cardId": "shadow_summon_67",
+    "name": "Grim Reaper",
+    "prompt": "Paint an illustration for the Hexmancers card Grim Reaper: an imposing ancient hooded reaper with a clearly readable ivory skull face and deep luminous eyes, reaching forward from a billowing charcoal cloak as it advances through a moonlit graveyard. A scythe may form a supporting silhouette but the skull face and reaching hand are primary. Ominous and elegant, no gore. Painterly dark fantasy collectible-card art, detailed bone, worn cloth and iron, strong directional moonlight and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep entire hood and skull, eyes and reaching hand within x24..488,y105..407; horizontal central composition, quiet atmosphere above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dc7a820c-b88b-4956-9b06-fd35bf3f6862.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_67.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and crop inspected; focal point moved up to retain the full hood, skull face and reaching hand."
+  },
+  {
+    "cardId": "shadow_summon_68",
+    "name": "Baba Yaga",
+    "prompt": "Paint an illustration for the Hexmancers card Baba Yaga: a formidable ancient Slavic folklore witch with an expressive lined face, keen eyes and long bony hands, standing beside the shadowed wooden hut on birdlike legs deep in a winter forest. Her face and hands are the primary focus; the strange hut silhouette is a secondary clear clue, with no caricature or gore. Painterly medieval dark fantasy collectible-card art, nuanced wool, wood, feathers and snow, warm lantern light against cold moonlit mist, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep full head, eyes and hands within x24..488,y105..407; central horizontal arrangement with quiet scenery above and below, composed for 206:141 card crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20cc6495-5ce2-4390-a8a8-8f718d30456b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_68.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, crop and thumbnail inspected; focal point moved up so full head and hat remain visible, with both hands readable."
+  },
+  {
+    "cardId": "shadow_summon_69",
+    "name": "The Erlking",
+    "prompt": "Paint an illustration for the Hexmancers card The Erlking: an uncanny fairy king from central European folklore, a pale regal horseman in dark forest-green robes and a delicate ancient crown, riding through a moonlit beech forest. His composed yet ominous face and one gloved hand reaching toward a pale spectral horse's reins are the primary focus; ghostly childlike lights may remain distant and indistinct. Painterly medieval dark fantasy collectible-card art, detailed velvet, horse tack and mist, lyrical moonlight with a subtle eerie glow, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete head/crown, eyes and relevant hand within x24..488,y105..407; compact horizontal composition and quiet scenery above and below for 206:141 crop. No violence, frame, text, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42a21573-6427-48fe-b034-8b8de5b32c60.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_69.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up so full crown, face, eyes and reins hand remain visible."
+  },
+  {
+    "cardId": "shadow_summon_70",
+    "name": "Iron Maiden",
+    "prompt": "Paint an illustration for the Hexmancers card Iron Maiden: an animated gothic iron cabinet guardian, clearly a closed upright iron maiden-shaped cabinet with ornate hinges, rivets, small crown-like top and an expressive mask-like faceplate, standing in a shadowy medieval stone hall. Its doors are firmly closed; no person inside, no torture, injury or gore. Subtle articulated iron arms and hands bring it to life without hiding the cabinet identity. Painterly dark medieval fantasy collectible-card art, tactile hammered iron, aged wood and stone, dramatic cool light with warm fire reflections, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep entire defining cabinet top and faceplate within x24..488,y105..407; horizontal staging and quiet space above/below for 206:141 crop. No frame, words, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ed05f6bb-baf9-478b-a513-a22abb609873.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_70.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, crop and thumbnail inspected. Focal point moved up further so full crown and face fit; hands remain visible, lower body crops."
+  },
+  {
+    "cardId": "hero_arachna",
+    "name": "Arachna",
+    "prompt": "Paint an illustration for the Hexmancers hero card Arachna: a commanding spider sorceress in elegant dark fantasy armor, with a clear expressive humanlike face, bright focused eyes, graceful hands and a mantle of spider legs. She casts three fine luminous web strands toward unseen foes while subtle magic bends around her in a protective dodge aura. Strong heroic portrait, poised and dangerous, tasteful and fully clothed. Painterly medieval dark fantasy collectible-card art, nuanced silk, dark metal and mist, dramatic directional lighting and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep full head, eyes and both relevant hands within x24..488,y105..407; spider legs may extend incidentally. Horizontal composition, quiet background above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-fcce0e32-30c7-43e5-a6da-75239e74371e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_arachna.png",
+    "sourceNative": [
+      1464,
+      1074
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source normalized from 1464x1074. Focal point moved up so complete crown, hairline, face and main casting hand fit; left fingertips reach the crop edge."
+  },
+  {
+    "cardId": "hero_necros",
+    "name": "Necros the Bone Lord",
+    "prompt": "Paint an illustration for the Hexmancers hero card Necros the Bone Lord: a majestic undead sorcerer with a sharp readable skull face, luminous eyes, an ancient bone crown and dark layered robes, hurling a compact glowing bone orb from one bony hand while a translucent protective shield forms near his other arm. The skull, crown and hands are the clear focus. Painterly medieval dark fantasy collectible-card art, tactile bone, aged metal and velvet, dramatic cool spell light and warm ember accents, atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete skull/crown, eyes and hands within x24..488,y105..407; horizontal staging with quiet scenery above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-73e6b8c6-902e-4b88-9be4-ea9343b06bae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_necros.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, wide crop and thumbnail inspected. Focal point moved up; complete bone crown, skull face and both casting hands fit."
+  },
+  {
+    "cardId": "hero_corvina",
+    "name": "Corvina, Raven Witch",
+    "prompt": "Paint an illustration for the Hexmancers hero card Corvina, Raven Witch: a poised medieval witch in a dark feathered mantle and modest pointed raven-feather hat, her full expressive face and focused eyes clearly visible as she sends several ravens diving from her outstretched hand. Her other hand holds a small charm while shadowy birds spiral behind her, suggesting swift magic and confusion. Grounded, elegant dark fantasy, not cute or theatrical. Painterly medieval fantasy collectible-card art, nuanced feathers, wool, leather and moonlit mist, dramatic directional light and atmospheric depth, matching supplied Hexmancers painterly references. 1:1 SQUARE canvas for editable 512x512 master. Keep complete head and hat, eyes and both hands within x24..488,y105..407; birds may extend incidentally. Horizontal central portrait, quiet scenery above and below for 206:141 crop. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism or gore.",
+    "generatedPath": "/workspace/generated_images/exec-49f30f81-c007-4d4c-a372-9553718834ae.png",
+    "editableSourcePath": "game/cards/art/masters/hero_corvina.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, crop and thumbnail inspected. Focal point moved up so full hat, face and eyes fit; both hands visible; incidental raven wing tips crop."
   }
 ]

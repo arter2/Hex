@@ -4030,5 +4030,311 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Both complete horns, full head/face/eyes and the reaching clawed hand now remain together with margin; wing tips and lower body are incidental."
+  },
+  {
+    "cardId": "storm_summon_48",
+    "name": "Spark Sprite",
+    "prompt": "Create a new original 1:1 square illustration for the fantasy card Spark Sprite. Depict a small, agile humanoid elemental spirit formed from branching blue-white lightning and wisps of storm vapor, darting sideways above a medieval battlefield. Give it a compact angular head, subtle narrow luminous eyes of ordinary proportions, and a focused fierce expression; a compact torso and two clearly shaped lightning-arms reach forward as it dashes. Grounded elemental anatomy and painterly medieval fantasy collectible-card art: visible brush strokes, atmospheric depth, nuanced smoky edges, dramatic directional storm light, strong silhouette. This is an uncanny lightning spirit, not a child, mascot, fairy, animal or cute cartoon. Keep its complete head, eyes, and both relevant hands compact and within x24–488,y105–407 on a square 512×512 composition; expendable lightning trails and quiet clouds may extend beyond. No oversized/baby eyes, no smile, no cute expression, no Disney, no anime, no photorealism, no pixel art, no text, no border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-b8b24220-b0c8-427b-8534-38bfa3a626c0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Repainted after parent review rejected the previous cute mascot face. The replacement has grounded storm-elemental anatomy, narrow normal-proportion eyes and a focused expression. Prepared a 512x512 source, checked the 206:141 crop and 128px thumbnail; head/face and both lightning hands remain within the crop."
+  },
+  {
+    "cardId": "storm_summon_50",
+    "name": "Coin-Hoard Dragon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Hoard Dragon. A powerful bronze-gold dragon crouches protectively atop a compact heap of ancient coins, its head and bright eyes clear, greedily gathering coins while a controlled beam of crackling storm energy arcs toward distant foes. Dragon and coin hoard dominate; medieval mountain vault atmosphere, painterly high fantasy collectible-card art, nuanced scales and coin reflections, dramatic directional light, readable silhouette. Keep dragon head, eyes, and hoard within x24–488, y105–407 on the 512 square; wings/tail may extend into quiet upper/lower scenery. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f8de240-a3bb-434f-a63c-82d0d6947592.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_50.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; dragon face, eyes and coin hoard remain intact. Dramatic polished rendering leans photorealistic; flagged for parent style review. Parent crop review found the dragon head/horns too high; shifted focalPoint upward to y=0.42 for the revised card crop."
+  },
+  {
+    "cardId": "storm_machine_12",
+    "name": "Zhuge Repeater",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Zhuge Repeater. Depict a compact ancient Chinese-inspired wooden repeating crossbow mounted on a low wheeled field frame, clearly showing its top magazine box, bow limbs, taut string and short bolt feeding mechanism. It fires a rapid fan of several bolts across a misty medieval battlefield, with subtle blue storm energy along the bolts. The machine is the only primary subject, horizontal composition; painterly high fantasy collectible-card art, richly tactile wood, bronze fittings, dramatic light, strong readable silhouette. Keep the complete named repeater and important mechanism entirely within x24–488, y105–407 on a 512 square; quiet scenery above and below. No operator needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6158b93f-d27c-42a2-bdb1-a4361e44b8af.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete repeater, magazine, bow limbs, wheels and fired bolts remain visible. Strong readable mechanical silhouette."
+  },
+  {
+    "cardId": "storm_machine_13",
+    "name": "Tortoise War Wagon",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Tortoise War Wagon. Show a massive low medieval siege wagon with a distinct domed tortoise-shell armored roof, overlapping bronze-edged plates, sturdy wheels, and a narrow guarded firing slit; unmistakably a mobile bulwark, slowly rolling through a stormy mountain pass. The whole wagon is primary and fills the horizontal middle. Painterly high fantasy collectible-card illustration, believable weathered wood and metal, dramatic directional light, atmospheric depth and readable silhouette. Keep entire wagon, all wheels and shell roof within x24–488, y105–407 of the 512-square composition; quiet sky and ground above/below. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-945b80cf-6ce6-40b5-8be5-ebe42a8e7644.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; full armored shell, wagon body and all wheels remain visible. Rendering leans photorealistic; flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_14",
+    "name": "Sandstone Rampart",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Sandstone Rampart. Show a monumental low medieval fortress wall of warm ochre sandstone blocks, broad and unambiguously horizontal, with sturdy buttresses and a few crenellations. A compact pair of storm-blue rune lanterns embedded in the parapet glows as the rampart raises a protective shimmering ward along its face. The massive stone rampart itself is the primary subject, not a spell effect. Painterly medieval high-fantasy collectible-card art, visible brushwork, tactile weathered masonry, directional golden light and storm atmosphere, readable bold silhouette. Keep the full wall from both ends, buttresses and parapet inside x24–488,y105–407 on the 512 square, quiet sky/ground above and below. No people needed. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b02f2f7f-a335-4a03-a9d1-68199f17e06f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128-pixel thumbnail inspected; entire sandstone wall, parapet and buttresses remain visible. Rampart reads clearly at thumbnail size; rendering leans photorealistic, flagged for parent style review."
+  },
+  {
+    "cardId": "storm_machine_15",
+    "name": "Palm-Log Palisade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Palm-Log Palisade. A compact, broad medieval field palisade made from thick upright palm-tree logs bound with iron and rope, with sharpened uneven tops; a small inset storm-blue wardstone glows among the logs. The complete low defensive barrier is the subject, arranged horizontally. Grounded painterly medieval fantasy art, visible brushwork, believable rough timber and storm light, muted earth tones. Keep both ends and all sharpened log tips inside x24–488,y105–407 of a square 512 master; empty quiet sky and ground outside. No people, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9edb76d6-507b-4758-b75e-c5ef5aab6443.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the whole palm-log barrier, both ends and sharpened tops remain visible."
+  },
+  {
+    "cardId": "storm_machine_16",
+    "name": "Bronze Barricade",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Bronze Barricade. Show a compact heavy medieval defensive barricade built from broad overlapping curved bronze plates on a timber frame, with rivets, scuffs and a short central crest; subtle blue electricity ripples along the metal seams. It is a protective wall, broad and low, shown three-quarter view against a storm-lit stone pass. Painterly medieval fantasy, tactile weathered bronze and wood, visible brushwork, dramatic but restrained lighting, grounded proportions. Keep the entire barricade from end to end inside x24–488,y105–407 on a 512-square composition, quiet background above and below. No figures, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-734cd7c5-75ff-494c-ab55-81129c4cee64.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; the full bronze barricade is visible end to end."
+  },
+  {
+    "cardId": "storm_machine_17",
+    "name": "Elephant Clock Automaton",
+    "prompt": "Create a new 1:1 square illustration for Hexmancers card Elephant Clock Automaton. Show the complete al-Jazari-inspired mechanical elephant clock as a SMALL tabletop ornament, taking only the central 42% of the square's height. Leave very large empty margins above and below. All parts fit inside a strict central rectangle x130–382,y150–362 on a 512×512 canvas: tiny star sphere, ornate dome, clock tower, bronze elephant with all feet, and display base. Make the whole assembly no taller than 212 pixels on that 512 canvas; do not enlarge the elephant or tower. Keep width compact as well. The complete object must be readable in a 206:141 landscape crop. Painterly medieval fantasy clockwork, grounded proportion, visible brush texture, aged brass, carved wood, restrained blue enamel, warm directional light and a quiet dark neutral studio background. Historic Islamic mechanical artistry. No clipped components, no tall vertical portrait arrangement, no operator, no toy-like polish, no text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c22161d4-a571-46cb-a729-1ff48d07357e.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_17.png",
+    "sourceNative": [
+      1314,
+      1197
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed the complete al-Jazari-inspired clock assembly smaller after parent review found the first sphere/base unsafe in the crop. Preserved old master at /tmp/storm-02-repair-backup/storm_machine_17-before.png; inspected the replacement 512 square, revised 206:141 crop at focal y=0.48, and 128px thumbnail. Sphere, finial, dome, elephant feet and full base all remain visible."
+  },
+  {
+    "cardId": "storm_machine_18",
+    "name": "Coin-Spitting Mortar",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Coin-Spitting Mortar. A squat medieval bronze mortar cannon on a sturdy low wheeled carriage, angled upward as it launches a short stream of bright gold coins like buckshot; clearly show the wide mortar mouth, full barrel, carriage and wheels. Compact horizontal silhouette, the complete machine dominates, with only a few coins flying above it. Painterly medieval fantasy and clockwork materials, scuffed bronze, oak and iron, visible brushwork, restrained blue storm sparks and dramatic warm light. Keep the entire mortar and carriage within x24–488,y105–407 on a 512-square composition; quiet background above and below. No operator, text, frame, UI, toy-like finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-25d60d21-5633-4274-b887-24be39a34604.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop inspected; complete mortar, carriage, wheels and coin burst remain visible."
+  },
+  {
+    "cardId": "storm_machine_19",
+    "name": "Clockwork Flying Carpet",
+    "prompt": "Paint an original 1:1 square image for Hexmancers card Clockwork Flying Carpet. Show one complete rectangular medieval woven carpet floating horizontally above a stormy mountain courtyard, seen at a three-quarter angle. The richly patterned indigo and ochre rug is stretched taut over a discreet bronze clockwork frame; small geared corner vanes and a compact brass control hub beneath it make the flying machine clear. No rider. Entire carpet, all four corners, tassels, mechanisms and frame must fit within x24–488,y105–407 on a square 512×512 composition. Grounded painterly medieval fantasy/clockwork illustration, tactile wool, aged brass, subtle blue storm sparks, visible brushwork, clear silhouette, atmospheric directional light. Keep it a practical fantasy machine, not a toy or modern aircraft. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8cc8c1eb-10f0-452b-88ba-cca61db596a9.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and 206:141 crop reviewed. Entire carpet, brass frame, corner vanes and tassels fit; focal point y=0.48 shifts crop slightly upward to protect the upper-left vane. 128px thumbnail remains legible."
+  },
+  {
+    "cardId": "hero_kiri",
+    "name": "Squall Rider Kiri",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Squall Rider Kiri. A young adult nomadic storm archer rides a lean gray steppe horse at a canter through wind-swept highland grass, turning in the saddle to loose three wind-charged arrows. Her determined face, both eyes, bow hand and drawn string hand are clear and close together beside her face; a simple practical hood and braided dark hair, layered blue-gray riding leathers, no modern gear. The horse's head and mane support the story but remain secondary. Painterly medieval fantasy collectible-card art, visible brushwork, believable anatomy and cloth, directional storm light and atmospheric depth. Keep Kiri's complete head, eyes, and both relevant hands within x24–488,y105–407 on the 512-square; horse body/legs may crop. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48d48808-3255-40e3-9710-5e9a19a4bc07.png",
+    "editableSourcePath": "game/cards/art/masters/hero_kiri.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.42 and 128px thumbnail inspected. Kiri's full face, eyes and both archery hands fit; the horse supports the rider without obscuring her."
+  },
+  {
+    "cardId": "hero_stati",
+    "name": "Stati, the Static Witch",
+    "prompt": "Paint an original 1:1 square portrait for Hexmancers hero Stati, the Static Witch. A formidable middle-aged storm witch with a grounded human face, alert eyes, windswept dark hair and a weathered indigo hooded mantle. She raises one visible hand beside her face, sending a branching chain of blue-white static lightning toward faint distant enemy silhouettes; her calm focused gaze and hand are the focal identity. Painterly medieval fantasy collectible-card art, nuanced cloth and skin, visible brush strokes, dramatic storm light, atmospheric depth. Keep full head, both eyes and casting hand inside x24–488,y105–407 on the 512 square; lightning trails may extend. No cute expression, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f0570e4-26ba-40d0-8288-0d36d0994ff8.png",
+    "editableSourcePath": "game/cards/art/masters/hero_stati.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source and revised crop/128px thumbnail inspected. Shifted crop upward to focal y=0.40 per parent review; full hood, head/eyes and casting fingers remain within frame."
+  },
+  {
+    "cardId": "storm_machine_20",
+    "name": "Hang-Glider Scout",
+    "prompt": "Recompose Hang-Glider Scout for a square 512x512 editable master. Show a COMPLETE small medieval cloth-and-wood hang glider in flight, a compact short-span swept wing with both wing tips set well inside x70..442 and y155..345; do not fill the frame with the wings. Keep the whole glider and one small hooded medieval scout suspended at its center together inside that central rectangle, clear 25+ pixel margins on every side. The scout's face and both gripping hands are visible. The wing is practical timber spars, rope bracing, and taut ochre cloth, with no modern aircraft details. Misty storm sky and distant medieval towers fill the square around it. Grounded painterly fantasy art, visible brushwork, believable fabric and wood, nuanced storm light. The entire wingspan must fit the 206:141 horizontal crop without touching edges. No text/frame/UI, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92162357-c2fc-4e62-bd7b-711197302089.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the first wing tips sat too close to the square edge. Inspected 512-square source, 206:141 crop and 128px thumbnail; full cloth wingspan, scout face and both gripping hands remain visible."
+  },
+  {
+    "cardId": "storm_machine_21",
+    "name": "The Thunder Engine",
+    "prompt": "Recompose The Thunder Engine for a 512×512 square fantasy card master. Show one compact LOW medieval clockwork engine on a complete low timber-and-iron wheeled chassis, taking no more than the central 58% of the square's height. A clearly visible central bronze flywheel and glass lightning core are flanked by TWO short, squat copper coils; no tall finials or spikes. All coils, arcs, gears and the entire chassis with all wheels must fit inside x35–477,y112–400. Keep the machine horizontal and self-contained against a quiet storm-lit castle courtyard. Painterly medieval fantasy, grounded iron/brass/wood, visible brushwork. The entire engine will appear in a 206:141 crop. No operator, no tall vertical assembly, no clipped machinery, no text/frame/UI, no modern hardware, toy finish, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-32709e2c-f536-4ea9-99b1-a485e01c77c7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed smaller after the initial tall engine clipped the upper assembly in the card crop. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_21-before.png; inspected replacement 512 square, revised wide crop at focal y=0.55 and 128px thumbnail. Both coils, central flywheel, chassis and all wheels remain visible."
+  },
+  {
+    "cardId": "storm_machine_22",
+    "name": "The Bronze Colossus",
+    "prompt": "Recompose The Bronze Colossus as a compact square portrait illustration. Center a complete bronze automaton head with its entire uncut crown/helmet, both glowing eyes, shoulders and ONE raised hand with all fingers fully visible. The top of the crown begins around y120 on the 512-square, fingertips stay above y390, and the entire hand-to-head cluster fits x70–450,y115–395, leaving visible sky margin above and below. The hand is beside the face rather than reaching toward the viewer; avoid foreshortening. Painterly medieval fantasy, weathered engraved bronze, dark iron joints, subtle blue lightning, visible brushwork and storm-forge light. Keep the full face and full hand legible in the 206:141 crop. Do not crop the crown or fingers. No text, frame, UI, toy proportions, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59afdb9b-0694-4100-bc8a-0a4883a7afc5.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental. Parent square review found the central crown tip above the previous crop; shifted focal point to y=0.36 and checked the revised crop/thumbnail with the complete crown tip and raised fingers visible."
+  },
+  {
+    "cardId": "hero_thunderbird",
+    "name": "The Thunderbird",
+    "prompt": "Paint an original 1:1 square fantasy hero portrait for Hexmancers card The Thunderbird. A majestic great storm bird dives from a dark cloudbank, wings swept back in powerful motion, with its complete noble head, sharp hooked beak and one bright eye clearly visible near the center-right. Layered dark bronze and indigo feathers catch blue-white lightning; golden light rims the face. The bird's face is the primary identity, not the wings; wing tips may extend beyond the frame. Painterly medieval fantasy collectible-card illustration, visible brushwork, believable avian anatomy, dramatic directional storm light and atmospheric depth. Keep full head, eye and beak within x24–488,y105–407 on the 512-square composition, with quiet clouds above and below. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5595eb5b-9ef3-4382-8aac-02562fdd0a75.png",
+    "editableSourcePath": "game/cards/art/masters/hero_thunderbird.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128px thumbnail inspected. Majestic bird head, eye and complete beak remain clear; wing ends are incidental."
+  },
+  {
+    "cardId": "hero_ozone",
+    "name": "Ozone the Tinker",
+    "prompt": "Paint an original 1:1 square hero portrait for Hexmancers card Ozone the Tinker. A focused middle-aged medieval tinkerer in a weathered teal-brown leather workcoat and close-fitting cap, with clear expressive eyes and practical soot marks. Beside their face at the same height, they present a compact charged storm coil: a brass ringed spherical device with a small blue-white lightning core, held securely between both gloved hands as if preparing to lob it. Keep full head, eyes, both hands and the complete coil together in a compact horizontal cluster within x24–488,y105–407 on the 512 square; the coil is only about half the face height. Painterly medieval fantasy, tactile brass, worn leather, visible brushwork and dramatic workshop light. No goggles covering eyes, no giant artifact hanging below face, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42b56439-91e8-4902-9d61-fffc9260ec90.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ozone.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.35 and 128px thumbnail inspected. Full cap/head/eyes, both hands and the compact charged coil remain together at the same height."
   }
 ]

@@ -4025,5 +4025,311 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Upward-adjusted crop keeps the ghost’s full head and luminous face, both hands and complete paper lantern intact in the 206:141 crop and 128px thumb. Painterly moonlit shrine. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_38",
+    "name": "Fire Vampire",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Fire Vampire”. A lean, striking medieval vampire with pale ash-streaked face, readable eyes, dark auburn hair, and a scorched burgundy cloak; his gloved hand holds a small ember-bright blade beside his face. He turns toward the viewer in a ruined stone hall as ember light catches his expression; grounded, dangerous, elegant. No fangs exaggerated. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked skin, leather, metal and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8546d65d-0879-4f9d-a6b6-994b631d6871.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.42: the wide crop now retains the complete head and hair while keeping the eyes, relevant hand and complete ember blade visible; awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_39",
+    "name": "Cinder Bat Swarm",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Cinder Bat Swarm”. A dense, coordinated swarm of small soot-black bats with ember-red undersides and glowing eyes sweeps across the frame in a curling horizontal wave above a firelit basalt cavern. Make individual bat silhouettes and leathery wings clear, one larger foreground bat anchoring the composition; no humanoid figure. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur, membrane and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-094a093b-b242-4a33-87d6-d2c3136d61b0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop centers the leading bat and keeps its face, eyes and wings legible among the swarm; the 128px thumbnail reads as a coordinated bat wave. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_40",
+    "name": "Cinder Hound",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Cinder Hound”. A powerful charcoal-black hound with ember-lit cracks in its coat lunges forward through volcanic ash, its full alert face and paws clearly visible. A few sparks trail behind; dusky red lava fissure and dark rock support the action. Grounded canine anatomy, no flames obscuring the hound. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a903f579-e344-4713-9441-acc1c5238f24.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop keeps the hound’s entire face, bright eyes and forward paws intact; at 128px its charging canine silhouette and ember markings remain clear. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_41",
+    "name": "Mole Miner",
+    "prompt": "Create one square 1:1, 512x512 source illustration for the Hexmancers card “Mole Miner”. A sturdy anthropomorphic mole miner with expressive muzzle and clear eyes, leather cap and compact pickaxe held beside his face, bursts through dark earth into a warm underground forge. Focus on head, working hand and entire pickaxe; stone and sparks are secondary. Painterly medieval/high-fantasy collectible-card illustration, nuanced brushworked fur, leather, metal and stone, dramatic but readable directional light, atmospheric depth, clear strong silhouette, visually consistent with the supplied Hexmancers references. Arrange primary subject horizontally across the middle of the square; keep face/eyes, relevant hands and named creature/object within x24..488,y105..407 for the 206:141 crop. Quiet expendable scenery above and below. Finished painting filling the canvas. No card border, text, letters, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc091f35-b314-4990-bb1f-206fa5d44720.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The wide crop keeps the mole’s complete head and eyes, gripping hand and full pickaxe head in frame; the 128px thumbnail reads clearly as a mole miner. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_42",
+    "name": "Lava Beetle",
+    "prompt": "Create one square 1:1 illustration for the Hexmancers card “Lava Beetle”: a massive, memorable beetle with a broad black obsidian carapace, glowing orange seams between plates, six sturdy legs, and bright visible eyes. It braces its low armored body against volcanic rock, facing the viewer at a slight angle; the full shell, head and forelegs are clear and dominate the middle of the image. Emberlit cavern with restrained lava reflections in the background. Painterly medieval/high-fantasy collectible-card art, visible brushwork and softened painted edges, nuanced painted stone and shell surfaces, dramatic directional light, atmospheric depth; clearly hand-painted digital fantasy illustration, not photographic, not 3D-rendered. Compose horizontally with the named creature within x24..488,y105..407 for a 206:141 crop, quiet scenery above and below. Square finished painting, no border/text/UI, no anime/cartoon/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-826a33c0-01c7-4e45-98c9-47845981222b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "The square source keeps the full shell, head and bright eyes prominent; the true wide crop retains the beetle’s head and forelegs, with its armored silhouette readable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_43",
+    "name": "Imperial Lung Dragon",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Imperial Lung Dragon”. An imperial Chinese lung dragon, unmistakably East Asian in identity: long serpentine body coiled horizontally through the middle, four small clawed legs, fine whiskers, antler-like horns, flowing mane and scaled face with realistic-sized clear eyes. It surges forward above a stone palace roof amid smoke and controlled embers, head and antlers prominent; no wings, no Western dragon body proportions. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-c161bb00-1684-4233-bdc7-b0f0e86278ca.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37 to retain the full antlers, dragon head, eyes and face whiskers in the wide crop; body and legs remain visible; 128px thumb identifies a Chinese lung dragon. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_44",
+    "name": "Firebird",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Firebird”. A noble firebird with a recognizable large eagle-like head, realistic alert eyes, broad feathered wings and long tail, soaring horizontally through a darkening sky. Individual russet and gold feathers catch warm light and a restrained ember trail follows the tail; bird remains primary, with no humanoid form and no engulfing fire. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-53531529-13ad-48fc-9363-ff0e42bdad01.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Wide crop and thumbnail keep the firebird’s head and eye clear with both feathered wings readable; incidental outer feather tips extend beyond the crop. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_45",
+    "name": "Ember Imp",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Ember Imp”. A small wiry medieval fire imp with natural-sized amber eyes, clearly readable face, short swept horns and pointed ears, springing sideways in a quick zigzag leap. One hand reaches forward with a small ember; other hand and body visible. Charred stone and a few sparks support it, no huge cartoon eyes or exaggerated childlike proportions. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-e5dab685-49a6-4cf1-9562-d9d88dc97748.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37; this crop shows the complete head and horn tips while keeping face, eyes and both hands visible. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_11",
+    "name": "Volley Gun",
+    "prompt": "Create a square 1:1 image, intended for an editable 512x512 Hexmancers card-art source, for “Volley Gun”. A compact medieval fantasy repeater volley gun on a sturdy wooden field carriage: a cluster of iron barrels in a single coherent frame, visible breech and firing mechanism, two complete carriage wheels, supported on stone rampart. Show it launching a tight volley of small glowing bolts into the distance; entire machine geometry visible, no modern gun design. Painterly medieval/high-fantasy collectible-card illustration with nuanced brushworked materials, dramatic readable directional light, atmospheric depth, rich but controlled firelight and a strong silhouette. Keep primary face, realistic-sized eyes, antlers/horns, relevant hands and named creature or machine fully inside x24..488,y105..407 for the true 206:141 crop; horizontal arrangement in the middle, quiet expendable scenery above and below. Subject occupies most of the crop. Finished square painting to all edges. No card border, lettering, numbers, symbols, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern hardware.",
+    "generatedPath": "/workspace/generated_images/exec-27934f7b-b3d9-483d-bd53-89b787eaee25.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.56
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted down to 0.56; the complete near carriage wheel is now visible with the barrel cluster and firing frame intact. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_12",
+    "name": "Ember Trebuchet",
+    "prompt": "Recompose the referenced medieval Ember Trebuchet so the complete machine fits a 206:141 horizontal card crop. Scale the trebuchet smaller in the square and lower its profile: show the full throwing arm, sling and tip, counterweight, complete upright frame, all support legs and its full ground base together, with the machine silhouette contained within the center band of the square. The whole machine should occupy at most about 230 pixels in height, with broad quiet sky above and visible platform/ground below. Keep its full silhouette and clear medieval wooden counterweight trebuchet identity. Maintain painterly fantasy siege style, warm embers and distant battlements as subdued context. One distant ember projectile is fine. Do not crop any machine parts. Preserve painterly quality. No words, UI, or frame.",
+    "generatedPath": "/workspace/generated_images/exec-94e1924e-45ae-4d4c-b57b-717134f56f34.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed as a low, wide side view. The complete arm, sling tip, counterweight, upright supports and full ground base fit within the centered 206:141 crop; the 128px thumbnail still reads as a trebuchet. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_scorch",
+    "name": "Scorch, the Red Fox",
+    "prompt": "Recompose this exact character as Scorch, the Red Fox, preserving his russet anthropomorphic fox identity, dark red mantle, archer gear, fire darts and medieval fantasy mood. Make a true square 1:1 illustration. Position the entire fox head with both complete ears safely inside the composition, with at least 35px of clear margin above and at the left edge; keep full face and natural-sized amber eyes readable. Put his throwing arm and open dart-casting hand beside the face at similar height, with the three fire darts visible crossing the open right side. Keep head, both eyes, ears and relevant hand fully inside x24..488,y105..407 on the normalized square. Arrange subject horizontally through the middle, quiet expendable scenery above and below. Make the fox hero smaller in frame so no head or hand is cropped. Keep nuanced painterly fantasy illustration, believable fur/leather, strong dusk firelight, no cartoon mascot, no text or frame.",
+    "generatedPath": "/workspace/generated_images/exec-cae949cf-d6ac-47c3-a25e-bcbd9cdc75bf.png",
+    "editableSourcePath": "game/cards/art/masters/hero_scorch.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed to move the complete fox head and both ear tips into the square source. Center wide crop and thumbnail retain full ears, face, eyes and dart-casting hand; secondary arm/hand remains visible. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_13",
+    "name": "Stone Bastion",
+    "prompt": "Create a square 1:1, 512x512-source illustration for the Hexmancers card “Stone Bastion”. A compact but imposing stone bastion with square crenellated tower, thick curtain walls and a sturdy central gate, shown in a low three-quarter view on a volcanic ridge. Distinct masonry blocks and defensive merlons are clear; restrained ember glow from small brazier slits, a few distant sparks. Keep the complete bastion silhouette inside the central horizontal safe band; no people, no modern architecture. Painterly medieval/high-fantasy collectible-card art, visible nuanced brushwork, believable stone/wood/iron/leather, dramatic readable lighting and atmospheric depth. Keep the entire named machine geometry or hero’s full head/eyes/relevant hands and named object within x24..488,y105..407 for the 206:141 crop. Use a horizontal arrangement and quiet expendable scenery above/below. Strong subject, legible at 128px. No card frame, words, letters, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d8faa87-d4ef-4f60-9fdc-8053a53b99c9.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_13.png",
+    "sourceNative": [
+      1627,
+      967
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.37 to show the complete tower top and crenellations while keeping the central gate and fortress walls in the wide crop; the 128px thumbnail reads as a bastion. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_pyrrhus",
+    "name": "Pyrrhus the Bombardier",
+    "prompt": "Create a square 1:1, 512x512-source illustration for the Hexmancers card “Pyrrhus the Bombardier”. A seasoned human medieval bombardier hero, determined expressive face with clear eyes, dark russet beard and soot-marked brow, wearing layered leather and iron armor. He holds a compact glass-and-metal firebomb in one hand and steadies it with the other, the glowing bomb beside his face at the same height; a soft translucent protective ember shield arcs behind him. Keep face, both hands and complete bomb within the wide safe area. No oversized weapon. Painterly medieval/high-fantasy collectible-card art, visible nuanced brushwork, believable stone/wood/iron/leather, dramatic readable lighting and atmospheric depth. Keep the entire named machine geometry or hero’s full head/eyes/relevant hands and named object within x24..488,y105..407 for the 206:141 crop. Use a horizontal arrangement and quiet expendable scenery above/below. Strong subject, legible at 128px. No card frame, words, letters, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-27e5da0f-e6d0-4176-a576-a41d567fb5bf.png",
+    "editableSourcePath": "game/cards/art/masters/hero_pyrrhus.png",
+    "sourceNative": [
+      1402,
+      1122
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Focal point shifted upward to 0.42; wide crop retains Pyrrhus’s complete hair/head and clear eyes, both hands and the full firebomb, with the protective ember shield behind him. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_14",
+    "name": "Firework Launcher",
+    "prompt": "Recompose the Firework Launcher as a compact, low-profile medieval wooden catapult, keeping the same fantasy firework motif and painterly siege atmosphere. Show the entire machine in a wide three-quarter side view: complete throwing arm and sling, launch basket loaded with small colored fireworks, full support frame, both wheels and ground base. Make its whole silhouette fit comfortably within y125..385 and x24..488 of a square 512x512 source, occupying less than half the image height. Keep a low angle on the arm so it does not rise into the sky; show quiet night sky above and clear ground below. A few fireworks arc in the background. The full named launcher remains the primary subject; no parts cut by edges. Medieval wood joinery, rope and iron pins, no modern tubes. Painterly medieval fantasy card art. Square composition, no text or frame.",
+    "generatedPath": "/workspace/generated_images/exec-bbcb1cd6-6dee-4990-8ff8-e63ec634e06b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed as a compact low-profile catapult; centered wide crop and 128px thumbnail retain the full throwing arm, sling/basket, support frame, both wheels and ground base. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_machine_15",
+    "name": "The Great Bombard",
+    "prompt": "Recompose this as “The Great Bombard,” preserving the medieval iron cannon and timber siege carriage, but pull the view back enough to show the complete weapon. True square 1:1 composition. Include the full barrel from breech to muzzle, all supporting timber beams, both complete wheels and the full carriage base, together in a low horizontal side view. Keep every part of the cannon within x24..488,y120..390 of the square for the 206:141 crop. Let the whole bombard be smaller in frame, with quiet sky above and visible ground below. Keep the cannon clearly large and legendary, textured iron bands, medieval craftsmanship, one restrained fire blast toward distant fortress. No people needed, no modern cannon design, no cropped wheel or barrel end. Painterly medieval fantasy card art; no words, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-fa3bbc07-eb26-43b4-b915-b082cceb8b95.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Recomposed as a pulled-back horizontal side view. The entire barrel, breech, both wheels and carriage base fit inside the centered wide crop and remain identifiable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_salamandra",
+    "name": "Salamandra",
+    "prompt": "Create a true 1:1 square illustration for the Hexmancers hero card “Salamandra”, intended as a 512x512 editable art source. A mythic fire salamander, an elegant long-bodied lava-scaled lizard with four sturdy legs, ember orange along dark bronze-black scales, luminous natural-sized eyes, and clear searing jaws. It strikes forward to bite, head and full mouth prominent in the middle, a few sparks and a glowing ember trail mark the hit; dark basalt and warm cavern glow behind. Keep the entire head, both eyes and jaws clearly visible, creature silhouette recognizable as salamander not a dragon, no wings. Grounded painterly medieval/high-fantasy collectible-card art, visible brushwork, nuanced believable scales/skin/leather/iron, dramatic directional forge or ember light, atmospheric depth. Keep the primary face/head, realistic-sized eyes and relevant jaws or hands/hammer entirely inside x24..488,y105..407 for the 206:141 crop. Compose horizontally across the middle with quiet scenery above and below; clear at 128px. No card frame, text, lettering, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-009a4407-cbc4-4a19-832a-b08a2749f47e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_salamandra.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Centered wide crop and 128px thumb keep Salamandra’s full head, both eyes, open searing jaws and foreclaws intact; reads clearly as a fire salamander. Awaiting parent review."
+  },
+  {
+    "cardId": "hero_vulcan",
+    "name": "Vulcan the Smith",
+    "prompt": "Create a true 1:1 square illustration for the Hexmancers hero card “Vulcan the Smith”, intended as a 512x512 editable art source. A powerful, seasoned human medieval master smith with a weathered expressive face, clear eyes, soot-dark beard and thick leather apron over ironwork clothes. He lifts a compact but weighty blacksmith’s hammer in one hand at shoulder height while his other hand guides a controlled burst of fiery sparks from an anvil; forged iron and hot metal glow around him. Keep his whole head, eyes, hammer hand and complete hammer clear together, with the hammer beside his face at a similar height. No oversized weapon. Grounded painterly medieval/high-fantasy collectible-card art, visible brushwork, nuanced believable scales/skin/leather/iron, dramatic directional forge or ember light, atmospheric depth. Keep the primary face/head, realistic-sized eyes and relevant jaws or hands/hammer entirely inside x24..488,y105..407 for the 206:141 crop. Compose horizontally across the middle with quiet scenery above and below; clear at 128px. No card frame, text, lettering, symbols, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-667c8697-a7b8-4707-276f-7f7a3fc75ffc.png",
+    "editableSourcePath": "game/cards/art/masters/hero_vulcan.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "Centered wide crop and thumb retain Vulcan’s full head and eyes, hammer head and gripping hand, plus his working hand and anvil. Awaiting parent review."
   }
 ]

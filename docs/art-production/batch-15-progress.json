@@ -2,10 +2,10 @@
   "batch": 15,
   "status": "in-progress",
   "targetNewImages": 119,
-  "generatedSources": 111,
-  "reviewedSources": 106,
-  "missingSources": 8,
-  "reviewedPackets": 22,
+  "generatedSources": 113,
+  "reviewedSources": 113,
+  "missingSources": 6,
+  "reviewedPackets": 24,
   "requiresRepaint": [],
   "baselineActive": 1834,
   "targetActive": 1953,
@@ -382,7 +382,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/hero_aldric.png",
       "sha256": "ff8c1e6a7207ad1ec6611cc08b0f6e024ab864520d392e77c724b5e4db707ace",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -485,6 +485,18 @@
       ]
     },
     {
+      "cardId": "hero_ozone",
+      "name": "Ozone the Tinker",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_ozone.png",
+      "sha256": "287c8acc28fe545c6fbdf91e2db24d85f27dc7b34fa103c9668aaf0f365cb73a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
       "cardId": "hero_permafrost",
       "name": "Old Permafrost",
       "colour": "frost",
@@ -578,6 +590,18 @@
       "focalPoint": [
         0.5,
         0.43
+      ]
+    },
+    {
+      "cardId": "hero_thunderbird",
+      "name": "The Thunderbird",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_thunderbird.png",
+      "sha256": "74fff5548b179661a8bd561f5abfd8a7788c226d09aff45a32677bb82ccf1547",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -730,7 +754,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_22.png",
       "sha256": "f5394fd53a990b59b95346e6ea9dd2fd73e4ae549eeee20e2a7e402832a90d25",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.34
@@ -741,11 +765,11 @@
       "name": "Su Song's Clock Tower",
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_23.png",
-      "sha256": "c5658845cb53d7320d5010c36404c895779c7f48a8310d9015323ebd3025f8ef",
-      "reviewed": false,
+      "sha256": "5df2c80006f89faad0be2e2def630935eb924ab21c665aa2768e38086a11aa19",
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.445
+        0.485
       ]
     },
     {
@@ -754,7 +778,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_24.png",
       "sha256": "dace2d3b36e4236edec959d7aafa637076c958c9cb6041e591334d0955d32509",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.473
@@ -766,7 +790,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_25.png",
       "sha256": "4c5df67100d308a09926c7498ff305ad52a6d009f3cad44b1e089f59a493e52b",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5

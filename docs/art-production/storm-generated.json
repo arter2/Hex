@@ -4300,5 +4300,41 @@
     "status": "generated",
     "batch": 15,
     "reviewNote": "Recomposed after the first portrait clipped the crown and hand. Preserved prior master at /tmp/storm-03-repair-backup/storm_machine_22-before.png; inspected replacement 512 square, crop at focal y=0.39 and 128px thumbnail. Full crown/head/eyes and articulated hand with fingers remain visible; lower arm/shoulders are incidental. Parent square review found the central crown tip above the previous crop; shifted focal point to y=0.36 and checked the revised crop/thumbnail with the complete crown tip and raised fingers visible."
+  },
+  {
+    "cardId": "hero_thunderbird",
+    "name": "The Thunderbird",
+    "prompt": "Paint an original 1:1 square fantasy hero portrait for Hexmancers card The Thunderbird. A majestic great storm bird dives from a dark cloudbank, wings swept back in powerful motion, with its complete noble head, sharp hooked beak and one bright eye clearly visible near the center-right. Layered dark bronze and indigo feathers catch blue-white lightning; golden light rims the face. The bird's face is the primary identity, not the wings; wing tips may extend beyond the frame. Painterly medieval fantasy collectible-card illustration, visible brushwork, believable avian anatomy, dramatic directional storm light and atmospheric depth. Keep full head, eye and beak within x24–488,y105–407 on the 512-square composition, with quiet clouds above and below. No text, frame, UI, cute mascot look, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5595eb5b-9ef3-4382-8aac-02562fdd0a75.png",
+    "editableSourcePath": "game/cards/art/masters/hero_thunderbird.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, 206:141 crop and 128px thumbnail inspected. Majestic bird head, eye and complete beak remain clear; wing ends are incidental."
+  },
+  {
+    "cardId": "hero_ozone",
+    "name": "Ozone the Tinker",
+    "prompt": "Paint an original 1:1 square hero portrait for Hexmancers card Ozone the Tinker. A focused middle-aged medieval tinkerer in a weathered teal-brown leather workcoat and close-fitting cap, with clear expressive eyes and practical soot marks. Beside their face at the same height, they present a compact charged storm coil: a brass ringed spherical device with a small blue-white lightning core, held securely between both gloved hands as if preparing to lob it. Keep full head, eyes, both hands and the complete coil together in a compact horizontal cluster within x24–488,y105–407 on the 512 square; the coil is only about half the face height. Painterly medieval fantasy, tactile brass, worn leather, visible brushwork and dramatic workshop light. No goggles covering eyes, no giant artifact hanging below face, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42b56439-91e8-4902-9d61-fffc9260ec90.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ozone.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 15,
+    "reviewNote": "512-square source, revised 206:141 crop at focal y=0.35 and 128px thumbnail inspected. Full cap/head/eyes, both hands and the compact charged coil remain together at the same height."
   }
 ]

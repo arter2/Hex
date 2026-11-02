@@ -10,7 +10,7 @@
       "state": "idle"
     },
     "/root/b15_artist_3": {
-      "packet": "light-03",
+      "packet": "light-04",
       "state": "running"
     },
     "/root/b15_artist_4": {
@@ -19,7 +19,7 @@
     },
     "/root/b15_artist_5": {
       "packet": "storm-04",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b15_artist_6": {
       "packet": "verdant-05",
@@ -48,7 +48,9 @@
     "shadow-04",
     "fire-04",
     "frost-04",
-    "storm-03"
+    "storm-03",
+    "light-03",
+    "storm-04"
   ],
   "reviewedSources": {
     "fire_summon_38": {
@@ -474,6 +476,34 @@
     "hero_kiri": {
       "file": "game/cards/art/masters/hero_kiri.png",
       "sha256": "8fa1ffc0c5b7a1b5fd27f4be4e0b078fa1c28c763847e605f028af41ca912f69"
+    },
+    "light_machine_22": {
+      "file": "game/cards/art/masters/light_machine_22.png",
+      "sha256": "f5394fd53a990b59b95346e6ea9dd2fd73e4ae549eeee20e2a7e402832a90d25"
+    },
+    "light_machine_23": {
+      "file": "game/cards/art/masters/light_machine_23.png",
+      "sha256": "5df2c80006f89faad0be2e2def630935eb924ab21c665aa2768e38086a11aa19"
+    },
+    "light_machine_24": {
+      "file": "game/cards/art/masters/light_machine_24.png",
+      "sha256": "dace2d3b36e4236edec959d7aafa637076c958c9cb6041e591334d0955d32509"
+    },
+    "light_machine_25": {
+      "file": "game/cards/art/masters/light_machine_25.png",
+      "sha256": "4c5df67100d308a09926c7498ff305ad52a6d009f3cad44b1e089f59a493e52b"
+    },
+    "hero_aldric": {
+      "file": "game/cards/art/masters/hero_aldric.png",
+      "sha256": "ff8c1e6a7207ad1ec6611cc08b0f6e024ab864520d392e77c724b5e4db707ace"
+    },
+    "hero_thunderbird": {
+      "file": "game/cards/art/masters/hero_thunderbird.png",
+      "sha256": "74fff5548b179661a8bd561f5abfd8a7788c226d09aff45a32677bb82ccf1547"
+    },
+    "hero_ozone": {
+      "file": "game/cards/art/masters/hero_ozone.png",
+      "sha256": "287c8acc28fe545c6fbdf91e2db24d85f27dc7b34fa103c9668aaf0f365cb73a"
     }
   }
 }

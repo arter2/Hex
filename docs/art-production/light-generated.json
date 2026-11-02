@@ -4226,8 +4226,8 @@
   {
     "cardId": "light_machine_23",
     "name": "Su Song's Clock Tower",
-    "prompt": "Paint an illustration for Su Song's Clock Tower, the great 11th-century Chinese astronomical water-powered clock tower. Show its complete elegant three-tier timber pagoda tower in a distant landscape establishing view, compactly occupying only the central 55% of square height; full roof, base and surrounding waterwheel structure visible with clear margins. Include a small bronze armillary sphere and a few mechanical clockwork details as accurate focal cues, beside a quiet river and distant Kaifeng rooftops. Painterly medieval fantasy collectible-card art, historically inspired Song dynasty architecture, fine wood joinery, bronze, warm dawn light and atmospheric depth. Strict square 1:1 editable 512x512 master; entire named clock tower within x24..488 y105..407 of wide 206:141 crop. No text, lettering, frame, UI, anime, Disney, photorealism, pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-1c420729-ba09-4a46-8736-b19df855c096.png",
+    "prompt": "A square painterly medieval fantasy collectible-card landscape of Su Song's Clock Tower, the historic 11th-century Song dynasty Chinese astronomical water-powered clock. Recompose the tower noticeably smaller than before: the complete three-tier pagoda tower, top finial, bronze armillary sphere, clockwork galleries, stone foundation and entire side waterwheel must fit together in a central band only 56% of the square's height, from about y112 to y400 on a 512-square. Leave generous quiet sky above and calm river below. Distant Kaifeng rooftops provide scale. The full finial and lowest waterwheel/base are both clearly visible with margin; no part touches or crosses the frame. Historically grounded Song timber architecture, layered curved tile eaves, detailed bronze mechanism, warm dawn light, painterly surfaces and atmospheric depth. Strict 1:1 square composition, compact landscape establishing view, not a close crop. Keep the complete named tower within x24..488 and y105..407 for the 206:141 crop. No text, labels, border, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ebab0d6-a4a7-42e7-b4db-58c31e5eee5e.png",
     "editableSourcePath": "game/cards/art/masters/light_machine_23.png",
     "sourceNative": [
       1254,
@@ -4235,11 +4235,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.445
+      0.485
     ],
     "status": "generated",
     "batch": 15,
-    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop and 128-pixel thumbnail. Entire clock tower from finial to waterwheel base fits; armillary sphere and Song-style eaves stay readable."
+    "reviewNote": "Recomposed at a smaller scale after review. Inspected the 512-square source, shifted 206:141 crop and 128-pixel thumbnail: full finial through armillary sphere, clock galleries, stone base and complete waterwheel all fit."
   },
   {
     "cardId": "light_machine_24",

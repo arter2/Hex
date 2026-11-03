@@ -1140,15 +1140,15 @@ function xWaveTex(){ const cv=document.createElement('canvas'); cv.width=cv.heig
    it stays in the solid pass, so it costs nothing extra to draw. One set of uniforms is shared by
    every material that takes part (walls, their trim, pillars and doors). */
 const XDITHER={ uBall:{value:new THREE.Vector3(0,-99,0)}, uRad:{value:3}, uPx:{value:2},
-  uCutP:{value:new THREE.Vector3(0,-99,0)}, uCutD:{value:new THREE.Vector3(0,1,0)}, uCutR:{value:new THREE.Vector2(3.4,1.2)}, uCutRt:{value:new THREE.Vector3(1,0,0)}, uCutUp:{value:new THREE.Vector3(0,1,0)}, uCutE:{value:new THREE.Vector3(2.4,2,5)}, uSolid:{value:null}, uSolidK:{value:new THREE.Vector3(1,1,5)} };
+  uCutP:{value:new THREE.Vector3(0,-99,0)}, uCutD:{value:new THREE.Vector3(0,1,0)}, uCutR:{value:new THREE.Vector2(3.4,1.2)}, uCutRt:{value:new THREE.Vector3(1,0,0)}, uCutUp:{value:new THREE.Vector3(0,1,0)}, uCutE:{value:new THREE.Vector3(2.4,2,5)}, uCutX:{value:new THREE.Vector4(.18,1,1,3.6)}, uSolid:{value:null}, uSolidK:{value:new THREE.Vector3(1,1,5)} };
 /* Spacious floors: what stands between the camera and you is cut away along the line of sight: inside a round shaft
    from you toward the camera (in front of you, never behind), with a dithered soft edge. Only what actually hides you
    goes, whatever the grid or the angle, so there are no sawtooth edges, slivers or slabs as you walk. Everything
    built while XSINK is set (walls, diagonal pieces, trims, pillars, pilasters, niches, decals, doors, arches) is cut. */
 let XSINK=false;
-const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 uCutP; uniform vec3 uCutD; uniform vec2 uCutR; uniform vec3 uCutRt; uniform vec3 uCutUp; uniform vec3 uCutE; uniform sampler2D uSolid; uniform vec3 uSolidK;\n'
+const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 uCutP; uniform vec3 uCutD; uniform vec2 uCutR; uniform vec3 uCutRt; uniform vec3 uCutUp; uniform vec3 uCutE; uniform vec4 uCutX; uniform sampler2D uSolid; uniform vec3 uSolidK;\n'
   // a face inside the stonework (the cell beyond it is solid wall too, below the wall tops): black, so a cut shows solid stone, not seams
-  +'bool xInner(vec3 w,vec3 n){ if(abs(n.y)>.5||w.y>uSolidK.z) return false; vec2 q=(w.xz+normalize(n.xz)*.45)/uSolidK.x; return texture2D(uSolid,q).r>.5; }\n'
+  +'bool xInner(vec3 w,vec3 n){ if(uCutX.y<.5||abs(n.y)>.5||w.y>uSolidK.z) return false; vec2 q=(w.xz+normalize(n.xz)*.45)/uSolidK.x; return texture2D(uSolid,q).r>.5; }\n'
   +'float xcb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xcb4(vec2 a){ return xcb2(.5*a)*.25+xcb2(a); }\n'
   +'bool xCutAway(vec3 w){ if(w.y<.06) return false; vec3 v=w-uCutP; float t=dot(v,uCutD);\n'
   // the opening, as seen on screen: as wide as you (uCutE.x across), a little above your head (y) and down to the floor in front of you (z)
@@ -1156,12 +1156,12 @@ const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 u
     // behind you the shaft ends in a rounded cap (uCutR.y deep at its middle), so the cut through a block beside you is a
   // curve that follows the round opening, never a flat slice
   +'  if(d>=1.0||t<-uCutR.y*sqrt(max(0.0,1.0-d*d))) return false;\n'
-  +'  float k=d<.82?1.0:(1.0-d)/.18;\n'
+  +'  float e=max(.01,uCutX.x), k=d<1.0-e?1.0:(1.0-d)/e;\n'
     // a door stays whole up to its arch's crown (you always see the way through); the wall above it is cut like a wall
-  +'  #ifdef XDOOR\n  return w.y>3.6&&(d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k);\n  #else\n  return d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k;\n  #endif\n  }\n';
-function xSinkShader(sh,door){ Object.assign(sh.uniforms,XDITHER); if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader;
+  +'  #ifdef XDOOR\n  if(uCutX.z>.5&&w.y<uCutX.w) return xcb4(floor(gl_FragCoord.xy/2.0))<k*.5;\n  #endif\n  return d<1.0-e||xcb4(floor(gl_FragCoord.xy/2.0))<k; }\n';
+function xSinkShader(sh,door){ Object.assign(sh.uniforms,XDITHER);
   sh.vertexShader=XSINK_V+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  { vec4 q=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  q=instanceMatrix*q;\n  #endif\n  vXSP=(modelMatrix*q).xyz;}');
-  sh.fragmentShader=XSINK_F+sh.fragmentShader.replace('void main() {','void main() {\n  if(xCutAway(vXSP)) discard; bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);'); }
+  sh.fragmentShader=XSINK_F+sh.fragmentShader.replace('void main() {','void main() {\n  if(xCutAway(vXSP)) discard; \n  #ifdef XDOOR\n  bool xin=false;\n  #else\n  bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));\n  #endif\n').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);');  if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader; }   // (the door mark goes first: the cut code reads it)
 function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m.customProgramCacheKey, door=XSINK_DOOR;
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':''); return m; }
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
@@ -1204,7 +1204,7 @@ function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touc
   // the line toward the camera, on the ground (a camera straight overhead cuts nothing in particular: keep the last line)
   // (from the spot the camera looks at, not from you: the normal camera leads you as you walk, and its line stays due south)
   { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS) EX.cutD=[gx/L,gz/L]; } }
-  if(EX.layout===2){ const C=X3&&X3.cam; if(C){ const P=XDITHER.uCutP.value.set(EX.px,1.4,EX.pz); XDITHER.uCutD.value.copy(C.position).sub(P).normalize(); XDITHER.uCutR.value.set(2.4*XCS,1.1*XCS); XDITHER.uCutRt.value.set(1,0,0).applyQuaternion(C.quaternion); XDITHER.uCutUp.value.set(0,1,0).applyQuaternion(C.quaternion); XDITHER.uCutE.value.set(1.25*XCS,1.3*XCS,2.6*XCS); } }   // the shaft: from your middle toward the camera, shaped round you on screen, starting a little in front of you   // (axes from the camera's turn this frame: its matrix is only updated at render)
+  if(EX.layout===2){ const C=X3&&X3.cam; if(C){ const P=XDITHER.uCutP.value.set(EX.px,1.4,EX.pz); XDITHER.uCutD.value.copy(C.position).sub(P).normalize(); XDITHER.uCutR.value.set(2.4*XCS,XLIT.dShBack*XCS); XDITHER.uCutRt.value.set(1,0,0).applyQuaternion(C.quaternion); XDITHER.uCutUp.value.set(0,1,0).applyQuaternion(C.quaternion); XDITHER.uCutE.value.set(XLIT.dShW*XCS,XLIT.dShUp*XCS,XLIT.dShDown*XCS); XDITHER.uCutX.value.set(XLIT.dShEdge,XLIT.dShInner?1:0,XLIT.dShDoor?1:0,XLIT.dShDoorH); if(!XLIT.dShOn) XDITHER.uCutP.value.set(0,-999,0); } }   // the shaft: from your middle toward the camera, shaped round you on screen, starting a little in front of you   // (axes from the camera's turn this frame: its matrix is only updated at render)
   else for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;

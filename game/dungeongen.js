@@ -62,7 +62,7 @@ function x2Walls(rooms,F,R,ri){ const {t,room}=F, low=F.low||[];
    shrine: an altar on a dais. chasm: a pit across the hall with a broken bridge. archive: fallen shelves.
    hall: a colonnade either side of a processional way. */
 const X2MARK={
-  shrine:{need:1, pieces:[[[-1,-3],[0,-3],[1,-3]]]},
+  shrine:{need:1, pieces:[[[-1,3],[0,3],[1,3]]]},   // (on the side the altar is drawn: v +3)
   chasm:{need:1, pieces:[[-3,-2,-1,0,1,2,3].flatMap(u=>[[u,3],[u,4]])], small:{need:1, pieces:[[-2,-1,0,1,2].flatMap(u=>[[u,3],[u,4]])]}},
   archive:{need:2, small:{need:2, pieces:[[[-3,-3],[-2,-3]],[[2,-3],[3,-3]],[[-3,3],[-2,3]],[[2,3],[3,3]]]}, pieces:[[[-4,-3],[-3,-3],[-2,-3]],[[2,-3],[3,-3],[4,-3]],[[-4,3],[-3,3],[-2,3]],[[2,3],[3,3],[4,3]]]},
   hall:{need:4, pieces:[-4,-2,0,2,4].flatMap(u=>[[[u,-3]],[[u,3]]])} };

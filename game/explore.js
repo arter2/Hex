@@ -1157,7 +1157,8 @@ const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 u
   // curve that follows the round opening, never a flat slice
   +'  if(d>=1.0||t<-uCutR.y*sqrt(max(0.0,1.0-d*d))) return false;\n'
   +'  float k=d<.82?1.0:(1.0-d)/.18;\n'
-  +'  #ifdef XDOOR\n  return xcb4(floor(gl_FragCoord.xy/2.0))<k*.4;\n  #else\n  return d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k;\n  #endif\n  }\n';
+    // a door stays whole up to its arch's crown (you always see the way through); the wall above it is cut like a wall
+  +'  #ifdef XDOOR\n  return w.y>3.6&&(d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k);\n  #else\n  return d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k;\n  #endif\n  }\n';
 function xSinkShader(sh,door){ Object.assign(sh.uniforms,XDITHER); if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader;
   sh.vertexShader=XSINK_V+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  { vec4 q=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  q=instanceMatrix*q;\n  #endif\n  vXSP=(modelMatrix*q).xyz;}');
   sh.fragmentShader=XSINK_F+sh.fragmentShader.replace('void main() {','void main() {\n  if(xCutAway(vXSP)) discard; bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);'); }

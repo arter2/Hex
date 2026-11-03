@@ -1474,6 +1474,7 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 /* new game: the color picker for the 80 dealt cards */
 .starter.deal .dealcols{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;}
 .starter.deal .dealc{border-color:var(--c); color:var(--c); padding:10px 4px; font-size:14px;}
+.startlay{display:flex; gap:10px; align-items:flex-start; margin:12px 0 4px; text-align:left; cursor:pointer;} .startlay input{width:24px; height:24px; flex:none; margin:2px 0 0;}
 
 /* the bag as the Character screen: gear details and the Stats and Look tabs (bagui.js) */
 .bgdetail .nm .tier{color:#f2c94c; font-size:13px;}

@@ -380,14 +380,20 @@ function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=
 const USE_STARTERS=false;
 function buildStart(){
   const box=$('#starters'); box.innerHTML='';
-  const begin=lean=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave({lean});
+  // the dungeon this world digs, asked here (dungeongen.js): spacious (on) or the classic one
+  const layoutPick=()=>{ const c=document.getElementById('startLayout'); return !c||c.checked; }, setLayout=()=>{ if(layoutPick()) save.layout=2; else delete save.layout; };
+  // a new game drops the old world's run too: its floors are kept in memory (XRUN.floors) and would come back
+  const fresh=()=>{ if(typeof stopExplore==='function') stopExplore(); EX=null; if(typeof XPARK!=='undefined') XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; };
+  const begin=lean=>{ fresh(); save=newSave({lean}); setLayout();
     clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
     tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
   if(!USE_STARTERS){
     const d=document.createElement('div'); d.className='starter deal';
     d.innerHTML=`<h3>Your first cards</h3><p>You get 80 cards dealt at random: mostly commons, a few uncommons and rares, with Gray and Brown cards and some of 2 or 3 other colors. Pick the color they lean to, and every new character gets a different mix.</p>
       <div class="dealcols">${SIX.map(k=>`<button class="btn dealc" data-k="${k}" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${COLORS[k].name}</button>`).join('')}</div>
-      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>`;
+      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>
+      <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b> (new): big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
+      <p class="hint center">Build v${document.querySelector('meta[name=application-version]').content}</p>`;
     d.querySelectorAll('.dealc').forEach(b=>b.onclick=()=>begin(b.dataset.k));
     d.querySelector('.dealr').onclick=()=>begin(SIX[Math.floor(Math.random()*SIX.length)]);
     box.appendChild(d);
@@ -397,7 +403,7 @@ function buildStart(){
     const d=document.createElement('div'); d.className='starter';
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
-    d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s);
+    d.querySelector('.btn').onclick=()=>{ fresh(); save=newSave(s); setLayout();
       clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }

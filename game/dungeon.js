@@ -741,7 +741,7 @@ function xPickup(it){ EX.items=EX.items.filter(x=>x!==it); EX.itemAt.delete(it.c
   else if(typeof xRarePickup==='function'&&xRarePickup(it)){}
   else if(typeof xPuzzPickup==='function'&&xPuzzPickup(it)){}
   else if(it.kind==='quest'){ const q=XRUN&&XRUN.quests.find(x=>x.id===it.qid); if(q&&!q.done){ q.done=true; xLog('You find '+q.giver+'’s '+q.item+'. Their token glows warm in your pocket.','good'); xGrant(q.reward,'Quest reward'); } }
-  persist(); xHud(); }
+  persistSoon(); xHud(); }
 
 /* ---------------- using things ---------------- */
 function xInteract(p){
@@ -1168,6 +1168,8 @@ function xHudExtra(){ const el=$('#xStatus'); if(!el) return; const out=[];
    an unlock, a chime, grinding stone and a thud. Off in Settings. */
 const XSFX={ctx:null};
 const sfxOn=()=>{ try{ return localStorage.getItem('hexmancers-sfx')!=='0'; }catch(e){ return true; } };
+// start the audio engine on the first tap anywhere, not at the first sound on a floor (making it took ~40 ms: a jolt)
+addEventListener('pointerdown',()=>{ if(!XSFX.ctx&&sfxOn()) try{ XSFX.ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} },{once:true,capture:true});
 function xSfx(kind,pan){ if(!sfxOn()) return; try{
   const A=XSFX.ctx||(XSFX.ctx=new (window.AudioContext||window.webkitAudioContext)()); if(A.state==='suspended') A.resume(); const t=A.currentTime;
   const out=A.createGain(); let node=out; if(A.createStereoPanner&&pan){ const p=A.createStereoPanner(); p.pan.value=Math.max(-1,Math.min(1,pan*.7)); out.connect(p); node=p; } node.connect(A.destination);
@@ -1224,17 +1226,27 @@ function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'s
   if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); if(typeof xCoins==='function') xCoins(p.cell,4); }
   else if(r<.42){ const h=Math.min(xmaxHp(),EX.hp+10)-EX.hp; if(h>0){ EX.hp+=h; xLog('A healing herb: +'+h+' HP.','good'); xPopText('+'+h+' HP','#39ff8a',p.cell); } }
   else if(r<.45){ const c=rollCard({depth:d}); const res=addCards(save,[c]); xLog('Tucked inside: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xPopText('Card!','#8fe4ff',p.cell); }
+  if(r<.32||r>=.42&&r<.45) persistSoon();   // gold or a card from a pot is saved too (at a quiet moment, as a pickup is)
   xHud(); }
-// clay or wood shards that fly out and fall
-function xShards(x,z,col){ if(!X3||!X3.group) return; EX.shards=EX.shards||[]; const m=xMat(col);
-  for(let k=0;k<10;k++){ const o=xBox(.08+Math.random()*.12,.05,.08+Math.random()*.1,m,x,.4,z); const a=Math.random()*6.3, v=1.5+Math.random()*2.5;
+// clay or wood shards that fly out and fall: one shared unit box (each shard scales it) and one material per colour,
+// kept for the session (a new box and material for every shard of every pot was set up again on the GPU at each pot,
+// and never freed)
+const XSHARD={geo:null, mat:new Map()};
+function xShards(x,z,col){ if(!X3||!X3.group) return; EX.shards=EX.shards||[];
+  const g=XSHARD.geo||(XSHARD.geo=new THREE.BoxGeometry(1,1,1)), m=XSHARD.mat.get(col)||XSHARD.mat.set(col,xMat(col)).get(col);
+  for(let k=0;k<10;k++){ const o=new THREE.Mesh(g,m); o.scale.set(.08+Math.random()*.12,.05,.08+Math.random()*.1); o.position.set(x,.4,z); const a=Math.random()*6.3, v=1.5+Math.random()*2.5;
     o.userData={vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:2+Math.random()*3,spin:(Math.random()-.5)*14,t:0}; X3.group.add(o); EX.shards.push(o); } }
-function xPopText(txt,col,cell){ if(!X3||!X3.group) return; const s=xTextSprite(txt,col); s.scale.set(txt.length>3?1.6:1.1,.8,1); s.position.set(xw(cell),1.2,xz(cell)); s.userData.t=0; X3.group.add(s); (EX.pops=EX.pops||[]).push(s); }
+// floating numbers: each text's picture is drawn once and kept (a new canvas and texture per pot was a jolt on a phone);
+// the sprite's own material (for its fade) is freed when it goes
+const XPOP=new Map();
+function xPopText(txt,col,cell){ if(!X3||!X3.group) return; const k=txt+'|'+col; let tex=XPOP.get(k);
+  if(!tex){ tex=xTextSprite(txt,col).material.map; if(XPOP.size<300) XPOP.set(k,tex); }
+  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false})); s.renderOrder=5; s.scale.set(txt.length>3?1.6:1.1,.8,1); s.position.set(xw(cell),1.2,xz(cell)); s.userData.t=0; X3.group.add(s); (EX.pops=EX.pops||[]).push(s); }
 function xBitsTick(dt){
   if(EX.shards) EX.shards=EX.shards.filter(o=>{ const u=o.userData; u.t+=dt; u.vy-=12*dt; o.position.x+=u.vx*dt; o.position.z+=u.vz*dt; o.position.y=Math.max(.03,o.position.y+u.vy*dt);
     if(o.position.y<=.03){ u.vx*=.8; u.vz*=.8; u.spin*=.7; } o.rotation.y+=u.spin*dt; o.rotation.x+=u.spin*.5*dt;
     if(u.t>1.6){ X3.group.remove(o); return false; } return true; });
-  if(EX.pops) EX.pops=EX.pops.filter(s=>{ s.userData.t+=dt; s.position.y+=dt*1.2; s.material.opacity=Math.max(0,1-s.userData.t/1.1); s.material.transparent=true; if(s.userData.t>1.1){ X3.group.remove(s); return false; } return true; });
+  if(EX.pops) EX.pops=EX.pops.filter(s=>{ s.userData.t+=dt; s.position.y+=dt*1.2; s.material.opacity=Math.max(0,1-s.userData.t/1.1); s.material.transparent=true; if(s.userData.t>1.1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
   if(EX.strikeCd>0) EX.strikeCd-=dt;
   if(EX.swingT>0){ EX.swingT-=dt; const w=X3&&X3.swing; if(w){ const k=1-EX.swingT/.25; w.visible=EX.swingT>0; w.position.set(EX.px,.7,EX.pz); w.rotation.z=(EX.swingDir||0)-1.9+k*2.6; w.material.opacity=.85*(1-k); } } }
 function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action||(EX.strikeCd||0)>0) return;

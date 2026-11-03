@@ -3,7 +3,15 @@
 
 const $=s=>document.querySelector(s);
 let save=loadSave();
-const persist=()=>{ if(save&&save.temp) return; writeSave(save); };   // the Movement lab's borrowed hexmancer is never saved
+const persist=()=>{ if(save&&save.temp) return; PERSIST_SOON=0; writeSave(save); };   // the Movement lab's borrowed hexmancer is never saved
+/* persistSoon: save at the next quiet moment (within 1.5 s) instead of on this frame. For things that happen mid-play
+   many times (a pickup, a pot): writing the whole save on the pickup's frame was a jolt on Android phones. A page that
+   is closed or hidden first saves at once, so a reload loses nothing. */
+let PERSIST_SOON=0;
+const persistSoon=()=>{ if(PERSIST_SOON) return; PERSIST_SOON=1; const run=()=>{ if(PERSIST_SOON) persist(); };
+  if(typeof requestIdleCallback==='function') requestIdleCallback(run,{timeout:1500}); else setTimeout(run,400); };
+addEventListener('pagehide',()=>{ if(PERSIST_SOON) persist(); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden&&PERSIST_SOON) persist(); });
 const activeDeck=()=>save.decks[save.active];
 
 function show(id){ $('#tip').classList.remove('on'); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);

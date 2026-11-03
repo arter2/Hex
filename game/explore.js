@@ -560,15 +560,24 @@ function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt
 /* ---------------- juice: sparks, dust, coins, flashes ----------------
    Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
    that fly up to your gold, a flash as a fight begins, and the camera shake of a sprung trap. */
-function xSparks(x,z,col,n,up){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
-  for(let k=0;k<(n||10);k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); const a=Math.random()*6.3, v=.8+Math.random()*1.6;
+// Effect sprites come from a pool and go back to it when they fade: making and disposing a material for every spark and
+// dust puff made three.js set each one up again on the next draw, a jolt on a phone at every pickup (and a steady
+// churn while walking). Two pools: added light (sparks, blooms) and ordinary see-through (dust).
+const XFX_POOL={add:[],norm:[]};
+function xFxSprite(col,add,opacity){ const P=XFX_POOL[add?'add':'norm']; let s=P.pop();
+  if(!s){ const tex=xGlowTex.t||(xGlowTex.t=xGlowTex());
+    s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthWrite:false,blending:add?THREE.AdditiveBlending:THREE.NormalBlending})); }
+  s.fxPool=add?'add':'norm'; s.material.color.set(col); s.material.opacity=opacity==null?1:opacity; s.visible=true; return s; }
+function xFxDone(s){ X3.group.remove(s); const P=s.fxPool&&XFX_POOL[s.fxPool]; if(P&&P.length<96) P.push(s); else s.material.dispose(); }
+function xSparks(x,z,col,n,up){ if(!X3||!X3.group) return; EX.fx=EX.fx||[];
+  for(let k=0;k<(n||10);k++){ const s=xFxSprite(col,true); const a=Math.random()*6.3, v=.8+Math.random()*1.6;
     s.position.set(x,.5,z); s.scale.set(.35,.35,1); s.renderOrder=4; s.userData={vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:(up||2)+Math.random()*2,t:0,life:.55+Math.random()*.35,g:4,s:.35}; X3.group.add(s); EX.fx.push(s); } }
-function xPuff(x,z){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
-  for(let k=0;k<2;k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0x9a948a,transparent:true,opacity:.35,depthWrite:false})); s.position.set(x+(Math.random()-.5)*.4,.15,z+(Math.random()-.5)*.3+.2);
+function xPuff(x,z){ if(!X3||!X3.group) return; EX.fx=EX.fx||[];
+  for(let k=0;k<2;k++){ const s=xFxSprite(0x9a948a,false,.35); s.position.set(x+(Math.random()-.5)*.4,.15,z+(Math.random()-.5)*.3+.2);
     s.scale.set(.4,.4,1); s.renderOrder=3; s.userData={vx:(Math.random()-.5)*.4,vz:(Math.random()-.5)*.4,vy:.4,t:0,life:.5,g:0,s:.4,grow:1.6,a0:.35}; X3.group.add(s); EX.fx.push(s); } }
 function xFxTick(T,dt){
   if(EX.fx) EX.fx=EX.fx.filter(s=>{ const u=s.userData; u.t+=dt; u.vy-=u.g*dt; s.position.x+=u.vx*dt; s.position.y=Math.max(.05,s.position.y+u.vy*dt); s.position.z+=u.vz*dt;
-    const k=u.t/u.life, sc=u.s*(1+(u.grow||0)*k); s.scale.set(sc,sc,1); s.material.opacity=(u.a0||1)*(1-k); if(k>=1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
+    const k=u.t/u.life, sc=u.s*(1+(u.grow||0)*k); s.scale.set(sc,sc,1); s.material.opacity=(u.a0||1)*(1-k); if(k>=1){ xFxDone(s); return false; } return true; });
   if(EX.walk&&!EX.busy){ EX.puffT=(EX.puffT||0)-dt; if(EX.puffT<=0){ EX.puffT=.26; xPuff(EX.px,EX.pz); } } }
 // coins rise from where you are and fly up to the gold counter, which pops as they land
 function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; const r=appBox($('#xView')), v=new THREE.Vector3(xw(cell),1,xz(cell)).project(G.cam);
@@ -578,7 +587,7 @@ function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; con
     const an=c.animate([{transform:'translate(-50%,-50%) scale(.6)'},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(1)`,offset:.35},{transform:`translate(calc(-50% + ${ex}px),calc(-50% + ${ey}px)) scale(.7)`}],{duration:650+k*45,easing:'cubic-bezier(.3,.1,.4,1)',fill:'forwards'});
     an.onfinish=()=>{ c.remove(); gold.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:180}); }; } }
 // a burst of light that swells and fades (a chest opening)
-function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const s=xFxSprite(col,true);
   s.position.set(x,y,z); s.renderOrder=4; s.userData={vx:0,vz:0,vy:.4,t:0,life:.6,g:0,s:size*.5,grow:1.2,a0:1}; X3.group.add(s); (EX.fx=EX.fx||[]).push(s); }
 // a wide text label for names over monsters
 function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256; c.height=40; const x=c.getContext('2d');
@@ -994,8 +1003,17 @@ function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [w
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
   xDressShow(c,XLIT.dCut?cutH:solid?1:0); }
-function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xw(c)-EX.px)/XCS; return dy>0&&dy<=9&&dx<XB.strip+.5?XCUT:1; }
+/* Which walls sink or fade: those between you and the camera, wherever the camera is (the debug menu's Turn and Move
+   swing it round). Measured on the ground from you toward the camera: a wall from 'Cut starts at' to 'Cut reach'
+   tiles along that line and within the see-through strip's width of it. From the normal camera (straight behind, to
+   the south) this is the rows in front of you, as it always was; 'Cut follows camera' off keeps that south line. */
+function xCutTarget(c){ if(!EX) return 1; const d=XLIT.dCutFollow&&EX.cutD||[0,1], vx=(xw(c)-EX.px)/XCS, vz=(xz(c)-EX.pz)/XCS;
+  const along=vx*d[0]+vz*d[1], side=Math.abs(vx*d[1]-vz*d[0]);
+  return along>XLIT.dCutStart&&along<=XLIT.dCutReach+.5&&side<XB.strip+.5?XCUT:1; }
 function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
+  // the line toward the camera, on the ground (a camera straight overhead cuts nothing in particular: keep the last line)
+  // (from the spot the camera looks at, not from you: the normal camera leads you as you walk, and its line stays due south)
+  { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS) EX.cutD=[gx/L,gz/L]; } }
   for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
@@ -1501,7 +1519,13 @@ function xDraw(T,dt){
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; xWallCut(dt); xFxTick(T,dt);
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; EX.camT=[cx+jx,cz-1.2-XLIT.dAim*XCS];
+  // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
+  // forward (in tiles) and tilt, pan and roll it (degrees)
+  if(XLIT.dTurn||XLIT.dMoveX||XLIT.dMoveY||XLIT.dMoveZ||XLIT.dRotX||XLIT.dRotY||XLIT.dRotZ){ const R=Math.PI/180, tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS;
+    if(XLIT.dTurn){ const a=XLIT.dTurn*R, ox=G.cam.position.x-tx, oz=G.cam.position.z-tz; G.cam.position.x=tx+ox*Math.cos(a)+oz*Math.sin(a); G.cam.position.z=tz-ox*Math.sin(a)+oz*Math.cos(a); G.cam.lookAt(tx,.6,tz); }
+    G.cam.translateX(XLIT.dMoveX*XCS); G.cam.translateY(XLIT.dMoveY*XCS); G.cam.translateZ(-XLIT.dMoveZ*XCS);
+    G.cam.rotateY(-XLIT.dRotY*R); G.cam.rotateX(XLIT.dRotX*R); G.cam.rotateZ(XLIT.dRotZ*R); } xWallCut(dt); xFxTick(T,dt);
   XDITHER.uBall.value.set(EX.px,1.2,EX.pz); XDITHER.uRad.value=XB.ball*XCS; XDITHER.uPx.value=Math.max(1,Math.round(G.renderer.getPixelRatio()*2));
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';

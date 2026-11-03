@@ -38,19 +38,48 @@ function x2Centre(r,room){ let best=null, bs=-1; const mx=r.x+r.w/2-.5, my=r.y+r
 /* Low walls inside a room: short runs, pillars and blocks of stone you walk round (drawn about half height and
    seen over, but solid underfoot). Never within two cells of the room's edge (doorways and the way round stay
    clear) or of its middle (the stairs), and only where the room stays in one piece. */
-function x2Walls(rooms,F,R,ri){ const {t,room}=F, low=[];
+// is the room still in one piece (every cell reachable from its middle, 4-way)?
+function x2Whole(r,room){ let n=0; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) if(room[xi(i,j)]===r.id) n++;
+  const seen=new Set([xi(r.cx,r.cy)]), q=[xi(r.cx,r.cy)]; for(let h=0;h<q.length;h++) for(const c of [q[h]-1,q[h]+1,q[h]-XN,q[h]+XN]) if(room[c]===r.id&&!seen.has(c)){ seen.add(c); q.push(c); }
+  return seen.size===n; }
+function x2Walls(rooms,F,R,ri){ const {t,room}=F, low=F.low||[];
   const clear=(i,j,r)=>{ for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) if(room[xi(i+dx,j+dy)]!==r.id) return false; return Math.hypot(i-r.cx,j-r.cy)>2.5; };
-  const whole=r=>{ const cells=[]; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) if(room[xi(i,j)]===r.id) cells.push(xi(i,j));
-    const seen=new Set([xi(r.cx,r.cy)]), q=[xi(r.cx,r.cy)]; for(let h=0;h<q.length;h++) for(const n of [q[h]-1,q[h]+1,q[h]-XN,q[h]+XN]) if(room[n]===r.id&&!seen.has(n)){ seen.add(n); q.push(n); }
-    return seen.size===cells.length; };
+  const whole=r=>x2Whole(r,room);
   const PIECES=[[[0,0],[1,0],[2,0]],[[0,0],[1,0],[2,0],[3,0]],[[0,0],[0,1],[0,2]],[[0,0],[0,1],[0,2],[0,3]],[[0,0]],[[0,0],[1,0],[0,1],[1,1]],[[0,0],[1,0],[2,0],[0,1]],[[0,0],[0,1],[1,1],[2,1]]];
-  for(const r of rooms){ if(r.side||r.w<8||r.h<7) continue; const area=r.w*r.h, want=r.landmark?ri(2,4):area>=60&&R()<.75?ri(1,2):R()<.35?1:0;
+  for(const r of rooms){ if(r.side||r.w<8||r.h<7) continue; const area=r.w*r.h, want=r.mark?ri(0,1):r.landmark?ri(2,4):area>=60&&R()<.75?ri(1,2):R()<.35?1:0;
     for(let n=0,k=0;n<want&&k<40;k++){ const P=PIECES[ri(0,PIECES.length-1)], ox=ri(r.x+2,r.x+r.w-3), oy=ri(r.y+2,r.y+r.h-3);
       const cells=P.map(([dx,dy])=>[ox+dx,oy+dy]); if(!cells.every(([i,j])=>clear(i,j,r))) continue;
       for(const [i,j] of cells){ const c=xi(i,j); t[c]=T_ROCK; room[c]=-1; }
       if(!whole(r)){ for(const [i,j] of cells){ const c=xi(i,j); t[c]=T_FLOOR; room[c]=r.id; } continue; }
       for(const [i,j] of cells) low.push(xi(i,j)); r.walls=true; n++; } }
   F.low=low; }
+
+/* Landmark centrepieces: each landmark hall gets one, a different kind per floor where it can. Laid out along the
+   hall's long axis (u) and across it (v), never on the middle (the stairs or a boss stand there), always a cell clear
+   of the walls and only where the hall stays in one piece. Their cells are solid like the low walls (F.low: you see
+   over them, you walk round them) and are listed in F.marks, which is what the scene draws (xLandmarks); the shapes
+   drawn never decide what is solid.
+   shrine: an altar on a dais. chasm: a pit across the hall with a broken bridge. archive: fallen shelves.
+   hall: a colonnade either side of a processional way. */
+const X2MARK={
+  shrine:{need:1, pieces:[[[-1,-3],[0,-3],[1,-3]]]},
+  chasm:{need:1, pieces:[[-3,-2,-1,0,1,2,3].flatMap(u=>[[u,3],[u,4]])], small:{need:1, pieces:[[-2,-1,0,1,2].flatMap(u=>[[u,3],[u,4]])]}},
+  archive:{need:2, small:{need:2, pieces:[[[-3,-3],[-2,-3]],[[2,-3],[3,-3]],[[-3,3],[-2,3]],[[2,3],[3,3]]]}, pieces:[[[-4,-3],[-3,-3],[-2,-3]],[[2,-3],[3,-3],[4,-3]],[[-4,3],[-3,3],[-2,3]],[[2,3],[3,3],[4,3]]]},
+  hall:{need:4, pieces:[-4,-2,0,2,4].flatMap(u=>[[[u,-3]],[[u,3]]])} };
+function x2Marks(rooms,F,R){ const {t,room}=F, low=F.low||(F.low=[]), marks=F.marks||(F.marks=[]);
+  const deck=Object.keys(X2MARK).sort(()=>R()-.5); let next=0;
+  for(const r of rooms){ if(!r.landmark||r.side) continue; const horiz=r.w>=r.h;
+    for(let k=0;k<deck.length;k++){ const kind=deck[(next+k)%deck.length];
+      for(const K of [X2MARK[kind],X2MARK[kind].small].filter(Boolean)) for(const s of [1,-1]){ if(r.mark) break; const at=([u,v])=>horiz?xi(r.cx+u,r.cy+v*s):xi(r.cx+v*s,r.cy+u), placed=[];
+        for(const P of K.pieces){ const cells=P.map(at), mine=new Set(cells);
+          // every cell and all eight round it must be the hall's own floor (or the same piece)
+          if(!cells.every(c=>{ for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const n=c+dy*XN+dx; if(room[n]!==r.id&&!mine.has(n)) return false; } return true; })) continue;
+          for(const c of cells){ t[c]=T_ROCK; room[c]=-1; }
+          if(!x2Whole(r,room)){ for(const c of cells){ t[c]=T_FLOOR; room[c]=r.id; } continue; }
+          placed.push(cells); }
+        if(placed.length>=K.need){ for(const p of placed) low.push(...p); marks.push({room:r.id,kind,horiz,s,cx:r.cx,cy:r.cy,pieces:placed}); r.mark=kind; r.walls=true; next+=k+1; break; }
+        for(const p of placed) for(const c of p){ t[c]=T_FLOOR; room[c]=r.id; } }
+      if(r.mark) break; } } }
 
 // rooms: landmark halls first (they need the room), then ordinary rooms; null when too few fit
 function x2Rooms(R,ri,plan){ const rooms=[], small=!!plan.small, want=small?X2.small:ri(...X2.rooms);
@@ -125,3 +154,62 @@ function x2Corridors(main,F,R,ri){ const {t,room,doors}=F, n=main.length;
   return true; }
 
 if(typeof module!=='undefined') module.exports={X2,x2Rooms,x2Corridors,x2Walls,x2In,x2Centre};
+
+/* The centrepieces, drawn (from EX.marks; what is solid is decided by the floor, never by these shapes). Built from
+   the area's own stone tones like the rest of the floor's dressing, merged into one mesh per hall (plus one for
+   what glows), shown once any of its cells has been seen. Cells under a piece have no floor tile: each piece covers
+   its own cells (a stone footing), except the chasm, which is open down to the depths. */
+function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')');
+  const ST=tone(.55), DK=tone(.22), LT=tone(.72), MID=tone(.4), WOOD=0x5a3a20, WOOD2=0x3e2814, GLOW=new THREE.Color(A.glow||'#ffb060'), ACC=new THREE.Color(S.spark||'#ffd080');
+  // cloth in the area's colour, dyed dark: the lamp you carry washes a bright cloth out into a glowing strip
+  const AREA=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').lerp(tone(.22),.6).multiplyScalar(.5);
+  for(const mk of EX.marks){ const M=xMerger(), L=xMerger(), seen=new Set(), {horiz,s}=mk;
+    // hall-local (u along, v across, toward the piece's side) to world
+    const W=(u,v)=>{ const lx=horiz?u:v*s, ly=horiz?v*s:u; return [(mk.cx+lx+.5)*XCS,(mk.cy+ly+.5)*XCS]; };
+    // a block lu long (along the hall) by lv deep, in cells; lean tips its top toward -v (its +v end up), in radians
+    const box=(col,u,v,y,lu,hh,lv,lean,to)=>{ const [x,z]=W(u,v), a=lean||0; (to||M).add(XG.box,col,x,y,z,horiz?-a*s:0,0,horiz?0:a*s,(horiz?lu:lv)*XCS,hh,(horiz?lv:lu)*XCS); };
+    const cells=mk.pieces.flat(); for(const c of cells){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
+    const footing=c=>{ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS; M.add(XG.box,MID,x,-.2,z,0,0,0,XCS,.5,XCS); };
+    const local=c=>{ const dx=xcx(c)-mk.cx, dy=xcy(c)-mk.cy; return horiz?[dx,dy*s]:[dy,dx*s]; };
+    if(mk.kind==='shrine'){ cells.forEach(footing);
+      box(DK,0,3,.12,3.2,.24,1.3); box(ST,0,3,.3,2.6,.14,1.05);   // the dais and its step
+      box(LT,0,3.1,.85,1.1,.95,.42); box(ST,0,3.1,1.36,1.3,.1,.5); box(AREA,0,3.1,1.42,1.36,.02,.32); box(AREA,0,2.86,1.2,.36,.5,.02);   // the altar and its top slab
+      box(ACC,0,2.88,.85,.5,.5,.02,0,L);   // a rune cut in its face, glowing
+      for(const u of [-.4,.4]){ box(0xe8dcc0,u,3.1,1.5,.05,.18,.05); box(0xffd890,u,3.1,1.63,.035,.08,.035,0,L); }   // candles
+      for(const u of [-1,1]){ box(DK,u,3.1,.5,.36,.7,.18); box(ST,u,3.1,1.2,.26,.7,.13); box(LT,u,3.1,1.65,.2,.2,.1); }   // two worn guardian figures
+      for(const u of [-2,2]){ const [x,z]=W(u,2.6), c=xcell(x,z); if(c>=0&&EX.t[c]===T_FLOOR) xBrazier(grp,x,z,c,A); } }
+    else if(mk.kind==='chasm'){
+      // the pit's walls drop away beneath each edge, a broken lip of stone runs round it, a glow far below
+      for(const c of cells){ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS;
+        for(const [dx,dz] of [[1,0],[-1,0],[0,1],[0,-1]]){ const n=c+dx+dz*XN; if(EX.t[n]===T_ROCK) continue; const ex=x+dx*XCS/2, ez=z+dz*XCS/2, along=dx?0:1;
+          M.add(XG.box,DK,ex-dx*.08,-3,ez-dz*.08,0,0,0,along?XCS:.16,6,along?.16:XCS);
+          for(let k=0;k<3;k++){ const o=(k-1)*XCS/3+(R()-.5)*.15; M.add(XG.rock,MID,ex+(along?o:-dx*.1),.02,ez+(along?-dz*.1:o),R()*3,R()*3,0,.35+R()*.25,.18+R()*.12,.35+R()*.25); } }
+        L.add(XG.box,GLOW.clone().multiplyScalar(.35),x,-6,z,0,0,0,XCS,.05,XCS); }
+      // the bridge: two posts on each bank, planks running out over the drop and stopping short
+      for(const [v0,dir] of [[2.45,1],[5.55,-1]]){ for(const u of [-.45,.45]) box(WOOD2,u,v0,.5,.08,1.0,.08);
+        const n=dir>0?3:2; for(let k=0;k<n;k++){ const v=v0+dir*(.28+k*.32), sag=-k*k*.05; box(WOOD,(R()-.5)*.08,v,.06+sag,1.05,.06,.26,-dir*k*.08); } }
+      box(0x8a7a5a,-.45,4.0,.32,.03,.03,3.0); }   // one rope still spans the gap
+    else if(mk.kind==='archive'){
+      // tall open bookcases (back, sides, four boards, rows of spines) and one that has toppled, its books spilled
+      const tilt=R()*mk.pieces.length|0, SP=[0xa83a2a,0x3a6a9a,0x7a8a3a,0x9a6a3a,0x6a3a8a,0xc8b890], BD=0x7a5232;
+      mk.pieces.forEach((p,pi)=>{ p.forEach(footing); const [u0]=local(p[0]), [u1]=local(p[p.length-1]), [,v]=local(p[0]), sg=Math.sign(v), um=(u0+u1)/2, len=Math.abs(u1-u0)+.8;
+        if(pi===tilt){ box(WOOD2,um,v-sg*.5,.3,len,.55,1.05,sg*.18); box(BD,um,v-sg*.5,.6,len+.04,.06,1.08,sg*.18);
+          for(let k=0;k<14;k++) box(SP[k%6],um+(R()-.5)*len,v-sg*(1.2+R()*1.3),.04,.12+R()*.1,.06,.08+R()*.06);
+          for(let k=0;k<3;k++){ const [x,z]=W(um+(R()-.5)*len,v-sg*(.9+R())); M.add(XG.rock,MID,x,.1,z,R()*3,R()*3,0,.5,.3,.5); }
+          return; }
+        box(WOOD2,um,v+sg*.22,1.05,len,2.1,.1); for(const e of [-1,1]) box(BD,um+e*len/2,v,1.05,.06,2.16,.56);
+        for(const y of [.06,.72,1.38,2.06]) box(BD,um,v,y,len,.07,.56);
+        const nb=Math.round(len*6);
+        for(let sh=0;sh<3;sh++) for(let b=0;b<nb;b++){ if(R()<.15) continue; const hh=.4+R()*.16, bu=um-len/2+(b+.5)*len/nb;
+          box(SP[R()*SP.length|0],bu,v-sg*.04,.1+sh*.66+hh/2,len/nb*.82,hh,.4,R()<.08?sg*.25:0); } });
+      for(let k=0;k<6;k++) box(0xe0d4b4,(R()-.5)*6,(R()-.5)*3,.012,.14,.01,.1);   // loose pages
+    }
+    else if(mk.kind==='hall'){
+      const us=cells.map(c=>local(c)[0]), umax=Math.max(...us.map(Math.abs));
+      box(AREA,0,0,.012,2*umax+1.4,.02,1.3); for(const e of [-.5,.5]) box(ACC.clone().lerp(DK,.7).multiplyScalar(.6),0,e,.016,2*umax+1.3,.02,.07);   // the processional runner
+      cells.forEach((c,k)=>{ footing(c); const [u,v]=local(c), broken=R()<.18;
+        box(ST,u,v,.18,.8,.36,.8); box(LT,u,v,.42,.66,.12,.66);
+        const [x,z]=W(u,v), hh=broken?.9+R()*.5:XWALL-.3; M.add(XG.cyl,ST,x,.48+hh/2,z,0,0,0,.95,hh,.95);
+        if(!broken) box(LT,u,v,XWALL,.78,.26,.78); else for(let q=0;q<3;q++) M.add(XG.rock,ST,x+(R()-.5)*1.4,.12,z+(R()-.5)*1.4,R()*3,R()*3,0,.4,.25,.4); }); }
+    const g=new THREE.Group(); if(M.size()) g.add(M.build(xPhong({vertexColors:true}))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }

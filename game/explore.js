@@ -103,7 +103,7 @@ function tryFloor(depth,R,plan){
       if(room[pi]>=0&&room[ci]<0) mk(ci,room[pi]); if(room[pi]<0&&room[ci]>=0) mk(pi,room[ci]); }
   };
   const main=rooms.filter(r=>!r.side), sideRooms=rooms.filter(r=>r.side);
-  const F2={t,room,doors,rooms,corridors:null,low:null};
+  const F2={t,room,doors,rooms,corridors:null,low:null,marks:null};
   if(v2){ if(!x2Corridors(main,F2,R,ri)) return null; }
   else { for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
     for(let n=0;n<4;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); } }
@@ -115,7 +115,7 @@ function tryFloor(depth,R,plan){
   let gateDoors=null;
   if(plan.gate){ const d0=xbfs(t,doors,startI,false); let far=null, fd=-1; for(const r of main){ const d=d0[xi(r.cx,r.cy)]; if(d>fd){ fd=d; far=r; } }
     if(far&&far!==main[0]){ const before=new Set(doors.keys()); if(v2){ if(!F2.link(main[0],far,X2.wide)) far=null; } else carve(main[0],far,null); if(far) gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
-  if(v2) x2Walls(main,F2,R,ri);   // low walls inside the rooms, once every corridor is dug
+  if(v2){ x2Marks(main,F2,R); x2Walls(main,F2,R,ri); }   // low walls inside the rooms, once every corridor is dug
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
@@ -158,7 +158,7 @@ function tryFloor(depth,R,plan){
     const keep=ds.map(([i,d])=>[d,d.state,d.lock]); ds.forEach(([i,d])=>{ d.state='locked'; d.lock='boss'; });
     const dd=reach(), lost=main.filter(r=>r!==exit&&!r.behind&&dd[xi(r.cx,r.cy)]<0);
     if(ds.length&&dd[exitI]<0&&!lost.length) bossDoor=true; else keep.forEach(([d,st,lk])=>{ d.state=st; d.lock=lk; }); }
-  return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors,low:F2.low};
+  return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors,low:F2.low,marks:F2.marks};
 }
 // breadth-first distances; secret and locked doors block; `seenOnly` limits it to explored cells
 function xbfs(t,doors,s,seenOnly,blockFn){
@@ -225,6 +225,8 @@ function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), head
 const xPassable=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !(d&&d.state==='secret'); };   // locked doors are handled by xBump
 // the spacious floor's low walls inside rooms (dungeongen.js x2Walls): solid underfoot, but seen over
 const xLow=c=>!!EX.low&&(EX.lowS||(EX.lowS=new Set(EX.low))).has(c);
+// a cell under a landmark centrepiece (dungeongen.js): solid and seen over like a low wall, but drawn by xLandmarks, not as a wall
+const xMarkCell=c=>!!EX.marks&&(EX.markS||(EX.markS=new Set(EX.marks.flatMap(m=>m.pieces.flat())))).has(c);
 const xClear=i=>{ if(i<0) return false; if(EX.t[i]===T_ROCK) return xLow(i); const d=EX.doors.get(i); return !d||d.state==='open'; };
 function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Math.abs(x1-x0), dy=-Math.abs(y1-y0), sx=x0<x1?1:-1, sy=y0<y1?1:-1; let e=dx+dy;
   while(true){ if(x0===x1&&y0===y1) return true; const i=xi(x0,y0); if(i!==a&&!xClear(i)) return false;
@@ -411,7 +413,7 @@ function xBuildScene(){
   xFovMesh(grp);
   // walls: rough rock beside corridors, chiseled blocks (large or rubble) around rooms
   const walls=[[],[],[]];
-  for(let i=0;i<XN*XN;i++){ const d=EX.doors.get(i); if(!(EX.t[i]===T_ROCK||(d&&d.state==='secret'))) continue;
+  for(let i=0;i<XN*XN;i++){ const d=EX.doors.get(i); if(!(EX.t[i]===T_ROCK||(d&&d.state==='secret'))||xMarkCell(i)) continue;
     const x=xcx(i), y=xcy(i); let near=-1;
     for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if((dx||dy)&&nx>=0&&ny>=0&&nx<XN&&ny<XN){ const n=xi(nx,ny); if(EX.t[n]!==T_ROCK&&!(EX.doors.get(n)&&EX.doors.get(n).state==='secret')){ const r=EX.room[n]; near=Math.max(near,r>=0?1+EX.rooms[r].style:0); } } }
     if(near>=0) walls[near].push(i); }
@@ -510,7 +512,7 @@ function xBuildScene(){
   xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed);
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);

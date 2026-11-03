@@ -231,11 +231,15 @@ function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Mat
     const e2=2*e; if(e2>=dy){ e+=dy; x0+=sx; } if(e2<=dx){ e+=dx; y0+=sy; } } }
 function xUpdateVis(){
   const v=EX.vis; v.fill(0); const pc=EX.pc;
-  const lightRoom=r=>{ for(let y=r.y-1;y<=r.y+r.h;y++) for(let x=r.x-1;x<=r.x+r.w;x++) v[xi(x,y)]=1; };
   // the spacious floor (layout 2) sees much further: 6 cells in corridors and unlit rooms, 8 lit, 3 (5 with a torch) in the dark
   const v2=EX.layout===2, here=EX.room[pc]; let rad=v2?6:1.6;
-  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=v2?8:7; } else rad=v2?6:2.6; if(r.dark) rad=v2?(EX.torch?5:3):EX.torch?3.6:1.2; }   // a dark room (rooms.js): almost nothing without a torch
-  if(EX.t[pc]===T_DOOR) for(const n of [pc-1,pc+1,pc-XN,pc+XN]){ const r=EX.room[n]; if(r>=0&&EX.rooms[r].lit&&EX.doors.get(pc).state==='open') lightRoom(EX.rooms[r]); }
+  // a lit room shows all of itself and its walls; on the spacious floor only its own footprint (an L, H or X room's box
+  // also holds rock and corners that are not the room), so nothing outside the room shows through
+  const lightRoom=ri=>{ const r=EX.rooms[ri], R=EX.room; for(let y=r.y-1;y<=r.y+r.h;y++) for(let x=r.x-1;x<=r.x+r.w;x++){ const i=xi(x,y);
+    if(v2&&R[i]!==ri){ let near=false; for(let oy=-1;oy<=1&&!near;oy++) for(let ox=-1;ox<=1;ox++) if(R[i+oy*XN+ox]===ri){ near=true; break; } if(!near) continue; }
+    v[i]=1; } };
+  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(here); rad=v2?8:7; } else rad=v2?6:2.6; if(r.dark) rad=v2?(EX.torch?5:3):EX.torch?3.6:1.2; }   // a dark room (rooms.js): almost nothing without a torch
+  if(EX.t[pc]===T_DOOR) for(const n of [pc-1,pc+1,pc-XN,pc+XN]){ const r=EX.room[n]; if(r>=0&&EX.rooms[r].lit&&EX.doors.get(pc).state==='open') lightRoom(r); }
   rad+=((save&&save.perm&&save.perm.insight)||0)+(EX.sight||0);   // Insight blessings and lantern oil
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
   for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN||dx*dx+dy*dy>rad*rad) continue; const i=xi(nx,ny); if(xLos(pc,i)) v[i]=1; }

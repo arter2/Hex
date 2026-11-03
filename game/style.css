@@ -1767,7 +1767,7 @@ body.wide #hudBottom #btnSpell span{width:36%;}
 #hudBottom .qslot .qic{width:22px; height:22px; object-fit:contain; display:block;}
 #hudBottom .qslot .role{display:flex; justify-content:center;}
 #hudBottom .qslot .nm{font-size:12px; text-shadow:0 1px 0 #000;}
-#hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none; font-size:0; background:url(ui/next_badge.svg) center/contain no-repeat;}
+#hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none;}
 /* instants (9-slice) with their ⚡ marks */
 #hudBottom .inst-row .btn.inst{border:solid transparent!important; border-width:10px!important; border-radius:0; background:none!important; box-shadow:none!important; padding:0; width:64px; min-height:62px;
   border-image:url(ui/instant_blank.svg) 12 14 15 14 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}

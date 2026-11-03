@@ -1226,6 +1226,7 @@ function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'s
   if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); if(typeof xCoins==='function') xCoins(p.cell,4); }
   else if(r<.42){ const h=Math.min(xmaxHp(),EX.hp+10)-EX.hp; if(h>0){ EX.hp+=h; xLog('A healing herb: +'+h+' HP.','good'); xPopText('+'+h+' HP','#39ff8a',p.cell); } }
   else if(r<.45){ const c=rollCard({depth:d}); const res=addCards(save,[c]); xLog('Tucked inside: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xPopText('Card!','#8fe4ff',p.cell); }
+  if(r<.32||r>=.42&&r<.45) persistSoon();   // gold or a card from a pot is saved too (at a quiet moment, as a pickup is)
   xHud(); }
 // clay or wood shards that fly out and fall: one shared unit box (each shard scales it) and one material per colour,
 // kept for the session (a new box and material for every shard of every pot was set up again on the GPU at each pot,

@@ -1510,7 +1510,13 @@ function xDraw(T,dt){
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; xWallCut(dt); xFxTick(T,dt);
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk;
+  // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
+  // forward (in tiles) and tilt, pan and roll it (degrees)
+  if(XLIT.dTurn||XLIT.dMoveX||XLIT.dMoveY||XLIT.dMoveZ||XLIT.dRotX||XLIT.dRotY||XLIT.dRotZ){ const R=Math.PI/180, tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS;
+    if(XLIT.dTurn){ const a=XLIT.dTurn*R, ox=G.cam.position.x-tx, oz=G.cam.position.z-tz; G.cam.position.x=tx+ox*Math.cos(a)+oz*Math.sin(a); G.cam.position.z=tz-ox*Math.sin(a)+oz*Math.cos(a); G.cam.lookAt(tx,.6,tz); }
+    G.cam.translateX(XLIT.dMoveX*XCS); G.cam.translateY(XLIT.dMoveY*XCS); G.cam.translateZ(-XLIT.dMoveZ*XCS);
+    G.cam.rotateY(-XLIT.dRotY*R); G.cam.rotateX(XLIT.dRotX*R); G.cam.rotateZ(XLIT.dRotZ*R); } xWallCut(dt); xFxTick(T,dt);
   XDITHER.uBall.value.set(EX.px,1.2,EX.pz); XDITHER.uRad.value=XB.ball*XCS; XDITHER.uPx.value=Math.max(1,Math.round(G.renderer.getPixelRatio()*2));
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';

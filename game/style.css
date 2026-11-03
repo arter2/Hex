@@ -1265,6 +1265,26 @@ button[hidden]{display:none!important;}
 .dbgTabs button.on{color:#14161c; background:#ffd166; border-color:#ffd166; font-weight:700;}
 .dbgPane[hidden]{display:none;}
 .dbgPane>h3:first-child{margin-top:4px;}
+/* The debug menu, phone-sized (v191): each setting's name and value on one line and its slider the full width under
+   them; the explanations show only with Notes (hold a name to read one); tabs scroll sideways at a readable size;
+   slim section headers. */
+.panel.debug .bar{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+.panel.debug .bar h2{margin:0;}
+.dbgex{font:700 13px var(--font-b); color:#cfd6e4; background:#1c2230; border:1px solid #3a4456; border-radius:6px; padding:6px 12px; min-height:0; width:auto; cursor:pointer;}
+.dbgex[aria-pressed="true"]{color:#14161c; background:#8fe4ff; border-color:#8fe4ff;}
+.panel.debug .srow small{display:none;} .panel.debug.explain .srow small, .panel.debug .srow small.warn{display:block;}
+.panel.debug .srow{grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr); gap:2px 10px; padding:6px 0;}
+.panel.debug .srow>span:first-child{font-size:15px; line-height:1.15;}
+.panel.debug .srow>.srange{min-width:0; width:100%;}
+.panel.debug .srow>.scheck, .panel.debug .srow>.btn{justify-self:end;}
+.panel.debug.explain .srow>span:first-child{grid-column:1/-1;}   /* with notes, the name and its note take the whole line */
+.panel.debug .dbgPane>.hint{display:none;} .panel.debug.explain .dbgPane>.hint{display:block;}
+.panel.debug .srange input{flex:1; width:auto; min-width:0; height:32px;}
+.panel.debug .srange b{min-width:52px;}
+.panel.debug .srow .btn{min-width:0; min-height:38px; padding:0 14px;}
+.panel.debug h3{font-size:13px; min-height:0; border-width:4px 14px; margin:14px 0 2px; line-height:14px;}
+.dbgTabs{overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;} .dbgTabs::-webkit-scrollbar{display:none;}
+.dbgTabs button{flex:0 0 auto; padding:9px 13px; font-size:13px; overflow:visible;}
 #debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; box-shadow:0 0 0 6px rgba(10,12,16,.82);}   /* a shadow, not padding: the slider must not shift under your finger */
 
 /* the debug menu's pause: a small tag so a held game is never mistaken for a hang */

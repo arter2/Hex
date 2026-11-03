@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v206</title>
-<meta name="application-version" content="206">
+<title>Hexmancers v207</title>
+<meta name="application-version" content="207">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
@@ -557,7 +557,8 @@
       <h3>Dungeon camera</h3>
       <div class="srow"><span>Angle<small>How steeply the dungeon camera looks down, in degrees. 48 is normal. Higher sees further up the room and walls in front hide less; lower shows more of the wall faces.</small></span><span class="srange"><input id="dbg_dPitch" type="range" min="25" max="85" step="1"><b id="dbg_dPitchV"></b></span></div>
       <div class="srow"><span>Distance<small>How far the camera sits from you, in tiles (a tall phone screen pulls it back a little more). 9.4 is normal.</small></span><span class="srange"><input id="dbg_dDist" type="range" min="4" max="40" step="0.1"><b id="dbg_dDistV"></b></span></div>
-      <div class="srow"><span>View width (spacious)<small>On the spacious dungeon, how many tiles fit across the shorter side of the screen; this replaces Distance there. 12 is normal.</small></span><span class="srange"><input id="dbg_dView" type="range" min="10" max="16" step="1"><b id="dbg_dViewV"></b></span></div>
+      <div class="srow"><span>View width (spacious)<small>On the spacious dungeon with a wide (landscape) screen, how many tiles fit top to bottom; this replaces Distance there. 12 is normal.</small></span><span class="srange"><input id="dbg_dView" type="range" min="10" max="16" step="1"><b id="dbg_dViewV"></b></span></div>
+      <div class="srow"><span>View width, upright (spacious)<small>The same on an upright (portrait) screen: tiles across its width. Fewer tiles, bigger people. 7 is normal.</small></span><span class="srange"><input id="dbg_dViewP" type="range" min="5" max="12" step="0.5"><b id="dbg_dViewPV"></b></span></div>
       <div class="srow"><span>Field of view (lens)<small>The lens, in degrees. 46 is normal. Wider shows more around you with more depth; narrower is flatter.</small></span><span class="srange"><input id="dbg_dFov" type="range" min="20" max="120" step="1"><b id="dbg_dFovV"></b></span></div>
       <div class="srow"><span>Aim ahead<small>Points the camera further up the screen (above 0) so you stand lower and see more ahead, in tiles.</small></span><span class="srange"><input id="dbg_dAim" type="range" min="-4" max="6" step="0.1"><b id="dbg_dAimV"></b></span></div>
       <div class="srow"><span>Look-ahead<small>How far the camera leads you as you walk. 0 keeps you dead centre; 1 is normal.</small></span><span class="srange"><input id="dbg_dAhead" type="range" min="0" max="6" step="0.05"><b id="dbg_dAheadV"></b></span></div>

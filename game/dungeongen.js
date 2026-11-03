@@ -11,7 +11,7 @@ const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:
 const XRM=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):null;
 // the camera's distance that fits XLIT.dView cells (debug menu › Dungeon camera, 10-16, 12 normal) across the shorter side: across the width on an upright screen, else
 // down the height (the ground there is seen at the camera's pitch, so it stretches by 1/sin)
-function xViewDist(pitch){ const th=Math.tan(X3.cam.fov*Math.PI/360), a=X3.cam.aspect, n=Math.max(X2.view[0],Math.min(X2.view[1],XLIT.dView||12))*XCS/XLIT.camZoom;
+function xViewDist(pitch){ const th=Math.tan(X3.cam.fov*Math.PI/360), a=X3.cam.aspect, n=(a<1?Math.max(5,Math.min(12,XLIT.dViewP||7)):Math.max(X2.view[0],Math.min(X2.view[1],XLIT.dView||12)))*XCS/XLIT.camZoom;   // an upright phone sees fewer cells across (dViewP), so the people stay big
   return a<1?n/(2*th*a):n*Math.sin(pitch)/(2*th); }
 
 /* Room shapes. A room keeps its bounding box (x, y, w, h: placement, lighting and the old code read it) and a shape:

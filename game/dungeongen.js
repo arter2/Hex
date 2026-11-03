@@ -6,7 +6,7 @@
    around every room is never dug by a wide corridor, so a corridor cannot slip round a lock or into a room.
    x2Rooms places the rooms; x2Corridors digs the main corridors. tryFloor (explore.js) does everything after that
    (side rooms, the gate, locks, the boss door, checks) the same for both layouts. */
-const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3, view:[10,16], wall:5 };   // wall: the walls' height (old floors 2.5; a person is 2.8)
+const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3, view:[10,16], wall:2.8*2.1 };   // wall: the walls' height, 2.1 times a person (XSPR 2.8; old floors 2.5)
 // whether the player asked for less motion (no shake, no rush-in when a fight starts)
 const XRM=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):null;
 // the camera's distance that fits XLIT.dView cells (debug menu › Dungeon camera, 10-16, 12 normal) across the shorter side: across the width on an upright screen, else
@@ -227,7 +227,7 @@ function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Col
     const at=(a,b)=>ax?xi(x+b,y+a):xi(x+a,y+b); let ok=true;
     for(let b=-1;b<=1&&ok;b++){ if(!wall(at(-1,b))||!wall(at(w,b))) ok=false; for(let a=0;a<w&&ok;a++) if(!pass(at(a,b))) ok=false; }
     if(!ok) continue; const mx=ax?x:x+(w-1)/2, my=ax?y+(w-1)/2:y; if(near(mx,my,9)||busy(Math.round(mx),Math.round(my))) continue;
-    if(R()<.55) sites.push({x:mx,y:my,w,ax,cell:at((w-1)>>1,0)}); }
+    if(R()<(w>3?.9:.55)) sites.push({x:mx,y:my,w,ax,cell:at((w-1)>>1,0)}); }   // (nearly every gallery stretch gets one)
   EX.arches=[];
   for(const st of sites){ const M=xMerger(), span=st.w*XCS, a=span/2-.1, b=st.w>3?1.15:1.05, ys=XWALL-b+.02, g=new THREE.Group();
     g.position.set((st.x+.5)*XCS,0,(st.y+.5)*XCS); if(st.ax) g.rotation.y=Math.PI/2;
@@ -244,3 +244,68 @@ function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Col
     EX.decor.push({mesh:g,cells,ph:0}); EX.arches.push({g,mesh,cell:st.cell,cut:1}); } }
 // an arch fading out of the way (like a wall between the camera and you)
 function xArchOp(a){ const op=Math.max(.12,a.cut), solid=op>=.995, M=a.mesh.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; a.mesh.renderOrder=solid?0:7; }
+
+/* A few grand entrances: an ordinary open (or plain closed) door into a main room, where the passage outside runs
+   on past both sides of the vestibule, opens up three cells wide under one arch (no leaf; it never closes). Only the
+   two wall cells beside the door and the vestibule's two sides are dug, and they meet the same passage the door
+   already reaches, so no lock, secret or side room is ever bypassed. Most likely into a landmark hall; at most four. */
+function x2WideDoors(F,R,gate){ const {t,room,doors}=F; let n=0;
+  for(const [i,d] of doors){ if(n>=4) break; if(d.lock||(d.state!=='open'&&d.state!=='closed')) continue;
+    const inn=[i-1,i+1,i-XN,i+XN].find(c=>room[c]>=0); if(inn==null) continue; const r=F.rooms[room[inn]]; if(!r||r.side||r.nook) continue;
+    if(R()>(r.landmark?.5:.18)) continue;
+    if(gate&&Math.max(Math.abs(xcx(gate.cell)-xcx(i)),Math.abs(xcy(gate.cell)-xcy(i)))<5) continue;
+    const o=i-inn, p=Math.abs(o)===1?XN:1;
+    if(t[i+o]===T_ROCK||room[i+o]>=0||t[i+2*o]===T_ROCK||room[i+2*o]>=0) continue;
+    let ok=true; const carve=[];
+    for(const sd of [p,-p]){ const a=i+sd, b=i+o+sd, out=i+2*o+sd, ins=inn+sd;
+      if(t[a]!==T_ROCK||doors.has(a)||doors.has(b)||room[ins]!==r.id||t[out]===T_ROCK||room[out]>=0){ ok=false; break; }
+      for(const q of [a,b]) for(const nb of [q-1,q+1,q-XN,q+XN]) if(room[nb]>=0&&room[nb]!==r.id||doors.has(nb)&&nb!==i) ok=false;
+      carve.push(a); if(t[b]===T_ROCK) carve.push(b); }
+    if(!ok) continue; for(const c of carve){ t[c]=T_FLOOR; room[c]=-1; } d.state='open'; d.wide=true; n++; } }
+
+/* Wall sections on spacious floors, so a long wall is not one block repeated: along the faces the trim runs on
+   (rooms and passages), a pilaster every fourth block of a straight run (plinth, shaft standing proud, capital), now
+   and then a dark arched niche with a stone sill, and decals laid across the joints between blocks: soot streaks
+   from the top, cracks, water stains down the face, moss along the foot. Never at a doorway or where a banner,
+   chain or lamp already hangs. Instanced, and shown (and sunk with the cutaway) with their wall, like the trims
+   (xDressShow -> xSectShow); a wall not yet seen shows none. */
+function xWallSections(grp,S,seed){ const R=caveRng(seed+911), tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')');
+  const isFace=(c,dx,dy)=>{ const a=EX.dress.get(c); return !!(a&&a.trim&&a.trim.some(t=>t[1]===dx&&t[2]===dy)); };
+  const used=new Set([...(EX.onWall||[]).map(W=>W.wall),...(EX.glows||[]).map(L=>L.wall),...EX.wallAt.keys()]);
+  const nearDoor=c=>{ for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) if(EX.doors.has(c+dy*XN+dx)) return true; return false; };
+  const n={p:0,n:0,d:[0,0,0,0]}, ph=R()*4|0;
+  for(const [c,a] of EX.dress){ if(!a.trim) continue;
+    for(const [,dx,dy] of a.trim){ if(dx&&dy) continue; const tx=dy?1:0, tz=dx?1:0, t=tx+tz*XN, along=dx?xcy(c):xcx(c);
+      const run=isFace(c+t,dx,dy)&&isFace(c-t,dx,dy), free=!used.has(c)&&!nearDoor(c), L=(a.sect=a.sect||[]);
+      if(run&&free&&(along+ph)%4===0){ L.push(['p',n.p++,dx,dy]); continue; }
+      if(run&&free&&(along+ph)%4===2&&R()<.22){ L.push(['n',n.n++,dx,dy]); continue; }
+      if(R()<.42){ const k=[0,0,1,2,3,3][R()*6|0], sh=isFace(c+t,dx,dy)?.5:isFace(c-t,dx,dy)?-.5:0;
+        const w=[1.3+R()*.8,1+R()*.6,.8+R()*.6,1.5+R()*.8][k], h=[2.2+R()*1.4,1.2+R()*.9,XWALL*.8,.8+R()*.3][k], y=[XWALL-h/2-.3,1.2+R()*(XWALL-3),XWALL*.45,h/2-.02][k];
+        L.push(['d'+k,n.d[k]++,dx,dy,w,h,y,sh+(R()-.5)*.3]); } } }
+  const zero=new THREE.Matrix4().makeScale(0,0,0), inst=(geo,mat,cnt)=>{ const im=new THREE.InstancedMesh(geo,mat,Math.max(1,cnt)); for(let k=0;k<im.count;k++) im.setMatrixAt(k,zero); grp.add(im); return im; };
+  // the pilaster (built facing +z, standing on the face plane z=0, the wall's full height)
+  const P=xMerger(), st=tone(.52), lt=tone(.64), H=XWALL;
+  P.add(XG.box,lt,0,.22,.25,0,0,0,1.02,.44,.5); P.add(XG.box,st,0,(.44+H-.5)/2,.19,0,0,0,.8,H-.94,.38); P.add(XG.box,lt,0,H-.36,.24,0,0,0,.98,.22,.48); P.add(XG.box,st,0,H-.15,.2,0,0,0,.84,.2,.4);
+  // the niche: a dark recess with a stepped head, a pale frame and a sill
+  const Q=xMerger(), dk=tone(.08), fr=tone(.6);
+  Q.add(XG.box,dk,0,1.95,.02,0,0,0,.92,2.0,.04); [.84,.7,.5].forEach((w,k)=>Q.add(XG.box,dk,0,3.0+k*.12,.02,0,0,0,w,.12,.04));
+  for(const sx of [-1,1]) Q.add(XG.box,fr,sx*.52,1.95,.05,0,0,0,.12,2.1,.1); [1.06,.92,.74,.54].forEach((w,k)=>Q.add(XG.box,fr,0,3.0+k*.12+.02,.05,0,0,0,w,.08,.1));
+  Q.add(XG.box,fr,0,.9,.1,0,0,0,1.2,.12,.22);
+  const smat=xDitherMat(xPhong({vertexColors:true}));
+  EX.sectM={p:inst(P.build(smat).geometry,smat,n.p),n:inst(Q.build(smat).geometry,smat,n.n),d:[0,1,2,3].map(k=>{ const g=new THREE.PlaneGeometry(1,1), U=g.attributes.uv; for(let i=0;i<U.count;i++) U.setX(i,(k+U.getX(i))/4);
+    return inst(g,xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}),n.d[k]); })}; }
+// the four decals side by side (64 x 128 each): soot streaks, a crack, a water stain, moss
+function xDecalTex(S,seed){ if(xDecalTex.c&&xDecalTex.k===seed) return xDecalTex.t; const W=64, Hh=128, c=document.createElement('canvas'); c.width=W*4; c.height=Hh; const x=c.getContext('2d'), R=caveRng(seed+5);
+  const dark='rgba('+xTone(S,.02).join(',')+',', moss='rgba('+[52,74,40].join(',')+',';
+  for(let s=0;s<14;s++){ const px=6+R()*(W-12), len=30+R()*90, wd=1+R()*3; const g=x.createLinearGradient(0,0,0,len); g.addColorStop(0,dark+'.55)'); g.addColorStop(1,dark+'0)'); x.fillStyle=g; x.fillRect(px|0,0,wd|0||1,len); }
+  { let px=W+W/2, py=10; x.fillStyle=dark+'.75)'; for(let k=0;k<110;k++){ x.fillRect(px|0,py|0,1,1); if(R()<.12){ let bx=px, by=py; for(let q=0;q<10;q++){ bx+=(R()-.3)*2; by+=1; x.fillRect(bx|0,by|0,1,1); } } px+=(R()-.5)*2.2; py+=1; px=Math.max(W+4,Math.min(2*W-4,px)); } }
+  { const g=x.createLinearGradient(2*W,0,3*W,0); g.addColorStop(0,dark+'0)'); g.addColorStop(.3,dark+'.32)'); g.addColorStop(.7,dark+'.32)'); g.addColorStop(1,dark+'0)'); x.fillStyle=g; x.fillRect(2*W,0,W,Hh); const v=x.createLinearGradient(0,0,0,Hh); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(.15,'rgba(0,0,0,1)'); x.globalCompositeOperation='destination-in'; x.fillStyle=v; x.fillRect(2*W,0,W,Hh); x.globalCompositeOperation='source-over'; }
+  for(let k=0;k<420;k++){ const px=3*W+R()*W, py=Hh-Math.pow(R(),1.8)*Hh; x.fillStyle=(R()<.6?moss:dark)+(.35+R()*.45)+')'; x.fillRect(px|0,py|0,1+(R()*2|0),1+(R()*2|0)); }
+  xDecalTex.c=c; xDecalTex.k=seed; return xDecalTex.t=xTex(c); }
+function xSectShow(c,list,cut){ const M=EX.sectM; if(!M) return; const m=new THREE.Matrix4(), z=new THREE.Matrix4().makeScale(0,0,0), touched=new Set();
+  for(const [kind,k,dx,dy,w,h,y,sh] of list){ const mesh=kind==='p'?M.p:kind==='n'?M.n:M.d[+kind[1]], tx=dy?1:0, tz=dx?1:0, s=sh||0;
+    const x=xw(c)+dx*XCS/2+tx*s*XCS, zz=xz(c)+dy*XCS/2+tz*s*XCS, show=kind==='p'?cut>.05:cut>.95;
+    if(!show) m.copy(z); else { m.makeRotationY(Math.atan2(dx,dy)); if(kind==='p') m.scale(new THREE.Vector3(1,cut,1)); else if(kind[0]==='d') m.scale(new THREE.Vector3(w,h,1));
+      m.setPosition(x+dx*(kind[0]==='d'?.03:0),kind[0]==='d'?y:0,zz+dy*(kind[0]==='d'?.03:0)); }
+    mesh.setMatrixAt(k,m); touched.add(mesh); }
+  for(const t of touched) t.instanceMatrix.needsUpdate=true; }

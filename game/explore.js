@@ -161,6 +161,7 @@ function tryFloor(depth,R,plan){
     const keep=ds.map(([i,d])=>[d,d.state,d.lock]); ds.forEach(([i,d])=>{ d.state='locked'; d.lock='boss'; });
     const dd=reach(), lost=main.filter(r=>r!==exit&&!r.behind&&dd[xi(r.cx,r.cy)]<0);
     if(ds.length&&dd[exitI]<0&&!lost.length) bossDoor=true; else keep.forEach(([d,st,lk])=>{ d.state=st; d.lock=lk; }); }
+  if(v2) x2WideDoors(F2,R,gate);
   return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors,low:F2.low,marks:F2.marks};
 }
 // breadth-first distances; secret and locked doors block; `seenOnly` limits it to explored cells
@@ -340,7 +341,7 @@ function xWallGeo(rough,seed,H,caps,cheap){ H=H||XWALL; const fine=rough||H===XW
     P=g.attributes.position, hw=XCS/2, hh=H/2, B=rough?.13:.08;
   const hsh=(x,y,z)=>{ const v=Math.sin(x*127.1+y*311.7+z*74.7+seed*13.3)*43758.5453; return v-Math.floor(v); };
   for(let k=0;k<P.count;k++){ let x=P.getX(k), y=P.getY(k), z=P.getZ(k); const top=y>hh-1e-4, ex=Math.abs(Math.abs(x)-hw)<1e-4, ez=Math.abs(Math.abs(z)-hw)<1e-4;
-    if(ex&&ez){ x-=Math.sign(x)*B*.5; z-=Math.sign(z)*B*.5; }   // the four upright corners are cut
+    if(ex&&ez&&fine){ x-=Math.sign(x)*B*.5; z-=Math.sign(z)*B*.5; }   // the four upright corners are cut (not on a spacious floor's dressed stone: it grooved every joint)
     if(top){ const sx=(hw-B)/hw; x*=sx; z*=sx; }                  // the top face shrinks: a bevel all round
     if(rough&&!top&&y>-hh+1e-4){ const n=hsh(Math.round(x*10),Math.round(y*10),Math.round(z*10))-.5, m=hsh(Math.round(z*10),Math.round(y*10),Math.round(x*10))-.5;
       if(ex) x+=n*.14; if(ez) z+=m*.14; if(!ex&&!ez){ x+=n*.08; z+=m*.08; } y+=(hsh(x,y,z)-.5)*.06; }
@@ -393,7 +394,8 @@ function xWedgeGeo(rough,seed){ const hw=XCS/2, hh=XWALL/2, B=rough?.13:.08, S2=
 function xWallMatrix(m,c,rock,cut){ const W=xWedge(c), h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h);
   // a diagonal run keeps one height (the pieces and the blocks touching them), so its top reads as one clean line
   const even=W||EX.layout===2&&(xWedge(c-1)||xWedge(c+1)||xWedge(c-XN)||xWedge(c+XN));
-  const sy=(rock&&!even?.9+r*.22:1)*(cut==null?1:cut)*(xLow(c)?.42*XWALL_B/XWALL:1);   // a low wall stays knee-high whatever the walls' height
+  const deepK=EX.deepFace&&EX.deepFace[c]>=0?.8+Math.floor(r*5)*.06:1;   // the mass behind the walls: an uneven skyline
+  const sy=deepK*(rock&&!even?.9+r*.22:1)*(cut==null?1:cut)*(xLow(c)?.42*XWALL_B/XWALL:1);   // a low wall stays knee-high whatever the walls' height
   if(W){ // a diagonal wall (xWedge): the angled piece (xWedgeGeo) turned so its face looks into the open half
     m.makeRotationY(Math.PI/4-W.ang); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); return; }
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
@@ -403,9 +405,11 @@ function xWallMatrix(m,c,rock,cut){ const W=xWedge(c), h=Math.sin(c*91.7+EX.dept
    for a low wall. nx, nz: the face's direction, toward the open side; ang: the block's turn. */
 function xWedge(c){ if(!EX||EX.layout!==2) return null; const W=EX.wdg||(EX.wdg=xWedges()); const k=W[c]; return k?XWEDGE[k-1]:null; }
 const XWEDGE=[[1,-1],[-1,-1],[1,1],[-1,1]].map(([sx,sy])=>({sx,sy,nx:sx/Math.SQRT2,nz:sy/Math.SQRT2,ang:Math.atan2(sy,sx)}));
-function xWedges(){ const W=new Uint8Array(XN*XN), fl=c=>EX.t[c]!==T_ROCK&&!(EX.doors.get(c)&&EX.doors.get(c).state==='secret');
+function xWedges(){ let wide=null; for(const [i,d] of EX.doors) if(d.wide){ wide=wide||new Uint8Array(XN*XN); for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const n=i+dy*XN+dx; if(n>=0&&n<XN*XN) wide[n]=1; } }
+  const W=new Uint8Array(XN*XN), fl=c=>EX.t[c]!==T_ROCK&&!(EX.doors.get(c)&&EX.doors.get(c).state==='secret');
   for(let c=0;c<XN*XN;c++){ if(EX.t[c]!==T_ROCK||xLow(c)) continue; const x=xcx(c), y=xcy(c); if(x<1||y<1||x>=XN-1||y>=XN-1) continue;
     if([c-1,c+1,c-XN,c+XN].some(n=>EX.doors.has(n))) continue;
+    if(wide&&wide[c]) continue;   // (a wide doorway's jambs stay square)
     XWEDGE.forEach((w,k)=>{ const hx=c+w.sx, vy=c+w.sy*XN, dg=hx+w.sy*XN, bx=c-w.sx, by=c-w.sy*XN;
       if(fl(hx)&&fl(vy)&&fl(dg)&&!fl(bx)&&!fl(by)) W[c]=k+1; }); }
   return W; }
@@ -479,7 +483,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[XWT[v]],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true})),2,wallTex[XWT[v]]);
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[XWT[v]],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),true),2,wallTex[XWT[v]]);
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -499,7 +503,7 @@ function xBuildScene(){
   const doorC=new THREE.Color('rgb('+xTone(S,.5).join(',')+')'), topG=new THREE.CylinderGeometry(AR-.01,AR-.01,.15,16,1,false,-Math.PI/2,Math.PI), ringG=new THREE.TorusGeometry(.09,.02,4,10);
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
-    const F=xMerger(), FL=xMerger(); for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,XCS,.34,XCS-.3); if(dk>1) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(2.58+XWALL/dk-.34)/2,0,0,0,0,XCS,XWALL/dk-.34-2.58,XCS-.2);   // a portal on each face, roofed between
+    const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
     g.add(F.build(xDitherMat(xPhong({vertexColors:true})))); if(FL.size()){ const rune=FL.build(new THREE.MeshBasicMaterial({vertexColors:true})); g.add(rune); }
     const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger();
     if(d.lock==='gate'){ for(let k=0;k<5;k++){ const x=-.6+k*.3, top=HR+Math.sqrt(Math.max(0,AR*AR-x*x))-.04; L.add(XG.box,0x2a2a30,x,top/2,0,0,0,0,.07,top,.07); } L.add(XG.box,0x2a2a30,0,.5,0,0,0,0,XCS-.44,.08,.09); L.add(XG.box,0x2a2a30,0,1.2,0,0,0,0,XCS-.44,.08,.09); }
@@ -520,9 +524,9 @@ function xBuildScene(){
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
     // a warm glow on the threshold, so a doorway reads from across the room even in shadow
-    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*1.3,XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
       sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
-    g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
+    g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'&&!d.wide; if(d.state==='open'&&!d.wide) xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
@@ -564,7 +568,7 @@ function xBuildScene(){
   xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2) xArches(grp,A,S,seed);
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2) xArches(grp,A,S,seed);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
@@ -943,23 +947,26 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
     grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
 }
 // a standing brazier: an iron bowl on three legs, a fire and a real light (it joins the floor's lights)
-/* A doorway's stone (local frame: the opening runs along x, the passage along z). A carved portal: a plinth under
-   each jamb, the jambs laid as three courses of dressed stone, a ring of nine arch stones round the opening with a
-   bigger, paler keystone carrying a faintly lit rune (both faces), dark spandrels filling the corners, a cornice
-   across the top and a worn threshold. The opening matches the leaf (half-width AR .78, springing at HR 1.4). */
-function xPortal(F,FL,base,S,cell,zs){ const ow=.78, HR=1.4, Z=zs*(XCS/2-.27), D=.62, B=(c,x,y,z,rz,w,h,d,to)=>(to||F).add(XG.box,c,x,y,Z+z*zs,0,0,rz||0,w,h,d*D), h=Math.sin(cell*12.9898)*43758.5453, rr=()=>{ const v=Math.sin((h+rr.n++)*78.233)*43758.5453; return v-Math.floor(v); }; rr.n=0;
+/* A doorway's stone (local frame: the opening runs along x, the passage along z), on one face of the wall (zs).
+   A carved portal: a plinth under each jamb, the jambs laid as three courses of dressed stone, a ring of arch stones
+   round the opening with a bigger, paler keystone carrying a faintly lit rune, dark spandrels filling the corners, a
+   cornice across the top and a worn threshold. The opening matches the leaf (half-width .78, springing at 1.4); a
+   wide doorway (three cells, no leaf) has a grand round arch instead (half-width 2.62, fifteen stones). top: how
+   high the wall stands in the door's own units. */
+function xPortal(F,FL,base,S,cell,zs,wide,top){ const ow=wide?2.62:.78, HR=1.4, Z=zs*(XCS/2-.27), D=.62, B=(c,x,y,z,rz,w,h,d,to)=>(to||F).add(XG.box,c,x,y,Z+z*zs,0,0,rz||0,w,h,d*D), h=Math.sin(cell*12.9898)*43758.5453, rr=()=>{ const v=Math.sin((h+rr.n++)*78.233)*43758.5453; return v-Math.floor(v); }; rr.n=0;
   const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), lite=tone(.66), dark=tone(.3), var_=k=>base.clone().multiplyScalar(.88+rr()*.2);
+  const N=wide?15:9, r0=ow, r1=ow+(wide?.42:.34), crown=HR+r1+.12, W=wide?3*XCS:XCS, ctop=wide?Math.max(crown+.1,(top||XWALL)-.07):2.47;
   for(const sx of [-1,1]){ const jx=sx*(ow+.17);
     B(lite,jx,.16,0,0,.46,.32,1.12);   // plinth
-    for(let k=0;k<3;k++){ const y0=.32+k*(HR-.32)/3, hh=(HR-.32)/3-.035, wide=k%2?.34:.4; B(var_(k),jx+sx*(wide-.34)/2,y0+hh/2+.0175,0,0,wide,hh,k%2?.92:1.0); }
+    for(let k=0;k<3;k++){ const y0=.32+k*(HR-.32)/3, hh=(HR-.32)/3-.035, wd=k%2?.34:.4; B(var_(k),jx+sx*(wd-.34)/2,y0+hh/2+.0175,0,0,wd,hh,k%2?.92:1.0); }
     B(lite,jx+sx*.02,HR-.02,0,0,.44,.1,1.06);   // the impost the arch springs from
-    B(dark,sx*.86,2.08,0,0,.46,.84,.8); }   // spandrel
-  const N=9, r0=ow, r1=ow+.34;
+    if(wide){ for(let y=HR;y<ctop-.1;y+=.2){ const dy=y+.1-HR, xa=dy<r1?Math.sqrt(r1*r1-dy*dy):0, wd=W/2-xa; if(wd>.02) B(dark,sx*(xa+wd/2),y+.1,0,0,wd,.2,.82); } }   // solid spandrels, following the arch's curve
+    else B(dark,sx*.86,2.08,0,0,.46,.84,.8); }
   for(let k=0;k<N;k++){ const a=Math.PI*(k+.5)/N, key=k===(N>>1), ro=key?r1+.12:r1, rm=(r0+ro)/2, tw=Math.PI*rm/N-.035;
     B(key?lite:var_(k+3),Math.cos(a)*rm,HR+Math.sin(a)*rm,0,a-Math.PI/2,tw,ro-r0,key?1.06:.94);
-    if(key) B(new THREE.Color(S.spark||'#ffd080').multiplyScalar(.75),0,HR+rm+.02,.53*D+.01,0,.1,.18,.02/D,FL); }
-  B(dark,0,2.3,0,0,.5,.3,.78);   // the stone above the keystone
-  B(lite,0,2.47,0,0,XCS+.22,.14,1.18); B(tone(.5),0,2.37,0,0,XCS+.06,.07,1.08);   // cornice and its bed
+    if(key) B(new THREE.Color(S.spark||'#ffd080').multiplyScalar(.75),0,HR+rm+.02,.53*D+.01,0,wide?.16:.1,wide?.26:.18,.02/D,FL); }
+  if(!wide) B(dark,0,2.3,0,0,.5,.3,.78);   // the stone above the keystone
+  B(lite,0,ctop,0,0,W+.22,.14,1.18); B(tone(.5),0,ctop-.1,0,0,W+.06,.07,1.08);   // cornice and its bed
   B(lite,0,.03,0,0,ow*2-.04,.06,1.0); }   // threshold
 function xBrazier(grp,x,z,cell,A){ const g=new THREE.Group(), iron=xMat(0x2c2a28), mats=[], tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); g.position.set(x,0,z);
   for(let k=0;k<3;k++){ const a=k*2.1; g.add(xBox(.05,.9,.05,iron,Math.cos(a)*.22,.45,Math.sin(a)*.22)); }
@@ -976,12 +983,13 @@ function xWebTex(){ if(xWebTex.c) return xWebTex.c; const N=32, c=document.creat
 // a wall cell shown or sinking: its trim line and pillar follow its height
 function xDressShow(c,cut,touched){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), top=XWALL*cut-.04;
   if(cut<=0){ const z=new THREE.Matrix4().makeScale(0,0,0); if(a.trim){ for(const [k] of a.trim){ EX.corMesh.setMatrixAt(k,z); EX.trimMesh.setMatrixAt(k,z); EX.skirtMesh.setMatrixAt(k,z); } EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
-    if(a.pill!=null){ for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]){ P.setMatrixAt(a.pill,z); P.instanceMatrix.needsUpdate=true; } } return; }
+    if(a.pill!=null){ for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]){ P.setMatrixAt(a.pill,z); P.instanceMatrix.needsUpdate=true; } } if(a.sect) xSectShow(c,a.sect,0); return; }
   if(a.trim){ for(const [k,dx,dy] of a.trim){ if(dx&&dy){ xDiagTrim(m,k,c,dx,dy,top,cut); continue; } const x=xw(c)+dx*XCS*.5, z=xz(c)+dy*XCS*.5, L=XCS, sx=dx?1:L, sz=dx?L:1, ch=Math.min(.24,XWALL*cut*.25);
       m.makeScale(dx?.22:sx,ch,dx?sz:.22); m.setPosition(x+dx*.07,top-ch/2+.02,z+dy*.07); EX.corMesh.setMatrixAt(k,m);       // the cornice, standing out from the face
       m.makeScale(dx?.06:XCS*.98,.06,dx?XCS*.98:.06); m.setPosition(x+dx*.19,top-ch*.55,z+dy*.19); EX.trimMesh.setMatrixAt(k,m);   // the lit line along it
       m.makeScale(dx?.14:sx,.3,dx?sz:.14); m.setPosition(x+dx*.04,.15,z+dy*.04); EX.skirtMesh.setMatrixAt(k,m); }               // the skirting
     EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
+  if(a.sect) xSectShow(c,a.sect,cut);
   if(a.pill!=null){ const k=a.pill, x=xw(c), z=xz(c), h=XWALL*cut, cv=EX.pillCave;
     m.makeScale(XCS*(cv?1.2:1.16),cv?.4:.34,XCS*(cv?1.2:1.16)); m.setPosition(x,cv?.12:.17,z); EX.pillBase.setMatrixAt(k,m);
     m.makeScale(XCS*1.16,Math.max(.05,h),XCS*1.16); m.setPosition(x,h/2,z); EX.pillShaft.setMatrixAt(k,m);
@@ -1112,8 +1120,11 @@ function xWaveTex(){ const cv=document.createElement('canvas'); cv.width=cv.heig
    it stays in the solid pass, so it costs nothing extra to draw. One set of uniforms is shared by
    every material that takes part (walls, their trim, pillars and doors). */
 const XDITHER={ uBall:{value:new THREE.Vector3(0,-99,0)}, uRad:{value:3}, uPx:{value:2} };
-function xDitherMat(m){ m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'');
+function xDitherMat(m,uvj){ m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER);
+    // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
+    // so no two neighbours show the same face
+    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     sh.fragmentShader='varying vec3 vXWP; uniform vec3 uBall; uniform float uRad; uniform float uPx;\n'
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'

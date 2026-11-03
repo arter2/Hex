@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v191</title>
-<meta name="application-version" content="191">
+<title>Hexmancers v192</title>
+<meta name="application-version" content="192">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
@@ -577,6 +577,9 @@
       <div class="srow"><span>Lights stay on<small>How bright torches and crystals you have found keep burning out of sight. 1 is full.</small></span><span class="srange"><input id="dbg_dLightMem" type="range" min="0" max="1" step="0.01"><b id="dbg_dLightMemV"></b></span></div>
       <div class="srow"><span>Cut-down walls<small>On: walls between the camera and you sink to a low stub instead of turning see-through. Off: they fade to glass.</small></span><label class="scheck"><input id="dbg_dCut" type="checkbox"></label></div>
       <div class="srow"><span>Stub height<small>How tall a cut-down wall stays, as a share of a full wall.</small></span><span class="srange"><input id="dbg_dCutH" type="range" min="0" max="1" step="0.01"><b id="dbg_dCutHV"></b></span></div>
+      <div class="srow"><span>Cut follows camera<small>On: the walls that sink or fade are the ones between you and the camera, wherever Turn and Move put it. Off: always the walls to the south of you (the normal camera's side).</small></span><label class="scheck"><input id="dbg_dCutFollow" type="checkbox"></label></div>
+      <div class="srow"><span>Cut reach<small>How far from you toward the camera walls still sink or fade, in tiles. 9 is normal.</small></span><span class="srange"><input id="dbg_dCutReach" type="range" min="1" max="20" step="0.5"><b id="dbg_dCutReachV"></b></span></div>
+      <div class="srow"><span>Cut starts at<small>How far from you toward the camera the cutting begins, in tiles. 0.5 is normal (the next row of walls); 0 also cuts walls level with you.</small></span><span class="srange"><input id="dbg_dCutStart" type="range" min="-1" max="3" step="0.05"><b id="dbg_dCutStartV"></b></span></div>
       <div class="srow"><span>Door minimum<small>A door on a wall in front of you never fades below this. 1 keeps doors solid.</small></span><span class="srange"><input id="dbg_dDoorMin" type="range" min="0" max="1" step="0.01"><b id="dbg_dDoorMinV"></b></span></div>
       <div class="srow"><span>Door glow<small>The warm glow on every doorway's threshold, so doors read from across a room. 0 turns it off.</small></span><span class="srange"><input id="dbg_dDoorGlow" type="range" min="0" max="1" step="0.01"><b id="dbg_dDoorGlowV"></b></span></div>
       <h3>Battle camera</h3>

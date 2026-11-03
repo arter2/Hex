@@ -1003,8 +1003,17 @@ function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [w
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
   xDressShow(c,XLIT.dCut?cutH:solid?1:0); }
-function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xw(c)-EX.px)/XCS; return dy>0&&dy<=9&&dx<XB.strip+.5?XCUT:1; }
+/* Which walls sink or fade: those between you and the camera, wherever the camera is (the debug menu's Turn and Move
+   swing it round). Measured on the ground from you toward the camera: a wall from 'Cut starts at' to 'Cut reach'
+   tiles along that line and within the see-through strip's width of it. From the normal camera (straight behind, to
+   the south) this is the rows in front of you, as it always was; 'Cut follows camera' off keeps that south line. */
+function xCutTarget(c){ if(!EX) return 1; const d=XLIT.dCutFollow&&EX.cutD||[0,1], vx=(xw(c)-EX.px)/XCS, vz=(xz(c)-EX.pz)/XCS;
+  const along=vx*d[0]+vz*d[1], side=Math.abs(vx*d[1]-vz*d[0]);
+  return along>XLIT.dCutStart&&along<=XLIT.dCutReach+.5&&side<XB.strip+.5?XCUT:1; }
 function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
+  // the line toward the camera, on the ground (a camera straight overhead cuts nothing in particular: keep the last line)
+  // (from the spot the camera looks at, not from you: the normal camera leads you as you walk, and its line stays due south)
+  { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS) EX.cutD=[gx/L,gz/L]; } }
   for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
@@ -1510,7 +1519,7 @@ function xDraw(T,dt){
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk;
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; EX.camT=[cx+jx,cz-1.2-XLIT.dAim*XCS];
   // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
   // forward (in tiles) and tilt, pan and roll it (degrees)
   if(XLIT.dTurn||XLIT.dMoveX||XLIT.dMoveY||XLIT.dMoveZ||XLIT.dRotX||XLIT.dRotY||XLIT.dRotZ){ const R=Math.PI/180, tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS;

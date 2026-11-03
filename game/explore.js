@@ -303,6 +303,7 @@ function xInit3D(){
   mm.addEventListener('contextmenu',e=>e.preventDefault());
   $('#xMapShade').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
   $('#xMapClose').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
+  $('#xZoom .zin').addEventListener('click',()=>xViewStep(-1)); $('#xZoom .zout').addEventListener('click',()=>xViewStep(1));   // spacious floors: zoom in / out
   return X3;
 }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
@@ -1576,9 +1577,9 @@ function xDraw(T,dt){
   // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut).
   // Its angle, distance, lens, look-ahead and aim are the debug menu's Dungeon camera
   if(G.cam.fov!==XLIT.dFov){ G.cam.fov=XLIT.dFov; G.cam.updateProjectionMatrix(); }
-  const pitch=XLIT.dPitch*Math.PI/180, k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, D=XLIT.dDist*XCS*k, hgt=D*Math.sin(pitch), back=D*Math.cos(pitch);   // the debug menu's zoom brings it closer
-  let zk=1; if(EX.fighting&&EX.busy){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
-  const sh=EX.shakeT>0?(EX.shakeT-=dt,EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
+  const pitch=XLIT.dPitch*Math.PI/180, k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, D=EX.layout===2?xViewDist(pitch):XLIT.dDist*XCS*k, hgt=D*Math.sin(pitch), back=D*Math.cos(pitch);   // the debug menu's zoom brings it closer
+  const rm=XRM&&XRM.matches; let zk=1; if(EX.fighting&&EX.busy&&!rm){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
+  const sh=EX.shakeT>0?(EX.shakeT-=dt,rm?0:EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
@@ -1734,7 +1735,7 @@ function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(d
   b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
   b.style.setProperty('--bc',A.glow); b.dataset.key=key; b.className='x-bang on depth'; setTimeout(()=>{ if(b.dataset.key===key) b.className='x-bang'; },first?2200:1400); }
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
-function xHud(){ if(!EX) return; const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
+function xHud(){ if(!EX) return; xViewBtns(); const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   if(typeof xpLine==='function'){ const l=$('#xLv'), ch=ensureChar(save); l.textContent='Lv '+save.level+(pointsLeft(ch)>0?' ★':''); l.title=xpLine(); }
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));

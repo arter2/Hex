@@ -6,7 +6,18 @@
    around every room is never dug by a wide corridor, so a corridor cannot slip round a lock or into a room.
    x2Rooms places the rooms; x2Corridors digs the main corridors. tryFloor (explore.js) does everything after that
    (side rooms, the gate, locks, the boss door, checks) the same for both layouts. */
-const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3 };
+const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3, view:[10,16] };
+// how many cells fit across the shorter side of the screen on a spacious floor: 12 to start, 10-16 with the zoom buttons
+// (kept per device); and whether the player asked for less motion (no shake, no rush-in when a fight starts)
+let XVIEW=12; try{ const v=+localStorage.getItem('hexmancers-xview'); if(v>=X2.view[0]&&v<=X2.view[1]) XVIEW=v; }catch(e){}
+const XRM=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):null;
+function xViewStep(d){ XVIEW=Math.max(X2.view[0],Math.min(X2.view[1],XVIEW+d*2)); try{ localStorage.setItem('hexmancers-xview',XVIEW); }catch(e){} xViewBtns(); }
+function xViewBtns(){ const z=document.getElementById('xZoom'); if(!z) return; z.hidden=!(EX&&EX.layout===2);
+  z.querySelector('.zin').disabled=XVIEW<=X2.view[0]; z.querySelector('.zout').disabled=XVIEW>=X2.view[1]; }
+// the camera's distance that fits XVIEW cells across the shorter side: across the width on an upright screen, else
+// down the height (the ground there is seen at the camera's pitch, so it stretches by 1/sin)
+function xViewDist(pitch){ const th=Math.tan(X3.cam.fov*Math.PI/360), a=X3.cam.aspect, n=XVIEW*XCS/XLIT.camZoom;
+  return a<1?n/(2*th*a):n*Math.sin(pitch)/(2*th); }
 
 /* Room shapes. A room keeps its bounding box (x, y, w, h: placement, lighting and the old code read it) and a shape:
    L (one corner cut away), H (two legs and a bar, either way round), X (a plus: two crossing bands) or none (a

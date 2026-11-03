@@ -774,6 +774,10 @@ body.tall #xTop .hpmeter{grid-area:hp;} body.tall #xMenu{grid-area:menu;}
 body.tall #xTop .info{grid-area:info; flex-direction:row; justify-content:space-between; align-items:center; min-width:0;}
 body.tall #xTop .info #xDepth{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 body.tall #xMini{top:calc(86px + env(safe-area-inset-top,0px));}
+/* spacious floors: zoom buttons in a column just left of the minimap */
+#xZoom{position:absolute; top:60px; right:140px; display:flex; flex-direction:column; gap:6px; zoom:var(--ui,1);} #xZoom[hidden]{display:none;}
+#xZoom .btn{pointer-events:auto; width:40px; height:40px; padding:0; font-size:22px;} #xZoom .btn:disabled{opacity:.4;}
+body.w520 #xZoom{top:58px; right:104px;} body.tall #xZoom{top:calc(86px + env(safe-area-inset-top,0px));}
 .x-bang.depth{white-space:normal; width:max-content; max-width:92vw;}
 
 /* ---------------- the dungeon's dialog, status strip and bag ---------------- */

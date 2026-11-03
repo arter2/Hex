@@ -186,8 +186,11 @@ function showDetail(c){
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
   { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
-  { const v=typeof cardArtVariants==='function'&&cardArtVariants(c); if(v&&save.seen[c.id]){   // the 512 master is in the repo copy only: the link shows once it loads
-    const probe=new Image(); probe.onload=()=>{ if(!$('#detail').classList.contains('on')) return; const a=document.createElement('a');a.href=v.master;a.target='_blank';a.rel='noopener';a.textContent='View full artwork';a.style.cssText='display:block;margin-top:8px;color:inherit';$('#dtInfo').append(a); }; probe.src=v.master; } }
+  // the 512 master is in the repo copy only, never in a release: one probe a session says whether masters are here,
+  // and the link is added only while this same card is still the one shown
+  { const v=typeof cardArtVariants==='function'&&cardArtVariants(c), tok=showDetail.tok=(showDetail.tok||0)+1;
+    if(v&&v.master&&save.seen[c.id]&&showDetail.masters!==false){
+    const probe=new Image(); probe.onerror=()=>{ showDetail.masters=false; }; probe.onload=()=>{ showDetail.masters=true; if(showDetail.tok!==tok||!$('#detail').classList.contains('on')) return; const a=document.createElement('a');a.href=v.master;a.target='_blank';a.rel='noopener';a.textContent='View full artwork';a.style.cssText='display:block;margin-top:8px;color:inherit';$('#dtInfo').append(a); }; probe.src=v.master; } }
   dtShards(c);
   $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on'));
 }
@@ -416,6 +419,7 @@ function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
   return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`+(typeof areaRuleHTML==='function'?'<br>'+areaRuleHTML(A):''); }
 function openCamp(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
+  if(typeof artPreload==='function') artPreload(activeDeck().list);   // the deck's full art sheets, before any fight (art.js)
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
@@ -1485,6 +1489,8 @@ function openMenu(){
   const has=!!save;
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
+  // the card-art sheets load in the background while the title is up (art.js artPreload)
+  if(typeof artPreload==='function') (window.requestIdleCallback||setTimeout)(()=>{ let d=null; try{ d=save&&activeDeck().list; }catch(e){} artPreload(d); });
   $('#mmContinue').disabled=!savedSlots().length;
   const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' · change ▾</span>';
   $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'

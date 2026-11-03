@@ -149,7 +149,7 @@ function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
   if(ssao){ const U=S.aoM.uniforms; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uP11.value=G.cam.projectionMatrix.elements[5]; U.uRes.value.set(hw,hh); U.uRad.value=XLIT.ssaoRad*(G.unit||2); U.uStr.value=XLIT.ssaoStr;
     S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
     S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(post?S.rt2:null); r.render(S.qs,S.cam); }
-  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
+  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uP10.value=G.cam.projectionMatrix.elements[10]; U.uP14.value=G.cam.projectionMatrix.elements[14]; U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
     const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
     U.uShow.value=show?1:0; U.uVig.value=XLIT.vig; U.uVigR.value=XLIT.vigR; U.uVigSoft.value=Math.max(.05,XLIT.vigSoft);
     S.q.material=S.dM; r.setRenderTarget(null); r.render(S.qs,S.cam); } }
@@ -165,10 +165,11 @@ function xDofInit(w,h){ const S=XSSAO;
   if(!S.dM){ S.rt2=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:false});
     S.dM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }',
       extensions:{derivatives:true},
-      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uInvProj:{value:new THREE.Matrix4()}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
+      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uP10:{value:-1}, uP14:{value:-1}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
         uShow:{value:0}, uVig:{value:0}, uVigR:{value:.55}, uVigSoft:{value:.7} },
-      fragmentShader:`uniform sampler2D tColor, tDepth; uniform mat4 uInvProj; uniform vec2 uRes; uniform float uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
-float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; vec4 v=uInvProj*vec4(uv*2.0-1.0,d*2.0-1.0,1.0); return -v.z/v.w-uFocus; }
+      fragmentShader:`uniform sampler2D tColor, tDepth; uniform vec2 uRes; uniform float uP10, uP14, uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
+// distance from the camera, from the perspective projection's two depth terms (exact; a mat4 per tap before)
+float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; return uP14/(d*2.0-1.0+uP10)-uFocus; }
 float coc(vec2 uv){ float z=zof(uv); return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
 void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
   if(C>=.05){ vec3 acc=col; float ws=1.0; float a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))));

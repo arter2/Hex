@@ -1562,8 +1562,8 @@ function xDraw(T,dt){
   G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){   // the dungeon's haze starts a few tiles past you, never between the camera and you
     const n0=XLIT.dFog?(EX.camD||25)+XLIT.dFogStart*XCS:900; G.scene.fog.near=n0; G.scene.fog.far=n0+Math.max(1,XLIT.dFogLen)*XCS; const fa=Math.min(300,G.scene.fog.far+4); if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
-  { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
-  lookUse(EX.aoTex,XN*XCS,0,0); { const v=new THREE.Vector3(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G);   // the blur's focus: you xFpsTick(dt);
+  { const lo=xDraw.lo||(xDraw.lo=$('#xLowHp')); if(lo){ const r=EX.hp/(EX.maxHp||xmaxHp()), o=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; if(lo.style.opacity!==o) lo.style.opacity=o; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
+  lookUse(EX.aoTex,XN*XCS,0,0); { const v=(xDraw.v||(xDraw.v=new THREE.Vector3())).set(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G);   // the blur's focus: you xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
 // the searched wave: the middle tile flashes, then the eight round it a beat later, each fading out in
@@ -1581,7 +1581,9 @@ function xMini(){
   let x0=0, y0=0, n=XN;
   if(big){ let a=XN, b=XN, A=0, B=0; for(let i=0;i<XN*XN;i++) if(EX.seen[i]){ const x=xcx(i), y=xcy(i); a=Math.min(a,x); b=Math.min(b,y); A=Math.max(A,x); B=Math.max(B,y); }
     if(A>=a){ n=Math.min(XN,Math.max(16,A-a+5,B-b+5)); x0=Math.max(0,Math.min(XN-n,Math.round((a+A)/2-n/2))); y0=Math.max(0,Math.min(XN-n,Math.round((b+B)/2-n/2))); } }
-  const s=big?Math.max(3,Math.floor(384/n)):3; cv.width=cv.height=n*s; EX.miniView={x0,y0,s,n};
+  const s=big?Math.max(3,Math.floor(384/n)):3; EX.miniView={x0,y0,s,n};
+  // the backing store is reallocated only when the map's size changes (it was every redraw, ten times a second)
+  if(cv.width!==n*s||cv.height!==n*s) cv.width=cv.height=n*s; c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
   c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); c.translate(-x0*s,-y0*s);
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
     c.fillStyle=d?'#f0a850':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
@@ -1668,7 +1670,7 @@ function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(d
   b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
   b.style.setProperty('--bc',A.glow); b.dataset.key=key; b.className='x-bang on depth'; setTimeout(()=>{ if(b.dataset.key===key) b.className='x-bang'; },first?2200:1400); }
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
-function xHud(){ if(!EX) return; const m=xmaxHp();
+function xHud(){ if(!EX) return; const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   if(typeof xpLine==='function'){ const l=$('#xLv'), ch=ensureChar(save); l.textContent='Lv '+save.level+(pointsLeft(ch)>0?' ★':''); l.title=xpLine(); }
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));

@@ -113,7 +113,11 @@ function arenaBoard(A,Ar,R){
 const DEC={k:40, wx0:0, wx1:0, wz0:0, wz1:0, cv:null, ctx:null, tex:null};
 function arenaDecal(A){ let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z0=Math.min(z0,t.wz); z1=Math.max(z1,t.wz); }
   Object.assign(DEC,{wx0:x0-1.6,wx1:x1+1.6,wz0:z0-1.6,wz1:z1+1.6});
-  if(!DEC.cv){ DEC.cv=document.createElement('canvas'); DEC.ctx=DEC.cv.getContext('2d'); }
+  // every call that can paint marks the layer inked: a frame that paints nothing on an empty layer then skips the clear
+  // and the texture upload (608x1063 a frame, about 5 ms, was spent on a layer that is empty most of a fight)
+  if(!DEC.cv){ DEC.cv=document.createElement('canvas'); const x=DEC.ctx=DEC.cv.getContext('2d');
+    for(const k of ['fill','stroke','fillRect','strokeRect','fillText','strokeText','drawImage','putImageData']){ const f=x[k]; x[k]=function(){ DEC.ink=true; return f.apply(this,arguments); }; } }
+  DEC.inked=false; DEC.dirty=false;
   DEC.cv.width=Math.round((DEC.wz1-DEC.wz0)*DEC.k); DEC.cv.height=Math.round((DEC.wx1-DEC.wx0)*DEC.k);
   if(DEC.tex) DEC.tex.dispose(); DEC.tex=new THREE.CanvasTexture(DEC.cv); DEC.tex.minFilter=THREE.LinearFilter;
   const W=DEC.wz1-DEC.wz0, H=DEC.wx1-DEC.wx0, m=new THREE.Mesh(new THREE.PlaneGeometry(W,H),arMat(new THREE.MeshBasicMaterial({map:DEC.tex,transparent:true,depthWrite:false,fog:false})));
@@ -211,7 +215,7 @@ function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
     if(A.box!==k){ A.box=k; g.style.left=cv.offsetLeft+'px'; g.style.top=cv.offsetTop+'px'; g.style.width=cv.offsetWidth+'px'; g.style.height=cv.offsetHeight+'px'; } }
   const q=lookQuality(dt), pr=lookPR(); AR_Q.lights=q.lights; if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
-  arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
+  arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex&&DEC.dirty){ DEC.tex.needsUpdate=true; DEC.dirty=false; }
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit,dof:A.focusD||A.dist}); lookFps(dt,A.renderer); }
 

@@ -997,11 +997,15 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
 /* ---------------- the dialog box ----------------
    One overlay for people, merchants, sanctuaries, tablets and your bag. While it is open the
    floor stands still. */
-function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'); c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
+// icons are decoded once and kept; a token stops a slow decode from painting over a later dialog's picture
+const XDLG_IMG={};
+function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'), tok=cv.tok=(cv.tok||0)+1; c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
   const draw=im=>{ if(im) c.drawImage(im,0,0,im.width,im.height,0,0,96,96); };
   if(o.look){ const s=lookSprite(o.look,'front',true); draw(s&&s.img); }
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }
-  else if(o.icon){ const im=new Image(); im.onload=()=>{ c.imageSmoothingEnabled=false; c.drawImage(im,12,12,72,72); }; im.src=uiIconURL(o.icon[0],o.icon[1]); }
+  else if(o.icon){ const url=uiIconURL(o.icon[0],o.icon[1]), im=XDLG_IMG[url]||(XDLG_IMG[url]=Object.assign(new Image(),{src:url}));
+    const put=()=>{ if(cv.tok!==tok) return; c.imageSmoothingEnabled=false; c.drawImage(im,12,12,72,72); };
+    if(im.complete&&im.naturalWidth) put(); else im.addEventListener('load',put,{once:true}); }
   cv.style.display=o.look||o.enemy||o.icon?'':'none'; }
 /* A card you get in the dungeon pops up so you can read it. Cards found together (a rich chest)
    show in one box; if another box is open, it waits for that one to close. */

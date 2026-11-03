@@ -1871,8 +1871,9 @@ function render(){
   for(const tl of b.teles) for(const t of tl.tiles) telMap.set(t,tl);
 
   const tl3=[];
-  if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); PJ.decal=true; View.iy=ISO_Y=1;
-    try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
+  if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); if(DEC.inked) dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); DEC.ink=false; PJ.decal=true; View.iy=ISO_Y=1;
+    try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); }
+    if(DEC.ink||DEC.inked) DEC.dirty=true; DEC.inked=DEC.ink; arenaTiles(tl3); }
   else { floorLayer(ctx,b,T,S,telMap,false,tl3); if(typeof atkBars==='function') atkBars(ctx,b,T); }
   if(mvShowing()) mvOverlay(ctx,b);
   mvGraph(b.player);

@@ -213,3 +213,34 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
         if(!broken) box(LT,u,v,XWALL,.78,.26,.78); else for(let q=0;q<3;q++) M.add(XG.rock,ST,x+(R()-.5)*1.4,.12,z+(R()-.5)*1.4,R()*3,R()*3,0,.4,.25,.4); }); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xPhong({vertexColors:true}))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
+
+/* Arches over the wide passages (spacious floors): every so often a straight run of a 3- or 5-wide corridor is
+   spanned by a stone arch, a pier against each wall and a low, wide arch of dressed stones with a keystone, its
+   crown at the walls' height. Pure dressing: nothing about where you can walk changes (the piers stand within the
+   wall's thickness and a hand's width into the passage). An arch between the camera and you fades like a wall. */
+function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), base=tone(.5), lite=tone(.66), dark=tone(.34);
+  const pass=c=>c>=0&&c<XN*XN&&EX.t[c]===T_FLOOR&&EX.room[c]<0&&!EX.doors.has(c), wall=c=>EX.t[c]===T_ROCK&&EX.wIdx.has(c)&&!xWedge(c)&&!xLow(c);
+  const sites=[], near=(x,y,d)=>sites.some(q=>Math.max(Math.abs(q.x-x),Math.abs(q.y-y))<d);
+  const busy=(x,y)=>{ for(let dy=-3;dy<=3;dy++) for(let dx=-3;dx<=3;dx++){ const n=xi(x+dx,y+dy); if(EX.room[n]>=0||EX.doors.has(n)||n===EX.up||n===EX.down) return true; } return false; };
+  for(let y=4;y<XN-4;y++) for(let x=4;x<XN-4;x++) for(const w of [3,5]) for(const ax of [0,1]){
+    // ax 0: the passage runs north-south and the arch spans x..x+w-1; ax 1: it runs east-west, spanning y..y+w-1
+    const at=(a,b)=>ax?xi(x+b,y+a):xi(x+a,y+b); let ok=true;
+    for(let b=-1;b<=1&&ok;b++){ if(!wall(at(-1,b))||!wall(at(w,b))) ok=false; for(let a=0;a<w&&ok;a++) if(!pass(at(a,b))) ok=false; }
+    if(!ok) continue; const mx=ax?x:x+(w-1)/2, my=ax?y+(w-1)/2:y; if(near(mx,my,9)||busy(Math.round(mx),Math.round(my))) continue;
+    if(R()<.55) sites.push({x:mx,y:my,w,ax,cell:at((w-1)>>1,0)}); }
+  EX.arches=[];
+  for(const st of sites){ const M=xMerger(), span=st.w*XCS, a=span/2-.1, b=st.w>3?1.15:1.05, ys=XWALL-b+.02, g=new THREE.Group();
+    g.position.set((st.x+.5)*XCS,0,(st.y+.5)*XCS); if(st.ax) g.rotation.y=Math.PI/2;
+    for(const sx of [-1,1]){ const px=sx*(span/2+.05);
+      M.add(XG.box,lite,px,.18,0,0,0,0,.62,.36,.92); M.add(XG.box,base.clone().multiplyScalar(.92+R()*.12),px,(ys+.36)/2,0,0,0,0,.5,ys-.36,.78);
+      M.add(XG.box,lite,px-sx*.02,ys,0,0,0,0,.64,.12,.9); }
+    const N=st.w>3?15:11, T=.36;
+    for(let k=0;k<N;k++){ const t0=Math.PI*k/N, t1=Math.PI*(k+1)/N, tm=(t0+t1)/2, x0=a*Math.cos(t0), y0=b*Math.sin(t0), x1=a*Math.cos(t1), y1=b*Math.sin(t1);
+      const cx=a*Math.cos(tm), cy=b*Math.sin(tm), nx=b*Math.cos(tm), ny=a*Math.sin(tm), nl=Math.hypot(nx,ny), key=k===(N>>1), th=key?T+.14:T;
+      const len=Math.hypot(x1-x0,y1-y0)-.03, ang=Math.atan2(y1-y0,x1-x0);
+      M.add(XG.box,key?lite:k%2?base:dark.clone().lerp(base,.6),cx+nx/nl*th/2,ys+cy+ny/nl*th/2,0,0,0,ang,len,th,key?.82:.7); }
+    const mesh=M.build(xDitherMat(xPhong({vertexColors:true}))); g.add(mesh); g.visible=false; grp.add(g);
+    const cells=[]; for(let k=-1;k<=st.w;k++) cells.push(st.ax?xi(Math.round(st.x),Math.round(st.y-(st.w-1)/2)+k):xi(Math.round(st.x-(st.w-1)/2)+k,Math.round(st.y)));
+    EX.decor.push({mesh:g,cells,ph:0}); EX.arches.push({g,mesh,cell:st.cell,cut:1}); } }
+// an arch fading out of the way (like a wall between the camera and you)
+function xArchOp(a){ const op=Math.max(.12,a.cut), solid=op>=.995, M=a.mesh.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; a.mesh.renderOrder=solid?0:7; }

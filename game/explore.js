@@ -303,7 +303,6 @@ function xInit3D(){
   mm.addEventListener('contextmenu',e=>e.preventDefault());
   $('#xMapShade').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
   $('#xMapClose').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
-  $('#xZoom .zin').addEventListener('click',()=>xViewStep(-1)); $('#xZoom .zout').addEventListener('click',()=>xViewStep(1));   // spacious floors: zoom in / out
   return X3;
 }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
@@ -1735,7 +1734,7 @@ function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(d
   b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
   b.style.setProperty('--bc',A.glow); b.dataset.key=key; b.className='x-bang on depth'; setTimeout(()=>{ if(b.dataset.key===key) b.className='x-bang'; },first?2200:1400); }
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
-function xHud(){ if(!EX) return; xViewBtns(); const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
+function xHud(){ if(!EX) return; const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   if(typeof xpLine==='function'){ const l=$('#xLv'), ch=ensureChar(save); l.textContent='Lv '+save.level+(pointsLeft(ch)>0?' ★':''); l.title=xpLine(); }
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));

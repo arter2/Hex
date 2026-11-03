@@ -602,7 +602,7 @@ function xMeshProp(p){
       for(const [x,z,ry] of [[0,.76,0],[0,-.76,Math.PI],[.76,0,Math.PI/2],[-.76,0,-Math.PI/2]]){ const ar=new THREE.Mesh(new THREE.PlaneGeometry(.7,.7),new THREE.MeshBasicMaterial({map:xBlockRuneTex(true),color:rc,transparent:true,depthWrite:false})); ar.position.set(x,.68,z); ar.rotation.y=ry; g.add(ar); }
       break; }
     case 'trialaltar': { g.add(xBox(1.2,.7,1.2,dark,0,.35,0)); p.flame=xCone(.3,.7,xGlowMat(0xff5d6c,{transparent:true,opacity:.85}),0,1.05,0); g.add(p.flame); break; }
-    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
+    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL_B-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
     case 'jet': { g.add(xBox(.9,.05,.9,dark,0,.03,0)); const f=xCone(.32,1.6,xGlowMat(0xff7a2a,{transparent:true,opacity:.85}),0,.8,0); f.visible=false; g.add(f); p.flame=f; break; }
     case 'totem': { g.add(xCyl(.12,1.5,wood,0,.75,0), xBall(.25,xMat(0xe8e0c8),0,1.62,0)); for(const s of [-.09,.09]) g.add(xBall(.05,xGlowMat(0xff3a4a),s,1.65,.2)); break; }
     case 'cache': { const m=xGlowMat(0xf2c94c,{transparent:true,opacity:.7}); g.add(xBox(.5,.35,.05,dark,0,.5,0), xBox(.36,.22,.06,m,0,.5,.01)); break; }

@@ -6,7 +6,7 @@
    around every room is never dug by a wide corridor, so a corridor cannot slip round a lock or into a room.
    x2Rooms places the rooms; x2Corridors digs the main corridors. tryFloor (explore.js) does everything after that
    (side rooms, the gate, locks, the boss door, checks) the same for both layouts. */
-const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3, view:[10,16] };
+const X2={ n:96, yaw:45, marg:5, landmarks:[3,4], rooms:[12,16], small:6, loops:3, wide:3, gallery:5, diagMin:6, diagNeed:3, view:[10,16], wall:5 };   // wall: the walls' height (old floors 2.5; a person is 2.8)
 // whether the player asked for less motion (no shake, no rush-in when a fight starts)
 const XRM=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):null;
 // the camera's distance that fits XLIT.dView cells (debug menu › Dungeon camera, 10-16, 12 normal) across the shorter side: across the width on an upright screen, else

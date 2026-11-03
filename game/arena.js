@@ -145,13 +145,13 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)), floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
-  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3);
+  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B);
   const cells=[]; const B2=XCS;
   for(let z=-side;z<=side+.01;z+=B2) cells.push([back+B2/2,z,1]);                                 // back wall
   for(const s of [-1,1]) for(let x=back;x>=near;x-=B2) cells.push([x,s*(side+B2/2),Math.max(.25,Math.min(1,(x-x0+2)/(back-x0+2)))]);   // sides, lower toward you
   const im=new THREE.InstancedMesh(geo,wm,cells.length), m4=new THREE.Matrix4(), q=new THREE.Quaternion(), sc=new THREE.Vector3(), p=new THREE.Vector3();
   cells.forEach(([wx,wz,hk],i)=>{ const hy=(hk*(boss?2.6:1.9)+R()*.5)*(1+(wx>x1?R()*.6:0)); sc.set(1,hy,1); q.setFromAxisAngle(new THREE.Vector3(0,1,0),Math.floor(R()*4)*Math.PI/2);
-    p.set(wz,-SLAB+XWALL*hy/2,-wx); m4.compose(p,q,sc); im.setMatrixAt(i,m4); });
+    p.set(wz,-SLAB+XWALL_B*hy/2,-wx); m4.compose(p,q,sc); im.setMatrixAt(i,m4); });
   out.push(im); A.wallCells=cells;
   return out; }
 

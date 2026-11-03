@@ -519,6 +519,7 @@ function xBuildScene(){
   // gold plate, iron bars on a shortcut gate, red bands on a boss door
   const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c}, HR=1.4, AR=.78; EX.lanterns=[];
   const doorC=new THREE.Color('rgb('+xTone(S,.5).join(',')+')'), topG=new THREE.CylinderGeometry(AR-.01,AR-.01,.15,16,1,false,-Math.PI/2,Math.PI), ringG=new THREE.TorusGeometry(.09,.02,4,10);
+  XSINK_DOOR=true;
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
     const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
@@ -545,6 +546,7 @@ function xBuildScene(){
     { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
       sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'&&!d.wide; if(d.state==='open'&&!d.wide) xDoorPose(d,1,1); g.visible=false; grp.add(g); }
+  XSINK_DOOR=false;
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
@@ -1148,17 +1150,23 @@ const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 u
   // a face inside the stonework (the cell beyond it is solid wall too, below the wall tops): black, so a cut shows solid stone, not seams
   +'bool xInner(vec3 w,vec3 n){ if(abs(n.y)>.5||w.y>uSolidK.z) return false; vec2 q=(w.xz+normalize(n.xz)*.45)/uSolidK.x; return texture2D(uSolid,q).r>.5; }\n'
   +'float xcb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xcb4(vec2 a){ return xcb2(.5*a)*.25+xcb2(a); }\n'
-  +'bool xCutAway(vec3 w){ if(w.y<.06) return false; vec3 v=w-uCutP; float t=dot(v,uCutD); if(t<uCutR.y) return false;\n'
+  +'bool xCutAway(vec3 w){ if(w.y<.06) return false; vec3 v=w-uCutP; float t=dot(v,uCutD);\n'
   // the opening, as seen on screen: as wide as you (uCutE.x across), a little above your head (y) and down to the floor in front of you (z)
   +'  float pr=dot(v,uCutRt), pu=dot(v,uCutUp), d=length(vec2(pr/uCutE.x,pu/(pu>0.0?uCutE.y:uCutE.z)));\n'
-  +'  if(d<.82) return true; if(d>1.0) return false; return xcb4(floor(gl_FragCoord.xy/2.0))<(1.0-d)/.18; }\n';
-function xSinkShader(sh){ Object.assign(sh.uniforms,XDITHER);
+    // behind you the shaft ends in a rounded cap (uCutR.y deep at its middle), so the cut through a block beside you is a
+  // curve that follows the round opening, never a flat slice
+  +'  if(d>=1.0||t<-uCutR.y*sqrt(max(0.0,1.0-d*d))) return false;\n'
+  +'  float k=d<.82?1.0:(1.0-d)/.18;\n'
+  +'  #ifdef XDOOR\n  return xcb4(floor(gl_FragCoord.xy/2.0))<k*.4;\n  #else\n  return d<.82||xcb4(floor(gl_FragCoord.xy/2.0))<k;\n  #endif\n  }\n';
+function xSinkShader(sh,door){ Object.assign(sh.uniforms,XDITHER); if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader;
   sh.vertexShader=XSINK_V+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  { vec4 q=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  q=instanceMatrix*q;\n  #endif\n  vXSP=(modelMatrix*q).xyz;}');
   sh.fragmentShader=XSINK_F+sh.fragmentShader.replace('void main() {','void main() {\n  if(xCutAway(vXSP)) discard; bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);'); }
-function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m.customProgramCacheKey;
-  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'; return m; }
-function xDitherMat(m,uvj){ const sink=XSINK; m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'');
-  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh);
+function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m.customProgramCacheKey, door=XSINK_DOOR;
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':''); return m; }
+// doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
+let XSINK_DOOR=false;
+function xDitherMat(m,uvj){ const sink=XSINK, door=XSINK_DOOR; m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'');
+  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door);
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
     // so no two neighbours show the same face
     if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
@@ -1195,7 +1203,7 @@ function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touc
   // the line toward the camera, on the ground (a camera straight overhead cuts nothing in particular: keep the last line)
   // (from the spot the camera looks at, not from you: the normal camera leads you as you walk, and its line stays due south)
   { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS) EX.cutD=[gx/L,gz/L]; } }
-  if(EX.layout===2){ const C=X3&&X3.cam; if(C){ const P=XDITHER.uCutP.value.set(EX.px,1.4,EX.pz); XDITHER.uCutD.value.copy(C.position).sub(P).normalize(); XDITHER.uCutR.value.set(2.4*XCS,.3); XDITHER.uCutRt.value.set(1,0,0).applyQuaternion(C.quaternion); XDITHER.uCutUp.value.set(0,1,0).applyQuaternion(C.quaternion); XDITHER.uCutE.value.set(1.25*XCS,1.3*XCS,2.6*XCS); } }   // the shaft: from your middle toward the camera, shaped round you on screen, starting a little in front of you   // (axes from the camera's turn this frame: its matrix is only updated at render)
+  if(EX.layout===2){ const C=X3&&X3.cam; if(C){ const P=XDITHER.uCutP.value.set(EX.px,1.4,EX.pz); XDITHER.uCutD.value.copy(C.position).sub(P).normalize(); XDITHER.uCutR.value.set(2.4*XCS,1.1*XCS); XDITHER.uCutRt.value.set(1,0,0).applyQuaternion(C.quaternion); XDITHER.uCutUp.value.set(0,1,0).applyQuaternion(C.quaternion); XDITHER.uCutE.value.set(1.25*XCS,1.3*XCS,2.6*XCS); } }   // the shaft: from your middle toward the camera, shaped round you on screen, starting a little in front of you   // (axes from the camera's turn this frame: its matrix is only updated at render)
   else for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
@@ -1927,4 +1935,4 @@ $('#xUp').onclick=()=>xStairsUp();
   window.addEventListener('resize',xStickDraw); xMoveUi(); }
 
 // the sink bend (XSINK) is only for what the dungeon scene builds: off again once it is built, whatever happens
-{ const build=xBuildScene; xBuildScene=function(){ try{ return build.apply(this,arguments); } finally{ XSINK=false; } }; }
+{ const build=xBuildScene; xBuildScene=function(){ try{ return build.apply(this,arguments); } finally{ XSINK=false; XSINK_DOOR=false; } }; }

@@ -125,7 +125,8 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    second and a half steps down (sharpness 2, 1.5, 1 then .75 screen pixels per pixel; then no
    screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
    menu, the look stays as set. */
-const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:.75,lights:4},{pr:.75,lights:4,noSsao:1},{pr:.75,lights:2,noSsao:1}];
+// (sharpness never drops below 1 until the shading and lights have: below 1 the people go soft and blocky)
+const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:1,lights:4,noSsao:1},{pr:1,lights:2,noSsao:1},{pr:.75,lights:2,noSsao:1}];
 const LQ={step:0,avg:16,slowT:0,fastT:0,upWait:3,upAt:-1e9};
 function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } const ms=Math.min(250,dt*1000); LQ.avg+=(ms-LQ.avg)/30;
   // a step back up that soon has to come down again (walking between a heavy room and a light one)

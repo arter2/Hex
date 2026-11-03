@@ -560,15 +560,24 @@ function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt
 /* ---------------- juice: sparks, dust, coins, flashes ----------------
    Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
    that fly up to your gold, a flash as a fight begins, and the camera shake of a sprung trap. */
-function xSparks(x,z,col,n,up){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
-  for(let k=0;k<(n||10);k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); const a=Math.random()*6.3, v=.8+Math.random()*1.6;
+// Effect sprites come from a pool and go back to it when they fade: making and disposing a material for every spark and
+// dust puff made three.js set each one up again on the next draw, a jolt on a phone at every pickup (and a steady
+// churn while walking). Two pools: added light (sparks, blooms) and ordinary see-through (dust).
+const XFX_POOL={add:[],norm:[]};
+function xFxSprite(col,add,opacity){ const P=XFX_POOL[add?'add':'norm']; let s=P.pop();
+  if(!s){ const tex=xGlowTex.t||(xGlowTex.t=xGlowTex());
+    s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthWrite:false,blending:add?THREE.AdditiveBlending:THREE.NormalBlending})); }
+  s.fxPool=add?'add':'norm'; s.material.color.set(col); s.material.opacity=opacity==null?1:opacity; s.visible=true; return s; }
+function xFxDone(s){ X3.group.remove(s); const P=s.fxPool&&XFX_POOL[s.fxPool]; if(P&&P.length<96) P.push(s); else s.material.dispose(); }
+function xSparks(x,z,col,n,up){ if(!X3||!X3.group) return; EX.fx=EX.fx||[];
+  for(let k=0;k<(n||10);k++){ const s=xFxSprite(col,true); const a=Math.random()*6.3, v=.8+Math.random()*1.6;
     s.position.set(x,.5,z); s.scale.set(.35,.35,1); s.renderOrder=4; s.userData={vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:(up||2)+Math.random()*2,t:0,life:.55+Math.random()*.35,g:4,s:.35}; X3.group.add(s); EX.fx.push(s); } }
-function xPuff(x,z){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
-  for(let k=0;k<2;k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0x9a948a,transparent:true,opacity:.35,depthWrite:false})); s.position.set(x+(Math.random()-.5)*.4,.15,z+(Math.random()-.5)*.3+.2);
+function xPuff(x,z){ if(!X3||!X3.group) return; EX.fx=EX.fx||[];
+  for(let k=0;k<2;k++){ const s=xFxSprite(0x9a948a,false,.35); s.position.set(x+(Math.random()-.5)*.4,.15,z+(Math.random()-.5)*.3+.2);
     s.scale.set(.4,.4,1); s.renderOrder=3; s.userData={vx:(Math.random()-.5)*.4,vz:(Math.random()-.5)*.4,vy:.4,t:0,life:.5,g:0,s:.4,grow:1.6,a0:.35}; X3.group.add(s); EX.fx.push(s); } }
 function xFxTick(T,dt){
   if(EX.fx) EX.fx=EX.fx.filter(s=>{ const u=s.userData; u.t+=dt; u.vy-=u.g*dt; s.position.x+=u.vx*dt; s.position.y=Math.max(.05,s.position.y+u.vy*dt); s.position.z+=u.vz*dt;
-    const k=u.t/u.life, sc=u.s*(1+(u.grow||0)*k); s.scale.set(sc,sc,1); s.material.opacity=(u.a0||1)*(1-k); if(k>=1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
+    const k=u.t/u.life, sc=u.s*(1+(u.grow||0)*k); s.scale.set(sc,sc,1); s.material.opacity=(u.a0||1)*(1-k); if(k>=1){ xFxDone(s); return false; } return true; });
   if(EX.walk&&!EX.busy){ EX.puffT=(EX.puffT||0)-dt; if(EX.puffT<=0){ EX.puffT=.26; xPuff(EX.px,EX.pz); } } }
 // coins rise from where you are and fly up to the gold counter, which pops as they land
 function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; const r=appBox($('#xView')), v=new THREE.Vector3(xw(cell),1,xz(cell)).project(G.cam);
@@ -578,7 +587,7 @@ function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; con
     const an=c.animate([{transform:'translate(-50%,-50%) scale(.6)'},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(1)`,offset:.35},{transform:`translate(calc(-50% + ${ex}px),calc(-50% + ${ey}px)) scale(.7)`}],{duration:650+k*45,easing:'cubic-bezier(.3,.1,.4,1)',fill:'forwards'});
     an.onfinish=()=>{ c.remove(); gold.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:180}); }; } }
 // a burst of light that swells and fades (a chest opening)
-function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const s=xFxSprite(col,true);
   s.position.set(x,y,z); s.renderOrder=4; s.userData={vx:0,vz:0,vy:.4,t:0,life:.6,g:0,s:size*.5,grow:1.2,a0:1}; X3.group.add(s); (EX.fx=EX.fx||[]).push(s); }
 // a wide text label for names over monsters
 function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256; c.height=40; const x=c.getContext('2d');

@@ -252,19 +252,21 @@ function xPickMerchant(depth){ return xpick(Object.keys(MERCHANTS).filter(k=>!ME
    a miniboss and its hoard. Rooms behind a bronze lock get a rich chest. */
 function xAssignRooms(){
   const F=EX.plan?EX.plan.feats:{}, mid=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.start&&r!==EX.exit&&!r.behind);
-  const take=fn=>mid.filter(r=>!r.role&&fn(r)).sort(()=>XR()-.5)[0]||null;
-  const give=(r,role,safe)=>{ if(!r) return null; r.role=role; r.lit=true; if(safe){ r.safe=true; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) EX.safe.add(xi(i,j)); } return r; };
+  // puzzles, lairs and the special rooms are laid out on a plain rectangle: a shaped or walled room never gets one
+  const take=(fn,any)=>mid.filter(r=>!r.role&&(any||!r.shape&&!r.walls)&&fn(r)).sort(()=>XR()-.5)[0]||null;
+  const give=(r,role,safe)=>{ if(!r) return null; r.role=role; r.lit=true; if(safe){ r.safe=true; for(const c of xRoomCells(r)) EX.safe.add(c); } return r; };
   // a merchant or sanctuary with no room to stand in tries again on the next floor
-  if(F.merchant&&!give(take(()=>true),'merchant',true)){ delete F.merchant; XRUN.next.merchant=EX.depth+1; }
-  if(F.sanct&&!give(take(()=>true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
+  if(F.merchant&&!give(take(()=>true,true),'merchant',true)){ delete F.merchant; XRUN.next.merchant=EX.depth+1; }
+  if(F.sanct&&!give(take(()=>true,true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
   if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5),'puzzle')) delete F.puzzle;
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
   if(typeof xRareAssign==='function') xRareAssign(F,give,take);
 }
 
 /* ---------------- filling a floor ---------------- */
-const xRoomCells=r=>{ const out=[]; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) out.push(xi(i,j)); return out; };
-const xInterior=r=>xRoomCells(r).filter(c=>{ const x=xcx(c), y=xcy(c); return r.w<3||r.h<3||(x>r.x&&x<r.x+r.w-1&&y>r.y&&y<r.y+r.h-1); });
+// a room's floor cells (a shaped room's box also holds rock, and low walls stand inside the spacious floor's rooms)
+const xRoomCells=r=>{ const out=[]; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++){ const c=xi(i,j); if(EX.room[c]===r.id) out.push(c); } return out; };
+const xInterior=r=>xRoomCells(r).filter(c=>{ const x=xcx(c), y=xcy(c); if(r.shape||r.walls) return xAdj4(c).every(n=>EX.room[n]===r.id); return r.w<3||r.h<3||(x>r.x&&x<r.x+r.w-1&&y>r.y&&y<r.y+r.h-1); });
 const xSolid=n=>{ const p=EX.propAt.get(n); return !!(p&&p.solid); };
 const nearDoor=c=>xAdj4(c).some(n=>EX.doors.has(n));
 const xReach=extra=>xbfs(EX.t,EX.doors,EX.up,false,n=>xSolid(n)||(extra&&extra(n)));

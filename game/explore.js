@@ -10,7 +10,9 @@
    puzzles, minibosses, visible traps and secrets) lives in dungeon.js, which this file calls
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
-const XN=68, XCS=2, XWALL=2.5, XWCH=12;           // grid cells per side, world units per cell, wall height
+// XN, the cells per side, belongs to the floor you are on: 68 for the old floors, X2.n (96) for the spacious ones.
+// It is set before a floor is dug (buildFloorNow) and whenever a floor is taken up again (xSizeTo)
+let XN=68; const XCS=2, XWALL=2.5, XWCH=12;           // grid cells per side, world units per cell, wall height
 const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
@@ -35,6 +37,7 @@ function xTrapKinds(depth){ const k=['spike','spike','dart','dart'];
   if(depth>=2) k.push('fire','pit','teleport','teleport'); if(depth>=3) k.push('alarm','blocks'); if(depth>=3&&!isBossDepth(depth)) k.push('trapdoor'); if(depth>=4) k.push('explosive','fire'); if(depth>=6&&!isBossDepth(depth)) k.push('trapdoor');
   return k; }
 let EX=null, X3=null;
+function xSizeTo(ex){ if(ex&&ex.t&&ex.t.length) XN=Math.round(Math.sqrt(ex.t.length)); }
 const xi=(x,y)=>y*XN+x, xcx=i=>i%XN, xcy=i=>(i/XN)|0;
 const xw=i=>(xcx(i)+.5)*XCS, xz=i=>(xcy(i)+.5)*XCS;
 const xcell=(x,z)=>{ const cx=Math.floor(x/XCS), cy=Math.floor(z/XCS); return cx<0||cy<0||cx>=XN||cy>=XN?-1:xi(cx,cy); };
@@ -82,7 +85,8 @@ function tryFloor(depth,R,plan){
     for(let k=0;k<200;k++){ const x=ri(2,XN-w-3), y=ri(2,XN-h-3); if(free(x,y,w,h,3)){ rooms.push({x,y,w,h,lit:sd.kind==='cell',side:sd.kind,lock:sd.lock,content:sd.content||null,closet:sd.kind==='closet'}); break; } } }
   if(sides.some(sd=>sd.kind==='closet')&&!rooms.some(r=>r.closet)) return null;
   rooms.forEach((r,id)=>{ r.id=id; r.cx=r.x+(r.w>>1); r.cy=r.y+(r.h>>1);
-    for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++){ t[xi(i,j)]=T_FLOOR; room[xi(i,j)]=id; } });
+    for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) if(!r.shape||x2In(r,i-r.x,j-r.y)){ t[xi(i,j)]=T_FLOOR; room[xi(i,j)]=id; }
+    if(r.shape) x2Centre(r,room); });   // an L, H or X room (dungeongen.js): its middle is a floor cell
   const doors=new Map();
   // an L-shaped corridor between two room centres; the cells where it leaves a room become doors.
   // A secret door is only ever placed on newly dug rock, so it never blocks another corridor.
@@ -99,16 +103,19 @@ function tryFloor(depth,R,plan){
       if(room[pi]>=0&&room[ci]<0) mk(ci,room[pi]); if(room[pi]<0&&room[ci]>=0) mk(pi,room[ci]); }
   };
   const main=rooms.filter(r=>!r.side), sideRooms=rooms.filter(r=>r.side);
-  const F2={t,room,doors,corridors:null};
+  const F2={t,room,doors,rooms,corridors:null,low:null};
   if(v2){ if(!x2Corridors(main,F2,R,ri)) return null; }
   else { for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
     for(let n=0;n<4;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); } }
-  for(const s of sideRooms){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-s.cx,p.cy-s.cy)-Math.hypot(q.cx-s.cx,q.cy-s.cy))[0]; carve(s,near,null); }
+  for(const s of sideRooms){ const by=main.slice().sort((p,q)=>Math.hypot(p.cx-s.cx,p.cy-s.cy)-Math.hypot(q.cx-s.cx,q.cy-s.cy));
+    if(v2&&F2.link&&by.slice(0,6).some(m=>F2.link(s,m,1,30))) continue;   // the spacious floor: a narrow passage of its own (dungeongen.js)
+    carve(s,by[0],null); }
   // a shortcut: one more corridor from the first room toward the far end of the floor
   const startI=xi(main[0].cx,main[0].cy);
   let gateDoors=null;
   if(plan.gate){ const d0=xbfs(t,doors,startI,false); let far=null, fd=-1; for(const r of main){ const d=d0[xi(r.cx,r.cy)]; if(d>fd){ fd=d; far=r; } }
-    if(far&&far!==main[0]){ const before=new Set(doors.keys()); carve(main[0],far,null); gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
+    if(far&&far!==main[0]){ const before=new Set(doors.keys()); if(v2){ if(!F2.link(main[0],far,X2.wide)) far=null; } else carve(main[0],far,null); if(far) gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
+  if(v2) x2Walls(main,F2,R,ri);   // low walls inside the rooms, once every corridor is dug
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
@@ -151,7 +158,7 @@ function tryFloor(depth,R,plan){
     const keep=ds.map(([i,d])=>[d,d.state,d.lock]); ds.forEach(([i,d])=>{ d.state='locked'; d.lock='boss'; });
     const dd=reach(), lost=main.filter(r=>r!==exit&&!r.behind&&dd[xi(r.cx,r.cy)]<0);
     if(ds.length&&dd[exitI]<0&&!lost.length) bossDoor=true; else keep.forEach(([d,st,lk])=>{ d.state=st; d.lock=lk; }); }
-  return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors};
+  return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors,low:F2.low};
 }
 // breadth-first distances; secret and locked doors block; `seenOnly` limits it to explored cells
 function xbfs(t,doors,s,seenOnly,blockFn){
@@ -172,12 +179,14 @@ function buildFloor(depth,hp,opt){ return typeof xSeeded==='function'?xSeeded(de
 function buildFloorNow(depth,hp,opt){
   opt=opt||{};
   const plan=opt.plan||(typeof xFloorPlan==='function'?xFloorPlan(depth,opt):null), route=opt.route||null, RT=typeof routeMods==='function'?routeMods(route):{foes:1,traps:1,chests:1,tier:0};
+  XN=xLayoutV()===2&&!(plan&&plan.small)&&typeof X2!=='undefined'?X2.n:68;
   const F=genFloor(depth,plan), A=areaOf(depth);
   EX=Object.assign({depth, area:A, hp:hp==null?xmaxHp():hp, vis:new Uint8Array(XN*XN), seen:new Uint8Array(XN*XN),
     chests:[], traps:[], groups:[], log:[], action:null, stuckT:0, regenT:0, active:false, busy:false, path:[], msgT:{}, bossDead:false,
     plan, route, branch:!!opt.branch, props:[], items:[], propAt:new Map(), wallAt:new Map(), itemAt:new Map(), safe:new Set(), clock:0, stillT:0, sight:0, ail:{poison:0,curse:0}}, F);
   const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
-  const cellIn=r=>xi(r.x+ri(0,r.w-1), r.y+ri(0,r.h-1));
+  // a cell of the room (a shaped room's box holds rock, and low walls stand inside rooms)
+  const cellIn=r=>{ for(let k=0;k<60;k++){ const c=xi(r.x+ri(0,r.w-1), r.y+ri(0,r.h-1)); if(F.room[c]===r.id) return c; } return xi(r.cx,r.cy); };
   const taken=new Set([xi(F.start.cx,F.start.cy), xi(F.exit.cx,F.exit.cy)]);
   const freeCell=r=>{ for(let k=0;k<30;k++){ const c=cellIn(r); if(!taken.has(c)){ taken.add(c); return c; } } return -1; };
   EX.up=xi(F.start.cx,F.start.cy); EX.down=xi(F.exit.cx,F.exit.cy); EX.taken=taken;
@@ -214,7 +223,9 @@ function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), head
 
 /* ---------------- line of sight ---------------- */
 const xPassable=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !(d&&d.state==='secret'); };   // locked doors are handled by xBump
-const xClear=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !d||d.state==='open'; };
+// the spacious floor's low walls inside rooms (dungeongen.js x2Walls): solid underfoot, but seen over
+const xLow=c=>!!EX.low&&(EX.lowS||(EX.lowS=new Set(EX.low))).has(c);
+const xClear=i=>{ if(i<0) return false; if(EX.t[i]===T_ROCK) return xLow(i); const d=EX.doors.get(i); return !d||d.state==='open'; };
 function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Math.abs(x1-x0), dy=-Math.abs(y1-y0), sx=x0<x1?1:-1, sy=y0<y1?1:-1; let e=dx+dy;
   while(true){ if(x0===x1&&y0===y1) return true; const i=xi(x0,y0); if(i!==a&&!xClear(i)) return false;
     const e2=2*e; if(e2>=dy){ e+=dy; x0+=sx; } if(e2<=dx){ e+=dx; y0+=sy; } } }
@@ -329,8 +340,27 @@ function xWallGeo(rough,seed){ const g=new THREE.BoxGeometry(XCS,XWALL,XCS,4,5,4
   for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:1-(y>.97?.12:0); c.push(a,a,a); }   // the foot shadow is AO (xLit)
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); return g; }
 // where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
-function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=(rock?.9+r*.22:1)*(cut==null?1:cut);
+function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=(rock?.9+r*.22:1)*(cut==null?1:cut)*(xLow(c)?.42:1);
+  const W=xWedge(c);
+  if(W){ // a diagonal wall (xWedge): the block turned 45 degrees and stretched along the diagonal, its face on the line
+    // between the cell's open corners, its back filling the rock side
+    const d=.78, ang=W.ang; m.makeRotationY(ang); m.scale(new THREE.Vector3(Math.SQRT2*1.02,sy,d));
+    m.setPosition(xw(c)-W.nx*d*XCS/2,XWALL*sy/2-.05,xz(c)-W.nz*d*XCS/2); return; }
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
+/* Diagonal walls on the spacious floor. A rock cell with floor on two neighbouring sides (and on the corner between
+   them) and rock on the other two is the step of a diagonal edge: it is drawn as a wall along the diagonal, and
+   the open half of the cell is floor you can walk on (xOpenAt). Never beside a door (door frames stay square) or
+   for a low wall. nx, nz: the face's direction, toward the open side; ang: the block's turn. */
+function xWedge(c){ if(!EX||EX.layout!==2) return null; const W=EX.wdg||(EX.wdg=xWedges()); const k=W[c]; return k?XWEDGE[k-1]:null; }
+const XWEDGE=[[1,-1],[-1,-1],[1,1],[-1,1]].map(([sx,sy])=>({sx,sy,nx:sx/Math.SQRT2,nz:sy/Math.SQRT2,ang:Math.atan2(sy,sx)}));
+function xWedges(){ const W=new Uint8Array(XN*XN), fl=c=>EX.t[c]!==T_ROCK&&!(EX.doors.get(c)&&EX.doors.get(c).state==='secret');
+  for(let c=0;c<XN*XN;c++){ if(EX.t[c]!==T_ROCK||xLow(c)) continue; const x=xcx(c), y=xcy(c); if(x<1||y<1||x>=XN-1||y>=XN-1) continue;
+    if([c-1,c+1,c-XN,c+XN].some(n=>EX.doors.has(n))) continue;
+    XWEDGE.forEach((w,k)=>{ const hx=c+w.sx, vy=c+w.sy*XN, dg=hx+w.sy*XN, bx=c-w.sx, by=c-w.sy*XN;
+      if(fl(hx)&&fl(vy)&&fl(dg)&&!fl(bx)&&!fl(by)) W[c]=k+1; }); }
+  return W; }
+// a point on the floor: in an open cell, or in the open half of a diagonal wall's cell (with the body's margin m)
+function xOpenAt(x,z,c,m){ const W=xWedge(c); if(!W) return false; const u=x/XCS-xcx(c)-.5, v=z/XCS-xcy(c)-.5; return u*W.nx+v*W.nz>(m||0)/XCS; }
 function xBuildScene(){
   const G=xInit3D();
   // the old floor's scene is freed in full (geometry, materials and every texture they hold), so going
@@ -352,6 +382,11 @@ function xBuildScene(){
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
       uv.push(x0/k,-z0/k, x0/k,-z1/k, x1/k,-z1/k,  x0/k,-z0/k, x1/k,-z1/k, x1/k,-z0/k); }
+    // the open half of a diagonal wall's cell (xWedge) is floor of the stone beside it: a triangle, drawn both ways
+    // round (six vertices, so the tone pass below keeps its rhythm of one cell per eighteen numbers)
+    if(EX.layout===2) for(let i=0;i<XN*XN;i++){ const W=xWedge(i); if(!W||variant[i+W.sx]!==v) continue;
+      const cx=(xcx(i)+.5)*XCS, cz=(xcy(i)+.5)*XCS, h=XCS/2, P=[[cx+W.sx*h,cz-W.sy*h],[cx-W.sx*h,cz+W.sy*h],[cx+W.sx*h,cz+W.sy*h]];
+      for(const Q of [P,P.slice().reverse()]) for(const [px,pz] of Q){ pos.push(px,0,pz); uv.push(px/k,-pz/k); } }   // both windings: one faces up
     if(!pos.length) return;
     // a slight tone per cell; floors sinking into the walls is the baked AO (xBakeAO)
     const col=new Array(pos.length).fill(1);
@@ -827,15 +862,15 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
       // barrels, crates and sacks gather in twos and threes
       if(['barrel','crate','sack'].includes(kind)) for(let j=0;j<1+(R()*2|0);j++){ const s=(j?-1:1)*(.7+R()*.2); xFurnish(M,L,R()<.6?kind:pool[R()*3|0],wx+(dy?s:0)-dx*R()*.3,wz+(dx?s:0)-dy*R()*.3,ry+R(),R,A,S); } }
     // chains hang on crypt walls
-    if(rk==='crypt') for(let x=r.x;x<r.x+r.w;x++) if(rock(x,r.y-1)&&!used.has(xi(x,r.y-1))&&R()<.25){ used.add(xi(x,r.y-1)); const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,r.y*XCS+.06);
+    if(rk==='crypt') for(let x=r.x;x<r.x+r.w;x++) if(EX.room[xi(x,r.y)]===r.id&&rock(x,r.y-1)&&!used.has(xi(x,r.y-1))&&R()<.25){ used.add(xi(x,r.y-1)); const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,r.y*XCS+.06);
       for(const cx of [-.35,.35]){ const n2=4+(R()*4|0); for(let k=0;k<n2;k++){ const ln=new THREE.Mesh(new THREE.TorusGeometry(.06,.015,4,8),xMat(0x3a3a40)); ln.position.set(cx,XWALL-.25-k*.11,0); ln.rotation.y=k%2?Math.PI/2:0; g.add(ln); } }
       g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,r.y-1),floor:xi(x,r.y)}); }
     // in the corners: a cobweb in crypts and caves
-    if(rk==='crypt'||rk==='cave') for(const [x,y,sx,sy] of [[r.x,r.y,-1,-1],[r.x+r.w-1,r.y,1,-1]]) if(R()<.6){ const w=xi(x,y);
+    if(rk==='crypt'||rk==='cave') for(const [x,y,sx,sy] of [[r.x,r.y,-1,-1],[r.x+r.w-1,r.y,1,-1]]) if(R()<.6&&EX.room[xi(x,y)]===r.id){ const w=xi(x,y);
       const web=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:xWebTex(),transparent:true,opacity:.55,depthWrite:false,side:THREE.DoubleSide}));
       web.position.set((x+.5+sx*.5)*XCS-sx*.45,XWALL-.5,(y+.5+sy*.5)*XCS-sy*.08); web.rotation.y=sx<0?.6:-.6; web.visible=false; grp.add(web); EX.onWall.push({g:web,wall:xi(x+sx*0,y+sy),floor:w}); }
     // banners in shrines and stores, vines in Hollows caves, on free wall faces
-    const faces=[]; for(let x=r.x;x<r.x+r.w;x++) if(rock(x,r.y-1)&&!used.has(xi(x,r.y-1))) faces.push([x,r.y-1,0,1]);
+    const faces=[]; for(let x=r.x;x<r.x+r.w;x++) if(EX.room[xi(x,r.y)]===r.id&&rock(x,r.y-1)&&!used.has(xi(x,r.y-1))) faces.push([x,r.y-1,0,1]);
     for(let k=0;k<(rk==='shrine'?2:rk==='store'?1:area==='hollows'?2:0)&&faces.length;k++){ const [x,y,dx,dy]=faces.splice(R()*faces.length|0,1)[0]; used.add(xi(x,y));
       const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,(y+1)*XCS+.03);
       if(rk==='cave'&&area==='hollows'){ for(let v=0;v<3;v++){ const h=.8+R()*1.2; g.add(xBox(.07,h,.03,xMat(0x3f7a3a),(v-1)*.35+(R()-.5)*.1,XWALL-h/2,0)); g.add(xBox(.2,.12,.03,xMat(0x5a9a4a),(v-1)*.35,XWALL-h+.1,0)); } }
@@ -910,7 +945,7 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(
   const ins=.32, bw=.62, pos=[], uv=[], seg=(x0,z0,x1,z1,horiz)=>{ const L=horiz?x1-x0:z1-z0, u=L/(bw*3.2);
     if(horiz){ pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, 0,0, u,0, 0,1, u,0, u,1); }
     else { pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, u,1, u,0, 0,1, u,0, 0,0); } };
-  for(const r of EX.rooms){ if(r.nook||r.w<3||r.h<3) continue; const X0=r.x*XCS+ins, X1=(r.x+r.w)*XCS-ins, Z0=r.y*XCS+ins, Z1=(r.y+r.h)*XCS-ins;
+  for(const r of EX.rooms){ if(r.nook||r.w<3||r.h<3||r.shape||r.walls) continue; const X0=r.x*XCS+ins, X1=(r.x+r.w)*XCS-ins, Z0=r.y*XCS+ins, Z1=(r.y+r.h)*XCS-ins;
     seg(X0,Z0,X1,Z0+bw,true); seg(X0,Z1-bw,X1,Z1,true); seg(X0,Z0+bw,X0+bw,Z1-bw,false); seg(X1-bw,Z0+bw,X1,Z1-bw,false);
     if(r.w>=5&&r.h>=5){ const kinds=['mosaic','rug','seal'], kind=r.w===r.h||Math.abs(r.w-r.h)<=1?kinds[R()*3|0]:kinds[R()*2|0];
       const cw=kind==='seal'?Math.max(2,Math.round(Math.min(r.w,r.h)*.55)):Math.max(2,Math.round(r.w*.55)), ch=kind==='seal'?cw:Math.max(2,Math.round(r.h*.5)), cx=(r.x+r.w/2)*XCS, cz=(r.y+r.h/2)*XCS;
@@ -1215,11 +1250,12 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   const amt=Math.min(1,len); ix/=len; iz/=len; const sp=XSPEED*dt*amt*(typeof xRareSpeed==='function'?xRareSpeed():1), r=.42;   // wading through a flooded room is slow
   EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
   const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
-  const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
+  const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcellOpen(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
   const okX=tryAxis(EX.px+ix*sp,EX.pz), okZ=tryAxis(EX.px,EX.pz+iz*sp);
   if(okX) EX.px+=ix*sp; if(okZ) EX.pz+=iz*sp;
   // caught on a door frame or corner: ease toward the middle of the cell so you slide through
-  const cx=(xcx(EX.pc)+.5)*XCS, cz=(xcy(EX.pc)+.5)*XCS, ease=(a,b)=>Math.max(-sp,Math.min(sp,b-a));
+  // (not beside a diagonal wall: there it would hold you half a cell off the wall's face)
+  const cx=(xcx(EX.pc)+.5)*XCS, cz=(xcy(EX.pc)+.5)*XCS, ease=(a,b)=>xNearWedge(EX.pc)?0:Math.max(-sp,Math.min(sp,b-a));
   if(!okZ&&Math.abs(iz)>.3&&!okX) EX.px+=ease(EX.px,cx); else if(!okZ&&Math.abs(iz)>.3&&Math.abs(ix)<.3) EX.px+=ease(EX.px,cx);
   if(!okX&&Math.abs(ix)>.3&&Math.abs(iz)<.3) EX.pz+=ease(EX.pz,cz);
   if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10*XSPEED/5.4;
@@ -1228,8 +1264,13 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   // arrived by the stairs: they come alive again once you are a cell and a half from them, so a finger
   // or key still held (pushing into the wall beside them) cannot bounce you up and down the floors
   if(EX.stairLock!=null&&Math.hypot(EX.px-xw(EX.stairLock),EX.pz-xz(EX.stairLock))>XCS*1.5) EX.stairLock=null;
-  const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
+  const c=xcellOpen(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
+const xNearWedge=c=>EX.layout===2&&[c-1,c+1,c-XN,c+XN,c,c-XN-1,c-XN+1,c+XN-1,c+XN+1].some(n=>n>=0&&!!xWedge(n));
+// the cell a point stands in, but in the open half of a diagonal wall's cell (xWedge) the floor cell beside it,
+// so you walk right up to a diagonal wall and are never counted as standing in rock
+function xcellOpen(x,z){ const c=xcell(x,z); if(c<0||EX.t[c]!==T_ROCK||!xOpenAt(x,z,c)) return c; const W=xWedge(c);
+  const u=x/XCS-xcx(c)-.5, v=z/XCS-xcy(c)-.5; return u*W.sx>v*W.sy?c+W.sx:c+W.sy*XN; }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
 function xBump(c,front){
   if(typeof xBumpExtra==='function'){ const r=xBumpExtra(c,front); if(r!==undefined) return r; }   // locks, people, puzzles, levers (dungeon.js)
@@ -1449,7 +1490,7 @@ function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch){ m.set(EX.depth,EX); 
 // go to a floor, arriving on its stairs up or down (or a cell): a kept floor comes back as it was;
 // a new one reached from below has its guardian already beaten, since you came past it
 function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&(m.get(depth)||(typeof xFloorLoad==='function'&&xFloorLoad(depth))), ail=EX&&EX.ail;
-  if(F){ EX=F; if(typeof xPlaceBody==='function'&&!EX.props.some(p=>p.kind==='corpse')) xPlaceBody();   // your body, if you fell on this depth since
+  if(F){ EX=F; xSizeTo(EX); if(typeof xPlaceBody==='function'&&!EX.props.some(p=>p.kind==='corpse')) xPlaceBody();   // your body, if you fell on this depth since
     EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; if(typeof xPlaceWayshard==='function') xPlaceWayshard(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
   else { buildFloor(depth,hp,route?{plan:route.plan,route:route.kind}:undefined);
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
@@ -1710,7 +1751,7 @@ function enterExplore(depth){
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return tip(v.errors[0]+'. Fix the deck in the deck builder first.',4000);
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
-  if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
+  if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; xSizeTo(EX); EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
   else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth);
     if(typeof xFloorLoad==='function'&&xFloorLoad(depth)){ EX=null; xGoFloor(depth,xmaxHp(),'up'); xLog('Depth '+depth+' · as you left it.','dim'); }   // been here before (floorsave.js)
     else buildFloor(depth); }

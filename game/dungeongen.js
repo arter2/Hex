@@ -293,7 +293,7 @@ function xWallSections(grp,S,seed){ const R=caveRng(seed+911), tone=v=>new THREE
   Q.add(XG.box,fr,0,.9,.1,0,0,0,1.2,.12,.22);
   const smat=xDitherMat(xPhong({vertexColors:true}));
   EX.sectM={p:inst(P.build(smat).geometry,smat,n.p),n:inst(Q.build(smat).geometry,smat,n.n),d:[0,1,2,3].map(k=>{ const g=new THREE.PlaneGeometry(1,1), U=g.attributes.uv; for(let i=0;i<U.count;i++) U.setX(i,(k+U.getX(i))/4);
-    return inst(g,xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}),n.d[k]); })}; }
+    return inst(g,xSinkPatch(xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2})),n.d[k]); })}; }
 // the four decals side by side (64 x 128 each): soot streaks, a crack, a water stain, moss
 function xDecalTex(S,seed){ if(xDecalTex.c&&xDecalTex.k===seed) return xDecalTex.t; const W=64, Hh=128, c=document.createElement('canvas'); c.width=W*4; c.height=Hh; const x=c.getContext('2d'), R=caveRng(seed+5);
   const dark='rgba('+xTone(S,.02).join(',')+',', moss='rgba('+[52,74,40].join(',')+',';
@@ -303,7 +303,7 @@ function xDecalTex(S,seed){ if(xDecalTex.c&&xDecalTex.k===seed) return xDecalTex
   for(let k=0;k<420;k++){ const px=3*W+R()*W, py=Hh-Math.pow(R(),1.8)*Hh; x.fillStyle=(R()<.6?moss:dark)+(.35+R()*.45)+')'; x.fillRect(px|0,py|0,1+(R()*2|0),1+(R()*2|0)); }
   xDecalTex.c=c; xDecalTex.k=seed; return xDecalTex.t=xTex(c); }
 function xSectShow(c,list,cut){ const M=EX.sectM; if(!M) return; const m=new THREE.Matrix4(), z=new THREE.Matrix4().makeScale(0,0,0), touched=new Set();
-  for(const [kind,k,dx,dy,w,h,y,sh] of list){ const mesh=kind==='p'?M.p:kind==='n'?M.n:M.d[+kind[1]], tx=dy?1:0, tz=dx?1:0, s=sh||0;
+  for(const [kind,k,dx,dy,w,h,y,sh] of list){ const mesh=kind==='p'?M.p:kind==='n'?M.n:M.d[+kind[1]], tx=dy?1:0, tz=dx?1:0, s=sh||0; if(EX.layout===2) cut=1;   // (bent by the shader instead)
     const x=xw(c)+dx*XCS/2+tx*s*XCS, zz=xz(c)+dy*XCS/2+tz*s*XCS, show=kind==='p'?cut>.05:cut>.95;
     if(!show) m.copy(z); else { m.makeRotationY(Math.atan2(dx,dy)); if(kind==='p') m.scale(new THREE.Vector3(1,cut,1)); else if(kind[0]==='d') m.scale(new THREE.Vector3(w,h,1));
       m.setPosition(x+dx*(kind[0]==='d'?.03:0),kind[0]==='d'?y:0,zz+dy*(kind[0]==='d'?.03:0)); }

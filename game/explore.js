@@ -347,7 +347,7 @@ function xWallGeo(rough,seed,H,caps,cheap){ H=H||XWALL; const fine=rough||H===XW
     P.setXYZ(k,x,y,z); }
   g.computeVertexNormals();
   const N=g.attributes.normal, c=[];   // foot shadow up the face, a lit bevel, a near-black cap
-  for(let k=0;k<P.count;k++){ const y=P.getY(k)/H+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:1-(y>.97?.12:0); c.push(a,a,a); }   // the foot shadow is AO (xLit)
+  for(let k=0;k<P.count;k++){ const y=P.getY(k)/H+.5, ny=N.getY(k); const a=ny>.85?(H!==XWALL_B?.55:.34):ny<-.5?.2:ny>.3?1.05:1-(y>.97?.12:0); c.push(a,a,a); }   // the foot shadow is AO (xLit); a tall wall's top shows between its stacked blocks, less dark
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));
   if(H!==XWALL_B){ const U=g.attributes.uv; for(let k=0;k<U.count;k++) if(Math.abs(N.getY(k))<.5) U.setY(k,U.getY(k)*H/XWALL_B); }   // a taller wall shows more courses of stone, not taller stones
   return caps?xCapsOn(g,hh,seed):g; }
@@ -359,7 +359,7 @@ function xCapsOn(g,hh,seed,q){ const parts=[g.index?g.toNonIndexed():g], hs=[.5,
   [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz],k)=>{ if(q&&!q(sx,sz)) return; const h=hs[(k+seed)%4]+.1, b=new THREE.BoxGeometry(s,h,s).toNonIndexed();
     b.translate(sx*XCS/4,hh+h/2-.02,sz*XCS/4); const N=b.attributes.normal, c=[], U=b.attributes.uv;
     for(let i=0;i<U.count;i++){ if(N.getY(i)>.5) U.setXY(i,.31+k*.05,.42); else U.setXY(i,U.getX(i)*.3+k*.17,U.getY(i)*.18); }   // a plain stone top; a course or two of stone down each side
-    for(let i=0;i<N.count;i++){ const a=N.getY(i)>.5?1.1:N.getY(i)<-.5?.2:.95; c.push(a,a,a); } b.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); parts.push(b); });
+    for(let i=0;i<N.count;i++){ const a=N.getY(i)>.5?.82:N.getY(i)<-.5?.2:.95; c.push(a,a,a); } b.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); parts.push(b); });
   const out=new THREE.BufferGeometry(); for(const a of ['position','normal','uv','color']){ const arr=[]; for(const p of parts) arr.push(...p.attributes[a].array); out.setAttribute(a,new THREE.Float32BufferAttribute(arr,p0Size(a))); }
   return out; }
 const p0Size=a=>a==='uv'?2:3;
@@ -427,7 +427,7 @@ function xBuildScene(){
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
   for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
-  const floorTex=[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];
+  const floorTex=EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
   floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
@@ -440,7 +440,8 @@ function xBuildScene(){
     if(!pos.length) return;
     // a slight tone per cell; floors sinking into the walls is the baked AO (xBakeAO)
     const col=new Array(pos.length).fill(1);
-    for(let k=0;k<col.length;k+=18){ const t=.9+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*.1; for(let j=0;j<18;j++) col[k+j]*=t; }
+    const tv=EX.layout===2?.04:.1; for(let k=0;k<col.length;k+=18){ const t=1-tv+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*tv;   // (small tiles: barely, or the cells show through as big squares)
+    for(let j=0;j<18;j++) col[k+j]*=t; }
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
     grp.add(new THREE.Mesh(geo,xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv))); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear

@@ -268,6 +268,18 @@ function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), 
   const x=c.getContext('2d');
   for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); H[((py|0)%N+N)%N*N+((px|0)%N+N)%N]-=1.4; a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
   xSpeck(c,S,R,style?18:26,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
+/* Spacious floors: small square tiles, clean and even (four to a cell, 16 px each on the 8-cell texture). A thin
+   dark joint, a lit top-left edge and a shaded bottom-right one on each tile (it reads as laid stone, not a grid
+   drawn on), a narrow range of tones with a soft wash of noise, a crack only now and then. checker: every other
+   tile a shade apart, for the passages. */
+function xTileFloor(S,seed,checker){ const N=256, T=16, R=caveRng(seed), f=xFbm(N,R,6), H=new Float32Array(N*N), n=N/T, tone=[];
+  for(let k=0;k<n*n;k++) tone.push(.44+R()*.12+(checker&&((k%n)+(k/n|0))%2?.06:0));
+  const c=xPaint(N,(i,j)=>{ const u=i%T, v=j%T, k=(j/T|0)*n+(i/T|0); let t=tone[k]+(f(i,j)-.5)*.1, h=2;
+    if(u===T-1||v===T-1){ t=.1; h=-1; } else if(u===0||v===0){ t+=.16; h=2.6; } else if(u===T-2||v===T-2){ t-=.1; h=1.4; }
+    H[j*N+i]=h+f(i,j)*.4; return xTone(S,Math.max(0,Math.min(1,t))); });
+  const x=c.getContext('2d');
+  for(let m=0;m<5;m++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.4)'; for(let q=0;q<5+R()*6;q++){ x.fillRect(px|0,py|0,1,1); a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
+  xSpeck(c,S,R,8,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
 function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
   // the height: rough lumps with the strata standing out as ledges

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v194</title>
-<meta name="application-version" content="194">
+<title>Hexmancers v195</title>
+<meta name="application-version" content="195">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
@@ -569,6 +569,7 @@
       <div class="srow"><span>Rotate Z (roll)<small>Rolls the dungeon camera, in degrees.</small></span><span class="srange"><input id="dbg_dRotZ" type="range" min="-45" max="45" step="1"><b id="dbg_dRotZV"></b></span></div>
       <div class="srow"><span>Reset dungeon camera<small>Puts every dungeon camera setting above back to normal.</small></span><button id="dbgDCamReset" class="btn ghost small">Reset</button></div>
       <h3>Dungeon view</h3>
+      <div class="srow"><span>Spacious dungeon (work in progress)<small>This save only. On: floors dug from now on use the new layout: bigger rooms and halls, wide and diagonal corridors, loops, longer sight and the camera turned 45°. Floors you have already been to keep their layout. Leave the floor (or start a new depth) to see it.</small></span><label class="scheck"><input id="dbgLayout2" type="checkbox"></label></div>
       <div class="srow"><span>Haze<small>On: the area's haze starts a few tiles past you. Off: no haze at all in the dungeon.</small></span><label class="scheck"><input id="dbg_dFog" type="checkbox"></label></div>
       <div class="srow"><span>Haze start<small>How many tiles past you the haze starts. 6 is normal.</small></span><span class="srange"><input id="dbg_dFogStart" type="range" min="-10" max="40" step="1"><b id="dbg_dFogStartV"></b></span></div>
       <div class="srow"><span>Haze depth<small>Over how many tiles things fade fully into the haze. 14 is normal.</small></span><span class="srange"><input id="dbg_dFogLen" type="range" min="1" max="150" step="1"><b id="dbg_dFogLenV"></b></span></div>
@@ -703,6 +704,7 @@
 <script src="three.min.js"></script>
 <script src="look.js"></script>
 <script src="explore.js"></script>
+<script src="dungeongen.js"></script>
 <script src="arena.js"></script>
 <script src="dungeon.js"></script>
 <script src="missions.js"></script>

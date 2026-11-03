@@ -50,12 +50,18 @@ const xmaxHp=()=>Math.round((120+((typeof gearMods==='function'&&gearMods(save).
    Rules that keep every floor playable: the stairs down can always be reached from the stairs
    up with no key at all, every main room that is not behind a planned lock is reachable, and a
    lock only ever shuts off at most two rooms. */
+// which generator a world uses: 2 is the spacious floor (dungeongen.js), set from the debug menu while it is built;
+// worlds without the mark keep the old one, and a floor already dug keeps its own (floorsave.js)
+const xLayoutV=()=>typeof save!=='undefined'&&save&&save.layout===2?2:1;
 function genFloor(depth,plan){
   const base=typeof XSEED!=='undefined'&&XSEED!=null?XSEED:(Date.now()&0xffffff), seed=t=>caveRng(base^(depth*7919)^(t*104729));   // a save's own floors (floorsave.js)
-  for(let tries=0;tries<120;tries++){ const f=tryFloor(depth,seed(tries),plan); if(f) return f; }
+  // (the old layout's fallbacks stay exactly as they were, so a world's seeded floors never change)
+  const L=xLayoutV(), sm=plan&&plan.small, lay=p=>L===2?Object.assign({},p,{layout:2},sm?{small:true}:null):p;
+  for(let tries=0;tries<120;tries++){ const f=tryFloor(depth,seed(tries),lay(plan)); if(f) return f; }
   // a plan too crowded for the dice: keep only the closet, then nothing extra
-  for(let tries=0;tries<200;tries++){ const f=tryFloor(depth,seed(500+tries),{side:[{kind:'closet',lock:'secret'}]}); if(f) return f; }
-  for(let tries=0;;tries++){ const f=tryFloor(depth,seed(900+tries),{side:[]}); if(f) return f; }
+  for(let tries=0;tries<200;tries++){ const f=tryFloor(depth,seed(500+tries),lay({side:[{kind:'closet',lock:'secret'}]})); if(f) return f; }
+  for(let tries=0;tries<(L===2?300:Infinity);tries++){ const f=tryFloor(depth,seed(900+tries),lay({side:[]})); if(f) return f; }
+  for(let tries=0;;tries++){ const f=tryFloor(depth,seed(1300+tries),{side:[]}); if(f) return f; }   // never stuck: the old layout always fits
 }
 const xAdj4=i=>{ const x=xcx(i), y=xcy(i); return [x>0?i-1:-1, x<XN-1?i+1:-1, y>0?i-XN:-1, y<XN-1?i+XN:-1].filter(n=>n>=0); };
 function tryFloor(depth,R,plan){
@@ -63,10 +69,12 @@ function tryFloor(depth,R,plan){
   const ri=(a,b)=>a+Math.floor(R()*(b-a+1));
   const t=new Uint8Array(XN*XN), room=new Int16Array(XN*XN).fill(-1), rooms=[];
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
-  const want=plan.small?8:20;   // a floor is about twice the size it once was (68 x 68 cells)
-  for(let k=0;k<900&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
-    if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }
-  if(rooms.length<(plan.small?5:13)) return null;
+  const v2=plan.layout===2&&typeof x2Rooms==='function';   // the spacious floor (dungeongen.js)
+  if(v2){ const r2=x2Rooms(R,ri,plan); if(!r2) return null; rooms.push(...r2); }
+  else { const want=plan.small?8:20;   // a floor is about twice the size it once was (68 x 68 cells)
+    for(let k=0;k<900&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
+      if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }
+    if(rooms.length<(plan.small?5:13)) return null; }
   rooms.sort((a,b)=>(a.x+a.w/2)-(b.x+b.w/2));
   // side rooms: the closet (secret door), a vault (silver or gold lock), a prison cell (bronze lock)
   const sides=plan.side||[{kind:'closet',lock:'secret'}];
@@ -91,8 +99,10 @@ function tryFloor(depth,R,plan){
       if(room[pi]>=0&&room[ci]<0) mk(ci,room[pi]); if(room[pi]<0&&room[ci]>=0) mk(pi,room[ci]); }
   };
   const main=rooms.filter(r=>!r.side), sideRooms=rooms.filter(r=>r.side);
-  for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
-  for(let n=0;n<4;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); }
+  const F2={t,room,doors,corridors:null};
+  if(v2){ if(!x2Corridors(main,F2,R,ri)) return null; }
+  else { for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
+    for(let n=0;n<4;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); } }
   for(const s of sideRooms){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-s.cx,p.cy-s.cy)-Math.hypot(q.cx-s.cx,q.cy-s.cy))[0]; carve(s,near,null); }
   // a shortcut: one more corridor from the first room toward the far end of the floor
   const startI=xi(main[0].cx,main[0].cy);
@@ -141,7 +151,7 @@ function tryFloor(depth,R,plan){
     const keep=ds.map(([i,d])=>[d,d.state,d.lock]); ds.forEach(([i,d])=>{ d.state='locked'; d.lock='boss'; });
     const dd=reach(), lost=main.filter(r=>r!==exit&&!r.behind&&dd[xi(r.cx,r.cy)]<0);
     if(ds.length&&dd[exitI]<0&&!lost.length) bossDoor=true; else keep.forEach(([d,st,lk])=>{ d.state=st; d.lock=lk; }); }
-  return {t,room,rooms,doors,start,exit,gate,bossDoor};
+  return {t,room,rooms,doors,start,exit,gate,bossDoor,layout:v2?2:1,corridors:F2.corridors};
 }
 // breadth-first distances; secret and locked doors block; `seenOnly` limits it to explored cells
 function xbfs(t,doors,s,seenOnly,blockFn){
@@ -211,8 +221,9 @@ function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Mat
 function xUpdateVis(){
   const v=EX.vis; v.fill(0); const pc=EX.pc;
   const lightRoom=r=>{ for(let y=r.y-1;y<=r.y+r.h;y++) for(let x=r.x-1;x<=r.x+r.w;x++) v[xi(x,y)]=1; };
-  const here=EX.room[pc]; let rad=1.6;
-  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=7; } else rad=2.6; if(r.dark) rad=EX.torch?3.6:1.2; }   // a dark room (rooms.js): almost nothing without a torch
+  // the spacious floor (layout 2) sees much further: 6 cells in corridors and unlit rooms, 8 lit, 3 (5 with a torch) in the dark
+  const v2=EX.layout===2, here=EX.room[pc]; let rad=v2?6:1.6;
+  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=v2?8:7; } else rad=v2?6:2.6; if(r.dark) rad=v2?(EX.torch?5:3):EX.torch?3.6:1.2; }   // a dark room (rooms.js): almost nothing without a torch
   if(EX.t[pc]===T_DOOR) for(const n of [pc-1,pc+1,pc-XN,pc+XN]){ const r=EX.room[n]; if(r>=0&&EX.rooms[r].lit&&EX.doors.get(pc).state==='open') lightRoom(EX.rooms[r]); }
   rad+=((save&&save.perm&&save.perm.insight)||0)+(EX.sight||0);   // Insight blessings and lantern oil
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
@@ -261,7 +272,9 @@ function xInit3D(){
     else if(m==='goal') xGoalAt(ax,ay);
     else if(m==='fixed'){ const h=xStickHome(); if(Math.hypot(ax-h.x,ay-h.y)<XSTICK_R*1.6){ XHOLD.stick=true; XHOLD.x0=h.x; XHOLD.y0=h.y; EX.path=[]; EX.goal=null; } else xGoalAt(ax,ay); }
     else { EX.path=[]; EX.goal=null; XHOLD.stick=m==='float';
-      if(m==='pad'){ const a=xFloorAt(ax,ay), b2=xFloorAt(ax+100,ay+100); XHOLD.kx=a&&b2?(b2.x-a.x)/100:.05; XHOLD.kz=a&&b2?(b2.z-a.z)/100:.05; XHOLD.px=EX.px; XHOLD.pz=EX.pz; } }
+      // the pad: a finger's move on the screen as a move on the floor (two samples, so it holds for a turned camera)
+      if(m==='pad'){ const a=xFloorAt(ax,ay), bx=xFloorAt(ax+100,ay), by=xFloorAt(ax,ay+100);
+        XHOLD.k=a&&bx&&by?[(bx.x-a.x)/100,(by.x-a.x)/100,(bx.z-a.z)/100,(by.z-a.z)/100]:[.05,0,0,.05]; XHOLD.px=EX.px; XHOLD.pz=EX.pz; } }
     xStickDraw(); });
   cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
     if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
@@ -1095,6 +1108,10 @@ const XMOVES=['tapstick','goal','float','fixed','follow','pad'], XMOVE_NAME={tap
 const xTapMs=()=>typeof MV==='function'?MV('mvTapMs'):278, xTapPx=()=>typeof MV==='function'?MV('mvTapPx'):17;
 const xMoveMode=()=>{ let m='tapstick'; try{ m=localStorage.getItem('hexmancers-xmove')||'tapstick'; }catch(e){} return XMOVES.includes(m)?m:'tapstick'; };
 function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
+// the camera's turn around you, in degrees: the debug menu's Turn, plus 45 on the spacious floor (dungeongen.js X2.yaw)
+const xYaw=()=>(XLIT.dTurn||0)+(EX&&EX.layout===2&&typeof X2!=='undefined'?X2.yaw:0);
+// a push on the screen (right, down) as a direction on the floor, so the stick and keys follow a turned camera
+function xScreenDir(ix,iz){ const a=xYaw()*Math.PI/180; if(!a) return [ix,iz]; const c=Math.cos(a), s=Math.sin(a); return [ix*c+iz*s, -ix*s+iz*c]; }
 const XSTICK_R=56;   // how far the stick's knob travels, in screen pixels
 function xStickHome(){ const r=appBox($('#xView')), bot=$('#xBottom'), bb=bot?appBox(bot):null; return {x:r.left+24+XSTICK_R, y:(bb&&bb.top>0?bb.top:r.bottom)-24-XSTICK_R}; }
 function xMoveUi(){ const m=xMoveMode(), b=$('#xMoveMode'); if(b){ b.textContent=XMOVE_ICON[m]; b.title='Touch movement: '+XMOVE_NAME[m]; }
@@ -1170,13 +1187,14 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   let ix=0, iz=0;
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
+  if(ix||iz) [ix,iz]=xScreenDir(ix,iz);
   if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
   else if(XHOLD.on){ const m=xMoveMode();
     if(m==='tapstick'&&!XHOLD.stick&&(heldMs(XHOLD)>=xTapMs()||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=xTapPx())){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
     if(XHOLD.stick){ let dx=(XHOLD.x-XHOLD.x0)/XSTICK_R, dy=(XHOLD.y-XHOLD.y0)/XSTICK_R; const l=Math.hypot(dx,dy);
-      if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; ix=dx*k; iz=dy*k; } }   // a stick: screen up is up the map; how far you push sets the speed
+      if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; [ix,iz]=xScreenDir(dx*k,dy*k); } }   // a stick: screen up is up the screen, whatever the camera's turn; how far you push sets the speed
     else if(m==='follow'){ const g=xFloorAt(XHOLD.x,XHOLD.y); if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.4){ const k=Math.min(1,l/1.5)/l; ix=dx*k; iz=dz*k; } } }
-    else if(m==='pad'){ const tx=XHOLD.px+(XHOLD.x-XHOLD.x0)*XHOLD.kx*1.2, tz=XHOLD.pz+(XHOLD.y-XHOLD.y0)*XHOLD.kz*1.2, dx=tx-EX.px, dz=tz-EX.pz, l=Math.hypot(dx,dz);
+    else if(m==='pad'){ const sx=(XHOLD.x-XHOLD.x0)*1.2, sy=(XHOLD.y-XHOLD.y0)*1.2, K=XHOLD.k||[XHOLD.kx,0,0,XHOLD.kz], tx=XHOLD.px+sx*K[0]+sy*K[1], tz=XHOLD.pz+sx*K[2]+sy*K[3], dx=tx-EX.px, dz=tz-EX.pz, l=Math.hypot(dx,dz);
       if(l>.2){ const k=Math.min(1,l/1.2)/l; ix=dx*k; iz=dz*k; } } }
   if(!ix&&!iz&&EX.path.length){
     // cut corners: head for the furthest cell on the route you can walk to in a straight line
@@ -1397,6 +1415,10 @@ function xWanderGoal(g){
 function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let cur=from;
   for(let k=0;k<200&&cur!==goal;k++){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(n>=0&&n<XN*XN&&dist[n]>=0&&dist[n]<dist[cur]&&(best<0||dist[n]<dist[best])) best=n;
+    // the spacious floor: a diagonal step when both cells beside it are open, so paths run straight down diagonal corridors and across
+    // rooms instead of zigzagging, and never cut a wall corner (blocked cells have no distance)
+    if(EX&&EX.layout===2) for(const [dx,dy] of [[1,1],[1,-1],[-1,1],[-1,-1]]){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=xi(nx,ny);
+      if(dist[n]>=0&&dist[xi(nx,y)]>=0&&dist[xi(x,ny)]>=0&&dist[n]<dist[cur]-1&&(best<0||dist[n]<dist[best])) best=n; }
     if(best<0) break; out.push(best); cur=best; }
   return out; }
 // how the fight opens: reach a sleeping enemy first and you ambush it; one you never saw coming strikes first
@@ -1522,8 +1544,9 @@ function xDraw(T,dt){
   G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; EX.camT=[cx+jx,cz-1.2-XLIT.dAim*XCS];
   // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
   // forward (in tiles) and tilt, pan and roll it (degrees)
-  if(XLIT.dTurn||XLIT.dMoveX||XLIT.dMoveY||XLIT.dMoveZ||XLIT.dRotX||XLIT.dRotY||XLIT.dRotZ){ const R=Math.PI/180, tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS;
-    if(XLIT.dTurn){ const a=XLIT.dTurn*R, ox=G.cam.position.x-tx, oz=G.cam.position.z-tz; G.cam.position.x=tx+ox*Math.cos(a)+oz*Math.sin(a); G.cam.position.z=tz-ox*Math.sin(a)+oz*Math.cos(a); G.cam.lookAt(tx,.6,tz); }
+  const turn=xYaw();
+  if(turn||XLIT.dMoveX||XLIT.dMoveY||XLIT.dMoveZ||XLIT.dRotX||XLIT.dRotY||XLIT.dRotZ){ const R=Math.PI/180, tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS;
+    if(turn){ const a=turn*R, ox=G.cam.position.x-tx, oz=G.cam.position.z-tz; G.cam.position.x=tx+ox*Math.cos(a)+oz*Math.sin(a); G.cam.position.z=tz-ox*Math.sin(a)+oz*Math.cos(a); G.cam.lookAt(tx,.6,tz); }
     G.cam.translateX(XLIT.dMoveX*XCS); G.cam.translateY(XLIT.dMoveY*XCS); G.cam.translateZ(-XLIT.dMoveZ*XCS);
     G.cam.rotateY(-XLIT.dRotY*R); G.cam.rotateX(XLIT.dRotX*R); G.cam.rotateZ(XLIT.dRotZ*R); } xWallCut(dt); xFxTick(T,dt);
   XDITHER.uBall.value.set(EX.px,1.2,EX.pz); XDITHER.uRad.value=XB.ball*XCS; XDITHER.uPx.value=Math.max(1,Math.round(G.renderer.getPixelRatio()*2));

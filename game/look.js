@@ -319,6 +319,10 @@ function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(con
   { const feel=(F,keep)=>{ for(const k in F){ XLIT[k]=F[k]; try{ keep&&F[k]!==XLIT_DEF[k]?localStorage.setItem('hexmancers-xl-'+k,typeof F[k]==='boolean'?(F[k]?'1':'0'):String(F[k])):localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); };
     const n=document.getElementById('dbgMvNew'), o=document.getElementById('dbgMvOld');
     if(n) n.onclick=()=>{ feel(MV_DEF,false); tip&&tip('Movement: new feel (v118)'); }; if(o) o.onclick=()=>{ feel(MV_V117,true); tip&&tip('Movement: old feel (v117)'); }; }
+  // the spacious dungeon (dungeongen.js): a mark on this save, read when a floor is dug (explore.js xLayoutV)
+  { const c=document.getElementById('dbgLayout2'); if(c){ const sync=()=>{ c.checked=typeof save!=='undefined'&&!!save&&save.layout===2; };
+    sync(); const dbg=document.getElementById('debug'); if(dbg) new MutationObserver(()=>{ if(dbg.classList.contains('on')) sync(); }).observe(dbg,{attributes:true,attributeFilter:['class']});
+    c.onchange=()=>{ if(typeof save==='undefined'||!save){ c.checked=false; return; } if(c.checked) save.layout=2; else delete save.layout; if(typeof persist==='function') persist(); }; } }
   { const r=document.getElementById('dbgDCamReset'); if(r) r.onclick=()=>{ for(const k of ['dPitch','dDist','dFov','dAim','dAhead','dTurn','dMoveX','dMoveY','dMoveZ','dRotX','dRotY','dRotZ']){ XLIT[k]=XLIT_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); }; }   // Camera: the dungeon camera back to normal
   { const r=document.getElementById('dbgMpReset'); if(r) r.onclick=()=>{ for(const k of ['mpSpell','mpDefend','mpBackdate','mpSend','mpSmooth']){ XLIT[k]=XLIT_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); }; }   // Multiplayer: the five timings back to normal
   document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }

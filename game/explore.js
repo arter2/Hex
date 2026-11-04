@@ -1247,8 +1247,9 @@ function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touc
   if(EX.layout!==2) for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
     xDoorOp(d); }
   // spacious floors: a door in a low near wall keeps its frame up to its arch's crown (the debug menu's 'Door kept up
-  // to'), standing above the ledge either side of it, so you always see where it is
-  if(EX.layout===2&&EX.doorClip) for(const [i,cl] of EX.doorClip) cl.value=XLIT.dStepOn&&xDoorLow(i)?Math.max(XLIT.dShDoorH,XLIT.dStepLow*XWALL):1e3;
+  // to'), standing above the ledge either side of it, so you always see where it is. A wide doorway stays whole: its
+  // grand arch rises to the wall's top (xPortal), so any cut takes the arch off, and it has no leaf to hide you
+  if(EX.layout===2&&EX.doorClip) for(const [i,cl] of EX.doorClip){ const dr=EX.doors.get(i); cl.value=XLIT.dStepOn&&!(dr&&dr.wide)&&xDoorLow(i)?Math.max(XLIT.dShDoorH,XLIT.dStepLow*XWALL):1e3; }
   for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall), cur=L.cut==null?1:L.cut; if(Math.abs(cur-tg)<.005) continue; L.cut=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; L.g.scale.y=1; L.g.visible=L.cut>.6&&!!EX.seen[L.floor]; } }
 // a door on a fading wall fades less than the wall (the debug menu's door minimum), so you can always find it; its threshold glow stays
 function xDoorOp(d){ const op=Math.max(XLIT.dDoorMin,d.cutY==null?1:d.cutY), solid=op>=.995;
@@ -1577,7 +1578,7 @@ function xEnemies(dt){
     else if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
     else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(xSeesCell(g,EX.pc,sn)&&Math.random()<.3*sn){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
-    else { const sees=!safe&&xSeesCell(g,EX.pc,sn);
+    else { xUnstick(g); const sees=!safe&&xSeesCell(g,EX.pc,sn);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
       else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>(g.hunter?6:3)){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;
@@ -1634,7 +1635,14 @@ function xWanderGoal(g){
   if(g.hunter){ const x=xcx(EX.pc)+Math.round((Math.random()-.5)*6), y=xcy(EX.pc)+Math.round((Math.random()-.5)*6), c=xi(Math.max(0,Math.min(XN-1,x)),Math.max(0,Math.min(XN-1,y))); return EX.t[c]===T_FLOOR?c:EX.pc; }
   const ri=EX.room[g.home], r=ri>=0?EX.rooms[ri]:null;
   if(!r) return g.home;
-  return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
+  // a cell of the room's own floor: a spacious floor's shaped room has wall inside its box, and a goal there walked the
+  // group into the stone (the path ends on its goal), where it stood stuck
+  for(let k=0;k<20;k++){ const c=xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); if(EX.t[c]===T_FLOOR&&EX.room[c]===ri) return c; }
+  return g.home; }
+// a group standing in a wall (walked in by an old wandering goal, kept in a saved floor) steps out to the nearest floor
+function xUnstick(g){ if(EX.t[g.cell]!==T_ROCK||xOpenAt(g.x,g.z,g.cell)) return; const x=xcx(g.cell), y=xcy(g.cell);
+  for(let r=1;r<=4;r++) for(let dy=-r;dy<=r;dy++) for(let dx=-r;dx<=r;dx++){ if(Math.max(Math.abs(dx),Math.abs(dy))!==r) continue; const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue;
+    const n=xi(nx,ny); if(EX.t[n]===T_FLOOR){ g.cell=n; g.x=xw(n); g.z=xz(n); g.path=[]; g.repath=0; return; } } }
 function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let cur=from;
   for(let k=0;k<200&&cur!==goal;k++){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(n>=0&&n<XN*XN&&dist[n]>=0&&dist[n]<dist[cur]&&(best<0||dist[n]<dist[best])) best=n;

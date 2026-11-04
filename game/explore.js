@@ -16,6 +16,8 @@ let XN=68; const XCS=2, XWALL_B=2.5, XWCH=12;          // grid cells per side, w
 let XWALL=XWALL_B;   // this floor's wall height: spacious floors stand twice as tall (dungeongen.js X2.wall), set as the scene is built
 // the stone each wall list wears: rock, large blocks, rubble; the same as diagonal pieces; then the deep mass (large blocks)
 const XWT=[0,1,2,0,1,2,1];
+const xWT=v=>EX&&EX.natural?0:XWT[v];   // a cave area's walls are all rock (xNatural)
+const XNATURAL=new Set(['hollows','deeps','rifts']);   // the areas that are natural caves; the rest stay built stonework
 const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
@@ -337,21 +339,28 @@ const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d
 
 // a wall block: a box with chamfered top edges and corners; rough=true pushes its faces in and
 // out a little (the same everywhere for the same point, so neighbouring faces still meet)
-function xWallGeo(rough,seed,H,caps,cheap){ H=H||XWALL; const fine=rough||H===XWALL_B, g=new THREE.BoxGeometry(XCS,H,XCS,fine?4:1,cheap?1:fine?5:4,fine?4:1),   // (dressed stone needs no bumps, only the steps of its foot shadow)
-    P=g.attributes.position, hw=XCS/2, hh=H/2, B=rough?.13:.08;
+/* org (a cave's rock, xNatural): the faces bulge twice as far, the top is a field of lumps instead of a flat slab, and
+   no stacked blocks stand on it. A spacious floor's dressed stone gets an edge loop near each upright corner, so the
+   shader can round off the corners that stand clear (xBevelV) and leave the joints between neighbours tight. */
+function xWallGeo(rough,seed,H,caps,cheap,org){ H=H||XWALL; const fine=rough||H===XWALL_B, loops=!fine, g=new THREE.BoxGeometry(XCS,H,XCS,fine?4:loops?3:1,cheap?1:org?3:fine?5:loops?2:4,fine?4:loops?3:1),   // (dressed stone needs no bumps, only the steps of its foot shadow)
+    P=g.attributes.position, hw=XCS/2, hh=H/2, B=rough?.13:H===XWALL_B?.08:.12, amp=org?2.1:1;   // (old floors keep their bevel)
   const hsh=(x,y,z)=>{ const v=Math.sin(x*127.1+y*311.7+z*74.7+seed*13.3)*43758.5453; return v-Math.floor(v); };
   for(let k=0;k<P.count;k++){ let x=P.getX(k), y=P.getY(k), z=P.getZ(k); const top=y>hh-1e-4, ex=Math.abs(Math.abs(x)-hw)<1e-4, ez=Math.abs(Math.abs(z)-hw)<1e-4;
+    if(loops){ if(Math.abs(Math.abs(x)-hw/3)<1e-4) x=Math.sign(x)*(hw-XBEV_LOOP); if(Math.abs(Math.abs(z)-hw/3)<1e-4) z=Math.sign(z)*(hw-XBEV_LOOP); }   // the loops, near the corners
     if(ex&&ez&&fine){ x-=Math.sign(x)*B*.5; z-=Math.sign(z)*B*.5; }   // the four upright corners are cut (not on a spacious floor's dressed stone: it grooved every joint)
-    if(top){ const sx=(hw-B)/hw; x*=sx; z*=sx; }                  // the top face shrinks: a bevel all round
+    if(top){ const sx=(hw-B)/hw; x*=sx; z*=sx; if(org) y+=(hsh(Math.round(x*10),7,Math.round(z*10))-.3)*.5*(1-Math.max(Math.abs(x),Math.abs(z))/hw*.6); }   // the top face shrinks: a bevel all round (a cave's rock: lumps on it)
     if(rough&&!top&&y>-hh+1e-4){ const n=hsh(Math.round(x*10),Math.round(y*10),Math.round(z*10))-.5, m=hsh(Math.round(z*10),Math.round(y*10),Math.round(x*10))-.5;
-      if(ex) x+=n*.14; if(ez) z+=m*.14; if(!ex&&!ez){ x+=n*.08; z+=m*.08; } y+=(hsh(x,y,z)-.5)*.06; }
+      if(ex) x+=n*.14*amp; if(ez) z+=m*.14*amp; if(!ex&&!ez){ x+=n*.08*amp; z+=m*.08*amp; } y+=(hsh(x,y,z)-.5)*.06*amp; }
     P.setXYZ(k,x,y,z); }
   g.computeVertexNormals();
   const N=g.attributes.normal, c=[];   // foot shadow up the face, a lit bevel, a near-black cap
   for(let k=0;k<P.count;k++){ const y=P.getY(k)/H+.5, ny=N.getY(k); const a=ny>.85?(H!==XWALL_B?.55:.34):ny<-.5?.2:ny>.3?1.05:1-(y>.97?.12:0); c.push(a,a,a); }   // the foot shadow is AO (xLit); a tall wall's top shows between its stacked blocks, less dark
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));
   if(H!==XWALL_B){ const U=g.attributes.uv; for(let k=0;k<U.count;k++) if(Math.abs(N.getY(k))<.5) U.setY(k,U.getY(k)*H/XWALL_B); }   // a taller wall shows more courses of stone, not taller stones
-  return caps?xCapsOn(g,hh,seed):g; }
+  // a spacious floor's block never shows its underside (it stands in the floor): leave it out, the edge loops cost enough
+  if(H!==XWALL_B&&g.index&&g.groups.length===6){ const I=g.index.array, G=g.groups[3], keep=[]; for(let i=0;i<I.length;i++) if(i<G.start||i>=G.start+G.count) keep.push(I[i]); g.setIndex(keep); g.clearGroups(); }
+  return caps&&!org?xCapsOn(g,hh,seed):g; }
+const XBEV_LOOP=.3;   // how far in from a dressed block's upright corner its edge loop runs (the rounding is half of it)
 /* The top of a tall wall: a 2x2 stack of dressed blocks at uneven heights, each bevelled, the dark of the wall's own
    cap showing in the joints between them (a broken skyline, read from far off). The same four heights in every
    block, but each wall is turned a quarter at random (xWallMatrix), so neighbours rarely match. Only the cells of
@@ -380,7 +389,7 @@ function xPrism(pts,y0,h,k){ const P=[], area=pts.reduce((a,p,i)=>{ const q=pts[
    (it repeats, so a longer face shows more stone, not stretched stone), the same bevel along its top edge, the
    same foot shadow and dark cap; cave rock bulges in and out like the rock blocks (never at the face's ends, so it
    meets the straight walls cleanly). */
-function xWedgeGeo(rough,seed){ const hw=XCS/2, hh=XWALL/2, B=rough?.13:.08, S2=Math.SQRT2, NL=6, NH=5, P=[], UV=[], C=[], I=[];
+function xWedgeGeo(rough,seed,org){ const hw=XCS/2, hh=XWALL/2, B=rough?.13:.08, S2=Math.SQRT2, NL=6, NH=5, P=[], UV=[], C=[], I=[];
   const hsh=(x,y,z)=>{ const v=Math.sin(x*127.1+y*311.7+z*74.7+seed*13.3)*43758.5453; return v-Math.floor(v); };
   const shade=(ny,y)=>{ const t=y/XWALL+.5; return ny>.85?.34:ny<-.5?.2:ny>.3?1.05:1-(t>.97?.12:0); };
   const quad=(a,b,c,d)=>{ I.push(a,b,c, a,c,d); };
@@ -400,7 +409,7 @@ function xWedgeGeo(rough,seed){ const hw=XCS/2, hh=XWALL/2, B=rough?.13:.08, S2=
   const k1=P.length/3; P.push(-hw,-hh,hw, -hw,-hh,-hw, -hw,hh,-hw, -hw,hh-B,hw); UV.push(1,0, 0,0, 0,1, 1,1); C.push(0,0,0,0,0,0,0,0,0,0,0,0); I.push(k1,k1+2,k1+1, k1,k1+3,k1+2);
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2)); g.setIndex(I); g.computeVertexNormals();
   const N=g.attributes.normal; for(let i=0;i<N.count;i++) C[i*3]=C[i*3+1]=C[i*3+2]=shade(N.getY(i),P[i*3+1]);
-  g.setAttribute('color',new THREE.Float32BufferAttribute(C,3)); return XWALL!==XWALL_B?xCapsOn(g,hh,seed,(sx,sz)=>sx<0&&sz<0):g; }
+  g.setAttribute('color',new THREE.Float32BufferAttribute(C,3)); return XWALL!==XWALL_B&&!org?xCapsOn(g,hh,seed,(sx,sz)=>sx<0&&sz<0):g; }
 // where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
 function xWallMatrix(m,c,rock,cut){ const W=xWedge(c), h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h);
   // a diagonal run keeps one height (the pieces and the blocks touching them), so its top reads as one clean line
@@ -437,10 +446,11 @@ function xBuildScene(){
   XLITMATS.clear();
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
+  EX.natural=EX.layout===2&&XNATURAL.has(A.id);   // a cave area: rough rock walls and floors, no masonry dressing (nature.js)
   // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
   const variant=new Int8Array(XN*XN).fill(-1);
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
-  for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
+  for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too (a cave's floor is all rock)
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
   const floorTex=EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
   floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
@@ -490,11 +500,14 @@ function xBuildScene(){
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
   // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
   // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
-  const tall=XWALL!==XWALL_B, wgeos=[xWallGeo(true,seed,0,tall),xWallGeo(false,seed,0,tall),xWallGeo(false,seed+1,0,tall),xWedgeGeo(true,seed),xWedgeGeo(false,seed),xWedgeGeo(false,seed+1),xWallGeo(false,seed+2,0,tall,true)];
+  // a cave area (xNatural): every wall is the same rough, lumpy rock, rounded off at its clear corners
+  const tall=XWALL!==XWALL_B, nat=EX.natural, wgeos=nat?[0,1,2].map(k=>xWallGeo(true,seed+k,0,tall,false,true)).concat([0,1,2].map(k=>xWedgeGeo(true,seed+k,true)),[xWallGeo(true,seed+3,0,tall,true,true)])
+    :[xWallGeo(true,seed,0,tall),xWallGeo(false,seed,0,tall),xWallGeo(false,seed+1,0,tall),xWedgeGeo(true,seed),xWedgeGeo(false,seed),xWedgeGeo(false,seed+1),xWallGeo(false,seed+2,0,tall,true)];
+  const bev=v=>!XSINK||v>=3&&v<=5?0:nat||XWT[v]===0?.25:XBEV_LOOP/2;   // how far a clear corner is rounded in (none on diagonal pieces)
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[XWT[v]],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),true),2,wallTex[XWT[v]]);
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),true,bev(v)),2,wallTex[xWT(v)]);
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -504,12 +517,12 @@ function xBuildScene(){
       cells.forEach(c=>EX.wIdx.set(c,[wm,-1])); wm.count=0; wm.userData.n=0; wm.visible=false; }
     // the same walls again, see-through: a wall between the camera and you moves here and fades (xWallCut)
     wgeo.setAttribute('aAlpha',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(1),1));
-    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[XWT[v]]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
+    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[xWT(v)]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
     for(let k=0;k<n;k++){ gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
     gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // spacious floors: which cells are solid wall (for the shader's inner faces, xInner) and a black base under every
   // wall cell, so a cut through the stonework shows black, never the depths below
-  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()) if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; }
+  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()){ if(!xLow(c)) D[c*4+1]=255; if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; } }   // (green: any wall block beside, for the rounded corners: xBevelV)
     const T=new THREE.DataTexture(D,XN,XN,THREE.RGBAFormat); T.magFilter=T.minFilter=THREE.NearestFilter; T.needsUpdate=true;
     XDITHER.uSolid.value=T; XDITHER.uSolidK.value.set(XN*XCS,1,XWALL-.1);
     const P=[]; for(const c of EX.wIdx.keys()){ const x0=xcx(c)*XCS, z0=xcy(c)*XCS, x1=x0+XCS, z1=z0+XCS; P.push(x0,-.03,z0, x0,-.03,z1, x1,-.03,z1, x0,-.03,z0, x1,-.03,z1, x1,-.03,z0); }
@@ -587,10 +600,11 @@ function xBuildScene(){
   // your own light on the floor: a soft circle in the area's colour, as in the old pixel crawlers
   EX.myGlow=new THREE.Mesh(new THREE.PlaneGeometry(9,9),new THREE.MeshBasicMaterial({map:xGlowTex(),color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffe8c0),.5),transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false}));
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
-  xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
+  if(!EX.natural) xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2) xArches(grp,A,S,seed);
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
+  if(typeof xNature==='function') xNature(grp,A,S,seed);   // the area's own natural dressing (nature.js)
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
@@ -856,6 +870,7 @@ function xMotes(grp,A){ const N=48, pos=new Float32Array(N*3).fill(-50), g=new T
 function xAirTick(T,dt){
   if(EX.rise){ const a=EX.rise.geometry.attributes.position.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*(.6+((k*7)%5)*.12); if(a[k+1]>-.3) a[k+1]=-9; } EX.rise.geometry.attributes.position.needsUpdate=true; EX.rise.position.set(EX.px,0,EX.pz); }
   if(EX.puddles) EX.puddles.material.opacity=.42+.12*Math.sin(T*1.6);
+  if(EX.natPools&&typeof xNatureTick==='function') xNatureTick(T);
   if(EX.deepFog){ EX.deepFog.material.map.offset.x=T*.006; EX.deepFog.material.map.offset.y=T*.004; }
   if(EX.motes){ const a=EX.motes.geometry.attributes.position.array, ph=EX.motes.userData.ph, L=(X3.pool||[]).map(P=>P.userData.L).filter(Boolean);
     for(let k=0;k<ph.length;k++){ const src=L[k%Math.max(1,L.length)]; if(!src){ a[k*3+1]=-50; continue; } ph[k]=(ph[k]+dt*.22)%1;
@@ -916,7 +931,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   // the top-edge trim and the pillars are instanced, so they can sink with the cutaway like the walls
   const trimGeo=new THREE.BoxGeometry(1,1,1), trims=[], pills=[];
   const v2=EX.layout===2;
-  for(const c of EX.wIdx.keys()){ if(xLow(c)) continue; const x=xcx(c), y=xcy(c), W=xWedge(c);
+  for(const c of EX.wIdx.keys()){ if(xLow(c)||EX.natural) continue; const x=xcx(c), y=xcy(c), W=xWedge(c);   // (a cave's rock has no cornice, trim or skirting)
     if(W){ if(v2) trims.push([c,W.sx,W.sy]); continue; }   // a diagonal piece: one trim along its slanted face
     for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]) if(floorAt(x+dx,y+dy)&&(EX.room[xi(x+dx,y+dy)]>=0||v2&&!xWedge(xi(x+dx,y+dy)))&&EX.t[xi(x+dx,y+dy)]===T_FLOOR) trims.push([c,dx,dy]); }
   for(const r of EX.rooms){ if(r.nook) continue; for(const [x,y] of [[r.x-1,r.y-1],[r.x+r.w,r.y-1],[r.x-1,r.y+r.h],[r.x+r.w,r.y+r.h]]) if(rock(x,y)&&EX.wIdx.has(xi(x,y))) pills.push(xi(x,y)); }
@@ -930,7 +945,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   EX.corMesh=inst(xDitherMat(xPhong({color:tone(.62)})),trims.length); EX.skirtMesh=inst(xDitherMat(xPhong({color:tone(.16)})),trims.length);
   // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
   // where the halls are built, rough rock columns in the caves
-  const cave=['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
+  const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
   EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
   EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
@@ -1175,8 +1190,8 @@ function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door,clip); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':'')+(clip?'c':''); return m; }
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
 let XSINK_DOOR=false, XSINK_CLIP=null;
-function xDitherMat(m,uvj){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide;
-  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'');
+function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0;
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
     // so no two neighbours show the same face; on a spacious floor a block standing lower (a low near wall, xStepLow)
@@ -1185,8 +1200,20 @@ function xDitherMat(m,uvj){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     sh.fragmentShader='varying vec3 vXWP; uniform vec3 uBall; uniform float uRad; uniform float uPx;\n'
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'
-      +sh.fragmentShader.replace('void main() {','void main() {\n  if(uRad>0.0&&vXWP.z>uBall.z+.25){ float d=distance(vXWP,uBall); if(d<uRad){ float f=1.0-smoothstep(uRad*.5,uRad,d); if(xb4(floor(gl_FragCoord.xy/uPx))<f*.94) discard; } }'); };
+      +sh.fragmentShader.replace('void main() {','void main() {\n  if(uRad>0.0&&vXWP.z>uBall.z+.25){ float d=distance(vXWP,uBall); if(d<uRad){ float f=1.0-smoothstep(uRad*.5,uRad,d); if(xb4(floor(gl_FragCoord.xy/uPx))<f*.94) discard; } }');
+    if(bev) xBevelV(sh,bev); };
   return m; }
+/* The rounded corners: an instanced wall block's upright corner that stands clear (no wall in either cell beside it,
+   from the solid map's green, xBuildScene) is pulled in to the middle of a chamfer between the edge loops either side
+   (xWallGeo), and its normal turns to face out of the corner, so the light rolls round it. A corner against a
+   neighbour stays square, so the joints between blocks stay tight. Applied last, so the other patches see the moved
+   point. */
+function xBevelV(sh,bev){ sh.vertexShader='uniform sampler2D uSolid; uniform vec3 uSolidK;\nvec3 xBP; float xBC;\n'
+    +sh.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n  xBP=position; xBC=0.0;\n  #ifdef USE_INSTANCING\n'
+    +'  { vec2 a=abs(xBP.xz); if(min(a.x,a.y)>'+(XCS/2-.22).toFixed(3)+'){ vec2 s=sign(xBP.xz), wd=sign((instanceMatrix*vec4(s.x,0.0,s.y,0.0)).xz), cw=instanceMatrix[3].xz;\n'
+    +'    float A=texture2D(uSolid,(cw+vec2(wd.x*'+XCS.toFixed(1)+',0.0))/uSolidK.x).g, B=texture2D(uSolid,(cw+vec2(0.0,wd.y*'+XCS.toFixed(1)+'))/uSolidK.x).g;\n'
+    +'    if(A<.5&&B<.5){ xBP.xz=s*min(a,vec2('+(XCS/2-bev).toFixed(3)+')); xBC=1.0; if(abs(objectNormal.y)<.5) objectNormal=normalize(vec3(s.x,0.0,s.y)); } } }\n  #endif')
+    .replace('#include <begin_vertex>','#include <begin_vertex>\n  transformed=xBP;'); }
 // a material that takes each instance's opacity from the aAlpha attribute
 function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCacheKey=()=>'xghost';
   m.onBeforeCompile=sh=>{ sh.vertexShader='attribute float aAlpha;\nvarying float vAlpha;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vAlpha=aAlpha;');
@@ -1198,13 +1225,13 @@ function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [w
   // thick, and glass three blocks deep reads as a green fog); on a spacious floor v is the wall's height itself
   // (xStepLow: a low near wall), and the cut round you is in the shader (xCutAway)
   const sink=XLIT.dCut||EX.layout===2, cutH=EX.layout===2?v:sink?1-(1-v)/(1-XCUT)*(1-XLIT.dCutH*XWALL_B/XWALL):1;
-  xWallMatrix(m,c,XWT[vi]===0,cutH); const solid=sink||v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
-  const put=(cell,slot)=>{ xWallMatrix(m,cell,XWT[vi]===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
+  xWallMatrix(m,c,xWT(vi)===0,cutH); const solid=sink||v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
+  const put=(cell,slot)=>{ xWallMatrix(m,cell,xWT(vi)===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
   wm.setMatrixAt(k,solid?m:zero);
   if(!solid){ if(EX.gSlot[c]<0){ EX.gSlot[c]=L.length; L.push(c); gm.count=L.length; gm.visible=true; } put(c,EX.gSlot[c]); }
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
-  xDressShow(c,sink?cutH:solid?1:0); }
+  xDressShow(c,sink?cutH:solid?1:0); if(EX.nat) xNatShow(c,sink?cutH:solid?1:0); }   // (the area's stalagmites, moss and the rest on it: nature.js)
 /* Spacious floors: low near walls. A wall that would hide any floor behind it from the camera stands low (the debug
    menu's 'Near wall height'), so every room's near side is a ledge you see over and its far walls stand tall, wherever
    you are: the room you are in, the doors along its sides and you are never behind stone. A full-height wall hides

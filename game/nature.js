@@ -100,6 +100,7 @@ function xNatMat(kind,K){ const ice=(kind==='mite'&&K.mite&&K.mite.ice)||(kind==
   else if(kind==='clump'||kind==='clumpTop') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a});
   else if(kind==='vine') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a, side:THREE.DoubleSide});
   else m=xPhong({color:0xffffff, shininess:kind==='block'?6:10, specular:0x161616});
+  if(kind!=='shard'){ xNmapGrain(m); m.userData.xao=2; }   // (stone grain on the faces, and the foot shade of things standing on the floor)
   return typeof xSinkPatch==='function'?xSinkPatch(m):m; }
 
 /* A wall's pieces at its height this moment: cut is the share of a full wall it stands at (xWallFade). */
@@ -134,7 +135,7 @@ function xNatPatches(grp,K,R,floorOK,pz){ if(!K.patch) return; const cv=document
     for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]){ const w=c+dx+dy*XN; if(!EX.wIdx.has(w)||R()>K.patch.n) continue;
       quad(xw(c)+dx*.55+(R()-.5)*.6,xz(c)+dy*.55+(R()-.5)*.6,1.4+R()*1.2,.9+R()*.8,dx?Math.PI/2:0); } }
   if(!P.length) return; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.computeVertexNormals();
-  const mesh=new THREE.Mesh(g,new THREE.MeshPhongMaterial({map:tex,color:new THREE.Color(K.patch.col),transparent:true,opacity:.7,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}));
+  const mesh=new THREE.Mesh(g,xNmapLuma(new THREE.MeshPhongMaterial({map:tex,color:new THREE.Color(K.patch.col),transparent:true,opacity:.7,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.5));
   mesh.renderOrder=0; grp.add(mesh); }
 
 /* Pools: a few still pools on the floor of the rooms, each a blob over a few free cells (never on a door, the stairs,
@@ -156,6 +157,7 @@ function xNatPools(grp,K,R,floorOK,pz){ if(!K.pool) return; const P=K.pool, free
     const surf=xNatSurface(P.kind), col=new THREE.Color(P.col);
     const mat=P.kind==='lava'?new THREE.MeshBasicMaterial({color:col,map:surf,alphaMap:alpha,transparent:true,depthWrite:false})
       :new THREE.MeshPhongMaterial({color:col,map:surf,alphaMap:alpha,transparent:true,opacity:P.kind==='ice'?.85:.82,depthWrite:false,shininess:P.kind==='ice'?120:90,specular:P.kind==='black'?0x404858:0x8aa0b0});
+    if(!mat.isMeshBasicMaterial) xNmapLuma(mat,P.kind==='ice'?.6:.9);   // (its ripples, or the ice's cracks, catch the light)
     const mesh=new THREE.Mesh(geo,mat); mesh.position.set((x0+w/2)*XCS,.03,(y0+h/2)*XCS); mesh.renderOrder=0; grp.add(mesh);
     let glow=null; if(P.kind==='lava'){ glow=new THREE.Mesh(new THREE.PlaneGeometry(w*XCS*1.5,h*XCS*1.5).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:new THREE.Color(P.rim),transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false})); glow.position.set(mesh.position.x,.035,mesh.position.z); glow.renderOrder=2; glow.visible=false; grp.add(glow); }
     EX.natPools.push({mesh,glow,surf,kind:P.kind,cells:blob,ph:R()*6}); made++; } }
@@ -300,3 +302,25 @@ function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0
           H[o]=2+fv*.6; return T(.14+xfH(i>>6,j>>6,s)*.08+(fv-.5)*.08); });
         const x=c.getContext('2d'); for(let k=0;k<120;k++){ x.fillStyle='rgba('+st.join(',')+','+(.3+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1,1); } return c; },0) ] };
   const L=F[id]; if(!L) return null; return L.map((g,k)=>g(seed+k*101)); }
+
+/* ---------------- normal maps for what has no painted height ----------------
+   The floors and walls carry height fields (look.js xLitTag turns them into normal maps). The rest is given one here,
+   kept where the lighting keeps it (material.userData.nmap: look.js xLitDefines puts it on while the debug menu's
+   normal maps are on, and takes it off when they are off):
+     xNmapLuma   a painted texture (a room's floor border and centre piece, a pool's surface, the floor growth):
+                 its own brightness is its height, so its painted joints and ripples catch the light
+     xNmapGrain  the 3D pieces (stalagmites, stalactites, boulders, moss, creepers, the pillars): one shared tileable
+                 grain of stone, so their faces are not plastic-smooth */
+function xNormalMapWH(H,W,Hh,k){ const c=document.createElement('canvas'); c.width=W; c.height=Hh; const x=c.getContext('2d'), im=x.createImageData(W,Hh), at=(i,j)=>H[((j+Hh)%Hh)*W+((i+W)%W)];
+  for(let j=0;j<Hh;j++) for(let i=0;i<W;i++){ const nx=-(at(i+1,j)-at(i-1,j))*k, ny=(at(i,j+1)-at(i,j-1))*k, l=Math.hypot(nx,ny,1), o=(j*W+i)*4;
+    im.data[o]=(nx/l*.5+.5)*255; im.data[o+1]=(ny/l*.5+.5)*255; im.data[o+2]=(1/l*.5+.5)*255; im.data[o+3]=255; }
+  x.putImageData(im,0,0); return c; }
+function xNmapLuma(m,k){ const t=m&&m.map, cv=t&&t.image; if(!cv||!cv.getContext) return m;
+  const W=cv.width, Hh=cv.height, D=cv.getContext('2d').getImageData(0,0,W,Hh).data, H=new Float32Array(W*Hh);
+  for(let i=0;i<W*Hh;i++) H[i]=(D[i*4]*.3+D[i*4+1]*.59+D[i*4+2]*.11)/255*(D[i*4+3]/255)*10;
+  const n=new THREE.CanvasTexture(xNormalMapWH(H,W,Hh,k||.35)); n.wrapS=t.wrapS; n.wrapT=t.wrapT; n.repeat.copy(t.repeat); n.magFilter=t.magFilter; n.minFilter=t.minFilter;
+  m.userData.nmap=n; m.normalMap=n; m.needsUpdate=true; return m; }
+function xNmapGrain(m){ if(!XNG.grain){ const N=64, R=caveRng(4242), f=xFbm(N,R,4), g=xFbm(N,R,16), H=new Float32Array(N*N);
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=f(i,j)*6+g(i,j)*3;
+    const t=new THREE.CanvasTexture(xNormalMapWH(H,N,N,1.4)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=t.minFilter=THREE.LinearFilter; XNG.grain=t; }
+  m.userData.nmap=XNG.grain; m.userData.nmapShared=1; m.normalMap=XNG.grain; return m; }

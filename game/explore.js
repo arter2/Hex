@@ -863,9 +863,9 @@ function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalShee
   for(const [i] of EX.doors){ for(const n of xAdj4(i)){ if(EX.t[n]!==T_FLOOR||EX.room[n]<0) continue; const dx=xcx(n)-xcx(i), dy=xcy(n)-xcy(i);
       for(let k=0;k<3;k++){ const c=n+k*(dx+dy*XN); if(c<0||EX.t[c]!==T_FLOOR) break; quad(0,xw(c),xz(c),2.4-k*.4,5,0); } } }
   const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=0; grp.add(m); return m; };   // drawn before the darkness veil (1), so ground you have not found hides its stains, puddles and glowing pools
-  mk(0,new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}));
+  mk(0,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.45));
   EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
-  mk(2,new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3})); }
+  mk(2,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3}),.8)); }
 // glowing motes that rise and wink around the lights near you
 function xMotes(grp,A){ const N=48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
   EX.motes=new THREE.Points(g,new THREE.PointsMaterial({color:0xffd9a0,size:.14,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false})); EX.motes.userData.ph=Array.from({length:N},()=>Math.random()); grp.add(EX.motes); }
@@ -950,6 +950,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
   EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
   EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
+  if(typeof xNmapGrain==='function') for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]) xNmapGrain(P.material);   // (stone grain: nature.js)
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
@@ -1070,7 +1071,7 @@ function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas')
       x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
   return c; }
 function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(S,R),true), quads=[];
-  const mat=xLitTag(new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),1);
+  const mat=xLitTag(new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),1); if(typeof xNmapLuma==='function') xNmapLuma(mat,.45);   // (its own brightness is its relief: nature.js)
   const ins=.32, bw=.62, pos=[], uv=[], seg=(x0,z0,x1,z1,horiz)=>{ const L=horiz?x1-x0:z1-z0, u=L/(bw*3.2);
     if(horiz){ pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, 0,0, u,0, 0,1, u,0, u,1); }
     else { pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, u,1, u,0, 0,1, u,0, 0,0); } };
@@ -1078,7 +1079,7 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(
     seg(X0,Z0,X1,Z0+bw,true); seg(X0,Z1-bw,X1,Z1,true); seg(X0,Z0+bw,X0+bw,Z1-bw,false); seg(X1-bw,Z0+bw,X1,Z1-bw,false);
     if(r.w>=5&&r.h>=5){ const kinds=['mosaic','rug','seal'], kind=r.w===r.h||Math.abs(r.w-r.h)<=1?kinds[R()*3|0]:kinds[R()*2|0];
       const cw=kind==='seal'?Math.max(2,Math.round(Math.min(r.w,r.h)*.55)):Math.max(2,Math.round(r.w*.55)), ch=kind==='seal'?cw:Math.max(2,Math.round(r.h*.5)), cx=(r.x+r.w/2)*XCS, cz=(r.y+r.h/2)*XCS;
-      const m=new THREE.Mesh(new THREE.PlaneGeometry(cw*XCS-.6,ch*XCS-.6),xLitTag(new THREE.MeshPhongMaterial({map:xTex(xInlayTex(S,R,kind,Math.min(4,cw),Math.min(4,ch))),shininess:4,specular:0x111111,polygonOffset:true,polygonOffsetFactor:-1}),1));
+      const m=new THREE.Mesh(new THREE.PlaneGeometry(cw*XCS-.6,ch*XCS-.6),(m=>typeof xNmapLuma==='function'?xNmapLuma(m,.45):m)(xLitTag(new THREE.MeshPhongMaterial({map:xTex(xInlayTex(S,R,kind,Math.min(4,cw),Math.min(4,ch))),shininess:4,specular:0x111111,polygonOffset:true,polygonOffsetFactor:-1}),1)));
       m.rotation.x=-Math.PI/2; m.position.set(cx,.008,cz); grp.add(m); } }
   if(pos.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.computeVertexNormals();
     const band=new THREE.Mesh(g,mat); band.position.y=.012; grp.add(band); } }

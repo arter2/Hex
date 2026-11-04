@@ -293,7 +293,8 @@ function xWallSections(grp,S,seed){ const R=caveRng(seed+911), tone=v=>new THREE
   Q.add(XG.box,fr,0,.9,.1,0,0,0,1.2,.12,.22);
   const smat=xDitherMat(xPhong({vertexColors:true}));
   EX.sectM={p:inst(P.build(smat).geometry,smat,n.p),n:inst(Q.build(smat).geometry,smat,n.n),d:[0,1,2,3].map(k=>{ const g=new THREE.PlaneGeometry(1,1), U=g.attributes.uv; for(let i=0;i<U.count;i++) U.setX(i,(k+U.getX(i))/4);
-    return inst(g,xSinkPatch(xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2})),n.d[k]); })}; }
+    const dm=xSinkPatch(xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2})); if(typeof xNmapLuma==='function') xNmapLuma(dm,.4);   // (a crack or streak catches the light: nature.js)
+    return inst(g,dm,n.d[k]); })}; }
 // the four decals side by side (64 x 128 each): soot streaks, a crack, a water stain, moss
 function xDecalTex(S,seed){ if(xDecalTex.c&&xDecalTex.k===seed) return xDecalTex.t; const W=64, Hh=128, c=document.createElement('canvas'); c.width=W*4; c.height=Hh; const x=c.getContext('2d'), R=caveRng(seed+5);
   const dark='rgba('+xTone(S,.02).join(',')+',', moss='rgba('+[52,74,40].join(',')+',';

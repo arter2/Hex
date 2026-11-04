@@ -44,12 +44,15 @@ function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
   if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
-  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns); }
+  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
+  if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
 function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(m);
   const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
   m.extensions=Object.assign(m.extensions||{},{derivatives:true});
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit';
+  // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
+  const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'');
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;

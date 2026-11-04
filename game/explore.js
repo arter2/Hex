@@ -639,7 +639,8 @@ function xStairLights(grp,A){ const tex=xGlowTex(), boss=isBossDepth(EX.depth);
       const th=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0xffa040,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); th.scale.set(3,3,1); th.position.set(0,1.85,0); th.renderOrder=2; g.add(th);
       g.visible=false; grp.add(g); EX.glows.push({g,floor:cell,mats,halo:th,flame,torch:true,ph:Math.random()*6}); } } }
 // a chest: plain wood, a purple lid when rich, gold trim glowing on a legendary hoard
-function xChestMesh(c){ const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:c.legend?0x806010:0x402a08});
+function xChestMesh(c){ if(typeof xChestBuild==='function') return xChestBuild(c);   // the rebuilt chest (surface.js)
+  const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:c.legend?0x806010:0x402a08});
   const g=new THREE.Group(); g.position.set(xw(c.cell),0,xz(c.cell)); g.rotation.y=(Math.random()-.5)*.6;
   g.add(xBox(1,.5,.66,cwood,0,.25,0), xBox(.12,.54,.7,gold,0,.27,0));
   const lid=new THREE.Group(); lid.position.set(0,.5,-.33); lid.add(xBox(1,.22,.66,c.rich?xMat(0x5a3a8a):cwood,0,.11,.33), xBox(.14,.24,.7,gold,0,.12,.33)); g.add(lid);
@@ -950,7 +951,6 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
   EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
   EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
-  if(typeof xNmapGrain==='function') for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]) xNmapGrain(P.material);   // (stone grain: nature.js)
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';

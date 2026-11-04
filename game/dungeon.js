@@ -486,13 +486,17 @@ function xPlacePuzzle(r){
     EX.taken=snap.taken; }
   r.role=null; }
 const PUZZLE_BUILD={
-  plates(r){ if(r.w<5||r.h<5) return null; const cols=[]; for(let x=r.x+1;x<=r.x+r.w-2;x++) cols.push(x); cols.sort(()=>XR()-.5);
+  // each plate with its block two cells south and room to push from behind it: a run of four of the room's own floor
+  // cells down one column, the northmost such run in it (a spacious floor's room is shaped: its box holds wall)
+  plates(r){ if(r.w<5||r.h<5) return null; const own=c=>EX.room[c]===r.id&&EX.t[c]===T_FLOOR;
+    const run=x=>{ for(let y=r.y+1;y+3<=r.y+r.h-1;y++){ const cs=[0,1,2,3].map(k=>xi(x,y+k)); if(cs.every(own)&&cs.every(c=>!EX.taken.has(c))&&cs.slice(0,3).every(c=>!nearDoor(c))) return y; } return -1; };
+    const cols=[]; for(let x=r.x+1;x<=r.x+r.w-2;x++) if(run(x)>=0) cols.push(x); cols.sort(()=>XR()-.5);
     const pick2=cols.find(a=>cols.some(b=>Math.abs(a-b)>=2)), c2=cols.find(b=>Math.abs(b-pick2)>=2); if(pick2==null||c2==null) return null;
-    const plates=[], blocks=[];
-    for(const x of [pick2,c2]){ const pl=xi(x,r.y+1), bl=xi(x,r.y+3), from=xi(x,r.y+4);
-      if([pl,bl,from].some(c=>EX.taken.has(c)||nearDoor(c)&&c!==from)) return null;
+    const plates=[], blocks=[]; let low=0;
+    for(const x of [pick2,c2]){ const y=run(x), pl=xi(x,y), bl=xi(x,y+2); low=Math.max(low,y+3);
       plates.push(xProp('plate',pl,{solid:false})); if(!xSolidOK(bl)) return null; blocks.push(xProp('block',bl,{home:bl})); }
-    const corner=xRoomCells(r).filter(c=>xcy(c)===r.y+r.h-1&&!EX.taken.has(c)&&!nearDoor(c)&&!plates.some(p=>xcx(p.cell)===xcx(c)));
+    // the reset plate: on the room's own floor along its southern edge, below the blocks
+    const rest=xRoomCells(r).filter(c=>own(c)&&xcy(c)>low&&!EX.taken.has(c)&&!nearDoor(c)&&!plates.some(p=>xcx(p.cell)===xcx(c))), far=Math.max(-1,...rest.map(xcy)), corner=rest.filter(c=>xcy(c)===far);
     if(!corner.length) return null; xProp('reset',xpick(corner),{solid:false});
     return {plates,blocks}; },
   statues(r){ if(r.w<5||r.h<5) return null; const core=xi(r.cx,r.cy); if(!xSolidOK(core)) return null; xProp('core',core,{});

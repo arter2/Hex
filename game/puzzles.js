@@ -27,18 +27,44 @@ function pzTone(f,dur){ if(typeof sfxOn==='function'&&!sfxOn()) return; try{ con
   o.connect(g); g.connect(A.destination); o.start(t); o.stop(t+(dur||.6)+.05); }catch(e){} }
 const pzCells=pz=>pz._cells||(pz._cells=new Set(pz.tiles.map(t=>t.cell).concat([pz.start.cell,pz.end.cell])));
 const SYM=[{k:'sun',c:0xf2c94c,css:'#f2c94c',i:'☀'},{k:'frost',c:0x7fe3ff,css:'#7fe3ff',i:'❄'},{k:'moon',c:0xb48cff,css:'#b48cff',i:'☾'}];
-function pzGrid(r){ const x0=r.x+1,x1=r.x+r.w-2,y0=r.y+1,y1=r.y+r.h-2; if(x1-x0+1<4||y1-y0+1<3) return null; return {x0,x1,y0,y1}; }
-function pzWalk(G){ let y=xri(G.y0,G.y1); const sy=y, cells=[];
-  for(let x=G.x0;x<=G.x1;x++){ cells.push(xi(x,y)); if(x<G.x1&&XR()<.6){ const ty=xri(G.y0,G.y1); while(y!==ty){ y+=Math.sign(ty-y); cells.push(xi(x,y)); } } }
-  return {cells,sy,ey:y}; }
-// the field of stones for the pressure path and memory tiles
-function pzField(r,mem){ const G=pzGrid(r); if(!G) return null; const W=pzWalk(G), safe=new Set(W.cells), start=xi(r.x,W.sy), end=xi(r.x+r.w-1,W.ey);
-  const grid=[]; for(let y=G.y0;y<=G.y1;y++) for(let x=G.x0;x<=G.x1;x++) grid.push(xi(x,y));
-  if(grid.concat([start,end]).some(c=>EX.taken.has(c))) return null;
+/* Where a grid puzzle lies: a rectangle of the room's own floor, with a rim of the room's floor all round it to walk on
+   and to set the plates in, nothing standing in it yet and no doorway beside it. Found in the room itself, not its box:
+   a spacious floor's room is shaped (its box holds wall, diagonal pieces, a low wall), and the grid puzzles used to
+   take the box's inside whole, so they never fitted there. In an old floor's plain room the box's inside is such a
+   rectangle, so it is found as before. len x wid cells, len along x (or, with turn, along y if that fits better):
+   the biggest that fits up to the caps, nearest the room's middle. Returns {x0,y0,x1,y1,ax, at(u,v)} (u along, v across). */
+function pzRect(r,len,wid,turn){ const [minL,maxL]=len, [minW,maxW]=wid;
+  const ok=c=>EX.room[c]===r.id&&EX.t[c]===T_FLOOR, free=c=>ok(c)&&!EX.taken.has(c)&&!nearDoor(c);
+  const sizes=[]; for(let L=maxL;L>=minL;L--) for(let W=maxW;W>=minW;W--) for(const ax of turn?[0,1]:[0]) sizes.push({L,W,ax});
+  sizes.sort((a,b)=>b.L*b.W-a.L*a.W);
+  let area=0, best=null, bd=1e9;
+  for(const s of sizes){ if(best&&s.L*s.W<area) break; const w=s.ax?s.W:s.L, h=s.ax?s.L:s.W;
+    for(let y=Math.max(1,r.y);y+h<=Math.min(XN-1,r.y+r.h);y++) for(let x=Math.max(1,r.x);x+w<=Math.min(XN-1,r.x+r.w);x++){
+      let good=true; for(let yy=y-1;yy<=y+h&&good;yy++) for(let xx=x-1;xx<=x+w&&good;xx++){ const c=xi(xx,yy); if(xx>=x&&xx<x+w&&yy>=y&&yy<y+h?!free(c):!ok(c)) good=false; }
+      if(!good) continue; const d=Math.hypot(x+w/2-(r.x+r.w/2),y+h/2-(r.y+r.h/2))+XR()*.5;
+      if(!best||d<bd){ best={x0:x,y0:y,x1:x+w-1,y1:y+h-1,ax:s.ax,L:s.L,W:s.W}; bd=d; area=s.L*s.W; } } }
+  if(!best) return null; const B=best; B.at=(u,v)=>B.ax?xi(B.x0+v,B.y0+u):xi(B.x0+u,B.y0+v); return B; }
+// a way across the rectangle from (0,sv) to (L-1,ev): one step along at a time, wandering across now and then
+function pzWalk(R,sv,ev){ let v=sv; const cells=[];
+  for(let u=0;u<R.L;u++){ cells.push(R.at(u,v)); const tv=u===R.L-1?ev:u<R.L-1&&XR()<.6?xri(0,R.W-1):v; while(v!==tv){ v+=Math.sign(tv-v); cells.push(R.at(u,v)); } }
+  return cells; }
+// the field of stones for the pressure path and memory tiles: the plates stand in the rim at either end
+function pzField(r,mem){ const R=pzRect(r,[4,9],[3,6],true); if(!R) return null;
+  const plate=(u,v)=>{ const c=R.at(u,v); return EX.taken.has(c)?-1:c; }, ends=u=>{ const vs=[]; for(let v=0;v<R.W;v++) if(plate(u,v)>=0) vs.push(v); return vs; };
+  const sv0=ends(-1), ev0=ends(R.L); if(!sv0.length||!ev0.length) return null;
   const order=mem?null:(EX.depth>=6?[0,1,2]:[0,1]).sort(()=>XR()-.5), tiles=[];
-  for(const c of grid){ const i=W.cells.indexOf(c); tiles.push(xProp('ptile',c,{solid:false, safe:safe.has(c), sym:mem?-1:i>=0?order[i%order.length]:xri(0,2)})); }
+  // a biting stone beside the way never shows the symbol you step on next from there, so the carved order is enough to
+  // cross; a way that hems a stone in with all three symbols due beside it is walked again
+  let sv, ev, walk, safe, next;
+  for(let t=0;;t++){ if(t>=20) return null; sv=xpick(sv0); ev=xpick(ev0); walk=pzWalk(R,sv,ev); safe=new Set(walk); next=new Map();
+    if(!mem) walk.forEach((c,k)=>{ for(const n of xAdj4(c)) if(!safe.has(n)){ if(!next.has(n)) next.set(n,new Set()); next.get(n).add(order[(k+1)%order.length]); } });
+    if(![...next.values()].some(s=>s.size>=3)) break; }
+  const start=R.at(-1,sv), end=R.at(R.L,ev);
+  for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++){ const c=R.at(u,v), i=walk.indexOf(c); let sym=-1;
+    if(!mem){ if(i>=0) sym=order[i%order.length]; else { const no=next.get(c), can=[0,1,2].filter(k=>!no||!no.has(k)); sym=can.length?xpick(can):xri(0,2); } }
+    tiles.push(xProp('ptile',c,{solid:false, safe:safe.has(c), sym})); }
   const sp=xProp('pplate',start,{solid:false, role:'start'}), ep=xProp('pplate',end,{solid:false, role:'end'});
-  if(!mem){ const t=[start+XN,start-XN].find(c=>c>=0&&EX.room[c]===r.id&&!EX.taken.has(c)&&xSolidOK(c)); if(t==null) return null; xProp('tablet',t,{text:'Carved by the plate: step only in this order, again and again: '+order.map(k=>SYM[k].i).join(' → ')+'. Every other stone bites.'}); }
+  if(!mem){ const t=xAdj4(start).find(c=>EX.room[c]===r.id&&!safe.has(c)&&!tiles.some(p=>p.cell===c)&&xSolidOK(c)); if(t==null) return null; xProp('tablet',t,{text:'Carved by the plate: step only in this order, again and again: '+order.map(k=>SYM[k].i).join(' → ')+'. Every other stone bites.'}); }
   return {tiles, start:sp, end:ep, run:false, showT:0, mem:!!mem, order}; }
 
 /* ---------------- the puzzle builders ---------------- */
@@ -49,15 +75,15 @@ Object.assign(PUZZLE_BUILD,{
     for(let k=0;k<4;k++){ const c=xFreeSolid(r,true); if(c<0) return null; bells.push(xProp('bell',c,{idx:k})); }
     const g=xFreeSolid(r,false); if(g<0) return null; xProp('gong',g,{});
     return {bells, seq:Array.from({length:n},()=>xri(0,3)), step:0, heard:false}; },
-  ice(r){ const x0=r.x+1,x1=r.x+r.w-2,y0=r.y+1,y1=r.y+r.h-2; if(x1-x0+1<5||y1-y0+1<3) return null;
-    const ice=[]; for(let y=y0;y<=y1;y++) for(let x=x0;x<=x1;x++) ice.push(xi(x,y)); if(ice.some(c=>EX.taken.has(c))) return null;
+  ice(r){ const R=pzRect(r,[5,9],[3,6],true); if(!R) return null; const {x0,x1,y0,y1}=R;   // (a rim of dry floor all round it: pzRect)
+    const ice=[]; for(let y=y0;y<=y1;y++) for(let x=x0;x<=x1;x++) ice.push(xi(x,y));
     const inner=ice.filter(c=>xcx(c)>x0&&xcx(c)<x1&&xcy(c)>y0&&xcy(c)<y1);
     for(let t=0;t<400;t++){ const goal=xpick(inner), rocks=new Set();
       // block each straight line into the pedestal, so it can't be reached in one slide; then a stray boulder or two
       for(const [dx,dy] of [[0,-1],[1,0],[0,1],[-1,0]]){ const line=[]; for(let k=1;;k++){ const x=xcx(goal)+dx*k, y=xcy(goal)+dy*k, c=xi(x,y); if(x<x0||x>x1||y<y0||y>y1) break; line.push(c); } if(line.length&&XR()<.85) rocks.add(xpick(line)); }
       for(let k=xri(1,2);k>0;k--){ const c=xpick(ice); if(c!==goal) rocks.add(c); }
       const iceSet=new Set(ice), steps=pzIceSolve(r,iceSet,rocks,goal); if(steps==null||steps<2) continue;
-      xProp('icefloor',xi(r.cx,r.cy),{solid:false, room:r.id, x0,x1,y0,y1});
+      xProp('icefloor',xi((x0+x1)>>1,(y0+y1)>>1),{solid:false, room:r.id, x0,x1,y0,y1});   // (the sheet's own middle: a shaped room's middle can be wall)
       for(const c of rocks) xProp('iceboulder',c,{}); const gp=xProp('icegoal',goal,{});
       for(const c of ice) if(!rocks.has(c)&&c!==goal) EX.taken.add(c);
       return {ice:[...iceSet], goal:gp, rocks:[...rocks]}; }
@@ -67,11 +93,11 @@ Object.assign(PUZZLE_BUILD,{
     const s=xFreeSolid(r,true); if(s<0) return null; const sc=xProp('scale',s,{});
     const t=xFreeSolid(r,false); if(t<0) return null; xProp('tablet',t,{text:'Chiselled under the scale: “Three stones, and the scale weighs '+target+'.”'});
     return {stones, target, scale:sc}; },
-  shift(r){ const ix0=r.x+1, iy0=r.y+1, iw=r.w-2, ih=r.h-2; if(iw<5||ih<3) return null;
-    const gx=ix0+((iw-3)>>1)+0, gy=iy0+((ih-3)>>1); if(gx-1<r.x||gx+3>r.x+r.w-1) return null;
+  // the 3 x 3 channel stones with the inlet and outlet either side: a 5 x 3 rectangle of the room's own floor (pzRect)
+  shift(r){ const R=pzRect(r,[5,5],[3,3],false); if(!R) return null; const gx=R.x0+1, gy=R.y0;
     const cells=[]; for(let y=0;y<3;y++) for(let x=0;x<3;x++) cells.push(xi(gx+x,gy+y));
     let y=xri(0,2); const y0=y, path=[]; for(let x=0;x<3;x++){ path.push([x,y]); if(x<2&&XR()<.6){ const ty=xri(0,2); while(y!==ty){ y+=Math.sign(ty-y); path.push([x,y]); } } }
-    const inlet=xi(gx-1,gy+y0), outlet=xi(gx+3,gy+y); if(cells.concat([inlet,outlet]).some(c=>EX.taken.has(c))) return null;
+    const inlet=xi(gx-1,gy+y0), outlet=xi(gx+3,gy+y);
     const dirTo=(a,b)=>b[0]>a[0]?1:b[0]<a[0]?3:b[1]>a[1]?2:0, tiles=[];
     for(let k=0;k<9;k++){ const x=k%3, yy=(k/3)|0, pi=path.findIndex(([px,py])=>px===x&&py===yy); let type, sol=null;
       if(pi>=0){ const inD=pi===0?3:(dirTo(path[pi],path[pi-1])), outD=pi===path.length-1?1:dirTo(path[pi],path[pi+1]); type=(inD+2)%4===outD?'line':'bend'; sol=[inD,outD]; }
@@ -83,7 +109,9 @@ Object.assign(PUZZLE_BUILD,{
     return {tiles, y0, y1:y}; },
   riddle(r){ const c=xi(r.cx,r.cy); if(!xSolidOK(c)) return null; xProp('guardian',c,{}); return {wrong:0}; },
   braziers(r){ const c=xFreeSolid(r,true); if(c<0) return null; const src=xProp('pbrazier',c,{lit:true, src:true});
-    const reach=xReach(), d=xbfs(EX.t,EX.doors,c,false), rooms=xOpenRooms(reach,{notStart:true}).filter(x=>x!==r&&d[xi(x.cx,x.cy)]>=0&&d[xi(x.cx,x.cy)]<=48).sort((a,b)=>d[xi(a.cx,a.cy)]-d[xi(b.cx,b.cy)]).slice(0,6).sort(()=>XR()-.5).slice(0,3);
+    // the cold ones within 48 steps of it (a 45 s flame walks about 150); a spacious floor is half as wide again, so further
+    const reachMax=EX.layout===2?Math.round(48*XN/68):48;
+    const reach=xReach(), d=xbfs(EX.t,EX.doors,c,false), rooms=xOpenRooms(reach,{notStart:true}).filter(x=>x!==r&&d[xi(x.cx,x.cy)]>=0&&d[xi(x.cx,x.cy)]<=reachMax).sort((a,b)=>d[xi(a.cx,a.cy)]-d[xi(b.cx,b.cy)]).slice(0,6).sort(()=>XR()-.5).slice(0,3);
     if(rooms.length<3) return null; const cold=[];
     for(const rr of rooms){ const s=xFreeSolid(rr,true); if(s<0) return null; cold.push(xProp('pbrazier',s,{lit:false})); }
     return {src, cold}; },

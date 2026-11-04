@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v214</title>
-<meta name="application-version" content="214">
+<title>Hexmancers v215</title>
+<meta name="application-version" content="215">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
@@ -559,7 +559,9 @@
       <div class="srow"><span>Distance<small>How far the camera sits from you, in tiles (a tall phone screen pulls it back a little more). 9.4 is normal.</small></span><span class="srange"><input id="dbg_dDist" type="range" min="4" max="40" step="0.1"><b id="dbg_dDistV"></b></span></div>
       <div class="srow"><span>View width (spacious)<small>On the spacious dungeon with a wide (landscape) screen, how many tiles fit top to bottom; this replaces Distance there. 12 is normal.</small></span><span class="srange"><input id="dbg_dView" type="range" min="10" max="16" step="1"><b id="dbg_dViewV"></b></span></div>
       <div class="srow"><span>View width, upright (spacious)<small>The same on an upright (portrait) screen: tiles across its width. Fewer tiles, bigger people. 7 is normal.</small></span><span class="srange"><input id="dbg_dViewP" type="range" min="5" max="12" step="0.5"><b id="dbg_dViewPV"></b></span></div>
-      <div class="srow"><span>See-through cut (spacious)<small>On: what stands between the camera and you is cut away round you. Off: walls always whole.</small></span><label class="scheck"><input id="dbg_dShOn" type="checkbox"></label></div>
+      <div class="srow"><span>Low near walls (spacious)<small>On: a wall that would hide floor behind it from the camera (every room's near side) stands low, a ledge you see over; far walls stay tall. Doors in a low wall keep their frame up to the height under 'Door kept up to'.</small></span><label class="scheck"><input id="dbg_dStepOn" type="checkbox"></label></div>
+      <div class="srow"><span>Near wall height<small>How tall a low near wall stands, as a share of a full wall. 0.17 is normal (about knee to hip on a person).</small></span><span class="srange"><input id="dbg_dStepLow" type="range" min="0.05" max="1" step="0.01"><b id="dbg_dStepLowV"></b></span></div>
+      <div class="srow"><span>See-through cut (spacious)<small>On: what stands between the camera and you is cut away round you (on top of the low near walls). Off by default: the low near walls keep you in sight.</small></span><label class="scheck"><input id="dbg_dShOn" type="checkbox"></label></div>
       <div class="srow"><span>Cut width<small>Half the opening's width round you, in tiles. 1.25 is normal.</small></span><span class="srange"><input id="dbg_dShW" type="range" min="0.5" max="3" step="0.05"><b id="dbg_dShWV"></b></span></div>
       <div class="srow"><span>Cut height above<small>How far above your middle the opening reaches, in tiles. 1.3 is normal.</small></span><span class="srange"><input id="dbg_dShUp" type="range" min="0.5" max="4" step="0.05"><b id="dbg_dShUpV"></b></span></div>
       <div class="srow"><span>Cut reach below<small>How far below your middle (toward the bottom of the screen) the opening reaches, in tiles. 2.6 is normal.</small></span><span class="srange"><input id="dbg_dShDown" type="range" min="0.5" max="6" step="0.05"><b id="dbg_dShDownV"></b></span></div>
@@ -567,7 +569,7 @@
       <div class="srow"><span>Cut soft edge<small>How wide the dithered edge of the opening is (share of its size). 0.18 is normal.</small></span><span class="srange"><input id="dbg_dShEdge" type="range" min="0.01" max="0.6" step="0.01"><b id="dbg_dShEdgeV"></b></span></div>
       <div class="srow"><span>Cut stone black inside<small>On: faces inside the stonework that the cut opens are black. Off: you see the blocks' own faces.</small></span><label class="scheck"><input id="dbg_dShInner" type="checkbox"></label></div>
       <div class="srow"><span>Keep doors in the cut<small>On: doors and their frames are only thinned (half shown, dithered) up to the height below, so you see both the door and yourself. Off: cut like walls.</small></span><label class="scheck"><input id="dbg_dShDoor" type="checkbox"></label></div>
-      <div class="srow"><span>Door kept up to<small>How high a door is kept whole in the cut, in world units (a door's arch tops out near 3.4). 3.6 is normal.</small></span><span class="srange"><input id="dbg_dShDoorH" type="range" min="0" max="8" step="0.1"><b id="dbg_dShDoorHV"></b></span></div>
+      <div class="srow"><span>Door kept up to<small>How high a door is kept whole in the cut, and how high its frame stands in a low near wall, in world units (a door's arch tops out near 3.4). 3.6 is normal.</small></span><span class="srange"><input id="dbg_dShDoorH" type="range" min="0" max="8" step="0.1"><b id="dbg_dShDoorHV"></b></span></div>
       <div class="srow"><span>Field of view (lens)<small>The lens, in degrees. 46 is normal. Wider shows more around you with more depth; narrower is flatter.</small></span><span class="srange"><input id="dbg_dFov" type="range" min="20" max="120" step="1"><b id="dbg_dFovV"></b></span></div>
       <div class="srow"><span>Aim ahead<small>Points the camera further up the screen (above 0) so you stand lower and see more ahead, in tiles.</small></span><span class="srange"><input id="dbg_dAim" type="range" min="-4" max="6" step="0.1"><b id="dbg_dAimV"></b></span></div>
       <div class="srow"><span>Look-ahead<small>How far the camera leads you as you walk. 0 keeps you dead centre; 1 is normal.</small></span><span class="srange"><input id="dbg_dAhead" type="range" min="0" max="6" step="0.05"><b id="dbg_dAheadV"></b></span></div>

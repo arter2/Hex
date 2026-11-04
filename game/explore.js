@@ -520,7 +520,9 @@ function xBuildScene(){
   const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c}, HR=1.4, AR=.78; EX.lanterns=[];
   const doorC=new THREE.Color('rgb('+xTone(S,.5).join(',')+')'), topG=new THREE.CylinderGeometry(AR-.01,AR-.01,.15,16,1,false,-Math.PI/2,Math.PI), ringG=new THREE.TorusGeometry(.09,.02,4,10);
   XSINK_DOOR=true;
-  for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
+  EX.doorClip=new Map();
+  // (a spacious floor's door is clipped at its arch's crown when it stands in a low near wall: xStepLow)
+  for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
     const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
     g.add(F.build(xDitherMat(xPhong({vertexColors:true})))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
@@ -546,7 +548,7 @@ function xBuildScene(){
     { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
       sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'&&!d.wide; if(d.state==='open'&&!d.wide) xDoorPose(d,1,1); g.visible=false; grp.add(g); }
-  XSINK_DOOR=false;
+  XSINK_DOOR=false; XSINK_CLIP=null;
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
@@ -1148,29 +1150,38 @@ const XDITHER={ uBall:{value:new THREE.Vector3(0,-99,0)}, uRad:{value:3}, uPx:{v
 let XSINK=false;
 const XSINK_V='varying vec3 vXSP;\n', XSINK_F='varying vec3 vXSP; uniform vec3 uCutP; uniform vec3 uCutD; uniform vec2 uCutR; uniform vec3 uCutRt; uniform vec3 uCutUp; uniform vec3 uCutE; uniform vec4 uCutX; uniform sampler2D uSolid; uniform vec3 uSolidK;\n'
   // a face inside the stonework (the cell beyond it is solid wall too, below the wall tops): black, so a cut shows solid stone, not seams
-  +'bool xInner(vec3 w,vec3 n){ if(uCutX.y<.5||abs(n.y)>.5||w.y>uSolidK.z) return false; vec2 q=(w.xz+normalize(n.xz)*.45)/uSolidK.x; return texture2D(uSolid,q).r>.5; }\n'
-  +'float xcb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xcb4(vec2 a){ return xcb2(.5*a)*.25+xcb2(a); }\n'
-  +'bool xCutAway(vec3 w){ if(w.y<.06) return false; vec3 v=w-uCutP; float t=dot(v,uCutD);\n'
-  // the opening, as seen on screen: as wide as you (uCutE.x across), a little above your head (y) and down to the floor in front of you (z)
+  // the opening, as seen on screen: as wide as you (uCutE.x across), a little above your head (y) and down to the floor in
+  // front of you (z); 9 when w is outside the shaft (behind its cap, or the cut is off)
+  +'float xShaftD(vec3 w){ vec3 v=w-uCutP; float t=dot(v,uCutD);\n'
   +'  float pr=dot(v,uCutRt), pu=dot(v,uCutUp), d=length(vec2(pr/uCutE.x,pu/(pu>0.0?uCutE.y:uCutE.z)));\n'
     // behind you the shaft ends in a rounded cap (uCutR.y deep at its middle), so the cut through a block beside you is a
   // curve that follows the round opening, never a flat slice
-  +'  if(d>=1.0||t<-uCutR.y*sqrt(max(0.0,1.0-d*d))) return false;\n'
+  +'  return d>=1.0||t<-uCutR.y*sqrt(max(0.0,1.0-d*d))?9.0:d; }\n'
+  // (only inside the opening: the side of a tall block standing over a low near wall is ordinary stone, not a cut)
+  +'bool xInner(vec3 w,vec3 n){ if(uCutX.y<.5||abs(n.y)>.5||w.y>uSolidK.z||xShaftD(w)>=1.0) return false; vec2 q=(w.xz+normalize(n.xz)*.45)/uSolidK.x; return texture2D(uSolid,q).r>.5; }\n'
+  +'float xcb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xcb4(vec2 a){ return xcb2(.5*a)*.25+xcb2(a); }\n'
+  +'bool xCutAway(vec3 w){ if(w.y<.06) return false; float d=xShaftD(w); if(d>=1.0) return false;\n'
   +'  float e=max(.01,uCutX.x), k=d<1.0-e?1.0:(1.0-d)/e;\n'
     // a door stays whole up to its arch's crown (you always see the way through); the wall above it is cut like a wall
   +'  #ifdef XDOOR\n  if(uCutX.z>.5&&w.y<uCutX.w) return xcb4(floor(gl_FragCoord.xy/2.0))<k*.5;\n  #endif\n  return d<1.0-e||xcb4(floor(gl_FragCoord.xy/2.0))<k; }\n';
-function xSinkShader(sh,door){ Object.assign(sh.uniforms,XDITHER);
+// clip (a door's own {value}): everything above that height is cut off, and the faces inside that the cut opens are
+// drawn in the stone's own colour, darkened (the material is double-sided), so a clipped door frame shows a dark cap
+// like a wall's top
+function xSinkShader(sh,door,clip){ Object.assign(sh.uniforms,XDITHER); if(clip) sh.uniforms.uClipY=clip;
   sh.vertexShader=XSINK_V+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  { vec4 q=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  q=instanceMatrix*q;\n  #endif\n  vXSP=(modelMatrix*q).xyz;}');
-  sh.fragmentShader=XSINK_F+sh.fragmentShader.replace('void main() {','void main() {\n  if(xCutAway(vXSP)) discard; \n  #ifdef XDOOR\n  bool xin=false;\n  #else\n  bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));\n  #endif\n').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);');  if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader; }   // (the door mark goes first: the cut code reads it)
-function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m.customProgramCacheKey, door=XSINK_DOOR;
-  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':''); return m; }
+  sh.fragmentShader=XSINK_F+'#ifdef XCLIP\nuniform float uClipY;\n#endif\n'+sh.fragmentShader.replace('void main() {','void main() {\n  #ifdef XCLIP\n  if(vXSP.y>uClipY) discard;\n  #endif\n  if(xCutAway(vXSP)) discard; \n  #ifdef XDOOR\n  bool xin=false;\n  #else\n  bool xin=xInner(vXSP,normalize(cross(dFdx(vXSP),dFdy(vXSP))));\n  #endif\n').replace('#include <dithering_fragment>','#include <dithering_fragment>\n  if(xin) gl_FragColor=vec4(0.0,0.0,0.0,1.0);\n  #ifdef XCLIP\n  if(!gl_FrontFacing) gl_FragColor=vec4(diffuseColor.rgb*.42,1.0);\n  #endif');
+  if(door) sh.fragmentShader='#define XDOOR\n'+sh.fragmentShader; if(clip) sh.fragmentShader='#define XCLIP\n'+sh.fragmentShader; }   // (the marks go first: the cut code reads them)
+function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m.customProgramCacheKey, door=XSINK_DOOR, clip=XSINK_CLIP; if(clip) m.side=THREE.DoubleSide;
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door,clip); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':'')+(clip?'c':''); return m; }
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
-let XSINK_DOOR=false;
-function xDitherMat(m,uvj){ const sink=XSINK, door=XSINK_DOOR; m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'');
-  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door);
+let XSINK_DOOR=false, XSINK_CLIP=null;
+function xDitherMat(m,uvj){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide;
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'');
+  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
-    // so no two neighbours show the same face
-    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
+    // so no two neighbours show the same face; on a spacious floor a block standing lower (a low near wall, xStepLow)
+    // shows fewer courses of the same stone, not squashed stone (its faces' v runs from its foot)
+    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     sh.fragmentShader='varying vec3 vXWP; uniform vec3 uBall; uniform float uRad; uniform float uPx;\n'
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'
@@ -1182,10 +1193,11 @@ function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCa
     sh.fragmentShader='varying float vAlpha;\n'+sh.fragmentShader.replace('#include <dithering_fragment>','#include <dithering_fragment>\n  gl_FragColor.a*=vAlpha;'); };
   return m; }
 // put a wall in the solid mesh (v=1) or the see-through one at opacity v
-function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; if(EX.layout===2) v=1; const [wm,k]=w, vi=wm.userData.v, gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);   // (spacious floors sink in the shader: xSinkF)
+function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [wm,k]=w, vi=wm.userData.v, gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
   // cut-down walls sink to a stub instead of turning to glass (always on a spacious floor: its walls are tall and
-  // thick, and glass three blocks deep reads as a green fog)
-  const sink=XLIT.dCut||EX.layout===2, cutH=sink?1-(1-v)/(1-XCUT)*(1-XLIT.dCutH*XWALL_B/XWALL):1;
+  // thick, and glass three blocks deep reads as a green fog); on a spacious floor v is the wall's height itself
+  // (xStepLow: a low near wall), and the cut round you is in the shader (xCutAway)
+  const sink=XLIT.dCut||EX.layout===2, cutH=EX.layout===2?v:sink?1-(1-v)/(1-XCUT)*(1-XLIT.dCutH*XWALL_B/XWALL):1;
   xWallMatrix(m,c,XWT[vi]===0,cutH); const solid=sink||v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
   const put=(cell,slot)=>{ xWallMatrix(m,cell,XWT[vi]===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
   wm.setMatrixAt(k,solid?m:zero);
@@ -1193,24 +1205,50 @@ function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; if(EX.la
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
   xDressShow(c,sink?cutH:solid?1:0); }
+/* Spacious floors: low near walls. A wall that would hide any floor behind it from the camera stands low (the debug
+   menu's 'Near wall height'), so every room's near side is a ledge you see over and its far walls stand tall, wherever
+   you are: the room you are in, the doors along its sides and you are never behind stone. A full-height wall hides
+   the ground up to its height / tan(the camera's pitch) beyond its far face, so the test walks that far away from the
+   camera along three lines across the block's width. Worked out once per cell, again whenever the camera turns
+   (xWallCut). */
+function xStepLow(c){ const T=EX.stepT||(EX.stepT=new Uint8Array(XN*XN)); if(!T[c]) T[c]=xHidesFloor(c)?2:1; return T[c]===2; }
+// a door stands low when the wall it is set in does (there is always floor beyond a doorway, so it is not asked of
+// the door itself): the wall blocks either side of it along the wall's line, two out for a wide doorway's middle
+function xDoorLow(i){ const d=EX.doors.get(i), s=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK?XN:1;
+  for(const k of d&&d.wide?[1,2]:[1]) for(const n of [i-s*k,i+s*k]) if(n>=0&&n<XN*XN&&EX.t[n]===T_ROCK&&!xLow(n)&&xStepLow(n)) return true;
+  return false; }
+function xHidesFloor(c){ const d=EX.cutD||[0,1], tn=Math.max(.2,EX.stepTan||Math.tan(XLIT.dPitch*Math.PI/180)), W=xWedge(c);
+  if(W&&W.nx*d[0]+W.nz*d[1]<0) return true;   // a diagonal piece whose open half lies beyond it
+  const reach=XWALL/tn+XCS*.75, st=XCS*.2;
+  for(const o of [-.4,0,.4]){ const x0=xw(c)-d[1]*o*XCS, z0=xz(c)+d[0]*o*XCS;
+    for(let s=st;s<=reach;s+=st){ const gx=Math.floor((x0-d[0]*s)/XCS), gy=Math.floor((z0-d[1]*s)/XCS); if(gx<0||gy<0||gx>=XN||gy>=XN) break;
+      const n=xi(gx,gy); if(n!==c&&EX.t[n]===T_FLOOR) return true; } }
+  return false; }
 /* Which walls sink or fade: those between you and the camera, wherever the camera is (the debug menu's Turn and Move
    swing it round). Measured on the ground from you toward the camera: a wall from 'Cut starts at' to 'Cut reach'
    tiles along that line and within the see-through strip's width of it. From the normal camera (straight behind, to
    the south) this is the rows in front of you, as it always was; 'Cut follows camera' off keeps that south line. */
-function xCutTarget(c){ if(!EX) return 1; const d=XLIT.dCutFollow&&EX.cutD||[0,1], vx=(xw(c)-EX.px)/XCS, vz=(xz(c)-EX.pz)/XCS;
+function xCutTarget(c){ if(!EX) return 1;
+  if(EX.layout===2) return XLIT.dStepOn&&!xLow(c)&&xStepLow(c)?XLIT.dStepLow:1;   // spacious floors: a near wall stands low
+  const d=XLIT.dCutFollow&&EX.cutD||[0,1], vx=(xw(c)-EX.px)/XCS, vz=(xz(c)-EX.pz)/XCS;
   const along=vx*d[0]+vz*d[1], side=Math.abs(vx*d[1]-vz*d[0]);
   return along>XLIT.dCutStart&&along<=XLIT.dCutReach+.5&&side<XB.strip+.5?XCUT:1; }
 function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
   // the line toward the camera, on the ground (a camera straight overhead cuts nothing in particular: keep the last line)
   // (from the spot the camera looks at, not from you: the normal camera leads you as you walk, and its line stays due south)
-  { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS) EX.cutD=[gx/L,gz/L]; } }
+  { const C=X3&&X3.cam, T=EX.camT; if(C&&T){ const gx=C.position.x-T[0], gz=C.position.z-T[1], L=Math.hypot(gx,gz); if(L>.05*XCS){ EX.cutD=[gx/L,gz/L];
+    // spacious floors: the camera turned or tipped, so which walls stand low is worked out again (xStepLow)
+    if(EX.layout===2){ const tn=(C.position.y-.6)/L, K=EX.stepKey; if(!K||Math.abs(K[0]-EX.cutD[0])>.02||Math.abs(K[1]-EX.cutD[1])>.02||Math.abs(K[2]-tn)>.03*Math.abs(tn)){ EX.stepKey=[EX.cutD[0],EX.cutD[1],tn]; EX.stepTan=tn; EX.stepT=null; } } } } }
   if(EX.layout===2){ const C=X3&&X3.cam; if(C){ const P=XDITHER.uCutP.value.set(EX.px,1.4,EX.pz); XDITHER.uCutD.value.copy(C.position).sub(P).normalize(); XDITHER.uCutR.value.set(2.4*XCS,XLIT.dShBack*XCS); XDITHER.uCutRt.value.set(1,0,0).applyQuaternion(C.quaternion); XDITHER.uCutUp.value.set(0,1,0).applyQuaternion(C.quaternion); XDITHER.uCutE.value.set(XLIT.dShW*XCS,XLIT.dShUp*XCS,XLIT.dShDown*XCS); XDITHER.uCutX.value.set(XLIT.dShEdge,XLIT.dShInner?1:0,XLIT.dShDoor?1:0,XLIT.dShDoorH); if(!XLIT.dShOn) XDITHER.uCutP.value.set(0,-999,0); } }   // the shaft: from your middle toward the camera, shaped round you on screen, starting a little in front of you   // (axes from the camera's turn this frame: its matrix is only updated at render)
-  else for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
+  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
   if(EX.layout!==2) for(const a of EX.arches||[]){ const tg=xCutTarget(a.cell), cur=a.cut; if(Math.abs(cur-tg)<.005) continue; a.cut=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; xArchOp(a); }
   if(EX.layout!==2) for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
     xDoorOp(d); }
+  // spacious floors: a door in a low near wall keeps its frame up to its arch's crown (the debug menu's 'Door kept up
+  // to'), standing above the ledge either side of it, so you always see where it is
+  if(EX.layout===2&&EX.doorClip) for(const [i,cl] of EX.doorClip) cl.value=XLIT.dStepOn&&xDoorLow(i)?Math.max(XLIT.dShDoorH,XLIT.dStepLow*XWALL):1e3;
   for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall), cur=L.cut==null?1:L.cut; if(Math.abs(cur-tg)<.005) continue; L.cut=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; L.g.scale.y=1; L.g.visible=L.cut>.6&&!!EX.seen[L.floor]; } }
 // a door on a fading wall fades less than the wall (the debug menu's door minimum), so you can always find it; its threshold glow stays
 function xDoorOp(d){ const op=Math.max(XLIT.dDoorMin,d.cutY==null?1:d.cutY), solid=op>=.995;
@@ -1936,4 +1974,4 @@ $('#xUp').onclick=()=>xStairsUp();
   window.addEventListener('resize',xStickDraw); xMoveUi(); }
 
 // the sink bend (XSINK) is only for what the dungeon scene builds: off again once it is built, whatever happens
-{ const build=xBuildScene; xBuildScene=function(){ try{ return build.apply(this,arguments); } finally{ XSINK=false; XSINK_DOOR=false; } }; }
+{ const build=xBuildScene; xBuildScene=function(){ try{ return build.apply(this,arguments); } finally{ XSINK=false; XSINK_DOOR=false; XSINK_CLIP=null; } }; }

@@ -170,3 +170,133 @@ function xNatSurface(kind){ const N=64, cv=document.createElement('canvas'); cv.
 // every frame: the pools' surfaces drift; a lava pool breathes and its glow shows once its ground is seen
 function xNatureTick(T){ for(const P of EX.natPools||[]){ if(P.kind==='ice') continue; P.surf.offset.set(Math.sin(T*.13+P.ph)*.12,T*(P.kind==='lava'?.015:.025));
     if(P.kind==='lava'){ const v=.85+.15*Math.sin(T*1.7+P.ph); P.mesh.material.color.setRGB(1*v,.36*v,.07*v); if(P.glow){ P.glow.visible=P.cells.some(c=>EX.seen[c]); P.glow.material.opacity=.28+.12*Math.sin(T*1.7+P.ph); } } } }
+
+/* ---------------- each area's own floor ----------------
+   Three floors per area on a spacious floor (explore.js xBuildScene): the passages (0) and the two kinds of room (1, 2).
+   Painted as pixel art like the others (look.js xPaint, in the area's stone tones), seeded by the depth so every floor
+   lays its stones afresh, wrapping at the edges so the texture repeats without a seam, and each with a height field the
+   lighting turns into relief (look.js xLitTag).
+     Hollows  soil threaded with roots and moss; mossy flagstones, small or big, moss in the joints
+     Deeps    rock silvered with frost; rock with glassy ice sheets; rock under snow drifts
+     Rifts    cracked basalt plates with glowing seams, big or small; basalt under ash
+     Vault    worn square paving with puddles in the low spots; hexagonal paving; basketweave
+     Ruins    broken slabs heaved by roots; big dressed slabs with gold inlay; slabs under a gold lattice
+     Abyss    dark cracked stone with violet veins; polished veined slabs; slabs inlaid with rings of stars */
+const xfMix=(a,b,t)=>{ t=Math.max(0,Math.min(1,t)); return [0,1,2].map(n=>Math.round(a[n]+(b[n]-a[n])*t)); };
+const xfSm=(a,b,v)=>{ const t=Math.max(0,Math.min(1,(v-a)/(b-a))); return t*t*(3-2*t); };
+// stones from points on a jittered grid (G a side; odd rows shifted by off), wrapped: per pixel the nearest point (id), how far
+// it is (d) and how much further the next nearest is (e: small along a joint)
+function xfVoro(N,G,R,jit,off){ const S=N/G, P=[];
+  for(let y=0;y<G;y++) for(let x=0;x<G;x++) P.push([(x+.5+(y%2?off||0:0)+(R()-.5)*jit)*S,(y+.5+(R()-.5)*jit)*S]);
+  const id=new Int16Array(N*N), e=new Float32Array(N*N), d=new Float32Array(N*N), md=(a,b)=>((a%b)+b)%b;
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const gx=Math.floor(i/S), gy=Math.floor(j/S); let b1=1e9, b2=1e9, k1=0;
+    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const wx=gx+dx, wy=gy+dy, cx=md(wx,G), cy=md(wy,G), p=P[cy*G+cx];   // (the eight cells round are enough at this jitter)
+      const px=p[0]+(wx-cx)/G*N-i, py=p[1]+(wy-cy)/G*N-j, q=px*px+py*py;
+      if(q<b1){ b2=b1; b1=q; k1=cy*G+cx; } else if(q<b2) b2=q; }
+    const o=j*N+i; id[o]=k1; d[o]=Math.sqrt(b1); e[o]=Math.sqrt(b2)-d[o]; }
+  return {id,e,d,n:P.length}; }
+// a hash of a stone's place (for the rectangular layouts)
+const xfH=(a,b,s)=>{ const v=Math.sin(a*12.9898+b*78.233+s*.7311)*43758.5453; return v-Math.floor(v); };
+function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
+  const make=(sd,fn,speck)=>{ const R=caveRng(sd), H=new Float32Array(N*N), c=fn(R,H); if(speck) xSpeck(c,S,R,speck); c.h=H; c.hk=.55; return c; };
+  const pebbles=(c,R,H,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, h=1+R()*2|0;
+      x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+T((lo||.45)+R()*.35).join(',')+')'; x.fillRect(px,py,w,h); for(let j=py;j<py+h;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
+  // a cracked rock ground: blotches, two families of thin cracks sunk in; lift raises it, cr how dark the cracks
+  const rock=(R,H,lift,cr)=>{ const f=xFbm(N,R,4), k1=xNoise(N,12,R), k2=xNoise(N,7,R);
+    return {f,c:xPaint(N,(i,j)=>{ const fv=f(i,j), a=Math.abs(k1(i,j)-.5), b=Math.abs(k2(i,j)-.5); let t=fv*1.1-.1+lift; H[j*N+i]=fv*6;
+      if(a<.011||b<.008){ t-=cr; H[j*N+i]-=2; } return T(t); })}; };
+  const F={
+    hollows:[
+      // soil threaded with roots, moss in the damp hollows
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,4), m=xFbm(N,R,6), r1=xNoise(N,10,R), r2=xNoise(N,6,R), soil=X('#2a241c'), root=X('#3e2c1c'), moss=X(S.moss);
+        const c=xPaint(N,(i,j)=>{ const fv=f(i,j), mv=m(i,j); let col=xfMix(T(fv*.55+.05),soil,.45); H[j*N+i]=fv*5;
+          if(mv>.56) col=xfMix(col,moss,(mv-.56)*4.5);
+          const a=Math.abs(r1(i,j)-.5), b=Math.abs(r2(i,j)-.5); if(a<.012||b<.009){ col=xfMix(root,T(.6),a<.005||b<.004?.25:0); H[j*N+i]+=1.4; } return col; });
+        pebbles(c,R,H,60); return c; },30),
+      // mossy flagstones, G a side (6: ordinary, 4: big)
+      ...[6,4].map(G=>s=>make(s+G,(R,H)=>{ const V=xfVoro(N,G,R,.75), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), m=xFbm(N,R,5), gap=X('#1c2a18'), moss=X(S.moss);
+        return xPaint(N,(i,j)=>{ const o=j*N+i, e=V.e[o], fv=f(i,j), mv=m(i,j);
+          if(e<1.7){ H[o]=-1; return xfMix(gap,moss,mv*1.2-.2); }
+          let col=T(.4+rv[V.id[o]]*.22+(fv-.5)*.2-(e<4?.07:0)); H[o]=2.2+fv*1.5-(e<4?.6:0);
+          if(mv>.58&&e<8) col=xfMix(col,moss,(mv-.58)*5);
+          if(mv>.7) col=xfMix(col,moss,(mv-.7)*3); return col; }); },24)) ],
+    deeps:[
+      // rock silvered with frost
+      s=>make(s,(R,H)=>{ const g=rock(R,H,.05,.3), fr=xFbm(N,R,5), w=X('#e6f6ff'), cv=g.c, x=cv.getContext('2d'), im=x.getImageData(0,0,N,N);
+        for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const a=xfSm(.48,.72,fr(i,j))*.7, o=(j*N+i)*4; for(let n=0;n<3;n++) im.data[o+n]=Math.round(im.data[o+n]+(w[n]-im.data[o+n])*a); }
+        x.putImageData(im,0,0); return cv; },50),
+      // rock with glassy ice sheets
+      s=>make(s,(R,H)=>{ const V=xfVoro(N,5,R,.8), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), ck=xNoise(N,9,R), lo=X('#8cc4e4'), hi=X('#e6f6ff');
+        return xPaint(N,(i,j)=>{ const o=j*N+i, e=V.e[o], fv=f(i,j), ice=rv[V.id[o]]<.45;
+          if(e<1.4){ H[o]=-1; return T(.12); }
+          if(ice){ H[o]=1.2; let col=xfMix(lo,hi,fv*1.2-.1); if(Math.abs(ck(i,j)-.5)<.007) col=hi; if((i+j+V.id[o]*7)%46<3) col=xfMix(col,[255,255,255],.5); return col; }
+          H[o]=2+fv*3; return T(.32+rv[V.id[o]]*.25+(fv-.5)*.22-(e<3?.06:0)); }); },20),
+      // rock under snow drifts
+      s=>make(s,(R,H)=>{ const g=rock(R,H,0,.3), sn=xFbm(N,R,3), dt=xFbm(N,R,16), w=X('#eef6ff'), bl=X('#b8d4ea'), cv=g.c, x=cv.getContext('2d'), im=x.getImageData(0,0,N,N);
+        for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const a=xfSm(.52,.62,sn(i,j))*.8, o=(j*N+i)*4; if(a<=0) continue; const s2=xfMix(bl,w,dt(i,j)*1.1-.2);
+          for(let n=0;n<3;n++) im.data[o+n]=Math.round(im.data[o+n]+(s2[n]-im.data[o+n])*a); H[j*N+i]+=a*3; }
+        x.putImageData(im,0,0); return cv; },40) ],
+    rifts:[
+      ...[[6,.7,.25],[9,.9,.1],[6,0,.8]].map(([G,glow,ash])=>s=>make(s+G*7,(R,H)=>{ const V=xfVoro(N,G,R,.55), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), gl=xFbm(N,R,4), as=xFbm(N,R,4);
+        const hot=X('#ff5a10'), hot2=X('#ffd36a'), ashC=X('#48423e');
+        return xPaint(N,(i,j)=>{ const o=j*N+i, e=V.e[o], fv=f(i,j); let col, h;
+          if(e<1.9){ h=-1.5; col=[18,9,6]; if(glow&&e<1.1&&gl(i,j)>1-glow*.62) col=xfMix(hot,hot2,(gl(i,j)-.5)*2); }
+          else { h=2+fv*1.6; col=T(.18+rv[V.id[o]]*.24+(fv-.5)*.16-(e<3.5?.06:0)); }
+          const a=xfSm(.42,.7,as(i,j))*ash; if(a>0){ col=xfMix(col,ashC,a); h+=a; } H[o]=h; return col; }); },ash>.5?20:40)) ],
+    vault:[
+      // worn square paving in rows, puddles in the low spots
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), wr=xFbm(N,R,3), pd=xFbm(N,R,3), wet=X(A.fog||'#1e1a3a');
+        return xPaint(N,(i,j)=>{ const row=j>>4, off=(row%2)*8, col0=((i+off)%N)>>4, u=(i+off)%16, v=j%16, o=j*N+i, fv=f(i,j);
+          if(u===15||v===15){ H[o]=-1; return T(.08); }
+          let t=.34+xfH(col0,row,s)*.2+(fv-.5)*.14+Math.max(0,wr(i,j)-.6)*.5-(u===14||v===14?.05:0)+(u===0||v===0?.06:0); H[o]=2+fv*1.2;
+          let col=T(t); const p=pd(i,j); if(p>.62){ col=xfMix(col,wet,Math.min(.75,(p-.62)*6)); H[o]-=1; } return col; }); },30),
+      // hexagonal paving
+      s=>make(s,(R,H)=>{ const V=xfVoro(N,8,R,0,.5), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), wr=xFbm(N,R,3);
+        return xPaint(N,(i,j)=>{ const o=j*N+i, e=V.e[o], fv=f(i,j); if(e<1.5){ H[o]=-1; return T(.07); }
+          H[o]=2+fv; return T(.32+rv[V.id[o]]*.24+(fv-.5)*.14+Math.max(0,wr(i,j)-.62)*.5+(e<3?.05:0)); }); },30),
+      // basketweave: pairs of bricks, turned square by square
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), wr=xFbm(N,R,3);
+        return xPaint(N,(i,j)=>{ const bx=i>>5, by=j>>5, u=i&31, v=j&31, flat=(bx+by)%2===0, half=flat?(v>>4):(u>>4), a=flat?u:v, b=flat?v&15:u&15, o=j*N+i, fv=f(i,j);
+          if(a===31||b===15){ H[o]=-1; return T(.07); }
+          H[o]=2+fv; return T(.33+xfH(bx*2+half,by,s+3)*.22+(fv-.5)*.14+Math.max(0,wr(i,j)-.62)*.5+(b===0?.05:0)); }); },30) ],
+    ruins:[
+      // broken slabs, heaved and split by roots, moss in the cracks
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), r1=xNoise(N,8,R), r2=xNoise(N,5,R), ck=xNoise(N,11,R), m=xFbm(N,R,5), root=X('#4a3420'), moss=X(S.moss||'#6a7a3a');
+        return xPaint(N,(i,j)=>{ const row=j>>6, off=(row%2)*32, cx=((i+off)%N)>>6, u=(i+off)&63, v=j&63, o=j*N+i, fv=f(i,j), hz=xfH(cx,row,s);
+          if(u===63||v===63){ H[o]=-1; return xfMix(T(.08),moss,m(i,j)); }
+          let t=.38+hz*.2+(fv-.5)*.16; if(hz>.7) t+=(u/64-.5)*.18;   // a heaved slab: lit along one side
+          let col=T(t); H[o]=2+fv+(hz>.7?u/40:0);
+          if(Math.abs(ck(i,j)-.5)<.008){ col=T(.1); H[o]-=1.5; }
+          const a=Math.abs(r1(i,j)-.5), b=Math.abs(r2(i,j)-.5); if(a<.011||b<.008){ col=xfMix(root,moss,m(i,j)-.3); H[o]+=1.2; } return col; }); },24),
+      // big dressed slabs with a gold inlay line round each
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), wr=xFbm(N,R,3), gold=X(S.spark||'#f2c94c');
+        return xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j);
+          if(u===63||v===63){ H[o]=-1; return T(.08); }
+          const inset=Math.min(u,v,62-u,62-v); if(inset===5&&wr(i,j)>.3){ H[o]=1.6; return xfMix(gold,T(.6),fv*.5); }
+          if((u===31||v===31)&&inset>5&&xfH(i>>6,j>>6,s)>.5&&wr(i,j)>.35){ H[o]=1.6; return xfMix(gold,T(.6),fv*.6); }   // some slabs quartered by inlay too
+          H[o]=2+fv; return T(.42+xfH(i>>6,j>>6,s+1)*.16+(fv-.5)*.14+Math.max(0,wr(i,j)-.62)*.4); }); },20),
+      // slabs under a diagonal gold lattice, a stud where its lines cross
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), wr=xFbm(N,R,3), gold=X(S.spark||'#f2c94c');
+        return xPaint(N,(i,j)=>{ const u=i&31, v=j&31, o=j*N+i, fv=f(i,j), p=(i+j)&63, q=(i-j+N)&63;
+          if((p<1||q<1)&&wr(i,j)>.28){ H[o]=1.6; return xfMix(gold,T(.7),fv*.5); }
+          { const u6=i&63, v6=j&63; let q2=1e9; for(const [cx,cy] of [[0,0],[64,0],[0,64],[64,64],[32,32]]) q2=Math.min(q2,(u6-cx)*(u6-cx)+(v6-cy)*(v6-cy)); if(q2<6){ H[o]=2.4; return gold; } }   // a stud where the lines cross
+          if(u===31||v===31){ H[o]=-1; return T(.1); }
+          H[o]=2+fv; return T(.36+xfH(i>>5,j>>5,s+2)*.18+(fv-.5)*.14); }); },20) ],
+    abyss:[
+      // dark cracked stone with faint violet veins
+      s=>make(s,(R,H)=>{ const g=rock(R,H,-.18,.25), vn=xNoise(N,6,R), vc=X(S.moss||'#3a2a56'), cv=g.c, x=cv.getContext('2d'), im=x.getImageData(0,0,N,N);
+        for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const a=Math.abs(vn(i,j)-.5), o=(j*N+i)*4; if(a>.02) continue; const k=(1-a/.02)*.7; for(let n=0;n<3;n++) im.data[o+n]=Math.round(im.data[o+n]+(vc[n]-im.data[o+n])*k); }
+        x.putImageData(im,0,0); return cv; },30),
+      // polished dark slabs, veined, with a sheen across them
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), vn=xNoise(N,5,R), vn2=xNoise(N,9,R);
+        return xPaint(N,(i,j)=>{ const u=i&31, v=j&31, o=j*N+i, fv=f(i,j); if(u===31||v===31){ H[o]=-1; return [6,7,10]; }
+          let t=.16+xfH(i>>5,j>>5,s)*.1+(fv-.5)*.08+(((i-j+N)&63)<5?.05:0); if(Math.abs(vn(i,j)-.5)<.008||Math.abs(vn2(i,j)-.5)<.005) t+=.32;
+          H[o]=2+fv*.5; return T(t); }); },16),
+      // slabs inlaid with a ring of stars, flecks between
+      s=>make(s,(R,H)=>{ const f=xFbm(N,R,6), st=X(S.spark||'#e9fbff');
+        const c=xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j); if(u===63||v===63){ H[o]=-1; return [6,7,10]; }
+          const dx=u-31.5, dy=v-31.5, r=Math.sqrt(dx*dx+dy*dy), a=Math.atan2(dy,dx), on=Math.abs(r-19)<1.1&&Math.cos(a*8)>.82||r<2.2;
+          if(on){ H[o]=2.6; return xfMix(st,T(.8),.2); } if(Math.abs(r-24)<.6){ H[o]=1.4; return T(.42); }
+          H[o]=2+fv*.6; return T(.14+xfH(i>>6,j>>6,s)*.08+(fv-.5)*.08); });
+        const x=c.getContext('2d'); for(let k=0;k<120;k++){ x.fillStyle='rgba('+st.join(',')+','+(.3+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1,1); } return c; },0) ] };
+  const L=F[id]; if(!L) return null; return L.map((g,k)=>g(seed+k*101)); }

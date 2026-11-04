@@ -450,9 +450,11 @@ function xBuildScene(){
   // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
   const variant=new Int8Array(XN*XN).fill(-1);
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
-  for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too (a cave's floor is all rock)
+  // a spacious floor wears its area's own floors (nature.js xAreaFloors): one for the passages, two for the rooms
+  const areaF=EX.layout===2&&typeof xAreaFloors==='function'?xAreaFloors(A,S,seed):null;
+  for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=areaF?(EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0):EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
-  const floorTex=EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
+  const floorTex=areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
   floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);

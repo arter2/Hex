@@ -1474,6 +1474,7 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 /* new game: the color picker for the 80 dealt cards */
 .starter.deal .dealcols{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;}
 .starter.deal .dealc{border-color:var(--c); color:var(--c); padding:10px 4px; font-size:14px;}
+.startlay{display:flex; gap:10px; align-items:flex-start; margin:12px 0 4px; text-align:left; cursor:pointer;} .startlay input{width:24px; height:24px; flex:none; margin:2px 0 0;}
 
 /* the bag as the Character screen: gear details and the Stats and Look tabs (bagui.js) */
 .bgdetail .nm .tier{color:#f2c94c; font-size:13px;}
@@ -1711,14 +1712,14 @@ body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
 #hudTop #btnCustom.custgauge::before{border-image:url(ui/spell_track_empty.svg) 5 10 fill / 5px 12px;}
 #hudTop #btnCustom.custgauge #gaugeBar{inset:0; width:auto!important; border-radius:0; opacity:1; box-sizing:border-box; border:solid transparent; border-width:5px 12px; background:none;
   border-image:url(ui/spell_track_full.svg) 5 10 fill / 5px 12px; clip-path:inset(0 calc((1 - var(--k,0)) * 100%) 0 0); transition:clip-path .15s;}
-#hudTop #btnCustom.custgauge #custLbl, #hudBottom #btnSpell span{font-size:0!important; color:transparent; background:url(ui/label_spell_white.svg) center/contain no-repeat; z-index:1;}
+#hudTop #btnCustom.custgauge #custLbl, #hudBottom #btnSpell span{font-size:0!important; color:transparent; z-index:1;}
 #hudTop #btnCustom.custgauge #custLbl{width:44px; height:13px;}
 #hudTop #btnCustom.custgauge.ready{height:22px; margin-top:2px;}   /* same size as charging: the top bar (and so the board) never changes height */
 #hudTop #btnCustom.custgauge.ready::before, #hudTop #btnCustom.custgauge.ready::after{inset:-6px 0;}
 #hudTop #btnCustom.custgauge.ready::before{border-width:7px 12px; border-image:url(ui/spell_top_ready_dim.svg) 8 11 fill / 7px 12px;}
 #hudTop #btnCustom.custgauge.ready::after{border-width:7px 12px; border-image:url(ui/spell_top_ready_bright.svg) 8 11 fill / 7px 12px; animation:skinPulse .9s ease-in-out infinite alternate;}
 #hudTop #btnCustom.custgauge.ready #gaugeBar{opacity:0;}
-#hudTop #btnCustom.custgauge.ready #custLbl{width:68px; height:20px; background-image:url(ui/label_spell_dark.svg);}
+#hudTop #btnCustom.custgauge.ready #custLbl{width:68px; height:20px;}
 @keyframes skinPulse{from{opacity:0;} to{opacity:1;}}
 /* pause */
 #hudTop #btnMenu{width:56px; height:auto; aspect-ratio:81/78; align-self:start; border:0!important; border-radius:0; box-shadow:none; background:url(ui/pause_base.svg) center/100% 100% no-repeat!important;}
@@ -1728,7 +1729,7 @@ body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
 #hudTop .bufs b img.sic{width:24px; height:24px; object-fit:contain;}
 #hudTop .incoming{gap:6px; animation:incPulse .5s ease-in-out infinite alternate;}
 #hudTop .incoming .wic{width:24px; height:24px; background:url(ui/warning_incoming.svg) center/contain no-repeat;}
-#hudTop .incoming .wlab{width:97px; height:20px; font-size:0; background:url(ui/label_incoming.svg) center/contain no-repeat;}
+#hudTop .incoming .wlab{width:97px; height:20px; font-size:0;}
 
 /* Fire and Cast: the corner art on a layer of its own (mirrored when they swap sides), icon and label on top */
 #hudBottom #btnWand, #hudBottom #btnCast{position:relative; min-height:0; height:auto; padding:0 0 9% 0; border:0!important; border-image:none!important; border-radius:0!important; background:none!important; box-shadow:none!important; justify-content:flex-end; gap:2%; overflow:visible; filter:none;}
@@ -1742,7 +1743,6 @@ body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{t
 #hudBottom #btnWand .bic, #hudBottom #btnCast .bic{width:34%; aspect-ratio:1; margin:auto 0 0; padding:0; font-size:0; background:center/contain no-repeat;}
 #hudBottom #btnWand .bic{background-image:url(ui/icon_fire.svg); filter:none;} #hudBottom #btnCast .bic{background-image:url(ui/icon_cast.svg); text-shadow:none;}
 #hudBottom #btnWand b, #hudBottom #btnCast b{width:62%; aspect-ratio:290/104; font-size:0!important; background:center/contain no-repeat;}
-#hudBottom #btnWand b{background-image:url(ui/label_fire.svg);} #hudBottom #btnCast b{background-image:url(ui/label_cast.svg);}
 #hudBottom #btnWand small{display:none;}
 #hudBottom #btnCast small{font-size:12px; line-height:1.1; text-shadow:0 2px 0 #000; max-width:78%;}
 #hudBottom #btnCast:disabled .bic, #hudBottom #btnCast:disabled b{opacity:.55;}
@@ -1754,7 +1754,6 @@ body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{t
 #hudBottom #btnSpell.ready::after{background-image:url(ui/portrait_spell_ready_bright.svg); animation:skinPulse .9s ease-in-out infinite alternate;}
 #hudBottom #btnSpell.ready #gaugeBar2{opacity:0;}
 #hudBottom #btnSpell span{position:relative; width:52%; aspect-ratio:354/101;}
-#hudBottom #btnSpell.ready span{background-image:url(ui/label_spell_dark.svg);}
 body.wide #hudBottom #btnSpell{aspect-ratio:119/26; background-image:url(ui/landscape_spell_empty.svg)!important;}
 body.wide #hudBottom #btnSpell #gaugeBar2{background-image:url(ui/landscape_spell_blue_full.svg);}
 body.wide #hudBottom #btnSpell.ready::before{background-image:url(ui/landscape_spell_ready_dim.svg);} body.wide #hudBottom #btnSpell.ready::after{background-image:url(ui/landscape_spell_ready_bright.svg);}
@@ -1767,7 +1766,7 @@ body.wide #hudBottom #btnSpell span{width:36%;}
 #hudBottom .qslot .qic{width:22px; height:22px; object-fit:contain; display:block;}
 #hudBottom .qslot .role{display:flex; justify-content:center;}
 #hudBottom .qslot .nm{font-size:12px; text-shadow:0 1px 0 #000;}
-#hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none; font-size:0; background:url(ui/next_badge.svg) center/contain no-repeat;}
+#hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none;}
 /* instants (9-slice) with their ⚡ marks */
 #hudBottom .inst-row .btn.inst{border:solid transparent!important; border-width:10px!important; border-radius:0; background:none!important; box-shadow:none!important; padding:0; width:64px; min-height:62px;
   border-image:url(ui/instant_blank.svg) 12 14 15 14 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}

@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><title>rune-grid</title><defs><pattern id="runes" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M12 8v16m0-12 8 4-8 4m4-12 4 4m-4 8 4 4" fill="none" stroke="#7dd8e6" stroke-opacity=".1" stroke-width=".6"/></pattern></defs><rect width="64" height="64" fill="url(#runes)"/></svg>

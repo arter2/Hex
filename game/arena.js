@@ -113,7 +113,11 @@ function arenaBoard(A,Ar,R){
 const DEC={k:40, wx0:0, wx1:0, wz0:0, wz1:0, cv:null, ctx:null, tex:null};
 function arenaDecal(A){ let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z0=Math.min(z0,t.wz); z1=Math.max(z1,t.wz); }
   Object.assign(DEC,{wx0:x0-1.6,wx1:x1+1.6,wz0:z0-1.6,wz1:z1+1.6});
-  if(!DEC.cv){ DEC.cv=document.createElement('canvas'); DEC.ctx=DEC.cv.getContext('2d'); }
+  // every call that can paint marks the layer inked: a frame that paints nothing on an empty layer then skips the clear
+  // and the texture upload (608x1063 a frame, about 5 ms, was spent on a layer that is empty most of a fight)
+  if(!DEC.cv){ DEC.cv=document.createElement('canvas'); const x=DEC.ctx=DEC.cv.getContext('2d');
+    for(const k of ['fill','stroke','fillRect','strokeRect','fillText','strokeText','drawImage','putImageData']){ const f=x[k]; x[k]=function(){ DEC.ink=true; return f.apply(this,arguments); }; } }
+  DEC.inked=false; DEC.dirty=false;
   DEC.cv.width=Math.round((DEC.wz1-DEC.wz0)*DEC.k); DEC.cv.height=Math.round((DEC.wx1-DEC.wx0)*DEC.k);
   if(DEC.tex) DEC.tex.dispose(); DEC.tex=new THREE.CanvasTexture(DEC.cv); DEC.tex.minFilter=THREE.LinearFilter;
   const W=DEC.wz1-DEC.wz0, H=DEC.wx1-DEC.wx0, m=new THREE.Mesh(new THREE.PlaneGeometry(W,H),arMat(new THREE.MeshBasicMaterial({map:DEC.tex,transparent:true,depthWrite:false,fog:false})));
@@ -141,13 +145,13 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)), floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
-  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3);
+  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B);
   const cells=[]; const B2=XCS;
   for(let z=-side;z<=side+.01;z+=B2) cells.push([back+B2/2,z,1]);                                 // back wall
   for(const s of [-1,1]) for(let x=back;x>=near;x-=B2) cells.push([x,s*(side+B2/2),Math.max(.25,Math.min(1,(x-x0+2)/(back-x0+2)))]);   // sides, lower toward you
   const im=new THREE.InstancedMesh(geo,wm,cells.length), m4=new THREE.Matrix4(), q=new THREE.Quaternion(), sc=new THREE.Vector3(), p=new THREE.Vector3();
   cells.forEach(([wx,wz,hk],i)=>{ const hy=(hk*(boss?2.6:1.9)+R()*.5)*(1+(wx>x1?R()*.6:0)); sc.set(1,hy,1); q.setFromAxisAngle(new THREE.Vector3(0,1,0),Math.floor(R()*4)*Math.PI/2);
-    p.set(wz,-SLAB+XWALL*hy/2,-wx); m4.compose(p,q,sc); im.setMatrixAt(i,m4); });
+    p.set(wz,-SLAB+XWALL_B*hy/2,-wx); m4.compose(p,q,sc); im.setMatrixAt(i,m4); });
   out.push(im); A.wallCells=cells;
   return out; }
 
@@ -211,7 +215,7 @@ function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
     if(A.box!==k){ A.box=k; g.style.left=cv.offsetLeft+'px'; g.style.top=cv.offsetTop+'px'; g.style.width=cv.offsetWidth+'px'; g.style.height=cv.offsetHeight+'px'; } }
   const q=lookQuality(dt), pr=lookPR(); AR_Q.lights=q.lights; if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
-  arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
+  arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex&&DEC.dirty){ DEC.tex.needsUpdate=true; DEC.dirty=false; }
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit,dof:A.focusD||A.dist}); lookFps(dt,A.renderer); }
 

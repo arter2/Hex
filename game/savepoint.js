@@ -65,7 +65,7 @@ function loadPoint(){ const p=peekPoint(); if(!p) return false;
   if(typeof paused!=='undefined') paused=false; B=null;
   if(typeof stopExplore==='function') stopExplore();
   save=migrate(p.save); persist();
-  const st=snapDecode(p.run); XRUN=st.run; XPARK=null; EX=st.ex;
+  const st=snapDecode(p.run); XRUN=st.run; XPARK=null; EX=st.ex; if(typeof xSizeTo==='function') xSizeTo(EX);
   Object.assign(EX,{busy:false, active:true, action:null, aim:null, searchCell:null, path:[], fighting:null, stuckT:0, msgT:{}});
   show('scrExplore'); xInit3D(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr);
   for(const k in XKEY) XKEY[k]=false;

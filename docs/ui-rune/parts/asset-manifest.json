@@ -1,0 +1,6115 @@
+{
+  "version": "3.0",
+  "sliceOrder": "top,right,bottom,left; logical units; multiply by pngScale for raster source insets",
+  "assets": [
+    {
+      "id": "component/button-default-disabled",
+      "svg": "source/components/button-default-disabled.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-default-disabled.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a39f6269a196ed71e17a0ab0f9c3edbba7fd4c27454189f309fb8d040e3c5c63"
+    },
+    {
+      "id": "layers/button-default-disabled--face",
+      "svg": "assets/svg/layers/button-default-disabled--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "f93bcf7a580a3713397893f351ca5f5aa81b54bcf3a24d0ed9ce7b3b4c58f154"
+    },
+    {
+      "id": "layers/button-default-disabled--metal-rim",
+      "svg": "assets/svg/layers/button-default-disabled--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "ff38814089f77993e88ec4c013531f2d5e0e04c5a3218c35094ecc99b589fac0"
+    },
+    {
+      "id": "strokes/button-default-disabled--outer-shadow",
+      "svg": "assets/svg/strokes/button-default-disabled--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "b833d645df8cfbdbad7966649a01681ca644d55cc6621a1c480e2ae670c60347"
+    },
+    {
+      "id": "strokes/button-default-disabled--metal-gradient",
+      "svg": "assets/svg/strokes/button-default-disabled--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d4c9125380c74417dc629181dff1b5d3aeada17eed6b885c85623b7440a98eeb"
+    },
+    {
+      "id": "strokes/button-default-disabled--top-highlight",
+      "svg": "assets/svg/strokes/button-default-disabled--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "44fe706fad43702a41c052fa525aab8d67bab071f63ae9f0c7f09013d21ba59a"
+    },
+    {
+      "id": "strokes/button-default-disabled--bottom-shadow",
+      "svg": "assets/svg/strokes/button-default-disabled--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a8b2b2365bf9c3f0b9475280233dad1bdfac86964326b9ea2bbdaa8aec1a0338"
+    },
+    {
+      "id": "strokes/button-default-disabled--inner-keyline",
+      "svg": "assets/svg/strokes/button-default-disabled--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "cab8fda624b2c0ac9094af162319014eecfc41bdc9d7870a72f6dd0d9bad7721"
+    },
+    {
+      "id": "layers/button-default-disabled--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-default-disabled--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "13029496f7bf81e3f6073caf19adf25f0da70c9925f4920f6b6382b7d09b1142"
+    },
+    {
+      "id": "borders/button-default-disabled--border",
+      "svg": "assets/svg/borders/button-default-disabled--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-default-disabled--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d3cd714811c8aeaf888b68329ba965a047a05ecf181f28d859f65c04d2a25744"
+    },
+    {
+      "id": "component/button-default-focus",
+      "svg": "source/components/button-default-focus.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-default-focus.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "22012af90435f9f9241e3fb46994d7eacd8dee58c5ffb5b8ee510e448e4fa6b6"
+    },
+    {
+      "id": "layers/button-default-focus--face",
+      "svg": "assets/svg/layers/button-default-focus--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "462a50b8f203d42573ab7ef535bf9d2a355227489d892fca0af158eaeeaf5dd9"
+    },
+    {
+      "id": "layers/button-default-focus--metal-rim",
+      "svg": "assets/svg/layers/button-default-focus--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a518641b879ee915eca99e35c3294a2e299c70bde639d28ad93394a0a30bd9ce"
+    },
+    {
+      "id": "strokes/button-default-focus--outer-shadow",
+      "svg": "assets/svg/strokes/button-default-focus--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "baa56a03bbff560dd1e9d46f34d01c35ad5cc415f5a97e3c9cda68dc4cb44b3c"
+    },
+    {
+      "id": "strokes/button-default-focus--metal-gradient",
+      "svg": "assets/svg/strokes/button-default-focus--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "0c5f145c303cb37460fa871f909a5027341d1f9c71be542bd0221d84693f2e52"
+    },
+    {
+      "id": "strokes/button-default-focus--top-highlight",
+      "svg": "assets/svg/strokes/button-default-focus--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "652f1c9c322fa00a30263eca6cf138b832bf0cb32d1c150624357991af5023ba"
+    },
+    {
+      "id": "strokes/button-default-focus--bottom-shadow",
+      "svg": "assets/svg/strokes/button-default-focus--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a3220fd6840a9af68da69e53e500f3983c57be2aff3f9a67f098c7758a8f81d9"
+    },
+    {
+      "id": "strokes/button-default-focus--inner-keyline",
+      "svg": "assets/svg/strokes/button-default-focus--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "209615582341b496cbb9ef11d0d2357da55cbad66b19baeda61b83e5b4ea7dda"
+    },
+    {
+      "id": "layers/button-default-focus--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-default-focus--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "73b824618b851071141b6cfcbfdc686c8d771ca66c8df7fbc32012d7e6c72bed"
+    },
+    {
+      "id": "layers/button-default-focus--focus",
+      "svg": "assets/svg/layers/button-default-focus--focus.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual focus",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--focus.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "7c976d77b75c9d8e8468fd8282d5a82cdd809fa58e37300de7de1323f1806109"
+    },
+    {
+      "id": "borders/button-default-focus--border",
+      "svg": "assets/svg/borders/button-default-focus--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-default-focus--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "21f6a862ea5303ea77e48cb190aa5b0af80163091ad34f4f11c546b88d7802da"
+    },
+    {
+      "id": "component/button-default-idle",
+      "svg": "source/components/button-default-idle.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-default-idle.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a5e99b9843f3f276ca3c08063a241fad1f3e3b7dc9cc651fa5fdbdefc0a27a49"
+    },
+    {
+      "id": "layers/button-default-idle--face",
+      "svg": "assets/svg/layers/button-default-idle--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "50fd9cd741b655eec856f1dfa2f93001e8989faccd456d253216c645ddce13c7"
+    },
+    {
+      "id": "layers/button-default-idle--metal-rim",
+      "svg": "assets/svg/layers/button-default-idle--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "f126bbf241a0c0bc3e55a787c96a6272f431893acbadf740f66c91324a30e33f"
+    },
+    {
+      "id": "strokes/button-default-idle--outer-shadow",
+      "svg": "assets/svg/strokes/button-default-idle--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "6f02960271810341ef8248934e36d1348e6b1af12d03d8121ab8a88f0ead7ac3"
+    },
+    {
+      "id": "strokes/button-default-idle--metal-gradient",
+      "svg": "assets/svg/strokes/button-default-idle--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "0b5474db32c8443cd11c090091e20dcc53ceb81f59817f1ed81bfa54cfb115a0"
+    },
+    {
+      "id": "strokes/button-default-idle--top-highlight",
+      "svg": "assets/svg/strokes/button-default-idle--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "76804ba96296500ba88cfc3df73e0cad1d8461e027824bf916d2d6a4eaa350eb"
+    },
+    {
+      "id": "strokes/button-default-idle--bottom-shadow",
+      "svg": "assets/svg/strokes/button-default-idle--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "11c6e25e48f8d337471508d6078aa1645cbf42df0a3e8c5163d862acac2160ed"
+    },
+    {
+      "id": "strokes/button-default-idle--inner-keyline",
+      "svg": "assets/svg/strokes/button-default-idle--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "4dea60aba37bf367af5bf76ed0a71eee8a7cc29834e88e118afd257e171942e6"
+    },
+    {
+      "id": "layers/button-default-idle--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-default-idle--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "c8b0a9857970179b49c8c26983798397c3fe3ab782218e93ba334cc14d4632bb"
+    },
+    {
+      "id": "borders/button-default-idle--border",
+      "svg": "assets/svg/borders/button-default-idle--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-default-idle--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d76d363680ce1655db1847d089966c819187852c183be1b83c7aad8dcb7cb734"
+    },
+    {
+      "id": "component/button-default-pressed",
+      "svg": "source/components/button-default-pressed.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-default-pressed.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "9f15acb8bc64f4c5e9d3fe8807917dea158c72368dacd5f99b19595e1fe947f0"
+    },
+    {
+      "id": "layers/button-default-pressed--face",
+      "svg": "assets/svg/layers/button-default-pressed--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-pressed--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "cde6e4996ced8f6e6c4fb4fe0771b9b64b9f4ee0afbb82482d73e761ea60b39d"
+    },
+    {
+      "id": "layers/button-default-pressed--metal-rim",
+      "svg": "assets/svg/layers/button-default-pressed--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "3fb3968097660b845bbd884e7e2bf9a6fc015f06d4601ffcbdbbbb4501537e53"
+    },
+    {
+      "id": "strokes/button-default-pressed--outer-shadow",
+      "svg": "assets/svg/strokes/button-default-pressed--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "fb2353ce68ae4bf6f7e3c9bc0144e637e11f8ad3e47202d5804ef0e8aa2018f0"
+    },
+    {
+      "id": "strokes/button-default-pressed--metal-gradient",
+      "svg": "assets/svg/strokes/button-default-pressed--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "df4a7754c0ba6ac7143fea215c986cc5f093f566e35fa0f0f846fb089ebeea4d"
+    },
+    {
+      "id": "strokes/button-default-pressed--top-highlight",
+      "svg": "assets/svg/strokes/button-default-pressed--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "573b5ca581c627505850eb41bbe5adaa1b3f6fa320e5eaac7849640d7defecf1"
+    },
+    {
+      "id": "strokes/button-default-pressed--bottom-shadow",
+      "svg": "assets/svg/strokes/button-default-pressed--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "db7c1dddf8a0255c00d03ffc1a9d5cdabd05bfa1ac4e3d983a2b413fad344b08"
+    },
+    {
+      "id": "strokes/button-default-pressed--inner-keyline",
+      "svg": "assets/svg/strokes/button-default-pressed--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "211ec4e85fcdaf6546af7530a0a64e6ea02074c247cb7c07799c668eb89ec1d8"
+    },
+    {
+      "id": "layers/button-default-pressed--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-default-pressed--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "218ace088b7d9df781ef666854769614fd622abe26c3a468ec4d45f4084e8338"
+    },
+    {
+      "id": "borders/button-default-pressed--border",
+      "svg": "assets/svg/borders/button-default-pressed--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-default-idle--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "90694e136b78290840a05effdab504bc3c420493286dd67c90f64f86fc21a329"
+    },
+    {
+      "id": "component/button-gold-disabled",
+      "svg": "source/components/button-gold-disabled.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-gold-disabled.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "3297b1396c88c17a96acb219a2017ea6902eb4b7e308c04debeb9e026a9858d1"
+    },
+    {
+      "id": "layers/button-gold-disabled--face",
+      "svg": "assets/svg/layers/button-gold-disabled--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-disabled--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "dfc5c7c9d861c406bbc2f1ed60ce64b97b9b3627fc0bf19bcd3d63a60aa31abe"
+    },
+    {
+      "id": "layers/button-gold-disabled--metal-rim",
+      "svg": "assets/svg/layers/button-gold-disabled--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "3705b391f04ca58783489c042240c9eac1aeda9f20dd2a1cdb7b4c14639136b8"
+    },
+    {
+      "id": "strokes/button-gold-disabled--outer-shadow",
+      "svg": "assets/svg/strokes/button-gold-disabled--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "7499ddd4e77d96df969c02502344d10dceab343b61e376b086e343268ffeb4b8"
+    },
+    {
+      "id": "strokes/button-gold-disabled--metal-gradient",
+      "svg": "assets/svg/strokes/button-gold-disabled--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "abc898e59fadd572ef930f00f0f9cc3ad5cfa4571a8d891459c28cbd82838d64"
+    },
+    {
+      "id": "strokes/button-gold-disabled--top-highlight",
+      "svg": "assets/svg/strokes/button-gold-disabled--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "9d7a2fbc7686ec4cae42b0562250e1b16fe67f024967cac6642e4dabc867c20f"
+    },
+    {
+      "id": "strokes/button-gold-disabled--bottom-shadow",
+      "svg": "assets/svg/strokes/button-gold-disabled--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "5b7d1cc600298066535e1b0785f9128490c31dedf3ff3121134877b0acce65a2"
+    },
+    {
+      "id": "strokes/button-gold-disabled--inner-keyline",
+      "svg": "assets/svg/strokes/button-gold-disabled--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "11da974257aa038c8e7fa24227e878d718a6d4f58e8d4d60e8e1e06a4a748bfa"
+    },
+    {
+      "id": "layers/button-gold-disabled--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-gold-disabled--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "ceac08821aab6aebd84b613d136eb07c025f9da09f8e717234bf3bab5956b43c"
+    },
+    {
+      "id": "borders/button-gold-disabled--border",
+      "svg": "assets/svg/borders/button-gold-disabled--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-gold-disabled--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d0aa23e664774c924d5462d13efc904282850bb4930ee7085c96c485289b561d"
+    },
+    {
+      "id": "component/button-gold-focus",
+      "svg": "source/components/button-gold-focus.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-gold-focus.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a15627517e7fd88778cdf0b53269a36b6a2b18fe4cabb32cedbc0f1aada3efaa"
+    },
+    {
+      "id": "layers/button-gold-focus--face",
+      "svg": "assets/svg/layers/button-gold-focus--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "17e7e0b26d825737555e86b20b4a3a63f9dfe13eb2bb1cc3c23aab1b030dd3ab"
+    },
+    {
+      "id": "layers/button-gold-focus--metal-rim",
+      "svg": "assets/svg/layers/button-gold-focus--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "f76a49438a2bbec39e8edd3f21fa0ac6b2995e9954c6079ed733fe46a34d6250"
+    },
+    {
+      "id": "strokes/button-gold-focus--outer-shadow",
+      "svg": "assets/svg/strokes/button-gold-focus--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "abea7acf17cbfbd55ca740264e895508815643bbba61a0d260762346e1ee5c44"
+    },
+    {
+      "id": "strokes/button-gold-focus--metal-gradient",
+      "svg": "assets/svg/strokes/button-gold-focus--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "7b4a576e5647efea885970ec3e5bf4abab3043cc0c8e685029ad9eaf88e2af96"
+    },
+    {
+      "id": "strokes/button-gold-focus--top-highlight",
+      "svg": "assets/svg/strokes/button-gold-focus--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d6452da3c51917eb0cc242977307a89b23d1251da79e9699de30cedacfe55c42"
+    },
+    {
+      "id": "strokes/button-gold-focus--bottom-shadow",
+      "svg": "assets/svg/strokes/button-gold-focus--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "9b1d496caca77a9e82dd40d3ab329d295ebb30beeb4440e0eead1c589f3bc01e"
+    },
+    {
+      "id": "strokes/button-gold-focus--inner-keyline",
+      "svg": "assets/svg/strokes/button-gold-focus--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "c3e857198fb6ae32f30d8514d0b41c23fa22789a80918193f71b4323be658f8a"
+    },
+    {
+      "id": "layers/button-gold-focus--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-gold-focus--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "4dc8cd01a0e2eb5590abe53d0c0305123851bb0c80073ecd26e2a864a38c9ced"
+    },
+    {
+      "id": "layers/button-gold-focus--focus",
+      "svg": "assets/svg/layers/button-gold-focus--focus.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual focus",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--focus.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "3ceb3f24720d8ef7d026b33a305096fe06e42302d6caae9a7233427133603eb1"
+    },
+    {
+      "id": "borders/button-gold-focus--border",
+      "svg": "assets/svg/borders/button-gold-focus--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-gold-focus--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d68c42e5144e21d324d74a31b3ec04e10a25eaace577bcf634dba32e60c7d1b2"
+    },
+    {
+      "id": "component/button-gold-idle",
+      "svg": "source/components/button-gold-idle.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-gold-idle.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "4f029199b36816570749619c56750f85f69eb4bcaba8bbe301149bc5e8761fca"
+    },
+    {
+      "id": "layers/button-gold-idle--face",
+      "svg": "assets/svg/layers/button-gold-idle--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-focus--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "d0e20bb95ca25d4919ce3b14ba4e2f25d7d13b5c9a3ae49fc5c44cbe2ab27ffa"
+    },
+    {
+      "id": "layers/button-gold-idle--metal-rim",
+      "svg": "assets/svg/layers/button-gold-idle--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "522186eae6481f604dc9f9513bb4d44f283b372d219a32dd69fc0de11326aba8"
+    },
+    {
+      "id": "strokes/button-gold-idle--outer-shadow",
+      "svg": "assets/svg/strokes/button-gold-idle--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "1d2253136a463984d7b62ce317d3a4a518a94f8d2b4955b4255a2f44dda24df7"
+    },
+    {
+      "id": "strokes/button-gold-idle--metal-gradient",
+      "svg": "assets/svg/strokes/button-gold-idle--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a13d446c20fb820e90967207cf93c49293a143925c8793900052ac7fdcf907ae"
+    },
+    {
+      "id": "strokes/button-gold-idle--top-highlight",
+      "svg": "assets/svg/strokes/button-gold-idle--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "8cf6a609e6d6671224c336662e94d35b4d2584b5bfe640f486e9ac28f4c1dfdf"
+    },
+    {
+      "id": "strokes/button-gold-idle--bottom-shadow",
+      "svg": "assets/svg/strokes/button-gold-idle--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "f0c66288a2656a37c036c992e06e3ca06a30ae13d315c13ed087286558466f9f"
+    },
+    {
+      "id": "strokes/button-gold-idle--inner-keyline",
+      "svg": "assets/svg/strokes/button-gold-idle--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "52fac04a94179140af2f608ce2f15dd812988481f723c0dc731e4fc99de49072"
+    },
+    {
+      "id": "layers/button-gold-idle--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-gold-idle--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "66abcb1d49ba4f8b18115cc06d34db8d52706ca8a92858af2de3600767fd2bb6"
+    },
+    {
+      "id": "borders/button-gold-idle--border",
+      "svg": "assets/svg/borders/button-gold-idle--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-gold-idle--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "580b87769ce718845ab0f27e5087629584ade8324919565fc8e3e3b69d6f4d95"
+    },
+    {
+      "id": "component/button-gold-pressed",
+      "svg": "source/components/button-gold-pressed.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/button-gold-pressed.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "df991920ceb32fd70217c97bc5c093627e9cfdeaa86f4dd580d1abcb09ccec3a"
+    },
+    {
+      "id": "layers/button-gold-pressed--face",
+      "svg": "assets/svg/layers/button-gold-pressed--face.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-default-pressed--face.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "dbfa7a3007e6ef7bd77615a0762f32884a133944e8032c720e459526466e012c"
+    },
+    {
+      "id": "layers/button-gold-pressed--metal-rim",
+      "svg": "assets/svg/layers/button-gold-pressed--metal-rim.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "b1797ca37ae1a9032e1d8333d2847d74b91a11ae2a016359a9a1dad392465ad7"
+    },
+    {
+      "id": "strokes/button-gold-pressed--outer-shadow",
+      "svg": "assets/svg/strokes/button-gold-pressed--outer-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a6d32ee9de5083db51cabaf860493399614dc72a5c8773c243c86ef7f9c7af0e"
+    },
+    {
+      "id": "strokes/button-gold-pressed--metal-gradient",
+      "svg": "assets/svg/strokes/button-gold-pressed--metal-gradient.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "7b4e9d6728bc7fbff35f1a60dd2e6cf3c72d72bfbc5f7bd8965ef1573ed3be4e"
+    },
+    {
+      "id": "strokes/button-gold-pressed--top-highlight",
+      "svg": "assets/svg/strokes/button-gold-pressed--top-highlight.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "b61920ea67d1a4ca65c7fdc04acd17baec337c3fc9d0d632c0766e02b616e1ed"
+    },
+    {
+      "id": "strokes/button-gold-pressed--bottom-shadow",
+      "svg": "assets/svg/strokes/button-gold-pressed--bottom-shadow.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "ca6cb2bf5f31d364b942a807dcafac456a4504b8692889c1d34f66c3b359840f"
+    },
+    {
+      "id": "strokes/button-gold-pressed--inner-keyline",
+      "svg": "assets/svg/strokes/button-gold-pressed--inner-keyline.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "7902643f44d0e57757feb9d0ce63154500d2a9c4b7874dbfaf6508c6e3a5ca4b"
+    },
+    {
+      "id": "layers/button-gold-pressed--bronze-corner-inlays",
+      "svg": "assets/svg/layers/button-gold-pressed--bronze-corner-inlays.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "a44f69aa65372d529cb03d6e0bae7d874f049f2c5733a3a83fa751d969c3495e"
+    },
+    {
+      "id": "borders/button-gold-pressed--border",
+      "svg": "assets/svg/borders/button-gold-pressed--border.svg",
+      "logicalSize": [
+        72,
+        48
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/button-gold-idle--border.png",
+      "pngSize": [
+        288,
+        192
+      ],
+      "sha256": "e21c065e8db52b86cda0f023ac3d1c5bddd211af8d6a6c8ac898fc91e9d9d979"
+    },
+    {
+      "id": "component/depth-badge",
+      "svg": "source/components/depth-badge.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/depth-badge.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "a6a1126c38637dd30e1987f7454e18e6b8639be7912b21df331a83df64e324ec"
+    },
+    {
+      "id": "layers/depth-badge--face",
+      "svg": "assets/svg/layers/depth-badge--face.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/depth-badge--face.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "f18a67012ba97c42e45b84a2e7fe38b46b7ad3d90b08653cac24c20476d414ae"
+    },
+    {
+      "id": "layers/depth-badge--metal-rim",
+      "svg": "assets/svg/layers/depth-badge--metal-rim.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/depth-badge--metal-rim.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "a194fbefec23eaf346804696a3294a99eca5aa8ecfe0a8f0429997b0c79c8ff5"
+    },
+    {
+      "id": "strokes/depth-badge--outer-shadow",
+      "svg": "assets/svg/strokes/depth-badge--outer-shadow.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/depth-badge--outer-shadow.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "57246245442c0103bbbd61149b3ab611eff5e87353a71b4c4293680edb94857c"
+    },
+    {
+      "id": "strokes/depth-badge--metal-gradient",
+      "svg": "assets/svg/strokes/depth-badge--metal-gradient.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/depth-badge--metal-gradient.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "996969a9493dda6329777ef780fb70853e68595cb033b21ea328bfcf0da603bd"
+    },
+    {
+      "id": "strokes/depth-badge--top-highlight",
+      "svg": "assets/svg/strokes/depth-badge--top-highlight.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/depth-badge--top-highlight.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "40588bdd7600071dab86730194f94267bdd3123f5951e5dc9cd62d57d12dae10"
+    },
+    {
+      "id": "strokes/depth-badge--bottom-shadow",
+      "svg": "assets/svg/strokes/depth-badge--bottom-shadow.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/depth-badge--bottom-shadow.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "54b22ca1eed1878f41329ab28eacb1af6779cc42c305ef2266ae2e4c0af621a7"
+    },
+    {
+      "id": "strokes/depth-badge--inner-keyline",
+      "svg": "assets/svg/strokes/depth-badge--inner-keyline.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/depth-badge--inner-keyline.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "780eac6c2963faf0b9c50ab9aec2f687827010967e75bba4cd0c8b989b465e05"
+    },
+    {
+      "id": "layers/depth-badge--bronze-corner-inlays",
+      "svg": "assets/svg/layers/depth-badge--bronze-corner-inlays.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/depth-badge--bronze-corner-inlays.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "be99b9ada8682a082526f9be65b53d0ad1d32ac961fa7dd201745340f2fd81d0"
+    },
+    {
+      "id": "borders/depth-badge--border",
+      "svg": "assets/svg/borders/depth-badge--border.svg",
+      "logicalSize": [
+        92,
+        25
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/depth-badge--border.png",
+      "pngSize": [
+        368,
+        100
+      ],
+      "sha256": "5936e68d1134ff8864f7f44ce3936d483227a879fce17155ff480207574754aa"
+    },
+    {
+      "id": "component/grab-handle",
+      "svg": "source/components/grab-handle.svg",
+      "logicalSize": [
+        40,
+        4
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "png": "assets/png/component/grab-handle.png",
+      "pngSize": [
+        160,
+        16
+      ],
+      "sha256": "1ae49f808db4cf6d014f5cbe4fec46573b9610db58aa437a8e647a69c708291c"
+    },
+    {
+      "id": "component/health-shell",
+      "svg": "source/components/health-shell.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/health-shell.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "9a4fe6aec185f8b536706135aaf4de762f834dbb4d6a653035b6db8e59970b81"
+    },
+    {
+      "id": "layers/health-shell--face",
+      "svg": "assets/svg/layers/health-shell--face.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/health-shell--face.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "8b357e948b627f6c5c152ff13f76af7cc12f6df3063f4d524c101cd61b032612"
+    },
+    {
+      "id": "layers/health-shell--metal-rim",
+      "svg": "assets/svg/layers/health-shell--metal-rim.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/health-shell--metal-rim.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "96fa861766cab4d2f88a2a957026624d0e6b8c2f9e721412a0b40e06366da6df"
+    },
+    {
+      "id": "strokes/health-shell--outer-shadow",
+      "svg": "assets/svg/strokes/health-shell--outer-shadow.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/health-shell--outer-shadow.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "35cf985b2a6020ef37f4d9ebedb117b95566d0021ef8d350c03aaea3e2938e92"
+    },
+    {
+      "id": "strokes/health-shell--metal-gradient",
+      "svg": "assets/svg/strokes/health-shell--metal-gradient.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/health-shell--metal-gradient.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "5755bb52ad96d9369c457d7387e3ccbd3da26af106c4c36dc78e9e0eae593edb"
+    },
+    {
+      "id": "strokes/health-shell--top-highlight",
+      "svg": "assets/svg/strokes/health-shell--top-highlight.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/health-shell--top-highlight.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "68fcb81aa9e2a54b5a314e90ec1fcf2ce80ad37dd714210b075673b900c5f132"
+    },
+    {
+      "id": "strokes/health-shell--bottom-shadow",
+      "svg": "assets/svg/strokes/health-shell--bottom-shadow.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/health-shell--bottom-shadow.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "ee754728daac198c382a9ddee7f8d7929bbc04c2e18b8acdfc2a274faefe3cc2"
+    },
+    {
+      "id": "strokes/health-shell--inner-keyline",
+      "svg": "assets/svg/strokes/health-shell--inner-keyline.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/health-shell--inner-keyline.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "399b834a0de3421899765bed65c873f4e7fda791db49bf6c34749ebb5543eaee"
+    },
+    {
+      "id": "layers/health-shell--bronze-corner-inlays",
+      "svg": "assets/svg/layers/health-shell--bronze-corner-inlays.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/health-shell--bronze-corner-inlays.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "52d2027fa451bf5f7e979c48d60ffd91df890b440dd638d56eb89bfaea998f17"
+    },
+    {
+      "id": "borders/health-shell--border",
+      "svg": "assets/svg/borders/health-shell--border.svg",
+      "logicalSize": [
+        150,
+        32
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/health-shell--border.png",
+      "pngSize": [
+        600,
+        128
+      ],
+      "sha256": "559bf75157cd067efd397c27fefe3e6192a38acace82c5056635200cafbc8edf"
+    },
+    {
+      "id": "component/hp-fill",
+      "svg": "source/components/hp-fill.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "png": "assets/png/component/hp-fill.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "7c2eba6946f38387b95d5781dd585c54a47b0e2b9995aa70bc19c76733ec8140"
+    },
+    {
+      "id": "component/minimap-frame",
+      "svg": "source/components/minimap-frame.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/component/minimap-frame.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "b9871bf4cbdb90766835c57efd275f8b3515ca6ffc0f9fbe1af318406e3907fe"
+    },
+    {
+      "id": "layers/minimap-frame--face",
+      "svg": "assets/svg/layers/minimap-frame--face.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "individual face",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/minimap-frame--face.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "c5c61d15bdedc0f045141cc3205741ebed8869a6c0165e789fd28063581757f1"
+    },
+    {
+      "id": "layers/minimap-frame--metal-rim",
+      "svg": "assets/svg/layers/minimap-frame--metal-rim.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "individual metal-rim",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/minimap-frame--metal-rim.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "d772e6013843d8e21501b2ebc637d57af661f7c52497600616ba3718fd7ec5be"
+    },
+    {
+      "id": "strokes/minimap-frame--outer-shadow",
+      "svg": "assets/svg/strokes/minimap-frame--outer-shadow.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/minimap-frame--outer-shadow.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "131952d44bf84c89585516f33924bde98f8c25cd34867e52e0f02fe58b45a307"
+    },
+    {
+      "id": "strokes/minimap-frame--metal-gradient",
+      "svg": "assets/svg/strokes/minimap-frame--metal-gradient.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/minimap-frame--metal-gradient.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "6989fb33eca56f825a115a22ff2f94f1c4ebd64cddc595976f7b17ae60722f9d"
+    },
+    {
+      "id": "strokes/minimap-frame--top-highlight",
+      "svg": "assets/svg/strokes/minimap-frame--top-highlight.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/minimap-frame--top-highlight.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "f5c9fd68e0e24e9a5d1802b33a7c6bb27e5ac09b332ac3e036a9c10de3c19d6d"
+    },
+    {
+      "id": "strokes/minimap-frame--bottom-shadow",
+      "svg": "assets/svg/strokes/minimap-frame--bottom-shadow.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/minimap-frame--bottom-shadow.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "d544fe4264b104ccc09f8c59ff538e31ef90fa186eba038989fb5a00e66f1482"
+    },
+    {
+      "id": "strokes/minimap-frame--inner-keyline",
+      "svg": "assets/svg/strokes/minimap-frame--inner-keyline.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/minimap-frame--inner-keyline.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "b2108b996b4dd8d4b45383d09976bc29a02024c9b5e309d26aff8b22f7db4de8"
+    },
+    {
+      "id": "layers/minimap-frame--bronze-corner-inlays",
+      "svg": "assets/svg/layers/minimap-frame--bronze-corner-inlays.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "individual bronze-corner-inlays",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/minimap-frame--bronze-corner-inlays.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "4bcbcfa06a7f7315150d815579c0480e2fd22a212de6ddd54b7d6f8d9da88f05"
+    },
+    {
+      "id": "borders/minimap-frame--border",
+      "svg": "assets/svg/borders/minimap-frame--border.svg",
+      "logicalSize": [
+        84,
+        84
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "png": "assets/png/borders/minimap-frame--border.png",
+      "pngSize": [
+        336,
+        336
+      ],
+      "sha256": "db38cd2d2c33d7a86fa8142c3cf4c8ea1ea7e9fd980a8315abebc719ae5fdbe6"
+    },
+    {
+      "id": "component/panel-log",
+      "svg": "source/components/panel-log.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/component/panel-log.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "eb8364ed8e5b91826d29c87e431fbefc22f8ab1bf7065ca3a51bf0f9136ad3c9"
+    },
+    {
+      "id": "layers/panel-log--smoke",
+      "svg": "assets/svg/layers/panel-log--smoke.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "individual smoke",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-log--smoke.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "759f509159b42731a467f3c0e438a049f20bb25f40a0b1bc18afa11aeaa2eaaa"
+    },
+    {
+      "id": "layers/panel-log--whisper-frame",
+      "svg": "assets/svg/layers/panel-log--whisper-frame.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "individual whisper-frame",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-log--whisper-frame.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "2477a014341771efa93642ac95d6bf96d1c28e6ee527766714b2b32f88e52faf"
+    },
+    {
+      "id": "strokes/panel-log--outline",
+      "svg": "assets/svg/strokes/panel-log--outline.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-log--outline.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "63759943b3a187c310d323f040b9350a87c62f9cf41cf30b9afd1ee003d70145"
+    },
+    {
+      "id": "strokes/panel-log--top-highlight",
+      "svg": "assets/svg/strokes/panel-log--top-highlight.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-log--top-highlight.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "693d3fb6df0400bb06001cfaaa4a079f96a3801ebab52a0a02c1629bd127f221"
+    },
+    {
+      "id": "strokes/panel-log--bottom-keyline",
+      "svg": "assets/svg/strokes/panel-log--bottom-keyline.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-log--bottom-keyline.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "26b7c8aabc77e1f3ad8fc6713251e16b778ef0e2103068edfd607dd7e2765c08"
+    },
+    {
+      "id": "strokes/panel-log--rune-hairline",
+      "svg": "assets/svg/strokes/panel-log--rune-hairline.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-log--rune-hairline.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "affed3c7e222f90d1bee4eb657887fdfc5d31f4054a34c9b6f622b9cef926e1e"
+    },
+    {
+      "id": "layers/panel-log--corner-pins",
+      "svg": "assets/svg/layers/panel-log--corner-pins.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "individual corner-pins",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-log--corner-pins.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "1c05ce3969132e6f590f1865db255b23ef99ba4734bf33b051a73bdd9a964c20"
+    },
+    {
+      "id": "borders/panel-log--border",
+      "svg": "assets/svg/borders/panel-log--border.svg",
+      "logicalSize": [
+        328,
+        256
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/borders/panel-log--border.png",
+      "pngSize": [
+        1312,
+        1024
+      ],
+      "sha256": "0c24bebea0ddf52e08149e79a6f39b602e3b3f318db5c47c553211ef07581716"
+    },
+    {
+      "id": "component/panel-map",
+      "svg": "source/components/panel-map.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/component/panel-map.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "7704fbcc1eabaa6be9b4625b656c495c0ca3e1bd35960cf9ecb82f32710fec35"
+    },
+    {
+      "id": "layers/panel-map--smoke",
+      "svg": "assets/svg/layers/panel-map--smoke.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "individual smoke",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-map--smoke.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "8a8047d32f4e21d2ef8597bbac257e49940306137e96cdfce201528702b0575e"
+    },
+    {
+      "id": "layers/panel-map--whisper-frame",
+      "svg": "assets/svg/layers/panel-map--whisper-frame.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "individual whisper-frame",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-map--whisper-frame.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "6e4c10b32496bf0b7b42a62d83a47b00a3bc93eaba12ea17fb8199bd31ff7fb6"
+    },
+    {
+      "id": "strokes/panel-map--outline",
+      "svg": "assets/svg/strokes/panel-map--outline.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-map--outline.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "01d2f20aabd2618f69562dd1ec845017967a3569b4424ac4da572a9024907b3e"
+    },
+    {
+      "id": "strokes/panel-map--top-highlight",
+      "svg": "assets/svg/strokes/panel-map--top-highlight.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-map--top-highlight.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "7dbde47dd8bc53a0150637f0615a3ea248e53261c6f19f65a7f94ec29e6855fc"
+    },
+    {
+      "id": "strokes/panel-map--bottom-keyline",
+      "svg": "assets/svg/strokes/panel-map--bottom-keyline.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-map--bottom-keyline.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "295b3252fee4bbde82cdf2aab3d65f98846c63b99c768e1f66728f7c81c9b369"
+    },
+    {
+      "id": "strokes/panel-map--rune-hairline",
+      "svg": "assets/svg/strokes/panel-map--rune-hairline.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-map--rune-hairline.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "49e277c0453e33ae7794bf4e370f089b7b9f5d5ad6ef3beb8a1a14d7f210d848"
+    },
+    {
+      "id": "layers/panel-map--corner-pins",
+      "svg": "assets/svg/layers/panel-map--corner-pins.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "individual corner-pins",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-map--corner-pins.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "7dfa94b9841ba7d9d0fe14ba27a66a1365dc718fd86c6080f7105afb8c90b642"
+    },
+    {
+      "id": "borders/panel-map--border",
+      "svg": "assets/svg/borders/panel-map--border.svg",
+      "logicalSize": [
+        328,
+        424
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/borders/panel-map--border.png",
+      "pngSize": [
+        1312,
+        1696
+      ],
+      "sha256": "647cff2fd94d3f6435d197f9696c3d25c4350c186dbf3bad14c2d93681a85d7d"
+    },
+    {
+      "id": "component/panel-pause",
+      "svg": "source/components/panel-pause.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/component/panel-pause.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "f16e829d8e5bb7ee48edb62b47eef4f013bf67f890597be0b0f81c8dca3abc95"
+    },
+    {
+      "id": "layers/panel-pause--smoke",
+      "svg": "assets/svg/layers/panel-pause--smoke.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "individual smoke",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-pause--smoke.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "14bd3fc996ef3147d617941afdd1b13221179afc76d09b28bac682460bd2b54d"
+    },
+    {
+      "id": "layers/panel-pause--whisper-frame",
+      "svg": "assets/svg/layers/panel-pause--whisper-frame.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "individual whisper-frame",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-pause--whisper-frame.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "4d726d8150649b0f58edd56b33a0aceb4042e31f8bab511f3a3bd349606609a1"
+    },
+    {
+      "id": "strokes/panel-pause--outline",
+      "svg": "assets/svg/strokes/panel-pause--outline.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-pause--outline.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "0206bf5b3096bf5d68029c1f56e640da972393178dfa0d35b6ecd4681ae97370"
+    },
+    {
+      "id": "strokes/panel-pause--top-highlight",
+      "svg": "assets/svg/strokes/panel-pause--top-highlight.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-pause--top-highlight.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "578a3bad3f97a5f85a8fb4f98862962e050f42e0468864483568c0ca376c4398"
+    },
+    {
+      "id": "strokes/panel-pause--bottom-keyline",
+      "svg": "assets/svg/strokes/panel-pause--bottom-keyline.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-pause--bottom-keyline.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "00967376ec9f02e5d89e6f313e0185f89ee9c927a8ccbd877785960a7d54b160"
+    },
+    {
+      "id": "strokes/panel-pause--rune-hairline",
+      "svg": "assets/svg/strokes/panel-pause--rune-hairline.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "one independent border stroke",
+      "origin": "exact v2 SVG stroke",
+      "pngScale": 4,
+      "png": "assets/png/strokes/panel-pause--rune-hairline.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "54e63f4c57563206bba41a3ad04fc57a4c8d26e962c818ca39069d44c325238d"
+    },
+    {
+      "id": "layers/panel-pause--corner-pins",
+      "svg": "assets/svg/layers/panel-pause--corner-pins.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "individual corner-pins",
+      "origin": "exact v2 SVG layer",
+      "pngScale": 4,
+      "png": "assets/png/layers/panel-pause--corner-pins.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "bfdc0d27da49337de83749ef9147740eb8d7f0f64ef66cd28723af06be7a376b"
+    },
+    {
+      "id": "borders/panel-pause--border",
+      "svg": "assets/svg/borders/panel-pause--border.svg",
+      "logicalSize": [
+        328,
+        456
+      ],
+      "role": "transparent border only; resize with nine-slice",
+      "origin": "exact v2 SVG layers",
+      "pngScale": 4,
+      "sliceInsets": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "png": "assets/png/borders/panel-pause--border.png",
+      "pngSize": [
+        1312,
+        1824
+      ],
+      "sha256": "895d1d01eede90a6c19ab19276fc61efd74a3abe0bee4e687809761d30afa2d6"
+    },
+    {
+      "id": "component/scroll-track",
+      "svg": "source/components/scroll-track.svg",
+      "logicalSize": [
+        4,
+        160
+      ],
+      "role": "assembled editable component; no label or icon baked in",
+      "origin": "v2 authored SVG",
+      "pngScale": 4,
+      "png": "assets/png/component/scroll-track.png",
+      "pngSize": [
+        16,
+        640
+      ],
+      "sha256": "756593ae2e948012d9b4d5dd9d7960e558ecdc2dfcc62da07fedeb287ac8c130"
+    },
+    {
+      "id": "gradients/steel",
+      "svg": "assets/svg/gradients/steel.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "exact v2 stops",
+      "pngScale": 4,
+      "png": "assets/png/gradients/steel.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "642d9ee4cd75cbae54f2fa27310fd24c8e3fe5497121a5f7b31b0ba708e3cf12"
+    },
+    {
+      "id": "gradients/gold",
+      "svg": "assets/svg/gradients/gold.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "exact v2 stops",
+      "pngScale": 4,
+      "png": "assets/png/gradients/gold.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "0375a1515b5d6adf0ee8ebd5d08b13bded776590c938b7679aa95e3cc13f6fb7"
+    },
+    {
+      "id": "gradients/floor-shadow",
+      "svg": "assets/svg/gradients/floor-shadow.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "exact v2 stops",
+      "pngScale": 4,
+      "png": "assets/png/gradients/floor-shadow.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "1c03a045b879cff1c4497a7ab37e27367ccdfbe954c4e21a64f87f54e6191bb2"
+    },
+    {
+      "id": "gradients/log-hint-alpha",
+      "svg": "assets/svg/gradients/log-hint-alpha.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "exact v2 stops",
+      "pngScale": 4,
+      "png": "assets/png/gradients/log-hint-alpha.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "632c2bdc993aaf4265e7fec7b716697f7a59d825c5daae7f93d4e35bdd3cf377"
+    },
+    {
+      "id": "gradients/health-green",
+      "svg": "assets/svg/gradients/health-green.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "new supplemental gradient",
+      "pngScale": 4,
+      "png": "assets/png/gradients/health-green.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "9d7966eb190115ba974f26666f635547209315b9645ca3fd79fc9579fe1528b4"
+    },
+    {
+      "id": "gradients/health-warning",
+      "svg": "assets/svg/gradients/health-warning.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "new supplemental gradient",
+      "pngScale": 4,
+      "png": "assets/png/gradients/health-warning.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "8882b2cc738bfefe6f5805c54c1d07bfb9f7eb46356272a05e0bf852ab26ae4e"
+    },
+    {
+      "id": "gradients/health-danger",
+      "svg": "assets/svg/gradients/health-danger.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "new supplemental gradient",
+      "pngScale": 4,
+      "png": "assets/png/gradients/health-danger.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "a9d68dd7a831e3633a6ba140ba53d0078c91c46951e374363d81a162aeadba5a"
+    },
+    {
+      "id": "gradients/panel-smoke",
+      "svg": "assets/svg/gradients/panel-smoke.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "new supplemental gradient",
+      "pngScale": 4,
+      "png": "assets/png/gradients/panel-smoke.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "72f3cc3613750060cae16fe82e3cc41f975c2f0863bee844bb60640c973e69b5"
+    },
+    {
+      "id": "gradients/cyan-glow",
+      "svg": "assets/svg/gradients/cyan-glow.svg",
+      "logicalSize": [
+        64,
+        256
+      ],
+      "role": "standalone vertical gradient swatch",
+      "origin": "new supplemental gradient",
+      "pngScale": 4,
+      "png": "assets/png/gradients/cyan-glow.png",
+      "pngSize": [
+        256,
+        1024
+      ],
+      "sha256": "0c2bfed08579ae5b22598d24ffb96624a0f54e9bbf6834745a9cc5a01fdf2a48"
+    },
+    {
+      "id": "textures/fine-grain",
+      "svg": "assets/svg/textures/fine-grain.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "repeat at 64 logical px; optional overlay",
+      "origin": "new authored seamless supplemental texture",
+      "pngScale": 4,
+      "png": "assets/png/textures/fine-grain.png",
+      "pngSize": [
+        256,
+        256
+      ],
+      "sha256": "960584809eefdb469aa7949955b5dfdeed3a81bf91788eabafb082ff2c9a2e07"
+    },
+    {
+      "id": "textures/brushed-metal",
+      "svg": "assets/svg/textures/brushed-metal.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "repeat at 64 logical px; optional overlay",
+      "origin": "new authored seamless supplemental texture",
+      "pngScale": 4,
+      "png": "assets/png/textures/brushed-metal.png",
+      "pngSize": [
+        256,
+        256
+      ],
+      "sha256": "801fa4d2ae6b8d5de224ee005c31ddbe9ceec2fa3d3729022280bd03508b69d6"
+    },
+    {
+      "id": "textures/woven-ink",
+      "svg": "assets/svg/textures/woven-ink.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "repeat at 64 logical px; optional overlay",
+      "origin": "new authored seamless supplemental texture",
+      "pngScale": 4,
+      "png": "assets/png/textures/woven-ink.png",
+      "pngSize": [
+        256,
+        256
+      ],
+      "sha256": "bfc6da9fae1702c1050c458689b08d6a258576128303b921937e9869f297f64e"
+    },
+    {
+      "id": "textures/rune-grid",
+      "svg": "assets/svg/textures/rune-grid.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "repeat at 64 logical px; optional overlay",
+      "origin": "new authored seamless supplemental texture",
+      "pngScale": 4,
+      "png": "assets/png/textures/rune-grid.png",
+      "pngSize": [
+        256,
+        256
+      ],
+      "sha256": "e8158de391dc870a449417020990c809cd4b93929b9ee84465cee96839f6d856"
+    },
+    {
+      "id": "textures/smoke-cloud",
+      "svg": "assets/svg/textures/smoke-cloud.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "repeat at 64 logical px; optional overlay",
+      "origin": "new authored seamless supplemental texture",
+      "pngScale": 4,
+      "png": "assets/png/textures/smoke-cloud.png",
+      "pngSize": [
+        256,
+        256
+      ],
+      "sha256": "f2c2666a9986a6b305ff4e815f08104cb1accbbdaf12d63b9483555c533d20f8"
+    },
+    {
+      "id": "trays/action-tray--surface",
+      "svg": "assets/svg/trays/action-tray--surface.svg",
+      "logicalSize": [
+        340,
+        64
+      ],
+      "role": "blank tray surface",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/action-tray--surface.png",
+      "pngSize": [
+        1360,
+        256
+      ],
+      "sha256": "21c0761147c10c5b60e49a93c907ba17d94f0496ecbaf7c5887d48e8ed473d15"
+    },
+    {
+      "id": "trays/action-tray--border",
+      "svg": "assets/svg/trays/action-tray--border.svg",
+      "logicalSize": [
+        340,
+        64
+      ],
+      "role": "independent tray frame",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/action-tray--border.png",
+      "pngSize": [
+        1360,
+        256
+      ],
+      "sha256": "18e10c90259e8290b1eba3ac6bf79cbf006e94431a36aa45e91d6ee42ec42097"
+    },
+    {
+      "id": "trays/log-strip--surface",
+      "svg": "assets/svg/trays/log-strip--surface.svg",
+      "logicalSize": [
+        340,
+        40
+      ],
+      "role": "blank tray surface",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/log-strip--surface.png",
+      "pngSize": [
+        1360,
+        160
+      ],
+      "sha256": "7ff10043c84ffd7bcb928a995ae0dba272e2ead60abf67b3b3e854ce9fa76b54"
+    },
+    {
+      "id": "trays/log-strip--border",
+      "svg": "assets/svg/trays/log-strip--border.svg",
+      "logicalSize": [
+        340,
+        40
+      ],
+      "role": "independent tray frame",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/log-strip--border.png",
+      "pngSize": [
+        1360,
+        160
+      ],
+      "sha256": "7ea66562835c30a8d9c4bd7e9e666778982fdcb830ca0e1f5807d84e6e31b8d7"
+    },
+    {
+      "id": "trays/status-tray--surface",
+      "svg": "assets/svg/trays/status-tray--surface.svg",
+      "logicalSize": [
+        160,
+        28
+      ],
+      "role": "blank tray surface",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/status-tray--surface.png",
+      "pngSize": [
+        640,
+        112
+      ],
+      "sha256": "71decc01be61c8f30294b500da2903c404549780b7b8d59f63899875fde6d565"
+    },
+    {
+      "id": "trays/status-tray--border",
+      "svg": "assets/svg/trays/status-tray--border.svg",
+      "logicalSize": [
+        160,
+        28
+      ],
+      "role": "independent tray frame",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/status-tray--border.png",
+      "pngSize": [
+        640,
+        112
+      ],
+      "sha256": "73646e82a7fbbd6dd998bffef5da89b9056fa5fabcb83d5f30b93959a08837b1"
+    },
+    {
+      "id": "trays/tooltip-tray--surface",
+      "svg": "assets/svg/trays/tooltip-tray--surface.svg",
+      "logicalSize": [
+        240,
+        84
+      ],
+      "role": "blank tray surface",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/tooltip-tray--surface.png",
+      "pngSize": [
+        960,
+        336
+      ],
+      "sha256": "b3664aaf70b7e81a330ccb94a1db071ae3811f0b2cf9f9a85c3b0e9b1740a650"
+    },
+    {
+      "id": "trays/tooltip-tray--border",
+      "svg": "assets/svg/trays/tooltip-tray--border.svg",
+      "logicalSize": [
+        240,
+        84
+      ],
+      "role": "independent tray frame",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "sliceInsets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "png": "assets/png/trays/tooltip-tray--border.png",
+      "pngSize": [
+        960,
+        336
+      ],
+      "sha256": "3fff67070f0f4a257418ae0ddd55c2f2c113ed53f25e86660a3af7e127bb4fc7"
+    },
+    {
+      "id": "details/corner-bronze",
+      "svg": "assets/svg/details/corner-bronze.svg",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 64.0,
+      "png": "assets/png/details/corner-bronze.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6d5831811e1dcdd1eca377e4dd53889c1191a9cb616c5c8a250ecb127082788a"
+    },
+    {
+      "id": "details/rivet",
+      "svg": "assets/svg/details/rivet.svg",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 64.0,
+      "png": "assets/png/details/rivet.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "136f11b6d038f7ee5944779c0b5df3de0878136af429b0ce42d8363853624804"
+    },
+    {
+      "id": "details/divider-steel",
+      "svg": "assets/svg/details/divider-steel.svg",
+      "logicalSize": [
+        128,
+        4
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/details/divider-steel.png",
+      "pngSize": [
+        512,
+        16
+      ],
+      "sha256": "0f41e6c71d3799fe15a2f8af99f3349ef15f8c434211d4e9aa1fdbde5e6f72f7"
+    },
+    {
+      "id": "details/divider-rune",
+      "svg": "assets/svg/details/divider-rune.svg",
+      "logicalSize": [
+        128,
+        12
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/details/divider-rune.png",
+      "pngSize": [
+        512,
+        48
+      ],
+      "sha256": "6f7ffc2cb9678d80d106e8307929c313e0aeb697d82fb5b9dd60b896e5aeb81e"
+    },
+    {
+      "id": "details/scroll-thumb",
+      "svg": "assets/svg/details/scroll-thumb.svg",
+      "logicalSize": [
+        4,
+        40
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/details/scroll-thumb.png",
+      "pngSize": [
+        16,
+        160
+      ],
+      "sha256": "741ea173bf8e9427f038e0b0ed6a8014883461fe96c6bf330535970ee45161a3"
+    },
+    {
+      "id": "details/scroll-rail",
+      "svg": "assets/svg/details/scroll-rail.svg",
+      "logicalSize": [
+        4,
+        160
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/details/scroll-rail.png",
+      "pngSize": [
+        16,
+        640
+      ],
+      "sha256": "fe1c0649d7eadca67cbea6d6425b7d8ed679de98ee8e882808f9b6f3134aba01"
+    },
+    {
+      "id": "details/status-badge",
+      "svg": "assets/svg/details/status-badge.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 21.333333333333332,
+      "png": "assets/png/details/status-badge.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "9d7ceeaa45f730545f6ad5bcf52aeecd2a9a7426f52b964acfd41d1d70e4dba8"
+    },
+    {
+      "id": "details/status-timer",
+      "svg": "assets/svg/details/status-timer.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "separate decoration or control layer",
+      "origin": "new construction asset",
+      "pngScale": 21.333333333333332,
+      "png": "assets/png/details/status-timer.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "42dc13e7bdc40f76a23d95d29fb20c54ba1aa5cb2911e934258095a3ffd0f1c4"
+    },
+    {
+      "id": "health/track",
+      "svg": "assets/svg/health/track.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter track",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/track.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "301c69c1b5947309fa6de302d9fcd8a5f399e75dbfd181e78c6af8892e44aaa2"
+    },
+    {
+      "id": "health/fill-green",
+      "svg": "assets/svg/health/fill-green.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter fill-green",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/fill-green.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "15f0334fc9391c371e603d4a0abe87e4afa63c904e4f2c28a2a097f7a26fd1fe"
+    },
+    {
+      "id": "health/fill-warning",
+      "svg": "assets/svg/health/fill-warning.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter fill-warning",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/fill-warning.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "732fec582abef9c8e7e2730c1892f4778d61148a3dbfdc46cb02e2a08c421b9f"
+    },
+    {
+      "id": "health/fill-danger",
+      "svg": "assets/svg/health/fill-danger.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter fill-danger",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/fill-danger.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "1597ede915c1d4b9eb61b4e749208fda0a2f47221946583f8ae2ed71aa5b6ca6"
+    },
+    {
+      "id": "health/damage-lag",
+      "svg": "assets/svg/health/damage-lag.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter damage-lag",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/damage-lag.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "1b46934ce4968c9cf22280303a112b22597a842aea20bcb87fe5798565b5274f"
+    },
+    {
+      "id": "health/highlight",
+      "svg": "assets/svg/health/highlight.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter highlight",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/highlight.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "6ae5b5b3557b55203fc843996f5a496cc328424015cc83d7a46dcc436e33e26f"
+    },
+    {
+      "id": "health/inner-shadow",
+      "svg": "assets/svg/health/inner-shadow.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter inner-shadow",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/inner-shadow.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "2f27f1809b1b4a8ae54ef7e66eb721828a86519384195175b5d5da88c223ee89"
+    },
+    {
+      "id": "health/mask",
+      "svg": "assets/svg/health/mask.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter mask",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/mask.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "b14c5eb0af0cfc0e1d51fd70d4bbc447b88d4764d2a25215bc7030d0c723a204"
+    },
+    {
+      "id": "health/outline",
+      "svg": "assets/svg/health/outline.svg",
+      "logicalSize": [
+        48,
+        4
+      ],
+      "role": "health meter outline",
+      "origin": "new construction asset",
+      "pngScale": 4,
+      "png": "assets/png/health/outline.png",
+      "pngSize": [
+        192,
+        16
+      ],
+      "sha256": "afd04ee66daa1f1cbff81de2b488b8a623d0a2675fd83a19b7290fda2ef78a8c"
+    },
+    {
+      "id": "icons/icon-arrow",
+      "svg": "assets/svg/icons/icon-arrow.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-arrow.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "0bdbb390b3bc1d99158bbad1e6c3bac0c35685ff1c2aa42ea643f75350bf2dcc"
+    },
+    {
+      "id": "icons/icon-bag",
+      "svg": "assets/svg/icons/icon-bag.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-bag.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "377794f79c774ceeb72a57cd892674719819fd083b803fdb96366db56c330ba1"
+    },
+    {
+      "id": "icons/icon-chest",
+      "svg": "assets/svg/icons/icon-chest.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-chest.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1da7c23adee817da27eaac9e2568f0414a67a12d503d9bb8fcefc531b3b5cd98"
+    },
+    {
+      "id": "icons/icon-chevron",
+      "svg": "assets/svg/icons/icon-chevron.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-chevron.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3f6c2edeb564ce7fe10c947ea95c24032d2481198eac469b1ac323d2b67a77ac"
+    },
+    {
+      "id": "icons/icon-close",
+      "svg": "assets/svg/icons/icon-close.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-close.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "8a2f609ae80966c17b4eeddf8481064a96503ae700db6093b913ecf6d67bec87"
+    },
+    {
+      "id": "icons/icon-coin",
+      "svg": "assets/svg/icons/icon-coin.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-coin.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "13a537778f4d23957b76e03e4745c7ac6a058262820e86f2618cf3b8acfd2f75"
+    },
+    {
+      "id": "icons/icon-diamond",
+      "svg": "assets/svg/icons/icon-diamond.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-diamond.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "d60eeccdf5f4a8cf37a1ab4a28e8f8ab18ec20e3b4ea78f056b5bd2886a7d8ef"
+    },
+    {
+      "id": "icons/icon-disarm",
+      "svg": "assets/svg/icons/icon-disarm.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-disarm.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "dd96e51b6db112f1b800659785d04106e968daefd8e9460cb1b86f28037fd643"
+    },
+    {
+      "id": "icons/icon-door",
+      "svg": "assets/svg/icons/icon-door.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-door.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "facb9607ddac4824c40dde3094bb148a8f790de0a53b0955b60a3a8eb1343b97"
+    },
+    {
+      "id": "icons/icon-flag",
+      "svg": "assets/svg/icons/icon-flag.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-flag.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "980eac58f36d159cec5d89ae7a713345291f6187d85890ca811fac57a9cb22b4"
+    },
+    {
+      "id": "icons/icon-fullscreen",
+      "svg": "assets/svg/icons/icon-fullscreen.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-fullscreen.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1df6ee264a93ef373de5e9fe97a1a0cff777875891c8fe3ec71c0b6b5b866a80"
+    },
+    {
+      "id": "icons/icon-heal",
+      "svg": "assets/svg/icons/icon-heal.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-heal.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "03604ed8afaed1092b213c3bf05934f8c7d10dd98fc23c944c43f4cee2d71a85"
+    },
+    {
+      "id": "icons/icon-journal",
+      "svg": "assets/svg/icons/icon-journal.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-journal.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "2bcc3440983dd8a1e68d183240574321e52c80d565bd0865bc93acffcd39fbce"
+    },
+    {
+      "id": "icons/icon-load",
+      "svg": "assets/svg/icons/icon-load.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-load.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "e592f93b51c022bc05de80cf519a2423c67cdf204419e11e470e2e3ef07d476a"
+    },
+    {
+      "id": "icons/icon-menu",
+      "svg": "assets/svg/icons/icon-menu.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-menu.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "cf07bdfc7db68621f8e15a364bcb1cec6ed05609d1742cdb3e304517e91d0c53"
+    },
+    {
+      "id": "icons/icon-player",
+      "svg": "assets/svg/icons/icon-player.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-player.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "2cda6a4dbd6c1e9aaabe466fda10f5fcfef6400cb963f1bcfa1ec22c7fe5c8a0"
+    },
+    {
+      "id": "icons/icon-resume",
+      "svg": "assets/svg/icons/icon-resume.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-resume.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "47bf47bef63a763f2d13119f442e06d5b484ced5696b7d7f8b68bd897c6f84bf"
+    },
+    {
+      "id": "icons/icon-rune",
+      "svg": "assets/svg/icons/icon-rune.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-rune.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "c8d1cde93c905ad2130603a6ed96835809193ed4ade828b07f34209896636d35"
+    },
+    {
+      "id": "icons/icon-save",
+      "svg": "assets/svg/icons/icon-save.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-save.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "506aefcbd19219e641d9e15736390d31d23664c12d157805f10615d277094ad7"
+    },
+    {
+      "id": "icons/icon-search",
+      "svg": "assets/svg/icons/icon-search.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-search.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "00584fb17751175e562b2332429318ea269a8058aedb98e3ee4fad35b88ff3c5"
+    },
+    {
+      "id": "icons/icon-settings",
+      "svg": "assets/svg/icons/icon-settings.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-settings.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "78e47fb930c780f968deffeaefbe60c909a791183b81adabece256b728c26f5b"
+    },
+    {
+      "id": "icons/icon-shield",
+      "svg": "assets/svg/icons/icon-shield.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-shield.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "46c5f046928228517e2c5e3bca4f03b2d16a7d8c2d262389a56fac3114c3d3db"
+    },
+    {
+      "id": "icons/icon-skull",
+      "svg": "assets/svg/icons/icon-skull.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-skull.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6ed99c0790913e3542cc5f7db4f9fe3cab02afe7ccbd714490b0b86fd9d099c6"
+    },
+    {
+      "id": "icons/icon-stairs",
+      "svg": "assets/svg/icons/icon-stairs.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-stairs.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "67cfae4b50cf5dad4b162ada91a344ba18def6b9e302d3e5acaf89dd93342572"
+    },
+    {
+      "id": "icons/icon-strike",
+      "svg": "assets/svg/icons/icon-strike.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-strike.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "0a5b6caf1a310a89c0e0787b0feed5fac4f56b570f570110be1310e7160c5de2"
+    },
+    {
+      "id": "icons/icon-warning",
+      "svg": "assets/svg/icons/icon-warning.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual icons glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/icons/icon-warning.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "239ce58d165940497b26da2101c1a3df5d7dcba6a67aa5a63686fb0fecd986df"
+    },
+    {
+      "id": "status/status-area_abyss",
+      "svg": "assets/svg/status/status-area_abyss.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_abyss.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "43927bc19c30ab740372237afcbf6dac6a5e9a633b56f71b6337628d59464a85"
+    },
+    {
+      "id": "status/status-area_deeps",
+      "svg": "assets/svg/status/status-area_deeps.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_deeps.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6d7de173532d8f3ed07d6e37b89d93e876342f13590b48911bd363ea80acf18c"
+    },
+    {
+      "id": "status/status-area_hollows",
+      "svg": "assets/svg/status/status-area_hollows.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_hollows.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3055254b57542cd829a1edc777922b570dbbda1779d0a2e4afcf5fa8266096a2"
+    },
+    {
+      "id": "status/status-area_rifts",
+      "svg": "assets/svg/status/status-area_rifts.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_rifts.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "169de04206acbab3c570b5821f147f810685d45258349bf8bc718dc11d53ea45"
+    },
+    {
+      "id": "status/status-area_ruins",
+      "svg": "assets/svg/status/status-area_ruins.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_ruins.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "f443c7f58ef950afd74c58a10daac5b634b289ebc2f006a0ddd0a14919442890"
+    },
+    {
+      "id": "status/status-area_vault",
+      "svg": "assets/svg/status/status-area_vault.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_vault.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "741a18757d9a134d92f73247e85c1347575e2c9bad8c23d9b2a7bcc753f48719"
+    },
+    {
+      "id": "status/status-blessed",
+      "svg": "assets/svg/status/status-blessed.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-blessed.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "fcd3945cbfb305e3404cdbeacedc15b22a479b99b60d764ef306f37af36ed802"
+    },
+    {
+      "id": "status/status-bones",
+      "svg": "assets/svg/status/status-bones.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-bones.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ab6cb9c8dfab8600632b86cc2d468beed9560df81e345b4ae854342cc48a3895"
+    },
+    {
+      "id": "status/status-burning",
+      "svg": "assets/svg/status/status-burning.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-burning.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "9c7f5e765338613454f85a406d9b8a3e3166cd0a05edb1f1486208f88c30eaa1"
+    },
+    {
+      "id": "status/status-card_combo",
+      "svg": "assets/svg/status/status-card_combo.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_combo.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ceab2f65ce965141cb743c1848bbf89bbe0ebd291546bc7333e566ad4ebefff8"
+    },
+    {
+      "id": "status/status-card_copy",
+      "svg": "assets/svg/status/status-card_copy.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_copy.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "bd491211b0d085316fcc2107c38da672bcc2b88a6eae3886048a5e1133ccca71"
+    },
+    {
+      "id": "status/status-card_enchanted",
+      "svg": "assets/svg/status/status-card_enchanted.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_enchanted.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3b0a0462edf648e4037165474c1f90ab7af1746c74a2d3d70cf5f4325c93ed31"
+    },
+    {
+      "id": "status/status-card_frozen",
+      "svg": "assets/svg/status/status-card_frozen.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_deeps.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "2c6a2d315d76e450d13adf5fac56a5bed84840abd635de406bf2921b09ceced5"
+    },
+    {
+      "id": "status/status-card_low_charge",
+      "svg": "assets/svg/status/status-card_low_charge.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_low_charge.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "d14c6041d7477e5ceb7338477c084b849ee06a875b07cde44c8255ee03b79e94"
+    },
+    {
+      "id": "status/status-card_recipe",
+      "svg": "assets/svg/status/status-card_recipe.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_recipe.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6d87e277b9b28767174a93f21e2645ab482e5d726631fcbb7ed70abb38111e13"
+    },
+    {
+      "id": "status/status-card_spent",
+      "svg": "assets/svg/status/status-card_spent.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_spent.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ecc7ab13898770642113c445d37daa068b0601e6d70d16465484da52326558f8"
+    },
+    {
+      "id": "status/status-card_tinkered",
+      "svg": "assets/svg/status/status-card_tinkered.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-card_tinkered.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "740c55cd3eefdd66a0346bdb8c05340cfa70eb6dd331d17b6b4850270e94d67d"
+    },
+    {
+      "id": "status/status-carried_flame",
+      "svg": "assets/svg/status/status-carried_flame.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-carried_flame.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "82622018c4c64aaf570c9a28037ee59c2ab85943c116f0dbaec71267036baf8f"
+    },
+    {
+      "id": "status/status-carrying_crate",
+      "svg": "assets/svg/status/status-carrying_crate.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-carrying_crate.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "895469a9be8a52e15c4db361ec5d429884ba8e99adbd0ed42a89c21d810421ec"
+    },
+    {
+      "id": "status/status-circuit",
+      "svg": "assets/svg/status/status-circuit.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-circuit.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ed22763841ccb87c87993be09e2c58edf7c916c56b8a9b068b69890638969034"
+    },
+    {
+      "id": "status/status-companion",
+      "svg": "assets/svg/status/status-companion.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-companion.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ed12311f5ba67c940f61a4ee286ec082d5d02f5f1ea74bdc9a0c03376ecf7a56"
+    },
+    {
+      "id": "status/status-confused",
+      "svg": "assets/svg/status/status-confused.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-confused.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "986b4a1fb73cebf1f750240aba4d0c7fb07a55a313262bcb4b346caaa35b7f5c"
+    },
+    {
+      "id": "status/status-courage",
+      "svg": "assets/svg/status/status-courage.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-courage.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1c6c0b8d856634980f2389b8e06c9b0f05692190db46b70ac2ea47d5cc8c3482"
+    },
+    {
+      "id": "status/status-crystal_charge",
+      "svg": "assets/svg/status/status-crystal_charge.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-crystal_charge.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "5d320be44fa429dc12d0c0f45941c522fa2a09f3a59da7047332a2ee4097071f"
+    },
+    {
+      "id": "status/status-cursed",
+      "svg": "assets/svg/status/status-cursed.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-cursed.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "61875bd1e0def335b56b5be1f339beb7c7db7a74bb48404d1422621e573820da"
+    },
+    {
+      "id": "status/status-dodge",
+      "svg": "assets/svg/status/status-dodge.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-dodge.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "f27e242b7affe307f273f82fe4c3720a8c0b99171bdfa652c18a0541215844b4"
+    },
+    {
+      "id": "status/status-drain",
+      "svg": "assets/svg/status/status-drain.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-drain.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1215c7c79fcc66e029097a7d01937a8e9ffdb7918ba089978c7bd48ec137a83a"
+    },
+    {
+      "id": "status/status-element_brown",
+      "svg": "assets/svg/status/status-element_brown.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_brown.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "44cb395180011dc6aa6b1b73b111c3faa602b59019adcb404a05e3aced06828f"
+    },
+    {
+      "id": "status/status-element_fire",
+      "svg": "assets/svg/status/status-element_fire.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_fire.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ff81c2c6c15539b1194c77e05bd720ba92825e691f50b085f12740169f02c858"
+    },
+    {
+      "id": "status/status-element_frost",
+      "svg": "assets/svg/status/status-element_frost.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_frost.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "d6135581e4d048727f095912410d25dfe2b3c93464bed0b9936959d7ef29061b"
+    },
+    {
+      "id": "status/status-element_gray",
+      "svg": "assets/svg/status/status-element_gray.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_gray.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1b549ea91397a2e2b51a5771b24102744e04bbb7a40bbfe8d61de6da89207e0f"
+    },
+    {
+      "id": "status/status-element_light",
+      "svg": "assets/svg/status/status-element_light.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_light.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "94c1f299f7790e76d69986452b50a98410204b3b681d6faebca1ffd3dae6b9ea"
+    },
+    {
+      "id": "status/status-element_shadow",
+      "svg": "assets/svg/status/status-element_shadow.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_shadow.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "8f53a3fb17cc80b59bbf04a05e4bb6c967bdc0b24e947cd43a18d9a0d5d7be51"
+    },
+    {
+      "id": "status/status-element_storm",
+      "svg": "assets/svg/status/status-element_storm.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_storm.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "59296ad62f051abd9081f1337e58a2484b0f85552a4447d9d60b2eeac11d0ef7"
+    },
+    {
+      "id": "status/status-element_verdant",
+      "svg": "assets/svg/status/status-element_verdant.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-element_verdant.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "53a5f63753726b87792645fd5462f03d3332b9c0bda680b08af9db11eead4ba7"
+    },
+    {
+      "id": "status/status-empowered",
+      "svg": "assets/svg/status/status-empowered.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-empowered.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "78dac163f185ccfa507cd499197c85759b331d720929a6527fa791eb1f8dd6df"
+    },
+    {
+      "id": "status/status-escort",
+      "svg": "assets/svg/status/status-escort.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-escort.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "48d12717352d913901f0dc9d1d9c90c641323e1a611dfd05ed3d822fcaffb5d0"
+    },
+    {
+      "id": "status/status-fortune",
+      "svg": "assets/svg/status/status-fortune.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-fortune.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "8fdc540cf9a6189c89fd8403e6bda1c42dea9caa837d4df4cc94814247f37529"
+    },
+    {
+      "id": "status/status-frozen",
+      "svg": "assets/svg/status/status-frozen.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-frozen.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "417f4ec4e63a20e04302a0e3aeec0b2d2ea7a7390fab8fb4abcc1708a5dce9ed"
+    },
+    {
+      "id": "status/status-ground_bramble",
+      "svg": "assets/svg/status/status-ground_bramble.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ground_bramble.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6b89299f2a482b2609060207f1a5749732d7f9212e1d3f5bd04e03d85ccf17db"
+    },
+    {
+      "id": "status/status-ground_burn",
+      "svg": "assets/svg/status/status-ground_burn.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ground_burn.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "57ea020cb9424bc08ac932fa51a20eb94d22fbd3edd73363628324d5b5f5427c"
+    },
+    {
+      "id": "status/status-ground_charged",
+      "svg": "assets/svg/status/status-ground_charged.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_vault.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "a73b4e1fead990d4fc497c3181a46ebca82b3cfafd18f42d73b566769a9d9730"
+    },
+    {
+      "id": "status/status-ground_ice",
+      "svg": "assets/svg/status/status-ground_ice.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_deeps.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "316aef7e7d95e7c420b1c33a547611273a16daffca96f13c97559bfe9183b489"
+    },
+    {
+      "id": "status/status-ground_tremor",
+      "svg": "assets/svg/status/status-ground_tremor.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ground_tremor.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "66d830b0ca9cdee021039b401741493f6e2c3a54fc4e104c56d318dda3faf9e8"
+    },
+    {
+      "id": "status/status-ground_void",
+      "svg": "assets/svg/status/status-ground_void.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-area_abyss.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "6fdab9294f0b44cde10bd59fa323ceed25fda2ad23a4fee870789f70b0f6f8ea"
+    },
+    {
+      "id": "status/status-haste",
+      "svg": "assets/svg/status/status-haste.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-haste.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "9c0daf130b1040d24ee497f9d25d288b9ebd006c2a8a11c6d4c669ac89821640"
+    },
+    {
+      "id": "status/status-hero",
+      "svg": "assets/svg/status/status-hero.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-hero.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "eccc76c9cc8d9082d1bc22c4362fc49e5f79e0a373dfc40e279e301add27b48e"
+    },
+    {
+      "id": "status/status-hex_hollow",
+      "svg": "assets/svg/status/status-hex_hollow.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-hex_hollow.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "dc44c4001ab5f930d44f6654452f5622bb6774c310b24dcd1f39ca62ef4b6401"
+    },
+    {
+      "id": "status/status-hex_lead",
+      "svg": "assets/svg/status/status-hex_lead.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-hex_lead.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "19bd0a231a21f2a5fc0f9b4f81cd981335c1f27eb842a45212dab27e53e59c3a"
+    },
+    {
+      "id": "status/status-hex_thorns",
+      "svg": "assets/svg/status/status-hex_thorns.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-hex_thorns.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4a4beda2c319a98f7a7c81e2f8a018119e08152c69bac04049efc3cfd771f042"
+    },
+    {
+      "id": "status/status-hexed",
+      "svg": "assets/svg/status/status-hexed.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-hexed.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "7a57d123c5c55e13845f6ad97a2c0abbfe98b229a6402e50217430d861dd14fc"
+    },
+    {
+      "id": "status/status-incoming",
+      "svg": "assets/svg/status/status-incoming.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-incoming.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3dab9ec22f2f6c5a342ee7a1bc0d7eb99479cafa8e05c5dab3f9f13d2f00185c"
+    },
+    {
+      "id": "status/status-infected",
+      "svg": "assets/svg/status/status-infected.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-infected.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ea690cc8df790f5c1791b4ca05f4c413ebd07dbe985d19a1715a9a3b9112b4d0"
+    },
+    {
+      "id": "status/status-insight",
+      "svg": "assets/svg/status/status-insight.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-insight.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1478e70e69f087b784b9ddad0f7e5d3d18463d4e5d9766267ad9e437db40096c"
+    },
+    {
+      "id": "status/status-intervention",
+      "svg": "assets/svg/status/status-intervention.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-intervention.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "d9a6d8618e59b00b71fe1c22c718688cf3d7119ad028793d8492f7648677ac03"
+    },
+    {
+      "id": "status/status-key_boss",
+      "svg": "assets/svg/status/status-key_boss.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-key_boss.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1fa5cdc835125d97ca65a968c6b46264276e71b677f45984797c28f0a6bb904c"
+    },
+    {
+      "id": "status/status-key_bronze",
+      "svg": "assets/svg/status/status-key_bronze.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-key_bronze.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "ec8ca022ff41bce2ac5aef2caf707d866a66b912806dfc36e4d0a2f29f99f347"
+    },
+    {
+      "id": "status/status-key_gold",
+      "svg": "assets/svg/status/status-key_gold.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-key_gold.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "25ee7bd75a7c096f53d84c5eb9234dce8229bbe4843295e889dba29d75d24307"
+    },
+    {
+      "id": "status/status-key_silver",
+      "svg": "assets/svg/status/status-key_silver.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-key_silver.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4ba6c7a4e80b7d4953a982f5c90b24fd9067e48347f381fb3acf9b7786d37452"
+    },
+    {
+      "id": "status/status-key_skeleton",
+      "svg": "assets/svg/status/status-key_skeleton.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-key_skeleton.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "96f2363a84a5aa7c07707150014a1e873087eec44a46b1d286f395076c165c3a"
+    },
+    {
+      "id": "status/status-land_flood",
+      "svg": "assets/svg/status/status-land_flood.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-land_flood.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "df9b17b55fa6ebafffd6e1c45b4d60d4e3b5c344fedc759a6d1fcff056995309"
+    },
+    {
+      "id": "status/status-land_marble",
+      "svg": "assets/svg/status/status-land_marble.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-land_marble.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "871a260e3adeabb608dadd4e9e958f9c2459719d05b6ab0fe5bf41e24181193e"
+    },
+    {
+      "id": "status/status-land_overgrowth",
+      "svg": "assets/svg/status/status-land_overgrowth.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-land_overgrowth.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "e39df8fe5003c64f800fdb0a7649110034868332593d7586642848ea848e6616"
+    },
+    {
+      "id": "status/status-land_swamp",
+      "svg": "assets/svg/status/status-land_swamp.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-land_swamp.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "431d1ab8c209366f7f313216ee6cba46b79713ef316604b297f10a2845494ced"
+    },
+    {
+      "id": "status/status-lantern_sight",
+      "svg": "assets/svg/status/status-lantern_sight.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-lantern_sight.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "fa407b30f5771c281e876badbd4c2619df8a7846034263fc4089cbab7fca7caf"
+    },
+    {
+      "id": "status/status-lost_satchel",
+      "svg": "assets/svg/status/status-lost_satchel.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-lost_satchel.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "a4d151ebe1d6bde33303ecc520d0b544a034c2a32adf4cbdbd56c624909adff4"
+    },
+    {
+      "id": "status/status-mend",
+      "svg": "assets/svg/status/status-mend.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-mend.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3ddfef2664e526b998e08adb5ba657909f75087160f1fef8457f3fac726e772b"
+    },
+    {
+      "id": "status/status-might",
+      "svg": "assets/svg/status/status-might.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-might.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "a971e1b9a1daa2954f5b1cdf18447743aef69b405660695b05845819f50527f7"
+    },
+    {
+      "id": "status/status-pact",
+      "svg": "assets/svg/status/status-pact.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-pact.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "e62ddba7d2c83623cfda5384c216645fd121e1e467decbeee26852ca7df189cb"
+    },
+    {
+      "id": "status/status-perfect_dodge",
+      "svg": "assets/svg/status/status-perfect_dodge.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-perfect_dodge.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "cb7b989ad1200a1d3c6fb0206355ced9c562fd9f486b568b0dcdc02b57d4a057"
+    },
+    {
+      "id": "status/status-phase",
+      "svg": "assets/svg/status/status-phase.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-phase.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "1e3840eff93de96edf5abc9a8c44767fa2d62ff2da0432cc4487c47473122971"
+    },
+    {
+      "id": "status/status-planks",
+      "svg": "assets/svg/status/status-planks.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-planks.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4e7f53065cd8b0da7e5a750faedf8c64c9a517e24d135c025d58c342aebeaa32"
+    },
+    {
+      "id": "status/status-poisoned",
+      "svg": "assets/svg/status/status-poisoned.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-poisoned.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "cfd14e0bb4403d851774d51704956f24982948621ae8afb7437265530b96dbf6"
+    },
+    {
+      "id": "status/status-quest",
+      "svg": "assets/svg/status/status-quest.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-quest.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "b289b63119601886f149d33b340fbb0a25e77b692687d0dca1890fbfce12c288"
+    },
+    {
+      "id": "status/status-radiant",
+      "svg": "assets/svg/status/status-radiant.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-radiant.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "06aaaaab6e540e230431902056566c59e64d58bf7a799821c62d92ddf3d17cfb"
+    },
+    {
+      "id": "status/status-reaction_conduct",
+      "svg": "assets/svg/status/status-reaction_conduct.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_conduct.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "c77948bae4779a7445a3e1d91cd278069964ade451b291bd7fc99aee9565205e"
+    },
+    {
+      "id": "status/status-reaction_eclipse",
+      "svg": "assets/svg/status/status-reaction_eclipse.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_eclipse.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "3e52917e7940793d8805c9f1c08021b204b7ffafd5834a209e90ff1cbb79c859"
+    },
+    {
+      "id": "status/status-reaction_rimebind",
+      "svg": "assets/svg/status/status-reaction_rimebind.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_rimebind.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "51ac252ca3c2ecaa198715fd67686fbcdd8c69da5f4321d4fafa84c8c1627084"
+    },
+    {
+      "id": "status/status-reaction_shatter",
+      "svg": "assets/svg/status/status-reaction_shatter.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_shatter.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "0100af2f77385a94623d3364a4458ded5469a4cd8b8e5300d4728712be618953"
+    },
+    {
+      "id": "status/status-reaction_thornbind",
+      "svg": "assets/svg/status/status-reaction_thornbind.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_thornbind.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "fcc01e72ae1e9f1772c663cbce2c51205c0e0af7582fe6dc62df02f0da5a5d23"
+    },
+    {
+      "id": "status/status-reaction_wildfire",
+      "svg": "assets/svg/status/status-reaction_wildfire.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-reaction_wildfire.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "93066ab560b63987d701d046d4a99c42476e057783bb4cd6d906d0c07ab5cf17"
+    },
+    {
+      "id": "status/status-regen",
+      "svg": "assets/svg/status/status-regen.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-regen.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "2ba536aca57d2fc1b3c0803e74609b37606bc81a2fd4a1c92a1c58f9e9547450"
+    },
+    {
+      "id": "status/status-relics",
+      "svg": "assets/svg/status/status-relics.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-relics.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "fc82f5f09364caf030aaca721c417b09ef7c66ead4ab125a775494f3ec731b5b"
+    },
+    {
+      "id": "status/status-rescue_timer",
+      "svg": "assets/svg/status/status-rescue_timer.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-rescue_timer.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4e9880165e0b45deff2a170cb9ce4d9f436d5356417df740fe2d8d4c61828d43"
+    },
+    {
+      "id": "status/status-rooted",
+      "svg": "assets/svg/status/status-rooted.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-rooted.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "9a2468b9d73b26b1044078256c3a178ebc796fe323e1dbf769fdfb7793df890b"
+    },
+    {
+      "id": "status/status-sealed",
+      "svg": "assets/svg/status/status-sealed.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-sealed.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "81e19d4b3c7eab29cd55057e8025c7e304b7f8a964706bb20178fab555087338"
+    },
+    {
+      "id": "status/status-shield",
+      "svg": "assets/svg/status/status-shield.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-shield.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "39bcc97260148d91d744ab75b795decede0d3f47da3476e1e67e2dc36d3ad871"
+    },
+    {
+      "id": "status/status-slowed",
+      "svg": "assets/svg/status/status-slowed.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-slowed.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "817301bea2c3b7e72f7c1a689e8acfe07436993912f1bb2756cdc2784d89106f"
+    },
+    {
+      "id": "status/status-soul_unison",
+      "svg": "assets/svg/status/status-soul_unison.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-soul_unison.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "7da99f98021aad38aeef824194ddb37ed1778eab33a9d08885bf9008933a931a"
+    },
+    {
+      "id": "status/status-stunned",
+      "svg": "assets/svg/status/status-stunned.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-stunned.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "dc5b66f084c921d7701e7db6db8772448c49115405f38e8144dfb8bed454b5e7"
+    },
+    {
+      "id": "status/status-threat",
+      "svg": "assets/svg/status/status-threat.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-threat.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "97b65a4b0172408f17b0830220a2e79681c1987a27c2d228cb42f3d60050799a"
+    },
+    {
+      "id": "status/status-torch",
+      "svg": "assets/svg/status/status-torch.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-torch.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "689472adbf798ccfc2274b71f38f28979ed17387106775c6603e3cbe0da66516"
+    },
+    {
+      "id": "status/status-treasury_collapse",
+      "svg": "assets/svg/status/status-treasury_collapse.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-treasury_collapse.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "d8ffd34814bb597ddcbcfb0eafd0c0d525ea344ab0bef1da1e625a1c07e3e237"
+    },
+    {
+      "id": "status/status-valor",
+      "svg": "assets/svg/status/status-valor.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-valor.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "f9968d21557d7b420334a51c66e6dde8859e2ca788914c33f9fe68e7a835a040"
+    },
+    {
+      "id": "status/status-vigor",
+      "svg": "assets/svg/status/status-vigor.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-vigor.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "2f47b8c1732e90c13bc46bf25de4ef456b6c12b034e9f289bcce52d483c657cc"
+    },
+    {
+      "id": "status/status-wand_only",
+      "svg": "assets/svg/status/status-wand_only.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-wand_only.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "34f2db18f28b8bb4a2a927653393456df2972a968fe312d9b6175393c504d498"
+    },
+    {
+      "id": "status/status-wand_power",
+      "svg": "assets/svg/status/status-wand_power.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-wand_power.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "7f8427ae0cf7f7d775f150c89e5fdf7e8eb47164932b87a5230d3b5f397a9d1b"
+    },
+    {
+      "id": "status/status-wand_set",
+      "svg": "assets/svg/status/status-wand_set.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-wand_set.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4afe456efa9c420eefafd7dab230829b7456dcebb4ee996e5a5e877eb181a37a"
+    },
+    {
+      "id": "status/status-ward_burning",
+      "svg": "assets/svg/status/status-ward_burning.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_burning.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "f496ef13ed249f41f0bab064eb2ef602acc23fab1933c6ebe14a36a1b517c170"
+    },
+    {
+      "id": "status/status-ward_draining",
+      "svg": "assets/svg/status/status-ward_draining.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_draining.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "818c975c5b03451fbccc27c934df5af174fcdc13e677a679048f4f53584ffaac"
+    },
+    {
+      "id": "status/status-ward_freezing",
+      "svg": "assets/svg/status/status-ward_freezing.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_freezing.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "edb988306aa78044ddc53a0e8a7c37791681a369654448e317ff5878752055e5"
+    },
+    {
+      "id": "status/status-ward_healing",
+      "svg": "assets/svg/status/status-ward_healing.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_healing.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "bf498a7ecb7a88e20c4792f6f0761823e4b0da90b5a71fd5417a094bbac7a7aa"
+    },
+    {
+      "id": "status/status-ward_shocking",
+      "svg": "assets/svg/status/status-ward_shocking.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_shocking.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "9c82ea657716bee8e612a4fb7a26e5b99bbeb5c787248f38167e732a017c2f1f"
+    },
+    {
+      "id": "status/status-ward_steady",
+      "svg": "assets/svg/status/status-ward_steady.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_steady.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "4ef7558fc5625d7ca8d1ba5ce2707a82f5a2e0613da12f9ac790957384f2c16f"
+    },
+    {
+      "id": "status/status-ward_thorns",
+      "svg": "assets/svg/status/status-ward_thorns.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-ward_thorns.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "44c2e07834603e7cca0a0b6537e3c1b7bc4ac00d05734d7c82f359e31309f126"
+    },
+    {
+      "id": "status/status-wayshard",
+      "svg": "assets/svg/status/status-wayshard.svg",
+      "logicalSize": [
+        24.0,
+        24.0
+      ],
+      "pngScale": 21.333333333333332,
+      "role": "individual status glyph",
+      "origin": "v2 authored SVG",
+      "png": "assets/png/status/status-wayshard.png",
+      "pngSize": [
+        512,
+        512
+      ],
+      "sha256": "246305694a1d9cbd96cb4b7a705ea06c01046401c10982f9f2648f06256bc2c1"
+    },
+    {
+      "id": "slices/button-default-idle--top-left",
+      "svg": "assets/svg/slices/button-default-idle--top-left.svg",
+      "png": "assets/png/slices/button-default-idle--top-left.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "top-left",
+      "sha256": "aec8fc9798555d564003399ed0cdc4ad334723d1ed30de7050fc69e34a58dba4"
+    },
+    {
+      "id": "slices/button-default-idle--top",
+      "svg": "assets/svg/slices/button-default-idle--top.svg",
+      "png": "assets/png/slices/button-default-idle--top.png",
+      "logicalSize": [
+        56,
+        8
+      ],
+      "pngSize": [
+        224,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "top",
+      "sha256": "0b4ed42db08334642c86329991a710d6f0dadad1ebe300fb023a4d8158a73863"
+    },
+    {
+      "id": "slices/button-default-idle--top-right",
+      "svg": "assets/svg/slices/button-default-idle--top-right.svg",
+      "png": "assets/png/slices/button-default-idle--top-right.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "top-right",
+      "sha256": "908123216853a31f262d3eb9b165b125770ba43e3352919bef299f5080520cf4"
+    },
+    {
+      "id": "slices/button-default-idle--left",
+      "svg": "assets/svg/slices/button-default-idle--left.svg",
+      "png": "assets/png/slices/button-default-idle--left.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "left",
+      "sha256": "12ceb8b07dccf567dd2be92f74a539f3781c042fb14f0f8b133cb0c9e3f6ddb0"
+    },
+    {
+      "id": "slices/button-default-idle--center",
+      "svg": "assets/svg/slices/button-default-idle--center.svg",
+      "png": "assets/png/slices/button-default-idle--center.png",
+      "logicalSize": [
+        56,
+        32
+      ],
+      "pngSize": [
+        224,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice center",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "center",
+      "sha256": "b19ef4360ee4ca1a8d5d71d687b33b248a637c50bcf35f0c5a556c6e1b93794a"
+    },
+    {
+      "id": "slices/button-default-idle--right",
+      "svg": "assets/svg/slices/button-default-idle--right.svg",
+      "png": "assets/png/slices/button-default-idle--right.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "right",
+      "sha256": "99f5bd690f33202596335629403bb74e80212a1c8624677c7b9cb7623330b129"
+    },
+    {
+      "id": "slices/button-default-idle--bottom-left",
+      "svg": "assets/svg/slices/button-default-idle--bottom-left.svg",
+      "png": "assets/png/slices/button-default-idle--bottom-left.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "bottom-left",
+      "sha256": "4030805a8b7fbb1a16554210973387ae206de6ab8382a141ecc1dcb8ca1439a5"
+    },
+    {
+      "id": "slices/button-default-idle--bottom",
+      "svg": "assets/svg/slices/button-default-idle--bottom.svg",
+      "png": "assets/png/slices/button-default-idle--bottom.png",
+      "logicalSize": [
+        56,
+        8
+      ],
+      "pngSize": [
+        224,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "bottom",
+      "sha256": "e1243de8f97bd600e7f3230af823b72949903c4317fea1d94187497806f96637"
+    },
+    {
+      "id": "slices/button-default-idle--bottom-right",
+      "svg": "assets/svg/slices/button-default-idle--bottom-right.svg",
+      "png": "assets/png/slices/button-default-idle--bottom-right.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-default-idle",
+      "tile": "bottom-right",
+      "sha256": "4a237eaafb4d2acbbfb2a557175c364574f5e021a070a1962337a90b657463c8"
+    },
+    {
+      "id": "slices/button-gold-idle--top-left",
+      "svg": "assets/svg/slices/button-gold-idle--top-left.svg",
+      "png": "assets/png/slices/button-gold-idle--top-left.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "top-left",
+      "sha256": "b932140cc3a47314ea250f802f856e6fe914ec8e3335f694162eab3e81dfb757"
+    },
+    {
+      "id": "slices/button-gold-idle--top",
+      "svg": "assets/svg/slices/button-gold-idle--top.svg",
+      "png": "assets/png/slices/button-gold-idle--top.png",
+      "logicalSize": [
+        56,
+        8
+      ],
+      "pngSize": [
+        224,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "top",
+      "sha256": "f6efd01cb03847917f287c09787f908953800c55e3feb19d9a78949cdf3dd33b"
+    },
+    {
+      "id": "slices/button-gold-idle--top-right",
+      "svg": "assets/svg/slices/button-gold-idle--top-right.svg",
+      "png": "assets/png/slices/button-gold-idle--top-right.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "top-right",
+      "sha256": "475379f0f389b50e2bea8d46855f1e6562ec6a2fc94c30ddadbbfe77dc8974a8"
+    },
+    {
+      "id": "slices/button-gold-idle--left",
+      "svg": "assets/svg/slices/button-gold-idle--left.svg",
+      "png": "assets/png/slices/button-gold-idle--left.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "left",
+      "sha256": "0d65acf5e6f7ffaa08a5aa3e916b4b46ff02dc68acf0001e45b02e07299cdb69"
+    },
+    {
+      "id": "slices/button-gold-idle--center",
+      "svg": "assets/svg/slices/button-gold-idle--center.svg",
+      "png": "assets/png/slices/button-default-idle--center.png",
+      "logicalSize": [
+        56,
+        32
+      ],
+      "pngSize": [
+        224,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice center",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "center",
+      "sha256": "cb52ee74a4769e9dc0c48eb3704d1242ec8d9a2d7be81c548bd5b524f773cfeb"
+    },
+    {
+      "id": "slices/button-gold-idle--right",
+      "svg": "assets/svg/slices/button-gold-idle--right.svg",
+      "png": "assets/png/slices/button-gold-idle--right.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "right",
+      "sha256": "35514ed8f83b7f08141699cba3e028d09b2845cd46049f02b3f6a440a4dba048"
+    },
+    {
+      "id": "slices/button-gold-idle--bottom-left",
+      "svg": "assets/svg/slices/button-gold-idle--bottom-left.svg",
+      "png": "assets/png/slices/button-gold-idle--bottom-left.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "bottom-left",
+      "sha256": "e808cacbef8d24e8f9a50296c26c466f3830dff14217e59a649964870a99bfdf"
+    },
+    {
+      "id": "slices/button-gold-idle--bottom",
+      "svg": "assets/svg/slices/button-gold-idle--bottom.svg",
+      "png": "assets/png/slices/button-gold-idle--bottom.png",
+      "logicalSize": [
+        56,
+        8
+      ],
+      "pngSize": [
+        224,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "bottom",
+      "sha256": "22780b5689366c58ab94b54959d26030a34098712ac735b7a36319325090b908"
+    },
+    {
+      "id": "slices/button-gold-idle--bottom-right",
+      "svg": "assets/svg/slices/button-gold-idle--bottom-right.svg",
+      "png": "assets/png/slices/button-gold-idle--bottom-right.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/button-gold-idle",
+      "tile": "bottom-right",
+      "sha256": "29dd80c46cc673ec8d40af59b7080dc2a14d5d04b5da83e4edfd14957d1d1698"
+    },
+    {
+      "id": "slices/panel-log--top-left",
+      "svg": "assets/svg/slices/panel-log--top-left.svg",
+      "png": "assets/png/slices/panel-log--top-left.png",
+      "logicalSize": [
+        10,
+        10
+      ],
+      "pngSize": [
+        40,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "top-left",
+      "sha256": "b3b4eeea3aeb047d9c4f9ef73c77f4627e535b411cd33b0f9e506e7a24617295"
+    },
+    {
+      "id": "slices/panel-log--top",
+      "svg": "assets/svg/slices/panel-log--top.svg",
+      "png": "assets/png/slices/panel-log--top.png",
+      "logicalSize": [
+        308,
+        10
+      ],
+      "pngSize": [
+        1232,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "top",
+      "sha256": "08e82df39f6ab74120042705b6aeab38b4698246a2585815c7080fe57f3b8b05"
+    },
+    {
+      "id": "slices/panel-log--top-right",
+      "svg": "assets/svg/slices/panel-log--top-right.svg",
+      "png": "assets/png/slices/panel-log--top-right.png",
+      "logicalSize": [
+        10,
+        10
+      ],
+      "pngSize": [
+        40,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice top-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "top-right",
+      "sha256": "47efab5f7050d161c5271bf22adfca5a488f52c28754c43b9dfcb4ae4a419560"
+    },
+    {
+      "id": "slices/panel-log--left",
+      "svg": "assets/svg/slices/panel-log--left.svg",
+      "png": "assets/png/slices/panel-log--left.png",
+      "logicalSize": [
+        10,
+        236
+      ],
+      "pngSize": [
+        40,
+        944
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "left",
+      "sha256": "a281afa48ee418d10f1853a4d856894e091808f959a1174b47330d0f383c4135"
+    },
+    {
+      "id": "slices/panel-log--center",
+      "svg": "assets/svg/slices/panel-log--center.svg",
+      "png": "assets/png/slices/panel-log--center.png",
+      "logicalSize": [
+        308,
+        236
+      ],
+      "pngSize": [
+        1232,
+        944
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice center",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "center",
+      "sha256": "1fc81ea5170f32e2b1f0828afc8c5570bd4c34ec3640877cecef15b77d80093e"
+    },
+    {
+      "id": "slices/panel-log--right",
+      "svg": "assets/svg/slices/panel-log--right.svg",
+      "png": "assets/png/slices/panel-log--right.png",
+      "logicalSize": [
+        10,
+        236
+      ],
+      "pngSize": [
+        40,
+        944
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "right",
+      "sha256": "0d04da480c358eec167e3875a5ce1132f02104545d47caf831478cdc32556d37"
+    },
+    {
+      "id": "slices/panel-log--bottom-left",
+      "svg": "assets/svg/slices/panel-log--bottom-left.svg",
+      "png": "assets/png/slices/panel-log--bottom-left.png",
+      "logicalSize": [
+        10,
+        10
+      ],
+      "pngSize": [
+        40,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-left",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "bottom-left",
+      "sha256": "3a22c980c1876c329b4afa67839a9797626ba2020a0d6ee615a83b325247a780"
+    },
+    {
+      "id": "slices/panel-log--bottom",
+      "svg": "assets/svg/slices/panel-log--bottom.svg",
+      "png": "assets/png/slices/panel-log--bottom.png",
+      "logicalSize": [
+        308,
+        10
+      ],
+      "pngSize": [
+        1232,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "bottom",
+      "sha256": "01a8b09b387dd57da8959dca674175968b75e3413786a151b261217b1c9f8dcb"
+    },
+    {
+      "id": "slices/panel-log--bottom-right",
+      "svg": "assets/svg/slices/panel-log--bottom-right.svg",
+      "png": "assets/png/slices/panel-log--bottom-right.png",
+      "logicalSize": [
+        10,
+        10
+      ],
+      "pngSize": [
+        40,
+        40
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice bottom-right",
+      "origin": "lossless slice of v2 authored SVG",
+      "sourceComponent": "component/panel-log",
+      "tile": "bottom-right",
+      "sha256": "75c931bc0309fd5c2729490c5cca6810d86d3b3921c46debb335918cf37c35c6"
+    }
+  ],
+  "pngAliases": {
+    "assets/png/layers/button-default-focus--metal-rim.png": "assets/png/layers/button-default-disabled--metal-rim.png",
+    "assets/png/strokes/button-default-focus--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-default-focus--metal-gradient.png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+    "assets/png/strokes/button-default-focus--top-highlight.png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+    "assets/png/strokes/button-default-focus--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-default-focus--inner-keyline.png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+    "assets/png/layers/button-default-focus--bronze-corner-inlays.png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+    "assets/png/layers/button-default-idle--face.png": "assets/png/layers/button-default-focus--face.png",
+    "assets/png/layers/button-default-idle--metal-rim.png": "assets/png/layers/button-default-disabled--metal-rim.png",
+    "assets/png/strokes/button-default-idle--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-default-idle--metal-gradient.png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+    "assets/png/strokes/button-default-idle--top-highlight.png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+    "assets/png/strokes/button-default-idle--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-default-idle--inner-keyline.png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+    "assets/png/layers/button-default-idle--bronze-corner-inlays.png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+    "assets/png/layers/button-default-pressed--metal-rim.png": "assets/png/layers/button-default-disabled--metal-rim.png",
+    "assets/png/strokes/button-default-pressed--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-default-pressed--metal-gradient.png": "assets/png/strokes/button-default-disabled--metal-gradient.png",
+    "assets/png/strokes/button-default-pressed--top-highlight.png": "assets/png/strokes/button-default-disabled--top-highlight.png",
+    "assets/png/strokes/button-default-pressed--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-default-pressed--inner-keyline.png": "assets/png/strokes/button-default-disabled--inner-keyline.png",
+    "assets/png/layers/button-default-pressed--bronze-corner-inlays.png": "assets/png/layers/button-default-disabled--bronze-corner-inlays.png",
+    "assets/png/borders/button-default-pressed--border.png": "assets/png/borders/button-default-idle--border.png",
+    "assets/png/layers/button-gold-disabled--face.png": "assets/png/layers/button-default-disabled--face.png",
+    "assets/png/strokes/button-gold-disabled--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-gold-disabled--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/layers/button-gold-focus--face.png": "assets/png/layers/button-default-focus--face.png",
+    "assets/png/layers/button-gold-focus--metal-rim.png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+    "assets/png/strokes/button-gold-focus--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-gold-focus--metal-gradient.png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+    "assets/png/strokes/button-gold-focus--top-highlight.png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+    "assets/png/strokes/button-gold-focus--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-gold-focus--inner-keyline.png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+    "assets/png/layers/button-gold-focus--bronze-corner-inlays.png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+    "assets/png/layers/button-gold-focus--focus.png": "assets/png/layers/button-default-focus--focus.png",
+    "assets/png/layers/button-gold-idle--face.png": "assets/png/layers/button-default-focus--face.png",
+    "assets/png/layers/button-gold-idle--metal-rim.png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+    "assets/png/strokes/button-gold-idle--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-gold-idle--metal-gradient.png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+    "assets/png/strokes/button-gold-idle--top-highlight.png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+    "assets/png/strokes/button-gold-idle--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-gold-idle--inner-keyline.png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+    "assets/png/layers/button-gold-idle--bronze-corner-inlays.png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+    "assets/png/layers/button-gold-pressed--face.png": "assets/png/layers/button-default-pressed--face.png",
+    "assets/png/layers/button-gold-pressed--metal-rim.png": "assets/png/layers/button-gold-disabled--metal-rim.png",
+    "assets/png/strokes/button-gold-pressed--outer-shadow.png": "assets/png/strokes/button-default-disabled--outer-shadow.png",
+    "assets/png/strokes/button-gold-pressed--metal-gradient.png": "assets/png/strokes/button-gold-disabled--metal-gradient.png",
+    "assets/png/strokes/button-gold-pressed--top-highlight.png": "assets/png/strokes/button-gold-disabled--top-highlight.png",
+    "assets/png/strokes/button-gold-pressed--bottom-shadow.png": "assets/png/strokes/button-default-disabled--bottom-shadow.png",
+    "assets/png/strokes/button-gold-pressed--inner-keyline.png": "assets/png/strokes/button-gold-disabled--inner-keyline.png",
+    "assets/png/layers/button-gold-pressed--bronze-corner-inlays.png": "assets/png/layers/button-gold-disabled--bronze-corner-inlays.png",
+    "assets/png/borders/button-gold-pressed--border.png": "assets/png/borders/button-gold-idle--border.png",
+    "assets/png/status/status-card_frozen.png": "assets/png/status/status-area_deeps.png",
+    "assets/png/status/status-ground_charged.png": "assets/png/status/status-area_vault.png",
+    "assets/png/status/status-ground_ice.png": "assets/png/status/status-area_deeps.png",
+    "assets/png/status/status-ground_void.png": "assets/png/status/status-area_abyss.png",
+    "assets/png/slices/button-gold-idle--center.png": "assets/png/slices/button-default-idle--center.png"
+  }
+}

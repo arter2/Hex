@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v193</title>
-<meta name="application-version" content="193">
+<title>Hexmancers v229</title>
+<meta name="application-version" content="229">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
 </head>
@@ -557,6 +558,19 @@
       <h3>Dungeon camera</h3>
       <div class="srow"><span>Angle<small>How steeply the dungeon camera looks down, in degrees. 48 is normal. Higher sees further up the room and walls in front hide less; lower shows more of the wall faces.</small></span><span class="srange"><input id="dbg_dPitch" type="range" min="25" max="85" step="1"><b id="dbg_dPitchV"></b></span></div>
       <div class="srow"><span>Distance<small>How far the camera sits from you, in tiles (a tall phone screen pulls it back a little more). 9.4 is normal.</small></span><span class="srange"><input id="dbg_dDist" type="range" min="4" max="40" step="0.1"><b id="dbg_dDistV"></b></span></div>
+      <div class="srow"><span>View width (spacious)<small>On the spacious dungeon with a wide (landscape) screen, how many tiles fit top to bottom; this replaces Distance there. 12 is normal.</small></span><span class="srange"><input id="dbg_dView" type="range" min="10" max="16" step="1"><b id="dbg_dViewV"></b></span></div>
+      <div class="srow"><span>View width, upright (spacious)<small>The same on an upright (portrait) screen: tiles across its width. Fewer tiles, bigger people. 7 is normal.</small></span><span class="srange"><input id="dbg_dViewP" type="range" min="5" max="12" step="0.5"><b id="dbg_dViewPV"></b></span></div>
+      <div class="srow"><span>Low near walls (spacious)<small>On: a wall that would hide floor behind it from the camera (every room's near side) stands low, a ledge you see over; far walls stay tall. Doors in a low wall keep their frame up to the height under 'Door kept up to'.</small></span><label class="scheck"><input id="dbg_dStepOn" type="checkbox"></label></div>
+      <div class="srow"><span>Near wall height<small>How tall a low near wall stands, as a share of a full wall. 0.17 is normal (about knee to hip on a person).</small></span><span class="srange"><input id="dbg_dStepLow" type="range" min="0.05" max="1" step="0.01"><b id="dbg_dStepLowV"></b></span></div>
+      <div class="srow"><span>See-through cut (spacious)<small>On: what stands between the camera and you is cut away round you (on top of the low near walls). Off by default: the low near walls keep you in sight.</small></span><label class="scheck"><input id="dbg_dShOn" type="checkbox"></label></div>
+      <div class="srow"><span>Cut width<small>Half the opening's width round you, in tiles. 1.25 is normal.</small></span><span class="srange"><input id="dbg_dShW" type="range" min="0.5" max="3" step="0.05"><b id="dbg_dShWV"></b></span></div>
+      <div class="srow"><span>Cut height above<small>How far above your middle the opening reaches, in tiles. 1.3 is normal.</small></span><span class="srange"><input id="dbg_dShUp" type="range" min="0.5" max="4" step="0.05"><b id="dbg_dShUpV"></b></span></div>
+      <div class="srow"><span>Cut reach below<small>How far below your middle (toward the bottom of the screen) the opening reaches, in tiles. 2.6 is normal.</small></span><span class="srange"><input id="dbg_dShDown" type="range" min="0.5" max="6" step="0.05"><b id="dbg_dShDownV"></b></span></div>
+      <div class="srow"><span>Cut depth behind<small>How deep the rounded back of the cut reaches behind you, in tiles. 1.1 is normal; 0 cuts flat through you.</small></span><span class="srange"><input id="dbg_dShBack" type="range" min="0" max="3" step="0.05"><b id="dbg_dShBackV"></b></span></div>
+      <div class="srow"><span>Cut soft edge<small>How wide the dithered edge of the opening is (share of its size). 0.18 is normal.</small></span><span class="srange"><input id="dbg_dShEdge" type="range" min="0.01" max="0.6" step="0.01"><b id="dbg_dShEdgeV"></b></span></div>
+      <div class="srow"><span>Cut stone black inside<small>On: faces inside the stonework that the cut opens are black. Off: you see the blocks' own faces.</small></span><label class="scheck"><input id="dbg_dShInner" type="checkbox"></label></div>
+      <div class="srow"><span>Keep doors in the cut<small>On: doors and their frames are only thinned (half shown, dithered) up to the height below, so you see both the door and yourself. Off: cut like walls.</small></span><label class="scheck"><input id="dbg_dShDoor" type="checkbox"></label></div>
+      <div class="srow"><span>Door kept up to<small>How high a door is kept whole in the cut, and how high its frame stands in a low near wall, in world units (a door's arch tops out near 3.4). 3.6 is normal.</small></span><span class="srange"><input id="dbg_dShDoorH" type="range" min="0" max="8" step="0.1"><b id="dbg_dShDoorHV"></b></span></div>
       <div class="srow"><span>Field of view (lens)<small>The lens, in degrees. 46 is normal. Wider shows more around you with more depth; narrower is flatter.</small></span><span class="srange"><input id="dbg_dFov" type="range" min="20" max="120" step="1"><b id="dbg_dFovV"></b></span></div>
       <div class="srow"><span>Aim ahead<small>Points the camera further up the screen (above 0) so you stand lower and see more ahead, in tiles.</small></span><span class="srange"><input id="dbg_dAim" type="range" min="-4" max="6" step="0.1"><b id="dbg_dAimV"></b></span></div>
       <div class="srow"><span>Look-ahead<small>How far the camera leads you as you walk. 0 keeps you dead centre; 1 is normal.</small></span><span class="srange"><input id="dbg_dAhead" type="range" min="0" max="6" step="0.05"><b id="dbg_dAheadV"></b></span></div>
@@ -569,6 +583,7 @@
       <div class="srow"><span>Rotate Z (roll)<small>Rolls the dungeon camera, in degrees.</small></span><span class="srange"><input id="dbg_dRotZ" type="range" min="-45" max="45" step="1"><b id="dbg_dRotZV"></b></span></div>
       <div class="srow"><span>Reset dungeon camera<small>Puts every dungeon camera setting above back to normal.</small></span><button id="dbgDCamReset" class="btn ghost small">Reset</button></div>
       <h3>Dungeon view</h3>
+      <div class="srow"><span>Spacious dungeon<small>This save only. New games start with it on. On: floors dug from now on use the new layout: bigger rooms and halls, wide and diagonal corridors, loops, longer sight and the camera turned 45°. Floors you have already been to keep their layout. Leave the floor (or start a new depth) to see it.</small></span><label class="scheck"><input id="dbgLayout2" type="checkbox"></label></div>
       <div class="srow"><span>Haze<small>On: the area's haze starts a few tiles past you. Off: no haze at all in the dungeon.</small></span><label class="scheck"><input id="dbg_dFog" type="checkbox"></label></div>
       <div class="srow"><span>Haze start<small>How many tiles past you the haze starts. 6 is normal.</small></span><span class="srange"><input id="dbg_dFogStart" type="range" min="-10" max="40" step="1"><b id="dbg_dFogStartV"></b></span></div>
       <div class="srow"><span>Haze depth<small>Over how many tiles things fade fully into the haze. 14 is normal.</small></span><span class="srange"><input id="dbg_dFogLen" type="range" min="1" max="150" step="1"><b id="dbg_dFogLenV"></b></span></div>
@@ -703,6 +718,9 @@
 <script src="three.min.js"></script>
 <script src="look.js"></script>
 <script src="explore.js"></script>
+<script src="dungeongen.js"></script>
+<script src="nature.js"></script>
+<script src="surface.js"></script>
 <script src="arena.js"></script>
 <script src="dungeon.js"></script>
 <script src="missions.js"></script>
@@ -714,6 +732,8 @@
 <script src="deckui.js"></script>
 <script src="savepoint.js"></script>
 <script src="floorsave.js"></script>
+<script src="runeicons.js"></script>
+<script src="rune.js"></script>
 <script src="cardlab.js"></script>
 <script src="movelab.js"></script>
 <script src="enemylab.js"></script>

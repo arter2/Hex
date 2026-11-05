@@ -186,8 +186,11 @@ function showDetail(c){
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
   { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
-  { const v=typeof cardArtVariants==='function'&&cardArtVariants(c); if(v&&save.seen[c.id]){   // the 512 master is in the repo copy only: the link shows once it loads
-    const probe=new Image(); probe.onload=()=>{ if(!$('#detail').classList.contains('on')) return; const a=document.createElement('a');a.href=v.master;a.target='_blank';a.rel='noopener';a.textContent='View full artwork';a.style.cssText='display:block;margin-top:8px;color:inherit';$('#dtInfo').append(a); }; probe.src=v.master; } }
+  // the 512 master is in the repo copy only, never in a release: one probe a session says whether masters are here,
+  // and the link is added only while this same card is still the one shown
+  { const v=typeof cardArtVariants==='function'&&cardArtVariants(c), tok=showDetail.tok=(showDetail.tok||0)+1;
+    if(v&&v.master&&save.seen[c.id]&&showDetail.masters!==false){
+    const probe=new Image(); probe.onerror=()=>{ showDetail.masters=false; }; probe.onload=()=>{ showDetail.masters=true; if(showDetail.tok!==tok||!$('#detail').classList.contains('on')) return; const a=document.createElement('a');a.href=v.master;a.target='_blank';a.rel='noopener';a.textContent='View full artwork';a.style.cssText='display:block;margin-top:8px;color:inherit';$('#dtInfo').append(a); }; probe.src=v.master; } }
   dtShards(c);
   $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on'));
 }
@@ -377,14 +380,20 @@ function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=
 const USE_STARTERS=false;
 function buildStart(){
   const box=$('#starters'); box.innerHTML='';
-  const begin=lean=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave({lean});
+  // the dungeon this world digs, asked here (dungeongen.js): spacious (on) or the classic one
+  const layoutPick=()=>{ const c=document.getElementById('startLayout'); return !c||c.checked; }, setLayout=()=>{ if(layoutPick()) save.layout=2; else delete save.layout; };
+  // a new game drops the old world's run too: its floors are kept in memory (XRUN.floors) and would come back
+  const fresh=()=>{ if(typeof stopExplore==='function') stopExplore(); EX=null; if(typeof XPARK!=='undefined') XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; };
+  const begin=lean=>{ fresh(); save=newSave({lean}); setLayout();
     clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
     tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
   if(!USE_STARTERS){
     const d=document.createElement('div'); d.className='starter deal';
     d.innerHTML=`<h3>Your first cards</h3><p>You get 80 cards dealt at random: mostly commons, a few uncommons and rares, with Gray and Brown cards and some of 2 or 3 other colors. Pick the color they lean to, and every new character gets a different mix.</p>
       <div class="dealcols">${SIX.map(k=>`<button class="btn dealc" data-k="${k}" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${COLORS[k].name}</button>`).join('')}</div>
-      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>`;
+      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>
+      <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b> (new): big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
+      <p class="hint center">Build v${document.querySelector('meta[name=application-version]').content}</p>`;
     d.querySelectorAll('.dealc').forEach(b=>b.onclick=()=>begin(b.dataset.k));
     d.querySelector('.dealr').onclick=()=>begin(SIX[Math.floor(Math.random()*SIX.length)]);
     box.appendChild(d);
@@ -394,7 +403,7 @@ function buildStart(){
     const d=document.createElement('div'); d.className='starter';
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
-    d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s);
+    d.querySelector('.btn').onclick=()=>{ fresh(); save=newSave(s); setLayout();
       clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }
@@ -416,6 +425,7 @@ function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
   return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`+(typeof areaRuleHTML==='function'?'<br>'+areaRuleHTML(A):''); }
 function openCamp(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
+  if(typeof artPreload==='function') artPreload(activeDeck().list);   // the deck's full art sheets, before any fight (art.js)
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
@@ -1485,6 +1495,8 @@ function openMenu(){
   const has=!!save;
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
+  // the card-art sheets load in the background while the title is up (art.js artPreload)
+  if(typeof artPreload==='function') (window.requestIdleCallback||setTimeout)(()=>{ let d=null; try{ d=save&&activeDeck().list; }catch(e){} artPreload(d); });
   $('#mmContinue').disabled=!savedSlots().length;
   const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' · change ▾</span>';
   $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'

@@ -1,0 +1,1400 @@
+{
+  "version": "3.0",
+  "scope": "All current combat and dungeon HUD statuses, plus sourced card, elemental, area and reaction states. Reactions/area identities are classified separately, not invented persistent ailments.",
+  "sourceBranch": "dungeon-redesign",
+  "icons": [
+    {
+      "id": "shield",
+      "name": "Shield",
+      "glyph": "shield",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.barrier > 0",
+      "tone": "buff",
+      "aliases": [
+        "barrier",
+        "rime",
+        "radiance",
+        "status_shield"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-shield.svg"
+    },
+    {
+      "id": "dodge",
+      "name": "Dodge",
+      "glyph": "dodge",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.dodge",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-dodge.svg"
+    },
+    {
+      "id": "phase",
+      "name": "Phase",
+      "glyph": "phase",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.invT > 0",
+      "tone": "buff",
+      "aliases": [
+        "invT"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-phase.svg"
+    },
+    {
+      "id": "wand_power",
+      "name": "Wand power \u00d71.8",
+      "glyph": "wand",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.powerT > 0, unless setT is active",
+      "tone": "buff",
+      "aliases": [
+        "player.powerT",
+        "status_wand_power"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-wand_power.svg"
+    },
+    {
+      "id": "wand_set",
+      "name": "Wand power \u00d72.5",
+      "glyph": "wand_set",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.setT > 0",
+      "tone": "buff",
+      "aliases": [
+        "setT"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-wand_set.svg"
+    },
+    {
+      "id": "pact",
+      "name": "Pact",
+      "glyph": "pact",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.pactT > 0",
+      "tone": "buff",
+      "aliases": [
+        "pactT"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-pact.svg"
+    },
+    {
+      "id": "courage",
+      "name": "Courage",
+      "glyph": "sun",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.courageT > 0",
+      "tone": "buff",
+      "aliases": [
+        "courageT",
+        "status_courage"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-courage.svg"
+    },
+    {
+      "id": "intervention",
+      "name": "Intervention",
+      "glyph": "intervention",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.intervene",
+      "tone": "buff",
+      "aliases": [
+        "intervene"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-intervention.svg"
+    },
+    {
+      "id": "hero",
+      "name": "Hero active",
+      "glyph": "crown",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.hero.hp > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-hero.svg"
+    },
+    {
+      "id": "rooted",
+      "name": "Rooted",
+      "glyph": "root",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.rootT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "rootT",
+        "status_rooted"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-rooted.svg"
+    },
+    {
+      "id": "hexed",
+      "name": "Hexed",
+      "glyph": "hex",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.hexT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "hexT",
+        "status_hexed"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-hexed.svg"
+    },
+    {
+      "id": "haste",
+      "name": "Haste",
+      "glyph": "haste",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.hasteT > 0",
+      "tone": "buff",
+      "aliases": [
+        "hasteT",
+        "status_haste"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-haste.svg"
+    },
+    {
+      "id": "regen",
+      "name": "Regeneration",
+      "glyph": "leaf",
+      "category": "combat-player",
+      "source": "game/ui.js:1145-1150",
+      "condition": "p.regenT > 0",
+      "tone": "buff",
+      "aliases": [
+        "regenT"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-regen.svg"
+    },
+    {
+      "id": "burning",
+      "name": "Burning",
+      "glyph": "flame",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.burnT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "burnT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-burning.svg"
+    },
+    {
+      "id": "frozen",
+      "name": "Frozen",
+      "glyph": "snow",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.freezeT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "freezeT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-frozen.svg"
+    },
+    {
+      "id": "stunned",
+      "name": "Stunned",
+      "glyph": "stun",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.stunT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "stunT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-stunned.svg"
+    },
+    {
+      "id": "slowed",
+      "name": "Slowed",
+      "glyph": "slow",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.slowT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "slowT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-slowed.svg"
+    },
+    {
+      "id": "poisoned",
+      "name": "Poisoned",
+      "glyph": "poison",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.poisonT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "poisonT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-poisoned.svg"
+    },
+    {
+      "id": "cursed",
+      "name": "Cursed",
+      "glyph": "curse",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.curseT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "curseT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-cursed.svg"
+    },
+    {
+      "id": "empowered",
+      "name": "Empowered",
+      "glyph": "power",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.powerT > 0",
+      "tone": "buff",
+      "aliases": [
+        "enemy.powerT"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-empowered.svg"
+    },
+    {
+      "id": "confused",
+      "name": "Confused",
+      "glyph": "confuse",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.confuseT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "confuseT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-confused.svg"
+    },
+    {
+      "id": "infected",
+      "name": "Infected",
+      "glyph": "infect",
+      "category": "combat-enemy",
+      "source": "game/battle.js:2051",
+      "condition": "e.infectT > 0",
+      "tone": "debuff",
+      "aliases": [
+        "infectT"
+      ],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-infected.svg"
+    },
+    {
+      "id": "drain",
+      "name": "Drain",
+      "glyph": "drain",
+      "category": "card-keyword",
+      "source": "game/ui.js:64-66",
+      "condition": "card.drain",
+      "tone": "buff",
+      "aliases": [
+        "status_drain"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-drain.svg"
+    },
+    {
+      "id": "mend",
+      "name": "Mend",
+      "glyph": "mend",
+      "category": "card-keyword",
+      "source": "game/ui.js:64-66",
+      "condition": "card.mend",
+      "tone": "buff",
+      "aliases": [
+        "status_mend"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-mend.svg"
+    },
+    {
+      "id": "valor",
+      "name": "Valor",
+      "glyph": "valor",
+      "category": "card-keyword",
+      "source": "game/ui.js:64-66",
+      "condition": "card.valor",
+      "tone": "buff",
+      "aliases": [
+        "status_valor"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-valor.svg"
+    },
+    {
+      "id": "radiant",
+      "name": "Radiant vulnerability",
+      "glyph": "radiant",
+      "category": "combat-state",
+      "source": "game/battle.js:201",
+      "condition": "e.radiantT > B.time",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-radiant.svg"
+    },
+    {
+      "id": "soul_unison",
+      "name": "Soul unison",
+      "glyph": "unison",
+      "category": "combat-state",
+      "source": "game/battle.js:315-326",
+      "condition": "B.soul.unisonT > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-soul_unison.svg"
+    },
+    {
+      "id": "crystal_charge",
+      "name": "Crystal charge",
+      "glyph": "gem",
+      "category": "combat-state",
+      "source": "game/arearules.js:arRuleCard",
+      "condition": "p.crystalCharge",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-crystal_charge.svg"
+    },
+    {
+      "id": "perfect_dodge",
+      "name": "Perfect dodge",
+      "glyph": "perfect",
+      "category": "combat-state",
+      "source": "game/reading.js:43",
+      "condition": "perfectDodge feedback",
+      "tone": "buff",
+      "aliases": [
+        "status_perfect_dodge"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-perfect_dodge.svg"
+    },
+    {
+      "id": "incoming",
+      "name": "Incoming heavy attack",
+      "glyph": "incoming",
+      "category": "combat-state",
+      "source": "game/ui.js:1156-1158",
+      "condition": "inc heavy/boss telegraph",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-incoming.svg"
+    },
+    {
+      "id": "key_bronze",
+      "name": "Bronze key",
+      "glyph": "key",
+      "category": "dungeon-carry",
+      "source": "game/dungeon.js:21-27;1161",
+      "condition": "keyN(\"bronze\") > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8843a",
+      "svg": "assets/svg/status/status-key_bronze.svg"
+    },
+    {
+      "id": "key_silver",
+      "name": "Silver key",
+      "glyph": "key",
+      "category": "dungeon-carry",
+      "source": "game/dungeon.js:21-27;1161",
+      "condition": "keyN(\"silver\") > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#cfd8e6",
+      "svg": "assets/svg/status/status-key_silver.svg"
+    },
+    {
+      "id": "key_gold",
+      "name": "Gold key",
+      "glyph": "key",
+      "category": "dungeon-carry",
+      "source": "game/dungeon.js:21-27;1161",
+      "condition": "keyN(\"gold\") > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#f2c94c",
+      "svg": "assets/svg/status/status-key_gold.svg"
+    },
+    {
+      "id": "key_skeleton",
+      "name": "Skeleton key",
+      "glyph": "key",
+      "category": "dungeon-carry",
+      "source": "game/dungeon.js:21-27;1161",
+      "condition": "keyN(\"skeleton\") > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#e8e0c8",
+      "svg": "assets/svg/status/status-key_skeleton.svg"
+    },
+    {
+      "id": "key_boss",
+      "name": "Boss key",
+      "glyph": "key",
+      "category": "dungeon-carry",
+      "source": "game/dungeon.js:21-27;1161",
+      "condition": "keyN(\"boss\") > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#ff5d6c",
+      "svg": "assets/svg/status/status-key_boss.svg"
+    },
+    {
+      "id": "blessed",
+      "name": "Shrine blessing",
+      "glyph": "blessed",
+      "category": "dungeon-hud",
+      "source": "game/dungeon.js:1163",
+      "condition": "XRUN.attuned",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-blessed.svg"
+    },
+    {
+      "id": "threat",
+      "name": "Floor threat",
+      "glyph": "threat",
+      "category": "dungeon-hud",
+      "source": "game/deepways.js:145",
+      "condition": "EX.stir.lvl > 0",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-threat.svg"
+    },
+    {
+      "id": "wayshard",
+      "name": "Wayshard carried",
+      "glyph": "gem",
+      "category": "dungeon-hud",
+      "source": "game/deepways.js:147",
+      "condition": "XRUN.seals: got and not open",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-wayshard.svg"
+    },
+    {
+      "id": "sealed",
+      "name": "Sealed descent",
+      "glyph": "seal",
+      "category": "dungeon-hud",
+      "source": "game/deepways.js:148",
+      "condition": "seal on this floor: not got and not open",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-sealed.svg"
+    },
+    {
+      "id": "lost_satchel",
+      "name": "Lost satchel",
+      "glyph": "satchel",
+      "category": "dungeon-hud",
+      "source": "game/deepways.js:149",
+      "condition": "XRUN.satchels: not got",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-lost_satchel.svg"
+    },
+    {
+      "id": "quest",
+      "name": "Active quest",
+      "glyph": "quest",
+      "category": "dungeon-hud",
+      "source": "game/dungeon.js:1168",
+      "condition": "active quest count",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-quest.svg"
+    },
+    {
+      "id": "carrying_crate",
+      "name": "Carrying crate",
+      "glyph": "crate",
+      "category": "dungeon-hud",
+      "source": "game/dungeon.js:1169",
+      "condition": "EX.carrying",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-carrying_crate.svg"
+    },
+    {
+      "id": "rescue_timer",
+      "name": "Rescue countdown",
+      "glyph": "timer",
+      "category": "dungeon-hud",
+      "source": "game/missions.js:151",
+      "condition": "live rescue: not reached, current depth",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-rescue_timer.svg"
+    },
+    {
+      "id": "escort",
+      "name": "Escort health",
+      "glyph": "escort",
+      "category": "dungeon-hud",
+      "source": "game/missions.js:152",
+      "condition": "scout role with follow state",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-escort.svg"
+    },
+    {
+      "id": "treasury_collapse",
+      "name": "Treasury collapse",
+      "glyph": "collapse",
+      "category": "dungeon-hud",
+      "source": "game/rooms.js:121",
+      "condition": "room.tre.state === fall",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-treasury_collapse.svg"
+    },
+    {
+      "id": "companion",
+      "name": "Dungeon companion",
+      "glyph": "companion",
+      "category": "dungeon-hud",
+      "source": "game/rooms.js:122",
+      "condition": "XRUN.ally.fights > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-companion.svg"
+    },
+    {
+      "id": "bones",
+      "name": "Bones carried",
+      "glyph": "bones",
+      "category": "dungeon-hud",
+      "source": "game/rooms.js:123",
+      "condition": "EX.bones",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-bones.svg"
+    },
+    {
+      "id": "torch",
+      "name": "Torch lit",
+      "glyph": "torch",
+      "category": "dungeon-hud",
+      "source": "game/rooms.js:124",
+      "condition": "EX.torch",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-torch.svg"
+    },
+    {
+      "id": "planks",
+      "name": "Bridge planks",
+      "glyph": "planks",
+      "category": "dungeon-hud",
+      "source": "game/rooms.js:124",
+      "condition": "EX.planks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-planks.svg"
+    },
+    {
+      "id": "carried_flame",
+      "name": "Carried flame",
+      "glyph": "flame",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:271",
+      "condition": "EX.flameT > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-carried_flame.svg"
+    },
+    {
+      "id": "hex_thorns",
+      "name": "Hex of Thorns",
+      "glyph": "thorns",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:248;272",
+      "condition": "EX.cursed.k === thorns and not done",
+      "tone": "debuff",
+      "aliases": [],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-hex_thorns.svg"
+    },
+    {
+      "id": "hex_lead",
+      "name": "Leaden Hex",
+      "glyph": "lead",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:249;272",
+      "condition": "EX.cursed.k === lead and not done",
+      "tone": "debuff",
+      "aliases": [],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-hex_lead.svg"
+    },
+    {
+      "id": "hex_hollow",
+      "name": "Hollow Hex",
+      "glyph": "hollow",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:250;272",
+      "condition": "EX.cursed.k === hollow and not done",
+      "tone": "debuff",
+      "aliases": [],
+      "color": "#eaa087",
+      "svg": "assets/svg/status/status-hex_hollow.svg"
+    },
+    {
+      "id": "relics",
+      "name": "Elemental relics carried",
+      "glyph": "relic",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:273",
+      "condition": "EX.relics.length > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-relics.svg"
+    },
+    {
+      "id": "circuit",
+      "name": "Circuit progress",
+      "glyph": "circuit",
+      "category": "dungeon-hud",
+      "source": "game/puzzles.js:274",
+      "condition": "unfinished circuit with step > 0",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-circuit.svg"
+    },
+    {
+      "id": "vigor",
+      "name": "Vigor",
+      "glyph": "heart",
+      "category": "permanent-blessing",
+      "source": "game/dungeon.js:43-44",
+      "condition": "save.perm.vigor > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-vigor.svg"
+    },
+    {
+      "id": "might",
+      "name": "Might",
+      "glyph": "might",
+      "category": "permanent-blessing",
+      "source": "game/dungeon.js:43-44",
+      "condition": "save.perm.might > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-might.svg"
+    },
+    {
+      "id": "insight",
+      "name": "Insight",
+      "glyph": "eye",
+      "category": "permanent-blessing",
+      "source": "game/dungeon.js:43-44",
+      "condition": "save.perm.insight > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-insight.svg"
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune",
+      "glyph": "fortune",
+      "category": "permanent-blessing",
+      "source": "game/dungeon.js:43-44",
+      "condition": "save.perm.fortune > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-fortune.svg"
+    },
+    {
+      "id": "lantern_sight",
+      "name": "Lantern sight",
+      "glyph": "lantern",
+      "category": "dungeon-effect",
+      "source": "game/dungeon.js:BAG.oil / useBag",
+      "condition": "EX.sight > 0",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-lantern_sight.svg"
+    },
+    {
+      "id": "element_fire",
+      "name": "Fire",
+      "glyph": "flame",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#ff6a3d",
+      "svg": "assets/svg/status/status-element_fire.svg"
+    },
+    {
+      "id": "element_frost",
+      "name": "Frost",
+      "glyph": "snow",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#6fd6ff",
+      "svg": "assets/svg/status/status-element_frost.svg"
+    },
+    {
+      "id": "element_storm",
+      "name": "Storm",
+      "glyph": "lightning",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#ffe24d",
+      "svg": "assets/svg/status/status-element_storm.svg"
+    },
+    {
+      "id": "element_verdant",
+      "name": "Verdant",
+      "glyph": "leaf",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#6fdc7a",
+      "svg": "assets/svg/status/status-element_verdant.svg"
+    },
+    {
+      "id": "element_light",
+      "name": "Light",
+      "glyph": "sun",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#fff0b3",
+      "svg": "assets/svg/status/status-element_light.svg"
+    },
+    {
+      "id": "element_shadow",
+      "name": "Shadow",
+      "glyph": "moon",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#e0588f",
+      "svg": "assets/svg/status/status-element_shadow.svg"
+    },
+    {
+      "id": "element_gray",
+      "name": "Gray",
+      "glyph": "paw",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#b4b8c8",
+      "svg": "assets/svg/status/status-element_gray.svg"
+    },
+    {
+      "id": "element_brown",
+      "name": "Brown",
+      "glyph": "gear",
+      "category": "element-identity",
+      "source": "game/cards.js:6-16",
+      "condition": "color identity; first six also support timed enemy marks",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c08a55",
+      "svg": "assets/svg/status/status-element_brown.svg"
+    },
+    {
+      "id": "land_overgrowth",
+      "name": "Overgrowth",
+      "glyph": "grass",
+      "category": "land-effect",
+      "source": "game/cards.js:LANDS",
+      "condition": "onLand(\"overgrowth\")",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-land_overgrowth.svg"
+    },
+    {
+      "id": "land_swamp",
+      "name": "Swamp",
+      "glyph": "swamp",
+      "category": "land-effect",
+      "source": "game/cards.js:LANDS",
+      "condition": "onLand(\"swamp\")",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-land_swamp.svg"
+    },
+    {
+      "id": "land_marble",
+      "name": "Marble",
+      "glyph": "marble",
+      "category": "land-effect",
+      "source": "game/cards.js:LANDS",
+      "condition": "onLand(\"marble\")",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-land_marble.svg"
+    },
+    {
+      "id": "land_flood",
+      "name": "Flood",
+      "glyph": "water",
+      "category": "land-effect",
+      "source": "game/cards.js:LANDS",
+      "condition": "onLand(\"flood\")",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-land_flood.svg"
+    },
+    {
+      "id": "area_hollows",
+      "name": "Glow crystals",
+      "glyph": "gem",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === hollows",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_hollows.svg"
+    },
+    {
+      "id": "area_deeps",
+      "name": "Black ice",
+      "glyph": "snow",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === deeps",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_deeps.svg"
+    },
+    {
+      "id": "area_vault",
+      "name": "Storm strikes",
+      "glyph": "lightning",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === vault",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_vault.svg"
+    },
+    {
+      "id": "area_rifts",
+      "name": "Rising lava",
+      "glyph": "lava",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === rifts",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_rifts.svg"
+    },
+    {
+      "id": "area_ruins",
+      "name": "Gilded floor",
+      "glyph": "coin",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === ruins",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_ruins.svg"
+    },
+    {
+      "id": "area_abyss",
+      "name": "Void tiles",
+      "glyph": "void",
+      "category": "area-rule",
+      "source": "game/arearules.js:AREA_RULES",
+      "condition": "B.ar.id === abyss",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-area_abyss.svg"
+    },
+    {
+      "id": "ground_burn",
+      "name": "Burning ground",
+      "glyph": "flame",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.burnT",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_burn.svg"
+    },
+    {
+      "id": "ground_ice",
+      "name": "Iced ground",
+      "glyph": "snow",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.iceT",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_ice.svg"
+    },
+    {
+      "id": "ground_bramble",
+      "name": "Bramble ground",
+      "glyph": "thorns",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.thornT",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_bramble.svg"
+    },
+    {
+      "id": "ground_tremor",
+      "name": "Tremor",
+      "glyph": "tremor",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.env === tremor",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_tremor.svg"
+    },
+    {
+      "id": "ground_void",
+      "name": "Cursed ground",
+      "glyph": "void",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.voidT",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_void.svg"
+    },
+    {
+      "id": "ground_charged",
+      "name": "Charged ground",
+      "glyph": "lightning",
+      "category": "ground-effect",
+      "source": "game/battle.js:298-305;game/kinds.js:KD_ENVS",
+      "condition": "tile.zapT",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-ground_charged.svg"
+    },
+    {
+      "id": "card_frozen",
+      "name": "Frozen card",
+      "glyph": "snow",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.frozenT > 0",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-card_frozen.svg"
+    },
+    {
+      "id": "card_enchanted",
+      "name": "Enchanted card",
+      "glyph": "enchant",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "enchantLive()",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-card_enchanted.svg"
+    },
+    {
+      "id": "card_tinkered",
+      "name": "Tinkered card",
+      "glyph": "gear",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.tinker",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-card_tinkered.svg"
+    },
+    {
+      "id": "card_combo",
+      "name": "Combo locked",
+      "glyph": "combo",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.combo",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-card_combo.svg"
+    },
+    {
+      "id": "card_copy",
+      "name": "Temporary copy",
+      "glyph": "copy",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.temp",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-card_copy.svg"
+    },
+    {
+      "id": "card_recipe",
+      "name": "Recipe card",
+      "glyph": "recipe",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.recipe",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-card_recipe.svg"
+    },
+    {
+      "id": "card_low_charge",
+      "name": "Last charge",
+      "glyph": "charge",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.left === 1",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-card_low_charge.svg"
+    },
+    {
+      "id": "card_spent",
+      "name": "Spent charge",
+      "glyph": "spent",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "inst.left <= 0",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-card_spent.svg"
+    },
+    {
+      "id": "wand_only",
+      "name": "Wand only",
+      "glyph": "wand",
+      "category": "card-state",
+      "source": "game/ui.js:queue / onLowCharge / wandOnly",
+      "condition": "wandOnly(piles)",
+      "tone": "warning",
+      "aliases": [],
+      "color": "#f5cb60",
+      "svg": "assets/svg/status/status-wand_only.svg"
+    },
+    {
+      "id": "reaction_shatter",
+      "name": "Shatter",
+      "glyph": "shatter",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Shatter feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_shatter.svg"
+    },
+    {
+      "id": "reaction_conduct",
+      "name": "Conduct",
+      "glyph": "conduct",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Conduct feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_conduct.svg"
+    },
+    {
+      "id": "reaction_wildfire",
+      "name": "Wildfire",
+      "glyph": "wildfire",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Wildfire feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_wildfire.svg"
+    },
+    {
+      "id": "reaction_eclipse",
+      "name": "Eclipse",
+      "glyph": "eclipse",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Eclipse feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_eclipse.svg"
+    },
+    {
+      "id": "reaction_thornbind",
+      "name": "Thornbind",
+      "glyph": "thorns",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Thornbind feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_thornbind.svg"
+    },
+    {
+      "id": "reaction_rimebind",
+      "name": "Rimebind",
+      "glyph": "rimebind",
+      "category": "reaction-feedback",
+      "source": "game/battle.js:REACTIONS",
+      "condition": "reaction Rimebind feedback, not a persistent status",
+      "tone": "neutral",
+      "aliases": [],
+      "color": "#c8dbe0",
+      "svg": "assets/svg/status/status-reaction_rimebind.svg"
+    },
+    {
+      "id": "ward_thorns",
+      "name": "Thorns ward",
+      "glyph": "ward_thorns",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === thorns",
+      "tone": "buff",
+      "aliases": [
+        "thorns"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_thorns.svg"
+    },
+    {
+      "id": "ward_burning",
+      "name": "Burning ward",
+      "glyph": "ward_burning",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === burning",
+      "tone": "buff",
+      "aliases": [],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_burning.svg"
+    },
+    {
+      "id": "ward_freezing",
+      "name": "Freezing ward",
+      "glyph": "ward_freezing",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === freezing",
+      "tone": "buff",
+      "aliases": [
+        "freezing"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_freezing.svg"
+    },
+    {
+      "id": "ward_shocking",
+      "name": "Shocking ward",
+      "glyph": "ward_shocking",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === shocking",
+      "tone": "buff",
+      "aliases": [
+        "shocking"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_shocking.svg"
+    },
+    {
+      "id": "ward_healing",
+      "name": "Healing ward",
+      "glyph": "ward_healing",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === healing",
+      "tone": "buff",
+      "aliases": [
+        "healing"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_healing.svg"
+    },
+    {
+      "id": "ward_draining",
+      "name": "Draining ward",
+      "glyph": "ward_draining",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === draining",
+      "tone": "buff",
+      "aliases": [
+        "draining"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_draining.svg"
+    },
+    {
+      "id": "ward_steady",
+      "name": "Steady ward",
+      "glyph": "ward_steady",
+      "category": "ward-effect",
+      "source": "game/kinds.js:KD_WALL_FX",
+      "condition": "ward.wfx === steady",
+      "tone": "buff",
+      "aliases": [
+        "steady"
+      ],
+      "color": "#8de9b5",
+      "svg": "assets/svg/status/status-ward_steady.svg"
+    }
+  ],
+  "aliases": {
+    "barrier": "shield",
+    "invT": "phase",
+    "player.powerT": "wand_power",
+    "enemy.powerT": "empowered",
+    "setT": "wand_set",
+    "pactT": "pact",
+    "courageT": "courage",
+    "intervene": "intervention",
+    "rootT": "rooted",
+    "hexT": "hexed",
+    "hasteT": "haste",
+    "regenT": "regen",
+    "burnT": "burning",
+    "freezeT": "frozen",
+    "stunT": "stunned",
+    "slowT": "slowed",
+    "poisonT": "poisoned",
+    "curseT": "cursed",
+    "confuseT": "confused",
+    "infectT": "infected",
+    "rime": "shield",
+    "radiance": "shield",
+    "healing": "ward_healing",
+    "draining": "ward_draining",
+    "freezing": "ward_freezing",
+    "shocking": "ward_shocking",
+    "thorns": "ward_thorns",
+    "steady": "ward_steady",
+    "status_shield": "shield",
+    "status_perfect_dodge": "perfect_dodge",
+    "status_wand_power": "wand_power",
+    "status_drain": "drain",
+    "status_courage": "courage",
+    "status_valor": "valor",
+    "status_rooted": "rooted",
+    "status_hexed": "hexed",
+    "status_haste": "haste",
+    "status_mend": "mend"
+  },
+  "legacyGameStatusSvg": [
+    "status_courage.svg",
+    "status_drain.svg",
+    "status_haste.svg",
+    "status_hexed.svg",
+    "status_mend.svg",
+    "status_perfect_dodge.svg",
+    "status_rooted.svg",
+    "status_shield.svg",
+    "status_valor.svg",
+    "status_wand_power.svg"
+  ],
+  "sourceVerificationNote": "Mappings inherited from v2 snapshot; no current repository audit was performed in v3."
+}

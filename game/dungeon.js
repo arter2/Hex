@@ -252,19 +252,21 @@ function xPickMerchant(depth){ return xpick(Object.keys(MERCHANTS).filter(k=>!ME
    a miniboss and its hoard. Rooms behind a bronze lock get a rich chest. */
 function xAssignRooms(){
   const F=EX.plan?EX.plan.feats:{}, mid=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.start&&r!==EX.exit&&!r.behind);
-  const take=fn=>mid.filter(r=>!r.role&&fn(r)).sort(()=>XR()-.5)[0]||null;
-  const give=(r,role,safe)=>{ if(!r) return null; r.role=role; r.lit=true; if(safe){ r.safe=true; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) EX.safe.add(xi(i,j)); } return r; };
+  // puzzles, lairs and the special rooms are laid out on a plain rectangle: a shaped or walled room never gets one
+  const take=(fn,any)=>mid.filter(r=>!r.role&&(any||!r.shape&&!r.walls)&&fn(r)).sort(()=>XR()-.5)[0]||null;
+  const give=(r,role,safe)=>{ if(!r) return null; r.role=role; r.lit=true; if(safe){ r.safe=true; for(const c of xRoomCells(r)) EX.safe.add(c); } return r; };
   // a merchant or sanctuary with no room to stand in tries again on the next floor
-  if(F.merchant&&!give(take(()=>true),'merchant',true)){ delete F.merchant; XRUN.next.merchant=EX.depth+1; }
-  if(F.sanct&&!give(take(()=>true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
+  if(F.merchant&&!give(take(()=>true,true),'merchant',true)){ delete F.merchant; XRUN.next.merchant=EX.depth+1; }
+  if(F.sanct&&!give(take(()=>true,true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
   if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5),'puzzle')) delete F.puzzle;
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
   if(typeof xRareAssign==='function') xRareAssign(F,give,take);
 }
 
 /* ---------------- filling a floor ---------------- */
-const xRoomCells=r=>{ const out=[]; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++) out.push(xi(i,j)); return out; };
-const xInterior=r=>xRoomCells(r).filter(c=>{ const x=xcx(c), y=xcy(c); return r.w<3||r.h<3||(x>r.x&&x<r.x+r.w-1&&y>r.y&&y<r.y+r.h-1); });
+// a room's floor cells (a shaped room's box also holds rock, and low walls stand inside the spacious floor's rooms)
+const xRoomCells=r=>{ const out=[]; for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++){ const c=xi(i,j); if(EX.room[c]===r.id) out.push(c); } return out; };
+const xInterior=r=>xRoomCells(r).filter(c=>{ const x=xcx(c), y=xcy(c); if(r.shape||r.walls) return xAdj4(c).every(n=>EX.room[n]===r.id); return r.w<3||r.h<3||(x>r.x&&x<r.x+r.w-1&&y>r.y&&y<r.y+r.h-1); });
 const xSolid=n=>{ const p=EX.propAt.get(n); return !!(p&&p.solid); };
 const nearDoor=c=>xAdj4(c).some(n=>EX.doors.has(n));
 const xReach=extra=>xbfs(EX.t,EX.doors,EX.up,false,n=>xSolid(n)||(extra&&extra(n)));
@@ -484,13 +486,17 @@ function xPlacePuzzle(r){
     EX.taken=snap.taken; }
   r.role=null; }
 const PUZZLE_BUILD={
-  plates(r){ if(r.w<5||r.h<5) return null; const cols=[]; for(let x=r.x+1;x<=r.x+r.w-2;x++) cols.push(x); cols.sort(()=>XR()-.5);
+  // each plate with its block two cells south and room to push from behind it: a run of four of the room's own floor
+  // cells down one column, the northmost such run in it (a spacious floor's room is shaped: its box holds wall)
+  plates(r){ if(r.w<5||r.h<5) return null; const own=c=>EX.room[c]===r.id&&EX.t[c]===T_FLOOR;
+    const run=x=>{ for(let y=r.y+1;y+3<=r.y+r.h-1;y++){ const cs=[0,1,2,3].map(k=>xi(x,y+k)); if(cs.every(own)&&cs.every(c=>!EX.taken.has(c))&&cs.slice(0,3).every(c=>!nearDoor(c))) return y; } return -1; };
+    const cols=[]; for(let x=r.x+1;x<=r.x+r.w-2;x++) if(run(x)>=0) cols.push(x); cols.sort(()=>XR()-.5);
     const pick2=cols.find(a=>cols.some(b=>Math.abs(a-b)>=2)), c2=cols.find(b=>Math.abs(b-pick2)>=2); if(pick2==null||c2==null) return null;
-    const plates=[], blocks=[];
-    for(const x of [pick2,c2]){ const pl=xi(x,r.y+1), bl=xi(x,r.y+3), from=xi(x,r.y+4);
-      if([pl,bl,from].some(c=>EX.taken.has(c)||nearDoor(c)&&c!==from)) return null;
+    const plates=[], blocks=[]; let low=0;
+    for(const x of [pick2,c2]){ const y=run(x), pl=xi(x,y), bl=xi(x,y+2); low=Math.max(low,y+3);
       plates.push(xProp('plate',pl,{solid:false})); if(!xSolidOK(bl)) return null; blocks.push(xProp('block',bl,{home:bl})); }
-    const corner=xRoomCells(r).filter(c=>xcy(c)===r.y+r.h-1&&!EX.taken.has(c)&&!nearDoor(c)&&!plates.some(p=>xcx(p.cell)===xcx(c)));
+    // the reset plate: on the room's own floor along its southern edge, below the blocks
+    const rest=xRoomCells(r).filter(c=>own(c)&&xcy(c)>low&&!EX.taken.has(c)&&!nearDoor(c)&&!plates.some(p=>xcx(p.cell)===xcx(c))), far=Math.max(-1,...rest.map(xcy)), corner=rest.filter(c=>xcy(c)===far);
     if(!corner.length) return null; xProp('reset',xpick(corner),{solid:false});
     return {plates,blocks}; },
   statues(r){ if(r.w<5||r.h<5) return null; const core=xi(r.cx,r.cy); if(!xSolidOK(core)) return null; xProp('core',core,{});
@@ -600,7 +606,7 @@ function xMeshProp(p){
       for(const [x,z,ry] of [[0,.76,0],[0,-.76,Math.PI],[.76,0,Math.PI/2],[-.76,0,-Math.PI/2]]){ const ar=new THREE.Mesh(new THREE.PlaneGeometry(.7,.7),new THREE.MeshBasicMaterial({map:xBlockRuneTex(true),color:rc,transparent:true,depthWrite:false})); ar.position.set(x,.68,z); ar.rotation.y=ry; g.add(ar); }
       break; }
     case 'trialaltar': { g.add(xBox(1.2,.7,1.2,dark,0,.35,0)); p.flame=xCone(.3,.7,xGlowMat(0xff5d6c,{transparent:true,opacity:.85}),0,1.05,0); g.add(p.flame); break; }
-    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
+    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL_B-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
     case 'jet': { g.add(xBox(.9,.05,.9,dark,0,.03,0)); const f=xCone(.32,1.6,xGlowMat(0xff7a2a,{transparent:true,opacity:.85}),0,.8,0); f.visible=false; g.add(f); p.flame=f; break; }
     case 'totem': { g.add(xCyl(.12,1.5,wood,0,.75,0), xBall(.25,xMat(0xe8e0c8),0,1.62,0)); for(const s of [-.09,.09]) g.add(xBall(.05,xGlowMat(0xff3a4a),s,1.65,.2)); break; }
     case 'cache': { const m=xGlowMat(0xf2c94c,{transparent:true,opacity:.7}); g.add(xBox(.5,.35,.05,dark,0,.5,0), xBox(.36,.22,.06,m,0,.5,.01)); break; }
@@ -997,11 +1003,15 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
 /* ---------------- the dialog box ----------------
    One overlay for people, merchants, sanctuaries, tablets and your bag. While it is open the
    floor stands still. */
-function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'); c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
+// icons are decoded once and kept; a token stops a slow decode from painting over a later dialog's picture
+const XDLG_IMG={};
+function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'), tok=cv.tok=(cv.tok||0)+1; c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
   const draw=im=>{ if(im) c.drawImage(im,0,0,im.width,im.height,0,0,96,96); };
   if(o.look){ const s=lookSprite(o.look,'front',true); draw(s&&s.img); }
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }
-  else if(o.icon){ const im=new Image(); im.onload=()=>{ c.imageSmoothingEnabled=false; c.drawImage(im,12,12,72,72); }; im.src=uiIconURL(o.icon[0],o.icon[1]); }
+  else if(o.icon){ const url=uiIconURL(o.icon[0],o.icon[1]), im=XDLG_IMG[url]||(XDLG_IMG[url]=Object.assign(new Image(),{src:url}));
+    const put=()=>{ if(cv.tok!==tok) return; c.imageSmoothingEnabled=false; c.drawImage(im,12,12,72,72); };
+    if(im.complete&&im.naturalWidth) put(); else im.addEventListener('load',put,{once:true}); }
   cv.style.display=o.look||o.enemy||o.icon?'':'none'; }
 /* A card you get in the dungeon pops up so you can read it. Cards found together (a rich chest)
    show in one box; if another box is open, it waits for that one to close. */
@@ -1247,14 +1257,46 @@ function xBitsTick(dt){
     if(o.position.y<=.03){ u.vx*=.8; u.vz*=.8; u.spin*=.7; } o.rotation.y+=u.spin*dt; o.rotation.x+=u.spin*.5*dt;
     if(u.t>1.6){ X3.group.remove(o); return false; } return true; });
   if(EX.pops) EX.pops=EX.pops.filter(s=>{ s.userData.t+=dt; s.position.y+=dt*1.2; s.material.opacity=Math.max(0,1-s.userData.t/1.1); s.material.transparent=true; if(s.userData.t>1.1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
-  if(EX.strikeCd>0) EX.strikeCd-=dt;
+  if(EX.strikeCd>0) EX.strikeCd-=dt; xUseTick(dt);
   if(EX.swingT>0){ EX.swingT-=dt; const w=X3&&X3.swing; if(w){ const k=1-EX.swingT/.25; w.visible=EX.swingT>0; w.position.set(EX.px,.7,EX.pz); w.rotation.z=(EX.swingDir||0)-1.9+k*2.6; w.material.opacity=.85*(1-k); } } }
-function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action||(EX.strikeCd||0)>0) return;
+/* The action button: Strike when an enemy is within reach, otherwise it uses what you stand beside: Talk for a
+   person or a merchant, Interact for anything else you can use (a lever, an altar, a chest, a locked door, a puzzle
+   piece). xUseTarget finds it; xUseTick keeps the button's word (and the rune HUD's icon) in step. */
+const XUSE_TALK=new Set(['npc','merchant']);
+const XUSE_HIT=new Set(['eggsac','totem']);   // used by hitting them: the button still reads Strike
+const XUSE_SKIP=new Set(['block','pot','iceboulder']);   // pushed or smashed by walking and swinging, not used
+function xStrikeFoe(){ return EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant).map(g=>({g,d:Math.hypot(g.x-EX.px,g.z-EX.pz)})).filter(o=>o.d<XCS*1.8).sort((a,b)=>a.d-b.d)[0]; }
+function xUseTarget(){ if(!EX||!EX.active) return null; const R=XCS*1.55; let best=null, bd=R;
+  const consider=(o,x,z)=>{ const d=Math.hypot(x-EX.px,z-EX.pz); if(d<bd){ bd=d; best=o; } };
+  for(const p of EX.props){ if(p.gone) continue;
+    if(p.wall){ if(p.found===false&&p.kind!=='switch') continue; if(p.front==null||!EX.seen[p.front]) continue; consider({t:'wall',p,c:p.cell},xw(p.front)*.5+xw(p.cell)*.5,xz(p.front)*.5+xz(p.cell)*.5); continue; }
+    if(!p.solid||XUSE_SKIP.has(p.kind)||p.cell<0||!EX.seen[p.cell]) continue;
+    if(p.found===false||p.taken||p.spent&&p.kind!=='trialaltar') continue;
+    consider({t:'prop',p,c:p.cell},xw(p.cell),xz(p.cell)); }
+  for(const ch of EX.chests) if(!ch.open&&EX.seen[ch.cell]) consider({t:'chest',ch,c:ch.cell},xw(ch.cell),xz(ch.cell));
+  for(const [c,d] of EX.doors) if(d.state==='locked'&&EX.seen[c]) consider({t:'door',d,c},xw(c),xz(c));
+  if(best) best.talk=best.t==='prop'&&XUSE_TALK.has(best.p.kind);
+  return best; }
+function xUse(u){ if(!u||!xCanAct()) return false; const tx=xw(u.c);
+  if(Math.abs(tx-EX.px)>.1) EX.face=tx<EX.px?-1:1; EX.path=[]; EX.goal=null;
+  if(u.t==='chest') xOpenChest(u.ch);
+  else if(u.t==='door'){ if(u.d.lock==='circuit'){ if(typeof xCircuitDoor==='function') xCircuitDoor(u.c,u.d); } else xTryUnlock(u.c,u.d); }
+  else xInteract(u.p);
+  return true; }
+function xUseTick(dt){ EX.useT=Math.min(.15,(EX.useT||0)-Math.max(0,dt||0)); if(EX.useT>0) return; EX.useT=.15;   // (the first frame of a floor can come with a negative dt)
+  const u=EX.fighting||xStrikeFoe()?null:xUseTarget(), mode=!u||u.t==='prop'&&XUSE_HIT.has(u.p.kind)?'strike':u.talk?'talk':'use';
+  if(mode===EX.useMode) return; EX.useMode=mode; const b=document.getElementById('xStrike'); if(!b) return;
+  const k=b.querySelector('.k'), word={strike:'Strike',talk:'Talk',use:'Interact'}[mode];
+  for(const n of [...b.childNodes]) if(n.nodeType===3) n.remove(); b.insertBefore(document.createTextNode(word),b.firstChild);
+  b.dataset.use=mode; b.setAttribute('aria-label',word); if(k) b.appendChild(k); }
+function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action) return;
+  if(!xStrikeFoe()){ const u=xUseTarget(); if(u){ xUse(u); return; } }   // nothing to hit: use what is beside you
+  if((EX.strikeCd||0)>0) return;
   EX.strikeCd=.5; EX.swingT=.25;
   const G=X3; if(G&&!G.swing){ const m=new THREE.MeshBasicMaterial({color:0xcfefff,transparent:true,opacity:.8,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false});
     G.swing=new THREE.Mesh(new THREE.RingGeometry(.9,1.5,20,1,0,1.6),m); G.swing.rotation.order='XYZ'; G.swing.rotation.x=-Math.PI/2; G.group.add(G.swing); }
   if(G&&G.swing&&G.swing.parent!==G.group) G.group.add(G.swing);
   EX.swingDir=(EX.face||1)<0?Math.PI:0; xSfx('swing');
   for(const p of EX.props) if(p.kind==='pot'&&!p.gone&&Math.hypot(xw(p.cell)-EX.px,xz(p.cell)-EX.pz)<XCS*1.6) xBreakPot(p);
-  const foe=EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant).map(g=>({g,d:Math.hypot(g.x-EX.px,g.z-EX.pz)})).filter(o=>o.d<XCS*1.8).sort((a,b)=>a.d-b.d)[0];
+  const foe=xStrikeFoe();
   if(foe) xEngage(foe.g,'strike'); }

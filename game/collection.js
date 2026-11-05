@@ -128,6 +128,7 @@ function startDeck(ids,lean){ const n={}; ids.forEach(id=>{ const k=CARDS[id].co
   const rank=k=>k===lean?0:k==='gray'||k==='brown'?1:2+1/(1+n[k]);
   const list=ids.slice().sort((a,b)=>rank(CARDS[a].color)-rank(CARDS[b].color)||CARDS[a].rank-CARDS[b].rank).slice(0,RULES.max-1);
   list.push(heroOfColor(lean)); return list; }
+// a new world digs the spacious dungeon (sv.layout=2, dungeongen.js); a save made before has no mark and keeps the old floors
 function newSave(starter){
   if(starter&&starter.lean) return newDealtSave(starter.lean,starter.rng);
   const list=starterList(starter.colors,60,starter.recipe), owned={};
@@ -135,14 +136,14 @@ function newSave(starter){
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
   const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, worn:{basic_wand:1}, heroCards:1};
-  giveStarterHeroes(sv); return sv;
+  sv.layout=2; giveStarterHeroes(sv); return sv;
 }
 function newDealtSave(lean,rng){
   const deal=dealStart(lean,rng), owned={}; deal.list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const list=startDeck(deal.list,lean), decks=[{name:COLORS[lean].name+' deck', list}];
   for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
   const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, worn:{basic_wand:1}, heroCards:1, lean, homeRune:deal.home};
-  giveStarterHeroes(sv); return sv; }
+  sv.layout=2; giveStarterHeroes(sv); return sv; }
 /* Shards. Break a spare card (one that no deck needs) for shards, and spend shards to craft any
    card you have seen. Breaking is always your choice; nothing turns to shards on its own.
    Heroes and recipe cards can't be broken or crafted. [break for, craft for] */

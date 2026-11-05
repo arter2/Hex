@@ -21,9 +21,13 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
 const XLIT_DEF={ amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
-  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
+  dPitch:48, dDist:9.4, dView:12, dViewP:7, dStepOn:true, dStepLow:.17, dShOn:false, dShW:1.25, dShUp:1.3, dShDown:2.6, dShBack:1.1, dShEdge:.18, dShInner:true, dShDoor:true, dShDoorH:3.6, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
+// v228: movement tuned in the Movement lab is saved per browser and was overriding the defaults there, so one
+// phone, another and a computer each walked differently. Clear those saved movement values once; the lab still
+// saves new ones afterwards.
+try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
@@ -44,12 +48,15 @@ function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
   if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
-  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns); }
+  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
+  if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
 function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(m);
   const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
   m.extensions=Object.assign(m.extensions||{},{derivatives:true});
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit';
+  // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
+  const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'');
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -125,7 +132,8 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    second and a half steps down (sharpness 2, 1.5, 1 then .75 screen pixels per pixel; then no
    screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
    menu, the look stays as set. */
-const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:.75,lights:4},{pr:.75,lights:4,noSsao:1},{pr:.75,lights:2,noSsao:1}];
+// (sharpness never drops below 1 until the shading and lights have: below 1 the people go soft and blocky)
+const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:1,lights:4,noSsao:1},{pr:1,lights:2,noSsao:1},{pr:.75,lights:2,noSsao:1}];
 const LQ={step:0,avg:16,slowT:0,fastT:0,upWait:3,upAt:-1e9};
 function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } const ms=Math.min(250,dt*1000); LQ.avg+=(ms-LQ.avg)/30;
   // a step back up that soon has to come down again (walking between a heavy room and a light one)
@@ -149,7 +157,7 @@ function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
   if(ssao){ const U=S.aoM.uniforms; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uP11.value=G.cam.projectionMatrix.elements[5]; U.uRes.value.set(hw,hh); U.uRad.value=XLIT.ssaoRad*(G.unit||2); U.uStr.value=XLIT.ssaoStr;
     S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
     S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(post?S.rt2:null); r.render(S.qs,S.cam); }
-  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
+  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uP10.value=G.cam.projectionMatrix.elements[10]; U.uP14.value=G.cam.projectionMatrix.elements[14]; U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
     const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
     U.uShow.value=show?1:0; U.uVig.value=XLIT.vig; U.uVigR.value=XLIT.vigR; U.uVigSoft.value=Math.max(.05,XLIT.vigSoft);
     S.q.material=S.dM; r.setRenderTarget(null); r.render(S.qs,S.cam); } }
@@ -165,10 +173,11 @@ function xDofInit(w,h){ const S=XSSAO;
   if(!S.dM){ S.rt2=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:false});
     S.dM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }',
       extensions:{derivatives:true},
-      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uInvProj:{value:new THREE.Matrix4()}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
+      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uP10:{value:-1}, uP14:{value:-1}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
         uShow:{value:0}, uVig:{value:0}, uVigR:{value:.55}, uVigSoft:{value:.7} },
-      fragmentShader:`uniform sampler2D tColor, tDepth; uniform mat4 uInvProj; uniform vec2 uRes; uniform float uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
-float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; vec4 v=uInvProj*vec4(uv*2.0-1.0,d*2.0-1.0,1.0); return -v.z/v.w-uFocus; }
+      fragmentShader:`uniform sampler2D tColor, tDepth; uniform vec2 uRes; uniform float uP10, uP14, uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
+// distance from the camera, from the perspective projection's two depth terms (exact; a mat4 per tap before)
+float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; return uP14/(d*2.0-1.0+uP10)-uFocus; }
 float coc(vec2 uv){ float z=zof(uv); return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
 void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
   if(C>=.05){ vec3 acc=col; float ws=1.0; float a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))));
@@ -267,6 +276,30 @@ function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), 
   const x=c.getContext('2d');
   for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); H[((py|0)%N+N)%N*N+((px|0)%N+N)%N]-=1.4; a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
   xSpeck(c,S,R,style?18:26,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
+/* Spacious floors: small square tiles (16 px, four to a cell on the 8-cell texture), laid by hand and worn: some
+   pairs and some 2x2 slabs among them, a wide spread of tones (a few much paler or darker), each stone with its own
+   grain, chipped corners, now and then a cracked or broken one, and grime and wear that run across many tiles (dark
+   toward one side of a room, polished pale where feet go). A dark joint, a lit top-left and shaded bottom-right edge.
+   checker: the passages, every other tile a shade apart. */
+function xTileFloor(S,seed,checker){ const N=256, T=16, n=N/T, R=caveRng(seed), f=xFbm(N,R,6), g=xFbm(N,R,64), w=xFbm(N,R,24), H=new Float32Array(N*N);
+  const id=new Int32Array(n*n).fill(-1), st=[]; let k=0;
+  for(let y=0;y<n;y++) for(let x=0;x<n;x++){ if(id[y*n+x]>=0) continue; const r=R(), free=(dx,dy)=>x+dx<n&&y+dy<n&&id[(y+dy)*n+x+dx]<0;
+    let W=1, Hh=1; if(r<.08&&free(1,0)&&free(0,1)&&free(1,1)){ W=2; Hh=2; } else if(r<.17&&free(1,0)) W=2; else if(r<.25&&free(0,1)) Hh=2;
+    for(let dy=0;dy<Hh;dy++) for(let dx=0;dx<W;dx++) id[(y+dy)*n+x+dx]=k;
+    const odd=R(); st.push({x0:x*T,y0:y*T,w:W*T,h:Hh*T,t:(odd<.08?.28:odd>.93?.7:.38+R()*.24)+(checker&&(x+y)%2?.05:0),
+      gx:R()*99,gy:R()*99,crack:R()<.07,broken:R()<.025,chip:[R()<.3,R()<.3,R()<.3,R()<.3]}); k++; }
+  const c=xPaint(N,(i,j)=>{ const s0=st[id[(j/T|0)*n+(i/T|0)]], u=i-s0.x0, v=j-s0.y0, W=s0.w, Hh=s0.h;
+    let t=s0.t+(f((i+s0.gx|0)%N,(j+s0.gy|0)%N)-.5)*.16, h=2;
+    t+=(g(i,j)-.5)*.26;                      // grime and wear across the room
+    t+=Math.max(0,w(i,j)-.62)*.5;            // pale polished patches
+    const cn=Math.min(u,W-1-u)+Math.min(v,Hh-1-v), q=(u<W/2?0:1)+(v<Hh/2?0:2);
+    if(u===W-1||v===Hh-1||(s0.chip[q]&&cn<3)){ t=.08; h=-1; }
+    else if(u===0||v===0){ t+=.14; h=2.6; } else if(u===W-2||v===Hh-2){ t-=.09; h=1.4; }
+    if(s0.broken&&h>0){ const d=Math.abs((u-W/2)*.8+(v-Hh/2)); if(d<1.2){ t=.06; h=-1; } else if(u+v>W){ t-=.12; h-=.8; } }
+    H[j*N+i]=h+f(i,j)*.4; return xTone(S,Math.max(0,Math.min(1,t))); });
+  const x=c.getContext('2d'); x.fillStyle='rgba(0,0,0,.5)';
+  for(const s0 of st) if(s0.crack){ let px=s0.x0+2+R()*(s0.w-4), py=s0.y0+2, a=1.2+R()*.7; for(let q=0;q<s0.h-3;q++){ x.fillRect(px|0,py|0,1,1); H[(py|0)*N+(px|0)]-=1.2; a+=(R()-.5)*.6; px+=Math.cos(a)*.7; py+=Math.max(.4,Math.sin(a)); if(px<s0.x0+1||px>s0.x0+s0.w-2) break; } }
+  xSpeck(c,S,R,10,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
 function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
   // the height: rough lumps with the strata standing out as ledges
@@ -292,7 +325,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ...['Spell','Defend','Backdate','Send','Smooth'].map(k=>['dbgMp'+k,()=>XLIT,'mp'+k,'hexmancers-xl-mp'+k,0,'mp']),   // a duel's timings, read live by battle.js duelSettings; the group 'mp' touches nothing else
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
+  ...[['dPitch',0,''],['dDist',1,''],['dView',0,''],['dViewP',1,''],['dStepOn',null,'xwalls'],['dStepLow',2,'xwalls'],['dShOn',null,''],['dShW',2,''],['dShUp',2,''],['dShDown',2,''],['dShBack',2,''],['dShEdge',2,''],['dShInner',null,''],['dShDoor',null,''],['dShDoorH',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
@@ -318,7 +351,11 @@ function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(con
   { const feel=(F,keep)=>{ for(const k in F){ XLIT[k]=F[k]; try{ keep&&F[k]!==XLIT_DEF[k]?localStorage.setItem('hexmancers-xl-'+k,typeof F[k]==='boolean'?(F[k]?'1':'0'):String(F[k])):localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); };
     const n=document.getElementById('dbgMvNew'), o=document.getElementById('dbgMvOld');
     if(n) n.onclick=()=>{ feel(MV_DEF,false); tip&&tip('Movement: new feel (v118)'); }; if(o) o.onclick=()=>{ feel(MV_V117,true); tip&&tip('Movement: old feel (v117)'); }; }
-  { const r=document.getElementById('dbgDCamReset'); if(r) r.onclick=()=>{ for(const k of ['dPitch','dDist','dFov','dAim','dAhead','dTurn','dMoveX','dMoveY','dMoveZ','dRotX','dRotY','dRotZ']){ XLIT[k]=XLIT_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); }; }   // Camera: the dungeon camera back to normal
+  // the spacious dungeon (dungeongen.js): a mark on this save, read when a floor is dug (explore.js xLayoutV)
+  { const c=document.getElementById('dbgLayout2'); if(c){ const sync=()=>{ c.checked=typeof save!=='undefined'&&!!save&&save.layout===2; };
+    sync(); const dbg=document.getElementById('debug'); if(dbg) new MutationObserver(()=>{ if(dbg.classList.contains('on')) sync(); }).observe(dbg,{attributes:true,attributeFilter:['class']});
+    c.onchange=()=>{ if(typeof save==='undefined'||!save){ c.checked=false; return; } if(c.checked) save.layout=2; else delete save.layout; if(typeof persist==='function') persist(); }; } }
+  { const r=document.getElementById('dbgDCamReset'); if(r) r.onclick=()=>{ for(const k of ['dPitch','dDist','dView','dViewP','dStepOn','dStepLow','dShOn','dShW','dShUp','dShDown','dShBack','dShEdge','dShInner','dShDoor','dShDoorH','dFov','dAim','dAhead','dTurn','dMoveX','dMoveY','dMoveZ','dRotX','dRotY','dRotZ']){ XLIT[k]=XLIT_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); }; }   // Camera: the dungeon camera back to normal
   { const r=document.getElementById('dbgMpReset'); if(r) r.onclick=()=>{ for(const k of ['mpSpell','mpDefend','mpBackdate','mpSend','mpSmooth']){ XLIT[k]=XLIT_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } xBindSliders(); }; }   // Multiplayer: the five timings back to normal
   document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
     xBindSliders(); xLitRefresh(); lookBake(); xDbgApply('fps'); xDbgApply('xwalls'); };

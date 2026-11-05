@@ -1126,8 +1126,27 @@ const cardArtVariants=c=>typeof HEX_CARD_ART_VARIANTS!=='undefined'&&Object.prot
 /* A painted card's picture from its atlas sheet (cards/art/atlas, packed by tools/card-art-build.js): the full-card
    sheet for a card shown big, the thumbnail sheet for anything smaller. The CSS for an element's background, or null
    for a card without painted art. A few sheets load instead of a file per card and size. */
-function cardArtSprite(c,kind){ const v=cardArtVariants(c), a=v&&v.atlas&&v.atlas[kind==='full'?'full':'thumb']; if(!a) return null;
-  return `background-image:url(${a.url});background-size:${a.size[0]}% ${a.size[1]}%;background-position:${a.pos[0]}% ${a.pos[1]}%;background-repeat:no-repeat`; }
+// A full-sheet sprite is layered over the card's thumbnail cell: the thumbnail sheets are preloaded (artPreload), so
+// the art shows at once and sharpens when the full sheet has decoded, never a blank slot.
+function cardArtSprite(c,kind){ const v=cardArtVariants(c), at=v&&v.atlas; if(!at) return null;
+  const L=[kind==='full'&&at.full,at.thumb].filter(Boolean); if(!L.length) return null;
+  return 'background-image:'+L.map(a=>'url('+a.url+')').join(',')+';background-size:'+L.map(a=>a.size[0]+'% '+a.size[1]+'%').join(',')
+    +';background-position:'+L.map(a=>a.pos[0]+'% '+a.pos[1]+'%').join(',')+';background-repeat:no-repeat'; }
+/* Card-art sheets are fetched in the background while the title is up, three at a time at low priority, and the
+   Image objects are kept so the browser's memory cache holds them: every thumbnail sheet (all short cards), then
+   the full sheets of the cards asked for (artWarm: the active deck, whose held card shows full in a fight). */
+const ART_HOLD=new Map(), ART_Q=[];
+let artBusy=0;
+function artPump(){ while(artBusy<3&&ART_Q.length){ const url=ART_Q.shift(); if(ART_HOLD.has(url)) continue;
+  const im=new Image(); im.decoding='async'; if('fetchPriority' in im) im.fetchPriority='low'; ART_HOLD.set(url,im); artBusy++;
+  im.onload=im.onerror=()=>{ im.onload=im.onerror=null; artBusy--; artPump(); }; im.src=url; } }
+function artWarm(ids,kind){ if(typeof document==='undefined'||typeof HEX_CARD_ART_VARIANTS==='undefined') return;
+  for(const id of ids){ const at=Object.prototype.hasOwnProperty.call(HEX_CARD_ART_VARIANTS,id)&&HEX_CARD_ART_VARIANTS[id].atlas, a=at&&at[kind];
+    if(a&&!ART_HOLD.has(a.url)&&!ART_Q.includes(a.url)) ART_Q.push(a.url); }
+  artPump(); }
+function artPreload(deck){ if(typeof HEX_CARD_ART_VARIANTS==='undefined') return;
+  if(!artPreload.done){ artPreload.done=1; artWarm(Object.keys(HEX_CARD_ART_VARIANTS),'thumb'); }
+  if(deck) artWarm(deck,'full'); }
 // a card's art for small places (deck tiles, icons): a thumbnail-sheet sprite when it has painted art, else its image
 function cardArtThumb(c,cls,style){ const s=cardArtSprite(c,'thumb');
   return s?`<span class="${cls||''} art-sprite" style="${s};${style||''}" aria-hidden="true"></span>`:`<img${cls?` class="${cls}"`:''} src="${artURL(c)}" alt=""${style?` style="${style}"`:''}>`; }
@@ -1439,6 +1458,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,cardArtSprite,cardArtThumb,motifKey,unitSprite,lookSprite,playerLook,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,cardArtSprite,cardArtThumb,artWarm,artPreload,motifKey,unitSprite,lookSprite,playerLook,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

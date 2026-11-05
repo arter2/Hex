@@ -8,7 +8,7 @@
   Frames are `HexSkins.skin()` drawn small and nine-sliced 8 units in (CSS `border-image`), so corners never
   stretch. Frost, Storm, Light and Shadow element glyphs are added in menu.js in the same style.
 - `game/menu.css`: layout and states. Sizes are logical; the menu follows the Text size setting (`--tz`).
-- `game/ui/menu/*.webp`: the hero scene, logo, footer and brick tile, re-encoded from `assets/art` (6.3 MB to 330 KB).
+- `game/art/menu/*.webp`: the hero scene, logo, footer and brick tile, re-encoded from `assets/art` (6.3 MB to 330 KB).
 
 Data bindings: the save strip shows the slot in use, its active deck's name, max HP (120 + gear; between runs
 you are at full health), gold, unique cards owned and Arcane Essence (the purple crystal). The run tray shows

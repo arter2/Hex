@@ -1,6 +1,6 @@
 /* Hexmancers - the main menu and the three save slots, from the menu handoff (docs/ui-menu: the two approved
    paintings, SCREEN_FLOW, RESPONSIVE, DATA_BINDING). Built from the handoff's own frame geometry (menuskins.js)
-   and colour pixel icons (menuicons.js), its separated art (ui/menu/*.webp) and live save data.
+   and colour pixel icons (menuicons.js), its separated art (art/menu/*.webp) and live save data.
      main   save strip (the slot in use: its character, deck, HP, gold, cards, essence) - opens the slots;
             Continue - opens the slots; the run tray (area, deepest, the chosen start depth and its arrows, the
             area's four floors, its element and weakness, Run details, Explore and Battle); Cards / Market /

@@ -8,7 +8,7 @@
   padding:0!important; overflow:hidden!important; zoom:var(--tz,1)!important; background:#070b0e; color:var(--hm-text); font-family:var(--font-h);}
 #scrMenu::before{display:none;}
 .hm::after{content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:linear-gradient(rgba(6,10,13,.62),rgba(6,10,13,.8)),url(ui/menu/brick.webp) 0 0/320px repeat;}
+  background:linear-gradient(rgba(6,10,13,.62),rgba(6,10,13,.8)),url(art/menu/brick.webp) 0 0/320px repeat;}
 .hm-scroll{position:absolute; inset:0; z-index:1; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
 .hm-page{position:relative; min-height:100%; display:flex; flex-direction:column; box-sizing:border-box;
   padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);}

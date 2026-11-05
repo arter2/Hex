@@ -62,7 +62,7 @@ Movement values changed in the Movement lab are saved per browser and took prece
 each browser could walk differently. v228 clears the saved `mv*` values once (`hexmancers-mv-defaults`); the
 lab saves new ones afterwards.
 
-The dungeon walk was measured at 3.5 cells/s at 20, 30, 60 and 120 fps on a phone and a 1920 x 1080 screen.
+The dungeon walk (3.5 cells/s then; 4.5 from v229) was measured at 20, 30, 60 and 120 fps on a phone and a 1920 x 1080 screen.
 Reaching a waypoint no longer costs a standing frame.
 
 `touch-transition-runner.js` compared tap and follow-finger speeds with the joystick's top speed; they use

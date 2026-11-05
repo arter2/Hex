@@ -18,7 +18,7 @@ let XWALL=XWALL_B;   // this floor's wall height: spacious floors stand twice as
 const XWT=[0,1,2,0,1,2,1];
 const xWT=v=>EX&&EX.natural?0:XWT[v];   // a cave area's walls are all rock (xNatural)
 const XNATURAL=new Set(['hollows','deeps','rifts']);   // the areas that are natural caves; the rest stay built stonework
-const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
+const XSPEED=9;                          // your walking speed, in world units a second (4.5 tiles; 3.5 until v229)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
 const TRAPS={

@@ -1881,10 +1881,11 @@ function xMini(){
   // the backing store is reallocated only when the map's size changes (it was every redraw, ten times a second)
   if(cv.width!==nx*s||cv.height!==ny*s){ cv.width=nx*s; cv.height=ny*s; } c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
   if(!rune){ c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); } c.translate(-x0*s,-y0*s);
-  const g=rune&&big?Math.max(1,Math.round(s*.06)):0;   // the seam between tiles
+  const g=rune&&big?Math.max(1,Math.round(s*.06)):0;   // the thin dark seam between the handoff's tiles
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ if(!rune){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); } continue; }
     c.fillStyle=rune?(d?'#e7be60':EX.vis[i]?'#718092':'#536171'):(d?'#f0a850':EX.vis[i]?'#7c8aa6':'#3c4458');
-    if(g){ c.fillRect(xcx(i)*s+g/2,xcy(i)*s+g/2,s-g,s-g); c.strokeStyle='rgba(131,148,165,.15)'; c.lineWidth=g; c.strokeRect(xcx(i)*s+g,xcy(i)*s+g,s-2*g,s-2*g); } else c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
+    c.fillRect(xcx(i)*s,xcy(i)*s,s,s);
+    if(g){ c.strokeStyle='rgba(16,26,30,.32)'; c.lineWidth=g; c.strokeRect(xcx(i)*s+g/2,xcy(i)*s+g/2,s-g,s-g); } }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
   const MI=rune&&big&&window.RUNE_MAPI, ico=(i,im,k)=>{ if(!im||!im.complete) return false; const z=s*k; c.drawImage(im,xcx(i)*s+s/2-z/2,xcy(i)*s+s/2-z/2,z,z); return true; };
   if(EX.seen[EX.down]&&!(MI&&!isBossDepth(EX.depth)&&ico(EX.down,MI.stairs,1.6))) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]&&!(MI&&EX.pc===EX.up)) dot(EX.up,'#fff2c0',2);

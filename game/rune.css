@@ -1,0 +1,198 @@
+/* Hexmancers - Living Rune / Whisper dungeon UI (rune.js turns it on: body.rune; body.rune-right mirrors it).
+   From the handoff in docs/ui-rune: design-tokens.json (colours, sizes, alphas), layout-metrics.json (the row, log and
+   drawer geometry for every viewport and hand), the editable SVG masters (icons, button faces, panels) and the two
+   approved boards. Smoky translucent surfaces, restrained steel edges, gold for Strike, cyan rune details, compact pixel
+   type. Everything here is scoped to the dungeon screen and the shared pause menu. */
+body.rune{
+  --r-ink:#101a1e; --r-text:#f3f1e7; --r-muted:#a8b6b8; --r-line:#739095; --r-cyan:#7dd8e6; --r-gold:#f5cb60; --r-heal:#8de9b5; --r-danger:#ec9384;
+  --r-mlight:#b5c1bb; --r-mmid:#626f70; --r-mdark:#242e33; --r-bronze:#897052; --r-bronzel:#c0a074; --r-crl:#d4fbff; --r-crd:#1785bb;
+  --r-gap:6px; --r-face:48px; --r-target:56px; --r-rowmax:352px; --r-inset:12px; --r-idle:.5; --r-logbg:.8;
+  --r-row:min(var(--r-rowmax), calc(100vw / var(--tz,1) - 2 * var(--r-inset) - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));
+  --r-drawer:clamp(128px, calc(30vh / var(--tz,1)), 320px);
+  --r-chamfer:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
+}
+/* a bigger screen shows more dungeon, not a bigger HUD: the HUD follows only the Text size setting (--tz), not the
+   screen-size part of the game's interface zoom (--ui) */
+body.rune #xTop,body.rune #xBottom,body.rune #xMini,body.rune #rChipRow,body.rune #rMiniGem,body.rune #rStatusPop{zoom:var(--tz,1);}
+body.rune #xMini.big{zoom:1;}
+/* one controlled atmosphere: the second vignette and the dark band under the controls go (the world stays visible) */
+body.rune #scrExplore .x-vignette{display:none;}
+body.rune #xVig{background:radial-gradient(ellipse 80% 75% at 50% 46%,rgba(0,0,0,0) 60%,rgba(0,0,0,.4) 88%,rgba(0,0,0,.7) 100%);}
+
+/* ---------------- top: compact vitals ---------------- */
+body.rune #xTop{display:block; padding:calc(8px + env(safe-area-inset-top,0px)) calc(var(--r-inset) + env(safe-area-inset-right,0px)) 0 calc(var(--r-inset) + env(safe-area-inset-left,0px)); height:auto;}
+body.rune #xTop .r-vit{display:flex; align-items:center; gap:10px; min-height:30px;}
+body.rune #xTop .hpmeter{position:relative; flex:0 0 auto; width:150px; height:26px; margin:0; padding:0 8px 0 22px; display:flex; align-items:center; gap:8px; box-sizing:border-box;
+  background:rgba(16,26,30,.72); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.35); clip-path:var(--r-chamfer); border-image:none; overflow:visible;}
+body.rune #xTop .hpmeter::before{content:''; position:absolute; left:4px; top:50%; width:13px; height:15px; margin-top:-8px; background:var(--r-crystal) center/contain no-repeat;}   /* the crystal cap */
+body.rune #xTop .hpmeter #xHpTxt{position:static; order:1; flex:0 0 auto; font:400 17px var(--font-h); color:var(--r-text); text-shadow:0 1px 0 #000; transform:none; inset:auto; letter-spacing:.02em;}
+body.rune #xTop .hpmeter .r-hptrack{order:2; flex:1 1 auto; display:block; height:6px; background:rgba(98,111,112,.45); position:relative;}
+body.rune #xTop .hpmeter #xHpBar{position:absolute; left:0; top:0; bottom:0; display:block; height:auto; max-width:none; background:var(--r-heal); box-shadow:0 0 4px rgba(141,233,181,.5); border-radius:0; transition:width .25s;}
+body.rune #xTop .hpmeter.low{border-color:var(--r-danger);}
+body.rune #xTop .hpmeter.low #xHpBar{background:var(--r-danger); box-shadow:0 0 6px rgba(236,147,132,.7); animation:rLow 1.1s ease-in-out infinite;}
+body.rune #xTop .hpmeter.low #xHpTxt{color:#ffd2c8;}
+@keyframes rLow{50%{opacity:.55;}}
+body.rune #xTop .info{display:contents;}
+body.rune #xLv{font:400 17px var(--font-h); color:var(--r-heal); text-shadow:0 1px 0 #000; white-space:nowrap;}
+body.rune #xGold{display:inline-flex; align-items:center; gap:4px; font:400 17px var(--font-h); color:var(--r-gold); text-shadow:0 1px 0 #000;}
+body.rune #xGold .pxi,body.rune #xGold svg{width:16px; height:16px;}
+body.rune #xDepth{display:none;}   /* the long place name lives in the map and pause; the chip carries D1 · F1/4 */
+body.rune #xMenu{position:absolute; top:calc(4px + env(safe-area-inset-top,0px)); right:calc(var(--r-inset) - 4px + env(safe-area-inset-right,0px)); width:48px; height:48px; min-width:0; min-height:0; padding:6px; margin:0;
+  background:none; border:0; border-image:none; box-shadow:none; color:transparent; font-size:0; pointer-events:auto;}
+body.rune #xMenu::before{content:''; position:absolute; inset:7px 4px; background:rgba(16,26,30,.72); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.35); clip-path:var(--r-chamfer);}
+body.rune #xMenu::after{content:''; position:absolute; left:50%; top:50%; width:20px; height:20px; margin:-10px 0 0 -10px; background:var(--r-i-menu) center/contain no-repeat;}
+body.rune #xMenu:active::before{background:rgba(16,26,30,1);}
+/* the location chip and the status row on its baseline */
+body.rune #rChipRow{position:absolute; left:calc(var(--r-inset) + env(safe-area-inset-left,0px)); top:calc(42px + env(safe-area-inset-top,0px)); display:flex; align-items:center; gap:8px; pointer-events:none; z-index:2; max-width:calc(100% - 120px);}
+body.rune #rChip{flex:0 0 auto; height:22px; padding:0 10px; display:inline-flex; align-items:center; font:400 15px var(--font-h); color:var(--r-text); letter-spacing:.04em; white-space:nowrap;
+  background:rgba(16,26,30,.72); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.3); clip-path:var(--r-chamfer);}
+body.rune #xStatus{position:static; display:flex; flex-wrap:nowrap; align-items:center; gap:6px; max-width:none; zoom:1; pointer-events:auto; min-width:0;}
+body.rune #xStatus .xs{display:none;}   /* the game's own chips, read by rune.js into icons */
+body.rune #xStatus .rs{display:inline-flex; align-items:center; gap:2px; height:24px; padding:0 1px; background:none; border:0; font:400 15px var(--font-h); color:var(--r-text); text-shadow:0 1px 0 #000; cursor:pointer;}
+body.rune #xStatus .rs svg{filter:drop-shadow(0 1px 0 #000);}
+body.rune #xStatus .rs.more{padding:0 6px; height:20px; background:rgba(16,26,30,.72); border:1px solid var(--r-mmid); clip-path:var(--r-chamfer); font-size:14px;}
+body.rune #rStatusPop{position:absolute; left:calc(var(--r-inset) + env(safe-area-inset-left,0px)); top:calc(70px + env(safe-area-inset-top,0px)); z-index:6; max-width:min(320px,calc(100vw - 24px)); padding:8px 10px;
+  background:rgba(16,26,30,.92); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.3),0 6px 18px rgba(0,0,0,.5); clip-path:var(--r-chamfer); pointer-events:auto;}
+body.rune #rStatusPop[hidden]{display:none;}
+body.rune #rStatusPop div{display:flex; align-items:center; gap:8px; font:400 16px/1.25 var(--font-t); color:var(--r-text); padding:2px 0;}
+/* the small map: a local crop in a steel frame with a cyan crystal, top right */
+body.rune #xMini{width:70px!important; height:70px!important; top:calc(52px + env(safe-area-inset-top,0px)); right:calc(var(--r-inset) + env(safe-area-inset-right,0px)); border:1px solid var(--r-mmid);
+  box-shadow:inset 0 0 0 1px rgba(181,193,187,.25),0 0 0 2px rgba(16,26,30,.6); background:rgba(16,26,30,.8);}
+body.rune #rMiniGem{position:absolute; width:10px; height:12px; top:calc(46px + env(safe-area-inset-top,0px)); right:calc(var(--r-inset) + 30px + env(safe-area-inset-right,0px)); background:var(--r-crystal) center/contain no-repeat; pointer-events:none; z-index:3;}
+body.rune.r-mapopen #rMiniGem{display:none;}
+
+/* ---------------- bottom: context, log, actions ---------------- */
+body.rune #xBottom{background:none; padding:0 calc(var(--r-inset) + env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) calc(var(--r-inset) + env(safe-area-inset-left,0px));
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;}
+body.rune.rune-right #xBottom{align-items:flex-end;}
+body.rune #xBottom > *{width:var(--r-row); max-width:100%; box-sizing:border-box;}
+body.rune #xBottom .keys{display:none!important;}
+body.rune #xLog{display:none;}
+/* teaching: one short strip, in the same material */
+body.rune .xtip{margin:0; background:rgba(16,26,30,.9); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.3); clip-path:var(--r-chamfer); padding:8px 10px;}
+body.rune .xtip p{font:400 17px/1.15 var(--font-t); color:var(--r-text);}
+body.rune #xBottom .xtip .btn.mini{min-height:36px; font:400 15px var(--font-h);}
+/* context: the stair choices and what you are doing, never a second row of actions */
+body.rune #rCtx{display:flex; gap:var(--r-gap); flex-wrap:wrap; align-items:center; pointer-events:none;}
+body.rune.rune-right #rCtx{justify-content:flex-end;}
+body.rune #rCtx:empty{display:none;}
+body.rune #rCtx .btn{pointer-events:auto; min-width:0; min-height:40px; height:40px; padding:0 12px; font:400 15px var(--font-h); color:var(--r-cyan); background:rgba(16,26,30,.78); border:1px solid var(--r-line);
+  border-image:none; box-shadow:inset 0 1px 0 rgba(181,193,187,.3); clip-path:var(--r-chamfer);}
+body.rune #rCtx .btn .k{display:none;}
+body.rune #rCtx .btn:active{background:rgba(16,26,30,1);}
+body.rune #xAct{font:400 16px var(--font-h); color:var(--r-gold); text-shadow:0 1px 0 #000;}
+body.rune #xAct:empty{display:none;}
+/* the closed log: one complete line, a faint clipped hint of the one before, the journal on the hand edge */
+body.rune #rLog{position:relative; display:flex; align-items:flex-start; gap:2px; min-height:38px; pointer-events:none;}
+body.rune.rune-right #rLog{flex-direction:row-reverse;}
+body.rune #rLogBtn{flex:0 0 auto; width:44px; height:44px; margin:-4px -6px -4px -10px; padding:0; border:0; background:none; pointer-events:auto; cursor:pointer; display:flex; align-items:center; justify-content:center; touch-action:none;}
+body.rune.rune-right #rLogBtn{margin:-4px -10px -4px -6px;}
+body.rune #rLogBtn::before{content:''; width:20px; height:20px; background:var(--r-i-journal-gold) center/contain no-repeat; filter:drop-shadow(0 1px 0 #000);}
+body.rune #rLogBtn.held::before{transform:scale(1.15);}
+body.rune #rLogText{flex:1 1 auto; min-width:0; height:38px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-start; transition:opacity .6s;}
+body.rune.rune-right #rLogText{align-items:flex-end; text-align:right;}
+body.rune #rLogText .l1{font:400 17px/20px var(--font-h); color:var(--r-text); text-shadow:0 1px 0 #000,0 0 6px rgba(0,0,0,.8); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
+body.rune #rLogText .l2{font:400 15px/18px var(--font-h); color:var(--r-text); opacity:.35; white-space:nowrap; overflow:hidden; max-width:100%; -webkit-mask-image:linear-gradient(#000 20%,transparent 85%); mask-image:linear-gradient(#000 20%,transparent 85%); height:12px;}
+body.rune #rLogText.stale{opacity:0;}
+body.rune.r-histopen #rLog{display:none;}
+/* the open log: darker translucent drawer above the row, scrolling on its own */
+body.rune #rDrawer{display:none; position:relative; height:var(--r-drawer); pointer-events:auto; flex-direction:column; background:rgba(16,26,30,var(--r-logbg)); border:1px solid var(--r-mmid);
+  box-shadow:inset 0 1px 0 rgba(181,193,187,.35),0 6px 18px rgba(0,0,0,.45); clip-path:var(--r-chamfer); touch-action:none;}
+body.rune.r-histopen #rDrawer{display:flex; animation:rRise .16s ease-out;}
+@keyframes rRise{from{transform:translateY(10px); opacity:0;}}
+body.rune #rDrawer .grab{position:absolute; top:3px; left:50%; width:36px; height:3px; margin-left:-18px; background:var(--r-line); opacity:.8;}
+body.rune #rDrawer .hd{display:flex; align-items:center; gap:8px; padding:10px 6px 4px 12px; font:400 18px var(--font-h); color:var(--r-text);}
+body.rune.rune-right #rDrawer .hd{flex-direction:row-reverse; padding:10px 12px 4px 6px;}
+body.rune #rDrawer .hd b{font-weight:400; flex:1 1 auto;}
+body.rune.rune-right #rDrawer .hd b{text-align:left;}
+body.rune #rDrawer .hd .x{width:44px; height:36px; border:0; background:var(--r-i-close) center/18px no-repeat; cursor:pointer;}
+body.rune #rDrawer .ls{flex:1 1 auto; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; padding:2px 10px 8px 12px; scrollbar-width:thin; scrollbar-color:var(--r-cyan) rgba(115,144,149,.25);}
+body.rune #rDrawer .ls::-webkit-scrollbar{width:3px;} body.rune #rDrawer .ls::-webkit-scrollbar-thumb{background:var(--r-cyan);} body.rune #rDrawer .ls::-webkit-scrollbar-track{background:rgba(115,144,149,.25);}
+body.rune #rDrawer .ln{display:flex; align-items:center; gap:10px; min-height:26px; font:400 16px/1.15 var(--font-h); color:var(--r-text);}
+body.rune #rDrawer .ln svg{flex:0 0 auto;}
+body.rune #rDrawer .ln.dim{color:var(--r-muted);} body.rune #rDrawer .ln.good,body.rune #rDrawer .ln.xp{color:var(--r-heal);} body.rune #rDrawer .ln.bad{color:var(--r-danger);}
+body.rune #rDrawer .ln.warn{color:#f3e2a6;} body.rune #rDrawer .ln.gold{color:var(--r-gold);} body.rune #rDrawer .ln.loot{color:#d3b8ff;}
+body.rune #rDrawer .ln .t{opacity:.45; font-size:13px; margin-left:auto; padding-left:8px; white-space:nowrap;}
+/* the four actions: one row, equal cells, Strike gold, idle faces half see-through, pressed solid */
+body.rune #xBottom .controls{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--r-gap); flex-wrap:nowrap; align-items:stretch; pointer-events:none;}
+body.rune #xBottom .controls .btn{position:relative; height:var(--r-target); min-height:0; min-width:0; width:auto; margin:0; padding:4px 0; border:0; border-image:none; background:none; box-shadow:none;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font:400 15px/1 var(--font-h); color:var(--r-text); letter-spacing:.02em; text-shadow:0 1px 0 #000; pointer-events:auto; transform:none;}
+body.rune #xBottom .controls .btn::after{content:''; position:absolute; inset:4px 0; z-index:-1; background:rgba(16,26,30,var(--r-idle)); border:1px solid var(--r-mmid);
+  box-shadow:inset 0 1px 0 rgba(181,193,187,.45),inset 0 -1px 0 rgba(0,0,0,.4); clip-path:var(--r-chamfer);}
+body.rune #xBottom .controls .btn::before{content:''; width:22px; height:22px; background:var(--r-icon) center/contain no-repeat; filter:drop-shadow(0 1px 0 #000);}
+body.rune #xBottom .controls .btn{isolation:isolate;}
+body.rune #xBottom .controls .btn:active::after,body.rune #xBottom .controls .btn.r-down::after{background:rgba(16,26,30,1);}
+body.rune #xBottom .controls .btn:focus-visible::after{border-color:var(--r-cyan); box-shadow:0 0 0 1px var(--r-cyan);}
+body.rune #xBottom .controls .btn:disabled{opacity:1; color:rgba(243,241,231,.4);}
+body.rune #xBottom .controls .btn:disabled::before{opacity:.4;}
+body.rune #xBottom .controls .btn:disabled::after{background:rgba(16,26,30,.35); border-color:rgba(98,111,112,.6);}
+body.rune #xBottom .controls .btn .k{display:none;}
+body.rune #xStrike{--r-icon:var(--r-i-strike); color:var(--r-gold)!important;}
+body.rune #xStrike::after{border-color:var(--r-bronzel)!important; box-shadow:inset 0 1px 0 rgba(245,203,96,.45),inset 0 -1px 0 rgba(0,0,0,.4),0 0 6px rgba(245,203,96,.15)!important;}
+body.rune #xStrike .r-gem{position:absolute; bottom:-1px; left:-4px; width:10px; height:12px; background:var(--r-crystal) center/contain no-repeat; pointer-events:none;}
+body.rune.rune-right #xStrike .r-gem{left:auto; right:-4px;}
+body.rune #xSearch{--r-icon:var(--r-i-search);} body.rune #xDisarm{--r-icon:var(--r-i-disarm);} body.rune #xBag{--r-icon:var(--r-i-bag);}
+body.rune #xSearch.aiming{color:var(--r-cyan);} body.rune #xSearch.aiming::after{border-color:var(--r-cyan);}
+/* right hand: the same row, mirrored (Bag Disarm Search Strike) */
+body.rune.rune-right #xStrike{order:4;} body.rune.rune-right #xSearch{order:3;} body.rune.rune-right #xDisarm{order:2;} body.rune.rune-right #xBag{order:1;}
+
+/* ---------------- the expanded map ---------------- */
+body.rune #rMapPanel{position:fixed; z-index:20; left:50%; top:50%; transform:translate(-50%,-50%); width:calc(var(--r-mapc) + 28px); height:calc(var(--r-mapc) + 118px); box-sizing:border-box;
+  background:rgba(16,26,30,.94); border:1px solid var(--r-mmid); box-shadow:inset 0 1px 0 rgba(181,193,187,.35),0 10px 30px rgba(0,0,0,.6); clip-path:var(--r-chamfer); pointer-events:auto;}
+body.rune{--r-mapc:min(calc(100vw - 60px), calc(100vh - 170px), 400px);}
+body.rune #rMapPanel[hidden]{display:none;}
+body.rune #rMapPanel .hd{display:flex; align-items:flex-start; gap:10px; padding:12px 12px 0;}
+body.rune #rMapPanel .hd .x{width:44px; height:44px; margin:-10px -4px -6px -10px; border:0; background:var(--r-i-close) center/18px no-repeat; cursor:pointer; flex:0 0 auto;}
+body.rune #rMapPanel .hd b{display:block; font:400 21px var(--font-h); color:var(--r-text); font-weight:400;}
+body.rune #rMapPanel .hd small{display:block; font:400 14px var(--font-h); color:var(--r-muted); margin-top:2px;}
+body.rune #rMapPanel .lg{position:absolute; left:0; right:0; bottom:8px; text-align:center;}
+body.rune #rMapPanel .lg .k3{display:flex; justify-content:center; gap:18px; font:400 15px var(--font-h); color:var(--r-text);}
+body.rune #rMapPanel .lg .k3 span{display:inline-flex; align-items:center; gap:6px;}
+body.rune #rMapPanel .lg p{margin:4px 0 0; font:400 14px var(--font-h); color:var(--r-muted);}
+body.rune #xMini.big{width:var(--r-mapc)!important; height:var(--r-mapc)!important; top:calc(50% - 4px)!important; border:1px solid rgba(115,144,149,.5); box-shadow:none; z-index:21; background:rgba(8,12,15,.9);}
+body.rune .x-map-close{display:none!important;}
+body.rune .x-map-shade{background:rgba(0,0,0,.45);}
+
+/* ---------------- the shared pause menu ---------------- */
+body.rune #pause .panel{max-width:336px; padding:16px 14px 14px; background:rgba(16,26,30,.95); border:1px solid var(--r-mmid); border-image:none;
+  box-shadow:inset 0 1px 0 rgba(181,193,187,.35),0 10px 30px rgba(0,0,0,.6); clip-path:var(--r-chamfer); position:relative;}
+body.rune #pause .panel::before{content:''; position:absolute; top:-1px; left:50%; width:12px; height:14px; margin-left:-6px; background:var(--r-crystal) center/contain no-repeat;}
+body.rune #pause h2{font:400 32px var(--font-h); color:var(--r-gold); text-align:center; letter-spacing:.02em; margin:0;}
+body.rune #pause #pauseWhere{font:400 15px var(--font-h); color:var(--r-muted); margin:4px 0 10px;}
+body.rune #pause #pauseHint{font:400 15px var(--font-t); color:var(--r-muted);}
+body.rune #pause .stack{gap:10px;}
+body.rune #pause .stack .btn{position:relative; min-height:48px; height:48px; padding:0 12px 0 40px; display:flex; align-items:center; justify-content:center; font:400 17px var(--font-h); color:var(--r-text);
+  background:rgba(16,26,30,.6); border:1px solid var(--r-mmid); border-image:none; box-shadow:inset 0 1px 0 rgba(181,193,187,.4),inset 0 -1px 0 rgba(0,0,0,.4); clip-path:var(--r-chamfer);}
+body.rune #pause .stack .btn::before{content:''; position:absolute; left:14px; top:50%; width:18px; height:18px; margin-top:-9px; background:var(--r-pi) center/contain no-repeat;}
+body.rune #pause .stack .btn:active{background:rgba(16,26,30,1);}
+body.rune #pause #mResume{color:var(--r-gold); border-color:var(--r-bronzel); --r-pi:var(--r-i-resume-gold);}
+body.rune #pause #mSave{--r-pi:var(--r-i-save);} body.rune #pause #mLoad{--r-pi:var(--r-i-load);} body.rune #pause #mSettings{--r-pi:var(--r-i-settings);}
+body.rune #pause #mFull{--r-pi:var(--r-i-fullscreen);} body.rune #pause #mLeave,body.rune #pause #mRun{--r-pi:var(--r-i-flag);}
+body.rune #pause #mLeave{margin-top:6px;}
+body.rune #pause #mPoint{font:400 14px var(--font-h); color:var(--r-muted);}
+body.rune #pause .row2 .btn{padding-left:36px;}
+body.rune #pause .row2 .btn::before{left:10px;}
+/* the panel's own close button (ui.js adds it to every panel), at the top left in the rune look */
+body.rune #pause .winx{top:6px; left:6px; right:auto; width:44px; height:44px; border:0; border-image:none; background:var(--r-i-close) center/18px no-repeat; z-index:2;}
+body.rune #pause .winx::before,body.rune #pause .winx::after{display:none;}
+body.rune #pause #pauseHint{display:none;}   /* the walking help lives in the tips and Settings, not over the menu */
+body.rune #rLeaveCost{margin:-4px 0 0; text-align:center; font:400 14px var(--font-h); color:var(--r-danger);}
+body.rune #rLeaveCost:empty{display:none;}
+
+/* narrow phones: tighter labels before anything shrinks below legibility */
+@media (max-width:340px){ body.rune #xBottom .controls .btn{font-size:13px;} body.rune #xTop .hpmeter{width:132px;} }
+
+/* short landscape phones: the map panel keeps room for its title; the pause menu goes two across and can scroll */
+body.rune #rMapPanel{min-width:260px;}
+body.rune #rMapPanel .hd b{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 4px);}
+body.rune #rMapPanel .hd > div{min-width:0;}
+body.rune #pause .panel{max-height:calc(100vh / var(--ui,1) - 16px); overflow-y:auto; overscroll-behavior:contain;}
+@media (orientation:landscape) and (max-height:520px){
+  body.rune #pause .panel{max-width:520px; width:calc(100vw / var(--ui,1) - 40px); padding:10px 14px 12px;}
+  body.rune #pause h2{font-size:26px;}
+  body.rune #pause #pauseWhere{margin:2px 0 6px;}
+  body.rune #pause .stack{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  body.rune #pause .stack > *{grid-column:auto;}
+  body.rune #pause #mResume,body.rune #pause #mPoint,body.rune #pause #rLeaveCost,body.rune #pause .row2{grid-column:1 / -1;}
+  body.rune #pause #mLeave{margin-top:0;}
+}

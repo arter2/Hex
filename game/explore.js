@@ -1866,6 +1866,8 @@ function xMini(){
   let x0=0, y0=0, n=XN;
   if(big){ let a=XN, b=XN, A=0, B=0; for(let i=0;i<XN*XN;i++) if(EX.seen[i]){ const x=xcx(i), y=xcy(i); a=Math.min(a,x); b=Math.min(b,y); A=Math.max(A,x); B=Math.max(B,y); }
     if(A>=a){ n=Math.min(XN,Math.max(16,A-a+5,B-b+5)); x0=Math.max(0,Math.min(XN-n,Math.round((a+A)/2-n/2))); y0=Math.max(0,Math.min(XN-n,Math.round((b+B)/2-n/2))); } }
+  // the Living Rune HUD's small map is a local crop round you (24 cells), not the whole floor squeezed small (rune.js)
+  if(!big&&document.body.classList.contains('rune')){ n=Math.min(XN,24); x0=Math.max(0,Math.min(XN-n,xcx(EX.pc)-(n>>1))); y0=Math.max(0,Math.min(XN-n,xcy(EX.pc)-(n>>1))); }
   const s=big?Math.max(3,Math.floor(384/n)):3; EX.miniView={x0,y0,s,n};
   // the backing store is reallocated only when the map's size changes (it was every redraw, ten times a second)
   if(cv.width!==n*s||cv.height!==n*s) cv.width=cv.height=n*s; c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);

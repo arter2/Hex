@@ -1,0 +1,63 @@
+{
+  "name": "Living Rune / Whisper",
+  "version": "2.0",
+  "colors": {
+    "ink": "#101a1e",
+    "text": "#f3f1e7",
+    "muted": "#a8b6b8",
+    "line": "#739095",
+    "cyan": "#7dd8e6",
+    "gold": "#f5cb60",
+    "heal": "#8de9b5",
+    "danger": "#ec9384",
+    "metalLight": "#b5c1bb",
+    "metalMid": "#626f70",
+    "metalDark": "#242e33",
+    "bronze": "#897052",
+    "bronzeLight": "#c0a074",
+    "crystalLight": "#d4fbff",
+    "crystalDark": "#1785bb"
+  },
+  "metrics": {
+    "targetMin": 48,
+    "targetGap": 6,
+    "buttonFaceHeight": 48,
+    "buttonTargetHeight": 56,
+    "rowMaxWidth": 352,
+    "screenInset": 12,
+    "logPanelAlpha": 0.8,
+    "buttonIdleAlpha": 0.5,
+    "buttonPressedAlpha": 1,
+    "holdMs": 400,
+    "dragCancelPx": 10,
+    "drawerHeightRatio": 0.3,
+    "drawerHeightMin": 128,
+    "drawerHeightMax": 320
+  },
+  "profiles": {
+    "phone-portrait": [
+      360,
+      780
+    ],
+    "phone-landscape": [
+      780,
+      360
+    ],
+    "tablet-portrait": [
+      834,
+      1194
+    ],
+    "tablet-landscape": [
+      1194,
+      834
+    ],
+    "browser-standard": [
+      1440,
+      900
+    ],
+    "browser-wide": [
+      1920,
+      1080
+    ]
+  }
+}

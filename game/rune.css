@@ -154,7 +154,7 @@ body.rune{--r-mapw:min(560px, calc(100vw - 24px)); --r-maph:min(580px, calc(100v
 body.rune #rMapPanel{position:fixed; z-index:20; left:50%; top:50%; transform:translate(-50%,-50%); width:var(--r-mapw); height:var(--r-maph); box-sizing:border-box; isolation:isolate; pointer-events:auto;
   background:none; border:0; box-shadow:0 10px 30px rgba(0,0,0,.45); clip-path:none;}
 body.rune #rMapPanel::before{content:''; position:absolute; inset:0; z-index:-1; border:10px solid transparent; border-image:var(--r-s-panel) 10 fill / 10px;}
-body.rune #rMapPanel::after{content:''; position:absolute; inset:1px; z-index:-2; background:rgba(14,27,32,.93); clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px),0 7px);}   /* under the smoke: the board's near-solid ink */
+body.rune #rMapPanel::after{content:''; position:absolute; inset:1px; z-index:-2; background:rgba(14,27,32,.35); clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px),0 7px);}   /* under the smoke: the board's near-solid ink */
 body.rune #rMapPanel[hidden]{display:none;}
 body.rune #rMapPanel .hd{position:relative; display:flex; align-items:flex-start; height:61px; box-sizing:border-box; padding:4px 0 0;}
 body.rune #rMapPanel .hd::after{content:''; position:absolute; left:12px; right:12px; bottom:0; height:1px; background:rgba(97,126,132,.4);}   /* the rule under the title */
@@ -171,7 +171,7 @@ body.rune #rMapPanel .lg .k3 svg{width:17px; height:17px;}
 body.rune #rMapPanel .lg p{margin:8px 0 0; font:400 13px var(--font-h); color:var(--r-muted);}
 body.rune #xMini.big{width:calc(var(--r-mapw) - 24px)!important; height:calc(var(--r-maph) - 132px)!important; top:calc(50% + 1px)!important; border:0; border-image:none; box-shadow:none; z-index:21; background:none; image-rendering:pixelated;}
 body.rune .x-map-close{display:none!important;}
-body.rune .x-map-shade{background:rgba(3,9,13,.55);}
+body.rune .x-map-shade{background:rgba(3,9,13,.35);}
 
 /* ---------------- the shared pause menu (the handoff: 336 wide on a phone, 368 elsewhere; 52 px rows, 6 apart) ---------------- */
 body.rune #pause{background:rgba(2,8,12,.48);}

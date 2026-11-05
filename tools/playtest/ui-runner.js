@@ -62,7 +62,11 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         };
         const visible = selector => page.waitForSelector(selector, { state: 'visible' });
         await audit('main-menu', '#scrMenu');
+        // Continue opens the three save slots; the used slot's own Continue goes to its camp
         await tap(page, '#mmContinue');
+        await visible('#scrSaves.on');
+        await audit('save-slots', '#scrSaves');
+        await tap(page, '#svList .hm-go');
         await visible('#scrCamp.on');
         await audit('camp', '#scrCamp');
         const screens = [
@@ -95,6 +99,8 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
           await tap(page, '#setBack');
           await visible('#scrMenu.on');
           await tap(page, '#mmContinue');
+          await visible('#scrSaves.on');
+          await tap(page, '#svList .hm-go');
           await visible('#scrCamp.on');
         }
         await tap(page, '#btnDescend');

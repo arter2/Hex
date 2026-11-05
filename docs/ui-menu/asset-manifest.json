@@ -1,0 +1,2254 @@
+{
+  "version": "1.0",
+  "sliceOrder": "top,right,bottom,left; logical units; multiply by pngScale for source PNG pixels",
+  "assets": [
+    {
+      "id": "button-steel-idle",
+      "svg": "assets/svg/button-steel-idle.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-steel-idle.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel-hover",
+      "svg": "assets/svg/button-steel-hover.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-steel-hover.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel-pressed",
+      "svg": "assets/svg/button-steel-pressed.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-steel-pressed.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel-disabled",
+      "svg": "assets/svg/button-steel-disabled.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-steel-disabled.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel-focus",
+      "svg": "assets/svg/button-steel-focus.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-steel-focus.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan-idle",
+      "svg": "assets/svg/button-cyan-idle.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-cyan-idle.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan-hover",
+      "svg": "assets/svg/button-cyan-hover.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-cyan-hover.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan-pressed",
+      "svg": "assets/svg/button-cyan-pressed.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-cyan-pressed.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan-disabled",
+      "svg": "assets/svg/button-cyan-disabled.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-cyan-disabled.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan-focus",
+      "svg": "assets/svg/button-cyan-focus.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Label-free reusable skin; icons and labels remain live",
+      "png": "assets/png/button-cyan-focus.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--surface",
+      "svg": "assets/svg/button-steel--surface.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/button-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--rim",
+      "svg": "assets/svg/button-steel--rim.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/button-steel--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--highlight",
+      "svg": "assets/svg/button-steel--highlight.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/button-steel--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--keyline",
+      "svg": "assets/svg/button-steel--keyline.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/button-steel--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--corners",
+      "svg": "assets/svg/button-steel--corners.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/button-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-steel--border",
+      "svg": "assets/svg/button-steel--border.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/button-steel--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--surface",
+      "svg": "assets/svg/button-cyan--surface.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/button-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--rim",
+      "svg": "assets/svg/button-cyan--rim.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/button-cyan--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--highlight",
+      "svg": "assets/svg/button-cyan--highlight.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/button-cyan--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--keyline",
+      "svg": "assets/svg/button-cyan--keyline.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/button-cyan--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--corners",
+      "svg": "assets/svg/button-cyan--corners.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/button-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "button-cyan--border",
+      "svg": "assets/svg/button-cyan--border.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/button-cyan--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel",
+      "svg": "assets/svg/run-panel-steel.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/run-panel-steel.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--surface",
+      "svg": "assets/svg/run-panel-steel--surface.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/run-panel-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--rim",
+      "svg": "assets/svg/run-panel-steel--rim.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/run-panel-steel--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--highlight",
+      "svg": "assets/svg/run-panel-steel--highlight.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/run-panel-steel--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--keyline",
+      "svg": "assets/svg/run-panel-steel--keyline.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/run-panel-steel--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--corners",
+      "svg": "assets/svg/run-panel-steel--corners.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/run-panel-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-steel--border",
+      "svg": "assets/svg/run-panel-steel--border.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/run-panel-steel--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan",
+      "svg": "assets/svg/run-panel-cyan.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/run-panel-cyan.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--surface",
+      "svg": "assets/svg/run-panel-cyan--surface.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/run-panel-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--rim",
+      "svg": "assets/svg/run-panel-cyan--rim.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/run-panel-cyan--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--highlight",
+      "svg": "assets/svg/run-panel-cyan--highlight.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/run-panel-cyan--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--keyline",
+      "svg": "assets/svg/run-panel-cyan--keyline.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/run-panel-cyan--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--corners",
+      "svg": "assets/svg/run-panel-cyan--corners.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/run-panel-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "run-panel-cyan--border",
+      "svg": "assets/svg/run-panel-cyan--border.svg",
+      "logicalSize": [
+        328,
+        232
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/run-panel-cyan--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        1312,
+        928
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel",
+      "svg": "assets/svg/save-panel-steel.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/save-panel-steel.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--surface",
+      "svg": "assets/svg/save-panel-steel--surface.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/save-panel-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--rim",
+      "svg": "assets/svg/save-panel-steel--rim.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/save-panel-steel--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--highlight",
+      "svg": "assets/svg/save-panel-steel--highlight.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/save-panel-steel--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--keyline",
+      "svg": "assets/svg/save-panel-steel--keyline.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/save-panel-steel--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--corners",
+      "svg": "assets/svg/save-panel-steel--corners.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/save-panel-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-steel--border",
+      "svg": "assets/svg/save-panel-steel--border.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/save-panel-steel--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan",
+      "svg": "assets/svg/save-panel-cyan.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/save-panel-cyan.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--surface",
+      "svg": "assets/svg/save-panel-cyan--surface.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/save-panel-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--rim",
+      "svg": "assets/svg/save-panel-cyan--rim.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/save-panel-cyan--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--highlight",
+      "svg": "assets/svg/save-panel-cyan--highlight.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/save-panel-cyan--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--keyline",
+      "svg": "assets/svg/save-panel-cyan--keyline.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/save-panel-cyan--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--corners",
+      "svg": "assets/svg/save-panel-cyan--corners.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/save-panel-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "save-panel-cyan--border",
+      "svg": "assets/svg/save-panel-cyan--border.svg",
+      "logicalSize": [
+        360,
+        196
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/save-panel-cyan--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        1440,
+        784
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel",
+      "svg": "assets/svg/avatar-frame-steel.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/avatar-frame-steel.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--surface",
+      "svg": "assets/svg/avatar-frame-steel--surface.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/avatar-frame-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--rim",
+      "svg": "assets/svg/avatar-frame-steel--rim.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/avatar-frame-steel--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--highlight",
+      "svg": "assets/svg/avatar-frame-steel--highlight.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/avatar-frame-steel--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--keyline",
+      "svg": "assets/svg/avatar-frame-steel--keyline.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/avatar-frame-steel--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--corners",
+      "svg": "assets/svg/avatar-frame-steel--corners.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/avatar-frame-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-steel--border",
+      "svg": "assets/svg/avatar-frame-steel--border.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/avatar-frame-steel--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan",
+      "svg": "assets/svg/avatar-frame-cyan.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Resizable complete frame",
+      "png": "assets/png/avatar-frame-cyan.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--surface",
+      "svg": "assets/svg/avatar-frame-cyan--surface.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent surface construction layer",
+      "png": "assets/png/avatar-frame-steel--surface.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--rim",
+      "svg": "assets/svg/avatar-frame-cyan--rim.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent rim construction layer",
+      "png": "assets/png/avatar-frame-cyan--rim.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--highlight",
+      "svg": "assets/svg/avatar-frame-cyan--highlight.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent highlight construction layer",
+      "png": "assets/png/avatar-frame-cyan--highlight.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--keyline",
+      "svg": "assets/svg/avatar-frame-cyan--keyline.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent keyline construction layer",
+      "png": "assets/png/avatar-frame-cyan--keyline.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--corners",
+      "svg": "assets/svg/avatar-frame-cyan--corners.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Independent corners construction layer",
+      "png": "assets/png/avatar-frame-steel--corners.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "avatar-frame-cyan--border",
+      "svg": "assets/svg/avatar-frame-cyan--border.svg",
+      "logicalSize": [
+        88,
+        88
+      ],
+      "role": "Transparent border overlay; empty center",
+      "png": "assets/png/avatar-frame-cyan--border.png",
+      "pngScale": 4,
+      "pngSize": [
+        352,
+        352
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "icon-play",
+      "svg": "assets/svg/icon-play.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-play.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-back",
+      "svg": "assets/svg/icon-back.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-back.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-next",
+      "svg": "assets/svg/icon-next.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-next.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-down",
+      "svg": "assets/svg/icon-down.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-down.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-plus",
+      "svg": "assets/svg/icon-plus.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-plus.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-coin",
+      "svg": "assets/svg/icon-coin.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-coin.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-crystal",
+      "svg": "assets/svg/icon-crystal.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-crystal.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-cards",
+      "svg": "assets/svg/icon-cards.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-cards.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-market",
+      "svg": "assets/svg/icon-market.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-market.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-journal",
+      "svg": "assets/svg/icon-journal.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-journal.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-character",
+      "svg": "assets/svg/icon-character.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-character.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-settings",
+      "svg": "assets/svg/icon-settings.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-settings.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-map",
+      "svg": "assets/svg/icon-map.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-map.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-battle",
+      "svg": "assets/svg/icon-battle.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-battle.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-newgame",
+      "svg": "assets/svg/icon-newgame.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-newgame.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-leaf",
+      "svg": "assets/svg/icon-leaf.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-leaf.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-fire",
+      "svg": "assets/svg/icon-fire.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-fire.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-skull",
+      "svg": "assets/svg/icon-skull.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-skull.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-rune",
+      "svg": "assets/svg/icon-rune.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-rune.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-empty",
+      "svg": "assets/svg/icon-empty.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-empty.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "icon-cave",
+      "svg": "assets/svg/icon-cave.svg",
+      "logicalSize": [
+        24,
+        24
+      ],
+      "role": "Separate editable menu glyph",
+      "png": "assets/png/icon-cave.png",
+      "pngScale": 21.333333333333332,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "blue-diamond",
+      "svg": "assets/svg/blue-diamond.svg",
+      "logicalSize": [
+        16,
+        16
+      ],
+      "role": "Small dungeon HUD crystal accent",
+      "png": "assets/png/blue-diamond.png",
+      "pngScale": 32,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "corner-inlay",
+      "svg": "assets/svg/corner-inlay.svg",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "role": "Independent bronze corner inlay",
+      "png": "assets/png/corner-inlay.png",
+      "pngScale": 64,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "button-mask",
+      "svg": "assets/svg/button-mask.svg",
+      "logicalSize": [
+        128,
+        48
+      ],
+      "role": "Alpha clipping mask for surface textures",
+      "png": "assets/png/button-mask.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        192
+      ],
+      "sliceInsets": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "divider",
+      "svg": "assets/svg/divider.svg",
+      "logicalSize": [
+        128,
+        4
+      ],
+      "role": "Stretch along length only",
+      "png": "assets/png/divider.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        16
+      ]
+    },
+    {
+      "id": "xp-track",
+      "svg": "assets/svg/xp-track.svg",
+      "logicalSize": [
+        128,
+        4
+      ],
+      "role": "Keep track full width",
+      "png": "assets/png/xp-track.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        16
+      ]
+    },
+    {
+      "id": "xp-fill",
+      "svg": "assets/svg/xp-fill.svg",
+      "logicalSize": [
+        128,
+        4
+      ],
+      "role": "Clip to current XP / maximum XP",
+      "png": "assets/png/xp-fill.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        16
+      ]
+    },
+    {
+      "id": "health-fill",
+      "svg": "assets/svg/health-fill.svg",
+      "logicalSize": [
+        128,
+        4
+      ],
+      "role": "Optional health fill; approved reference uses a numeric health label",
+      "png": "assets/png/health-fill.png",
+      "pngScale": 4,
+      "pngSize": [
+        512,
+        16
+      ]
+    },
+    {
+      "id": "route-node-idle",
+      "svg": "assets/svg/route-node-idle.svg",
+      "logicalSize": [
+        16,
+        16
+      ],
+      "role": "Non-interactive progress marker",
+      "png": "assets/png/route-node-idle.png",
+      "pngScale": 32,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "route-node-active",
+      "svg": "assets/svg/route-node-active.svg",
+      "logicalSize": [
+        16,
+        16
+      ],
+      "role": "Non-interactive selected depth marker",
+      "png": "assets/png/route-node-active.png",
+      "pngScale": 32,
+      "pngSize": [
+        512,
+        512
+      ]
+    },
+    {
+      "id": "gradient-steel",
+      "svg": "assets/svg/gradient-steel.svg",
+      "logicalSize": [
+        64,
+        128
+      ],
+      "role": "Independent gradient swatch / stops in design tokens",
+      "png": "assets/png/gradient-steel.png",
+      "pngScale": 4,
+      "pngSize": [
+        256,
+        512
+      ]
+    },
+    {
+      "id": "gradient-cyan",
+      "svg": "assets/svg/gradient-cyan.svg",
+      "logicalSize": [
+        64,
+        128
+      ],
+      "role": "Independent gradient swatch / stops in design tokens",
+      "png": "assets/png/gradient-cyan.png",
+      "pngScale": 4,
+      "pngSize": [
+        256,
+        512
+      ]
+    },
+    {
+      "id": "gradient-smoke",
+      "svg": "assets/svg/gradient-smoke.svg",
+      "logicalSize": [
+        64,
+        128
+      ],
+      "role": "Independent gradient swatch / stops in design tokens",
+      "png": "assets/png/gradient-smoke.png",
+      "pngScale": 4,
+      "pngSize": [
+        256,
+        512
+      ]
+    },
+    {
+      "id": "gradient-floorFade",
+      "svg": "assets/svg/gradient-floorFade.svg",
+      "logicalSize": [
+        64,
+        128
+      ],
+      "role": "Independent gradient swatch / stops in design tokens",
+      "png": "assets/png/gradient-floorFade.png",
+      "pngScale": 4,
+      "pngSize": [
+        256,
+        512
+      ]
+    },
+    {
+      "id": "texture-grain",
+      "svg": "assets/svg/texture-grain.svg",
+      "logicalSize": [
+        64,
+        64
+      ],
+      "role": "Optional subtle repeatable overlay; clip to face",
+      "png": "assets/png/texture-grain.png",
+      "pngScale": 4,
+      "pngSize": [
+        256,
+        256
+      ]
+    },
+    {
+      "id": "button-steel-idle--slice-tl",
+      "svg": "assets/svg/button-steel-idle--slice-tl.svg",
+      "png": "assets/png/button-steel-idle--slice-tl.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-top",
+      "svg": "assets/svg/button-steel-idle--slice-top.svg",
+      "png": "assets/png/button-steel-idle--slice-top.png",
+      "logicalSize": [
+        112,
+        8
+      ],
+      "pngSize": [
+        448,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-tr",
+      "svg": "assets/svg/button-steel-idle--slice-tr.svg",
+      "png": "assets/png/button-steel-idle--slice-tr.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-left",
+      "svg": "assets/svg/button-steel-idle--slice-left.svg",
+      "png": "assets/png/button-steel-idle--slice-left.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-center",
+      "svg": "assets/svg/button-steel-idle--slice-center.svg",
+      "png": "assets/png/button-steel-idle--slice-center.png",
+      "logicalSize": [
+        112,
+        32
+      ],
+      "pngSize": [
+        448,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-right",
+      "svg": "assets/svg/button-steel-idle--slice-right.svg",
+      "png": "assets/png/button-steel-idle--slice-right.png",
+      "logicalSize": [
+        8,
+        32
+      ],
+      "pngSize": [
+        32,
+        128
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-bl",
+      "svg": "assets/svg/button-steel-idle--slice-bl.svg",
+      "png": "assets/png/button-steel-idle--slice-bl.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-bottom",
+      "svg": "assets/svg/button-steel-idle--slice-bottom.svg",
+      "png": "assets/png/button-steel-idle--slice-bottom.png",
+      "logicalSize": [
+        112,
+        8
+      ],
+      "pngSize": [
+        448,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "button-steel-idle--slice-br",
+      "svg": "assets/svg/button-steel-idle--slice-br.svg",
+      "png": "assets/png/button-steel-idle--slice-br.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "button-steel-idle"
+    },
+    {
+      "id": "run-panel-steel--slice-tl",
+      "svg": "assets/svg/run-panel-steel--slice-tl.svg",
+      "png": "assets/png/run-panel-steel--slice-tl.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-top",
+      "svg": "assets/svg/run-panel-steel--slice-top.svg",
+      "png": "assets/png/run-panel-steel--slice-top.png",
+      "logicalSize": [
+        312,
+        8
+      ],
+      "pngSize": [
+        1248,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-tr",
+      "svg": "assets/svg/run-panel-steel--slice-tr.svg",
+      "png": "assets/png/run-panel-steel--slice-tr.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-left",
+      "svg": "assets/svg/run-panel-steel--slice-left.svg",
+      "png": "assets/png/run-panel-steel--slice-left.png",
+      "logicalSize": [
+        8,
+        216
+      ],
+      "pngSize": [
+        32,
+        864
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-center",
+      "svg": "assets/svg/run-panel-steel--slice-center.svg",
+      "png": "assets/png/run-panel-steel--slice-center.png",
+      "logicalSize": [
+        312,
+        216
+      ],
+      "pngSize": [
+        1248,
+        864
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-right",
+      "svg": "assets/svg/run-panel-steel--slice-right.svg",
+      "png": "assets/png/run-panel-steel--slice-right.png",
+      "logicalSize": [
+        8,
+        216
+      ],
+      "pngSize": [
+        32,
+        864
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-bl",
+      "svg": "assets/svg/run-panel-steel--slice-bl.svg",
+      "png": "assets/png/run-panel-steel--slice-bl.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-bottom",
+      "svg": "assets/svg/run-panel-steel--slice-bottom.svg",
+      "png": "assets/png/run-panel-steel--slice-bottom.png",
+      "logicalSize": [
+        312,
+        8
+      ],
+      "pngSize": [
+        1248,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    },
+    {
+      "id": "run-panel-steel--slice-br",
+      "svg": "assets/svg/run-panel-steel--slice-br.svg",
+      "png": "assets/png/run-panel-steel--slice-br.png",
+      "logicalSize": [
+        8,
+        8
+      ],
+      "pngSize": [
+        32,
+        32
+      ],
+      "pngScale": 4,
+      "role": "physical nine-slice tile",
+      "sourceSkin": "run-panel-steel"
+    }
+  ],
+  "artwork": [
+    {
+      "id": "hero-scene",
+      "path": "assets/art/hero-scene.png",
+      "kind": "opaque scene art",
+      "provenance": "New image-generated reconstruction from approved raster references, not recovered native layers",
+      "pixels": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "bytes": 2294421
+    },
+    {
+      "id": "logo",
+      "path": "assets/art/logo.png",
+      "kind": "transparent RGBA art",
+      "provenance": "New image-generated reconstruction from approved raster references, not recovered native layers",
+      "pixels": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "bytes": 1050304,
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "footer-foreground",
+      "path": "assets/art/footer-foreground.png",
+      "kind": "transparent RGBA art",
+      "provenance": "New image-generated reconstruction from approved raster references, not recovered native layers",
+      "pixels": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "bytes": 903764,
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "brick-tile",
+      "path": "assets/art/brick-tile.png",
+      "kind": "opaque repeatable backdrop",
+      "provenance": "New image-generated reconstruction from approved raster references, not recovered native layers",
+      "pixels": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 1541546
+    },
+    {
+      "id": "run-avatar-fire-wizard",
+      "path": "assets/art/run-avatar-fire-wizard.png",
+      "kind": "transparent RGBA art",
+      "provenance": "New image-generated reconstruction from approved raster references, not recovered native layers",
+      "pixels": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 454038,
+      "alphaRange": [
+        0,
+        255
+      ]
+    }
+  ],
+  "uniquePngFiles": 109,
+  "pngAliases": {
+    "assets/png/avatar-frame-cyan--corners.png": "assets/png/avatar-frame-steel--corners.png",
+    "assets/png/avatar-frame-cyan--surface.png": "assets/png/avatar-frame-steel--surface.png",
+    "assets/png/button-cyan--corners.png": "assets/png/button-steel--corners.png",
+    "assets/png/button-cyan--surface.png": "assets/png/button-steel--surface.png",
+    "assets/png/run-panel-cyan--corners.png": "assets/png/run-panel-steel--corners.png",
+    "assets/png/run-panel-cyan--surface.png": "assets/png/run-panel-steel--surface.png",
+    "assets/png/save-panel-cyan--corners.png": "assets/png/save-panel-steel--corners.png",
+    "assets/png/save-panel-cyan--surface.png": "assets/png/save-panel-steel--surface.png"
+  }
+}

@@ -1,0 +1,157 @@
+/* Hexmancers - the main menu and the three save slots (menu.js), from the menu handoff (docs/ui-menu).
+   Living Rune materials: smoky faces, thin steel rims with 5-unit chamfers and bronze pins (the handoff's
+   HexSkins, nine-sliced 8 units in), small blue crystals. Sizes are logical units; the menu follows the Text size
+   setting (--tz) and never the screen-size zoom, so a bigger screen shows more, not bigger. Phone portrait: hero
+   above, one column. 740+ wide: the run column beside the camp column. Landscape 740+ wide: the illustration to
+   the left, the workbench to the right. Short windows scroll; nothing is clipped. */
+.hm{--hm-text:#f3f1e7; --hm-muted:#a8b6b8; --hm-cyan:#7dd8e6; --hm-mint:#8de9b5; --hm-gold:#f5cb60; --hm-ink:#101a1e;
+  padding:0!important; overflow:hidden!important; zoom:var(--tz,1)!important; background:#070b0e; color:var(--hm-text); font-family:var(--font-h);}
+#scrMenu::before{display:none;}
+.hm::after{content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:linear-gradient(rgba(6,10,13,.62),rgba(6,10,13,.8)),url(ui/menu/brick.webp) 0 0/320px repeat;}
+.hm-scroll{position:absolute; inset:0; z-index:1; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+.hm-page{position:relative; min-height:100%; display:flex; flex-direction:column; box-sizing:border-box;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);}
+/* the illustration and the logo, separate images */
+.hm-hero{position:relative; width:100%; max-width:820px; margin:0 auto; aspect-ratio:16/9.2; overflow:hidden; flex:none;
+  -webkit-mask-image:linear-gradient(#000 82%,transparent); mask-image:linear-gradient(#000 82%,transparent);}
+.hm-scene{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 70%;}
+.hm-logo{position:absolute; left:50%; top:3%; width:84%; max-width:560px; transform:translateX(-50%); filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));}
+.hm-foot{position:relative; z-index:0; margin-top:auto; pointer-events:none; width:100%; max-width:820px; margin-left:auto; margin-right:auto; line-height:0;}
+.hm-foot img{width:100%; height:auto; margin-top:-56px;}
+.hm-work,.hm-saves{position:relative; z-index:1; width:100%; max-width:820px; margin:-6px auto 0; padding:0 12px; box-sizing:border-box; display:grid; gap:8px;}
+.hm-runcol,.hm-navcol{display:grid; gap:8px; align-content:start; min-width:0;}
+
+/* ---------------- the material ---------------- */
+.hm-btn,.hm-f,.hm-sq,.hm-card{position:relative; box-sizing:border-box; border:8px solid transparent; border-image:var(--hm-steel-idle) 8 fill / 8px; background:none; color:var(--hm-text); border-radius:0;}
+.hm-f{border-image-source:var(--hm-panel);}
+.hm-btn{min-height:48px; height:48px; padding:0 6px; display:flex; align-items:center; justify-content:center; gap:10px; font:400 14.5px/1 var(--font-h); letter-spacing:.03em; text-shadow:0 1px 0 #071016;
+  cursor:pointer; min-width:0; white-space:nowrap; overflow:visible; -webkit-tap-highlight-color:transparent;}
+.hm-btn span{overflow:hidden; text-overflow:ellipsis;}
+.hm-btn:hover:not(:disabled),.hm-sq:hover:not(:disabled){border-image-source:var(--hm-steel-hover);}
+.hm-btn:active:not(:disabled),.hm-sq:active:not(:disabled){border-image-source:var(--hm-steel-pressed);}
+.hm-btn:focus-visible,.hm-sq:focus-visible,.hm-strip:focus-visible{outline:none; border-image-source:var(--hm-steel-focus);}
+.hm-btn:disabled,.hm-sq:disabled{border-image-source:var(--hm-steel-disabled); color:rgba(243,241,231,.42); cursor:default;}
+.hm-btn:disabled .hm-i,.hm-sq:disabled .hm-i{opacity:.45;}
+.hm-cyan{border-image-source:var(--hm-cyan-idle);}
+.hm-cyan:hover:not(:disabled){border-image-source:var(--hm-cyan-hover);} .hm-cyan:active:not(:disabled){border-image-source:var(--hm-cyan-pressed);} .hm-cyan:focus-visible{border-image-source:var(--hm-cyan-focus);}
+.hm-i{display:inline-block; flex:none; width:22px; height:22px; background:center/contain no-repeat;}
+.hm-gem{position:absolute; z-index:2; width:12px; height:12px; background:var(--hm-gem) center/contain no-repeat; pointer-events:none;}
+.hm-gem.tl{top:-14px; left:-2px;} .hm-gem.tc{top:-14px; left:50%; margin-left:-6px;} .hm-gem.bl{bottom:-14px; left:-14px;}
+.hm-sep{flex:none; width:1px; align-self:stretch; margin:4px 2px; background:rgba(168,182,184,.35);}
+.hm-r{display:inline-flex; align-items:center; gap:4px; white-space:nowrap;} .hm-r .hm-i{width:16px; height:16px;}
+.hm-r.gold{color:var(--hm-gold);}
+.hm-muted{color:var(--hm-muted);}
+.hm-warn{margin:0; min-height:0; font:400 13.5px/1.3 var(--font-h); color:#f3e2a6; text-align:center;}
+.hm-warn:empty{display:none;}
+.hm-badge{position:absolute; top:-6px; right:-6px; padding:2px 5px; font:400 12px/1 var(--font-h); color:#0b2a1a; background:#4fd98a; border:1px solid #c8ffe1; box-shadow:0 1px 0 #000;}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+/* ---------------- main: the save strip ---------------- */
+.hm-strip{min-height:48px; display:flex; align-items:center; gap:6px; padding:0 2px; font:400 13px/1 var(--font-h); cursor:pointer; text-align:left; min-width:0;}
+.hm-strip canvas{flex:none; width:28px; height:28px; image-rendering:pixelated;} .hm-strip canvas.none{visibility:hidden;}
+.hm-slot{flex:none; padding:3px 5px; color:var(--hm-text); border:1px solid rgba(125,216,230,.45); background:rgba(16,26,30,.6); font-size:12.5px;}
+#mmSave{display:flex; align-items:center; gap:6px; min-width:0; flex:1 1 auto; overflow:hidden;}
+#mmSave .hm-res{gap:6px;} .hm-strip .hm-sep{margin:6px 0;} #mmSave .hm-r .hm-i{width:14px; height:14px;} #mmSave .hm-r{gap:3px;}
+.hm-name{color:var(--hm-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:3.5em; flex:0 1 auto;} .hm-name.dim{color:var(--hm-muted);}
+.hm-hp{color:var(--hm-mint); white-space:nowrap; flex:none;}
+.hm-res{display:flex; align-items:center; gap:10px; flex:none;}
+#mmContinue{font-size:16px;}
+
+/* ---------------- main: the run tray ---------------- */
+.hm-run{padding:2px 6px 4px; display:grid; gap:2px;}
+.hm-runhd{display:flex; align-items:center; gap:8px; min-height:30px;}
+.hm-runhd .hm-cave{width:30px; height:30px;}
+#mmArea{font:400 16.5px/1.1 var(--font-h); flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-shadow:0 0 8px rgba(0,0,0,.6),0 1px 0 #071016;}
+.hm-deep{flex:none; font:400 13.5px var(--font-h); color:var(--hm-muted);} .hm-deep b{font-weight:400; color:var(--hm-gold); font-size:17px;}
+.hm-depthrow{display:flex; align-items:center; gap:6px;}
+.hm-dtxt{flex:1 1 auto; min-width:0; font:400 13.5px var(--font-h); color:var(--hm-text);}
+.hm-sq{flex:none; width:48px; height:48px; padding:0; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+.hm-sq .hm-i{width:16px; height:16px;}
+.hm-dnum{flex:none; min-width:30px; text-align:center; font:400 24px/1 var(--font-h); color:var(--hm-gold); text-shadow:0 1px 0 #071016;}
+.hm-nodes{display:flex; align-items:center; padding:0 26px 4px 18px;}
+.hm-node{flex:none; width:12px; height:12px; border-radius:50%; background:#3d4c55; border:2px solid #7e8f97; box-sizing:border-box;}
+.hm-node.open{background:#5e7680;} .hm-node.cur{width:18px; height:18px; background:#4fd3ee; border-color:#d4fbff; box-shadow:0 0 8px rgba(125,216,230,.8);}
+.hm-node.boss{width:20px; height:20px; border:0; border-radius:0; background-color:transparent;} .hm-node.boss.cur{filter:drop-shadow(0 0 4px #f5cb60);}
+.hm-link-l{flex:1 1 auto; height:2px; background:#3b4950;} .hm-link-l.on{background:#6e8a94;}
+.hm-rules{display:flex; align-items:center; gap:6px; min-height:36px; border-top:1px solid rgba(168,182,184,.18); border-bottom:1px solid rgba(168,182,184,.18); margin:0 2px;}
+.hm-rtxt{flex:1 1 auto; display:flex; align-items:center; gap:6px; flex-wrap:wrap; font:400 13.5px var(--font-h); min-width:0;}
+.hm-dot{color:var(--hm-muted);}
+.hm-link{flex:none; display:flex; align-items:center; gap:4px; min-height:48px; margin:-6px 0; padding:0 4px; border:0; background:none; color:var(--hm-muted); font:400 13.5px var(--font-h); cursor:pointer;}
+.hm-link .hm-i{width:12px; height:12px;} .hm-link:focus-visible{outline:1px solid var(--hm-cyan);} .hm-link:disabled{opacity:.4;}
+.hm-two{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+
+/* ---------------- main: camp categories, settings, XP ---------------- */
+.hm-cats{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.hm-cat .hm-i{width:26px; height:26px;}
+.hm-xp{display:flex; align-items:center; gap:10px; min-height:28px; padding:0 4px; font:400 13.5px var(--font-h); color:var(--hm-text);}
+.hm-xp i{flex:1 1 auto; height:6px; background:#1b262c; border:1px solid #3f5058; position:relative; overflow:hidden;}
+.hm-xp i b{position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(#c5f7ff,#4fd3ee);}
+
+/* ---------------- the save slots ---------------- */
+.hm-title{margin:0; min-height:48px; display:flex; align-items:center; justify-content:center; font:400 19px/1 var(--font-h); color:var(--hm-text); letter-spacing:.04em; text-shadow:0 1px 0 #071016;}
+.hm-cards{display:grid; gap:12px;}
+.hm-card{border-image-source:var(--hm-panel); display:flex; align-items:center; gap:8px; padding:4px; min-height:112px; cursor:pointer; outline:none;}
+.hm-card.sel{border-image-source:var(--hm-panel-cyan); box-shadow:0 0 14px rgba(125,216,230,.18);}
+.hm-card:focus-visible{box-shadow:0 0 0 2px var(--hm-cyan);}
+.hm-ava{flex:none; width:72px; height:72px; box-sizing:border-box; border:8px solid transparent; border-image:var(--hm-steel-idle) 8 fill / 8px; display:flex; align-items:center; justify-content:center; padding:0;}
+.hm-card.sel .hm-ava{border-image-source:var(--hm-cyan-idle);}
+.hm-ava canvas{width:56px; height:56px; image-rendering:pixelated;} .hm-ava canvas.none{visibility:hidden;}
+.hm-emptyi{width:30px; height:30px;}
+.hm-cinfo{flex:1 1 auto; min-width:0; display:grid; gap:3px; padding-left:8px; border-left:1px solid rgba(168,182,184,.25); font:400 13px/1.2 var(--font-h);}
+.hm-ct{font:400 17px/1.1 var(--font-h); font-weight:400; color:var(--hm-text);}
+.hm-cn{display:flex; gap:8px; align-items:baseline; min-width:0; font-size:14px;}
+.hm-place{display:flex; align-items:center; gap:4px; min-width:0;} .hm-place span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} .hm-place .hm-i{width:16px; height:16px;}
+.hm-cinfo .hm-res{gap:7px; flex-wrap:wrap;} .hm-cinfo .hm-r .hm-i{width:14px; height:14px;}
+.hm-go{flex:none; width:auto; padding:0 4px; gap:5px; font-size:14px;} .hm-go .hm-i{width:16px; height:16px;}
+.hm-footbtns .hm-btn{width:100%;}
+
+/* ---------------- dialogs ---------------- */
+.hmdlg{z-index:60;}
+.hm-dlgp{position:relative; width:min(340px,calc(100vw - 24px)); max-height:calc(100vh - 32px); overflow:auto; box-sizing:border-box; padding:12px; display:grid; gap:10px;
+  border:10px solid transparent; border-image:var(--hm-panel) 8 fill / 8px; background:rgba(16,26,30,.6); font-family:var(--font-h); color:var(--hm-text);}
+.hm-dlgp h2{margin:0; text-align:center; font:400 19px var(--font-h); color:var(--hm-gold);}
+.hm-list{display:grid; gap:8px;} .hm-list .hm-btn{justify-content:flex-start; padding-left:10px;}
+.hm-dl{margin:0; font:400 14px/1.4 var(--font-h); color:var(--hm-text);} .hm-dl .bad{color:#ec9384;} .hm-dl .good{color:#8de9b5;}
+
+/* ---------------- wider: the run column beside the camp column ---------------- */
+@media (min-width:740px){
+  .hm-work{grid-template-columns:minmax(0,1fr) 240px; align-items:start;}
+  .hm-navcol .hm-cats{grid-template-columns:1fr;}
+  .hm-cards{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .hm-card{flex-direction:column; align-items:stretch; text-align:left; min-height:0;}
+  .hm-card .hm-ava{align-self:center; width:96px; height:96px;} .hm-ava canvas{width:80px; height:80px;}
+  .hm-cinfo{border-left:0; border-top:1px solid rgba(168,182,184,.25); padding:8px 0 0;}
+  .hm-go{width:100%;}
+  .hm-saves{max-width:820px;}
+}
+/* landscape, wide enough: the illustration to the left, the workbench to the right */
+@media (min-width:740px) and (min-aspect-ratio:5/4){
+  .hm-page{display:grid; grid-template-columns:minmax(200px,30%) minmax(0,1fr); grid-template-rows:1fr auto; align-items:center; column-gap:12px; padding-left:calc(12px + env(safe-area-inset-left,0px));}
+  .hm-hero{grid-column:1; grid-row:1; align-self:center; max-width:none; aspect-ratio:3/4; -webkit-mask-image:linear-gradient(90deg,#000 80%,transparent),linear-gradient(#000 85%,transparent); mask-image:linear-gradient(#000 85%,transparent);}
+  .hm-scene{object-position:50% 60%;}
+  .hm-logo{top:6%; width:92%;}
+  .hm-work,.hm-saves{grid-column:2; grid-row:1; margin:12px auto; align-self:center; padding:0 12px 0 0; max-width:880px;}
+  .hm-foot{grid-column:1; grid-row:2; margin-top:0;} .hm-foot img{margin-top:-40px;}
+}
+/* short landscape phones: tighter, still 48-unit targets */
+@media (max-height:520px) and (min-aspect-ratio:5/4){
+  .hm-work,.hm-saves{gap:6px; margin:8px auto;}
+  .hm-run{gap:2px;} .hm-nodes{padding-top:0; padding-bottom:0;} .hm-rules{min-height:36px;}
+  .hm-cards{gap:8px;} .hm-card .hm-ava{width:72px; height:72px;} .hm-ava canvas{width:56px; height:56px;}
+  .hm-foot{display:none;}
+}
+/* narrow phones (320): the strip's counters wrap below rather than squeeze */
+@media (max-width:360px){
+  .hm-strip{flex-wrap:wrap; padding:4px; row-gap:2px;} .hm-strip .hm-sep{display:none;} #mmSave{flex-wrap:wrap; row-gap:2px; gap:8px;}
+  .hm-btn{gap:6px; font-size:14.5px;}
+  .hm-card{gap:6px;} .hm-cinfo{padding-left:6px;} .hm-go{padding:0 6px;}
+}
+@media (prefers-reduced-motion:reduce){ .hm *{transition:none!important; animation:none!important;} }
+/* short and narrow (a small phone on its side): a compact strip of the illustration above, then the menu, scrolling */
+@media (max-height:520px) and (max-width:739.98px){
+  .hm-hero{aspect-ratio:auto; height:132px;} .hm-scene{object-position:50% 62%;} .hm-logo{width:auto; height:62%; top:6%;}
+  .hm-work,.hm-saves{margin-top:4px;} .hm-foot{display:none;}
+}
+/* 320-360 wide: a used slot's Continue takes its own full-width row, so the deck and place names keep their room */
+@media (max-width:360px){ .hm-card{flex-wrap:wrap;} .hm-card .hm-cinfo{flex:1 1 150px;} .hm-card .hm-go{flex:1 1 100%; width:100%; padding:0 6px;} }

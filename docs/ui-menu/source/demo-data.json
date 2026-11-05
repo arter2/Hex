@@ -1,0 +1,35 @@
+{
+  "screen": "home",
+  "selectedSlot": 2,
+  "depth": 2,
+  "detailsOpen": false,
+  "slots": [
+    {
+      "id": 1,
+      "empty": true
+    },
+    {
+      "id": 2,
+      "empty": false,
+      "name": "Burn Rush",
+      "hp": 60,
+      "maxHp": 60,
+      "location": "Glowworm Hollows",
+      "depth": 2,
+      "deepest": 2,
+      "floors": 4,
+      "gold": 273,
+      "cards": 59,
+      "crystals": 0,
+      "level": 1,
+      "xp": 0,
+      "xpMax": 100,
+      "points": 12,
+      "characterSprite": "../assets/art/run-avatar-fire-wizard.png"
+    },
+    {
+      "id": 3,
+      "empty": true
+    }
+  ]
+}

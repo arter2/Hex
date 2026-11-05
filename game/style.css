@@ -705,38 +705,8 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 }
 @media (prefers-reduced-motion:reduce){ #btnCustom.ready{animation:none!important; box-shadow:0 0 0 3px #ffe066cc, 0 0 18px 4px #ffd16699;} }
 
-/* main menu */
-/* The menu is one painted picture (art/ui/menu.jpg, 1024 x 1536). Buttons are invisible hot
-   spots over the painted ones, and only the live values (depth, area, gold, cards) are drawn
-   on top, in the blank spots left for them. Positions are percentages of the picture. */
-#scrMenu{padding:0; overflow:hidden; align-items:center; justify-content:center; background:#06070c; zoom:1!important;}
-#scrMenu::before{content:''; position:absolute; inset:-30px; background:url(art/ui/menu.jpg) center/cover; filter:blur(14px) brightness(.35);}
-.mmart{position:relative; flex:none; width:min(100vw,66.667vh,66.667dvh); aspect-ratio:1024/1536; container-type:inline-size;
-  background:url(art/ui/menu.jpg) center/100% 100% no-repeat; box-shadow:0 0 40px #000;}
+/* main menu: menu.css (v230) */
 .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
-.hot{position:absolute; padding:0; margin:0; border:0; background:transparent; cursor:pointer; border-radius:1.2cqw;}
-.hot:hover:not(:disabled){background:rgba(255,255,255,.07);}
-.hot:active:not(:disabled){background:rgba(0,0,0,.25);}
-.hot:focus-visible{outline:.5cqw solid #7fe3ff;}
-.hot:disabled{cursor:default; background:rgba(4,6,10,.62);}
-#mmContinue{left:24%; top:47.1%; width:52.1%; height:6.9%;}
-#mmDown{left:52.3%; top:65.6%; width:5.1%; height:3.5%;}
-#mmUp{left:66.6%; top:65.6%; width:5.1%; height:3.5%;}
-#mmExplore{left:19.6%; top:72.4%; width:29.2%; height:5.8%;}
-#mmBattle{left:51.1%; top:72.4%; width:29.5%; height:5.8%;}
-#mmNew{left:16.2%; top:81.6%; width:67.6%; height:6.6%;}
-#mmSettings{left:16.2%; top:89.2%; width:67.6%; height:4.9%;}
-.mmtxt,.mmstats>span{position:absolute; margin:0; line-height:1; white-space:nowrap; font:400 2.9cqw/1 var(--font-t); color:#c3d0de;}
-.mmdeep{left:47.1%; top:58.1%;}
-.mmname{left:47%; top:60.4%;}
-.mmdeep b{font:700 3cqw/1 var(--font-b); color:#f2c94c; margin-left:.6cqw;}
-.mmgold,.mmcards{left:76.6%; transform:translateX(-50%);}
-.mmstats .mmgold{top:57.9%; color:#f2c94c; display:flex; align-items:center; gap:.6cqw;}
-.mmgold svg,.mmgold img,.mmgold canvas{width:3cqw!important; height:3cqw!important;}
-.mmstats .mmcards{top:61%; font-size:2.5cqw;}
-#mmDepth{left:61.9%; top:66.2%; transform:translateX(-50%); font:700 4.3cqw/1 var(--font-b); color:#f2c94c; text-shadow:.3cqw .3cqw 0 #000;}
-#mmArea{left:50%; top:69.5%; transform:translateX(-50%); font-size:2.7cqw;}
-#mmWarn{left:50%; top:94.6%; transform:translateX(-50%); width:80%; white-space:normal; text-align:center; font-size:2.6cqw; color:#ff7a7a; text-shadow:.2cqw .2cqw 0 #000;}
 .campmenu{align-self:flex-start;}
 #scrCamp{position:absolute;}
 body.ui-tablet .campmenu, body.wide .campmenu{position:absolute; top:12px; left:12px; z-index:3; width:auto;}
@@ -861,9 +831,6 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .charstats small.up{color:#7dff9a;} .charstats small.down{color:#ff8a8a;} .charstats small{font:400 14px var(--font-t);}
 
 /* save slots */
-#mmSlots{left:18%; top:57.3%; width:64%; height:6.3%;}
-.mmstats{pointer-events:none;}
-.mmstats>.mmslot{left:19.3%; top:61.3%; padding:.3cqw .8cqw; font-size:2.4cqw; color:#e8ecef; background:rgba(4,6,10,.75); border:.2cqw solid #7fd4ff;}
 #slots .panel.slotsp{max-width:520px; width:100%; display:flex; flex-direction:column; gap:10px;}
 .sllist{display:flex; flex-direction:column; gap:8px;}
 .slrow{display:grid; grid-template-columns:40px 1fr auto; gap:10px; align-items:center; padding:8px; background:#0d1014; border:2px solid #2c3137; text-align:left;}
@@ -1901,8 +1868,6 @@ body.instL #hudBottom .inst .ench-hint{right:auto; left:0;}
 /* v156: on short landscape screens the bottom bar scrolled (overflow-y:auto, from before it floated over the board),
    which clipped the instants column that sits above it: Whetstone and friends were invisible and untappable */
 body.h460.wide #scrBattle #hudBottom{overflow:visible;}
-/* the save slot chip on the menu is the way to switch saves: make it read as a button (v157) */
-.mmstats>.mmslot{font-size:2.9cqw; padding:.5cqw 1.2cqw; border-width:.3cqw; border-radius:.6cqw; background:rgba(10,30,48,.9); color:#bfe8ff; box-shadow:0 0 1.2cqw rgba(127,212,255,.55); white-space:nowrap;}
 /* cards: card.css (v179) holds the whole card component; its geometry is cards/card-geo.css, generated from cards/contract.json */
 /* a held card pops up and stays (v164): it takes taps (double-tap to close, scroll its rules), a ✕ floats on its corner,
    and a tap on the dim backdrop closes it */

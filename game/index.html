@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v229</title>
-<meta name="application-version" content="229">
+<title>Hexmancers v230</title>
+<meta name="application-version" content="230">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
+<link rel="stylesheet" href="menu.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
 </head>
@@ -14,24 +15,64 @@
 <div id="app">
 
   <!-- main menu: what the game opens on -->
-  <section id="scrMenu" class="screen">
-    <div class="mmart">
-      <h1 class="sr">Hexmancers</h1><p class="sr">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
-      <button id="mmContinue" class="hot"><span class="sr">Continue: back to camp, where you left off</span></button>
-      <button id="mmSlots" class="hot"><span class="sr">Save slots</span></button>
-      <div id="mmSave" class="mmstats"></div>
-      <button id="mmDown" class="hot" aria-label="Shallower"></button>
-      <b id="mmDepth" class="mmtxt">1</b>
-      <button id="mmUp" class="hot" aria-label="Deeper"></button>
-      <p id="mmArea" class="mmtxt"></p>
-      <button id="mmExplore" class="hot"><span class="sr">Explore the dungeon</span></button>
-      <button id="mmBattle" class="hot"><span class="sr">Battle, no dungeon</span></button>
-      <button id="mmNew" class="hot"><span class="sr">New game: choose a starter deck</span></button>
-      <button id="mmSettings" class="hot"><span class="sr">Settings</span></button>
-      <p id="mmWarn" class="mmtxt"></p>
-      <button id="mmLab" class="mmlab" hidden>🧪 Card lab</button>
+  <!-- the main menu and the three save slots (menu.js, menu.css; from docs/ui-menu) -->
+  <section id="scrMenu" class="screen hm">
+    <div class="hm-scroll">
+      <div class="hm-page">
+        <header class="hm-hero"><img class="hm-scene" src="ui/menu/hero.webp" alt=""><img class="hm-logo" src="ui/menu/logo.webp" alt="Hexmancers"></header>
+        <h1 class="sr">Hexmancers</h1><p class="sr">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
+        <div class="hm-work">
+          <div class="hm-runcol">
+            <button id="mmSlots" class="hm-strip hm-f" type="button" aria-label="Choose save slot"><i class="hm-gem tl"></i><canvas id="mmThumb" width="64" height="64"></canvas><span class="hm-slot" id="mmSlotTag">Slot 1 ▾</span><span class="hm-sep"></span><span id="mmSave" class="hm-res"></span></button>
+            <button id="mmContinue" class="hm-btn hm-cyan" type="button"><i class="hm-gem bl"></i><i class="hm-i" data-i="play"></i><span>Continue</span></button>
+            <div class="hm-run hm-f" id="mmRun">
+              <i class="hm-gem tc"></i>
+              <div class="hm-runhd"><i class="hm-i hm-cave" data-i="cave"></i><b id="mmArea"></b><span class="hm-deep">Deepest: <b id="mmDeep">1</b></span></div>
+              <div class="hm-depthrow"><span id="mmDepthTxt" class="hm-dtxt"></span>
+                <button id="mmDown" class="hm-sq" type="button" aria-label="Shallower"><i class="hm-i" data-i="back"></i></button><b id="mmDepth" class="hm-dnum">1</b><button id="mmUp" class="hm-sq" type="button" aria-label="Deeper"><i class="hm-i" data-i="play"></i></button></div>
+              <div id="mmNodes" class="hm-nodes" aria-hidden="true"></div>
+              <div class="hm-rules"><span id="mmRules" class="hm-rtxt"></span><button id="mmDetails" class="hm-link" type="button" aria-haspopup="dialog">Run details <i class="hm-i" data-i="down"></i></button></div>
+              <div class="hm-two"><button id="mmExplore" class="hm-btn" type="button"><i class="hm-i" data-i="map"></i><span>Explore</span></button><button id="mmBattle" class="hm-btn" type="button"><i class="hm-i" data-i="battle"></i><span>Battle</span></button></div>
+            </div>
+            <p id="mmWarn" class="hm-warn"></p>
+          </div>
+          <nav class="hm-navcol" aria-label="Camp">
+            <div class="hm-cats">
+              <button class="hm-btn hm-cat" type="button" data-cat="cards" aria-haspopup="menu"><i class="hm-i" data-i="cards"></i><span>Cards</span></button>
+              <button class="hm-btn hm-cat" type="button" data-cat="market" aria-haspopup="menu"><i class="hm-i" data-i="market"></i><span>Market</span></button>
+              <button class="hm-btn hm-cat" type="button" data-cat="journal" aria-haspopup="menu"><i class="hm-i" data-i="journal"></i><span>Journal</span></button>
+              <button class="hm-btn hm-cat" type="button" data-cat="character" aria-haspopup="menu"><i class="hm-i" data-i="character"></i><span>Character</span><b id="mmPts" class="hm-badge" hidden></b></button>
+            </div>
+            <button id="mmSettings" class="hm-btn" type="button"><i class="hm-i" data-i="settings"></i><span>Settings</span></button>
+            <div id="mmXp" class="hm-xp"><span id="mmXpTxt"></span><i><b id="mmXpFill"></b></i></div>
+            <button id="mmLab" class="hm-btn" type="button" hidden>🧪 Card lab</button>
+          </nav>
+        </div>
+        <div class="hm-foot" aria-hidden="true"><img src="ui/menu/footer.webp" alt=""></div>
+      </div>
     </div>
   </section>
+
+  <!-- Continue: the three save slots -->
+  <section id="scrSaves" class="screen hm">
+    <div class="hm-scroll">
+      <div class="hm-page">
+        <header class="hm-hero"><img class="hm-scene" src="ui/menu/hero.webp" alt=""><img class="hm-logo" src="ui/menu/logo.webp" alt="Hexmancers"></header>
+        <div class="hm-saves">
+          <h2 class="hm-title hm-f"><i class="hm-gem tc"></i>Choose a save slot</h2>
+          <div id="svList" class="hm-cards" role="listbox" aria-label="Save slots"></div>
+          <p id="svWhy" class="hm-warn"></p>
+          <div class="hm-two hm-footbtns"><button id="svBack" class="hm-btn" type="button"><i class="hm-i" data-i="back"></i><span>Back</span></button><button id="svNew" class="hm-btn" type="button"><i class="hm-i" data-i="newgame"></i><span>New game</span></button></div>
+        </div>
+        <div class="hm-foot" aria-hidden="true"><img src="ui/menu/footer.webp" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- the menu's small dialogs: a category's destinations, the run's rules -->
+  <div id="hmDlg" class="overlay hmdlg" role="dialog" aria-modal="true" aria-labelledby="hmDlgT">
+    <div class="hm-dlgp"><i class="hm-gem tc"></i><h2 id="hmDlgT"></h2><div id="hmDlgB"></div><button id="hmDlgX" class="hm-btn" type="button"><span>Close</span></button></div>
+  </div>
 
   <!-- the Card lab (cardlab.js): build a card from parts and try it. Shown when Debug › Show Card lab is ticked -->
   <section id="scrLab" class="screen">
@@ -710,6 +751,9 @@
 <script src="uikit.js"></script>
 <script src="cards/icons.js"></script>
 <script src="cards/card-geo.js"></script>
+<script src="menuskins.js"></script>
+<script src="menuicons.js"></script>
+<script src="menu.js"></script>
 <script src="ui.js"></script>
 <script src="shop.js"></script>
 <script src="bounty.js"></script>

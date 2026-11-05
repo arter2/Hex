@@ -1470,9 +1470,13 @@ function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0
    never changes your top speed: until v172 it measured against the middle of the board, and the v162 camera made
    you walk up to half as fast again. */
 function evenK(x,z,dx,dz){ const e=MV('mvEven'), l=Math.hypot(dx,dz); if(!(e>0)||l<1e-6) return 1;
-  const a=proj(x,0,z), b=proj(x+dx/l*.1,0,z+dz/l*.1), c0=a, c1=proj(x,0,z+.1);
-  const sDir=Math.hypot(b[0]-a[0],b[1]-a[1]), sRef=Math.hypot(c1[0]-c0[0],c1[1]-c0[1]); if(!(sDir>0)) return 1;
-  return 1+(clamp(sRef/sDir,.5,2)-1)*e; }
+  // measured against ONE fixed camera, not the live one: the portrait phone view the movement defaults were tuned
+  // on, where a board unit toward the enemies shows at EVEN_FORESHORTEN of one across. Until v228 this projected
+  // through the live camera, whose angle changes with the screen's shape: walking toward or away from the enemies
+  // went 1.15x on a phone held upright, 1.3x on a tablet and the full 2x on a landscape phone or a computer.
+  const ux=dx/l, uz=dz/l, sDir=Math.hypot(uz,ux*EVEN_FORESHORTEN);
+  return 1+(clamp(1/sDir,.5,2)-1)*e; }
+const EVEN_FORESHORTEN=.866;   // 412 x 915 portrait battle camera: toward the enemies 1.154x, diagonally 1.07x
 /* Which way your mage faces (mvFaceWalk): the way you walk while you walk (left or right on screen; walking
    straight up or down keeps the last), and the nearest enemy when you stand, charge or fire. */
 function playerFlip(p,foe){ const busy=p.charging||(B.time-(p.poseT??-9))<.28;

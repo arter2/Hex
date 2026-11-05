@@ -37,3 +37,33 @@ A second rendered run covered different inputs on successive encounters:
 All four passed, with no page errors and no held drag after release. Tap/follow speed uses a different configured movement path and screen-direction compensation; the joystick stayed at 9.00 in both encounters. These peak readings are simulation speed, while the ratio checks the elapsed clock separately.
 
 The optional browser runner is `node tools/playtest/touch-transition-runner.js [output-directory]` with Playwright installed. It uses enemy/terrain fixtures, a 412×915 viewport and reduced rendering effects to measure movement independently of combat. It saves screenshots and raw samples. This is desktop Chromium emulation, not physical Android or iOS validation.
+
+## Screen-dependent speed, 5 November 2026 (v228)
+
+Reported: battle movement felt fast again, and differed between browser, phone and screen size.
+
+The battle clock above still holds (`battle-clock-test.js` passes; a battle runs at the same speed as the
+one before it). The difference came from the even-speed correction (`mvEven`, default 1): walking toward or
+away from the enemies is sped up so it covers the same screen distance as walking across. It was measured
+through the live camera, whose angle depends on the screen's shape, so the same push walked:
+
+| Screen | Toward the enemies (x sideways speed) |
+|---|---:|
+| Phone, portrait (412 x 915) | 1.15 |
+| Small phone (360 x 640) | 1.22 |
+| Tablet, portrait | 1.32 |
+| Phone landscape, tablet landscape, any computer | 2.00 (the cap) |
+
+`evenK` now uses one fixed reference, the portrait phone camera the defaults were tuned on
+(`EVEN_FORESHORTEN = .866`): 1.155 toward the enemies and 1.069 diagonally on every screen. Measured after:
+joystick 6.0 tiles/s sideways and 6.4-6.9 up/down in both portrait and landscape (before: 9.4 and 11.4-12).
+
+Movement values changed in the Movement lab are saved per browser and took precedence over the defaults, so
+each browser could walk differently. v228 clears the saved `mv*` values once (`hexmancers-mv-defaults`); the
+lab saves new ones afterwards.
+
+The dungeon walk was measured at 3.5 cells/s at 20, 30, 60 and 120 fps on a phone and a 1920 x 1080 screen.
+Reaching a waypoint no longer costs a standing frame.
+
+`touch-transition-runner.js` compared tap and follow-finger speeds with the joystick's top speed; they use
+`mvSpeed / .14` (8.57 tiles/s). It now checks each mode against its own speed and the fixed boost.

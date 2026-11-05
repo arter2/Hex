@@ -1464,9 +1464,13 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   if(!ix&&!iz&&EX.path.length){
     // cut corners: head for the furthest cell on the route you can walk to in a straight line
     while(EX.path.length>1&&xStraight(EX.px,EX.pz,EX.path[1])) EX.path.shift();
-    const last=EX.path.length===1&&EX.goal&&EX.path[0]===EX.goal.cell;
-    const n=EX.path[0], gx=last?EX.goal.x:xw(n), gz=last?EX.goal.z:xz(n), tx=gx-EX.px, tz=gz-EX.pz, d=Math.hypot(tx,tz);
-    if(d<(last?.2:.5)||EX.pc===n&&!last&&EX.path.length>1){ EX.path.shift(); if(last) EX.goal=null; } else { ix=tx/d; iz=tz/d; if(last&&d<1.2){ ix*=Math.max(.35,d/1.2); iz*=Math.max(.35,d/1.2); } } }
+    // reaching a waypoint heads straight on for the next in the same frame (it used to stand still for that frame,
+    // which cost more time at a low frame rate: 3.2 cells a second at 20 fps against 3.5 at 120)
+    for(let guard=0;guard<4&&EX.path.length;guard++){
+      const last=EX.path.length===1&&EX.goal&&EX.path[0]===EX.goal.cell;
+      const n=EX.path[0], gx=last?EX.goal.x:xw(n), gz=last?EX.goal.z:xz(n), tx=gx-EX.px, tz=gz-EX.pz, d=Math.hypot(tx,tz);
+      if(d<(last?.2:.5)||EX.pc===n&&!last&&EX.path.length>1){ EX.path.shift(); if(last){ EX.goal=null; break; } continue; }
+      ix=tx/d; iz=tz/d; if(last&&d<1.2){ ix*=Math.max(.35,d/1.2); iz*=Math.max(.35,d/1.2); } break; } }
   // inside the goal cell: walk to the exact spot you touched
   else if(!ix&&!iz&&EX.goal&&EX.goal.cell===EX.pc){ const tx=EX.goal.x-EX.px, tz=EX.goal.z-EX.pz, d=Math.hypot(tx,tz);
     if(d<.2) EX.goal=null; else { ix=tx/d; iz=tz/d; if(d<1.2){ ix*=Math.max(.35,d/1.2); iz*=Math.max(.35,d/1.2); } } }

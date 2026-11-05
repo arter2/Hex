@@ -55,7 +55,7 @@ async function run() {
       const result=await page.evaluate(() => {
         window.touchMeasure=false;
         const samples=window.touchSamples, first=samples[0],last=samples.at(-1);
-        return {battle:B.no,samples:samples.length,top:MV('mvStickSpeed'),
+        return {battle:B.no,samples:samples.length,top:XLIT.mvStick?MV('mvStickSpeed'):MV('mvSpeed')/.14, evenMax:evenK(0,0,1,0),
           maxSpeed:Math.max(...samples.map(s=>s.speed)),
           timeRatio:first&&last?(last.time-first.time)/((last.wall-first.wall)/1000):null,
           residualDrag:!!dragging, samplesRaw:samples};
@@ -73,7 +73,10 @@ async function run() {
     for(const r of results) {
       assert.ok(r.samples>=3,'Too few frames to measure');
       assert.ok(r.maxSpeed>1,'Touch did not move player');
-      assert.ok(r.maxSpeed<=r.top*1.25,'Movement exceeds configured speed');
+      // each mode against its own configured speed (joystick: mvStickSpeed; tap and follow: mvSpeed/.14), times the
+      // even-speed boost toward the enemies, which is fixed (it no longer depends on the screen)
+      assert.ok(r.maxSpeed<=r.top*r.evenMax*1.08,'Movement exceeds configured speed');
+      assert.ok(Math.abs(r.evenMax-1.155)<.01,'Even-speed boost differs from the portrait-phone reference');
       assert.ok(r.timeRatio>.65&&r.timeRatio<1.3,'Simulation clock differs from real time');
       assert.equal(r.residualDrag,false,'Touch remains held after release');
     }

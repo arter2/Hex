@@ -28,6 +28,10 @@ const V={'--r-crystal':crystal,'--r-i-strike':runeIconUrl('ui_strike','#f5cb60')
   '--r-i-bag':runeIconUrl('ui_bag','#f3f1e7'),'--r-i-journal-gold':runeIconUrl('ui_journal','#f5cb60'),'--r-i-close':runeIconUrl('ui_close','#f3f1e7'),'--r-i-menu':runeIconUrl('ui_menu','#f3f1e7'),
   '--r-i-resume-gold':runeIconUrl('ui_resume','#f5cb60'),'--r-i-save':runeIconUrl('ui_save','#f3f1e7'),'--r-i-load':runeIconUrl('ui_load','#f3f1e7'),'--r-i-settings':runeIconUrl('ui_settings','#f3f1e7'),
   '--r-i-fullscreen':runeIconUrl('ui_fullscreen','#f3f1e7'),'--r-i-flag':runeIconUrl('ui_flag','#f3f1e7')};
+// the action button's other words: Talk (a speech bubble) and Interact (a reaching hand), drawn in the icon set's line style
+{ const u=b=>'url("data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f5cb60" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter">'+b+'</svg>')+'")';
+  V['--r-i-talk']=u('<path d="M3 5h18v11H11l-5 4v-4H3z"/><path d="M7 9h10M7 12h6"/>');
+  V['--r-i-use']=u('<path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-1V4a1.5 1.5 0 0 1 3 0v6m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4c0 4-3 7-7 7h-1c-3 0-4.5-1.5-6-4l-2.5-4a1.5 1.5 0 0 1 2.5-1.6L8 13"/>'); }
 // the frame skins, nine-sliced by the stylesheet: every button state, the panels, the health shell, badge and map frame
 for(const [k,n] of [['btn','button-default-idle'],['btn-p','button-default-pressed'],['btn-d','button-default-disabled'],['btn-f','button-default-focus'],
   ['gold','button-gold-idle'],['gold-p','button-gold-pressed'],['gold-d','button-gold-disabled'],['gold-f','button-gold-focus'],

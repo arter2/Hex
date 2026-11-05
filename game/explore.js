@@ -1404,7 +1404,24 @@ function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xStairCell(n,goal)||
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n;
     if(best<0) break; path.push(best); cur=best; }
   return path; }
-function xGoalAt(ax,ay){ if(!EX||!EX.active||EX.busy) return; let g=xFloorAt(ax,ay); if(!g) return;
+// a person, chest or thing you can use under a screen point (app coordinates): picked by where it stands on screen,
+// its whole height, not by the floor under the finger. A merchant seen through an arch has the floor behind them inside
+// the arch's wall, so a floor-only tap never reached them.
+function xThingAt(ax,ay){ const G=X3; if(!G) return -1; const r=appBox($('#xView')); if(!r.width) return -1;
+  const v=new THREE.Vector3(), scr=(x,y,z)=>{ v.set(x,y,z).project(G.cam); return [r.left+(v.x+1)/2*r.width, r.top+(1-v.y)/2*r.height, v.z]; };
+  const C=[]; const skip=typeof XUSE_SKIP!=='undefined'?XUSE_SKIP:new Set(['block','pot']);
+  for(const p of EX.props){ if(p.gone||p.wall||!p.solid||skip.has(p.kind)||p.cell<0||!EX.seen[p.cell]||!EX.vis[p.cell]) continue; if(p.mesh&&!p.mesh.visible) continue;
+    C.push([p.cell,p.kind==='npc'||p.kind==='merchant'?1.9:1.2]); }
+  for(const ch of EX.chests) if(!ch.open&&EX.vis[ch.cell]) C.push([ch.cell,.9]);
+  let best=-1, bd=1e9;
+  for(const [c,h] of C){ const x=xw(c), z=xz(c), b=scr(x,0,z), t=scr(x,h,z), e=scr(x+XCS*.42,h/2,z), hw=Math.max(16,Math.abs(e[0]-b[0]));
+    if(b[2]>1) continue; const lo=Math.max(b[1],t[1])+6, hi=Math.min(b[1],t[1])-6;
+    if(ay>lo||ay<hi||Math.abs(ax-b[0])>hw) continue;
+    const d=Math.abs(ax-b[0])+b[2]*50; if(d<bd){ bd=d; best=c; } }   // the nearer the middle (and the camera), the better
+  return best; }
+function xGoalAt(ax,ay){ if(!EX||!EX.active||EX.busy) return;
+  const th=xThingAt(ax,ay); if(th>=0){ if(EX.goal&&EX.goal.cell===th) return; const path=th===EX.pc?[]:xPathToCell(th); if(path){ EX.goal={cell:th,x:xw(th),z:xz(th)}; EX.path=path; return; } }
+  let g=xFloorAt(ax,ay); if(!g) return;
   let c=xcell(g.x,g.z);
   // a touch on a wall (or a spot you have not seen) aims at the nearest open cell you know
   if(c<0||!EX.seen[c]||!xPassable(c)){ let best=-1, bd=9; const cx=Math.floor(g.x/XCS), cz=Math.floor(g.z/XCS);

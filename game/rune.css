@@ -138,6 +138,7 @@ body.rune #xBottom .controls .btn:disabled::before{opacity:.45;}
 body.rune #xBottom .controls .btn:disabled::after{border-image-source:var(--r-s-btn-d);}
 body.rune #xBottom .controls .btn .k{display:none;}
 body.rune #xStrike{--r-icon:var(--r-i-strike); color:var(--r-gold)!important;}
+body.rune #xStrike[data-use=talk]{--r-icon:var(--r-i-talk);} body.rune #xStrike[data-use=use]{--r-icon:var(--r-i-use);}   /* Strike becomes Talk / Interact beside a person or a thing to use */
 body.rune #xBottom .controls #xStrike::after{border-image-source:var(--r-s-gold);}
 body.rune #xBottom .controls #xStrike:active::after,body.rune #xBottom .controls #xStrike.r-down::after{border-image-source:var(--r-s-gold-p);}
 body.rune #xBottom .controls #xStrike:focus-visible::after{border-image-source:var(--r-s-gold-f);}

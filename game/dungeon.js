@@ -1257,14 +1257,46 @@ function xBitsTick(dt){
     if(o.position.y<=.03){ u.vx*=.8; u.vz*=.8; u.spin*=.7; } o.rotation.y+=u.spin*dt; o.rotation.x+=u.spin*.5*dt;
     if(u.t>1.6){ X3.group.remove(o); return false; } return true; });
   if(EX.pops) EX.pops=EX.pops.filter(s=>{ s.userData.t+=dt; s.position.y+=dt*1.2; s.material.opacity=Math.max(0,1-s.userData.t/1.1); s.material.transparent=true; if(s.userData.t>1.1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
-  if(EX.strikeCd>0) EX.strikeCd-=dt;
+  if(EX.strikeCd>0) EX.strikeCd-=dt; xUseTick(dt);
   if(EX.swingT>0){ EX.swingT-=dt; const w=X3&&X3.swing; if(w){ const k=1-EX.swingT/.25; w.visible=EX.swingT>0; w.position.set(EX.px,.7,EX.pz); w.rotation.z=(EX.swingDir||0)-1.9+k*2.6; w.material.opacity=.85*(1-k); } } }
-function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action||(EX.strikeCd||0)>0) return;
+/* The action button: Strike when an enemy is within reach, otherwise it uses what you stand beside: Talk for a
+   person or a merchant, Interact for anything else you can use (a lever, an altar, a chest, a locked door, a puzzle
+   piece). xUseTarget finds it; xUseTick keeps the button's word (and the rune HUD's icon) in step. */
+const XUSE_TALK=new Set(['npc','merchant']);
+const XUSE_HIT=new Set(['eggsac','totem']);   // used by hitting them: the button still reads Strike
+const XUSE_SKIP=new Set(['block','pot','iceboulder']);   // pushed or smashed by walking and swinging, not used
+function xStrikeFoe(){ return EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant).map(g=>({g,d:Math.hypot(g.x-EX.px,g.z-EX.pz)})).filter(o=>o.d<XCS*1.8).sort((a,b)=>a.d-b.d)[0]; }
+function xUseTarget(){ if(!EX||!EX.active) return null; const R=XCS*1.55; let best=null, bd=R;
+  const consider=(o,x,z)=>{ const d=Math.hypot(x-EX.px,z-EX.pz); if(d<bd){ bd=d; best=o; } };
+  for(const p of EX.props){ if(p.gone) continue;
+    if(p.wall){ if(p.found===false&&p.kind!=='switch') continue; if(p.front==null||!EX.seen[p.front]) continue; consider({t:'wall',p,c:p.cell},xw(p.front)*.5+xw(p.cell)*.5,xz(p.front)*.5+xz(p.cell)*.5); continue; }
+    if(!p.solid||XUSE_SKIP.has(p.kind)||p.cell<0||!EX.seen[p.cell]) continue;
+    if(p.found===false||p.taken||p.spent&&p.kind!=='trialaltar') continue;
+    consider({t:'prop',p,c:p.cell},xw(p.cell),xz(p.cell)); }
+  for(const ch of EX.chests) if(!ch.open&&EX.seen[ch.cell]) consider({t:'chest',ch,c:ch.cell},xw(ch.cell),xz(ch.cell));
+  for(const [c,d] of EX.doors) if(d.state==='locked'&&EX.seen[c]) consider({t:'door',d,c},xw(c),xz(c));
+  if(best) best.talk=best.t==='prop'&&XUSE_TALK.has(best.p.kind);
+  return best; }
+function xUse(u){ if(!u||!xCanAct()) return false; const tx=xw(u.c);
+  if(Math.abs(tx-EX.px)>.1) EX.face=tx<EX.px?-1:1; EX.path=[]; EX.goal=null;
+  if(u.t==='chest') xOpenChest(u.ch);
+  else if(u.t==='door'){ if(u.d.lock==='circuit'){ if(typeof xCircuitDoor==='function') xCircuitDoor(u.c,u.d); } else xTryUnlock(u.c,u.d); }
+  else xInteract(u.p);
+  return true; }
+function xUseTick(dt){ EX.useT=Math.min(.15,(EX.useT||0)-Math.max(0,dt||0)); if(EX.useT>0) return; EX.useT=.15;   // (the first frame of a floor can come with a negative dt)
+  const u=EX.fighting||xStrikeFoe()?null:xUseTarget(), mode=!u||u.t==='prop'&&XUSE_HIT.has(u.p.kind)?'strike':u.talk?'talk':'use';
+  if(mode===EX.useMode) return; EX.useMode=mode; const b=document.getElementById('xStrike'); if(!b) return;
+  const k=b.querySelector('.k'), word={strike:'Strike',talk:'Talk',use:'Interact'}[mode];
+  for(const n of [...b.childNodes]) if(n.nodeType===3) n.remove(); b.insertBefore(document.createTextNode(word),b.firstChild);
+  b.dataset.use=mode; b.setAttribute('aria-label',word); if(k) b.appendChild(k); }
+function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action) return;
+  if(!xStrikeFoe()){ const u=xUseTarget(); if(u){ xUse(u); return; } }   // nothing to hit: use what is beside you
+  if((EX.strikeCd||0)>0) return;
   EX.strikeCd=.5; EX.swingT=.25;
   const G=X3; if(G&&!G.swing){ const m=new THREE.MeshBasicMaterial({color:0xcfefff,transparent:true,opacity:.8,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false});
     G.swing=new THREE.Mesh(new THREE.RingGeometry(.9,1.5,20,1,0,1.6),m); G.swing.rotation.order='XYZ'; G.swing.rotation.x=-Math.PI/2; G.group.add(G.swing); }
   if(G&&G.swing&&G.swing.parent!==G.group) G.group.add(G.swing);
   EX.swingDir=(EX.face||1)<0?Math.PI:0; xSfx('swing');
   for(const p of EX.props) if(p.kind==='pot'&&!p.gone&&Math.hypot(xw(p.cell)-EX.px,xz(p.cell)-EX.pz)<XCS*1.6) xBreakPot(p);
-  const foe=EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant).map(g=>({g,d:Math.hypot(g.x-EX.px,g.z-EX.pz)})).filter(o=>o.d<XCS*1.8).sort((a,b)=>a.d-b.d)[0];
+  const foe=xStrikeFoe();
   if(foe) xEngage(foe.g,'strike'); }

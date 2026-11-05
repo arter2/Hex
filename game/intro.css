@@ -1,0 +1,32 @@
+/* Hexmancers - the opening: studio card, title art, then the main menu (intro.js) */
+#intro{position:fixed; inset:0; z-index:20000; background:#000; overflow:hidden; cursor:pointer;
+  -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none;
+  transition:opacity var(--in-fade,900ms) ease;}
+#intro.gone{opacity:0; pointer-events:none;}
+#intro .in-stage{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity var(--in-fade,900ms) ease;}
+#intro .in-stage.on{opacity:1;}
+
+/* page one: the studio card. A stand-in until there is a real Uhh Games? logo */
+#inStudio{flex-direction:column; gap:18px; background:radial-gradient(ellipse at 50% 45%,#141b22 0%,#000 70%);}
+.in-mark{position:relative; width:112px; height:128px; display:grid; place-items:center;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:linear-gradient(160deg,#f5cb60 0%,#b8862e 100%);}
+.in-mark::before{content:''; position:absolute; inset:5px; clip-path:inherit; background:#0d1418;}
+.in-mark b{position:relative; font:400 78px/1 'Jacquard 12','VT323',monospace; color:#f5cb60;
+  text-shadow:0 0 18px rgba(245,203,96,.45); transform:translateY(4px);}
+.in-word{margin:0; font:400 clamp(38px,9vw,64px)/1 'Jacquard 12','VT323',monospace; color:#f3f1e7; letter-spacing:.04em;
+  text-shadow:0 2px 0 #000,0 0 22px rgba(125,216,230,.25);}
+.in-word i{font-style:normal; color:#f5cb60;}
+.in-sub{margin:0; font:400 15px/1 'VT323',monospace; color:#7f8f98; letter-spacing:.35em; text-transform:uppercase;}
+
+/* page two: the Hexmancers art */
+#inTitle{background:#000;}
+#inTitle .in-scene{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; image-rendering:pixelated;}
+#inTitle::after{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,0,0,.55) 100%); pointer-events:none;}
+#inTitle .in-logo{position:relative; z-index:1; width:min(78vw,640px); height:auto; filter:drop-shadow(0 6px 18px rgba(0,0,0,.7));}
+
+.in-skip{position:absolute; right:16px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:2; margin:0;
+  font:400 15px/1 'VT323',monospace; color:rgba(243,241,231,.55); letter-spacing:.12em; pointer-events:none;}
+
+@media (prefers-reduced-motion:reduce){ #intro{--in-fade:250ms;} }

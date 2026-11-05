@@ -22,25 +22,33 @@ const B=document.body, $q=s=>document.querySelector(s);
 B.classList.add('rune'); B.classList.toggle('rune-right',HAND==='right');
 
 // the icons the stylesheet paints with (masks would lose the gold; backgrounds keep each icon's own colour)
-const crystal='url("data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 12"><path d="M5 0 10 6 5 12 0 6z" fill="#1785bb"/><path d="M5 0 10 6H5z" fill="#7dd8e6"/><path d="M5 0 0 6h5z" fill="#d4fbff"/><path d="M5 12 0 6h5z" fill="#3aa6d8"/><path d="M5 0 10 6 5 12 0 6z" fill="none" stroke="#d4fbff" stroke-width=".6"/></svg>')+'")';
+const iconUrlC=(id,col)=>{ const I=RUNE_ICONS[id]; return I?'url("data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" color="'+col+'" stroke="'+col+'" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter">'+I[1]+'</svg>')+'")':'none'; };
+const crystal=iconUrlC('ui_diamond','#7dd8e6');   // the handoff's crystal (its own facets; cyan core)
 const V={'--r-crystal':crystal,'--r-i-strike':runeIconUrl('ui_strike','#f5cb60'),'--r-i-search':runeIconUrl('ui_search','#f3f1e7'),'--r-i-disarm':runeIconUrl('ui_disarm','#f3f1e7'),
   '--r-i-bag':runeIconUrl('ui_bag','#f3f1e7'),'--r-i-journal-gold':runeIconUrl('ui_journal','#f5cb60'),'--r-i-close':runeIconUrl('ui_close','#f3f1e7'),'--r-i-menu':runeIconUrl('ui_menu','#f3f1e7'),
   '--r-i-resume-gold':runeIconUrl('ui_resume','#f5cb60'),'--r-i-save':runeIconUrl('ui_save','#f3f1e7'),'--r-i-load':runeIconUrl('ui_load','#f3f1e7'),'--r-i-settings':runeIconUrl('ui_settings','#f3f1e7'),
   '--r-i-fullscreen':runeIconUrl('ui_fullscreen','#f3f1e7'),'--r-i-flag':runeIconUrl('ui_flag','#f3f1e7')};
+// the frame skins, nine-sliced by the stylesheet: every button state, the panels, the health shell, badge and map frame
+for(const [k,n] of [['btn','button-default-idle'],['btn-p','button-default-pressed'],['btn-d','button-default-disabled'],['btn-f','button-default-focus'],
+  ['gold','button-gold-idle'],['gold-p','button-gold-pressed'],['gold-d','button-gold-disabled'],['gold-f','button-gold-focus'],
+  ['panel','panel-log'],['hp','health-shell'],['badge','depth-badge'],['mini','minimap-frame']]) V['--r-s-'+k]=runeSkinUrl(n);
+// the big map's icons (explore.js draws them when this is set)
+{ const im=(id,col)=>{ const i=new Image(); i.src=iconUrlC(id,col).slice(5,-2); return i; };
+  window.RUNE_MAPI={player:im('ui_player','#f3f1e7'),chest:im('ui_chest','#f5cb60'),stairs:im('ui_stairs','#7dd8e6')}; }
 for(const k in V) B.style.setProperty(k,V[k]);
 const stop=e=>{ e.stopPropagation(); };   // nothing of ours lets a touch through to the floor
 
 /* ---------------- the layout ---------------- */
 const top=$q('#xTop'), meter=top.querySelector('.hpmeter'), info=top.querySelector('.info'), scr=$q('#scrExplore');
 { const vit=document.createElement('div'); vit.className='r-vit'; top.insertBefore(vit,meter); vit.append(meter,info);
-  const tr=document.createElement('span'); tr.className='r-hptrack'; meter.insertBefore(tr,$q('#xHpBar')); tr.appendChild($q('#xHpBar')); }
+  const tr=document.createElement('span'); tr.className='r-hptrack'; meter.insertBefore(tr,$q('#xHpBar')); tr.innerHTML='<i class="r-hplag"></i>'; tr.appendChild($q('#xHpBar')); }
 const chipRow=document.createElement('div'); chipRow.id='rChipRow'; chipRow.innerHTML='<span id="rChip"></span>'; scr.appendChild(chipRow); chipRow.appendChild($q('#xStatus'));
 const pop=document.createElement('div'); pop.id='rStatusPop'; pop.hidden=true; scr.appendChild(pop);
 const gem=document.createElement('div'); gem.id='rMiniGem'; scr.appendChild(gem);
 const bottom=$q('#xBottom'), controls=bottom.querySelector('.controls');
 const ctx=document.createElement('div'); ctx.id='rCtx'; ctx.append($q('#xUp'),$q('#xCamp'),$q('#xAct'));
 const drawer=document.createElement('div'); drawer.id='rDrawer'; drawer.setAttribute('role','log'); drawer.setAttribute('aria-label','Dungeon log');
-drawer.innerHTML='<i class="grab"></i><div class="hd">'+runeIcon('ui_journal',18,'#f5cb60')+'<b>Dungeon log</b><button class="x" type="button" aria-label="Close the log"></button></div><div class="ls" tabindex="0"></div>';
+drawer.innerHTML='<i class="grab"></i><div class="hd"><button class="x" type="button" aria-label="Close the log"></button><b>Dungeon log</b></div><div class="ls" tabindex="0"></div>';
 const logEl=document.createElement('div'); logEl.id='rLog';
 logEl.innerHTML='<button id="rLogBtn" type="button" aria-label="Dungeon log: hold or tap for history" title="Dungeon log (J)"></button><div id="rLogText" aria-live="polite"><div class="l1"></div><div class="l2"></div></div>';
 bottom.insertBefore(ctx,controls); bottom.insertBefore(drawer,controls); bottom.insertBefore(logEl,controls);
@@ -48,11 +56,13 @@ bottom.insertBefore(ctx,controls); bottom.insertBefore(drawer,controls); bottom.
 for(const el of [chipRow,pop,ctx,drawer,logEl]) for(const ev of ['pointerdown','touchstart','mousedown']) el.addEventListener(ev,stop);
 
 /* ---------------- the log: one line closed, the history open ---------------- */
-const LOGI=[[/\bgold\b/i,'ui_coin','#f5cb60'],[/\bdoor/i,'ui_door'],[/\bHP\b|heal|herb|rested|draught/i,'ui_heal','#8de9b5'],[/\bkey\b/i,'key_gold'],[/defeated|falls|slain|dies|beaten/i,'ui_skull'],
+const LOGI=[[/\bgold\b/i,'ui_coin','#f5cb60'],[/\bdoor/i,'ui_door','#c5d0d0'],[/\bHP\b|heal|herb|rested|draught/i,'ui_heal','#8de9b5'],[/\bkey\b/i,'key_gold'],[/defeated|falls|slain|dies|beaten/i,'ui_skull','#a8b6b8'],
   [/spots you|wakes|ambush|trap|bites|hurt|poison/i,'ui_warning','#ec9384'],[/strike|hit|blow/i,'ui_strike','#f5cb60'],[/stairs|depth|climb|descend|floor/i,'ui_stairs','#7dd8e6'],[/chest|card|treasure|found|pick up|take/i,'ui_chest','#f5cb60'],
-  [/\bXP\b|level/i,'ui_rune','#7dd8e6'],[/search|secret|hidden/i,'ui_search'],[/disarm/i,'ui_disarm']];
-const LOGC={bad:['ui_warning','#ec9384'],good:['ui_heal','#8de9b5'],warn:['ui_warning','#f5cb60'],loot:['ui_chest','#d3b8ff'],gold:['ui_coin','#f5cb60'],xp:['ui_rune','#8de9b5']};
-function logIcon(t,c){ for(const [re,id,col] of LOGI) if(re.test(t)) return runeIcon(id,16,col||(c==='dim'?'#a8b6b8':'#f3f1e7')); const d=LOGC[c]; return d?runeIcon(d[0],16,d[1]):runeIcon('ui_journal',16,'#a8b6b8'); }
+  [/\bXP\b|level/i,'ui_diamond','#7dd8e6'],[/\bward\b|shield/i,'ui_shield','#7dd8e6'],[/search|secret|hidden/i,'ui_search'],[/disarm/i,'ui_disarm']];
+const LOGC={bad:['ui_warning','#ec9384'],good:['ui_heal','#8de9b5'],warn:['ui_warning','#f5cb60'],loot:['ui_chest','#d3b8ff'],gold:['ui_coin','#f5cb60'],xp:['ui_diamond','#7dd8e6']};
+function logIcon(t,c){ for(const [re,id,col] of LOGI) if(re.test(t)) return runeIcon(id,17,col||(c==='dim'?'#a8b6b8':'#f3f1e7')); const d=LOGC[c]; return d?runeIcon(d[0],17,d[1]):runeIcon('ui_journal',17,'#a8b6b8'); }
+// a plain line takes its icon's colour where the handoff gives one (a door line pale, a defeat muted, gold gold, healing green)
+function logCol(t,c){ if(c) return ''; for(const [re,id,col] of LOGI) if(re.test(t)) return col&&id!=='ui_strike'&&id!=='ui_warning'?col:''; return ''; }
 const esc_=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 const HIST_MAX=80, STALE_MS=9000; let staleT=0;
 function hist(){ if(!EX) return []; return EX.hist||(EX.hist=(EX.log||[]).map(l=>({t:l.t,c:l.c,at:Date.now()}))); }
@@ -60,7 +70,7 @@ function renderLine(){ const H=hist(), a=H[H.length-1], b=H[H.length-2], tx=$q('
   tx.querySelector('.l1').innerHTML=a?esc_(a.t):''; tx.querySelector('.l1').className='l1 '+(a&&a.c||''); tx.querySelector('.l2').textContent=b?b.t:'';
   tx.classList.remove('stale'); clearTimeout(staleT); staleT=setTimeout(()=>tx.classList.add('stale'),STALE_MS); }   // a short message, then the line clears (the history keeps it)
 function renderDrawer(keepPos){ const ls=drawer.querySelector('.ls'), H=hist(), atEnd=ls.scrollHeight-ls.scrollTop-ls.clientHeight<24;
-  ls.innerHTML=H.map(l=>'<div class="ln '+(l.c||'')+'">'+logIcon(l.t,l.c)+'<span>'+esc_(l.t)+'</span></div>').join('')||'<div class="ln dim">Nothing yet.</div>';
+  ls.innerHTML=H.map(l=>{ const k=logCol(l.t,l.c); return '<div class="ln '+(l.c||'')+'"'+(k?' style="color:'+k+'"':'')+'>'+logIcon(l.t,l.c)+'<span>'+esc_(l.t)+'</span></div>'; }).join('')||'<div class="ln dim">Nothing yet.</div>';
   if(!keepPos||atEnd) ls.scrollTop=ls.scrollHeight; }
 const histOpen=()=>B.classList.contains('r-histopen');
 function setHist(on){ B.classList.toggle('r-histopen',!!on); $q('#rLogBtn').setAttribute('aria-expanded',on?'true':'false'); if(on) renderDrawer(false); else renderLine(); }
@@ -89,10 +99,12 @@ function statusOf(el){ const title=el.getAttribute('title')||'', text=(el.textCo
   return {id,num:num.replace(/\s/g,''),label:(title||text).replace(/^[^\w]+/,'').trim()||id,bad,col:el.style.color||null}; }
 function runeStatuses(){ const row=$q('#xStatus'); if(!row) return; const items=[...row.querySelectorAll('.xs')].map(statusOf);
   items.sort((a,b)=>(b.bad?1:0)-(a.bad?1:0));
-  const cap=(innerWidth/(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tz'))||1))<420?4:7, shown=items.slice(0,cap), more=items.length-shown.length;
+  // the handoff's targets: 48 px each, 6 apart, from the badge to the small map's edge (two on a 360 px phone)
+  const vw=innerWidth/(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tz'))||1), room=Math.max(2,Math.min(7,Math.floor((vw-12-84-8-109+6)/54)));
+  const cap=items.length>room?room-1:room, shown=items.slice(0,cap), more=items.length-shown.length;
   row.querySelectorAll('.rs').forEach(n=>n.remove());
   const frag=document.createDocumentFragment();
-  for(const it of shown){ const s=document.createElement('span'); s.className='rs'; s.title=it.label; s.innerHTML=runeIcon(it.id,20,it.id==='threat'&&it.col?it.col:null)+(it.num?'<small>'+esc_(it.num)+'</small>':''); frag.appendChild(s); }
+  for(const it of shown){ const s=document.createElement('span'); s.className='rs'; s.title=it.label; s.innerHTML=runeIcon(it.id,24,it.id==='threat'&&it.col?it.col:null)+(it.num?'<small>'+esc_(it.num)+'</small>':''); frag.appendChild(s); }
   if(more>0){ const s=document.createElement('span'); s.className='rs more'; s.textContent='+'+more; frag.appendChild(s); }
   row.appendChild(frag); row._items=items;
   if(!pop.hidden) fillPop(); }
@@ -101,10 +113,19 @@ $q('#xStatus').addEventListener('click',e=>{ e.stopPropagation(); if(!$q('#xStat
 pop.addEventListener('click',()=>{ pop.hidden=true; });
 if(typeof window.xHudExtra==='function'){ const old=window.xHudExtra; window.xHudExtra=function(){ old(); runeStatuses(); }; }
 
-/* ---------------- the HUD each update: HP text, the location chip ---------------- */
+/* ---------------- the HUD each update: HP text and meter, the location chip ---------------- */
+// the handoff's health meter: fill = clamp(hp/max, 0, 1); green above half, warning above a quarter, danger below;
+// a pale damage-lag bar holds the old width for a moment after a loss, then follows
+let hpLast=-1, lagT=0;
+function hpState(){ const max=EX.maxHp>0&&isFinite(EX.maxHp)?EX.maxHp:0, f=max?Math.max(0,Math.min(1,(+EX.hp||0)/max)):0;
+  meter.classList.toggle('warn',f<=.5&&f>.25); meter.classList.toggle('danger',f<=.25); meter.classList.toggle('low',f<=.25);
+  const lag=meter.querySelector('.r-hplag'); if(!lag) return;
+  if(hpLast<0||f>=hpLast){ clearTimeout(lagT); lag.style.width=(f*100)+'%'; }
+  else if(f<hpLast){ clearTimeout(lagT); lagT=setTimeout(()=>{ lag.style.width=(f*100)+'%'; },450); }
+  hpLast=f; }
 const chipText=()=>EX?(EX.branch?'Sanctum':'D'+EX.depth+' · F'+(typeof areaFloor==='function'?areaFloor(EX.depth):1)+'/'+(typeof DEPTHS_PER_AREA!=='undefined'?DEPTHS_PER_AREA:4)):'';
 if(typeof window.xHud==='function'){ const old=window.xHud; window.xHud=function(){ old(); if(!EX) return;
-  const t=$q('#xHpTxt'); if(t) t.textContent=t.textContent.replace(/^HP\s*/,''); meter.classList.toggle('low',!!(EX.maxHp&&EX.hp/EX.maxHp<=.3));
+  const t=$q('#xHpTxt'); if(t) t.textContent=t.textContent.replace(/^HP\s*/,''); hpState(); 
   $q('#rChip').textContent=chipText(); $q('#rChip').title=EX.branch?'A hidden branch':('Depth '+EX.depth+' · '+areaLabel(EX.depth));
   ctx.querySelectorAll('.btn').forEach(b=>b.setAttribute('aria-hidden',b.style.display==='none'?'true':'false')); }; }
 // a new floor: its own history starts with its arrival lines; the line and drawer show it
@@ -122,6 +143,7 @@ if(typeof window.xMapOpen==='function'){ const o=window.xMapOpen, c=window.xMapC
 
 /* ---------------- the shared pause menu ---------------- */
 { const cost=document.createElement('p'); cost.id='rLeaveCost'; $q('#mLeave').after(cost);
+  const rule=document.createElement('div'); rule.id='rPauseRule'; rule.setAttribute('aria-hidden','true'); $q('#mLeave').before(rule);
   const fix=()=>{ if(!$q('#pause').classList.contains('on')) return; const L=$q('#mLeave'), m=L.textContent.match(/^(.*?)\s*·\s*(lose .*)$/i);
     if(m){ L.textContent=m[1]; cost.textContent=m[2].charAt(0).toUpperCase()+m[2].slice(1); } else cost.textContent='';
     if(EX&&typeof pauseWhere==='function'&&pauseWhere()==='map') $q('#pauseWhere').textContent=chipText()+' · '+(EX.branch?'Hidden Sanctum':EX.area.name); };

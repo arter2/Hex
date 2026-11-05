@@ -1868,20 +1868,32 @@ function xMini(){
     if(A>=a){ n=Math.min(XN,Math.max(16,A-a+5,B-b+5)); x0=Math.max(0,Math.min(XN-n,Math.round((a+A)/2-n/2))); y0=Math.max(0,Math.min(XN-n,Math.round((b+B)/2-n/2))); } }
   // the Living Rune HUD's small map is a local crop round you (24 cells), not the whole floor squeezed small (rune.js)
   if(!big&&document.body.classList.contains('rune')){ n=Math.min(XN,24); x0=Math.max(0,Math.min(XN-n,xcx(EX.pc)-(n>>1))); y0=Math.max(0,Math.min(XN-n,xcy(EX.pc)-(n>>1))); }
-  const s=big?Math.max(3,Math.floor(384/n)):3; EX.miniView={x0,y0,s,n};
+  let s=big?Math.max(3,Math.floor(384/n)):3, nx=n, ny=n;
+  // Living Rune: the big map fills its panel's map area (wider or taller than square) and the small one sits in its
+  // frame; floor only, in the handoff's slate tiles with a faint grid, doors gold, icons for you, chests and stairs
+  const rune=document.body.classList.contains('rune');
+  if(rune&&big){ const dpr=Math.min(3,window.devicePixelRatio||1), W=Math.max(64,Math.round(cv.clientWidth*dpr)), H=Math.max(64,Math.round(cv.clientHeight*dpr));
+    let a=XN, b=XN, A=0, B=0; for(let i=0;i<XN*XN;i++) if(EX.seen[i]){ const x=xcx(i), y=xcy(i); a=Math.min(a,x); b=Math.min(b,y); A=Math.max(A,x); B=Math.max(B,y); }
+    if(A<a){ a=b=0; A=B=XN-1; }
+    s=Math.max(3,Math.min(Math.round(30*dpr),Math.floor(Math.min(W/(A-a+4),H/(B-b+4))))); nx=Math.ceil(W/s); ny=Math.ceil(H/s);
+    x0=Math.round((a+A+1)/2-nx/2); y0=Math.round((b+B+1)/2-ny/2); }
+  EX.miniView={x0,y0,s,n};
   // the backing store is reallocated only when the map's size changes (it was every redraw, ten times a second)
-  if(cv.width!==n*s||cv.height!==n*s) cv.width=cv.height=n*s; c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
-  c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); c.translate(-x0*s,-y0*s);
-  for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
-    c.fillStyle=d?'#f0a850':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
+  if(cv.width!==nx*s||cv.height!==ny*s){ cv.width=nx*s; cv.height=ny*s; } c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
+  if(!rune){ c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); } c.translate(-x0*s,-y0*s);
+  const g=rune&&big?Math.max(1,Math.round(s*.06)):0;   // the seam between tiles
+  for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ if(!rune){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); } continue; }
+    c.fillStyle=rune?(d?'#e7be60':EX.vis[i]?'#718092':'#536171'):(d?'#f0a850':EX.vis[i]?'#7c8aa6':'#3c4458');
+    if(g){ c.fillRect(xcx(i)*s+g/2,xcy(i)*s+g/2,s-g,s-g); c.strokeStyle='rgba(131,148,165,.15)'; c.lineWidth=g; c.strokeRect(xcx(i)*s+g,xcy(i)*s+g,s-2*g,s-2*g); } else c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
-  if(EX.seen[EX.down]) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
-  for(const ch of EX.chests) if(EX.seen[ch.cell]&&!ch.open) dot(ch.cell,'#f2c94c',1);
+  const MI=rune&&big&&window.RUNE_MAPI, ico=(i,im,k)=>{ if(!im||!im.complete) return false; const z=s*k; c.drawImage(im,xcx(i)*s+s/2-z/2,xcy(i)*s+s/2-z/2,z,z); return true; };
+  if(EX.seen[EX.down]&&!(MI&&!isBossDepth(EX.depth)&&ico(EX.down,MI.stairs,1.6))) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]&&!(MI&&EX.pc===EX.up)) dot(EX.up,'#fff2c0',2);
+  for(const ch of EX.chests) if(EX.seen[ch.cell]&&!ch.open&&!(MI&&ico(ch.cell,MI.chest,1.5))) dot(ch.cell,'#f2c94c',1);
   for(const tr of EX.traps) if(tr.known&&tr.armed) dot(tr.cell,'#ff4d5e',1);
   if(typeof xMiniExtra==='function') xMiniExtra(c,s,dot);
   for(const g of EX.groups) if(EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2)) dot(g.cell,g.tagCol||(g.mini?'#ff9a3a':'#ff6b6b'),g.mini||g.elite?2:1);
-  xStairsMark(c,s);
-  dot(EX.pc,'#ffffff',2);
+  if(!(MI&&!isBossDepth(EX.depth))) xStairsMark(c,s);
+  if(!(MI&&ico(EX.pc,MI.player,1.6))) dot(EX.pc,'#ffffff',rune&&!big?1:2);
 }
 const xMapIsOpen=()=>$('#xMini').classList.contains('big');
 function xMapOpen(){ if(!EX||EX.busy) return; xPause(true); $('#xMini').classList.add('big'); $('#xMapShade').hidden=false; $('#xMapClose').hidden=false; xMini(); }

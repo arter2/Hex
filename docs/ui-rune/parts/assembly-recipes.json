@@ -1,0 +1,297 @@
+{
+  "button-default-disabled": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-default-disabled",
+    "bottomToTop": [
+      "layers/button-default-disabled--face",
+      "layers/button-default-disabled--metal-rim",
+      "layers/button-default-disabled--bronze-corner-inlays"
+    ],
+    "groupOpacity": 0.58,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-default-focus": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-default-focus",
+    "bottomToTop": [
+      "layers/button-default-focus--face",
+      "layers/button-default-focus--metal-rim",
+      "layers/button-default-focus--bronze-corner-inlays",
+      "layers/button-default-focus--focus"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-default-idle": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-default-idle",
+    "bottomToTop": [
+      "layers/button-default-idle--face",
+      "layers/button-default-idle--metal-rim",
+      "layers/button-default-idle--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-default-pressed": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-default-pressed",
+    "bottomToTop": [
+      "layers/button-default-pressed--face",
+      "layers/button-default-pressed--metal-rim",
+      "layers/button-default-pressed--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-gold-disabled": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-gold-disabled",
+    "bottomToTop": [
+      "layers/button-gold-disabled--face",
+      "layers/button-gold-disabled--metal-rim",
+      "layers/button-gold-disabled--bronze-corner-inlays"
+    ],
+    "groupOpacity": 0.58,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-gold-focus": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-gold-focus",
+    "bottomToTop": [
+      "layers/button-gold-focus--face",
+      "layers/button-gold-focus--metal-rim",
+      "layers/button-gold-focus--bronze-corner-inlays",
+      "layers/button-gold-focus--focus"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-gold-idle": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-gold-idle",
+    "bottomToTop": [
+      "layers/button-gold-idle--face",
+      "layers/button-gold-idle--metal-rim",
+      "layers/button-gold-idle--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "button-gold-pressed": {
+    "size": [
+      72,
+      48
+    ],
+    "assembled": "component/button-gold-pressed",
+    "bottomToTop": [
+      "layers/button-gold-pressed--face",
+      "layers/button-gold-pressed--metal-rim",
+      "layers/button-gold-pressed--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "depth-badge": {
+    "size": [
+      92,
+      25
+    ],
+    "assembled": "component/depth-badge",
+    "bottomToTop": [
+      "layers/depth-badge--face",
+      "layers/depth-badge--metal-rim",
+      "layers/depth-badge--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "grab-handle": {
+    "size": [
+      40,
+      4
+    ],
+    "assembled": "component/grab-handle",
+    "bottomToTop": [],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "health-shell": {
+    "size": [
+      150,
+      32
+    ],
+    "assembled": "component/health-shell",
+    "bottomToTop": [
+      "layers/health-shell--face",
+      "layers/health-shell--metal-rim",
+      "layers/health-shell--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "hp-fill": {
+    "size": [
+      48,
+      4
+    ],
+    "assembled": "component/hp-fill",
+    "bottomToTop": [],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "minimap-frame": {
+    "size": [
+      84,
+      84
+    ],
+    "assembled": "component/minimap-frame",
+    "bottomToTop": [
+      "layers/minimap-frame--face",
+      "layers/minimap-frame--metal-rim",
+      "layers/minimap-frame--bronze-corner-inlays"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "panel-log": {
+    "size": [
+      328,
+      256
+    ],
+    "assembled": "component/panel-log",
+    "bottomToTop": [
+      "layers/panel-log--smoke",
+      "layers/panel-log--whisper-frame",
+      "layers/panel-log--corner-pins"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "panel-map": {
+    "size": [
+      328,
+      424
+    ],
+    "assembled": "component/panel-map",
+    "bottomToTop": [
+      "layers/panel-map--smoke",
+      "layers/panel-map--whisper-frame",
+      "layers/panel-map--corner-pins"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "panel-pause": {
+    "size": [
+      328,
+      456
+    ],
+    "assembled": "component/panel-pause",
+    "bottomToTop": [
+      "layers/panel-pause--smoke",
+      "layers/panel-pause--whisper-frame",
+      "layers/panel-pause--corner-pins"
+    ],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "scroll-track": {
+    "size": [
+      4,
+      160
+    ],
+    "assembled": "component/scroll-track",
+    "bottomToTop": [],
+    "groupOpacity": 1.0,
+    "opacityRule": "Composite the listed layers as one group, then apply groupOpacity once."
+  },
+  "action-tray": {
+    "size": [
+      340,
+      64
+    ],
+    "bottomToTop": [
+      "trays/action-tray--surface",
+      "trays/action-tray--border"
+    ],
+    "note": "new supplemental tray; approved action row itself may stay unbacked"
+  },
+  "log-strip": {
+    "size": [
+      340,
+      40
+    ],
+    "bottomToTop": [
+      "trays/log-strip--surface",
+      "trays/log-strip--border"
+    ],
+    "note": "new supplemental tray; approved action row itself may stay unbacked"
+  },
+  "status-tray": {
+    "size": [
+      160,
+      28
+    ],
+    "bottomToTop": [
+      "trays/status-tray--surface",
+      "trays/status-tray--border"
+    ],
+    "note": "new supplemental tray; approved action row itself may stay unbacked"
+  },
+  "tooltip-tray": {
+    "size": [
+      240,
+      84
+    ],
+    "bottomToTop": [
+      "trays/tooltip-tray--surface",
+      "trays/tooltip-tray--border"
+    ],
+    "note": "new supplemental tray; approved action row itself may stay unbacked"
+  },
+  "health-meter": {
+    "size": [
+      48,
+      4
+    ],
+    "shell": "component/health-shell",
+    "windowInShell": [
+      92,
+      14,
+      48,
+      4
+    ],
+    "bottomToTop": [
+      "health/track",
+      "health/damage-lag",
+      "health/fill-green",
+      "health/highlight",
+      "health/inner-shadow",
+      "health/outline"
+    ],
+    "fillRule": "clip fill + highlight to width 48 * clamp(current/max,0,1); keep track, outline, shell full width; max <= 0 gives zero",
+    "text": "editable live current/max at x14, y21 in shell; crystal ornament at x-6,y-4 width24 height32"
+  }
+}

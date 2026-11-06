@@ -737,3 +737,14 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrNewChar.mk .ccptx{display:flex; flex-direction:column; align-items:flex-start; gap:3px;}
 #scrNewChar.mk .ccptx span{font-size:16px; line-height:1;}
 #scrNewChar.mk .ccptx .ccdialhint{margin:0; height:auto; line-height:1; text-align:left; font-size:11px;}
+/* the footer stays on screen over the scrolling dials, on its own dark band */
+#scrNewChar.mk .mkfoot{position:sticky; bottom:0; z-index:20; margin-bottom:-16px; padding:12px 0 calc(14px + env(safe-area-inset-bottom,0px));}
+#scrNewChar.mk .mkfoot::before{content:''; position:absolute; z-index:-1; top:0; bottom:0; left:-30px; right:-30px;
+  background:linear-gradient(180deg,rgba(3,8,14,.55),rgba(3,8,14,.92) 30%,#03080e); border-top:1px solid #7b9aab55;}
+#scrNewChar.mk #ccWarn:empty{display:none;}
+#scrNewChar.mk .mkfoot{bottom:-16px; padding-bottom:calc(26px + env(safe-area-inset-bottom,0px)); margin-bottom:-16px;}
+#scrNewChar.mk .mkfoot::before{bottom:-40px;}
+/* narrower phones: the dial gives up width so the value still fits */
+@media (max-width:385px){ .mk .ccrow{grid-template-columns:40px 52px minmax(140px,1fr) 30px;} .mk .ccval b{font-size:20px;}
+  #scrNewChar.mk .mkfoot{grid-template-columns:1fr 1.07fr .94fr; margin-left:0; margin-right:0;} }
+#scrNewChar.mk .mkfoot::before{background:linear-gradient(180deg,rgba(3,8,14,.7),#050c14 14px,#03080e);}

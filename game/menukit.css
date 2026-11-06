@@ -912,3 +912,163 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #settings.mk .srow .btn.sswitch.son{background:#3fc4dc; box-shadow:inset 0 0 0 1.5px #a6f3ff;}
 #settings.mk .settabs{border-bottom:0;}
 #settings.mk .settab,#settings.mk .settab.on{height:30px; min-height:30px;}
+
+/* ---- 14 Deck builder (kit 14): a title plaque between banners and torches, the deck panel (name, count,
+   slots, tools, a 4-wide tile grid), the card library drawer (chips, search, 3-wide tiles), Done ---- */
+#scrDeck.mk{flex-direction:column; padding:0 4px 10px; gap:0; overflow:hidden;
+  background:url(art/menu/dk-banner-l.webp) left 3px top 0/30px auto no-repeat,url(art/menu/dk-torch-l.webp) left 54px top 0/34px auto no-repeat,
+  url(art/menu/dk-torch-r.webp) right 54px top 0/34px auto no-repeat,url(art/menu/dk-banner-r.webp) right 3px top 0/30px auto no-repeat,
+  radial-gradient(120% 22% at 50% 100%,rgba(30,120,255,.3),transparent 70%),linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.2) 12%,rgba(2,6,10,.2)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+#scrDeck.mk .dktop{position:relative; flex:none; height:62px; display:flex; align-items:center; justify-content:center;}
+#scrDeck.mk .dktop>.backbtn{position:absolute; left:17px; top:29px; width:35px; height:23px; min-width:0; min-height:0; margin:0; padding:0;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; clip-path:none; background:none;}
+#scrDeck.mk .dktop>.backbtn::before{content:''; position:absolute; left:50%; top:50%; width:17px; height:13px; margin:-6.5px 0 0 -8.5px; background:url(menukit/arrow-left.svg) center/contain no-repeat; -webkit-mask:none; mask:none;}
+#scrDeck.mk .dktop h2{position:relative; margin:27px 0 0; width:211px; height:26px; display:flex; align-items:center; justify-content:center; font-size:17px; letter-spacing:.12em; color:#d9d2bd;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; box-sizing:border-box;}
+#scrDeck.mk .dktop h2::before,#scrDeck.mk .dktop h2::after{content:''; position:absolute; left:50%; width:8px; height:8px; margin-left:-4px; background:#57d8f2; transform:rotate(45deg); box-shadow:0 0 6px #57d8f2aa;}
+#scrDeck.mk .dktop h2::before{top:-12px;} #scrDeck.mk .dktop h2::after{bottom:-12px;}
+/* the deck panel */
+#scrDeck.mk .dkpanel{position:relative; flex:none; margin:1px 3px 0; padding:3px 9px 8px; display:flex; flex-direction:column;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; clip-path:none; background:none;}
+#scrDeck.mk .dkhead{display:flex; align-items:center; gap:0; min-height:0; height:23px; margin:0; padding:0; border:0; border-image:none; background:none; clip-path:none;}
+#scrDeck.mk .dkhead::after{display:none;}
+#scrDeck.mk .dkname{position:relative; flex:0 0 190px; height:23px; display:block;}
+#scrDeck.mk .dkname input{width:100%; height:23px; min-height:0; padding:0 26px 0 8px; font-size:14px; color:#e9e4d6; border:5px solid transparent; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; box-sizing:border-box;}
+#scrDeck.mk .dkname img{position:absolute; right:3px; top:3px; width:17px; height:17px; padding:2px; box-sizing:border-box; border:1px solid #6f8790; background:#0b161b; pointer-events:none;}
+#scrDeck.mk .dksep{flex:none; width:1px; height:16px; margin:0 0 0 29px; background:#6f8790;}
+#scrDeck.mk .dkcount{flex:1; text-align:right; padding:0 14px 0 0; font:400 15px var(--font-b); color:#45d98a; letter-spacing:.02em; border:0; border-image:none; background:none; text-shadow:none;}
+#scrDeck.mk .dkcount.bad{color:#ff8a6a;}
+#scrDeck.mk .dkslots{display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:10px 2px 0 6px;}
+#scrDeck.mk .dkslot{height:22px; min-width:0; padding:0; font:400 14px var(--font-b); color:#c9d6dc; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; clip-path:none;}
+#scrDeck.mk .dkslot.on{border-image-source:url(menukit/rim-small-cyan.svg); color:#fff; box-shadow:0 0 6px rgba(87,216,242,.35);}
+#scrDeck.mk .dkslot.act{color:#c9d6dc;} #scrDeck.mk .dkslot.on.act{color:#fff;}
+#scrDeck.mk .dkpanel>.mkrule{margin:4px -2px 0; height:8px;}
+#scrDeck.mk .dkerr{margin:2px 0 0; padding:0 6px; font-size:11px; color:#ffb070; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#scrDeck.mk .dktools{position:relative; display:flex; gap:11px; margin:5px 2px 0 6px; padding:0;}
+#scrDeck.mk .dkpill{min-height:0; height:24px; padding:0 8px; gap:6px; font:400 13px var(--font-b); color:#e3e8ea; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; clip-path:none; white-space:nowrap;}
+#scrDeck.mk .dkpill.on{border-image-source:url(menukit/rim-small-cyan.svg); color:#fff;}
+#scrDeck.mk .dkpill .mki{width:16px; height:16px; object-fit:contain;}
+#scrDeck.mk .dktools>.dkpill{flex:1 1 0; min-width:0;} #scrDeck.mk .dktools>#dkUse{flex:0 0 auto; color:#f2c94c;}
+#scrDeck.mk .dkdrop::after{content:''; width:0; height:0; margin-left:4px; border:4px solid transparent; border-top:5px solid currentColor; border-bottom:0;}
+#scrDeck.mk .dkmenu{position:absolute; z-index:20; right:0; top:28px; min-width:150px; padding:6px; display:flex; flex-direction:column; gap:4px;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; box-shadow:0 8px 18px #000a;}
+#scrDeck.mk .dkmenu[hidden]{display:none!important;}
+#scrDeck.mk .dkmenu button{height:28px; padding:0 8px; text-align:left; font:400 14px var(--font-b); color:#e3e8ea; background:none; border:0; cursor:pointer;}
+#scrDeck.mk .dkmenu button:hover,#scrDeck.mk .dkmenu button.on{background:#123a46; color:#fff;} #scrDeck.mk .dkmenu button.red{color:var(--mk-danger,#ff7a6a);}
+/* the deck grid */
+#scrDeck.mk .dkdeck{height:24vh; max-height:none; min-height:0; margin:2px -4px 0 0; padding:6px 10px 4px 4px; gap:8px 8px; background:none; border:0; box-shadow:none; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#3fc4dc #0a1418;}
+/* both tile kinds */
+#scrDeck.mk .dktile{position:relative; display:flex; flex-direction:column; gap:0; padding:2px; border:0; border-radius:0; background:#160c08; box-shadow:0 0 0 1px #000, inset 0 0 0 1px var(--k-acc,#c2622b); cursor:pointer; overflow:hidden; text-align:center;}
+#scrDeck.mk .dktile::after{content:''; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 0 2px var(--k-acc,#c2622b), inset 0 0 6px rgba(255,120,40,.25); background:none;}
+#scrDeck.mk .dktile .dkart{flex:none; width:100%; aspect-ratio:auto; flex:1 1 auto; min-height:0; box-shadow:none; background:#07080a;}
+#scrDeck.mk .dktile .dkart>.dkc{inset:3px auto auto 3px; width:13px; height:13px; padding:0; background:none; box-shadow:none;}
+#scrDeck.mk .dkel{display:block; width:100%; height:100%; object-fit:contain; font-style:normal; font-size:10px; line-height:13px; filter:drop-shadow(0 1px 1px #000);}
+#scrDeck.mk .dktile .dkart>.dkt{position:absolute; inset:auto 3px 3px auto; width:auto; height:auto; top:auto;}
+#scrDeck.mk .dktile .dkart>.dkt .dkglyph{width:9px; height:9px; margin:0; fill:#fff; filter:drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);}
+#scrDeck.mk .dktile .dkn{flex:none; height:20px; display:flex; align-items:center; justify-content:center; padding:0 2px; float:none; overflow:hidden;
+  font:400 11px/1 var(--font-b); color:#f1e6d4; background:#1c110c; box-shadow:none; border-top:1px solid var(--k-acc,#c2622b);}
+#scrDeck.mk .dktile .dkn>span{display:block; line-height:.95; max-height:100%;}
+#scrDeck.mk .dktile .dkq{flex:none; height:19px; display:flex; align-items:center; justify-content:center; gap:3px; font:400 12px/1 var(--font-b); color:#e9e4d6; background:#140c09; border-top:1px solid #3a2216;}
+#scrDeck.mk .dktile .dkq img{width:10px; height:10px; object-fit:contain;}
+/* the library drawer */
+#scrDeck.mk .dkdrawer{position:relative; flex:1; min-height:0; margin:10px 0 0; padding:4px 8px 8px; gap:0; display:flex; flex-direction:column;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; clip-path:none; background:none; overflow:visible;}
+#scrDeck.mk .dkgrip{position:absolute; left:0; right:0; top:-22px; height:22px; margin:0; z-index:4;}
+#scrDeck.mk .dkgrip::before{top:5px; left:50%; width:44px; height:12px; margin-left:-22px; border-radius:0; background:url(menukit/rim-small.svg) 0 0/100% 100%; box-shadow:none;}
+#scrDeck.mk .dkgrip::after{content:''; position:absolute; top:9px; left:50%; width:22px; height:4px; margin-left:-11px; border-top:1px solid #9fb2b9; border-bottom:1px solid #9fb2b9; pointer-events:none;}
+#scrDeck.mk .dkgrip.on::after{border-color:#57d8f2;} #scrDeck.mk .dkgrip.sizing::after{border-color:#ffe066;}
+#scrDeck.mk .dkbar{display:flex; align-items:center; gap:8px; margin:2px 0 0; padding:0 0 6px; flex-wrap:nowrap; border-bottom:1px solid #7b9aab55;}
+#scrDeck.mk .dkbar h3{flex:1; display:flex; align-items:center; gap:8px; margin:0; font:400 17px var(--font-b); color:#e9e4d6;}
+#scrDeck.mk .dkbar h3 img{width:20px; height:18px; object-fit:contain;}
+#scrDeck.mk #dkMulti{height:22px; padding:0 9px 0 7px; font-size:12px;}
+#scrDeck.mk .dkbox{display:inline-block; width:9px; height:9px; border:1px solid #c9d6dc; font:400 9px/9px var(--font-b); font-style:normal; text-align:center; color:#45d98a;}
+#scrDeck.mk .dktabwrap{display:flex; gap:6px; margin:6px 0 0;}
+#scrDeck.mk .dktabs{flex:1; min-width:0; display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; border:0; border-image:none; background:none;}
+#scrDeck.mk .dktabs::-webkit-scrollbar{display:none;}
+#scrDeck.mk .dktab{flex:none; height:21px; min-width:52px; display:flex; flex-direction:row; align-items:center; justify-content:center; gap:4px; padding:0 7px;
+  font:400 12px var(--font-b); color:#e3e8ea; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; letter-spacing:0;}
+#scrDeck.mk .dktab.on{border-image-source:url(menukit/rim-small-cyan.svg); color:#fff;}
+#scrDeck.mk .dktab span{font-size:12px; letter-spacing:0;}
+#scrDeck.mk .dktab .dkel{width:12px; height:12px;}
+#scrDeck.mk .dktab b{font:400 10px var(--font-b); color:#8fa6ad; text-shadow:none;} #scrDeck.mk .dktab.on b{color:#bfeff8;}
+#scrDeck.mk .dktabmore{flex:none; width:17px; height:21px; padding:0;}
+#scrDeck.mk .dktabmore::before{content:''; border:4px solid transparent; border-left:5px solid #e3e8ea; border-right:0;}
+#scrDeck.mk .dksearch{position:relative; display:flex; gap:13px; margin:8px 0 0;}
+#scrDeck.mk .dkq{flex:0 0 52%; display:block;}
+#scrDeck.mk #dkQ{width:100%; height:24px; min-height:0; padding:0 6px 0 26px; font-size:13px; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch;
+  background:url(menukit/search.svg) 5px center/12px no-repeat; box-sizing:border-box;}
+#scrDeck.mk .dksearch>.dkpill{flex:1 1 0; min-width:0;}
+#scrDeck.mk .dksortmenu{top:28px; right:0;}
+#scrDeck.mk .filters{margin:6px 0 0;}
+#scrDeck.mk .dkcoll{flex:1; min-height:0; margin:9px -4px 0 0; padding:2px 8px 54px 4px; display:grid; grid-template-columns:repeat(3,1fr); gap:9px 10px; align-content:start;
+  overflow-y:auto; scrollbar-width:thin; scrollbar-color:#3fc4dc #0a1418;}
+#scrDeck.mk .dklib{height:120px;}
+#scrDeck.mk .dklib .dkart{height:68px; flex:none;}
+#scrDeck.mk .dklib .dkn{height:21px; font-size:12px;}
+#scrDeck.mk .dklib .dkq{height:25px; gap:0; padding:0 3px 0 5px; justify-content:space-between; font-size:12px;}
+#scrDeck.mk .dklib .dkown{display:flex; align-items:center; gap:3px; position:static; min-width:0; padding:0; background:none; border-radius:0; font:inherit; color:#e9e4d6;}
+#scrDeck.mk .dklib .dkdiv{width:1px; height:12px; background:#7a5a46;}
+#scrDeck.mk .dklib .dkfrac{position:static; display:block; inset:auto; height:auto; font:400 12px var(--font-b); color:#8fa6ad; text-shadow:none; pointer-events:none;}
+#scrDeck.mk .dklib.indeck .dkfrac{color:#45d98a;}
+#scrDeck.mk .dkminus{position:static; width:20px; height:18px; padding:0; border-radius:0; display:grid; place-items:center; color:#fff; background:#0d2a33; box-shadow:inset 0 0 0 1px #3fc4dc; cursor:pointer;}
+#scrDeck.mk .dkminus::before{content:''; width:8px; height:2px; background:#e8f6f9;}
+#scrDeck.mk .dkminus:disabled{opacity:.35; cursor:default;}
+#scrDeck.mk .dkbadges{position:absolute; inset:3px 3px auto auto; width:auto; height:auto; display:flex; gap:2px;}
+#scrDeck.mk .dkrune,#scrDeck.mk .dkrank{min-width:13px; height:14px; padding:0 2px; display:grid; place-items:center; font:400 11px/1 var(--font-b); color:#fff; box-shadow:0 0 0 1px #000; box-sizing:border-box;}
+#scrDeck.mk .dkrune{background:#1d4fae; border:1px solid #3f8be6;} #scrDeck.mk .dkrune.wild{background:#5a2c8c; border-color:#9a62d6;} #scrDeck.mk .dkrune.hero{background:#8a6a12; border-color:#f2c94c;}
+#scrDeck.mk .dkrank{background:#a4231c; border:1px solid #e2463a;}
+#scrDeck.mk .dklib .dkcheck{position:absolute; inset:auto auto 3px 3px; width:16px; height:16px; border-radius:0; font-size:12px; line-height:14px;}
+#scrDeck.mk .dklib.dksel{outline:2px solid #45d98a; outline-offset:-1px;}
+#scrDeck.mk .dkcoll>.hint{grid-column:1/-1;}
+#scrDeck.mk .dkcoll>.more{grid-column:1/-1;}
+#scrDeck.mk .dkok{position:absolute; left:2px; right:2px; bottom:0; width:auto; height:33px; min-height:0; transform:none; display:flex; align-items:center; justify-content:center; gap:14px;
+  font:400 19px var(--font-b); color:#f3f0e6; letter-spacing:.02em; border:8px solid transparent; border-image:url(menukit/rim-cyan-panel.svg) 12 fill / 8px / 0 stretch;
+  background:linear-gradient(#184453,#09232c 50%,#155269); background-origin:border-box; background-clip:padding-box; clip-path:none; z-index:6;}
+#scrDeck.mk .dkok .mki{width:20px; height:18px; object-fit:contain;}
+#scrDeck.mk .dkmultibar{position:absolute; left:2px; right:2px; bottom:0; z-index:6;}
+/* kit 14 fit: positions measured against the kit at 390 wide */
+#scrDeck.mk{padding-bottom:22px;}
+#scrDeck.mk .dktop>.backbtn::before{background:var(--mk-cyan); -webkit-mask:url(menukit/arrow-left.svg) center/contain no-repeat; mask:url(menukit/arrow-left.svg) center/contain no-repeat;}
+#scrDeck.mk .dktop>.backbtn::after{display:none;}
+#scrDeck.mk .dkpanel{padding:0 3px 6px;}
+#scrDeck.mk .dkhead{margin-top:-5px; height:22px;} #scrDeck.mk .dkname,#scrDeck.mk .dkname input{height:22px;} #scrDeck.mk .dkname{flex-basis:188px;}
+#scrDeck.mk .dkslots{margin:10px 0 0 3px;} #scrDeck.mk .dktools{margin:5px 0 0 3px;}
+#scrDeck.mk .dkslot{font-size:16px;} #scrDeck.mk .dkslot .st{color:#f2c94c;}
+#scrDeck.mk .dkdeck{padding:6px 8px 4px 2px; height:197px;}
+#scrDeck.mk .dktile .dkn{height:21px; font-size:12px;} #scrDeck.mk .dktile .dkn>span{line-height:.82;}
+#scrDeck.mk .dkdrawer{margin-top:12px;}
+#scrDeck.mk #dkColl{grid-template-columns:repeat(3,1fr)!important; justify-content:stretch; gap:8px 10px!important; padding:2px 6px 54px 0; margin-right:-6px;}
+#scrDeck.mk #dkColl[style*="--cardw"]{grid-template-columns:repeat(auto-fill,var(--cardw))!important; justify-content:center;}
+#scrDeck.mk #dkColl[style*="--cardw"]>.dklib{height:calc(var(--cardw) * 1.06);} #scrDeck.mk #dkColl[style*="--cardw"]>.dklib .dkart{height:calc(var(--cardw) * .6);}
+#scrDeck.mk .dktab{font-size:13px;} #scrDeck.mk .dktab span{font-size:13px;}
+#scrDeck.mk .dktools{margin-top:3px;} #scrDeck.mk .dkdeck{padding-top:2px; height:192px;}
+#scrDeck.mk .dkbar{margin-top:-4px; padding-bottom:3px;} #scrDeck.mk .dktabwrap{margin-top:6px;} #scrDeck.mk .dksearch{margin-top:7px;} #scrDeck.mk #dkColl{margin-top:9px;}
+#scrDeck.mk .dkdeck{height:196px; padding-bottom:0;}
+#scrDeck.mk .dkslot{line-height:1; padding:0 0 2px;}
+#scrDeck.mk .dkdrawer{padding:4px 3px 8px 3px;}
+#scrDeck.mk .dkbar{padding-left:3px; padding-right:2px;}
+#scrDeck.mk .dksearch{gap:13px;} #scrDeck.mk .dkq{flex:0 0 192px;} #scrDeck.mk #dkFilt{flex:0 0 73px;} #scrDeck.mk #dkSort{flex:1 1 0; padding:0 6px;}
+#scrDeck.mk #dkColl{padding:2px 8px 54px 2px; margin-right:-3px;}
+#scrDeck.mk .dkgrip::before{width:46px; height:14px; margin-left:-23px; top:4px; background:#0d1a20; box-shadow:inset 0 0 0 1px #6f8790, 0 0 0 1px #000;}
+#scrDeck.mk #dkSort{gap:4px;} #scrDeck.mk #dkSort .mki{width:14px; height:14px;} #scrDeck.mk #dkSort.dkdrop::after{margin-left:2px;}
+#scrDeck.mk .dklib .dkq img{width:12px; height:12px;} #scrDeck.mk .dkdeck .dkq img{width:11px; height:11px;}
+#scrDeck.mk .dkdrawer::after{content:''; position:absolute; left:-2px; right:-2px; bottom:-2px; height:56px; z-index:5; pointer-events:none; background:linear-gradient(180deg,rgba(5,12,20,0),#07121a 14px,#07121a);}
+#scrDeck.mk .dkdeck{height:min(196px,23.3vh);}
+#scrDeck.mk .dkq{flex:1 1 auto; min-width:0;} #scrDeck.mk #dkFilt{flex:0 0 73px;} #scrDeck.mk #dkSort{flex:0 0 70px;}
+#scrDeck.mk .dkempty{border:1px dashed #2c4550; background:#060d1188;}
+#scrDeck.mk:not(.on){display:none!important;} #scrDeck.mk.on{display:flex;}
+@media (orientation:landscape){
+  #scrDeck.mk.on{display:grid; grid-template-columns:1fr 1.1fr; grid-template-rows:auto 1fr; column-gap:10px;}
+  #scrDeck.mk .dktop{grid-column:1; grid-row:1; height:56px;}
+  #scrDeck.mk .dkpanel{grid-column:1; grid-row:2; min-height:0; margin-bottom:0;}
+  #scrDeck.mk .dkdeck{flex:1; height:auto!important;}
+  #scrDeck.mk .dkdrawer{grid-column:2; grid-row:1/3; margin-top:8px;}
+  #scrDeck.mk .dkgrip{left:-14px; right:auto; top:0; bottom:0; width:14px; height:auto;}
+  #scrDeck.mk .dkgrip::before{top:50%; left:2px; width:10px; height:46px; margin:-23px 0 0;} #scrDeck.mk .dkgrip::after{display:none;}
+}
+#scrDeck.mk .dkname{flex:0 1 188px; min-width:0;}
+@media (orientation:landscape){
+  #scrDeck.mk.on{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);}
+  #scrDeck.mk .dkdrawer{min-width:0;}
+  #scrDeck.mk #dkColl{grid-template-columns:repeat(auto-fill,minmax(108px,1fr))!important;}
+}

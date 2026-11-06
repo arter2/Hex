@@ -46,10 +46,10 @@ function dkChange(){ persist(); dkRender(); }
 function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   // header: deck slots (★ is the deck you fight with), name
   const sl=$('#dkSlots'); sl.innerHTML='';
-  save.decks.forEach((x,i)=>{ const b=document.createElement('button'); b.className='dkslot'+(i===DK.slot?' on':'')+(i===save.active?' act':''); b.textContent=(i+1)+(i===save.active?'★':''); b.title=x.name; b.onclick=()=>{ DK.slot=i; dkRender(); }; sl.appendChild(b); });
+  save.decks.forEach((x,i)=>{ const b=document.createElement('button'); b.className='dkslot'+(i===DK.slot?' on':'')+(i===save.active?' act':''); b.innerHTML=(i+1)+(i===save.active?'<i class="st">★</i>':''); b.title=x.name; b.onclick=()=>{ DK.slot=i; dkRender(); }; sl.appendChild(b); });
   $('#dkName').value=d.name; $('#dkUse').hidden=DK.slot===save.active;
-  const cnt=$('#dkCount'); cnt.innerHTML='▤ '+v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok); cnt.title=v.ok?'Ready':v.errors.join(' · ');
-  $('#dkErr').textContent=v.ok?'':v.errors[0]||'';
+  const cnt=$('#dkCount'); cnt.textContent=v.count+' / '+RULES.max; cnt.classList.toggle('bad',!v.ok); cnt.title=v.ok?'Ready':v.errors.join(' · ');
+  $('#dkErr').textContent=v.ok?'':v.errors[0]||''; $('#dkErr').hidden=v.ok;
   // soul
   if(typeof soulOf==='function'){ const cur=soulOf(d.list,d); $('#dkSoul').innerHTML=soulsOwned().map(h=>`<option value="${h.id}"${h.id===cur?' selected':''}>${COLORS[h.color].icon} ${esc(h.name.split(',')[0])}</option>`).join(''); }
   // the deck: one tile per card with its copies (×N) and its name, then dashed spots to finish the row
@@ -57,7 +57,7 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
   const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
   for(const id of ids){ const c=CARDS[id], k=cardKit(c), el=document.createElement('button'); el.className='dktile kpal c-'+k.kc; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
-    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${COLORS[c.color].icon}</span></span><span class="dkn"><i class="dksp"></i><i class="dksp r"></i><span class="dkt" title="${esc(TYPES[c.type]?TYPES[c.type].name:'')}">${dkGlyph(c.type)}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
+    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${dkEl(c.color)}</span><span class="dkt" title="${esc(TYPES[c.type]?TYPES[c.type].name:'')}">${dkGlyph(c.type)}</span></span><span class="dkn"><span>${esc(c.name)}</span></span><span class="dkq"><img src="menukit/icons/dk-stack.webp" alt="">×${counts[id]}</span>`;
     el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
   const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }
@@ -66,28 +66,61 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const tabs=$('#dkTabs'); tabs.innerHTML=''; const by={}; d.list.forEach(id=>{ const c=CARDS[id]; if(c) by[c.color]=(by[c.color]||0)+1; });
   for(const k of ['all',...FAM_ORDER.filter(k=>by[k]||Object.keys(save.owned).some(id=>CARDS[id]&&CARDS[id].color===k))]){
     const b=document.createElement('button'); b.className='dktab'+(DK.tab===k?' on':''); if(k!=='all') b.style.setProperty('--c',COLORS[k].c);
-    b.innerHTML=k==='all'?'<span>ALL</span><b>'+d.list.length+'</b>':`<span>${COLORS[k].icon} ${COLORS[k].name.toUpperCase()}</span><b>${by[k]||0}</b>`;
+    b.innerHTML=k==='all'?'<span>All</span><b>'+d.list.length+'</b>':`${dkEl(k)}<span>${COLORS[k].name}</span><b>${by[k]||0}</b>`;
     b.onclick=()=>{ DK.tab=k; dkRender(); }; tabs.appendChild(b); }
-  $('#dkSort').textContent='⇅ '+DK_SORTS.find(s=>s[0]===DK.sort)[1];
-  $('#dkMulti').classList.toggle('on',DK.multi); $('#dkMulti').textContent=DK.multi?'✓ Selecting':'☐ Select';
+  $('#dkSort').title='Sorted by '+DK_SORTS.find(s=>s[0]===DK.sort)[1];
+  $('#dkMulti').classList.toggle('on',DK.multi); $('#dkMulti').innerHTML='<i class="dkbox">'+(DK.multi?'✓':'')+'</i>'+(DK.multi?'Selecting':'Select');
+  requestAnimationFrame(dkTabArrow);
   dkLibrary(); dkMultiBar(); }
-// card height follows the zoom's column width (aspect-ratio alone collapses inside a scrolling grid)
+// a color's element icon (menukit/elements), or its emoji for a color without one
+const DK_ELS=['fire','frost','storm','verdant','light','shadow'];
+const dkEl=k=>DK_ELS.includes(k)?`<img class="dkel" src="menukit/elements/${k}.webp" alt="">`:`<i class="dkel">${COLORS[k]?COLORS[k].icon:''}</i>`;
+const dkAll=q=>document.querySelectorAll('#scrDeck '+q);
+// card height follows the column width (aspect-ratio alone collapses inside a scrolling grid)
 const dkCols=()=>[5,4,3][DK.zoom];
 // a tile: 3px frame, the art at the art window's shape (512 x 410), a 3px gap, the name box (two lines), the frame again
 // a name too long for its two lines (around the corner icons) steps its type down until it fits
-function dkFitNames(){ $('#dkDeck').querySelectorAll('.dkn').forEach(n=>{ n.style.fontSize=''; let f=parseFloat(getComputedStyle(n).fontSize);
-  while(n.scrollHeight>n.clientHeight+1&&f>8){ f-=1; n.style.fontSize=f+'px'; } }); }
-function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols, fs=[11,13,15][DK.zoom]; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(3+(w-6)*410/512+3+2*fs+6+3)+'px'; dkFitNames(); }
+function dkFitNames(){ dkAll('.dkn').forEach(n=>{ n.style.fontSize=''; let f=parseFloat(getComputedStyle(n).fontSize);
+  while(n.scrollHeight>n.clientHeight+1&&f>7){ f-=.5; n.style.fontSize=f+'px'; } }); }
+// a kit tile: 2px frame, the art (wider than the card's art window), the name strip, the copies strip
+function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), cs=getComputedStyle(box), gap=parseFloat(cs.columnGap)||6, pad=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight),
+    w=(box.clientWidth-pad-(cols-1)*gap)/cols; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(2+(w-4)*.66+20+19+2)+'px'; dkFitNames(); }
 addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRows(); });
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;
   const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&(DK.tab==='all'||c.color===DK.tab)&&passes(c,f)).sort(SORTS[DK.sort]);
-  paged($('#dkColl'),items,c=>{ const n=dkCount(d,c.id), mx=dkMax(c), el=cardEl(c,
-      chargeMark(c)+(n?`<span class="dkfrac"><b>${n}</b><i>/</i><b>${mx}</b></span><span class="dkminus" title="Remove one">−</span>`:'')+`<span class="dkown">${save.owned[c.id]}</span>`+(DK.multi?`<span class="dkcheck">${DK.sel.has(c.id)?'✓':''}</span>`:''));
+  paged($('#dkColl'),items,c=>{ const n=dkCount(d,c.id), mx=dkMax(c), el=dkLibTile(c,n,mx);
     if(n) el.classList.add('indeck'); if(n>=mx) el.classList.add('full'); if(DK.multi&&DK.sel.has(c.id)) el.classList.add('dksel');
-    const minus=el.querySelector('.dkminus'); if(minus) minus.addEventListener('click',e=>{ e.stopPropagation(); dkRemove(c); dkChange(); });
+    const minus=el.querySelector('.dkminus'); minus.addEventListener('pointerdown',e=>e.stopPropagation());
+    minus.addEventListener('click',e=>{ e.stopPropagation(); if(dkRemove(c)) dkChange(); });
     dkHold(el,c,()=>{ if(DK.multi){ DK.sel.has(c.id)?DK.sel.delete(c.id):DK.sel.add(c.id); dkRender(); } else if(dkAdd(c)) dkChange(); });
     return el; },120);
+  dkFitNames();
 }
+// a library tile (menu kit 14): the art with its element, rune and rank, the name, then
+// copies owned | in this deck / most it can hold, and a minus to take one out
+function dkLibTile(c,n,mx){ const k=cardKit(c), el=document.createElement('div'), hero=c.rarity==='hero';
+  el.className='dktile dklib kpal c-'+k.kc; el.setAttribute('role','button'); el.tabIndex=0; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
+  el.title=c.name+' (tap to add, hold to read)';
+  el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${dkEl(c.color)}</span><span class="dkbadges">`
+    +(hero?'<b class="dkrune hero" title="Hero">★</b>':c.code?`<b class="dkrune${c.code===WILD?' wild':''}" title="Rune ${c.code}">${c.code}</b>`:'')
+    +`<b class="dkrank" title="Rank ${c.rank}">${c.rank}</b></span>${DK.multi?`<span class="dkcheck">${DK.sel.has(c.id)?'✓':''}</span>`:''}</span>`
+    +`<span class="dkn"><span>${esc(c.name)}</span></span>`
+    +`<span class="dkq"><span class="dkown" title="You own ${save.owned[c.id]||0}"><img src="menukit/icons/dk-stack.webp" alt="">×${save.owned[c.id]||0}</span><i class="dkdiv"></i>`
+    +`<span class="dkfrac" title="${n} in this deck, at most ${mx}">${n}/${mx}</span><button class="dkminus" aria-label="Take one out"${n?'':' disabled'}></button></span>`;
+  el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); } });
+  return el; }
+// the color chips scroll sideways; the arrow at their end shows while more are hidden past it
+function dkTabArrow(){ const t=$('#dkTabs'), m=$('#dkTabMore'); if(!t||!m) return; m.hidden=t.scrollWidth-t.clientWidth-t.scrollLeft<4; }
+$('#dkTabs').addEventListener('scroll',dkTabArrow,{passive:true});
+$('#dkTabMore').onclick=()=>{ const t=$('#dkTabs'); t.scrollBy({left:t.clientWidth*.7,behavior:'smooth'}); };
+// the More and Sort menus: one open at a time, closed by a tap anywhere else
+function dkMenusShut(){ dkAll('.dkmenu').forEach(m=>m.hidden=true); dkAll('.dkdrop').forEach(b=>{ b.classList.remove('on'); b.setAttribute('aria-expanded','false'); }); }
+function dkMenu(btn,menu){ const open=menu.hidden; dkMenusShut(); menu.hidden=!open; btn.classList.toggle('on',open); btn.setAttribute('aria-expanded',String(open)); }
+$('#dkMore').onclick=e=>{ e.stopPropagation(); dkMenu(e.currentTarget,$('#dkMenu')); };
+$('#dkSort').onclick=e=>{ e.stopPropagation(); const m=$('#dkSortMenu');
+  m.innerHTML=DK_SORTS.map(([k,n])=>`<button data-k="${k}" class="${k===DK.sort?'on':''}">${n}</button>`).join('');
+  m.querySelectorAll('button').forEach(b=>b.onclick=()=>{ DK.sort=b.dataset.k; dkMenusShut(); dkRender(); }); dkMenu(e.currentTarget,m); };
+document.addEventListener('pointerdown',e=>{ if(!e.target.closest('#scrDeck .dkmenu,#scrDeck .dkdrop')) dkMenusShut(); });
 function dkMultiBar(){ const bar=$('#dkMultiBar'); bar.hidden=!DK.multi; $('#dkOK').hidden=DK.multi; if(!DK.multi) return;
   $('#dkSelN').textContent=DK.sel.size+' selected'; $('#dkSelAdd').disabled=$('#dkSelNew').disabled=!DK.sel.size; }
 // tap does the card's action; hold opens the big preview (the tap that ends a hold does nothing)
@@ -110,14 +143,13 @@ $('#dkpPlus').onclick=()=>{ if(DK.peek&&dkAdd(DK.peek)){ dkChange(); dkPeek(DK.p
 $('#dkpMinus').onclick=()=>{ if(DK.peek&&dkRemove(DK.peek)){ dkChange(); dkPeek(DK.peek); } };
 $('#dkpAddOther').onclick=()=>{ const i=+$('#dkpOther').value, d=save.decks[i]; if(!d||!DK.peek) return; if(dkAdd(DK.peek,d)){ persist(); tip('Added to '+d.name); dkPeek(DK.peek); } };
 // toolbar
-$('#dkClear').onclick=e=>{ if(!dkDeck().list.length) return; armed(e.currentTarget,'Tap again to empty it',()=>{ dkDeck().list=[]; dkChange(); }); };
+$('#dkClear').onclick=e=>{ if(!dkDeck().list.length) return; armed(e.currentTarget,'Tap again to empty it',()=>{ dkDeck().list=[]; dkMenusShut(); dkChange(); }); };
 $('#dkAuto').onclick=()=>{ const d=dkDeck(); d.list=autoFill(d.list,save.owned); dkChange(); };
 $('#dkName').oninput=e=>{ dkDeck().name=e.target.value||'Deck '+(DK.slot+1); persist(); };
 $('#dkUse').onclick=()=>{ save.active=DK.slot; persist(); dkRender(); tip(dkDeck().name+' is now your deck'); };
 $('#dkSoul').onchange=e=>{ dkDeck().soul=e.target.value; persist(); };
 $('#dkQ').oninput=e=>{ DK.filt.q=e.target.value; dkLibrary(); };
 $('#dkFilt').onclick=()=>{ const f=$('#dkFilters'); f.hidden=!f.hidden; $('#dkFilt').classList.toggle('on',!f.hidden); };
-$('#dkSort').onclick=()=>{ const i=DK_SORTS.findIndex(s=>s[0]===DK.sort); DK.sort=DK_SORTS[(i+1)%DK_SORTS.length][0]; dkRender(); };
 $('#dkMulti').onclick=()=>{ DK.multi=!DK.multi; DK.sel.clear(); dkRender(); };
 $('#dkSelAdd').onclick=()=>{ let n=0; for(const id of DK.sel) if(dkAdd(CARDS[id],null,true)) n++; tip(n+' card'+(n===1?'':'s')+' added'+(n<DK.sel.size?' (the rest were at their limit)':'')); DK.multi=false; DK.sel.clear(); dkChange(); };
 $('#dkSelNew').onclick=()=>{ const i=save.decks.findIndex(x=>!x.list.length); if(i<0) return tip('Every deck slot holds a deck. Empty one first (Remove All).');
@@ -137,7 +169,7 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
    Hold the grip still for a moment, then slide sideways to make the library's cards bigger (right)
    or smaller (left), as on the Spell screen's hand. Both are remembered in this browser. */
 (function(){ const grip=$('#dkGrip'), deck=$('#dkDeck'), scr=$('#scrDeck'), KEY='hexmancers-dkh';
-  const def=()=>Math.round(innerHeight*.34);
+  const def=()=>Math.round(innerHeight*.24);
   // the deck can shrink to nothing or grow until the drawer keeps just its bar and color tabs
   const maxH=()=>{ const top=deck.getBoundingClientRect().top-scr.getBoundingClientRect().top; return Math.max(0,scr.clientHeight-top-150); };
   const set=h=>{ h=Math.round(Math.max(0,Math.min(maxH(),h))); deck.style.height=h+'px'; deck.style.maxHeight='none'; deck.style.minHeight='0'; deck.style.paddingBlock=h<20?'0':''; return h; };

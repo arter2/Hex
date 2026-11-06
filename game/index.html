@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v257</title>
-<meta name="application-version" content="257">
+<title>Hexmancers v258</title>
+<meta name="application-version" content="258">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -251,18 +251,27 @@
 
   <!-- deck builder (deckui.js) -->
   <section id="scrDeck" class="screen dkscr mk">
-    <div class="dkhead"><button id="dkBack" class="backbtn" aria-label="Back"></button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
-    <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button></div>
-    <div id="dkDeck" class="dkdeck"></div>
+    <div class="dktop"><button id="dkBack" class="backbtn" aria-label="Back"></button><h2>Deck builder</h2></div>
+    <div class="dkpanel">
+      <div class="dkhead"><label class="dkname"><input id="dkName" maxlength="24" aria-label="Deck name"><img src="menukit/icons/edit.webp" alt=""></label><i class="dksep"></i><span id="dkCount" class="dkcount"></span></div>
+      <div id="dkSlots" class="dkslots"></div>
+      <div class="mkrule"></div>
+      <p id="dkErr" class="dkerr"></p>
+      <div class="dktools"><button id="dkAuto" class="dkpill"><img class="mki" src="menukit/icons/dk-wand.webp" alt="">Auto-build</button><button id="dkUse" class="dkpill">Use ★</button><button id="dkMore" class="dkpill dkdrop" aria-haspopup="true">More</button>
+        <div id="dkMenu" class="dkmenu" hidden><button id="dkClear" class="red">Remove all cards</button></div></div>
+      <div class="mkrule"></div>
+      <div id="dkDeck" class="dkdeck"></div>
+    </div>
     <div class="dkdrawer">
       <div id="dkGrip" class="dkgrip" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the library"></div>
-      <div class="dkbar"><span id="dkCount" class="dkcount"></span><span id="dkErr" class="dkerr"></span><label class="dksoul" hidden>♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill">☐ Select</button></div>
-      <div id="dkTabs" class="dktabs"></div>
-      <div class="dksearch"><input id="dkQ" placeholder="🔍 Search"><button id="dkFilt" class="dkpill">⚙ Filters</button><button id="dkSort" class="dkpill">⇅ Color</button></div>
+      <div class="dkbar"><h3><img src="menukit/icons/dk-library.webp" alt="">Card library</h3><label class="dksoul" hidden>♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill"><i class="dkbox"></i>Select</button></div>
+      <div class="dktabwrap"><div id="dkTabs" class="dktabs"></div><button id="dkTabMore" class="dkpill dktabmore" aria-label="More colors"></button></div>
+      <div class="dksearch"><label class="dkq"><input id="dkQ" placeholder="Search" aria-label="Search"></label><button id="dkFilt" class="dkpill"><img class="mki" src="menukit/icons/dk-gear.webp" alt="">Filters</button><button id="dkSort" class="dkpill dkdrop"><img class="mki" src="menukit/icons/dk-sort.webp" alt="">Sort</button>
+        <div id="dkSortMenu" class="dkmenu dksortmenu" hidden></div></div>
       <div id="dkFilters" class="filters" hidden></div>
       <div id="dkColl" class="dkcoll"></div>
       <div id="dkMultiBar" class="dkmultibar" hidden><span id="dkSelN"></span><button id="dkSelAdd" class="btn">Add to deck</button><button id="dkSelNew" class="btn ghost">New deck</button></div>
-      <button id="dkOK" class="dkok">Done</button>
+      <button id="dkOK" class="dkok"><img class="mki" src="menukit/icons/dk-check.webp" alt="">Done</button>
     </div>
   </section>
   <!-- collection -->

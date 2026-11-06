@@ -328,3 +328,60 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrShop.mk .ware{min-height:0; padding:6px 4px 6px; gap:2px;}
 #scrShop.mk .ware .wpic{height:76px; align-items:center;}
 #scrShop.mk .ware .wpic canvas{height:100%; width:auto;}
+
+/* a rule with a crystal in its middle and hollow diamonds at its ends */
+.mk .mkrule{height:14px; margin:0 40px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") left center/8px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") right center/8px no-repeat,
+  linear-gradient(#8e9d9b88,#8e9d9b88) center/calc(100% - 16px) 1px no-repeat;}
+.mk .mkrule.gem{background:url(menukit/diamond.svg) center/14px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") left center/8px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") right center/8px no-repeat,
+  linear-gradient(#8e9d9b88,#8e9d9b88) center/calc(100% - 16px) 1px no-repeat;}
+
+/* ---------- Bounty board (kit screen 21): measured from the picture ---------- */
+#scrBounty.mk>.bar{margin:6px 2px 6px;}
+#scrBounty.mk>.bar::after{display:none;}
+#scrBounty.mk>.bar>.backbtn+*{border-left:0; padding-left:4px;}
+#scrBounty.mk .bhero{display:grid; justify-items:center; margin:0 0 8px;}
+#scrBounty.mk .bhero img{width:274px; height:auto; display:block; margin:0 auto -4px;}
+#scrBounty.mk .bhero .mkrule{width:calc(100% - 64px); margin:0;}
+#scrBounty.mk .bhint{margin:4px 0 0; text-align:center; color:#e9e4d6; font-size:13px;}
+#scrBounty.mk .bountylist{padding:0 2px; gap:12px;}
+#scrBounty.mk .bounty{position:relative; display:block; padding:6px 8px 8px 16px;}
+#scrBounty.mk .bounty::before{content:''; position:absolute; left:2px; top:2px; bottom:2px; width:5px; background:var(--c);}
+#scrBounty.mk .bounty .btext{font:400 14.6px/1.22 var(--font-b); color:var(--mk-text); margin:0 0 9px;}
+#scrBounty.mk .bounty .bprog{height:17px; border:1px solid #7d8b8f; border-radius:9px; background:#02070b; clip-path:none; margin:0 0 6px;}
+#scrBounty.mk .bounty .bprog span{font:400 11.5px/15px var(--font-b); color:var(--mk-text);}
+#scrBounty.mk .bounty .bprog i{background:var(--c); opacity:.6;}
+#scrBounty.mk .bcheck{margin:2px 0 6px; font:400 12.3px/1.25 var(--font-b);} #scrBounty.mk .bcheck.no{color:#f0a35e;} #scrBounty.mk .bcheck.ok{color:var(--mk-mint);}
+#scrBounty.mk .breward{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 2px;}
+#scrBounty.mk .bchip{height:25px; box-sizing:border-box; display:inline-flex; align-items:center; gap:6px; padding:0 11px 0 7px; border:1px solid #6d7b80; border-radius:13px;
+  background:#040a0f; font:400 12.6px/1 var(--font-b); color:var(--mk-text);}
+#scrBounty.mk .bchip .ui-ico,#scrBounty.mk .bchip svg,#scrBounty.mk .bchip img:not(.bpk){width:15px; height:15px;}
+#scrBounty.mk .bchip.pack{position:relative; padding-left:30px; border-color:var(--c); color:var(--c);}
+#scrBounty.mk .bchip .bpk{position:absolute; left:4px; top:-4px; width:20px; height:28px; transform:rotate(-8deg); image-rendering:pixelated; filter:drop-shadow(1px 1px 0 #000);}
+#scrBounty.mk .bbtns:empty{display:none;}
+#scrBounty.mk .bbtns .btn{width:100%; min-height:44px; margin:14px 0 2px; font-size:16.5px; gap:14px;
+  background:linear-gradient(180deg,#3a4950,#232d33); background-origin:border-box;}
+#scrBounty.mk .bbi{display:inline-flex; color:var(--c);} #scrBounty.mk .bbi .hex-icon{width:28px; height:28px; stroke-width:1.4;}
+#scrBounty.mk .bounty::before{left:-5px; top:-5px; bottom:-5px; width:5px;}
+#scrBounty.mk .bounty{padding:4px 10px 6px 14px;}
+#scrBounty.mk .bounty .btext{font-size:18px; line-height:1.18; letter-spacing:.02em; margin:0 0 10px;}
+#scrBounty.mk .bounty .bprog{height:18px;} #scrBounty.mk .bounty .bprog span{font-size:13px; line-height:16px;}
+#scrBounty.mk .bcheck{font-size:14px; letter-spacing:.02em; margin:6px 0 0;}
+#scrBounty.mk .breward{margin:10px 0 2px;}
+#scrBounty.mk .bchip{font-size:13.5px; height:26px; letter-spacing:.02em;}
+#scrBounty.mk .bhint{font-size:14px; letter-spacing:.04em;}
+#scrBounty.mk>.bar h2{font-size:20px; letter-spacing:.02em;}
+#scrBounty.mk .bbtns .btn{flex-direction:row; justify-content:flex-start; padding-left:22px; font-size:17.5px; letter-spacing:.02em; margin-top:12px;}
+#scrBounty.mk .bbi{position:relative; width:46px; height:34px; flex:none;}
+#scrBounty.mk .bbi i{position:absolute; top:3px; width:19px; height:27px; box-sizing:border-box; border:2px solid #c8d0ce; background:linear-gradient(#6c777c,#4b555a); border-radius:2px; box-shadow:1px 1px 0 #000;}
+#scrBounty.mk .bbi i:nth-child(1){left:2px; transform:rotate(-14deg);}
+#scrBounty.mk .bbi i:nth-child(2){left:11px; transform:rotate(-4deg);}
+#scrBounty.mk .bbi i:nth-child(3){left:21px; transform:rotate(7deg); background:#20282d; display:flex; align-items:center; justify-content:center; color:var(--c);}
+#scrBounty.mk .bbi .hex-icon{width:13px; height:13px; stroke-width:2.2;}
+#scrBounty.mk .bounty::before{left:-4px; top:-4px; bottom:-4px;}
+#scrBounty.mk .bchip .bpk{position:absolute; left:5px; top:-3px; width:17px; height:25px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;
+  border:1.5px solid var(--c); border-radius:2px; background:linear-gradient(#2c2440,#16121f); color:var(--c); transform:rotate(-9deg); box-shadow:1px 1px 0 #000; filter:none;}
+#scrBounty.mk .bchip .bpk .hex-icon{width:11px; height:11px; stroke-width:2.4;}
+#scrBounty.mk .bchip .bpk{background:linear-gradient(color-mix(in srgb,var(--c) 85%,#fff),color-mix(in srgb,var(--c) 70%,#000)); border-color:#1a1206; color:#1a1206;}
+#scrBounty.mk .bchip .ui-ico,#scrBounty.mk .bchip img:not(.bpk){width:18px; height:18px;}

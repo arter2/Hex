@@ -834,3 +834,5 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrStart.mk .cc>.bar>.backbtn{width:36px; height:28px;} #scrStart.mk .cc>.bar>.backbtn::before{width:17px; height:17px; margin:-8.5px 0 0 -8.5px;}
 /* the hero card's painting: the forest cave, the hexmancer and text over its dark left side */
 #scrStart.mk .sthero{background:linear-gradient(90deg,rgba(6,14,20,.55),rgba(6,14,20,.15) 55%,transparent),url(art/menu/start-forest.webp) right center/cover no-repeat; background-origin:padding-box; background-clip:padding-box;}
+/* the whole width of the forest (trees and cave), the band around the cave mouth */
+#scrStart.mk .sthero{background:linear-gradient(90deg,rgba(6,14,20,.4),rgba(6,14,20,.15) 40%,transparent 60%),url(art/menu/start-forest.webp) right 0 top 45%/76% auto no-repeat,#071017; background-origin:padding-box; background-clip:padding-box;}

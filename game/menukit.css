@@ -702,3 +702,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrNewChar.mk .mkfoot{grid-template-columns:111px 119px 104px; gap:9px; margin:10px 0 0 9px;}
 #scrNewChar.mk .mkfoot .btn{height:42px; min-height:42px; border-width:7px; border-image-width:7px;}
 #scrNewChar.mk .mkfoot .btn{border-image-width:8px;} #scrNewChar.mk .mkfoot{margin-top:8px;}
+/* the kit's corner cuts are small: ~2 units on plain pieces, ~5 on studded ones */
+.mk .btn,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .slman,.mk .slplus,
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,
+#scrNewChar.mk .cc>.bar>.backbtn,#scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccrace{border-image-slice:5 fill; border-image-width:5px;}
+#scrNewChar.mk .cc>.bar,#scrNewChar.mk .ccinfo .ccplaque,#scrNewChar.mk .ccstats{border-image-width:8px;}

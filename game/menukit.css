@@ -1088,3 +1088,4 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrDeck.mk #dkColl[style*="--cardw"]>.dklib{height:calc(var(--cardw) * .6 + 50px);}
 #scrDeck.mk .dklib .dkq{container-type:inline-size;}
 @container (max-width:96px){ #scrDeck.mk .dklib .dkown,#scrDeck.mk .dklib .dkdiv{display:none;} #scrDeck.mk .dklib .dkq{justify-content:space-around;} }
+#scrDeck.mk .dkslot{padding:1px 0 0;}

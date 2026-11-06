@@ -1072,3 +1072,19 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
   #scrDeck.mk .dkdrawer{min-width:0;}
   #scrDeck.mk #dkColl{grid-template-columns:repeat(auto-fill,minmax(108px,1fr))!important;}
 }
+/* v259: header, slot boxes, minus, scroll lines, grip */
+#scrDeck.mk .dktop{align-items:flex-start;}
+#scrDeck.mk .dktop>.backbtn{top:29px; height:24px;}
+#scrDeck.mk .dktop h2{margin-top:28px;}
+#scrDeck.mk .dktop h2::after{display:none;}
+#scrDeck.mk .dkslots{margin-top:8px;}
+#scrDeck.mk .dkslot{height:27px; font-size:18px; line-height:1; padding:0 0 3px; display:flex; align-items:center; justify-content:center;}
+#scrDeck.mk .dkminus{box-shadow:inset 0 0 0 1px rgba(63,196,220,.75); background:#0b222a;}
+#scrDeck.mk .dkminus::before{width:7px; height:1px; background:#d8f3f8;}
+#scrDeck.mk .dksb{position:absolute; z-index:4; width:3px; background:#3fc4dc; box-shadow:0 0 4px rgba(63,196,220,.6); opacity:0; transition:opacity .35s; pointer-events:none;}
+#scrDeck.mk .dksb.on{opacity:1; transition:opacity .1s;}
+#scrDeck.mk .dkdeck,#scrDeck.mk #dkColl{scrollbar-width:none;} #scrDeck.mk .dkdeck::-webkit-scrollbar,#scrDeck.mk #dkColl::-webkit-scrollbar{display:none;}
+#scrDeck.mk .dkgrip::after{top:10px; height:0; border-bottom:0;}
+#scrDeck.mk #dkColl[style*="--cardw"]>.dklib{height:calc(var(--cardw) * .6 + 50px);}
+#scrDeck.mk .dklib .dkq{container-type:inline-size;}
+@container (max-width:96px){ #scrDeck.mk .dklib .dkown,#scrDeck.mk .dklib .dkdiv{display:none;} #scrDeck.mk .dklib .dkq{justify-content:space-around;} }

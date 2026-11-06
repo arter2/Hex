@@ -201,7 +201,7 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
     if(drag.size){ if(Math.abs(x-drag.x0)>4) drag.moved=true; setC(drag.c0+(x-drag.x0)*.6); return; }
     const d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4){ drag.moved=true; clearTimeout(drag.timer); } if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
   const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; clearTimeout(d.timer); grip.classList.remove('on','sizing'); scr.classList.remove('gripping');
-    if(d.size){ const v=parseFloat(lib.style.getPropertyValue('--cardw')); if(v) try{ localStorage.setItem(CKEY,String(v)); }catch(_){} return; }
+    if(d.size){ const v=parseFloat(lib.style.getPropertyValue('--cardw')); if(v) try{ localStorage.setItem(CKEY,String(v)); }catch(_){} dkFitNames(); return; }
     if(d.w){ if(d.moved) keepW(setW(parseFloat(getComputedStyle(scr).gridTemplateColumns)));
       else if(e.type==='pointerup') keepW(setW(d.s0>wDef()*.8?wMin():wDef()));   // a tap: a wide library, or the usual split
       return; }
@@ -209,3 +209,11 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
     else if(e.type==='pointerup'){ deck.style.transition='height .2s'; keep(set(d.s0>def()/2?0:def())); setTimeout(()=>deck.style.transition='',250); } };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end);
 })();
+
+/* scroll lines (menu kit 14): a thin cyan thumb beside the deck grid and the library that shows while
+   they move (phones hide their own scrollbars), then fades */
+(function(){ for(const id of ['dkDeck','dkColl']){ const box=$('#'+id), bar=document.createElement('i'); bar.className='dksb'; box.parentNode.appendChild(bar); let t=0;
+  const place=()=>{ const h=box.clientHeight, sh=box.scrollHeight; if(sh<=h+2||!h){ bar.classList.remove('on'); return false; }
+    const th=Math.max(24,h*h/sh), y=box.offsetTop+(h-th)*box.scrollTop/(sh-h);
+    bar.style.cssText=`top:${y}px; height:${th}px; left:${box.offsetLeft+box.offsetWidth-3}px`; return true; };
+  box.addEventListener('scroll',()=>{ if(!place()) return; bar.classList.add('on'); clearTimeout(t); t=setTimeout(()=>bar.classList.remove('on'),900); },{passive:true}); } })();

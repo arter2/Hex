@@ -707,3 +707,9 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,
 #scrNewChar.mk .cc>.bar>.backbtn,#scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccrace{border-image-slice:5 fill; border-image-width:5px;}
 #scrNewChar.mk .cc>.bar,#scrNewChar.mk .ccinfo .ccplaque,#scrNewChar.mk .ccstats{border-image-width:8px;}
+/* more room for the hexmancer: the top block 16 taller, the sprite larger, Man / Woman 30 high */
+#scrNewChar.mk .cctop{height:112px; margin-top:6px;}
+#scrNewChar.mk #ccSprite{width:132px; height:132px; margin:-8px 0 0 30px;}
+#scrNewChar.mk .ccinfo{padding-top:8px;}
+#scrNewChar.mk .ccinfo .ccbody{margin-top:8px;}
+#scrNewChar.mk .ccinfo .ccbody .chip{height:30px; min-height:30px; font-size:13px;}

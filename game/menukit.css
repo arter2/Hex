@@ -836,3 +836,68 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrStart.mk .sthero{background:linear-gradient(90deg,rgba(6,14,20,.55),rgba(6,14,20,.15) 55%,transparent),url(art/menu/start-forest.webp) right center/cover no-repeat; background-origin:padding-box; background-clip:padding-box;}
 /* the whole width of the forest (trees and cave), the band around the cave mouth */
 #scrStart.mk .sthero{background:linear-gradient(90deg,rgba(6,14,20,.4),rgba(6,14,20,.15) 40%,transparent 60%),url(art/menu/start-forest.webp) right 0 top 40%/66% auto no-repeat,#071017; background-origin:padding-box; background-clip:padding-box;}
+
+/* ---------- Settings (kit screen 11) ---------- */
+#settings.mk{padding:0; align-items:stretch; justify-content:center;
+  background:linear-gradient(rgba(2,6,14,.3),rgba(2,6,14,.3)),url(art/menu/bg-elements.webp) center top/100% auto no-repeat,url(art/menu/brick.webp) 0 0/300px repeat,#06102a;}
+#settings.mk>.panel.settings{max-width:560px; width:100%; max-height:none; height:100%; box-sizing:border-box; overflow-y:auto; margin:0 auto; padding:38px 10px 16px;
+  border:0; border-image:none; background:none; clip-path:none!important;}
+#settings.mk>.panel.settings>.winx{display:none;}
+#settings.mk .panel.settings>.bar{height:52px; min-height:52px; margin:0 0 0 4px; padding:0 12px 0 6px; gap:0; position:relative;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:none;}
+#settings.mk .panel.settings>.bar::after{content:''; position:absolute; top:-16px; left:50%; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat;}
+#settings.mk #setBack{width:38px; height:32px; min-width:38px; min-height:32px; border:5px solid transparent; border-image:url(menukit/rim-small-cyan.svg) 5 fill / 5px / 0 stretch; background:linear-gradient(#123447,#0a2131); clip-path:none;}
+#settings.mk #setBack::before{width:18px; height:18px; margin:-9px 0 0 -9px; background:var(--mk-cyan); -webkit-mask:url(menukit/arrow-left.svg) center/contain no-repeat; mask:url(menukit/arrow-left.svg) center/contain no-repeat;}
+#settings.mk .panel.settings>.bar h2{font-size:19px; letter-spacing:.04em; margin-left:14px;}
+/* tabs: 86 x 30, 8 apart */
+#settings.mk .settabs{display:grid; grid-template-columns:1fr .85fr .95fr 1fr; gap:7px; margin:16px 0 0 4px;}
+#settings.mk .settab{height:31px; min-height:31px; padding:0 2px; font-size:13.5px; letter-spacing:.03em; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:linear-gradient(#0d1a21,#060d12);}
+#settings.mk .settab.on{border-image-source:url(menukit/rim-small-cyan.svg); background:linear-gradient(#184453,#0b2a35);}
+/* the pane: one studded panel, rows split by the kit divider */
+#settings.mk .setpanes{margin:16px 0 0 4px; padding:6px 12px 8px; border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch;}
+#settings.mk .srow{grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; min-height:52px; padding:12px 0 12px; border-bottom:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%237b9aab' stroke-width='1'/%3E%3C/svg%3E") left bottom/8px 8px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%237b9aab' stroke-width='1'/%3E%3C/svg%3E") right bottom/8px 8px no-repeat,linear-gradient(#7b9aab,#7b9aab) 8px calc(100% - 3.5px)/calc(100% - 16px) 1px no-repeat;}
+#settings.mk .srow>span{font:400 16px/1.15 var(--font-b); letter-spacing:.04em; color:var(--mk-text); gap:4px;}
+#settings.mk .srow small{font:400 11.5px/1.25 var(--font-b); letter-spacing:.04em; color:var(--mk-muted);}
+/* a cycling value: a field with a down arrow; on/off: a switch */
+#settings.mk .srow .btn{min-width:0; min-height:0;}
+#settings.mk .srow .btn.sfield{width:132px; height:30px; padding:0 26px 0 8px; font-size:13.5px; letter-spacing:.03em; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch;
+  background:linear-gradient(#0d1a21,#060d12); position:relative; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block; line-height:20px; text-align:center;}
+#settings.mk .srow .btn.sfield::after{content:''; position:absolute; right:4px; top:50%; margin-top:-3px; border:6px solid transparent; border-top:7px solid var(--mk-text); border-bottom:0;}
+#settings.mk .srow .btn.sswitch{width:46px; height:26px; min-height:26px; padding:0; font-size:0; border:0; border-image:none; border-radius:13px; clip-path:none;
+  background:#1d2a31; box-shadow:inset 0 0 0 1.5px #4f6068; position:relative;}
+#settings.mk .srow .btn.sswitch::after{content:''; position:absolute; left:3px; top:3px; width:20px; height:20px; border-radius:50%; background:#d9d3c2; box-shadow:0 1px 2px #000; transition:left .12s;}
+#settings.mk .srow .btn.sswitch.son{background:#2ddc9a; box-shadow:inset 0 0 0 1.5px #8ff3cb;}
+#settings.mk .srow .btn.sswitch.son::after{left:23px;}
+#settings.mk .srow .btn.danger,#settings.mk #setSlots{width:132px; height:30px; padding:0 8px; font-size:13.5px; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:linear-gradient(#0d1a21,#060d12);}
+/* the preview: a card picture, a divider, the sample text and a sample button */
+#settings.mk .setpreview{display:grid; grid-template-columns:86px 1fr; gap:0; margin:14px 0 6px; padding:8px; border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch;}
+#settings.mk .setpreview .spic{display:flex; align-items:center; justify-content:center; border-right:1px solid #8e9d9b66; margin-right:12px;}
+#settings.mk .setpreview .spic img{width:54px; height:62px; object-fit:contain; padding:6px; border:2px solid #8f6fc4; border-radius:3px; background:radial-gradient(#3a2a55,#140c22); box-shadow:0 0 0 1px #000;}
+#settings.mk .setpreview .stxt{display:flex; flex-direction:column; gap:4px; align-items:flex-start;}
+#settings.mk .setpreview b{font:400 17px var(--font-b); letter-spacing:.04em; color:var(--mk-text); font-weight:400;}
+#settings.mk .setpreview small{font:400 12.5px/1.3 var(--font-b); letter-spacing:.04em; color:var(--mk-muted);}
+#settings.mk .setpreview .sbtn{display:flex; align-items:center; gap:14px; margin-top:4px; width:100%; height:32px; min-height:32px; box-sizing:border-box; padding:0 12px; font-size:14px; pointer-events:none;
+  border-width:7px; border-image:url(menukit/rim-panel.svg) 12 fill / 7px / 0 stretch; background:none;}
+#settings.mk .setpreview .sbtn img{width:20px; height:20px;}
+/* keyboard controls fold */
+#settings.mk #setKbd{margin-top:8px;} #settings.mk #setKbd summary h3{font-size:16px;}
+/* Done: full width, studded */
+#settings.mk #setClose{display:flex; width:calc(100% - 4px); margin:16px 0 0 4px; height:44px; min-height:44px; font-size:18px; letter-spacing:.04em;
+  border-width:8px; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:none;}
+#settings.mk .srow .shid{display:none;}
+#settings.mk .sseg{display:flex;}
+#settings.mk .sseg .btn{height:30px; min-height:30px; min-width:0; padding:0 10px; font-size:13.5px; letter-spacing:.03em; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:linear-gradient(#0d1a21,#060d12);}
+#settings.mk .sseg .btn.on{border-image-source:url(menukit/rim-small-cyan.svg); background:linear-gradient(#184453,#0b2a35);}
+#settings.mk .srow{padding:10px 0 12px; min-height:0;}
+#settings.mk .setpreview .sbtn{flex-direction:row; justify-content:center;}
+/* Done stays on screen at the foot, on a dark band */
+#settings.mk #setClose{position:sticky; bottom:0; z-index:5;}
+#settings.mk>.panel.settings{padding-bottom:0;}
+#settings.mk .setpanes{margin-bottom:0;}
+#settings.mk .setfoot{position:sticky; bottom:0; z-index:5; margin:0 -10px; padding:12px 10px 14px; background:linear-gradient(180deg,rgba(3,8,14,.7),#050c14 14px,#03080e); border-top:1px solid #7b9aab55;}
+#settings.mk .setfoot #setClose{position:static; margin:0; width:100%;}
+#settings.mk>.panel.settings{display:flex; flex-direction:column;}
+#settings.mk>.panel.settings>*{flex:none;}
+#settings.mk .setfoot{margin-top:auto;}
+#settings.mk .setpanes{margin-bottom:14px;}

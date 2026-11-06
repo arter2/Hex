@@ -713,3 +713,21 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrNewChar.mk .ccinfo{padding-top:8px;}
 #scrNewChar.mk .ccinfo .ccbody{margin-top:8px;}
 #scrNewChar.mk .ccinfo .ccbody .chip{height:30px; min-height:30px; font-size:13px;}
+/* the hexmancer centred on its painted pixels in the space left of the plaque */
+#scrNewChar.mk .cctop{grid-template-columns:172px 176px; height:122px;}
+#scrNewChar.mk #ccSprite{width:122px; height:122px; margin:0 auto; display:block; justify-self:center;}
+/* Man / Woman 36 high */
+#scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccinfo .ccbody .chip[data-body]{height:36px!important; min-height:36px!important; font-size:13.5px;}
+/* race tiles: the sprite above, the name below it, never overlapping; 6 of breathing room inside */
+#scrNewChar.mk .ccraces{gap:8px 9px; margin-top:12px;}
+#scrNewChar.mk .ccrace{height:62px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:2px; padding:3px 4px 4px;}
+#scrNewChar.mk .ccrace canvas{position:static; margin:0; width:38px; height:38px; flex:none;}
+#scrNewChar.mk .ccrace span{position:static; background:none; padding:0; line-height:1; font-size:11px; white-space:nowrap;}
+/* gutters: the tagline and plaque inset from the column edges, the hint and points lines with air around them */
+#scrNewChar.mk .ccinfo{padding:4px 6px 0 2px;}
+#scrNewChar.mk>.cc>.mkrule{margin-top:12px;}
+#scrNewChar.mk .ccpts{margin-top:2px;}
+#scrNewChar.mk .ccdialhint{margin:4px 0 10px;}
+.mk .cceff{padding-left:2px;}
+#scrNewChar.mk .ccrace{padding:3px 2px 3px; overflow:visible;} #scrNewChar.mk .ccrace span{line-height:1.2; font-size:10.5px; letter-spacing:0;}
+#scrNewChar.mk{background:linear-gradient(rgba(2,6,14,.4),rgba(2,6,14,.4)) local,url(art/menu/bg-stats.webp) center bottom/100% auto no-repeat local,url(art/menu/brick.webp) 0 0/300px repeat local,#06102a;}

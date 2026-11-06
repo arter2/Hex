@@ -275,6 +275,14 @@ function withChar(next){ if(needsChar()) openNewChar(false,'existing',next); els
 function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
   $('#ccStep').textContent=ccMode?'Make your character':'1 of 2'; $('#ccGoT').textContent=ccMode?'Save':'Next';
   if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
+// draw a sprite trimmed to its painted pixels, scaled to fit and centred on its own bounds (optical centre)
+function ccFit(cv,img){ const go=()=>{ const t=document.createElement('canvas'); t.width=img.width; t.height=img.height; const tx=t.getContext('2d'); tx.drawImage(img,0,0);
+    let d; try{ d=tx.getImageData(0,0,t.width,t.height).data; }catch(e){ d=null; }
+    let x0=0,y0=0,x1=t.width,y1=t.height;
+    if(d){ x0=t.width; y0=t.height; x1=0; y1=0; for(let y=0;y<t.height;y++) for(let x=0;x<t.width;x++) if(d[(y*t.width+x)*4+3]>16){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; } x1++; y1++; if(x1<=x0){ x0=y0=0; x1=t.width; y1=t.height; } }
+    const w=x1-x0, h=y1-y0, k=Math.min(cv.width/w,cv.height/h), W=Math.round(w*k), H=Math.round(h*k), x=cv.getContext('2d');
+    x.clearRect(0,0,cv.width,cv.height); x.imageSmoothingEnabled=false; x.drawImage(img,x0,y0,w,h,Math.round((cv.width-W)/2),Math.round((cv.height-H)/2),W,H); };
+  if(img.complete===false) img.addEventListener('load',go,{once:true}); else go(); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
 // the kit's one-line tagline for each race (the full line stays in its tooltip)
 const RACE_SHORT={human:'Even in every stat',elf:'Quick, quiet and frail',dwarf:'Tough, wise, slow casting',warlock:'Silver-tongued casters',necro:'Strongest, fastest casters',shaman:'Hardy and wise',ranger:'Fast, quiet, sharp-eyed',orc:'Big hits, lots of HP'};
@@ -283,11 +291,11 @@ function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
   document.querySelectorAll('#scrNewChar [data-body]').forEach(b=>{ b.classList.toggle('on',+b.dataset.body===ch.body); b.onclick=()=>{ const spent=ch.spent; ccChar=newChar(ch.race,+b.dataset.body); ccChar.spent=spent; renderNewChar(); }; });
   // the hexmancer, big
   const cv=$('#ccSprite'), x=cv.getContext('2d'); x.clearRect(0,0,192,192); x.imageSmoothingEnabled=false; const sp=ccLook(ch.look);
-  if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,192,192);
+  if(sp) ccFit(cv,sp.img);
   // the races, each shown by the look for the body you picked
   const box=$('#ccRaces'); box.innerHTML='';
   for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64; c.className='ccrimg';
-    const s2=ccLook(RACES[k].looks[ch.body]); if(s2){ const y=c.getContext('2d'); y.imageSmoothingEnabled=false; y.drawImage(s2.img,0,0,s2.img.width,s2.img.height,0,0,64,64); }
+    const s2=ccLook(RACES[k].looks[ch.body]); if(s2) ccFit(c,s2.img);
     b.appendChild(c); b.insertAdjacentHTML('beforeend',`<span>${RACES[k].name}</span>`);
     b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
   // the stats, one dial each

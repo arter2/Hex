@@ -451,8 +451,8 @@ function openCamp(){
   { const lc=lowChargeNote(), now=performance.now(); if(lc&&now>(openCamp.lcT||0)){ openCamp.lcT=now+120000; setTimeout(()=>tip(lc.trim(),4500),400); } }   // nearly spent Charge cards: the shop recharges them
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
-  show('scrCamp'); campScene(); setTimeout(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); },120);   // again once the log and fonts have settled, so the fit is right
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
+  // the camp is the main menu now (menu.js): the old camp page stays in the page for its buttons' handlers
+  openMenu();
   setTimeout(maybeLevelUp,250);
 }
 // the camp scene: the area you are about to enter, your wizard in its gear, and a fire that
@@ -1483,9 +1483,9 @@ function applyViewport(){
 addEventListener('resize',applyViewport); addEventListener('orientationchange',()=>setTimeout(applyViewport,150));
 applyViewport();
 openMenu();
-// the very first launch (no save in any slot): go straight to making your character in slot 1
+// the very first launch (no save in any slot): the main menu too, on slot 1; Continue opens the slots and New game
 { let any=false; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) any=true;
-  if(!any){ useSlot(1); openNewChar(); }
+  if(!any){ useSlot(1); openMenu(); }
   if(SAVE_DAMAGED) setTimeout(()=>tip('The save in slot '+SAVE_DAMAGED.slot+' could not be read. A copy was kept in this browser ('+SAVE_DAMAGED.key+'), so nothing is overwritten.',9000),600); }
 // the same save open in another tab: when that tab saves, this one stops saving (it would undo that tab's progress)
 window.addEventListener('storage',e=>{ if(e.key!==slotKey(SAVE_SLOT)||SAVE_STALE) return; SAVE_STALE=true; saveStaleNote(); });

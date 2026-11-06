@@ -6,7 +6,7 @@
             area's four floors, its element and weakness, Run details, Explore and Battle); Cards / Market /
             Journal / Character, each a small menu of the camp's own destinations; Settings; level and XP
      slots  three cards: an empty one is selected by a tap; a used one shows that run's own character, its deck,
-            HP, place and resources and a Continue that loads that slot and goes to its camp. Back, and one New
+            HP, place and resources and a Continue that loads that slot and goes to its camp (this main menu). Back, and one New
             game (the selected empty slot, or the first empty one; never over a save)
    Everything here calls the game's existing functions (useSlot, openCamp, openNewChar, enterExplore, fight, the
    camp's own buttons); nothing here writes a save. ui.js's openMenu() renders the main menu (hmHome). */
@@ -57,7 +57,7 @@ function closeDlg(){ q('#hmDlg').classList.remove('on'); if(dlgBack&&dlgBack.foc
 q('#hmDlgX').onclick=closeDlg; q('#hmDlg').addEventListener('click',e=>{ if(e.target.id==='hmDlg') closeDlg(); });
 // Cards, Market, Journal, Character: the camp's own buttons, so every destination keeps its real handler
 const CATS={
-  cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards']]],
+  cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards'],['goDuel','Duel a friend','battle']]],
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
   character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle']]] };

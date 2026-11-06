@@ -22,9 +22,10 @@
 
 /* page two: the Hexmancers art */
 #inTitle{background:#000;}
-#inTitle .in-scene{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; image-rendering:pixelated;}
+/* the whole picture, never cropped (the logo spans most of its width); a blurred, darkened copy fills the rest of a tall screen */
+#inTitle .in-scene{position:absolute; inset:-24px; width:calc(100% + 48px); height:calc(100% + 48px); object-fit:cover; filter:blur(14px) brightness(.45);}
+#inTitle .in-art{position:relative; z-index:1; width:100%; height:100%; object-fit:contain;}
 #inTitle::after{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,0,0,.55) 100%); pointer-events:none;}
-#inTitle .in-logo{position:relative; z-index:1; width:min(78vw,640px); height:auto; filter:drop-shadow(0 6px 18px rgba(0,0,0,.7));}
 
 .in-skip{position:absolute; right:16px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:2; margin:0;
   font:400 15px/1 'VT323',monospace; color:rgba(243,241,231,.55); letter-spacing:.12em; pointer-events:none;}

@@ -97,6 +97,6 @@ standardise.
 The opening plays the Uhh Games card, then the title art (`game/art/menu/title.webp`), then the main menu
 for every player, a first launch included. Continue opens the three save slots, and a save's Continue
 comes back to the main menu, which is now the camp: `openCamp()` shows it, so every way back to camp
-(leaving a menu, climbing out of the dungeon, after a fight) lands there. Duel a friend moved into
-the Cards menu. The old camp page stays in `index.html` because its buttons carry the handlers the menu's
+(leaving a menu, climbing out of the dungeon, after a fight) lands there. Duel a friend is a half-width
+button beside Settings. The old camp page stays in `index.html` because its buttons carry the handlers the menu's
 categories click. The testing-only boss trials that lived on it are no longer reachable.

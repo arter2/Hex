@@ -57,7 +57,7 @@ function closeDlg(){ q('#hmDlg').classList.remove('on'); if(dlgBack&&dlgBack.foc
 q('#hmDlgX').onclick=closeDlg; q('#hmDlg').addEventListener('click',e=>{ if(e.target.id==='hmDlg') closeDlg(); });
 // Cards, Market, Journal, Character: the camp's own buttons, so every destination keeps its real handler
 const CATS={
-  cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards'],['goDuel','Duel a friend','battle']]],
+  cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards']]],
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
   character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle']]] };
@@ -88,7 +88,7 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   let v={ok:false}; try{ v=has?validateDeck(activeDeck().list,CARDS,s.owned):{ok:false}; }catch(e){}
   q('#mmExplore').disabled=q('#mmBattle').disabled=!has||!v.ok;
   q('#mmWarn').textContent=!has?'This slot is empty. Continue to choose a save or start a new game.':v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
-  page.querySelectorAll('.hm-cat').forEach(b=>b.disabled=!has);
+  page.querySelectorAll('.hm-cat').forEach(b=>b.disabled=!has); q('#mmDuel').disabled=!has;
   // level, XP and the points waiting to be spent
   const pts=has?pointsLeft(ensureChar(s)):0; q('#mmPts').hidden=!pts; q('#mmPts').textContent='+'+pts;
   if(has){ const need=Math.max(1,xpNeed(s.level||1)), xp=Math.max(0,s.xp||0); q('#mmXpTxt').textContent='Lv '+(s.level||1)+' · '+xp+'/'+need+' XP'; q('#mmXpFill').style.width=Math.min(100,xp/need*100)+'%'; }
@@ -101,6 +101,8 @@ q('#mmSlots').onclick=()=>openSaves();
 q('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
 q('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
 q('#mmSettings').onclick=()=>openSettings();
+// Duel a friend: the old camp's button, so it keeps its deck check and its way back
+q('#mmDuel').onclick=()=>withChar(()=>q('#goDuel').click());
 
 /* ---------------- the three save slots ---------------- */
 let SEL=1;

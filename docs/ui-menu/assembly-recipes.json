@@ -1,0 +1,50 @@
+{
+  "button": {
+    "bottomToTop": [
+      "surface",
+      "rim",
+      "highlight",
+      "keyline",
+      "corners",
+      "icon",
+      "live label",
+      "focus ring"
+    ],
+    "generator": "source/skins.js",
+    "labelRule": "Labels and values stay editable; never bake them into skins"
+  },
+  "runPanel": {
+    "bottomToTop": [
+      "surface",
+      "border",
+      "top-center blue-diamond",
+      "live location/depth/progress/details/actions"
+    ]
+  },
+  "savePanel": {
+    "bottomToTop": [
+      "surface",
+      "border",
+      "selected blue-diamond",
+      "avatar frame",
+      "character sprite",
+      "live run metadata",
+      "occupied-only Continue"
+    ]
+  },
+  "hero": {
+    "bottomToTop": [
+      "brick-tile",
+      "hero-scene",
+      "logo"
+    ],
+    "footer": "footer-foreground anchored to bottom behind controls; never covers targets"
+  },
+  "slotFooter": {
+    "buttons": [
+      "Back",
+      "New game"
+    ],
+    "rule": "Equal width, height, steel tone and state; 8 logical px gap. No New game inside individual slots."
+  }
+}

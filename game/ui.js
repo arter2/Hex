@@ -1493,8 +1493,8 @@ function saveStaleNote(){ tip('This save was changed in another tab or window. P
 requestAnimationFrame(frame);
 
 /* ---------------- main menu ----------------
-   The game opens here: Continue goes to camp; Explore and Battle start at the depth shown
-   (any depth from 1 to your deepest); New game picks a starter deck. */
+   The game opens here (menu.js draws it from the menu handoff): Continue opens the three save slots; Explore
+   and Battle start at the depth shown (any depth from 1 to your deepest). */
 function openMenu(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   const has=!!save;
@@ -1502,30 +1502,11 @@ function openMenu(){
   else pickDepth=1;
   // the card-art sheets load in the background while the title is up (art.js artPreload)
   if(typeof artPreload==='function') (window.requestIdleCallback||setTimeout)(()=>{ let d=null; try{ d=save&&activeDeck().list; }catch(e){} artPreload(d); });
-  $('#mmContinue').disabled=!savedSlots().length;
-  const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' · change ▾</span>';
-  $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
-    :'<span class="mmdeep">Slot '+SAVE_SLOT+' is empty.</span><span class="mmname">Start a new game.</span>');
-  $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
-  $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
-  const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
-  $('#mmExplore').disabled=$('#mmBattle').disabled=!has||!v.ok;
-  $('#mmWarn').textContent=!has?'':v.ok?'':'Your deck is not ready ('+(v.errors[0]||'invalid')+'). Fix it in the deck builder at camp.';
+  if(typeof hmHome==='function') hmHome();
   show('scrMenu');
 }
-$('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };
-$('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
-// with more than one save, Continue asks which; with one, it goes straight back to camp
 function savedSlots(){ const out=[]; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) out.push(n); return out; }
-$('#mmContinue').onclick=()=>{ const sl=savedSlots(); if(sl.length>1){ openSlots('continue'); return; }
-  if(sl.length&&sl[0]!==SAVE_SLOT) useSlot(sl[0]);   // the one save is in another slot: switch to it
-  withChar(()=>openCamp()); };
-$('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
-$('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
-$('#mmNew').onclick=()=>openSlots('new');
-$('#mmSlots').onclick=()=>openSlots();
 $('#slClose').onclick=()=>$('#slots').classList.remove('on');
-$('#mmSettings').onclick=()=>openSettings();
 $('#startBack').onclick=()=>openNewChar(true);
 $('#ccBack').onclick=()=>openMenu();
 $('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('#ccWarn').textContent='You still have '+pointsLeft(ccChar)+' points to spend. Tap again to go on anyway.'; $('#ccGo').dataset.sure='1'; return; } if(ccMode==='existing') return keepChar(); buildStart(); };

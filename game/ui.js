@@ -276,8 +276,10 @@ function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
   $('#ccStep').textContent=ccMode?'Make your character':'1 of 2'; $('#ccGoT').textContent=ccMode?'Save':'Next';
   if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
+// the kit's one-line tagline for each race (the full line stays in its tooltip)
+const RACE_SHORT={human:'Even in every stat',elf:'Quick, quiet and frail',dwarf:'Tough, wise, slow casting',warlock:'Silver-tongued casters',necro:'Strongest, fastest casters',shaman:'Hardy and wise',ranger:'Fast, quiet, sharp-eyed',orc:'Big hits, lots of HP'};
 function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
-  $('#ccRace').textContent=R.name; $('#ccText').textContent=R.text;
+  $('#ccRace').textContent=R.name; $('#ccText').textContent=RACE_SHORT[ch.race]||R.text; $('#ccText').title=R.text;
   document.querySelectorAll('#scrNewChar [data-body]').forEach(b=>{ b.classList.toggle('on',+b.dataset.body===ch.body); b.onclick=()=>{ const spent=ch.spent; ccChar=newChar(ch.race,+b.dataset.body); ccChar.spent=spent; renderNewChar(); }; });
   // the hexmancer, big
   const cv=$('#ccSprite'), x=cv.getContext('2d'); x.clearRect(0,0,192,192); x.imageSmoothingEnabled=false; const sp=ccLook(ch.look);

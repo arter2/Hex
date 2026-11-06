@@ -570,3 +570,80 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk .ccrace{height:46px;} .mk .ccrace canvas{top:-4px; width:40px; height:40px; margin-left:-20px;}
 .mk .ccrace span{position:absolute; left:0; right:0; bottom:1px; padding:1px 0 0; background:linear-gradient(transparent,#050d12 45%);}
 .mk .dial .tape i b{font-size:12px;} .mk .dial .tape i.cur b{font-size:16px;}
+
+/* ---------- Create character: positions measured from the kit picture (css px, 390 wide) ---------- */
+#scrNewChar.mk{padding:0 10px 16px 10px;}
+#scrNewChar.mk .cc{max-width:none; gap:0;}
+/* header 16..373 x 31..70; Back 29x23; dividers at 70 and 301 */
+#scrNewChar.mk .cc>.bar{min-height:39px; height:39px; margin:31px 7px 0 6px; padding:0 12px 0 9px; gap:0;}
+#scrNewChar.mk .cc>.bar>.backbtn{width:29px; height:23px; min-width:29px; min-height:23px; border-width:5px;}
+#scrNewChar.mk .cc>.bar>.backbtn::before{width:14px; height:14px; margin:-7px 0 0 -7px;}
+#scrNewChar.mk .cc>.bar h2{font-size:15.8px; margin-left:16px; padding-left:15px; border-left:1px solid #8e9d9b99; min-height:24px;}
+#scrNewChar.mk #ccStep{font-size:12.3px; padding-left:17px; min-height:24px;}
+/* hexmancer 60..155; plaque 186..358 x 79..106; tagline 113..127; Man/Woman 134..158 */
+#scrNewChar.mk .cctop{grid-template-columns:176px 172px; gap:0; margin:0; height:96px; align-items:start;}
+#scrNewChar.mk #ccSprite{width:112px; height:112px; margin:-2px 0 0 41px;}
+#scrNewChar.mk .ccinfo{gap:0; padding-top:9px;}
+#scrNewChar.mk .ccinfo .ccplaque{height:27px; padding:0 6px; border-width:6px; border-image-width:12px; font-size:15.8px; line-height:15px; display:flex; align-items:center; justify-content:center;}
+#scrNewChar.mk .ccinfo #ccText{font-size:11.5px; line-height:1.1; margin:6px 0 0; height:15px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100%;}
+#scrNewChar.mk .ccinfo .ccbody{grid-template-columns:80px 79px; gap:9px; width:auto; margin-top:6px;}
+#scrNewChar.mk .ccinfo .ccbody .chip{height:24px; min-height:24px; font-size:12.5px; border-width:5px;}
+/* race tiles 21..368, 81 wide, 47 high, rows at 168 and 222 */
+#scrNewChar.mk .ccraces{grid-template-columns:repeat(4,1fr); gap:7px 9px; margin:10px 2px 0 11px;}
+#scrNewChar.mk .ccrace{height:47px; border-width:5px;}
+#scrNewChar.mk .ccrace canvas{top:-3px; width:40px; height:40px; margin-left:-20px;}
+#scrNewChar.mk .ccrace span{bottom:2px; font-size:11px; background:none; text-shadow:1px 1px 0 #000,-1px 0 0 #000;}
+/* rule at 282 (30..360), "12 points available" 290..307, hint 316 */
+#scrNewChar.mk>.cc>.mkrule{margin:7px 20px 0 20px; height:14px;}
+#scrNewChar.mk .ccpts b{font-size:21px;} #scrNewChar.mk .ccpts span{font-size:16px;}
+#scrNewChar.mk .ccpts{margin-top:-1px; height:21px;}
+#scrNewChar.mk .ccdialhint{font-size:11px; margin:3px 0 8px; height:14px;}
+/* the list 10..372 from 332; rows 69 apart: icon 22..50 | 58 | name 66..118 | dial 123..332 | value 343..367 */
+#scrNewChar.mk .ccstats{margin:0 8px 0 0; padding:0 2px 0 4px; border-width:2px; border-image-width:12px;}
+.mk .ccrow{grid-template-columns:46px 53px 209px minmax(0,1fr); grid-template-rows:36px auto; gap:0 5px; padding:8px 0 6px; align-items:center;
+  background:url(menukit/divider.svg) 10px bottom/calc(100% - 14px) 8px no-repeat;}
+.mk .ccico{grid-row:1; border-right:1px solid #8e9d9b88; height:34px; padding:0; justify-content:flex-start; padding-left:8px;}
+.mk .ccico .statico{width:28px; height:28px;}
+.mk .ccname{padding-left:3px;} .mk .ccname b{font-size:14.6px; line-height:1;} .mk .ccname span{font-size:11px; margin-top:2px;}
+.mk .ccval{text-align:center;} .mk .ccval b{font-size:23px;}
+.mk .cceff{grid-column:2/4; margin:5px 0 0; padding:4px 0 0 1px; border-top:1px solid #8e9d9b88; font-size:11.5px; line-height:1.1;}
+/* the dial: 209x36, numbers 24 apart, the gold selector 24 wide and full height, triangle ends inside */
+.mk .dial{height:36px; border-radius:0; overflow:hidden;}
+.mk .dial::before{left:calc(50% - 12px); width:24px; height:36px;}
+.mk .dial .tape{transform:translateX(calc(var(--v) * -24px - 12px + var(--nudge)));}
+.mk .dial .tape i{width:24px;}
+.mk .dial .tape i::before{left:11px; bottom:5px; width:1px; height:9px;}
+.mk .dial .tape i b{top:6px; font-size:10.4px;} .mk .dial .tape i.cur b{top:3px; font-size:13.5px;}
+.mk .dial .notch{bottom:3px; height:11px; width:4px; margin-left:-2px; box-shadow:none;}
+.mk .dial .dl,.mk .dial .dr{z-index:5; width:22px; display:flex; align-items:center; justify-content:center; background:linear-gradient(90deg,#0a1218 60%,transparent);}
+.mk .dial .dr{background:linear-gradient(270deg,#0a1218 60%,transparent);}
+.mk .dial .dl::before{margin:0; border-width:7px 9px 7px 0; border-style:solid; border-color:transparent #efe6d4 transparent transparent;}
+.mk .dial .dr::before{margin:0; border-width:7px 0 7px 9px; border-style:solid; border-color:transparent transparent transparent #efe6d4;}
+.mk .dial.atmin .dl::before{border-right-color:#4a525c;} .mk .dial.atmax .dr::before{border-left-color:#4a525c;}
+/* footer 985..1022: three framed buttons 107/115/100 wide, 13 apart */
+#scrNewChar.mk .mkfoot{grid-template-columns:107fr 115fr 100fr; grid-auto-flow:row; margin:28px 0 0 11px; width:349px; gap:13px;}
+#scrNewChar.mk .mkfoot .btn{min-height:38px; height:38px; font-size:13.5px; gap:12px; border-image-source:url(menukit/rim-panel.svg);}
+#scrNewChar.mk .mkfoot #ccGo{border-image-source:url(menukit/rim-cyan-panel.svg);}
+#scrNewChar.mk .mki{width:18px; height:18px;}
+#scrNewChar.mk .cc>.bar{padding-left:1px;}
+#scrNewChar.mk .ccinfo .ccbody{margin-left:4px;}
+#scrNewChar.mk .cctop{height:88px;}
+#scrNewChar.mk .ccdialhint{margin:0 0 5px;}
+.mk .ccrow{grid-template-columns:42px 55px 209px minmax(0,1fr); padding:7px 0 5px;}
+.mk .cceff{margin-top:3px; padding-top:2px;}
+#scrNewChar.mk .mkfoot{grid-template-columns:107px 115px 100px; width:auto;}
+#scrNewChar.mk .ccname b,#scrNewChar.mk .ccname span,#scrNewChar.mk .cceff,#scrNewChar.mk .ccdialhint,#scrNewChar.mk .ccpts span,#scrNewChar.mk #ccText{letter-spacing:.05em;}
+#scrNewChar.mk .ccstats{margin-top:3px;}
+.mk .ccrow{height:69px; box-sizing:border-box; padding:9px 0 0; grid-template-rows:36px auto; align-content:start;}
+#scrNewChar.mk .mkfoot{margin-top:24px;}
+.mk .dial{border-radius:7px; box-shadow:inset 0 0 0 1px #a9b6b6aa, inset 0 0 0 2px #0008;}
+.mk .dial .tape i b{color:#b9c0c2;} .mk .dial .tape i::before{background:#8a9396;}
+.mk .dial .tape i.base b{color:#5fd3f2;} .mk .dial .tape i.base::before{background:#5fd3f2; height:9px;}
+.mk .dial .tape i.buy b{color:var(--mk-gold);} .mk .dial .tape i.new b{color:var(--mk-mint);}
+.mk .dial .tape i.cur b{color:#fff;}
+#scrNewChar.mk .mkfoot{margin-top:12px;}
+.mk .ccrow:last-child{background:url(menukit/divider.svg) 10px bottom/calc(100% - 14px) 8px no-repeat;}
+.mk .dial.atmin .dl::before{border-right-color:#8d969c;} .mk .dial.atmax .dr::before{border-left-color:#8d969c;}
+#scrNewChar.mk .ccname span,#lvlUp.mk .ccname span{font-size:10px; letter-spacing:.01em; white-space:nowrap;}
+#scrNewChar.mk .ccname{overflow:visible; white-space:nowrap;}
+#scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccrace,#scrNewChar.mk .cc>.bar>.backbtn{border-image-width:8px;}

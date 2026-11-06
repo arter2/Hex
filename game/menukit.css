@@ -901,3 +901,14 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #settings.mk>.panel.settings>*{flex:none;}
 #settings.mk .setfoot{margin-top:auto;}
 #settings.mk .setpanes{margin-bottom:14px;}
+/* tabs: the kit's widths (86 / 76 / 82 / 90), chamfered top corners, a flat bottom on a rule */
+#settings.mk .settabs{grid-template-columns:86fr 76fr 82fr 90fr; gap:8px; margin-top:18px; align-items:end; border-bottom:1px solid #8e9d9b88; padding:0 0 0;}
+#settings.mk .settab{height:32px; min-height:32px; border-width:5px 5px 2px; border-image:url(menukit/tab.svg) 5 5 2 fill / 5px 5px 2px / 0 stretch; clip-path:none; font-size:14px;}
+#settings.mk .settab.on{border-image-source:url(menukit/tab-cyan.svg); height:34px; min-height:34px;}
+#settings.mk .setpanes{margin-top:12px;}
+/* a larger page title */
+#settings.mk .panel.settings>.bar h2{font-size:23px;}
+/* on: the menus' cyan, not green */
+#settings.mk .srow .btn.sswitch.son{background:#3fc4dc; box-shadow:inset 0 0 0 1.5px #a6f3ff;}
+#settings.mk .settabs{border-bottom:0;}
+#settings.mk .settab,#settings.mk .settab.on{height:30px; min-height:30px;}

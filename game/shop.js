@@ -79,7 +79,7 @@ function renderShop(){ goldText($('#sGold')); const box=$('#shopBody'); box.inne
   document.querySelectorAll('#shopTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===shopTab));
   if(shopTab==='sell') return renderSell(box);
   const st=shopStock(), g=save.gold;
-  box.appendChild(shopShelf('Packs',PACK_SIZE+' cards each, any rarity',[
+  box.appendChild(shopShelf('Card packs',PACK_SIZE+' cards per pack',[
     {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
     ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
   ].map(o=>Object.assign(o,{cant:g<o.price,color:o.color?COLORS[o.color].c:null,fam:o.color}))));

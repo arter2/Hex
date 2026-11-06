@@ -589,7 +589,14 @@ $('#bUse').onclick=()=>{ save.active=editSlot; persist(); renderSlots(); tip(sav
 /* My cards: everything you own (with copies and how many are in your deck), your items, and
    a tab for the whole set of 1,006 with the ones you haven't found yet greyed out. */
 const cf={colors:new Set(), type:'', rarity:'', q:'', owned:'', mine:true, sort:'family'};
-function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); renderCollection(); show('scrCollection'); }
+function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); collTools(); renderCollection(); show('scrCollection'); }
+// My cards: the search sits beside Sort; the colour chips carry their counts and filter when tapped
+function collTools(){ const box=$('#cFilters'), top=$('#cTop'), q=box.querySelector('[data-f="q"]');
+  top.querySelectorAll('[data-f="q"]').forEach(e=>e.remove()); if(q){ q.type='search'; q.placeholder='Search cards…'; q.setAttribute('aria-label','Search cards'); q.value=cf.q||''; top.prepend(q); }
+  box.querySelectorAll('select[data-f]').forEach(el=>el.value=cf[el.dataset.f]||'');
+  box.querySelectorAll('.fc').forEach(b=>b.classList.toggle('on',cf.colors.has(b.dataset.k))); }
+function collCounts(n){ $('#cFilters').querySelectorAll('.fc').forEach(b=>{ const k=b.dataset.k; b.innerHTML=`<span class="fci">${COLORS[k].icon}</span><b>${n(k)}</b>`;
+  b.setAttribute('aria-label',COLORS[k].name+': '+n(k)); b.classList.toggle('none',/^0(\/|$)/.test(String(n(k)))); }); }
 $('#cTabMine').onclick=()=>{ cf.mine=true; cf.book=false; cf.owned=''; openCollection(); };
 $('#cTabAll').onclick=()=>{ cf.mine=false; cf.book=false; openCollection(); };
 $('#cTabBook').onclick=()=>{ cf.book=true; renderCollection(); };
@@ -609,23 +616,23 @@ $('#cSort').onchange=e=>{ cf.sort=e.target.value; renderCollection(); };
 const SORTS={family:byFamily, rank:(a,b)=>a.rank-b.rank||byFamily(a,b), rarity:(a,b)=>RAR_ORDER.indexOf(b.rarity)-RAR_ORDER.indexOf(a.rarity)||byFamily(a,b),
   copies:(a,b)=>(save.owned[b.id]||0)-(save.owned[a.id]||0)||byFamily(a,b), name:(a,b)=>a.name.localeCompare(b.name)};
 function renderCollection(){
-  $('#cTabBook').classList.toggle('on',!!cf.book); $('#cFilters').hidden=!!cf.book; $('#cSort').hidden=!!cf.book;
+  $('#cTabBook').classList.toggle('on',!!cf.book); $('#cFilters').hidden=!!cf.book; $('#cTop').hidden=!!cf.book; $('#cProgress').hidden=true;
   if(cf.book){ $('#cTabMine').classList.remove('on'); $('#cTabAll').classList.remove('on'); return renderBook(); }
   $('#cTabMine').classList.toggle('on',cf.mine); $('#cTabAll').classList.toggle('on',!cf.mine); $('#cSort').value=cf.sort;
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
   $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
   $('#cCount').innerHTML+=' · '+uiIcon('shard',14)+(save.shards||0);
-  $('#cItems').innerHTML=`<button class="item" onclick="openCharacter()">⚔ Gear, enchanting and curses are on the Character screen →</button>`; $('#cItems').hidden=!cf.mine;
+  $('#cItems').innerHTML=''; $('#cItems').hidden=true;
   if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
-    $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
+    collCounts(k=>fam[k]||0);
     const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
     paged($('#cGrid'),items,c=>{ const el=cardEl(c,chargeMark(c)+`<span class="badge" title="${inDeck[c.id]||0} in this deck, ${save.owned[c.id]} owned">${inDeck[c.id]?inDeck[c.id]+'/'+save.owned[c.id]:'×'+save.owned[c.id]}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
     if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
     return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
-  $('#cProgress').innerHTML=FAM_ORDER.map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k][0]}/${fam[k][1]}</span>`).join('');
+  collCounts(k=>fam[k]?fam[k][0]+'/'+fam[k][1]:0);
   const items=CARD_LIST.filter(c=>passes(c,cf)).sort(SORTS[cf.sort]);
   paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?chargeMark(c)+`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
 }

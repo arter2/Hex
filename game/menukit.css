@@ -239,28 +239,92 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #bagUI.mk .bgchar,#bagUI.mk .bgside{background:#191917b3; border:1px solid #626f7066;}
 #bagUI.mk .bgdetail{border:0; border-top:1px solid #626f7066; color:var(--mk-muted);}
 
-/* ---------- v236 shared pass: the kit pictures' backdrop, rims, gem and Back ---------- */
-/* every menu page stands on the dungeon wall, with the mushroom floor at its foot (the main menu's own art) */
-.mk.screen{background:url(art/menu/footer.webp) center bottom/min(100%,820px) auto no-repeat,
-  linear-gradient(rgba(6,10,13,.55),rgba(6,10,13,.78)),url(art/menu/brick.webp) 0 0/320px repeat,#070b0e;}
-/* the rims are the main menu's: steel with bronze pins, cyan when selected or primary (drawn by menu.js) */
-.mk .panel,.mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .slrow,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .ware,.mk .stall,
-.mk .starter,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,
-.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select{border-image-source:var(--mk-rim);}
-.mk .panel,.mk .shelf,.mk .bagframe,.mk .pobox,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty{border-image-source:var(--mk-rim-panel);}
-.mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .slrow.cur,.mk .dkok,
-.mk .tabs .chip.on,.mk .chip.fc.on,.mk [data-body].on,.mk input:focus-visible,.mk select:focus-visible,#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:var(--mk-rim-cyan);}
-#bagUI.mk .bgbag{border-image-source:var(--mk-rim);}
-/* the blue crystal on the top edge of headers and dialogs; the clip opens a notch for it */
-.mk.screen>.bar,.mk .cc>.bar,.mk .dkhead,.mk .bempty{position:relative; overflow:visible;
-  clip-path:polygon(5px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);}
-.mk.screen>.bar::after,.mk .cc>.bar::after,.mk .dkhead::after,.mk .bempty::after{content:''; position:absolute; z-index:3; top:-14px; left:50%; width:12px; height:12px; margin-left:-6px;
-  background:var(--hm-gem) center/contain no-repeat; pointer-events:none;}
-.mk.screen>.bar,.mk .cc>.bar{margin-top:6px;}
-/* Back in a page header: its own framed square with the cyan edge, then a divider before the title */
-.mk.screen>.bar>.backbtn,.mk .cc>.bar>.backbtn,.mk .dkhead>.backbtn{width:44px; height:44px; min-width:44px; min-height:44px; margin:-2px 0 -2px 0; border:8px solid transparent;
-  border-image:var(--mk-rim-cyan) 8 fill / 8px / 0 stretch; background:var(--mk-face-hover); background-origin:border-box; clip-path:var(--mk-chamfer);}
-.mk.screen>.bar>.backbtn::before,.mk .cc>.bar>.backbtn::before,.mk .dkhead>.backbtn::before{background:var(--mk-cyan);}
-.mk.screen>.bar>.backbtn+*,.mk .cc>.bar>.backbtn+*{border-left:1px solid #626f7099; padding-left:12px; min-height:28px; display:flex; align-items:center;}
-.mk.screen>.bar,.mk .cc>.bar{padding-left:6px;}
+/* ---------- v236 shared pass: matched to the kit's pictures ---------- */
+/* the wall: the kit's brick, bright, darker at the top, a blue glow at the floor, a torch in each top corner */
+.mk.screen{background:url(art/menu/torch-l.webp) left 0 top 0/26px auto no-repeat,url(art/menu/torch-r.webp) right 0 top 0/26px auto no-repeat,
+  radial-gradient(120% 22% at 50% 100%,rgba(30,120,255,.38),transparent 70%),
+  linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+/* faces: near-black teal smoke with the kit's grain */
+.mk{--mk-face:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#0c1f28,#071419 55%,#050e13);
+  --mk-face-tile:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#06121a,#02080d);
+  --mk-face-hover:url(menukit/grain.svg),linear-gradient(180deg,#123341,#0a1d26);
+  --mk-face-down:linear-gradient(180deg,#02080d,#0c1f28);
+  --mk-chamfer-r:polygon(2px 0,calc(100% - 2px) 0,100% 2px,100% calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,0 calc(100% - 2px),0 2px);}
+/* rims: one bright steel line on a dark outline; copper rivets on panels, tiles and rows; cyan glow when selected */
+.mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,#bagUI.mk .bgbag{border-image-source:url(menukit/rim.svg);}
+.mk .panel,.mk .shelf,.mk .stall,.mk .bagframe,.mk .pobox,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty,
+.mk .ware,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .slrow,.mk .starter{border-image-source:url(menukit/rim-panel.svg); clip-path:var(--mk-chamfer-r);}
+.mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .dkok,
+.mk .tabs .chip.on,.mk .chip.fc.on,.mk [data-body].on,.mk input:focus-visible,.mk select:focus-visible,#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:url(menukit/rim-cyan.svg);}
+.mk .slrow.cur,.mk .ware.sel{border-image-source:url(menukit/rim-cyan-panel.svg);}
+.mk .ware{background:var(--mk-face-tile);}
+/* the blue crystal on the top edge of a header; the clip opens a notch for it */
+.mk.screen>.bar,.mk .cc>.bar,.mk .dkhead,.mk .bempty,.mk .shelf{position:relative; overflow:visible;
+  clip-path:polygon(2px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 2px) 0,100% 2px,100% calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,0 calc(100% - 2px),0 2px);}
+.mk.screen>.bar::after,.mk .cc>.bar::after,.mk .dkhead::after,.mk .bempty::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px;
+  background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
+/* PageHeader: 44 high, Back a small steel square with the cyan arrow, a divider, the title */
+.mk.screen>.bar,.mk .cc>.bar{min-height:48px; margin:8px 0 10px; padding:0 10px 0 6px; gap:10px; background:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#071a2a,#030d18);}
+.mk.screen>.bar h2,.mk .cc>.bar h2{font-size:18.5px;}
+.mk.screen>.bar>.backbtn,.mk .cc>.bar>.backbtn,.mk .dkhead>.backbtn{width:38px; height:32px; min-width:38px; min-height:32px; margin:0; border:6px solid transparent;
+  border-image:url(menukit/rim.svg) 8 fill / 6px / 0 stretch; background:linear-gradient(180deg,#123447,#0a2131); background-origin:border-box; clip-path:var(--mk-chamfer); overflow:visible;}
+.mk.screen>.bar>.backbtn::before,.mk .cc>.bar>.backbtn::before,.mk .dkhead>.backbtn::before{width:18px; height:18px; margin:-9px 0 0 -9px; background:var(--mk-cyan);
+  -webkit-mask:url(menukit/arrow-left.svg) center/contain no-repeat; mask:url(menukit/arrow-left.svg) center/contain no-repeat;}
+.mk.screen>.bar>.backbtn+*,.mk .cc>.bar>.backbtn+*{border-left:1px solid #8e9d9b66; padding-left:12px; min-height:26px; display:flex; align-items:center;}
 .mk .dkhead{margin-top:10px;}
+/* a section title's quiet rule: a line with a small hollow diamond at its outer end */
+.mk .shelf h3 small{display:flex; align-items:center; gap:10px; margin-top:2px;}
+.mk .shelf h3 small::before,.mk .shelf h3 small::after{content:''; flex:1; height:8px;
+  background:linear-gradient(#8e9d9b99,#8e9d9b99) center/100% 1px no-repeat;}
+.mk .shelf h3 small::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") left center/8px no-repeat,linear-gradient(#8e9d9b99,#8e9d9b99) 8px center/calc(100% - 8px) 1px no-repeat;}
+.mk .shelf h3 small::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%238e9d9b' stroke-width='1.1'/%3E%3C/svg%3E") right center/8px no-repeat,linear-gradient(#8e9d9b99,#8e9d9b99) 0 center/calc(100% - 8px) 1px no-repeat;}
+
+/* ---------- Shop (kit screen 18): measured from the picture ---------- */
+#scrShop.mk>.bar{margin:6px 4px 12px;}
+#scrShop.mk>.bar::after{display:none;}
+#scrShop.mk>.bar>.backbtn+*{border-left:0; padding-left:6px;}
+#scrShop.mk .stall{margin:0 4px;}
+#scrShop.mk #shopTabs{margin:12px 4px 0; gap:8px;}
+#scrShop.mk #shopTabs button{min-height:40px; font-size:15px;}
+#scrShop.mk #shopTabs button.on{color:var(--mk-gold);}
+#scrShop.mk .shelf{margin:18px 0 12px; padding:12px 6px 10px;}
+#scrShop.mk .shelf::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px; background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
+#scrShop.mk .shelf h3{font-size:18.5px; margin:0 0 12px;}
+#scrShop.mk .shelf h3 small{font-size:12.5px; color:var(--mk-muted); padding:0 16px;}
+#scrShop.mk .wares{grid-template-columns:repeat(3,1fr); gap:8px; padding:0 2px; background:none; box-shadow:none;}
+#scrShop.mk .ware{min-height:124px; padding:6px 4px 8px; gap:3px; justify-content:flex-end;}
+#scrShop.mk .ware .wpic{height:76px;}
+#scrShop.mk .ware .wname{font-size:13.5px;}
+#scrShop.mk .ware .wtag{display:inline-flex; align-items:center; gap:4px; padding:1px 10px 1px 6px; border:0; border-radius:10px; clip-path:none;
+  background:linear-gradient(#f1e6c8,#d8c9a3); color:#1a1209; font:400 13.5px/1.2 var(--font-b);}
+#scrShop.mk .ware.cant .wtag{background:linear-gradient(#a49a82,#857b64); color:#2a2015;}
+
+/* ---------- My cards (kit screen 16) ---------- */
+#scrCollection.mk{container-type:inline-size;}
+#scrCollection.mk>.bar{margin:8px 0 12px;}
+#scrCollection.mk .tabs{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 10px;}
+#scrCollection.mk .tabs .chip{min-height:40px; font-size:15px; justify-content:center;}
+#scrCollection.mk .ctop{display:grid; grid-template-columns:1fr 112px; gap:8px; margin:0 0 8px;}
+#scrCollection.mk .ctop input{min-height:40px; width:100%; box-sizing:border-box; padding-left:30px;
+  background:url(menukit/search.svg) 6px center/16px no-repeat,linear-gradient(180deg,#02080d,#071419);}
+#scrCollection.mk .ctop select{min-height:40px; width:100%;}
+#scrCollection.mk .filters{margin:0 0 10px; display:grid; gap:8px;}
+#scrCollection.mk .filters .chips{display:grid; grid-template-columns:repeat(4,1fr); gap:6px;}
+#scrCollection.mk .filters .chip.fc{min-height:34px; padding:0 4px; border-width:6px; border-image-width:6px; display:flex; align-items:center; justify-content:center; gap:5px; opacity:1;
+  font:400 14px var(--font-b); color:var(--c);}
+#scrCollection.mk .filters .chip.fc b{font-weight:400; color:var(--mk-text);}
+#scrCollection.mk .filters .chip.fc.none{opacity:.5;}
+#scrCollection.mk .filters .row{display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:8px;}
+#scrCollection.mk .filters .row select{min-height:36px; width:100%; min-width:0;}
+#scrCollection.mk #cGrid{--cardw:calc((100cqw - 14px) / 3); gap:7px!important;}
+#scrShop.mk .stall canvas{height:116px; object-fit:cover; object-position:50% 0;}
+#scrShop.mk .stall .say{text-align:center; background:none; border-top:0; font-style:normal; color:#e9e4d6; font-size:13.5px; padding:6px 8px 4px;}
+#scrShop.mk .shelf{padding:12px 2px 6px;}
+#scrShop.mk .wares{padding:0;}
+#scrShop.mk .ware .wpic{height:72px;}
+.mk.screen>.bar,.mk .cc>.bar{min-height:46px;}
+#scrCollection.mk .ctop{grid-template-columns:1fr 130px;}
+#scrShop.mk .ware{min-height:0; padding:6px 4px 6px; gap:2px;}
+#scrShop.mk .ware .wpic{height:76px; align-items:center;}
+#scrShop.mk .ware .wpic canvas{height:100%; width:auto;}

@@ -104,7 +104,8 @@ function bKnown(e){ const d=e.def||ENEMY_DEFS[e.id]||{}; const E=bState()[bKey(e
 function openBestiary(){ renderBestiary(); show('scrBestiary'); }
 function renderBestiary(){ const S=bState(), box=$('#bestList'); if(!box) return; const ids=Object.keys(S).filter(id=>ENEMY_DEFS[id]);
   $('#bestCount').textContent=ids.filter(id=>S[id].kills>=bNeed(ENEMY_DEFS[id])).length+' / '+ids.length+' known';
-  box.innerHTML=ids.length?'':'<p class="hint">Nothing met yet. Every creature you fight is written down here.</p>';
+  box.innerHTML=ids.length?'':'<div class="bempty"><h3>Your first discovery awaits</h3><p class="hint">Nothing met yet. Every creature you fight is written down here.</p><button class="btn ghost bback">Return to camp</button></div>';
+  const back=box.querySelector('.bback'); if(back) back.onclick=()=>openCamp();
   ids.sort((a,b)=>(ENEMY_DEFS[a].boss?1:0)-(ENEMY_DEFS[b].boss?1:0)||ENEMY_DEFS[a].name.localeCompare(ENEMY_DEFS[b].name));
   for(const id of ids){ const d=ENEMY_DEFS[id], E=S[id], known=E.kills>=bNeed(d), col=COLORS[d.color]||{c:'#ccc',icon:'',name:d.color};
     const weak=d.weak||WEAK_TO[d.color], moves=[...new Set(d.moves||[])].map(m=>TELL[m]?'<li>'+esc(TELL[m].text)+'</li>':'').join('');

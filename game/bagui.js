@@ -19,7 +19,9 @@ function bagItems(){ const s=gearState(save), out=[];
   return out; }
 const bagInRun=()=>!!(typeof EX!=='undefined'&&EX&&EX.active);
 const bagTabs=()=>bagInRun()?[['items','Items'],['stats','Stats'],['quests','Quests'],['journal','Journal'],['bless','Blessings']]:[['items','Items'],['stats','Stats'],['look','Look'],['bless','Blessings']];
-function openBagUI(){ BAGUI.sel=null; if(!bagTabs().some(t=>t[0]===BAGUI.tab)) BAGUI.tab='items'; renderBag(); $('#bagUI').classList.add('on'); }
+function openBagUI(){ BAGUI.sel=null;
+  // the menu kit's look at camp; inside a run the bag keeps the dungeon's look
+  $('#bagUI').classList.toggle('mk',!(typeof EX!=='undefined'&&EX&&EX.active)); if(!bagTabs().some(t=>t[0]===BAGUI.tab)) BAGUI.tab='items'; renderBag(); $('#bagUI').classList.add('on'); }
 function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return; xPause(true); openBagUI(); }
 function closeBag(){ $('#bagUI').classList.remove('on');
   if(bagInRun()){ if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }

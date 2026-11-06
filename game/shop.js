@@ -107,6 +107,11 @@ function shopSheet(o){ const sh=$('#shopSheet'), body=$('#shopSheetBody'); body.
   const t=document.createElement('div'); t.className='stext';
   const own=o.card?(save.owned[o.card.id]||0):o.kind==='gear'?((gearState(save).items[o.id])||0):null;
   t.innerHTML=`<h2>${esc(o.name)}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
+  // the gold before and after, and why Buy is off (menu kit v2: the reason stays readable outside the dimmed button)
+  if(!o.sold){ const g=save.gold, out=o.kind==='sell', after=out?g+o.price:g-o.price, coin=n=>uiIcon('coin',14)+n;
+    t.insertAdjacentHTML('beforeend',`<dl class="sbal"><dt>Balance</dt><dd>${coin(g)}</dd><dt>${out?'You get':'Cost'}</dt><dd>${out?'+':'−'} ${coin(o.price)}</dd>`
+      +`<dt>After ${out?'sale':'purchase'}</dt><dd${after<0?' class="bad"':''}>${after<0?'−':''}${coin(Math.abs(after))}</dd></dl>`
+      +(after<0?`<p class="sneed">You need ${-after} more gold.</p>`:'')); }
   body.appendChild(t);
   const btn=$('#shopBuy'), sell=o.kind==='sell';
   btn.innerHTML=(o.sold?'Sold out':(sell?'Sell for ':o.kind==='recharge'?'Recharge · ':'Buy · ')+uiIcon('coin',18)+o.price); btn.disabled=!!o.sold||(!sell&&save.gold<o.price);

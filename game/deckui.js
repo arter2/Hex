@@ -1,4 +1,4 @@
-/* Hexmancers — the deck builder: your deck on top (zoom 25/50/75%, Remove All, Auto-build), the
+/* Hexmancers — the deck builder: your deck on top (Remove All, Auto-build; no zoom since menu kit v2, the deck keeps its old 75% size), the
    card library in a drawer below (color tabs with what the deck holds of each, search, filters,
    sorting). Tap a library card to add it: it shows in-deck / max with a minus to take one out.
    Hold any card for a big readable preview, with add, remove and "add to another deck". Select
@@ -48,7 +48,6 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const sl=$('#dkSlots'); sl.innerHTML='';
   save.decks.forEach((x,i)=>{ const b=document.createElement('button'); b.className='dkslot'+(i===DK.slot?' on':'')+(i===save.active?' act':''); b.textContent=(i+1)+(i===save.active?'★':''); b.title=x.name; b.onclick=()=>{ DK.slot=i; dkRender(); }; sl.appendChild(b); });
   $('#dkName').value=d.name; $('#dkUse').hidden=DK.slot===save.active;
-  $('#dkZoom').textContent=DK_ZOOM[DK.zoom]+'%';
   const cnt=$('#dkCount'); cnt.innerHTML='▤ '+v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok); cnt.title=v.ok?'Ready':v.errors.join(' · ');
   $('#dkErr').textContent=v.ok?'':v.errors[0]||'';
   // soul
@@ -113,8 +112,6 @@ $('#dkpAddOther').onclick=()=>{ const i=+$('#dkpOther').value, d=save.decks[i]; 
 // toolbar
 $('#dkClear').onclick=e=>{ if(!dkDeck().list.length) return; armed(e.currentTarget,'Tap again to empty it',()=>{ dkDeck().list=[]; dkChange(); }); };
 $('#dkAuto').onclick=()=>{ const d=dkDeck(); d.list=autoFill(d.list,save.owned); dkChange(); };
-$('#dkZo').onclick=()=>{ DK.zoom=Math.max(0,DK.zoom-1); dkRender(); };
-$('#dkZi').onclick=()=>{ DK.zoom=Math.min(DK_ZOOM.length-1,DK.zoom+1); dkRender(); };
 $('#dkName').oninput=e=>{ dkDeck().name=e.target.value||'Deck '+(DK.slot+1); persist(); };
 $('#dkUse').onclick=()=>{ save.active=DK.slot; persist(); dkRender(); tip(dkDeck().name+' is now your deck'); };
 $('#dkSoul').onchange=e=>{ dkDeck().soul=e.target.value; persist(); };

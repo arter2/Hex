@@ -1,0 +1,240 @@
+/* Menu kit v2: one frame, one button, one header, one dialog, one dial for the menus.
+   Source: hexmancers-unified-menu-kit-v2 (shared/menu.css, tokens.json, svg/). See docs/menu-kit-v2-gap-report.md.
+   Every rule is under .mk, which index.html sets on the menu screens and overlays only: the start
+   screen, camp, dungeon and battle keep their own look.
+   Type roles: the kit's sizes are for Jersey 15 drawn at its own size; style.css draws it at 130%
+   (size-adjust), so each size below is the kit size divided by 1.3 and renders at the kit size. */
+:root{
+  --mk-ink:#101a1e; --mk-deep:#090f12; --mk-text:#f3f1e7; --mk-muted:#a8b6b8; --mk-steel:#626f70; --mk-steel-l:#b5c1bb;
+  --mk-cyan:#7dd8e6; --mk-gold:#f5cb60; --mk-mint:#8de9b5; --mk-danger:#ec9384;
+  --mk-face:linear-gradient(180deg,#14232a,#101a1e 55%,#090f12);
+  --mk-face-hover:linear-gradient(180deg,#21353d,#142128);
+  --mk-face-down:linear-gradient(180deg,#090f12,#14232a);
+  --mk-face-warm:linear-gradient(180deg,#302a22,#211d18 55%,#191917);
+  --mk-face-warm-hover:linear-gradient(180deg,#38332b,#211d18);
+  --mk-face-new:linear-gradient(180deg,#40264f,#30203f 55%,#281738);
+  --mk-face-new-hover:linear-gradient(180deg,#4a305b,#30203f);
+  --mk-chamfer:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
+  --mk-t-title:17.7px; --mk-t-section:15.4px; --mk-t-control:13.8px; --mk-t-body:11.5px; --mk-t-meta:10px; --mk-t-value:19.2px;
+}
+
+/* ---------- type ---------- */
+.mk{color:var(--mk-text);}
+.mk h2{font:400 var(--mk-t-title)/1.15 var(--font-b); color:var(--mk-text); letter-spacing:0; text-shadow:none;}
+.mk h3{font:400 var(--mk-t-section)/1.2 var(--font-b); color:var(--mk-text); letter-spacing:0; text-shadow:none;}
+.mk .hint,.mk p{font-family:var(--font-b); font-size:var(--mk-t-body); line-height:1.35; color:var(--mk-muted); font-weight:400;}
+.mk .hint.warn,.mk .warn{color:var(--mk-gold);}
+.mk .dim,.mk small{font-family:var(--font-b); font-weight:400; color:var(--mk-muted);}
+.mk .count{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-mint);}
+.mk .count.gold,.mk .gold{color:var(--mk-gold);}
+
+/* ---------- Frame: the one steel border over a smoke face ---------- */
+.mk .panel,.mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .slrow,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .ware,.mk .shelf,.mk .stall,
+.mk .starter,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,.mk .bagframe,.mk .pobox,
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty{
+  border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; border-radius:0;
+  background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none; text-shadow:none; outline-offset:-3px;}
+/* selected and primary: the narrow cyan edge, no glow */
+.mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .slrow.cur,.mk .dkok,
+.mk .tabs .chip.on,.mk .chip.fc.on,.mk [data-body].on{border-image-source:url(menukit/selection.svg);}
+.mk .chip.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .tabs .chip.on,.mk .chip.fc.on{background:var(--mk-face-hover);}
+
+/* ---------- Button ---------- */
+.mk .btn,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .chip,.mk .tabs .chip{
+  font:400 var(--mk-t-control)/1.05 var(--font-b); color:var(--mk-text); min-height:48px; padding:2px 12px; letter-spacing:0; cursor:pointer;
+  opacity:1; filter:none; transform:none; animation:none;}
+.mk .btn small{font:400 var(--mk-t-meta)/1.1 var(--font-b); color:var(--mk-muted); opacity:1;}
+.mk .btn.small{min-height:48px; padding:2px 10px; font-size:var(--mk-t-control);}
+.mk .btn.big{font-size:var(--mk-t-control); padding:2px 16px;}
+.mk .btn:hover:not(:disabled),.mk .dkpill:hover,.mk .chip:hover,.mk #shopTabs button:hover,.mk .bgtab:hover{background-image:var(--mk-face-hover);}
+.mk .btn:active:not(:disabled),.mk .dkpill:active,.mk .chip:active,.mk #shopTabs button:active,.mk .bgtab:active,.mk .backbtn:active,.mk .winx:active,.mk .bgx:active{background-image:var(--mk-face-down); transform:none;}
+.mk .btn:focus-visible,.mk .dkpill:focus-visible,.mk .chip:focus-visible,.mk .backbtn:focus-visible,.mk .winx:focus-visible,.mk .bgx:focus-visible,
+.mk #shopTabs button:focus-visible,.mk .bgtab:focus-visible{outline:2px dashed var(--mk-text); outline-offset:-3px;}
+.mk .btn:disabled{opacity:.45; cursor:default;}
+.mk .btn.newgame{background:var(--mk-face-new);}
+.mk .btn.newgame:hover:not(:disabled){background-image:var(--mk-face-new-hover);}
+.mk .btn.danger,.mk .dkpill.red{color:var(--mk-danger);}
+.mk .btn .pxi{image-rendering:pixelated;}
+/* chips are compact controls of the same family */
+.mk .chip{min-height:32px; padding:0 8px; font-size:var(--mk-t-body); color:var(--c,var(--mk-text));}
+.mk .tabs .chip{min-height:40px; font-size:var(--mk-t-control); color:var(--mk-text); opacity:1;}
+.mk .chip.fc{opacity:.7;} .mk .chip.fc.on{opacity:1;}
+
+/* ---------- Back and X: one glyph family on the same 48 square ---------- */
+.mk .backbtn,.mk .winx,.mk .bgx{width:48px; height:48px; min-width:48px; min-height:48px; padding:0; flex:none; color:var(--mk-text); font-size:0;}
+.mk .backbtn{--glyph:url(menukit/chevron-left.svg);}
+.mk .winx,.mk .bgx{--glyph:url(menukit/close.svg);}
+.mk .backbtn::before,.mk .winx::before,.mk .bgx::before{width:20px; height:20px; margin:-10px 0 0 -10px; background:var(--mk-text);}
+.mk .backbtn::after,.mk .winx::after,.mk .bgx::after{display:none;}
+
+/* ---------- PageHeader: Back at the left, the title beside it, a resource at the right ---------- */
+.mk.screen>.bar,.mk .cc>.bar{min-height:56px; display:flex; align-items:center; gap:12px; padding:0 8px 0 0; margin:0 0 8px; flex:none;}
+.mk.screen>.bar>.backbtn,.mk .cc>.bar>.backbtn{margin:-8px 0 -8px -8px; clip-path:none; border-image:none; background:none;}
+.mk.screen>.bar h2,.mk .cc>.bar h2{flex:1; text-align:left;}
+.mk.screen>.bar .count,.mk.screen>.bar .dim{font-size:var(--mk-t-body);}
+/* Dialog header: title, then X at the upper right */
+.mk .mkdh{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px;}
+.mk .mkdh h2{flex:1; text-align:left;}
+.mk .mkx{position:static;}
+/* ActionFooter: equal buttons after the content */
+.mk .mkfoot{display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:8px; margin-top:16px;}
+
+/* ---------- Dialog ---------- */
+.overlay.mk{background:rgba(3,5,7,.78);}
+.mk .panel{padding:12px; text-align:left;}
+.mk .panel h2{text-align:left;}
+
+/* ---------- fields ---------- */
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select{font:400 var(--mk-t-control) var(--font-b); color:var(--mk-text); min-height:48px; padding:2px 8px;
+  background:linear-gradient(180deg,#090f12,#101a1e); outline:none;}
+.mk input:focus-visible,.mk select:focus-visible{border-image-source:url(menukit/selection.svg);}
+.mk select{appearance:none; -webkit-appearance:none; padding-right:28px;
+  background:url(menukit/chevron-down.svg) right 4px center/16px 16px no-repeat,linear-gradient(180deg,#14232a,#101a1e);}
+.mk input[type=checkbox]{accent-color:var(--mk-mint); width:20px; height:20px;}
+
+/* ---------- Progress ---------- */
+.mk .bprog{height:12px; border:1px solid var(--mk-steel); background:var(--mk-deep); border-radius:0; box-shadow:none;
+  clip-path:polygon(3px 0,calc(100% - 3px) 0,100% 3px,100% calc(100% - 3px),calc(100% - 3px) 100%,3px 100%,0 calc(100% - 3px),0 3px);}
+.mk .bprog>i,.mk .bprog>b,.mk .bprog>span:first-child{background:var(--mk-cyan); box-shadow:none; border-radius:0;}
+/* ResourceInline / Badge: square, quiet, the same in every row */
+.mk .bchip,.mk .badge,.mk .mbadge{border-radius:0; box-shadow:none; text-shadow:none; font:400 var(--mk-t-body) var(--font-b); background:#090f12;
+  border:1px solid var(--mk-steel); color:var(--mk-text); padding:1px 6px;}
+.mk .bchip.pack{color:var(--c,var(--mk-gold));}
+
+/* ---------- StatDial: track, rounded edge shade, full-height gold selector ---------- */
+.mk .ccstats{gap:0;}
+.mk .ccrow{min-height:72px; grid-template-columns:100px minmax(100px,1fr) 32px; gap:0 8px; padding:8px 0; background:none; border:0; border-bottom:1px solid #626f7066; clip-path:none;}
+.mk .ccname b{display:flex; align-items:center; gap:8px; font:400 var(--mk-t-control)/1.05 var(--font-b); color:var(--mk-text);}
+.mk .ccname span{font:400 var(--mk-t-body)/1.1 var(--font-b); color:var(--mk-muted); padding-left:28px;}
+.mk .ccval{text-align:right;} .mk .ccval b{font:400 var(--mk-t-value)/1 var(--font-b); color:var(--mk-text);}
+.mk .ccval small{font:400 var(--mk-t-meta) var(--font-b); color:var(--mk-mint);}
+.mk .cceff{font:400 var(--mk-t-body)/1.2 var(--font-b); color:var(--mk-muted); margin:2px 0 0;}
+.mk .cceff b{color:var(--mk-text);} .mk .cceff b.up{color:var(--mk-mint);} .mk .cceff b.down{color:var(--mk-danger);}
+.mk .dial{height:40px; margin:4px 0; border:0; box-shadow:none; background:url(menukit/dial-track.svg) center/100% 100%;}
+.mk .dial::after{content:''; position:absolute; inset:0; background:url(menukit/dial-edge-shade.svg) center/100% 100%; pointer-events:none; z-index:1;}
+.mk .dial::before{content:''; position:absolute; top:0; left:calc(50% - 16px); width:32px; height:40px; background:url(menukit/dial-selector.svg) center/100% 100%; pointer-events:none; z-index:3;}
+.mk .dial .notch{bottom:2px; height:15px; box-shadow:none; z-index:2;}
+.mk .dial .tape i b{font:400 var(--mk-t-body) var(--font-b); top:3px;}
+.mk .dial .tape i.cur b{font-size:var(--mk-t-section); color:#fff; top:1px;}
+.mk .dial .tape i.new::before{background:var(--mk-mint);} .mk .dial .tape i.new b{color:var(--mk-mint);}
+.mk .dial .dl,.mk .dial .dr{z-index:4; width:20px; background:#03050766; color:var(--mk-text); font-size:9px;}
+.mk .dial:focus-visible{outline:2px solid var(--mk-cyan); outline-offset:-2px;}
+.mk .hex-icon{width:20px; height:20px; flex:none; display:inline-block; vertical-align:middle; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:square; stroke-linejoin:miter;}
+.mk .ccpts{display:flex; align-items:baseline; justify-content:center; gap:8px; font:400 var(--mk-t-control) var(--font-b); color:var(--mk-text);}
+.mk .ccpts b{font:400 var(--mk-t-value) var(--font-b); color:var(--mk-gold); text-shadow:none;}
+.mk .ccpts b.none{color:var(--mk-muted);}
+
+/* ---------- Create character ---------- */
+.mk .ccraces{gap:8px;}
+.mk .ccrace{min-height:48px; padding:2px; color:var(--mk-text);}
+.mk .ccrace span{font:400 var(--mk-t-meta) var(--font-b); color:var(--mk-text);}
+.mk .ccbody{gap:8px;}
+.mk #ccRace{font-size:var(--mk-t-section);}
+
+/* ---------- Save slots: one card system for Continue, New game and Manage ---------- */
+.mk .slrow{padding:4px 8px;}
+.mk .sln{font:400 var(--mk-t-value) var(--font-b); color:var(--mk-muted);}
+.mk .slinfo b{font:400 var(--mk-t-control) var(--font-b); color:var(--mk-text);} .mk .slinfo small{font:400 var(--mk-t-body) var(--font-b);}
+.mk .slnow{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-mint);}
+.mk #slClose{width:100%;}
+
+/* ---------- Choose first cards ---------- */
+.mk .starter{padding:12px;}
+.mk .starter p{font-size:var(--mk-t-body);}
+.mk .btn.dealc{color:var(--c);}
+.mk .startlay span{font-size:var(--mk-t-body); color:var(--mk-muted);} .mk .startlay b{color:var(--mk-text); font-weight:400;}
+
+/* ---------- Settings ---------- */
+.mk .srow{border-bottom:1px solid #626f7066; padding:8px 0;}
+.mk .srow>span{font:400 var(--mk-t-control)/1.15 var(--font-b); color:var(--mk-text);}
+.mk .srow small{font:400 var(--mk-t-body)/1.3 var(--font-b); color:var(--mk-muted);}
+.mk .srow .btn{min-width:140px; min-height:48px;}
+.mk .panel.settings h3,.mk details summary h3{margin:16px 0 4px; color:var(--mk-text);}
+.mk #setClose{width:100%; margin-top:16px;}
+
+/* ---------- Shop and purchase sheet ---------- */
+.mk .stall{padding:0; background:#05080a;}
+.mk .stallname{font:400 var(--mk-t-control) var(--font-b); text-shadow:none;}
+.mk .say{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-muted);}
+.mk #shopTabs{gap:8px;} .mk #shopTabs button{flex:1;}
+.mk .shelf{padding:8px;} .mk .shelf h3{text-align:center; margin:0 0 8px;} .mk .shelf h3 small{display:block;}
+.mk .ware{padding:2px; color:var(--mk-text); min-height:48px;}
+.mk .ware .wname{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-text);}
+.mk .ware .wtag{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-gold); background:#090f12; border:1px solid var(--mk-steel); border-radius:0;}
+.mk .ware.cant .wtag{color:var(--mk-muted);}
+.mk .sbal{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:8px 0 0; padding-top:8px; border-top:1px solid #626f7099; font:400 var(--mk-t-body) var(--font-b);}
+.mk .sbal dt{color:var(--mk-muted);} .mk .sbal dd{margin:0; color:var(--mk-gold); text-align:right;} .mk .sbal dd.bad{color:var(--mk-danger);}
+.mk .sneed{color:var(--mk-danger); margin:4px 0 0;}
+.mk.sheet .controls,.mk .ssheet .controls{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+
+/* ---------- Pack reveal ---------- */
+.mk .pobox{padding:12px;}
+
+/* ---------- Bounty board, Mastery: one ObjectiveRow ---------- */
+.mk .bounty{padding:10px 12px; background:var(--mk-face);}
+.mk .bounty .btext,.mk .bounty b{font:400 var(--mk-t-control)/1.2 var(--font-b); color:var(--mk-text);}
+.mk .mrow,.mk .setrow{padding:10px 12px;}
+.mk .mhead{font:400 var(--mk-t-control) var(--font-b);}
+.mk .mlv,.mk .mnext{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-muted);}
+
+/* ---------- Bestiary ---------- */
+.mk .bentry{padding:10px 12px;}
+.mk .bhead b{font:400 var(--mk-t-control) var(--font-b); color:var(--bc,var(--mk-text));}
+.mk .bline{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-muted);}
+.mk .bempty{padding:24px 16px; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;}
+.mk .bempty .btn{width:100%; max-width:320px; margin-top:8px;}
+
+/* ---------- Deck builder: deck above, library drawer below, no zoom ---------- */
+.mk .dkhead{min-height:56px; padding:0 4px 0 0; gap:8px; align-items:center;}
+.mk .dkhead>.backbtn{margin:-8px 0 -8px -8px; clip-path:none; border-image:none; background:none;}
+.mk .dkhead input{min-height:40px; border-width:6px; border-image-width:6px;}
+.mk .dkpill,.mk .dkok{min-height:40px; padding:0 10px; display:inline-flex; align-items:center; justify-content:center; gap:6px;}
+.mk .dkok{min-height:48px; font-size:var(--mk-t-control);}
+.mk .dkslots button{border-radius:0; font:400 var(--mk-t-control) var(--font-b);}
+
+/* ---------- Character and Bag (at camp): muted umber smoke, gray steel ---------- */
+#bagUI.mk .bagframe,#bagUI.mk .bgslot,#bagUI.mk .bgcell,#bagUI.mk .bgtab,#bagUI.mk .btn,#bagUI.mk .bghead{background:var(--mk-face-warm); background-origin:border-box;}
+#bagUI.mk .bgtab:hover,#bagUI.mk .btn:hover:not(:disabled){background-image:var(--mk-face-warm-hover);}
+#bagUI.mk .bagframe{padding:8px;}
+#bagUI.mk .bghead{min-height:56px; padding:0 0 0 8px; gap:8px;}
+#bagUI.mk .bghead h2{font-size:var(--mk-t-title); color:var(--mk-text);}
+#bagUI.mk .bgx{margin:-8px -8px -8px 0; clip-path:none; border-image:none; background:none;}
+#bagUI.mk .bgslot,#bagUI.mk .bgcell{padding:0;}
+#bagUI.mk .bgtab.on{background:var(--mk-face-warm-hover);}
+#bagUI.mk .bggold{font:400 var(--mk-t-body) var(--font-b); color:var(--mk-gold);}
+
+@media (prefers-reduced-motion:reduce){ .mk *{transition:none!important; animation:none!important;} }
+
+/* ---------- fixes over style.css's older pieces ---------- */
+/* section headings are type, not a carved plaque */
+.mk h3{border:0; border-image:none; background:none; min-height:0; padding:0; margin:12px 0 6px; line-height:1.2; text-align:left;}
+.mk .shelf h3,.mk .starter h3{text-align:center;}
+.mk #lvTitle{color:var(--mk-text); font-size:var(--mk-t-title); text-align:left;}
+.mk #shopBuy{flex-direction:row; gap:4px; width:100%;}
+.mk .ssheet .controls{grid-template-columns:1fr;}
+.mk .bprog{height:18px;} .mk .bprog span{font:400 var(--mk-t-meta)/16px var(--font-b); color:var(--mk-text); text-shadow:none;}
+.mk .bprog i{background:var(--mk-cyan); opacity:.55;}
+/* the card pop-up's X, in the same family */
+html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px solid var(--mk-steel-l); color:var(--mk-text); box-shadow:none; text-shadow:none; clip-path:var(--mk-chamfer);}
+/* bag pieces keep their old size: the frame is drawn 8 wide over a thin layout border */
+#bagUI.mk .bgslot,#bagUI.mk .bgcell{border-width:2px; border-image-width:8px;}
+#bagUI.mk .bgslot .lbl{font:400 var(--mk-t-meta) var(--font-b); color:var(--mk-muted); text-shadow:none; letter-spacing:0;}
+#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{outline:none; border-image-source:url(menukit/selection.svg);}
+#bagUI.mk .bgtab{min-height:40px; padding:0 2px; font:400 var(--mk-t-body) var(--font-b); color:var(--mk-text); text-shadow:none; letter-spacing:0;}
+#bagUI.mk .bagframe{padding:4px;}
+#bagUI.mk .bghead{padding:0 0 0 0; margin:0 0 8px; border-bottom:none;}
+#bagUI.mk .bgbag{position:static; flex:none; width:40px; height:40px; margin:0 0 0 -4px; border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch;
+  background:var(--mk-face-warm); background-origin:border-box; clip-path:var(--mk-chamfer);}
+#bagUI.mk .bgbag::after{inset:2px;}
+#bagUI.mk #bgTitle{text-align:left; font:400 var(--mk-t-title)/1.1 var(--font-b); color:var(--mk-text); text-shadow:none; letter-spacing:0;}
+#bagUI.mk #bgTitle small{font:400 var(--mk-t-meta) var(--font-b); color:var(--mk-muted); text-shadow:none; letter-spacing:0;}
+#bagUI.mk .bgbag::after{inset:0; background:var(--mk-text); -webkit-mask:url(menukit/bag.svg) center/20px 20px no-repeat; mask:url(menukit/bag.svg) center/20px 20px no-repeat;}
+/* the kit's 48 targets where the old layout allowed less */
+.mk .dkpill{min-height:48px;} .mk .dkhead input{min-height:48px;}
+.mk details>summary{min-height:48px; display:flex; align-items:center; cursor:pointer;}
+.mk details>summary h3{margin:0;}
+#bagUI.mk .bgbag{position:relative; top:auto; left:auto;}
+/* inner areas: the warm smoke, a quiet steel line, no leather */
+#bagUI.mk .bgchar,#bagUI.mk .bgside,#bagUI.mk .bgdetail,#bagUI.mk .bgbody{background:none; background-image:none; border-image:none; box-shadow:none;}
+#bagUI.mk .bgchar,#bagUI.mk .bgside{background:#191917b3; border:1px solid #626f7066;}
+#bagUI.mk .bgdetail{border:0; border-top:1px solid #626f7066; color:var(--mk-muted);}

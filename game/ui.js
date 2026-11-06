@@ -273,7 +273,7 @@ let ccMode=null, ccNext=null;
 const needsChar=()=>save&&(!save.char||save.char.auto||!RACES[save.char.race]);
 function withChar(next){ if(needsChar()) openNewChar(false,'existing',next); else next(); }
 function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
-  $('#ccStep').textContent=ccMode?'Make your character':'Step 1 of 2'; $('#ccGo').textContent=ccMode?'Save character ►':'Choose your deck ►';
+  $('#ccStep').textContent=ccMode?'Make your character':'Step 1 of 2'; $('#ccGo').textContent=ccMode?'Save':'Next';
   if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
 function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
@@ -290,10 +290,13 @@ function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
     b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
   // the stats, one dial each
   statDials($('#ccStats'),ch,$('#ccPts'),()=>{ if(!pointsLeft(ccChar)) $('#ccWarn').textContent=''; }); }
+// each stat's glyph from the menu kit's line icons (menukit/menu.js), or its old emoji without the kit
+const STAT_GLYPH={str:'strength',dex:'dexterity',con:'constitution',int:'intelligence',wis:'wisdom',cha:'charisma',stl:'stealth',rch:'recharge',cst:'casting'};
+function statGlyph(k){ try{ if(typeof HexMenuUI!=='undefined') return HexMenuUI.icon(STAT_GLYPH[k]); }catch(e){} return STATS[k].icon; }
 // a horizontal dial for each stat, spending a character's points (character creation and level ups)
 function statDials(root,ch,ptsEl,after){ root.innerHTML=''; root._ch=ch; root._pts=ptsEl; root._after=after;
   for(const k of STAT_KEYS){ const S=STATS[k], row=document.createElement('div'); row.className='ccrow'; row.dataset.k=k;
-    row.innerHTML=`<div class="ccname"><b>${S.icon} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
+    row.innerHTML=`<div class="ccname"><b>${statGlyph(k)} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
     root.appendChild(row); buildDial(row,k,root); }
   dialsUpdate(root); }
 // a horizontal dial: a strip of numbered ticks under a fixed notch; dragging the strip, or tapping
@@ -343,6 +346,8 @@ function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lv
 $('#lvDone').onclick=()=>closeLevelUp(true);
 $('#campLevel').onclick=()=>{ if(pointsLeft(ensureChar(save))>0) openLevelUp(()=>openCamp()); else openCharacter(); };
 $('#lvLater').onclick=()=>closeLevelUp(false);
+// Reset takes back only this level up's new points; the ones confirmed before stay
+$('#lvReset').onclick=()=>{ const ch=save.char; if(!ch||!lvBefore) return; ch.spent=Object.assign({},lvBefore); statDials($('#lvStats'),ch,$('#lvPts')); };
 // open the panel if a level up is waiting (after a fight, back at camp, on the map)
 function maybeLevelUp(){ if(save&&save.lvlNew&&save.char&&pointsLeft(save.char)>0&&!$('#lvlUp').classList.contains('on')&&!$('#reveal').classList.contains('on')) openLevelUp(); }
 // level and XP as a bar: "Lv 3 · 40/140 XP"
@@ -365,10 +370,10 @@ function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=
     row.innerHTML=`<span class="sln">${n}</span><div class="slinfo">${slotLine(s)}</div><div class="slbtns"></div>`;
     const bb=row.querySelector('.slbtns'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); bb.appendChild(b); return b; };
     if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
-      if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','',go); }
+      if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','newgame',go); }
     // Continue: every save can be picked up from here, straight to its camp; an empty slot can start a new game
     else if(cont){ if(s) btn('Continue','',()=>{ if(n!==SAVE_SLOT) useSlot(n); $('#slots').classList.remove('on'); withChar(()=>openCamp()); });
-      else btn('New game here','ghost',()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); }); }
+      else btn('New game here','newgame',()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); }); }
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
       if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
@@ -1528,6 +1533,10 @@ $('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('
 function keepChar(){ const old=save.char, ch=lockChar(ccChar); ch.earned=(old&&old.earned)||0; if(ch.earned) save.lvlNew=true;
   Object.assign(save,{char:ch, look:ch.look, hat:true}); ensureChar(save); persist(); const go=ccNext||openCamp; ccMode=ccNext=null; go(); }
 $('#ccReset').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); renderNewChar(); };
+// Random: start again from the race's values and spend every point on random stats (up to the cap)
+$('#ccRandom').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); let tries=0;
+  while(pointsLeft(ccChar)>0&&tries++<2000) spendPoint(ccChar,STAT_KEYS[Math.floor(Math.random()*STAT_KEYS.length)],1);
+  $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); };
 $('#campMenu').onclick=()=>openMenu();
 
 /* ---------------- closing windows: one way everywhere ----------------

@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v229</title>
-<meta name="application-version" content="229">
+<title>Hexmancers v230</title>
+<meta name="application-version" content="230">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="card.css">
 <link rel="stylesheet" href="cards/card-geo.css">
+<link rel="stylesheet" href="menukit.css">
 </head>
 <body>
 <div id="app">
@@ -109,7 +110,7 @@
   </section>
 
   <!-- new game, step 1: your hexmancer: race, body and stats -->
-  <section id="scrNewChar" class="screen">
+  <section id="scrNewChar" class="screen mk">
     <div class="cc">
       <div class="bar"><button id="ccBack" class="backbtn back" aria-label="Back"></button><h2>Your hexmancer</h2><span id="ccStep" class="dim">Step 1 of 2</span></div>
       <div class="cctop">
@@ -121,16 +122,16 @@
         </div>
       </div>
       <div id="ccRaces" class="ccraces"></div>
-      <div class="ccpts"><span>Points to spend</span><b id="ccPts">12</b><button id="ccReset" class="btn ghost small">Reset</button></div>
+      <div class="ccpts"><span>Points to spend</span><b id="ccPts">12</b></div>
       <p class="hint center ccdialhint">Drag a dial left or right, or tap its ends, to move a stat. Your race sets the starting value.</p>
       <div id="ccStats" class="ccstats"></div>
       <p id="ccWarn" class="hint warn center"></p>
-      <button id="ccGo" class="btn big">Choose your deck ►</button>
+      <div class="mkfoot"><button id="ccReset" class="btn ghost">Reset</button><button id="ccRandom" class="btn ghost">Random</button><button id="ccGo" class="btn">Next</button></div>
     </div>
   </section>
 
   <!-- new game: pick the color your random cards lean to -->
-  <section id="scrStart" class="screen">
+  <section id="scrStart" class="screen mk">
     <button id="startBack" class="backbtn back startback" aria-label="Back to your character"></button>
     <h1>Hexmancers</h1>
     <p class="sub">New game</p>
@@ -178,7 +179,7 @@
   </section>
 
   <!-- deck builder -->
-  <section id="scrBuilder" class="screen">
+  <section id="scrBuilder" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
     <div id="bSlots" class="slotsel"></div>
     <div class="soulpick" hidden><label>♔ Soul <select id="bSoul"></select></label><small id="bSoulTxt" class="dim"></small></div>
@@ -193,10 +194,9 @@
   </section>
 
   <!-- deck builder (deckui.js) -->
-  <section id="scrDeck" class="screen dkscr">
+  <section id="scrDeck" class="screen dkscr mk">
     <div class="dkhead"><button id="dkBack" class="backbtn" aria-label="Back"></button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
-    <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button>
-      <div class="dkpill zoom"><button id="dkZo" aria-label="Zoom out">⊖</button><span id="dkZoom">50%</span><button id="dkZi" aria-label="Zoom in">⊕</button></div></div>
+    <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button></div>
     <div id="dkDeck" class="dkdeck"></div>
     <div class="dkdrawer">
       <div id="dkGrip" class="dkgrip" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the library"></div>
@@ -206,11 +206,11 @@
       <div id="dkFilters" class="filters" hidden></div>
       <div id="dkColl" class="dkcoll"></div>
       <div id="dkMultiBar" class="dkmultibar" hidden><span id="dkSelN"></span><button id="dkSelAdd" class="btn">Add to deck</button><button id="dkSelNew" class="btn ghost">New deck</button></div>
-      <button id="dkOK" class="dkok">OK</button>
+      <button id="dkOK" class="dkok">Done</button>
     </div>
   </section>
   <!-- collection -->
-  <section id="scrCollection" class="screen">
+  <section id="scrCollection" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
     <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button><button id="cTabBook" class="chip">Recipes</button>
       <select id="cSort"><option value="family">Sort: color</option><option value="rank">Sort: rank</option><option value="rarity">Sort: rarity</option><option value="copies">Sort: most copies</option><option value="name">Sort: name</option></select></div>
@@ -223,17 +223,17 @@
   <!-- character and gear -->
 
   <!-- shop -->
-  <section id="scrBounty" class="screen">
+  <section id="scrBounty" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Bounty board</h2><span id="bShards" class="count"></span></div>
     <p class="hint bhint">Contracts stay until you finish them. A fight counts for a contract when the deck you fight with meets it.</p>
     <div id="bountyList" class="bountylist"></div>
   </section>
-  <section id="scrBestiary" class="screen">
+  <section id="scrBestiary" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Bestiary</h2><span id="bestCount" class="count"></span></div>
     <p class="hint bhint">Every creature you fight is written down here. Beat 3 of a kind (1 boss, miniboss or rare foe) to learn its weakness.</p>
     <div id="bestList" class="bestlist"></div>
   </section>
-  <section id="scrMastery" class="screen">
+  <section id="scrMastery" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Mastery</h2><span id="mShards" class="count"></span></div>
     <p class="hint bhint">Win fights to master the colours in your deck. Each colour has 10 levels.</p>
     <div id="masteryList" class="masterylist"></div>
@@ -241,10 +241,10 @@
     <p class="hint bhint">Own every card in a set for its reward.</p>
     <div id="setList" class="setlist"></div>
   </section>
-  <section id="scrShop" class="screen">
+  <section id="scrShop" class="screen mk">
     <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
     <div class="stall"><canvas id="shopScene" width="200" height="88"></canvas><div class="stallname">Madame Oriel's</div><p id="shopSay" class="say"></p></div>
-    <div id="shopTabs" class="shoptabs"><button data-tab="wares" class="on">Wares</button><button data-tab="sell">Sell</button></div>
+    <div id="shopTabs" class="shoptabs"><button data-tab="wares" class="on">Buy</button><button data-tab="sell">Sell</button></div>
     <div id="shopBody" class="shopbody"></div>
   </section>
 
@@ -354,8 +354,8 @@
   </section>
 
   <!-- shared overlays -->
-  <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
-  <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p id="poHint" class="hint center">Tap a card to turn it over</p><button id="poAll" class="btn ghost" hidden>Reveal all</button><button id="poDone" class="btn" hidden>Collect</button></div></div>
+  <div id="shopSheet" class="overlay sheet mk"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls"><button id="shopSheetClose" class="btn ghost">Cancel</button><button id="shopBuy" class="btn"></button></div></div></div>
+  <div id="packOpen" class="overlay mk"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p id="poHint" class="hint center">Tap a card to turn it over</p><button id="poAll" class="btn ghost" hidden>Reveal all</button><button id="poDone" class="btn" hidden>Collect</button></div></div>
   <!-- one pause menu for the dungeon and the battle -->
   <div id="runSheet" class="overlay">
     <div class="panel narrow">
@@ -385,17 +385,17 @@
     </div>
   </div>
   <!-- level up: spend the new stat points on the same dials as at character creation -->
-  <div id="lvlUp" class="overlay">
+  <div id="lvlUp" class="overlay mk">
     <div class="panel lvl">
       <h2 id="lvTitle">Level up!</h2>
       <p id="lvSub" class="hint center"></p>
       <div class="ccpts"><span>Points to spend</span><b id="lvPts">2</b></div>
       <div id="lvStats" class="ccstats"></div>
-      <div class="row2"><button id="lvLater" class="btn ghost">Later</button><button id="lvDone" class="btn">Done</button></div>
+      <div class="row2 mkfoot"><button id="lvLater" class="btn ghost">Later</button><button id="lvReset" class="btn ghost">Reset</button><button id="lvDone" class="btn">Apply</button></div>
     </div>
   </div>
   <!-- save slots: switch, delete, or pick one for a new game -->
-  <div id="slots" class="overlay">
+  <div id="slots" class="overlay mk">
     <div class="panel slotsp">
       <h2 id="slTitle">Save slots</h2>
       <p id="slHint" class="hint center"></p>
@@ -411,7 +411,7 @@
       <div id="rvBtns" class="controls two"></div>
     </div>
   </div>
-  <div id="detail" class="overlay">
+  <div id="detail" class="overlay mk">
     <div class="panel narrow">
       <div id="dtCard"></div>
       <p id="dtInfo" class="hint"></p>
@@ -449,7 +449,7 @@
       </div>
     </div>
   </div>
-  <div id="dkPeek" class="overlay">
+  <div id="dkPeek" class="overlay mk">
     <div class="panel narrow dkpeek">
       <div id="dkpCard"></div>
       <p id="dkpInfo" class="hint"></p>
@@ -467,7 +467,7 @@
       <div id="xdBtns" class="controls two"></div>
     </div>
   </div>
-  <div id="settings" class="overlay">
+  <div id="settings" class="overlay mk">
     <div class="panel settings">
       <div class="bar"><button id="setBack" class="backbtn" aria-label="Back"></button><h2>Settings</h2></div>
       <h3>Game</h3>
@@ -708,6 +708,7 @@
 <script src="arearules.js"></script>
 <script src="rares.js"></script>
 <script src="uikit.js"></script>
+<script src="menukit/menu.js"></script>
 <script src="cards/icons.js"></script>
 <script src="cards/card-geo.js"></script>
 <script src="ui.js"></script>

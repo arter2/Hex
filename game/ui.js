@@ -363,7 +363,7 @@ function slotLine(s){ if(!s) return '<b>Empty</b>';
   return `<b>${esc(ch)} · Lv ${s.level||1}</b><small>Depth ${s.deepest} · ${s.gold} gold · ${ownedUnique(s)} cards</small>`; }
 function useSlot(n){ if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   B=null; setSlot(n); save=loadSave(); campLog.length=0; pickDepth=null; ccChar=null; }
-function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=$('#slList'); box.innerHTML='';
+function openSlots(mode){ if(!mode) return openManage(); const isNew=mode==='new', cont=mode==='continue', box=$('#slList'); box.innerHTML=''; $('#slots').classList.remove('manage'); $('#slNew').hidden=true; $('#slClose').hidden=true;
   $('#slTitle').textContent=isNew?'New game':cont?'Continue which save?':'Save slots';
   $('#slHint').textContent=isNew?'Choose a slot for the new game. Starting in a used slot replaces that save.':'Pick a slot to play. Each keeps its own character, cards, gold and gear.';
   for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), row=document.createElement('div'); row.className='slrow'+(n===SAVE_SLOT?' cur':'');
@@ -377,6 +377,31 @@ function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
       if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
+  $('#slots').classList.add('on'); }
+
+// Settings › Save slots (kit screen 08): one card per slot with its hexmancer, deck, level, depth, gold and
+// cards; Manage opens that save's actions (play it, or delete it with a second tap); New game uses the first empty slot.
+function slotDeckName(s){ const d=s&&s.decks&&s.decks[s.active||0]; return d&&d.name||'Deck'; }
+function openManage(){ const box=$('#slList'); box.innerHTML=''; $('#slots').classList.add('manage');
+  $('#slTitle').textContent='Manage saves'; $('#slHint').textContent='Manage an existing run, or start in an empty slot.';
+  let empty=0;
+  for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), c=document.createElement('div'); c.className='slrow slcard'+(n===SAVE_SLOT&&s?' cur':'')+(s?'':' empty');
+    if(!s){ if(!empty) empty=n;
+      c.innerHTML=`<div class="slpic"><span class="sllbl">Slot ${n}</span><button class="slplus" aria-label="New game in slot ${n}"></button></div><div class="slinfo"><b>Empty slot</b></div>`;
+      c.querySelector('.slplus').onclick=()=>{ useSlot(n); $('#slots').classList.remove('on'); closeSettings(); openNewChar(); }; }
+    else { c.innerHTML=`<div class="slpic"><span class="sllbl">Slot ${n}</span><canvas width="72" height="92"></canvas></div>
+        <div class="slinfo"><b>${esc(slotDeckName(s))}</b><span>Level ${s.level||1}</span><span class="dim">Depth ${s.deepest||1} · ${s.gold|0} gold</span><span class="dim">${ownedUnique(s)} cards</span></div>
+        <div class="slside">${n===SAVE_SLOT?'<span class="slnow">Current run</span>':''}<button class="btn ghost slman" aria-expanded="false">Manage</button></div>
+        <div class="slacts" hidden></div>`;
+      if(window.hmDrawChar) window.hmDrawChar(c.querySelector('canvas'),s);
+      const acts=c.querySelector('.slacts'), man=c.querySelector('.slman'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); acts.appendChild(b); return b; };
+      if(n!==SAVE_SLOT) btn('Play this save','',()=>{ useSlot(n); $('#slots').classList.remove('on'); closeSettings(); openMenu(); });
+      btn('Delete','ghost danger',e=>armed(e.currentTarget,'Tap again to delete',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); }));
+      man.onclick=()=>{ const open=acts.hidden; box.querySelectorAll('.slacts').forEach(a=>a.hidden=true); box.querySelectorAll('.slman').forEach(m=>m.setAttribute('aria-expanded','false'));
+        acts.hidden=!open; man.setAttribute('aria-expanded',String(open)); }; }
+    box.appendChild(c); }
+  $('#slClose').hidden=false; const nb=$('#slNew'); nb.hidden=false; nb.disabled=!empty; nb.innerHTML='<span class="slnewi"></span>New game';
+  nb.onclick=()=>{ if(!empty) return; useSlot(empty); $('#slots').classList.remove('on'); closeSettings(); openNewChar(); };
   $('#slots').classList.add('on'); }
 
 /* ---------------- start ---------------- */

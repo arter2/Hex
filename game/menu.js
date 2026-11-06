@@ -113,7 +113,7 @@ function firstEmpty(){ for(let n=1;n<=SAVE_SLOTS;n++) if(!slotSave(n)) return n;
 function newTarget(){ return !slotSave(SEL)?SEL:firstEmpty(); }
 function openSaves(){ SEL=SAVE_SLOT; renderSaves(); show('scrSaves'); q('#scrSaves .hm-scroll').scrollTop=0;
   const c=q('#svList .hm-card.sel'); const f=c&&(c.querySelector('.hm-go')||c); if(f) f.focus(); }
-window.openSaves=openSaves;
+window.openSaves=openSaves; window.hmDrawChar=drawChar;
 function renderSaves(){ const box=q('#svList'); box.innerHTML='';
   for(let n=1;n<=SAVE_SLOTS;n++){ const s=slotSave(n), c=document.createElement('div'); c.className='hm-card'+(n===SEL?' sel':'')+(s?'':' empty');
     c.setAttribute('role','option'); c.tabIndex=0; c.setAttribute('aria-selected',n===SEL?'true':'false');

@@ -245,11 +245,11 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
   radial-gradient(120% 22% at 50% 100%,rgba(30,120,255,.38),transparent 70%),
   linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
 /* faces: near-black teal smoke with the kit's grain */
-.mk{--mk-face:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#0c1f28,#071419 55%,#050e13);
-  --mk-face-tile:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#06121a,#02080d);
-  --mk-face-hover:url(menukit/grain.svg),linear-gradient(180deg,#123341,#0a1d26);
+.mk{--mk-face:url(menukit/noise.png) 0 0/128px 128px,linear-gradient(180deg,#0c1f28,#071419 55%,#050e13);
+  --mk-face-tile:url(menukit/noise.png) 0 0/128px 128px,linear-gradient(180deg,#06121a,#02080d);
+  --mk-face-hover:url(menukit/noise.png),linear-gradient(180deg,#123341,#0a1d26);
   --mk-face-down:linear-gradient(180deg,#02080d,#0c1f28);
-  --mk-chamfer-r:polygon(0 11px,2.4px 4.6px,4.6px 2.4px,11px 0,calc(100% - 11px) 0,calc(100% - 4.6px) 2.4px,calc(100% - 2.4px) 4.6px,100% 11px,100% calc(100% - 11px),calc(100% - 2.4px) calc(100% - 4.6px),calc(100% - 4.6px) calc(100% - 2.4px),calc(100% - 11px) 100%,11px 100%,4.6px calc(100% - 2.4px),2.4px calc(100% - 4.6px),0 calc(100% - 11px));}
+  --mk-chamfer-r:polygon(0 10px,1.6px 3.8px,3.8px 1.6px,10px 0,calc(100% - 10px) 0,calc(100% - 3.8px) 1.6px,calc(100% - 1.6px) 3.8px,100% 10px,100% calc(100% - 10px),calc(100% - 1.6px) calc(100% - 3.8px),calc(100% - 3.8px) calc(100% - 1.6px),calc(100% - 10px) 100%,10px 100%,3.8px calc(100% - 1.6px),1.6px calc(100% - 3.8px),0 calc(100% - 10px));}
 /* rims: one bright steel line on a dark outline; copper rivets on panels, tiles and rows; cyan glow when selected */
 .mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,
 .mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,#bagUI.mk .bgbag{border-image-source:url(menukit/rim.svg);}
@@ -262,11 +262,11 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk .ware{background:var(--mk-face-tile);}
 /* the blue crystal on the top edge of a header; the clip opens a notch for it */
 .mk.screen>.bar,.mk .cc>.bar,.mk .dkhead,.mk .bempty,.mk .shelf{position:relative; overflow:visible;
-  clip-path:polygon(0 11px,2.4px 4.6px,4.6px 2.4px,11px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 11px) 0,calc(100% - 4.6px) 2.4px,calc(100% - 2.4px) 4.6px,100% 11px,100% calc(100% - 11px),calc(100% - 2.4px) calc(100% - 4.6px),calc(100% - 4.6px) calc(100% - 2.4px),calc(100% - 11px) 100%,11px 100%,4.6px calc(100% - 2.4px),2.4px calc(100% - 4.6px),0 calc(100% - 11px));}
+  clip-path:polygon(0 10px,1.6px 3.8px,3.8px 1.6px,10px 0,calc(50% - 10px) 0,calc(50% - 10px) -12px,calc(50% + 10px) -12px,calc(50% + 10px) 0,calc(100% - 10px) 0,calc(100% - 3.8px) 1.6px,calc(100% - 1.6px) 3.8px,100% 10px,100% calc(100% - 10px),calc(100% - 1.6px) calc(100% - 3.8px),calc(100% - 3.8px) calc(100% - 1.6px),calc(100% - 10px) 100%,10px 100%,3.8px calc(100% - 1.6px),1.6px calc(100% - 3.8px),0 calc(100% - 10px));}
 .mk.screen>.bar::after,.mk .cc>.bar::after,.mk .dkhead::after,.mk .bempty::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px;
   background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
 /* PageHeader: 44 high, Back a small steel square with the cyan arrow, a divider, the title */
-.mk.screen>.bar,.mk .cc>.bar{min-height:48px; margin:8px 0 10px; padding:0 10px 0 6px; gap:10px; background:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#071a2a,#030d18);}
+.mk.screen>.bar,.mk .cc>.bar{min-height:48px; margin:8px 0 10px; padding:0 10px 0 6px; gap:10px; background:url(menukit/noise.png) 0 0/128px 128px,linear-gradient(180deg,#071a2a,#030d18);}
 .mk.screen>.bar h2,.mk .cc>.bar h2{font-size:18.5px;}
 .mk.screen>.bar>.backbtn,.mk .cc>.bar>.backbtn,.mk .dkhead>.backbtn{width:38px; height:32px; min-width:38px; min-height:32px; margin:0; border:6px solid transparent;
   border-image:url(menukit/rim.svg) 8 fill / 6px / 0 stretch; background:linear-gradient(180deg,#123447,#0a2131); background-origin:border-box; clip-path:var(--mk-chamfer); overflow:visible;}
@@ -290,7 +290,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrShop.mk #shopTabs button{min-height:40px; font-size:15px;}
 #scrShop.mk #shopTabs button.on{color:var(--mk-gold);}
 #scrShop.mk .shelf{margin:18px 0 12px; padding:12px 6px 10px;}
-#scrShop.mk .shelf::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px; background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
+#scrShop.mk .shelf::after{content:''; position:absolute; z-index:3; top:-15px; left:50%; width:18px; height:18px; margin-left:-9px; background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
 #scrShop.mk .shelf h3{font-size:18.5px; margin:0 0 12px;}
 #scrShop.mk .shelf h3 small{font-size:12.5px; color:var(--mk-muted); padding:0 16px;}
 #scrShop.mk .wares{grid-template-columns:repeat(3,1fr); gap:8px; padding:0 2px; background:none; box-shadow:none;}
@@ -412,8 +412,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
   radial-gradient(120% 22% at 50% 100%,rgba(30,120,255,.38),transparent 70%),linear-gradient(rgba(2,6,10,.3),rgba(2,6,10,.3)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
 #slots.mk.manage .winx{display:none;}
 #slots.mk.manage>.panel{position:relative; overflow:visible; width:100%; max-width:420px; margin:145px 0 24px; padding:14px 10px 14px; box-sizing:border-box;
-  clip-path:polygon(0 11px,2.4px 4.6px,4.6px 2.4px,11px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 11px) 0,calc(100% - 4.6px) 2.4px,calc(100% - 2.4px) 4.6px,100% 11px,100% calc(100% - 11px),calc(100% - 2.4px) calc(100% - 4.6px),calc(100% - 4.6px) calc(100% - 2.4px),calc(100% - 11px) 100%,11px 100%,4.6px calc(100% - 2.4px),2.4px calc(100% - 4.6px),0 calc(100% - 11px));}
-#slots.mk.manage>.panel::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px; background:url(menukit/diamond.svg) center/contain no-repeat;}
+  clip-path:polygon(0 10px,1.6px 3.8px,3.8px 1.6px,10px 0,calc(50% - 10px) 0,calc(50% - 10px) -12px,calc(50% + 10px) -12px,calc(50% + 10px) 0,calc(100% - 10px) 0,calc(100% - 3.8px) 1.6px,calc(100% - 1.6px) 3.8px,100% 10px,100% calc(100% - 10px),calc(100% - 1.6px) calc(100% - 3.8px),calc(100% - 3.8px) calc(100% - 1.6px),calc(100% - 10px) 100%,10px 100%,3.8px calc(100% - 1.6px),1.6px calc(100% - 3.8px),0 calc(100% - 10px));}
+#slots.mk.manage>.panel::after{content:''; position:absolute; z-index:3; top:-15px; left:50%; width:18px; height:18px; margin-left:-9px; background:url(menukit/diamond.svg) center/contain no-repeat;}
 #slots.mk.manage #slTitle{text-align:center; font-size:22px; letter-spacing:.02em; margin:4px 0 10px;}
 #slots.mk.manage .mkrule{margin:0 2px;}
 #slots.mk.manage #slHint{text-align:center; color:#e9e4d6; font-size:13.5px; letter-spacing:.03em; margin:8px 0 14px;}
@@ -460,3 +460,19 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #slots.mk.manage .slcard{min-height:96px; padding-top:2px; padding-bottom:2px;}
 #slots.mk.manage .slcard.empty{min-height:80px;}
 #slots.mk.manage .slfoot{margin-top:20px;}
+/* Manage saves: every slot card the same height, the kit's gaps, the title centred, a darker floor with a vignette */
+#slots.mk.manage .slcard,#slots.mk.manage .slcard.empty{min-height:0; height:106px; padding-top:0; padding-bottom:0;}
+#slots.mk.manage .slcard:has(.slacts:not([hidden])){height:auto; padding-bottom:6px;}
+#slots.mk.manage .sllist{gap:12px;}
+#slots.mk.manage .slfoot{margin-top:44px;}
+#slots.mk.manage>.panel{padding:14px 12px 14px;}
+#slots.mk.manage>.panel.haswinx{padding-right:12px;}
+#slots.mk.manage #slTitle{padding:0; margin-left:0; margin-right:0; width:100%;}
+#slots.mk.manage{background:radial-gradient(140% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.6) 100%),
+  linear-gradient(rgba(0,0,0,0) 55%,rgba(0,0,0,.6) 100%),
+  radial-gradient(14% 7% at 0% 80%,rgba(40,150,255,.7),transparent 100%),radial-gradient(14% 7% at 100% 80%,rgba(40,150,255,.7),transparent 100%),
+  linear-gradient(rgba(7,11,14,0) 70px,rgba(7,11,14,.2) 120px,rgba(7,11,14,.55) 150px) 0 0/100% 160px no-repeat,
+  url(art/menu/hero.webp) center -124px/500px auto no-repeat,
+  linear-gradient(rgba(2,6,10,.35),rgba(2,6,10,.35)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+#slots.mk.manage #slHint{margin:2px 0 10px; line-height:1.2;}
+#slots.mk.manage>.panel{padding-bottom:8px;}

@@ -74,12 +74,12 @@ const bountyReady=()=>save&&save.bounty?save.bounty.list.filter(k=>k.done).lengt
 /* ---------------- the board ---------------- */
 function openBounty(){ bountyFill(); persist(); renderBounty(); show('scrBounty'); }
 // the reward pack's small picture: a dark card in the pack's colour with its element glyph
-function bountyPackPic(k){ return `<i class="bpk">${typeof HexMenuUI!=='undefined'?HexMenuUI.icon(k||'spark'):''}</i>`; }
+function bountyPackPic(k){ return `<i class="bpk"><b></b><b>${typeof HexMenuUI!=='undefined'?HexMenuUI.icon(k||'spark'):''}</b></i>`; }
 const bountyTint=r=>r.pack?COLORS[r.pack].c:'#b48cff';
 function rewardChips(r){ return `<span class="bchip">${uiIcon('shard',18)}${r.shards}</span><span class="bchip">${uiIcon('coin',18)}${r.gold}</span>`+
   `<span class="bchip pack" style="--c:${bountyTint(r)}">${bountyPackPic(r.pack)}${r.pack?cName(r.pack)+' pack':'Booster pack'}</span>`; }
 function renderBounty(){ const box=$('#bountyList'); box.innerHTML=''; const s=deckStats(activeDeck().list);
-  $('#bShards').innerHTML=uiIcon('shard',20)+(save.shards||0);
+  $('#bShards').innerHTML=uiIcon('shard',28)+(save.shards||0);
   for(const k of save.bounty.list){ const K=BOUNTY_KINDS[k.kind], el=document.createElement('div'); el.className='bounty'+(k.done?' done':'');
     el.style.setProperty('--c',bountyTint(k.reward));
     const meets=K.check?K.ok(s,k,{depth:99,boss:true,combos:9}):null;

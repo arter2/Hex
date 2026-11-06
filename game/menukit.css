@@ -249,19 +249,20 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
   --mk-face-tile:url(menukit/grain.svg) 0 0/8px 8px,linear-gradient(180deg,#06121a,#02080d);
   --mk-face-hover:url(menukit/grain.svg),linear-gradient(180deg,#123341,#0a1d26);
   --mk-face-down:linear-gradient(180deg,#02080d,#0c1f28);
-  --mk-chamfer-r:polygon(2px 0,calc(100% - 2px) 0,100% 2px,100% calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,0 calc(100% - 2px),0 2px);}
+  --mk-chamfer-r:polygon(0 11px,2.4px 4.6px,4.6px 2.4px,11px 0,calc(100% - 11px) 0,calc(100% - 4.6px) 2.4px,calc(100% - 2.4px) 4.6px,100% 11px,100% calc(100% - 11px),calc(100% - 2.4px) calc(100% - 4.6px),calc(100% - 4.6px) calc(100% - 2.4px),calc(100% - 11px) 100%,11px 100%,4.6px calc(100% - 2.4px),2.4px calc(100% - 4.6px),0 calc(100% - 11px));}
 /* rims: one bright steel line on a dark outline; copper rivets on panels, tiles and rows; cyan glow when selected */
 .mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,
 .mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select,#bagUI.mk .bgbag{border-image-source:url(menukit/rim.svg);}
 .mk .panel,.mk .shelf,.mk .stall,.mk .bagframe,.mk .pobox,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty,
-.mk .ware,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .slrow,.mk .starter{border-image-source:url(menukit/rim-panel.svg); clip-path:var(--mk-chamfer-r);}
+.mk .ware,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .slrow,.mk .starter{border-image-source:url(menukit/rim-panel.svg); border-image-slice:12 fill; border-image-width:12px; clip-path:var(--mk-chamfer-r);}
+.mk .slrow.cur,.mk .ware.sel{border-image-slice:12 fill; border-image-width:12px;}
 .mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .dkok,
 .mk .tabs .chip.on,.mk .chip.fc.on,.mk [data-body].on,.mk input:focus-visible,.mk select:focus-visible,#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:url(menukit/rim-cyan.svg);}
 .mk .slrow.cur,.mk .ware.sel{border-image-source:url(menukit/rim-cyan-panel.svg);}
 .mk .ware{background:var(--mk-face-tile);}
 /* the blue crystal on the top edge of a header; the clip opens a notch for it */
 .mk.screen>.bar,.mk .cc>.bar,.mk .dkhead,.mk .bempty,.mk .shelf{position:relative; overflow:visible;
-  clip-path:polygon(2px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 2px) 0,100% 2px,100% calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,0 calc(100% - 2px),0 2px);}
+  clip-path:polygon(0 11px,2.4px 4.6px,4.6px 2.4px,11px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 11px) 0,calc(100% - 4.6px) 2.4px,calc(100% - 2.4px) 4.6px,100% 11px,100% calc(100% - 11px),calc(100% - 2.4px) calc(100% - 4.6px),calc(100% - 4.6px) calc(100% - 2.4px),calc(100% - 11px) 100%,11px 100%,4.6px calc(100% - 2.4px),2.4px calc(100% - 4.6px),0 calc(100% - 11px));}
 .mk.screen>.bar::after,.mk .cc>.bar::after,.mk .dkhead::after,.mk .bempty::after{content:''; position:absolute; z-index:3; top:-13px; left:50%; width:14px; height:14px; margin-left:-7px;
   background:url(menukit/diamond.svg) center/contain no-repeat; pointer-events:none;}
 /* PageHeader: 44 high, Back a small steel square with the cyan arrow, a divider, the title */
@@ -385,3 +386,21 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrBounty.mk .bchip .bpk .hex-icon{width:11px; height:11px; stroke-width:2.4;}
 #scrBounty.mk .bchip .bpk{background:linear-gradient(color-mix(in srgb,var(--c) 85%,#fff),color-mix(in srgb,var(--c) 70%,#000)); border-color:#1a1206; color:#1a1206;}
 #scrBounty.mk .bchip .ui-ico,#scrBounty.mk .bchip img:not(.bpk){width:18px; height:18px;}
+/* the bounty board's own wall lights: a torch and a blue lantern level with the scroll scene */
+#scrBounty.mk{background-image:url(art/menu/bounty-torch-l.webp),url(art/menu/bounty-torch-r.webp),radial-gradient(120% 22% at 50% 100%,rgba(30,120,255,.38),transparent 70%),
+  linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp);
+  background-position:left 0 top 66px,right 0 top 66px,0 0,0 0,0 0; background-size:44px auto,44px auto,auto,auto,300px; background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat;}
+#scrBounty.mk>.bar #bShards{display:inline-flex; align-items:center; gap:4px; font:400 19px/1 var(--font-b); color:var(--mk-mint);}
+#scrBounty.mk>.bar #bShards img{width:26px; height:26px;}
+#scrBounty.mk .bbtns .btn{min-height:42px; height:42px; padding-top:0; padding-bottom:0;}
+#scrBounty.mk .bbi{height:30px;} #scrBounty.mk .bbi i{top:1px; height:26px; width:18px;}
+/* the pack tag's picture: the pack's card in front of a second, shadowed card */
+#scrBounty.mk .bchip .bpk{background:none; border:0; box-shadow:none; transform:none; left:3px; top:-4px; width:24px; height:28px;}
+#scrBounty.mk .bchip .bpk b{position:absolute; top:1px; width:16px; height:24px; box-sizing:border-box; border:1.5px solid #120c04; border-radius:2px; display:flex; align-items:center; justify-content:center;}
+#scrBounty.mk .bchip .bpk b:first-child{left:0; transform:rotate(-14deg); background:linear-gradient(#3a4656,#1c232c); box-shadow:1px 1px 0 #000;}
+#scrBounty.mk .bchip .bpk b:last-child{left:6px; transform:rotate(-4deg); background:linear-gradient(color-mix(in srgb,var(--c) 85%,#fff),color-mix(in srgb,var(--c) 70%,#000)); color:#1a1206; box-shadow:1px 1px 0 #000;}
+#scrBounty.mk .bchip.pack{padding-left:32px;}
+/* the contract's colour bar is part of its face, under the frame and its studs */
+#scrBounty.mk .bounty::before{display:none;}
+#scrBounty.mk .bounty{background:linear-gradient(var(--c),var(--c)) 4px 3px/5px calc(100% - 6px) no-repeat,var(--mk-face); background-origin:border-box;}
+#scrBounty.mk .bounty .bprog{background:#06121a; border-color:#6e7f86;}

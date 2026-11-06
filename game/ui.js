@@ -273,30 +273,32 @@ let ccMode=null, ccNext=null;
 const needsChar=()=>save&&(!save.char||save.char.auto||!RACES[save.char.race]);
 function withChar(next){ if(needsChar()) openNewChar(false,'existing',next); else next(); }
 function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
-  $('#ccStep').textContent=ccMode?'Make your character':'Step 1 of 2'; $('#ccGo').textContent=ccMode?'Save':'Next';
+  $('#ccStep').textContent=ccMode?'Make your character':'1 of 2'; $('#ccGoT').textContent=ccMode?'Save':'Next';
   if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
 function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
-  $('#ccRace').textContent=R.name+' · '+(ch.body?'woman':'man'); $('#ccText').textContent=R.text;
+  $('#ccRace').textContent=R.name; $('#ccText').textContent=R.text;
   document.querySelectorAll('#scrNewChar [data-body]').forEach(b=>{ b.classList.toggle('on',+b.dataset.body===ch.body); b.onclick=()=>{ const spent=ch.spent; ccChar=newChar(ch.race,+b.dataset.body); ccChar.spent=spent; renderNewChar(); }; });
   // the hexmancer, big
   const cv=$('#ccSprite'), x=cv.getContext('2d'); x.clearRect(0,0,192,192); x.imageSmoothingEnabled=false; const sp=ccLook(ch.look);
   if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,192,192);
   // the races, each shown by the look for the body you picked
   const box=$('#ccRaces'); box.innerHTML='';
-  for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64;
+  for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64; c.className='ccrimg';
     const s2=ccLook(RACES[k].looks[ch.body]); if(s2){ const y=c.getContext('2d'); y.imageSmoothingEnabled=false; y.drawImage(s2.img,0,0,s2.img.width,s2.img.height,0,0,64,64); }
     b.appendChild(c); b.insertAdjacentHTML('beforeend',`<span>${RACES[k].name}</span>`);
     b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
   // the stats, one dial each
   statDials($('#ccStats'),ch,$('#ccPts'),()=>{ if(!pointsLeft(ccChar)) $('#ccWarn').textContent=''; }); }
 // each stat's glyph from the menu kit's line icons (menukit/menu.js), or its old emoji without the kit
+// the kit's one-line effect for each stat (the full effect and its number stay in the row's tooltip and on the Character screen)
+const STAT_SHORT={str:'Wand and staff damage',dex:'Shot speed and dodge',con:'Maximum HP',int:'Card damage, healing and shields',wis:'Find hidden doors, traps and secrets',cha:'Gold found and merchant prices',stl:'Enemy detection range',rch:'Wand fire rate and charge time',cst:'Cast speed and card readiness'};
 const STAT_GLYPH={str:'strength',dex:'dexterity',con:'constitution',int:'intelligence',wis:'wisdom',cha:'charisma',stl:'stealth',rch:'recharge',cst:'casting'};
-function statGlyph(k){ try{ if(typeof HexMenuUI!=='undefined') return HexMenuUI.icon(STAT_GLYPH[k]); }catch(e){} return STATS[k].icon; }
+function statGlyph(k){ return `<img class="statico" src="menukit/stats/${k}.webp" alt="">`; }
 // a horizontal dial for each stat, spending a character's points (character creation and level ups)
 function statDials(root,ch,ptsEl,after){ root.innerHTML=''; root._ch=ch; root._pts=ptsEl; root._after=after;
   for(const k of STAT_KEYS){ const S=STATS[k], row=document.createElement('div'); row.className='ccrow'; row.dataset.k=k;
-    row.innerHTML=`<div class="ccname"><b>${statGlyph(k)} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
+    row.innerHTML=`<div class="ccico">${statGlyph(k)}</div><div class="ccname"><b>${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
     root.appendChild(row); buildDial(row,k,root); }
   dialsUpdate(root); }
 // a horizontal dial: a strip of numbered ticks under a fixed notch; dragging the strip, or tapping
@@ -325,7 +327,7 @@ function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(
     d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=kept); d.classList.toggle('atmax',v>=cap||!left);
     const fresh=(ch.spent[k]||0)-((ch.lock&&ch.lock[k])||0);
     row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.lock?(fresh?'+'+fresh:''):(ch.spent[k]?'+'+ch.spent[k]:'');
-    const eff=statEffect(ch,k); row.querySelector('.cceff').innerHTML=`${esc(STATS[k].text)} · <b class="${v>10?'up':v<10?'down':''}">${esc(eff)}</b>`; });
+    const eff=statEffect(ch,k), ce=row.querySelector('.cceff'); ce.textContent=STAT_SHORT[k]||STATS[k].text; ce.title=eff; row.title=STATS[k].name+': '+STATS[k].text+' ('+eff+')'; });
   if(root._after) root._after(); }
 
 /* ---------------- experience and levels ----------------

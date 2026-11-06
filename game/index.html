@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v241</title>
-<meta name="application-version" content="241">
+<title>Hexmancers v242</title>
+<meta name="application-version" content="242">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -172,17 +172,18 @@
       <div class="cctop">
         <canvas id="ccSprite" width="192" height="192"></canvas>
         <div class="ccinfo">
-          <h3 id="ccRace"></h3>
+          <h3 id="ccRace" class="ccplaque"></h3>
           <p id="ccText" class="hint"></p>
           <div class="ccbody"><button class="chip" data-body="0">Man</button><button class="chip" data-body="1">Woman</button></div>
         </div>
       </div>
       <div id="ccRaces" class="ccraces"></div>
-      <div class="ccpts"><span>Points to spend</span><b id="ccPts">12</b></div>
-      <p class="hint center ccdialhint">Drag a dial left or right, or tap its ends, to move a stat. Your race sets the starting value.</p>
+      <div class="mkrule gem"></div>
+      <div class="ccpts"><b id="ccPts">12</b><span>points available</span></div>
+      <p class="hint center ccdialhint">Drag a dial, or tap its ends.</p>
       <div id="ccStats" class="ccstats"></div>
       <p id="ccWarn" class="hint warn center"></p>
-      <div class="mkfoot"><button id="ccReset" class="btn ghost">Reset</button><button id="ccRandom" class="btn ghost">Random</button><button id="ccGo" class="btn">Next</button></div>
+      <div class="mkfoot"><button id="ccReset" class="btn ghost"><i class="mki" style="--i:url(menukit/icons/reset.webp)"></i><span>Reset</span></button><button id="ccRandom" class="btn ghost"><i class="mki" style="--i:url(menukit/icons/dice.webp)"></i><span>Random</span></button><button id="ccGo" class="btn"><i class="mki" style="--i:url(menukit/icons/play.webp)"></i><span id="ccGoT">Next</span></button></div>
     </div>
   </section>
 

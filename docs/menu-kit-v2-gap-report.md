@@ -63,8 +63,10 @@ standardise.
 
 ## How it is built
 
-- `game/menukit/`: the kit's eight SVG primitives and `menu.js` (`HexMenuUI.icon()` and the glyph table),
-  copied unchanged, plus the OFL notice.
+- `game/menukit/`: the kit's eight SVG primitives, four of its icons for CSS masks (Back, X, select arrow,
+  bag) and `menu.js` (`HexMenuUI.icon()` and the glyph table), all copied unchanged. The kit's Jersey 15
+  file is byte-identical to `game/fonts/jersey-15-latin-400-normal.woff2`, so the game's copy and its
+  `OFL.txt` are used.
 - `game/menukit.css`: the shared layer. Every rule is under `.mk`, so it only reaches screens and overlays
   marked `mk` and cannot change the dungeon, battle, start screen or camp.
 - The `mk` class is set in `index.html` on the in-scope screens and overlays. The bag gets it only

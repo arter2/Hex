@@ -41,7 +41,7 @@ function dress(r){ const t=r.querySelector(':scope>span'); const sm=t&&t.querySe
   const key=b&&(b.id&&b.id in SHORT?b.id:[...b.classList].find(x=>x in SHORT));
   if(t&&!t.dataset.dressed){ t.dataset.dressed='1'; const full=sm?sm.textContent.trim():''; if(full) r.title=full;
     if(key!==undefined&&key in SHORT){ if(SHORT[key]){ if(sm) sm.textContent=SHORT[key]; else t.insertAdjacentHTML('beforeend','<small>'+SHORT[key]+'</small>'); } else if(sm) sm.remove(); } }
-  if(!b||b.dataset.dressed) return; b.dataset.dressed='1';
+  if(!b||b.dataset.dressed) return; b.dataset.dressed='1'; undoable(r,b);
   if(key&&SEG[key]){ const seg=document.createElement('div'); seg.className='sseg'; seg.setAttribute('role','radiogroup');
     seg.innerHTML=SEG[key].map(v=>`<button type="button" class="btn ghost" role="radio" data-v="${v}">${v}</button>`).join(''); b.after(seg); b.classList.add('shid');
     const sync=()=>seg.querySelectorAll('button').forEach(x=>{ const on=x.dataset.v===valueOf(b); x.classList.toggle('on',on); x.setAttribute('aria-checked',String(on)); });
@@ -51,6 +51,19 @@ function dress(r){ const t=r.querySelector(':scope>span'); const sm=t&&t.querySe
     b.classList.toggle('sswitch',sw); b.classList.toggle('son',on); b.classList.toggle('sfield',!sw&&!b.classList.contains('danger')&&b.id!=='setSlots');
     if(sw) b.setAttribute('aria-pressed',String(on)); else b.removeAttribute('aria-pressed'); if(full) b.setAttribute('aria-label','Full screen'); };
   look(); new MutationObserver(look).observe(b,{childList:true,characterData:true,subtree:true}); }
+// a double tap on a setting's title puts that setting back to the value it had before its last change
+function undoable(r,b){ if(b.id==='btnReset'||b.id==='setSlots'||b.id==='setFull') return;
+  let now=valueOf(b), prev=null;
+  const watch=()=>{ const v=valueOf(b); if(v!==now){ prev=now; now=v; } };
+  new MutationObserver(watch).observe(b,{childList:true,characterData:true,subtree:true});
+  if(b.classList.contains('layoutBtn')) new MutationObserver(watch).observe(document.body,{attributes:true,attributeFilter:['class']});
+  const title=r.querySelector(':scope>span'); if(!title) return; let last=0;
+  const undo=()=>{ if(prev===null||prev===now){ if(typeof tip==='function') tip('Nothing to undo for this setting'); return; }
+    const want=prev; for(let i=0;i<12&&valueOf(b)!==want;i++) b.click();
+    if(typeof tip==='function') tip(title.firstChild.textContent.trim()+': back to '+want); };
+  title.addEventListener('pointerup',e=>{ const t=e.timeStamp; if(t-last<350){ last=0; e.preventDefault(); undo(); } else last=t; });
+  title.addEventListener('dblclick',e=>e.preventDefault());
+}
 let cur='display';
 function show(k){ cur=k; tabs.querySelectorAll('.settab').forEach(b=>{ const on=b.dataset.tab===k; b.classList.toggle('on',on); b.setAttribute('aria-selected',String(on)); });
   for(const n in pane) pane[n].hidden=n!==k; panel.scrollTop=0; }

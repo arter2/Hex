@@ -731,3 +731,9 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk .cceff{padding-left:2px;}
 #scrNewChar.mk .ccrace{padding:3px 2px 3px; overflow:visible;} #scrNewChar.mk .ccrace span{line-height:1.2; font-size:10.5px; letter-spacing:0;}
 #scrNewChar.mk{background:linear-gradient(rgba(2,6,14,.4),rgba(2,6,14,.4)) local,url(art/menu/bg-stats.webp) center bottom/100% auto no-repeat local,url(art/menu/brick.webp) 0 0/300px repeat local,#06102a;}
+/* the number as tall as its two lines; the two lines left-aligned to each other; the group centred */
+#scrNewChar.mk .ccpts{display:flex; align-items:center; justify-content:center; gap:10px; height:auto; margin:8px 0 12px;}
+#scrNewChar.mk .ccpts b{font-size:44px; line-height:.8; padding-top:2px;}
+#scrNewChar.mk .ccptx{display:flex; flex-direction:column; align-items:flex-start; gap:3px;}
+#scrNewChar.mk .ccptx span{font-size:16px; line-height:1;}
+#scrNewChar.mk .ccptx .ccdialhint{margin:0; height:auto; line-height:1; text-align:left; font-size:11px;}

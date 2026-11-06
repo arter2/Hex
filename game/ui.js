@@ -430,16 +430,26 @@ function buildStart(){
     clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
     tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
   if(!USE_STARTERS){
-    const d=document.createElement('div'); d.className='starter deal';
-    d.innerHTML=`<h3>Your first cards</h3><p>You get 80 cards dealt at random: mostly commons, a few uncommons and rares, with Gray and Brown cards and some of 2 or 3 other colors. Pick the color they lean to, and every new character gets a different mix.</p>
-      <div class="dealcols">${SIX.map(k=>`<button class="btn dealc" data-k="${k}" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${COLORS[k].name}</button>`).join('')}</div>
-      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>
-      <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b> (new): big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
-      <p class="hint center">Build v${document.querySelector('meta[name=application-version]').content}</p>`;
-    d.querySelectorAll('.dealc').forEach(b=>b.onclick=()=>begin(b.dataset.k));
-    d.querySelector('.dealr').onclick=()=>begin(SIX[Math.floor(Math.random()*SIX.length)]);
-    box.appendChild(d);
-    $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
+    // kit screen 10: who is starting, six colour tiles (pick one), Surprise me, Advanced options, a summary line and Start adventure
+    const R=ccChar&&RACES[ccChar.race]; $('#stRace').textContent=R?R.name:'Hexmancer';
+    $('#stSlot').textContent='New run · Slot '+SAVE_SLOT; $('#startWarn').textContent=save?'This replaces the save in this slot.':'Your other saves are kept.';
+    $('#startWarn').classList.toggle('warn',!!save);
+    const cv=$('#stSprite'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); const sp=ccChar&&ccLook(ccChar.look); if(sp) ccFit(cv,sp.img);
+    let pick=null; const d=document.createElement('div'); d.className='stbody';
+    d.innerHTML=`<div class="stcols">${SIX.map(k=>`<button class="stcol" data-k="${k}" style="--scene:url(menukit/elements/${k}-scene.webp)"><img src="menukit/elements/${k}.webp" alt=""><span>${COLORS[k].name}</span></button>`).join('')}</div>
+      <button class="btn ghost strnd"><i class="mki" style="--i:url(menukit/icons/dice.webp)"></i><span>Surprise me</span></button>
+      <details class="stadv"><summary><span>Advanced options</span></summary>
+        <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b>: big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
+        <p class="hint">Build v${document.querySelector('meta[name=application-version]').content}</p></details>
+      <div class="mkrule gem"></div><p class="stsum"></p>
+      <button class="btn stgo" disabled><i class="mki" style="--i:url(menukit/icons/play.webp)"></i><span>Start adventure</span></button>`;
+    const sum=d.querySelector('.stsum'), go=d.querySelector('.stgo');
+    const choose=k=>{ pick=k; d.querySelectorAll('.stcol').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); go.disabled=!k;
+      sum.textContent=[R?R.name:'Hexmancer',k?COLORS[k].name:'Choose a color','Slot '+SAVE_SLOT].join('  ·  '); };
+    d.querySelectorAll('.stcol').forEach(b=>b.onclick=()=>choose(b.dataset.k));
+    d.querySelector('.strnd').onclick=()=>choose(SIX[Math.floor(Math.random()*SIX.length)]);
+    go.onclick=()=>{ if(pick) begin(pick); };
+    choose(null); box.appendChild(d);
     show('scrStart'); return; }
   for(const s of STARTERS){
     const d=document.createElement('div'); d.className='starter';

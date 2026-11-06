@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v250</title>
-<meta name="application-version" content="250">
+<title>Hexmancers v251</title>
+<meta name="application-version" content="251">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -188,12 +188,12 @@
 
   <!-- new game: pick the color your random cards lean to -->
   <section id="scrStart" class="screen mk">
-    <button id="startBack" class="backbtn back startback" aria-label="Back to your character"></button>
-    <h1>Hexmancers</h1>
-    <p class="sub">New game</p>
-    <p class="hint center">Win fights and open chests to collect cards from over 1,000, then build your own decks at camp.</p>
-    <p id="startWarn" class="hint warn center"></p>
-    <div id="starters"></div>
+    <div class="cc">
+      <div class="bar"><button id="startBack" class="backbtn back" aria-label="Back to your character"></button><h2>Your first cards</h2><span id="stStep" class="dim">2 of 2</span></div>
+      <div class="sthero"><canvas id="stSprite" width="96" height="96"></canvas><div class="stwho"><b id="stRace"></b><span id="stSlot"></span><small id="startWarn"></small></div></div>
+      <p class="stask">Choose a color to lean toward.<small>Start with 80 cards, mostly commons.</small></p>
+      <div id="starters"></div>
+    </div>
   </section>
 
   <!-- camp: the hub of the collecting loop -->

@@ -748,3 +748,87 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 @media (max-width:385px){ .mk .ccrow{grid-template-columns:40px 52px minmax(140px,1fr) 30px;} .mk .ccval b{font-size:20px;}
   #scrNewChar.mk .mkfoot{grid-template-columns:1fr 1.07fr .94fr; margin-left:0; margin-right:0;} }
 #scrNewChar.mk .mkfoot::before{background:linear-gradient(180deg,rgba(3,8,14,.7),#050c14 14px,#03080e);}
+
+/* ---------- Your first cards (kit screen 10): measured from the picture ---------- */
+#scrStart.mk{align-items:stretch; justify-content:flex-start; padding:0 10px 16px;
+  background:linear-gradient(rgba(2,6,14,.35),rgba(2,6,14,.35)) local,url(art/menu/bg-elements.webp) center top/100% auto no-repeat local,url(art/menu/brick.webp) 0 0/300px repeat local,#06102a;}
+#scrStart.mk .cc{max-width:none; gap:0;}
+#scrStart.mk .cc>.bar{min-height:42px; height:42px; margin:31px 7px 0 6px; padding:0 12px 0 1px; gap:0; border-image-width:8px;}
+#scrStart.mk .cc>.bar>.backbtn{width:32px; height:25px; min-width:32px; min-height:25px; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:linear-gradient(#123447,#0a2131); clip-path:none;}
+#scrStart.mk .cc>.bar>.backbtn::before{width:14px; height:14px; margin:-7px 0 0 -7px;}
+#scrStart.mk .cc>.bar h2{font-size:17.5px; margin-left:14px; padding-left:15px; border-left:1px solid #8e9d9b99; min-height:24px;}
+#scrStart.mk #stStep{font-size:12.3px; padding-left:17px; min-height:24px; border-left:1px solid #8e9d9b99; display:flex; align-items:center; color:var(--mk-text);}
+/* who is starting: 20..370 x 124..207 */
+#scrStart.mk .sthero{position:relative; display:flex; align-items:center; height:83px; margin:20px 8px 0 4px; box-sizing:border-box; padding:0 10px 0 8px;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch;
+  background:linear-gradient(90deg,#0b1821 40%,transparent 75%),url(menukit/elements/frost-scene.webp) right center/62% auto no-repeat; background-origin:padding-box; background-clip:padding-box;}
+#scrStart.mk #stSprite{width:62px; height:62px; flex:none; margin-right:10px; padding-right:10px; border-right:1px solid #8e9d9b88; image-rendering:pixelated;}
+#scrStart.mk .stwho{display:flex; flex-direction:column; gap:2px; min-width:0;}
+#scrStart.mk .stwho b{font:400 17px/1.05 var(--font-b); letter-spacing:.04em; color:var(--mk-text);}
+#scrStart.mk .stwho span{font:400 12.5px/1.15 var(--font-b); letter-spacing:.04em; color:var(--mk-cyan);}
+#scrStart.mk .stwho small{font:400 11.5px/1.15 var(--font-b); letter-spacing:.04em; color:var(--mk-text);} #scrStart.mk .stwho small.warn{color:var(--mk-gold);}
+/* the question: 231 and 252 */
+#scrStart.mk .stask{margin:18px 0 14px; text-align:center; font:400 14px/1.3 var(--font-b); letter-spacing:.04em; color:var(--mk-text);}
+#scrStart.mk .stask small{display:block; font-size:12.5px; color:var(--mk-muted); margin-top:2px;}
+/* the six colours: 172 x 65, 8 apart, rows 76 apart */
+#scrStart.mk .stbody{display:flex; flex-direction:column; margin:0 9px 0 0;}
+#scrStart.mk .stcols{display:grid; grid-template-columns:1fr 1fr; gap:11px 8px;}
+#scrStart.mk .stcol{position:relative; height:65px; display:flex; align-items:center; gap:10px; padding:0 0 0 12px; cursor:pointer; color:var(--mk-text);
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch;
+  background:linear-gradient(90deg,#0b1821 30%,rgba(11,24,33,.4) 55%,transparent 72%),var(--scene) right center/76% 100% no-repeat; background-origin:padding-box; background-clip:padding-box;}
+#scrStart.mk .stcol.on{border-image-source:url(menukit/rim-cyan-panel.svg);}
+#scrStart.mk .stcol img{width:24px; height:24px; object-fit:contain; flex:none;}
+#scrStart.mk .stcol span{font:400 16px/1 var(--font-b); letter-spacing:.04em; text-shadow:0 1px 2px #000;}
+/* Surprise me 520..562, Advanced 583..612 */
+#scrStart.mk .strnd{height:44px; min-height:44px; margin-top:22px; flex-direction:row; gap:14px; font-size:17px; letter-spacing:.04em;
+  border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:linear-gradient(#123341,#0a1d26); background-origin:border-box;}
+#scrStart.mk .strnd .mki{width:24px; height:24px;}
+#scrStart.mk .stadv{margin-top:20px; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#07121a;}
+#scrStart.mk .stadv summary{min-height:28px; padding:0 10px; display:flex; align-items:center; gap:10px; list-style:none; font:400 13px var(--font-b); letter-spacing:.04em; color:var(--mk-text);}
+#scrStart.mk .stadv summary::-webkit-details-marker{display:none;}
+#scrStart.mk .stadv summary::before{content:''; border:6px solid transparent; border-left:8px solid var(--mk-text); border-right:0;}
+#scrStart.mk .stadv summary::after{content:''; margin-left:auto; border:6px solid transparent; border-top:8px solid var(--mk-text); border-bottom:0; margin-top:4px;}
+#scrStart.mk .stadv[open] summary::before{transform:rotate(90deg);}
+#scrStart.mk .stadv .startlay{display:flex; gap:8px; padding:6px 10px; font:400 11.5px/1.3 var(--font-b); letter-spacing:.03em; color:var(--mk-muted);}
+#scrStart.mk .stadv .startlay b{color:var(--mk-text); font-weight:400;}
+#scrStart.mk .stadv .hint{padding:0 10px 6px; margin:0; font-size:10px;}
+/* the summary and Start adventure: rule 638, line 660, button 695..740 */
+#scrStart.mk .stbody>.mkrule{margin:22px 10px 0;}
+#scrStart.mk .stsum{margin:6px 0 0; text-align:center; font:400 14px var(--font-b); letter-spacing:.04em; color:var(--mk-text); white-space:pre;}
+#scrStart.mk .stgo{height:46px; min-height:46px; margin-top:24px; flex-direction:row; gap:18px; font-size:19px; letter-spacing:.04em;
+  border-image:url(menukit/rim-cyan-panel.svg) 12 fill / 8px / 0 stretch; background:linear-gradient(#184453,#09232c 50%,#155269); background-origin:border-box;}
+#scrStart.mk .stgo .mki{width:22px; height:22px;}
+#scrStart.mk .stgo:disabled{opacity:.5;}
+/* the scene paintings show through: these frames carry no face of their own */
+#scrStart.mk .stcol,#scrStart.mk .sthero{border-image-source:url(menukit/rim-panel-open.svg);}
+#scrStart.mk .stcol.on{border-image-source:url(menukit/rim-panel-open.svg); box-shadow:inset 0 0 0 2px #67eaf7, 0 0 6px #67eaf788;}
+#scrStart.mk .cc>.bar{margin-top:14px;}
+#scrStart.mk .sthero{margin-top:18px;}
+#scrStart.mk .stask{margin:14px 0 12px;}
+#scrStart.mk .strnd{margin-top:18px;}
+#scrStart.mk .stadv{margin-top:16px;}
+#scrStart.mk .stgo{margin-top:20px;}
+#scrStart.mk .stcol.on{border-image-source:url(menukit/rim-cyan-panel-open.svg); box-shadow:none;}
+#scrStart.mk{padding-top:0!important;}
+#scrStart.mk .sthero{background:linear-gradient(90deg,#0b1821 40%,rgba(11,24,33,.55) 62%,rgba(5,14,30,.35)),url(menukit/elements/frost-scene.webp) right center/62% auto no-repeat;}
+#scrStart.mk>.cc{margin-top:0!important; margin-bottom:0!important;}
+#scrStart.mk #starters{max-width:none;}
+/* First cards: placed to the kit picture (css px): header 55..98, hero 124..207, tiles from 280 (160x67), Surprise 520, Advanced 583, rule 638, Start 695..740 */
+#scrStart.mk .cc>.bar{margin:55px 3px 0 12px; height:43px; min-height:43px;}
+#scrStart.mk .sthero{margin:26px 0 0 20px; width:340px; height:83px;}
+#scrStart.mk .stask{margin:16px 0 0; line-height:1.25;}
+#scrStart.mk .stbody{margin:16px 0 0 20px; width:340px;}
+#scrStart.mk .stcols{gap:9px 10px;}
+#scrStart.mk .stcol{height:67px;}
+#scrStart.mk .strnd{margin-top:22px; height:42px; min-height:42px;}
+#scrStart.mk .stadv{margin-top:21px;}
+#scrStart.mk .stadv summary{min-height:19px;}
+#scrStart.mk .stbody>.mkrule{margin:20px 6px 0;}
+#scrStart.mk .stsum{margin-top:6px;}
+#scrStart.mk .stgo{margin:22px 3px 0 4px; height:45px; min-height:45px;}
+#scrStart.mk .stbody{margin-top:22px;} #scrStart.mk .stcols{column-gap:10px; grid-template-columns:160px 170px;}
+#scrStart.mk .stbody>.mkrule{margin-top:24px;} #scrStart.mk .stsum{margin-top:8px;} #scrStart.mk .stgo{margin-top:24px;}
+#scrStart.mk .stcol{padding-left:4px; gap:8px;} #scrStart.mk .stcol span{font-size:15px;}
+#scrStart.mk .stbody>.mkrule{margin-top:20px;} #scrStart.mk .stgo{margin-top:22px;}
+#scrStart.mk #stSprite{width:68px; height:68px;}
+#scrStart.mk .cc>.bar>.backbtn{width:36px; height:28px;} #scrStart.mk .cc>.bar>.backbtn::before{width:17px; height:17px; margin:-8.5px 0 0 -8.5px;}

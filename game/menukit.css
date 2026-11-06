@@ -1090,3 +1090,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 @container (max-width:96px){ #scrDeck.mk .dklib .dkown,#scrDeck.mk .dklib .dkdiv{display:none;} #scrDeck.mk .dklib .dkq{justify-content:space-around;} }
 #scrDeck.mk .dkslot{padding:1px 0 0;}
 #scrDeck.mk .dkhead{margin-top:2px;} #scrDeck.mk .dkslots{margin-top:8px;}
+/* selected buttons (kit 14): a deep teal face inside a bright cyan edge with a soft cyan halo */
+#scrDeck.mk .dkslot.on,#scrDeck.mk .dktab.on,#scrDeck.mk .dkpill.on{border-image-source:url(menukit/rim-small-sel.svg); background:none; box-shadow:none; filter:drop-shadow(0 0 3px rgba(37,227,246,.55));}
+#scrDeck.mk .dkok{background:linear-gradient(#01304a,#00293a 40%,#00293a 72%,#013d55); filter:drop-shadow(0 0 4px rgba(37,227,246,.4));}
+#scrDeck.mk .dkok{border-image-source:url(menukit/rim-sel-panel.svg);}

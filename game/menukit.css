@@ -698,3 +698,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .dkok,.mk .tabs .chip.on,.mk .chip.fc.on,
 .mk input:focus-visible,.mk select:focus-visible{border-image-source:url(menukit/rim-small-cyan.svg);}
 #scrCollection.mk .filters .chip.fc{border-width:6px;}
+/* footer: the kit's 111/119/104 x 42 with a 4-unit corner cut (the frame drawn at 7 so its cut and studs scale down) */
+#scrNewChar.mk .mkfoot{grid-template-columns:111px 119px 104px; gap:9px; margin:10px 0 0 9px;}
+#scrNewChar.mk .mkfoot .btn{height:42px; min-height:42px; border-width:7px; border-image-width:7px;}
+#scrNewChar.mk .mkfoot .btn{border-image-width:8px;} #scrNewChar.mk .mkfoot{margin-top:8px;}

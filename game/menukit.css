@@ -238,3 +238,29 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #bagUI.mk .bgchar,#bagUI.mk .bgside,#bagUI.mk .bgdetail,#bagUI.mk .bgbody{background:none; background-image:none; border-image:none; box-shadow:none;}
 #bagUI.mk .bgchar,#bagUI.mk .bgside{background:#191917b3; border:1px solid #626f7066;}
 #bagUI.mk .bgdetail{border:0; border-top:1px solid #626f7066; color:var(--mk-muted);}
+
+/* ---------- v236 shared pass: the kit pictures' backdrop, rims, gem and Back ---------- */
+/* every menu page stands on the dungeon wall, with the mushroom floor at its foot (the main menu's own art) */
+.mk.screen{background:url(art/menu/footer.webp) center bottom/min(100%,820px) auto no-repeat,
+  linear-gradient(rgba(6,10,13,.55),rgba(6,10,13,.78)),url(art/menu/brick.webp) 0 0/320px repeat,#070b0e;}
+/* the rims are the main menu's: steel with bronze pins, cyan when selected or primary (drawn by menu.js) */
+.mk .panel,.mk .btn,.mk .backbtn,.mk .winx,.mk .bgx,.mk .slrow,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .ware,.mk .stall,
+.mk .starter,.mk .ccrace,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .bgslot,.mk .bgcell,
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select{border-image-source:var(--mk-rim);}
+.mk .panel,.mk .shelf,.mk .bagframe,.mk .pobox,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty{border-image-source:var(--mk-rim-panel);}
+.mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .ccrace.on,.mk .slrow.cur,.mk .dkok,
+.mk .tabs .chip.on,.mk .chip.fc.on,.mk [data-body].on,.mk input:focus-visible,.mk select:focus-visible,#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:var(--mk-rim-cyan);}
+#bagUI.mk .bgbag{border-image-source:var(--mk-rim);}
+/* the blue crystal on the top edge of headers and dialogs; the clip opens a notch for it */
+.mk.screen>.bar,.mk .cc>.bar,.mk .dkhead,.mk .bempty{position:relative; overflow:visible;
+  clip-path:polygon(5px 0,calc(50% - 8px) 0,calc(50% - 8px) -10px,calc(50% + 8px) -10px,calc(50% + 8px) 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);}
+.mk.screen>.bar::after,.mk .cc>.bar::after,.mk .dkhead::after,.mk .bempty::after{content:''; position:absolute; z-index:3; top:-14px; left:50%; width:12px; height:12px; margin-left:-6px;
+  background:var(--hm-gem) center/contain no-repeat; pointer-events:none;}
+.mk.screen>.bar,.mk .cc>.bar{margin-top:6px;}
+/* Back in a page header: its own framed square with the cyan edge, then a divider before the title */
+.mk.screen>.bar>.backbtn,.mk .cc>.bar>.backbtn,.mk .dkhead>.backbtn{width:44px; height:44px; min-width:44px; min-height:44px; margin:-2px 0 -2px 0; border:8px solid transparent;
+  border-image:var(--mk-rim-cyan) 8 fill / 8px / 0 stretch; background:var(--mk-face-hover); background-origin:border-box; clip-path:var(--mk-chamfer);}
+.mk.screen>.bar>.backbtn::before,.mk .cc>.bar>.backbtn::before,.mk .dkhead>.backbtn::before{background:var(--mk-cyan);}
+.mk.screen>.bar>.backbtn+*,.mk .cc>.bar>.backbtn+*{border-left:1px solid #626f7099; padding-left:12px; min-height:28px; display:flex; align-items:center;}
+.mk.screen>.bar,.mk .cc>.bar{padding-left:6px;}
+.mk .dkhead{margin-top:10px;}

@@ -22,6 +22,9 @@ const skinUrl=(tone,state,w,h)=>url(`<svg xmlns="http://www.w3.org/2000/svg" wid
 const R=document.documentElement.style;
 for(const t of ['steel','cyan']) for(const st of ['idle','hover','pressed','disabled','focus']) R.setProperty(`--hm-${t}-${st}`,skinUrl(t,st,72,48));
 R.setProperty('--hm-panel',skinUrl('steel','idle',96,96)); R.setProperty('--hm-panel-cyan',skinUrl('cyan','idle',96,96));
+// the same frames without their ink surface, for menukit.css: its own smoke faces show through
+const rimUrl=(tone,w,h)=>url(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${['rim','highlight','keyline','corners'].map(k=>SK.skin(w,h,tone,'idle',k)).join('')}</svg>`);
+R.setProperty('--mk-rim',rimUrl('steel',72,48)); R.setProperty('--mk-rim-cyan',rimUrl('cyan',72,48)); R.setProperty('--mk-rim-panel',rimUrl('steel',96,96));
 R.setProperty('--hm-gem',url(`<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">${SK.diamond(6,6,11)}</svg>`));
 // the four elements the handoff has no glyph for, drawn in the same 24-unit colour pixel style
 const EXTRA={

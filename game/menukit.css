@@ -647,3 +647,54 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrNewChar.mk .ccname span,#lvlUp.mk .ccname span{font-size:10px; letter-spacing:.01em; white-space:nowrap;}
 #scrNewChar.mk .ccname{overflow:visible; white-space:nowrap;}
 #scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccrace,#scrNewChar.mk .cc>.bar>.backbtn{border-image-width:8px;}
+/* Create character: which pieces have studs, as in the kit picture.
+   Studded (frame.svg): the header, the race plaque, the three footer buttons.
+   Plain small cut, no studs: Back, Man / Woman, the race tiles (cyan when chosen). The list panel: plain rail. */
+#scrNewChar.mk .cc>.bar>.backbtn,#scrNewChar.mk .ccinfo .ccbody .chip,#scrNewChar.mk .ccrace{border-image:url(menukit/rim-small.svg) 7 fill / 7px / 0 stretch; clip-path:none; border-radius:0;}
+#scrNewChar.mk .ccinfo .ccbody .chip.on,#scrNewChar.mk .ccrace.on{border-image-source:url(menukit/rim-small-cyan.svg);}
+#scrNewChar.mk .ccrace{background:linear-gradient(#0d1a21,#060d12);} #scrNewChar.mk .ccrace.on{background:linear-gradient(#123341,#0a1d26);}
+#scrNewChar.mk .ccinfo .ccbody .chip{background:linear-gradient(#0d1a21,#060d12);} #scrNewChar.mk .ccinfo .ccbody .chip.on{background:linear-gradient(#184453,#0b2a35);}
+#scrNewChar.mk .cc>.bar>.backbtn{background:linear-gradient(#123447,#0a2131);}
+#scrNewChar.mk .ccstats{border-image:url(menukit/rim.svg) 12 fill / 12px / 0 stretch;}
+#scrNewChar.mk .mkfoot .btn{border-image:url(menukit/rim-panel.svg) 12 fill / 12px / 0 stretch;}
+#scrNewChar.mk .mkfoot #ccGo{border-image-source:url(menukit/rim-cyan-panel.svg);}
+/* the dial housing and its arrows: always white, as in the picture */
+.mk .dial{background:url(menukit/dial-frame.svg) center/100% 100% no-repeat; box-shadow:none; border-radius:0;}
+.mk .dial::after{display:none;}
+.mk .dial .dl,.mk .dial .dr{background:none;}
+.mk .dial .dl::before,.mk .dial.atmin .dl::before{border-right-color:#efe6d4;} .mk .dial .dr::before,.mk .dial.atmax .dr::before{border-left-color:#efe6d4;}
+.mk .dial .tape{clip-path:inset(0 0 0 0);} 
+.mk .dial{--fade:linear-gradient(90deg,transparent 14px,#000 34px,#000 calc(100% - 34px),transparent calc(100% - 14px));}
+.mk .dial .tape i{-webkit-mask:none;}
+/* type: the kit's widths, centred where the kit centres */
+.mk .cceff{font-size:10.2px; letter-spacing:.03em; margin-top:6px;}
+#scrNewChar.mk #ccText{font-size:11px; letter-spacing:.03em; text-align:center;}
+#scrNewChar.mk .ccinfo .ccplaque{justify-content:center; text-align:center;}
+#scrNewChar.mk .mkfoot .btn{justify-content:center; padding:0 8px;}
+#scrNewChar.mk .ccname b{letter-spacing:.08em;}
+/* only three numbers each side of the selector, as in the picture */
+.mk .dial .tape i.far{visibility:hidden;}
+/* the row divider: a full-width line with a hollow diamond at each end */
+.mk .ccrow,.mk .ccrow:last-child{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%237b9aab' stroke-width='1'/%3E%3C/svg%3E") left 8px bottom 0/8px 8px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M4 .8 7.2 4 4 7.2 .8 4Z' fill='none' stroke='%237b9aab' stroke-width='1'/%3E%3C/svg%3E") right 0 bottom 0/8px 8px no-repeat,linear-gradient(#7b9aab,#7b9aab) left 16px bottom 3.5px/calc(100% - 24px) 1px no-repeat;}
+#scrNewChar.mk .cc>.bar h2{font-size:17.5px;}
+#scrNewChar.mk .ccrace span{text-shadow:none; font-size:10.5px;}
+/* studded pieces: the face is inside the frame image, so nothing clips the studs on the corner cuts */
+.mk .panel,.mk .shelf,.mk .stall,.mk .bagframe,.mk .pobox,.mk .dkhead,.mk .bghead,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty,
+.mk .ware,.mk .mrow,.mk .setrow,.mk .bentry,.mk .slrow,.mk .starter,#scrNewChar.mk .ccinfo .ccplaque,#scrNewChar.mk .mkfoot .btn,#slots.mk.manage .slfoot .btn,#slots.mk.manage>.panel{
+  clip-path:none!important; background:none; border-image-slice:12 fill; border-image-width:12px;}
+#scrNewChar.mk .mkfoot #ccGo,.mk .slrow.cur,.mk .ware.sel{border-image-source:url(menukit/rim-cyan-panel.svg);}
+#slots.mk.manage #slNew{border-image-source:url(menukit/rim-new-panel.svg); background:none;}
+#slots.mk.manage #slClose{border-image-source:url(menukit/rim-panel.svg);}
+.mk .bounty{clip-path:none!important;}
+#scrBounty.mk .bounty{background:linear-gradient(var(--c),var(--c)) 4px 3px/5px calc(100% - 6px) no-repeat;}
+#scrShop.mk .ware{background:none;}
+#scrNewChar.mk .mkfoot{margin-top:17px;}
+#scrNewChar.mk .ccstats{padding-bottom:4px;}
+#scrNewChar.mk .mkfoot{margin-top:10px;}
+.mk .cceff{margin-top:2px; padding-top:1px; line-height:1.15;} .mk .ccrow{padding-top:7px;}
+/* every plain button, chip, tab and field in the kit pictures has the small corner cut and no studs */
+.mk .btn,.mk .chip,.mk .dkpill,.mk .dkok,.mk #shopTabs button,.mk .bgtab,.mk .slman,.mk .slplus,
+.mk input[type=text],.mk input:not([type]),.mk input[type=search],.mk select{border-image:url(menukit/rim-small.svg) 7 fill / 7px / 0 stretch; clip-path:none; border-width:7px;}
+.mk .btn:not(.ghost):not(.newgame):not(.danger),.mk .chip.on,.mk .dkpill.on,.mk #shopTabs button.on,.mk .bgtab.on,.mk .dkok,.mk .tabs .chip.on,.mk .chip.fc.on,
+.mk input:focus-visible,.mk select:focus-visible{border-image-source:url(menukit/rim-small-cyan.svg);}
+#scrCollection.mk .filters .chip.fc{border-width:6px;}

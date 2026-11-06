@@ -325,7 +325,7 @@ function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(
   if(root._pts){ root._pts.textContent=left; root._pts.classList.toggle('none',!left); }
   root.querySelectorAll('.ccrow').forEach(row=>{ const k=row.dataset.k, v=statOf(ch,k), base=RACES[ch.race].base[k], kept=base+((ch.lock&&ch.lock[k])||0), d=row.querySelector('.dial');
     row.querySelector('.tape').style.setProperty('--v',v);
-    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v||n>cap?(n>cap?'over':''):n>kept?(ch.lock?'new':'buy'):n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); });
+    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v||n>cap?(n>cap?'over':''):n>kept?(ch.lock?'new':'buy'):n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); t.classList.toggle('far',Math.abs(n-v)>3); });
     d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=kept); d.classList.toggle('atmax',v>=cap||!left);
     const fresh=(ch.spent[k]||0)-((ch.lock&&ch.lock[k])||0);
     row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.lock?(fresh?'+'+fresh:''):(ch.spent[k]?'+'+ch.spent[k]:'');

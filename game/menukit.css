@@ -1554,3 +1554,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .ccrow .ccico{justify-content:flex-start;}
 #lvlUp.mk .ccrow .ccname{min-width:0; padding-left:4px; justify-content:start; justify-items:start; grid-template-columns:max-content minmax(4px,1fr);}
 #lvlUp.mk .ccrow{justify-content:space-between;}
+/* level-up: every name divider on the same line, just after "Constitution" */
+#lvlUp.mk .ccrow .ccname{position:relative; grid-template-columns:max-content;}
+#lvlUp.mk .ccrow .ccname::after{position:absolute; right:0; top:50%; margin-top:-17px; transform:none;}
+#lvlUp.mk .ccrow{grid-template-columns:24px 72px 211px 22px;} #lvlUp.mk .ccrow .dial{margin-left:2px;}

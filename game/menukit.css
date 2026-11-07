@@ -1452,3 +1452,19 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #bagUI.mk .bgcoin{width:17px; height:17px;}
 @media (orientation:portrait){ #bagUI.mk .bgtab:not(.on){background:#0f0c0a99; background-clip:padding-box;} }
 #bagUI.mk .bgslot .ghost img{opacity:1; filter:brightness(1.7) contrast(1.05);} #bagUI.mk .bgslot .ghost img{width:30px; height:30px;}
+/* v279: every rule the same width (the panel's inner width, diamonds at its edges); more room under the stats;
+   the tabs bigger, evenly spread, shaped as tabs (cut top corners, flat bottom) and centred between their rules */
+@media (orientation:portrait){
+#bagUI.mk .bghead{padding:0 4px 10px; margin:0;}
+#bagUI.mk .bgfoot{margin:6px 0 0; padding:0 6px 18px 4px;}
+#bagUI.mk .bgtabs{display:grid; grid-template-columns:repeat(var(--n,4),minmax(0,1fr)); gap:8px; margin:0; padding:13px 6px 19px;}
+#bagUI.mk .bgtab{height:32px; padding:0 2px; font-size:15.5px; letter-spacing:.03em; border-width:5px 5px 2px; border-image:url(menukit/tab.svg) 5 5 2 fill / 5px 5px 2px / 0 stretch; background:none!important; filter:none;}
+#bagUI.mk .bgtab.on{border-image-source:url(menukit/tab-cyan.svg); filter:drop-shadow(0 0 3px rgba(37,227,246,.5));}
+#bagUI.mk .bgtabs:has(.bgtab:nth-child(5)){--n:5; gap:5px; padding-left:2px; padding-right:2px;}
+#bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{font-size:12.5px; letter-spacing:0; border-width:5px 4px 2px; border-image-width:5px 4px 2px;}
+#bagUI.mk .bggrid{margin-top:12px;}
+#bagUI.mk .bgdetail{margin:14px 0 0;}
+}
+@media (orientation:portrait){ #bagUI.mk .bgtabs{gap:6px; padding-left:2px; padding-right:2px;} #bagUI.mk .bgtab{font-size:14.5px; letter-spacing:.01em; padding:0;} }
+@media (orientation:portrait){ #bagUI.mk .bgtabs{display:flex;} #bagUI.mk .bgtab{flex:1 1 auto; min-width:0; padding:0 6px; font-size:min(14.5px,3.75vw);} #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{padding:0 3px; font-size:min(12.5px,3.2vw);} }
+@media (orientation:portrait){ #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{padding:0 1px; font-size:min(12.5px,3.05vw);} #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)){gap:4px;} }

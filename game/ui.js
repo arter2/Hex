@@ -1597,7 +1597,7 @@ const CLOSERS={
 };
 const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings','detail','dkPeek'];   // settings goes back with the ← every full screen has
 $('#setBack').onclick=()=>CLOSERS.settings();
-for(const id of ['slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
+for(const id of ['slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater']){ const b=$('#'+id); if(b) b.hidden=true; }
 for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
   if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');
     x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };

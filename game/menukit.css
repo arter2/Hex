@@ -1167,3 +1167,42 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 :is(#detail,#dkPeek).dtkit .dtshard .btn{min-width:0; width:auto;}
 :is(#detail,#dkPeek).dtkit .dtshard .btn small{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
 :is(#detail,#dkPeek).dtkit .dtshard .btn span{min-width:0;}
+
+/* ---- 19 Purchase sheet (kit 19): a framed card over the shop (barely dimmed), the pack, its name and
+   words, Balance / Cost / After purchase, then Cancel and Buy ---- */
+#shopSheet.mk{background:rgba(2,5,8,.28); align-items:flex-end; padding:0 15px 71px;}
+#shopSheet.mk .ssheet{position:relative; width:100%; max-width:360px; min-height:254px; margin:0 auto; padding:18px 14px 12px 18px; overflow:visible;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; clip-path:none; background:none; box-shadow:0 10px 26px rgba(0,0,0,.6);}
+#shopSheet.mk .ssheet::before{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat; z-index:3;}
+#shopSheet.mk .ssheet>.winx{position:absolute; top:4px; right:4px; left:auto; width:27px; height:26px; min-width:0; min-height:0; margin:0; padding:0;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#0b151a; clip-path:none; z-index:4;}
+#shopSheet.mk .ssheet>.winx::before{width:12px; height:12px; margin:-6px 0 0 -6px; background:#f0ebdc;} #shopSheet.mk .ssheet>.winx::after{display:none;}
+#shopSheet.mk .sbody{display:flex; gap:22px; align-items:flex-start;}
+#shopSheet.mk .sbig{flex:none; width:91px; margin-top:2px;} #shopSheet.mk .sbig canvas{width:91px; height:auto;}
+#shopSheet.mk .stext{flex:1; min-width:0; padding-right:20px;}
+#shopSheet.mk .stext h2{margin:0 0 4px; font-size:21px; color:#f0ebdc; letter-spacing:.02em;}
+#shopSheet.mk .stext .hint{margin:0; font-size:13px; line-height:1.25; color:#d8d6cc; letter-spacing:.02em;}
+#shopSheet.mk .sbal{display:grid; grid-template-columns:1fr auto; row-gap:2px; margin:10px -20px 0 0; padding:8px 4px 0 2px; font:400 13px var(--font-b);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left top/6px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right top/6px no-repeat,
+  linear-gradient(#7b9aab,#7b9aab) 6px 2.5px/calc(100% - 12px) 1px no-repeat;}
+#shopSheet.mk .sbal dt{margin:0; color:#d8d6cc; letter-spacing:.03em; align-self:center;}
+#shopSheet.mk .sbal dd{margin:0; display:flex; align-items:center; justify-content:flex-end; gap:5px; font-size:15px; color:#f2c94c;}
+#shopSheet.mk .sbal dd svg,#shopSheet.mk .sbal dd img{width:14px; height:14px;}
+#shopSheet.mk .sbal .safter{margin-top:6px; padding-top:7px;
+  background:linear-gradient(#7b9aab,#7b9aab) 6px 0/calc(100% - 6px) 1px no-repeat;}
+#shopSheet.mk .sbal dd.safter{background:linear-gradient(#7b9aab,#7b9aab) 0 0/calc(100% - 6px) 1px no-repeat;}
+#shopSheet.mk .sbal dd.bad{color:#ff8a6a;}
+#shopSheet.mk .sneed{margin:4px 0 0; font-size:12px; color:#ff9a7a;}
+#shopSheet.mk .controls{display:grid!important; grid-template-columns:1fr 1fr!important; gap:11px; margin:14px 0 0 -4px;}
+#shopSheet.mk .controls .btn{height:35px; min-height:0; padding:0 8px; display:flex; flex-direction:row; align-items:center; justify-content:center; gap:7px; font:400 16px var(--font-b); color:#f0ebdc;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:none; clip-path:none;}
+#shopSheet.mk #shopSheetClose{display:flex;}
+#shopSheet.mk #shopBuy{border-image-source:url(menukit/rim-sel-panel.svg); filter:drop-shadow(0 0 4px rgba(37,227,246,.4));}
+#shopSheet.mk #shopBuy:disabled{filter:none; opacity:.55;}
+#shopSheet.mk #shopBuy svg,#shopSheet.mk #shopBuy img{width:16px; height:16px;}
+#shopSheet.mk .sbal .safter,#shopSheet.mk .sbal dd.safter{margin-top:0; padding-top:0; background:none;}
+#shopSheet.mk .sbal .srule{grid-column:1/-1; height:6px; margin:4px 0 3px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left center/6px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right center/6px no-repeat,
+  linear-gradient(#7b9aab,#7b9aab) 6px center/calc(100% - 12px) 1px no-repeat;}
+#shopSheet.mk .ssheet>.winx{width:30px; height:29px;} #shopSheet.mk .ssheet>.winx::before{width:15px; height:15px; margin:-7.5px 0 0 -7.5px;}

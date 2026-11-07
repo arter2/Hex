@@ -80,8 +80,8 @@ function renderShop(){ goldText($('#sGold')); const box=$('#shopBody'); box.inne
   if(shopTab==='sell') return renderSell(box);
   const st=shopStock(), g=save.gold;
   box.appendChild(shopShelf('Card packs',PACK_SIZE+' cards per pack',[
-    {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
-    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
+    {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each may be rare.'},
+    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family. Each may be rare.'}))
   ].map(o=>Object.assign(o,{cant:g<o.price,color:o.color?COLORS[o.color].c:null,fam:o.color}))));
   const rc=shopRecharges(); if(rc.length) box.appendChild(shopShelf('Recharge','every copy back to full uses',rc.map(o=>Object.assign(o,{cant:g<o.price}))));
   box.appendChild(shopShelf("Today's cards",'new stock at midnight',st.cards.map(id=>{ const c=CARDS[id], sold=st.sold.includes('c:'+id), el=cardEl(c); el.tabIndex=-1;
@@ -106,11 +106,11 @@ function shopSheet(o){ const sh=$('#shopSheet'), body=$('#shopSheetBody'); body.
   body.appendChild(big);
   const t=document.createElement('div'); t.className='stext';
   const own=o.card?(save.owned[o.card.id]||0):o.kind==='gear'?((gearState(save).items[o.id])||0):null;
-  t.innerHTML=`<h2>${esc(o.name)}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
+  t.innerHTML=`<h2>${esc(o.name)}${o.kind==='pack'&&!/pack$/i.test(o.name)?' pack':''}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
   // the gold before and after, and why Buy is off (menu kit v2: the reason stays readable outside the dimmed button)
   if(!o.sold){ const g=save.gold, out=o.kind==='sell', after=out?g+o.price:g-o.price, coin=n=>uiIcon('coin',14)+n;
     t.insertAdjacentHTML('beforeend',`<dl class="sbal"><dt>Balance</dt><dd>${coin(g)}</dd><dt>${out?'You get':'Cost'}</dt><dd>${out?'+':'−'} ${coin(o.price)}</dd>`
-      +`<dt>After ${out?'sale':'purchase'}</dt><dd${after<0?' class="bad"':''}>${after<0?'−':''}${coin(Math.abs(after))}</dd></dl>`
+      +`<i class="srule"></i><dt class="safter">After ${out?'sale':'purchase'}</dt><dd class="safter${after<0?' bad':''}">${after<0?'−':''}${coin(Math.abs(after))}</dd></dl>`
       +(after<0?`<p class="sneed">You need ${-after} more gold.</p>`:'')); }
   body.appendChild(t);
   const btn=$('#shopBuy'), sell=o.kind==='sell';

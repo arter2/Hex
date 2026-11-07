@@ -1518,3 +1518,5 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .ccrow .ccname{align-self:center; height:34px; display:flex; flex-direction:column; justify-content:center; padding-right:8px; border-right:1px solid #7b9aab;} #lvlUp.mk .ccrow{grid-template-columns:38px 80px minmax(0,1fr) 0;}
 #lvlUp.mk .ccrow{grid-template-columns:38px 72px minmax(0,1fr) 0; column-gap:10px;} #lvlUp.mk .ccrow .ccname{padding-right:10px; box-sizing:border-box;} #lvlUp.mk .ccrow .ccico{margin-right:0;}
 #lvlUp.mk .ccrow{column-gap:9px;} #lvlUp.mk .ccrow .ccname{padding-right:11px;}
+#lvlUp.mk .ccstats .ccrow{padding:9px 0 18px;}
+#lvlUp.mk .ccstats .ccrow{padding-bottom:21px;}

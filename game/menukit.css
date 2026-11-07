@@ -1301,3 +1301,44 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 /* the creature's name: bigger, and bold (Jersey 15 has one weight, so a thin stroke in its own colour) */
 #scrBestiary.mk .bhead b{font-size:21px; line-height:1.1; letter-spacing:.02em; -webkit-text-stroke:.7px currentColor; paint-order:stroke fill;}
 #scrBestiary.mk .bhead b{letter-spacing:.09em;}
+
+/* ---- 23 Mastery (kit 23): the header lower under the torches, one line of intro, then a compact row per colour:
+   badge, colour, level, the bar, what is next, the next reward card (locked) and an arrow that opens all of them ---- */
+#scrMastery.mk{background-image:url(art/menu/dk-torch-l.webp),url(art/menu/dk-torch-r.webp),radial-gradient(70% 14% at 50% 0,rgba(30,120,255,.35),transparent 70%),radial-gradient(70% 12% at 50% 100%,rgba(30,120,255,.3),transparent 70%),
+  linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp);
+  background-size:40px auto,40px auto,auto,auto,auto,300px; background-position:left 16px top 4px,right 16px top 4px,0 0,0 0,0 0,0 0; background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat;}
+#scrMastery.mk>.bar{margin-top:27px;}
+#scrMastery.mk .mintro{margin:6px 0 0; text-align:center; font-size:min(13.5px,3.6vw); letter-spacing:.03em; color:#e3e0d4; white-space:nowrap;}
+#scrMastery.mk .masterylist{gap:12px; padding:0 2px; margin-top:12px;}
+#scrMastery.mk .mrow{position:relative; display:grid; grid-template-columns:minmax(0,1fr) 46px 18px; column-gap:10px; align-items:center; padding:8px 4px 8px 12px; min-height:84px; box-sizing:border-box; border-left-width:12px;}
+#scrMastery.mk .mmain{min-width:0;}
+#scrMastery.mk .mhead{display:flex; align-items:center; gap:8px;}
+#scrMastery.mk .mbadge2{width:25px; height:25px; flex:none;}
+#scrMastery.mk .mhead b{display:flex; align-items:center; gap:6px; font:400 18px var(--font-b); color:var(--c); letter-spacing:.03em;}
+#scrMastery.mk .mhead b .dkel{width:18px; height:18px; object-fit:contain; font-size:15px; line-height:18px;}
+#scrMastery.mk .mlv{margin-left:auto; font:400 13.5px var(--font-b); color:#e3e0d4; white-space:nowrap;}
+#scrMastery.mk .bprog{position:relative; height:14px; margin:8px 0 0; border:1px solid #6f8790; border-radius:7px; background:#050c10; overflow:hidden;}
+#scrMastery.mk .bprog i{position:absolute; left:0; top:0; bottom:0; background:var(--c); opacity:.8; border-radius:6px;}
+#scrMastery.mk .bprog span{position:relative; display:block; text-align:center; font:400 12px/12px var(--font-b); color:#f0ebdc;}
+#scrMastery.mk .mnext{margin:6px 0 0; font-size:13px; color:#e3e0d4; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#scrMastery.mk .mthumb{position:relative; width:46px; height:58px; min-width:0; min-height:0; padding:0; border:0; background:#05090c; cursor:pointer; overflow:hidden; clip-path:none; border-image:none; --element:var(--c);}
+#scrMastery.mk .mthumb>*{position:absolute; image-rendering:pixelated;}
+#scrMastery.mk .mthumb .mtex{inset:4%; width:92%; height:92%; object-fit:cover;}
+#scrMastery.mk .mthumb .mrim{inset:0; width:100%; height:100%; object-fit:fill;}
+#scrMastery.mk .mthumb .macc{inset:0; background:var(--element); -webkit-mask:url(menukit/mastery/accent-mask.svg) center/100% 100% no-repeat; mask:url(menukit/mastery/accent-mask.svg) center/100% 100% no-repeat;}
+#scrMastery.mk .mthumb .mlock{width:40%; left:30%; top:33%;}
+#scrMastery.mk .mthumb .mstar{width:16%; right:13%; bottom:11%;}
+#scrMastery.mk .mthumb.own>*{inset:2px; width:calc(100% - 4px); height:calc(100% - 4px); object-fit:cover;}
+#scrMastery.mk .mthumb.own{box-shadow:inset 0 0 0 2px var(--c);}
+#scrMastery.mk .mmore{width:18px; height:30px; min-width:0; min-height:0; padding:0; border:0; background:none; border-image:none; clip-path:none; cursor:pointer; display:grid; place-items:center;}
+#scrMastery.mk .mmore::before{content:''; border:7px solid transparent; border-left:9px solid #4fd2ea; border-right:0; transition:transform .15s;}
+#scrMastery.mk .mrow.open .mmore::before{transform:rotate(90deg);}
+#scrMastery.mk .mrow>.mcards{grid-column:1/-1; display:none; margin-top:8px;}
+#scrMastery.mk .mrow.open>.mcards{display:flex;}
+#scrMastery.mk .mfoot{margin:6px 0 4px;} #scrMastery.mk .mfoot .mkrule{margin:0 14px; height:8px;}
+#scrMastery.mk .mfoot p{margin:6px 0 0; text-align:center; font-size:13.5px; letter-spacing:.03em; color:#e3e0d4;}
+#scrMastery.mk .mrow{border-width:8px!important; border-image-width:10px!important; padding:2px 2px 2px 8px; min-height:84px;}
+#scrMastery.mk .mbadge2{width:26px; height:26px;}
+#scrMastery.mk .bprog{margin-top:6px;} #scrMastery.mk .mnext{margin-top:5px;}
+#scrMastery.mk .mrow.open>.mcards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:0 6px 6px 0; overflow:visible;}
+#scrMastery.mk .mrow>.mcards .card{width:100%!important; height:auto!important; min-height:0!important;}

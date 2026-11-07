@@ -72,12 +72,20 @@ function renderMastery(){ $('#mShards').innerHTML=uiIcon('shard',20)+(save.shard
     p.onclick=()=>{ const k=save.packs.shift(); persist(); packReward(k,save.deepest,()=>{ show('scrMastery'); renderMastery(); }); }; box.appendChild(p); }
   for(const k of SIX){ const m=mState(k), max=m.level>=MASTERY_MAX, need=max?1:masteryNeed(m.level), el=document.createElement('div'); el.className='mrow'; el.style.setProperty('--c',COLORS[k].c);
     const next=max?'Mastered: gold frames on '+COLORS[k].name+' cards':'Next: '+rewardLine(k,m.level+1);
-    el.innerHTML=`<div class="mhead">${uiIcon('mastery',36,COLORS[k].c)}<b>${COLORS[k].icon} ${COLORS[k].name}</b><span class="mlv">Level ${m.level} / ${MASTERY_MAX}</span></div>
-      <div class="bprog"><i style="width:${max?100:Math.round(100*m.xp/need)}%"></i><span>${max?'max':m.xp+' / '+need}</span></div><p class="mnext">${esc(next)}</p>`;
+    // kit 23: badge, colour, level; the bar; what comes next; the next reward card (locked until earned) and an arrow that shows them all
+    const ids=MASTERY_CARDS[k].map((id,i)=>[id,i]).filter(([id])=>id), nxt=ids.find(([id])=>!(save.owned[id]||0))||ids[ids.length-1];
+    const nc=nxt&&CARDS[nxt[0]], nOwn=nc&&(save.owned[nc.id]||0)>0;
+    const thumb=nc?(nOwn?`<button class="mthumb own" title="${esc(nc.name)}">${cardArtThumb(nc)}</button>`
+      :`<button class="mthumb" title="Reach ${COLORS[k].name} mastery ${3+3*nxt[1]} to earn it"><img class="mtex" src="menukit/mastery/tex-${k}.webp" alt=""><img class="mrim" src="menukit/mastery/frame.svg" alt=""><i class="macc"></i><img class="mlock" src="menukit/mastery/lock.svg" alt=""><img class="mstar" src="menukit/mastery/star.svg" alt=""></button>`):'';
+    el.innerHTML=`<div class="mmain"><div class="mhead"><img class="mbadge2" src="menukit/mastery/badge-${k}.webp" alt=""><b>${dkEl?dkEl(k):COLORS[k].icon}<span>${COLORS[k].name}</span></b><span class="mlv">Level ${m.level} / ${MASTERY_MAX}</span></div>
+      <div class="bprog"><i style="width:${max?100:Math.round(100*m.xp/need)}%"></i><span>${max?'max':m.xp+' / '+need}</span></div><p class="mnext">${esc(next)}</p></div>${thumb}<button class="mmore" aria-label="Show the ${COLORS[k].name} reward cards" aria-expanded="false"></button>`;
+    const tb=el.querySelector('.mthumb'); if(tb) tb.onclick=()=>nOwn?showDetail(nc):tip('Reach '+COLORS[k].name+' mastery '+(3+3*nxt[1])+' to earn '+nc.name);
+    el.querySelector('.mmore').onclick=e=>{ const o=el.classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded',String(o)); };
     const cards=document.createElement('div'); cards.className='mcards';
     MASTERY_CARDS[k].forEach((id,i)=>{ if(!id) return; const c=CARDS[id], own=(save.owned[id]||0)>0, e=cardEl(c,own?'':'<span class="badge">Lv '+(3+3*i)+'</span>',!own);
       e.onclick=()=>own?showDetail(c):tip('Reach '+COLORS[k].name+' mastery '+(3+3*i)+' to earn '+c.name); cards.appendChild(e); });
     el.appendChild(cards); box.appendChild(el); }
+  const foot=document.createElement('div'); foot.className='mfoot'; foot.innerHTML='<div class="mkrule"></div><p>Each colour has '+MASTERY_MAX+' mastery levels.</p>'; box.appendChild(foot);
   renderSets(); }
 function renderSets(){ const box=$('#setList'); box.innerHTML='';
   const cols=FAM_ORDER_SETS().filter(k=>CARD_SETS_LIST.some(s=>s.color===k)); if(!mTab||!cols.includes(mTab)) mTab=cols[0];

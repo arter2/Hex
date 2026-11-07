@@ -79,9 +79,9 @@ function renderShop(){ goldText($('#sGold')); const box=$('#shopBody'); box.inne
   document.querySelectorAll('#shopTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===shopTab));
   if(shopTab==='sell') return renderSell(box);
   const st=shopStock(), g=save.gold;
-  box.appendChild(shopShelf('Packs',PACK_SIZE+' cards each, any rarity',[
-    {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
-    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
+  box.appendChild(shopShelf('Card packs',PACK_SIZE+' cards per pack',[
+    {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each may be rare.'},
+    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family. Each may be rare.'}))
   ].map(o=>Object.assign(o,{cant:g<o.price,color:o.color?COLORS[o.color].c:null,fam:o.color}))));
   const rc=shopRecharges(); if(rc.length) box.appendChild(shopShelf('Recharge','every copy back to full uses',rc.map(o=>Object.assign(o,{cant:g<o.price}))));
   box.appendChild(shopShelf("Today's cards",'new stock at midnight',st.cards.map(id=>{ const c=CARDS[id], sold=st.sold.includes('c:'+id), el=cardEl(c); el.tabIndex=-1;
@@ -106,7 +106,12 @@ function shopSheet(o){ const sh=$('#shopSheet'), body=$('#shopSheetBody'); body.
   body.appendChild(big);
   const t=document.createElement('div'); t.className='stext';
   const own=o.card?(save.owned[o.card.id]||0):o.kind==='gear'?((gearState(save).items[o.id])||0):null;
-  t.innerHTML=`<h2>${esc(o.name)}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
+  t.innerHTML=`<h2>${esc(o.name)}${o.kind==='pack'&&!/pack$/i.test(o.name)?' pack':''}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
+  // the gold before and after, and why Buy is off (menu kit v2: the reason stays readable outside the dimmed button)
+  if(!o.sold){ const g=save.gold, out=o.kind==='sell', after=out?g+o.price:g-o.price, coin=n=>uiIcon('coin',14)+n;
+    t.insertAdjacentHTML('beforeend',`<dl class="sbal"><dt>Balance</dt><dd>${coin(g)}</dd><dt>${out?'You get':'Cost'}</dt><dd>${out?'+':'−'} ${coin(o.price)}</dd>`
+      +`<i class="srule"></i><dt class="safter">After ${out?'sale':'purchase'}</dt><dd class="safter${after<0?' bad':''}">${after<0?'−':''}${coin(Math.abs(after))}</dd></dl>`
+      +(after<0?`<p class="sneed">You need ${-after} more gold.</p>`:'')); }
   body.appendChild(t);
   const btn=$('#shopBuy'), sell=o.kind==='sell';
   btn.innerHTML=(o.sold?'Sold out':(sell?'Sell for ':o.kind==='recharge'?'Recharge · ':'Buy · ')+uiIcon('coin',18)+o.price); btn.disabled=!!o.sold||(!sell&&save.gold<o.price);
@@ -165,6 +170,10 @@ function cardBackEl(style){ const d=document.createElement('div'); d.className='
    The pack shakes, then bursts in a flash; its cards land face down in a fan and turn over one at a
    time in a random order (a rare or better one glows as it turns). Tap to turn the rest at once. */
 function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'), fan=$('#poFan'), done=$('#poDone'), all=$('#poAll'), hint=$('#poHint'); fan.innerHTML=''; stage.innerHTML=''; done.hidden=true; all.hidden=true; hint.hidden=false;
+  const nNew=res.filter(r=>r.isNew).length; $('#poTitle').textContent=packName(color).replace(/^Booster pack$/,'Booster')+' opened';
+  $('#poSub').textContent=nNew===res.length?res.length+' new card'+(res.length>1?'s':''):res.length+' cards'+(nNew?' · '+nNew+' new':'');
+  let skip=false; try{ skip=localStorage.getItem('hexmancers-poskip')==='1'; }catch(e){} $('#poSkip').checked=skip;
+  $('#poSkip').onchange=e=>{ try{ localStorage.setItem('hexmancers-poskip',e.target.checked?'1':'0'); }catch(_){} if(e.target.checked) all.onclick(e); };
   const pk=packArt(color,150); pk.className='popack'; stage.appendChild(pk); ov.classList.add('on'); ov.classList.remove('burst');
   const order=res.map((_,i)=>i).sort(()=>Math.random()-.5), slots=[];
   res.forEach((r,i)=>{ const s=document.createElement('div'); s.className='poslot'; s.style.setProperty('--i',i-(res.length-1)/2);
@@ -175,9 +184,12 @@ function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'
   let t=null; const left=()=>order.filter(i=>!slots[i].classList.contains('up'));
   const flip=i=>{ if(!ov.classList.contains('burst')||slots[i].classList.contains('up')) return; slots[i].classList.add('up'); if(typeof buzz==='function') buzz(8);
     if(!left().length){ all.hidden=true; hint.hidden=true; t=setTimeout(()=>done.hidden=false,350); } };
+  hint.parentNode.hidden=false;
   slots.forEach((s,i)=>s.addEventListener('click',e=>{ if(!s.classList.contains('up')){ e.stopPropagation(); flip(i); } }));
-  setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); t=setTimeout(()=>{ stage.innerHTML=''; all.hidden=false; },380); },700);
-  ov.onclick=null; all.onclick=e=>{ e.stopPropagation(); left().forEach((i,n)=>setTimeout(()=>flip(i),n*120)); };
+  if(skip){ ov.classList.add('burst'); stage.innerHTML=''; slots.forEach(s=>s.classList.add('up')); hint.hidden=true; done.hidden=false; }
+  else setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); t=setTimeout(()=>{ stage.innerHTML=''; all.hidden=false; },380); },700);
+  ov.onclick=null; all.onclick=e=>{ e.stopPropagation(); if(!ov.classList.contains('burst')){ ov.classList.add('burst'); stage.innerHTML=''; } left().forEach((i,n)=>setTimeout(()=>flip(i),n*120)); };
+  $('#poX').onclick=e=>done.onclick(e);
   done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); if(onDone) onDone(); }; }
 /* A pack found or won (a chest, a boss, a mission): the area's own family more often than not, else a
    booster; its cards go to your collection and it opens at once. Packs are uncommon finds: about 1 rich

@@ -62,42 +62,35 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         };
         const visible = selector => page.waitForSelector(selector, { state: 'visible' });
         await audit('main-menu', '#scrMenu');
+        // Continue opens the three save slots; the used slot's own Continue goes to its camp, which is the main menu
         await tap(page, '#mmContinue');
-        await visible('#scrCamp.on');
-        await audit('camp', '#scrCamp');
+        await visible('#scrSaves.on');
+        await audit('save-slots', '#scrSaves');
+        await tap(page, '#svList .hm-go');
+        await visible('#scrMenu.on');
+        await audit('camp', '#scrMenu');
+        // each camp destination is in one of the menu's categories (Cards, Market, Character)
         const screens = [
-          ['deck', '#goBuilder', '#scrDeck.on,#scrBuilder.on', '#dkBack,#scrBuilder .back'],
-          ['collection', '#goCollection', '#scrCollection.on', '#scrCollection .back'],
-          ['shop', '#goShop', '#scrShop.on', '#scrShop .back'],
-          ['character', '#goChar', '#bagUI.on', '#bgClose']
+          ['deck', 'cards', 'goBuilder', '#scrDeck.on,#scrBuilder.on', '#dkBack,#scrBuilder .back'],
+          ['collection', 'cards', 'goCollection', '#scrCollection.on', '#scrCollection .back'],
+          ['shop', 'market', 'goShop', '#scrShop.on', '#scrShop .back'],
+          ['character', 'character', 'goChar', '#bagUI.on', '#bgClose']
         ];
-        for (const [name, entry, active, back] of screens) {
-          await tap(page, entry);
+        for (const [name, cat, go, active, back] of screens) {
+          await tap(page, '#scrMenu .hm-cat[data-cat="' + cat + '"]');
+          await visible('#hmDlg.on');
+          await tap(page, '#hmDlgB [data-go="' + go + '"]');
           await visible(active);
           await audit(name, active);
           await tap(page, back);
-          await visible('#scrCamp.on');
-        }
-        // Settings: a camp button on tablets and wide screens; on a phone the camp hides it and you go through
-        // ☰ Menu instead, the way a player would.
-        if (await page.locator('#goSettings').isVisible()) {
-          await tap(page, '#goSettings');
-          await visible('#settings.on');
-          await audit('settings', '#settings');
-          await tap(page, '#setBack');
-          await visible('#scrCamp.on');
-        } else {
-          await tap(page, '#campMenu');
           await visible('#scrMenu.on');
-          await tap(page, '#mmSettings');
-          await visible('#settings.on');
-          await audit('settings', '#settings');
-          await tap(page, '#setBack');
-          await visible('#scrMenu.on');
-          await tap(page, '#mmContinue');
-          await visible('#scrCamp.on');
         }
-        await tap(page, '#btnDescend');
+        await tap(page, '#mmSettings');
+        await visible('#settings.on');
+        await audit('settings', '#settings');
+        await tap(page, '#setBack');
+        await visible('#scrMenu.on');
+        await tap(page, '#mmExplore');
         await visible('#scrExplore.on');
         await audit('dungeon-hud', '#scrExplore');
         await tap(page, '#xMenu');

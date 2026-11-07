@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "colors": {
+    "ink": "#101a1e",
+    "text": "#f3f1e7",
+    "muted": "#a8b6b8",
+    "steel": "#626f70",
+    "light": "#b5c1bb",
+    "bronze": "#897052",
+    "cyan": "#7dd8e6",
+    "mint": "#8de9b5",
+    "gold": "#f5cb60",
+    "danger": "#ec9384"
+  },
+  "minimumTouchTarget": 48,
+  "buttonHeight": 48,
+  "gap": 8,
+  "clipCorner": 5,
+  "sliceInsets": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "font": {
+    "family": "Jersey 15",
+    "text": [
+      15,
+      18,
+      20,
+      23,
+      25
+    ],
+    "woff2": "assets/fonts/jersey-15-latin-400-normal.woff2"
+  },
+  "gradients": {
+    "steel": [
+      [
+        "0",
+        "#b5c1bb",
+        1
+      ],
+      [
+        ".18",
+        "#626f70",
+        1
+      ],
+      [
+        ".55",
+        "#24323a",
+        1
+      ],
+      [
+        "1",
+        "#626f70",
+        1
+      ]
+    ],
+    "cyan": [
+      [
+        "0",
+        "#c5f7ff",
+        1
+      ],
+      [
+        ".18",
+        "#4199ab",
+        1
+      ],
+      [
+        ".55",
+        "#24323a",
+        1
+      ],
+      [
+        "1",
+        "#4199ab",
+        1
+      ]
+    ],
+    "smoke": [
+      [
+        "0",
+        "#101a1e",
+        0.66
+      ],
+      [
+        "1",
+        "#101a1e",
+        0.88
+      ]
+    ],
+    "floorFade": [
+      [
+        "0",
+        "#06131b",
+        0
+      ],
+      [
+        "1",
+        "#06131b",
+        0.92
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3128 @@
+[
+  {
+    "profile": "phone-portrait",
+    "screen": "home",
+    "viewport": [
+      390,
+      844
+    ],
+    "content": [
+      390,
+      844
+    ],
+    "mode": "stack",
+    "scrollY": false,
+    "svg": "layouts/phone-portrait--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 12,
+        "y": 226.40000000000003,
+        "w": 366,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 12,
+        "y": 282.40000000000003,
+        "w": 366,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 234,
+        "y": 383.40000000000003,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 324,
+        "y": 383.40000000000003,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 286,
+        "y": 457.40000000000003,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 24,
+        "y": 510.40000000000003,
+        "w": 167,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 199,
+        "y": 510.40000000000003,
+        "w": 167,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 12,
+        "y": 578.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 199,
+        "y": 578.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 12,
+        "y": 634.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 199,
+        "y": 634.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 12,
+        "y": 690.4000000000001,
+        "w": 366,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 22,
+        "y": 246.40000000000003,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 42,
+        "y": 266.40000000000003,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 102,
+        "y": 266.40000000000003,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 153,
+        "y": 266.40000000000003,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 178,
+        "y": 313.40000000000003,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 54,
+        "y": 364.40000000000003,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 366,
+        "y": 381.40000000000003,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 24,
+        "y": 408.40000000000003,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 273,
+        "y": 414.40000000000003,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 304,
+        "y": 414.40000000000003,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 363,
+        "y": 414.40000000000003,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 44,
+        "y": 482.40000000000003,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 132,
+        "y": 482.40000000000003,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 326,
+        "y": 488.40000000000003,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 94.5,
+        "y": 541.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 273.5,
+        "y": 541.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 96.5,
+        "y": 609.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 279.5,
+        "y": 609.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 88.5,
+        "y": 665.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 267.5,
+        "y": 665.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 361,
+        "y": 649.4000000000001,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 178,
+        "y": 721.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 16,
+        "y": 763.4000000000001,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 12,
+      "y": 226.40000000000003,
+      "w": 366,
+      "bottom": 770.4000000000001
+    }
+  },
+  {
+    "profile": "phone-portrait",
+    "screen": "saves",
+    "viewport": [
+      390,
+      844
+    ],
+    "content": [
+      390,
+      844
+    ],
+    "mode": "stack",
+    "scrollY": false,
+    "svg": "layouts/phone-portrait--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 12,
+        "y": 274.40000000000003,
+        "w": 366,
+        "h": 104,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 12,
+        "y": 386.40000000000003,
+        "w": 366,
+        "h": 196,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 254,
+        "y": 526.4000000000001,
+        "w": 112,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 12,
+        "y": 590.4000000000001,
+        "w": 366,
+        "h": 104,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 12,
+        "y": 702.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 199,
+        "y": 702.4000000000001,
+        "w": 179,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 195,
+        "y": 253.40000000000003,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 120,
+        "y": 303.40000000000003,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 120,
+        "y": 331.40000000000003,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 2",
+        "x": 120,
+        "y": 415.40000000000003,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 120,
+        "y": 442.40000000000003,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "60/60",
+        "x": 366,
+        "y": 442.40000000000003,
+        "size": 18,
+        "anchor": "end"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 120,
+        "y": 466.40000000000003,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Depth 2",
+        "x": 120,
+        "y": 487.40000000000003,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 140,
+        "y": 513.4000000000001,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 200,
+        "y": 513.4000000000001,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 251,
+        "y": 513.4000000000001,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 293,
+        "y": 557.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 120,
+        "y": 619.4000000000001,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 120,
+        "y": 647.4000000000001,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Back",
+        "x": 100.5,
+        "y": 733.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 271.5,
+        "y": 733.4000000000001,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 12,
+      "y": 226.40000000000003,
+      "w": 366,
+      "bottom": 750.4000000000001
+    }
+  },
+  {
+    "profile": "phone-tall",
+    "screen": "home",
+    "viewport": [
+      412,
+      915
+    ],
+    "content": [
+      412,
+      915
+    ],
+    "mode": "stack",
+    "scrollY": false,
+    "svg": "layouts/phone-tall--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 12,
+        "y": 238.72000000000003,
+        "w": 388,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 12,
+        "y": 294.72,
+        "w": 388,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 256,
+        "y": 395.72,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 346,
+        "y": 395.72,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 308,
+        "y": 469.72,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 24,
+        "y": 522.72,
+        "w": 178,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 210,
+        "y": 522.72,
+        "w": 178,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 12,
+        "y": 590.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 210,
+        "y": 590.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 12,
+        "y": 646.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 210,
+        "y": 646.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 12,
+        "y": 702.72,
+        "w": 388,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 22,
+        "y": 258.72,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 42,
+        "y": 278.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 102,
+        "y": 278.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 153,
+        "y": 278.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 189,
+        "y": 325.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 54,
+        "y": 376.72,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 388,
+        "y": 393.72,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 24,
+        "y": 420.72,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 295,
+        "y": 426.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 326,
+        "y": 426.72,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 385,
+        "y": 426.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 44,
+        "y": 494.72,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 132,
+        "y": 494.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 348,
+        "y": 500.72,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 100,
+        "y": 553.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 290,
+        "y": 553.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 102,
+        "y": 621.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 296,
+        "y": 621.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 94,
+        "y": 677.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 284,
+        "y": 677.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 383,
+        "y": 661.72,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 189,
+        "y": 733.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 16,
+        "y": 775.72,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 12,
+      "y": 238.72000000000003,
+      "w": 388,
+      "bottom": 782.72
+    }
+  },
+  {
+    "profile": "phone-tall",
+    "screen": "saves",
+    "viewport": [
+      412,
+      915
+    ],
+    "content": [
+      412,
+      915
+    ],
+    "mode": "stack",
+    "scrollY": false,
+    "svg": "layouts/phone-tall--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 12,
+        "y": 286.72,
+        "w": 388,
+        "h": 104,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 12,
+        "y": 398.72,
+        "w": 388,
+        "h": 196,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 276,
+        "y": 538.72,
+        "w": 112,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 12,
+        "y": 602.72,
+        "w": 388,
+        "h": 104,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 12,
+        "y": 714.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 210,
+        "y": 714.72,
+        "w": 190,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 206,
+        "y": 265.72,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 120,
+        "y": 315.72,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 120,
+        "y": 343.72,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 2",
+        "x": 120,
+        "y": 427.72,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 120,
+        "y": 454.72,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "60/60",
+        "x": 388,
+        "y": 454.72,
+        "size": 18,
+        "anchor": "end"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 120,
+        "y": 478.72,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Depth 2",
+        "x": 120,
+        "y": 499.72,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 140,
+        "y": 525.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 200,
+        "y": 525.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 251,
+        "y": 525.72,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 315,
+        "y": 569.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 120,
+        "y": 631.72,
+        "size": 22,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 120,
+        "y": 659.72,
+        "size": 19,
+        "anchor": "start"
+      },
+      {
+        "text": "Back",
+        "x": 106,
+        "y": 745.72,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 288,
+        "y": 745.72,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 12,
+      "y": 238.72000000000003,
+      "w": 388,
+      "bottom": 762.72
+    }
+  },
+  {
+    "profile": "phone-landscape",
+    "screen": "home",
+    "viewport": [
+      844,
+      390
+    ],
+    "content": [
+      844,
+      400
+    ],
+    "mode": "side",
+    "scrollY": true,
+    "svg": "layouts/phone-landscape--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 268.53999999999996,
+        "y": 12,
+        "w": 354.249,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 634.789,
+        "y": 12,
+        "w": 197.211,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 478.789,
+        "y": 113,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 568.789,
+        "y": 113,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 530.789,
+        "y": 187,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 280.53999999999996,
+        "y": 240,
+        "w": 161.1245,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 449.6645,
+        "y": 240,
+        "w": 161.1245,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 634.789,
+        "y": 68,
+        "w": 197.211,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 634.789,
+        "y": 124,
+        "w": 197.211,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 634.789,
+        "y": 180,
+        "w": 197.211,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 634.789,
+        "y": 236,
+        "w": 197.211,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 268.53999999999996,
+        "y": 308,
+        "w": 563.46,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 278.53999999999996,
+        "y": 32,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 298.53999999999996,
+        "y": 52,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 358.53999999999996,
+        "y": 52,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 409.53999999999996,
+        "y": 52,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 716.3945,
+        "y": 43,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 310.53999999999996,
+        "y": 94,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 610.789,
+        "y": 111,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 280.53999999999996,
+        "y": 138,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 517.789,
+        "y": 144,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 548.789,
+        "y": 144,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 607.789,
+        "y": 144,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 300.53999999999996,
+        "y": 212,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 388.53999999999996,
+        "y": 212,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 570.789,
+        "y": 218,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 348.10224999999997,
+        "y": 271,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 521.22675,
+        "y": 271,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 728.3945,
+        "y": 99,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 724.3945,
+        "y": 155,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 720.3945,
+        "y": 211,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 712.3945,
+        "y": 267,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 815,
+        "y": 251,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 533.27,
+        "y": 339,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 272.53999999999996,
+        "y": 381,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 268.53999999999996,
+      "y": 12,
+      "w": 563.46,
+      "bottom": 388
+    }
+  },
+  {
+    "profile": "phone-landscape",
+    "screen": "saves",
+    "viewport": [
+      844,
+      390
+    ],
+    "content": [
+      844,
+      390
+    ],
+    "mode": "side",
+    "scrollY": false,
+    "svg": "layouts/phone-landscape--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 268.53999999999996,
+        "y": 60,
+        "w": 182.48666666666668,
+        "h": 254,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 459.02666666666664,
+        "y": 60,
+        "w": 182.48666666666668,
+        "h": 254,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 467.02666666666664,
+        "y": 258,
+        "w": 166.48666666666668,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 649.5133333333333,
+        "y": 60,
+        "w": 182.48666666666668,
+        "h": 254,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 268.53999999999996,
+        "y": 322,
+        "w": 277.73,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 554.27,
+        "y": 322,
+        "w": 277.73,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 550.27,
+        "y": 39,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 280.53999999999996,
+        "y": 83,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 359.7833333333333,
+        "y": 224,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 2",
+        "x": 471.02666666666664,
+        "y": 83,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 550.27,
+        "y": 175,
+        "size": 21,
+        "anchor": "middle"
+      },
+      {
+        "text": "60/60",
+        "x": 550.27,
+        "y": 192,
+        "size": 16,
+        "anchor": "middle"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 550.27,
+        "y": 209,
+        "size": 14,
+        "anchor": "middle"
+      },
+      {
+        "text": "Depth 2",
+        "x": 550.27,
+        "y": 225,
+        "size": 15,
+        "anchor": "middle"
+      },
+      {
+        "text": "273",
+        "x": 491.02666666666664,
+        "y": 242,
+        "size": 13,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 551.0266666666666,
+        "y": 242,
+        "size": 13,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 602.0266666666666,
+        "y": 242,
+        "size": 13,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 533.27,
+        "y": 289,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 661.5133333333333,
+        "y": 83,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 740.7566666666667,
+        "y": 224,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Back",
+        "x": 406.405,
+        "y": 353,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 676.135,
+        "y": 353,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 268.53999999999996,
+      "y": 12,
+      "w": 563.46,
+      "bottom": 370
+    }
+  },
+  {
+    "profile": "tablet-portrait",
+    "screen": "home",
+    "viewport": [
+      834,
+      1194
+    ],
+    "content": [
+      834,
+      1194
+    ],
+    "mode": "wide",
+    "scrollY": false,
+    "svg": "layouts/tablet-portrait--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 24,
+        "y": 445,
+        "w": 514,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 550,
+        "y": 445,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 394,
+        "y": 546,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 484,
+        "y": 546,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 446,
+        "y": 620,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 36,
+        "y": 673,
+        "w": 241,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 285,
+        "y": 673,
+        "w": 241,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 550,
+        "y": 501,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 550,
+        "y": 557,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 550,
+        "y": 613,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 550,
+        "y": 669,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 24,
+        "y": 741,
+        "w": 786,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 34,
+        "y": 465,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 54,
+        "y": 485,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 114,
+        "y": 485,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 165,
+        "y": 485,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 663,
+        "y": 476,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 66,
+        "y": 527,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 526,
+        "y": 544,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 36,
+        "y": 571,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 433,
+        "y": 577,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 464,
+        "y": 577,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 523,
+        "y": 577,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 56,
+        "y": 645,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 144,
+        "y": 645,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 486,
+        "y": 651,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 143.5,
+        "y": 704,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 396.5,
+        "y": 704,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 675,
+        "y": 532,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 671,
+        "y": 588,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 667,
+        "y": 644,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 659,
+        "y": 700,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 793,
+        "y": 684,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 400,
+        "y": 772,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 28,
+        "y": 814,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 24,
+      "y": 445,
+      "w": 786,
+      "bottom": 821
+    }
+  },
+  {
+    "profile": "tablet-portrait",
+    "screen": "saves",
+    "viewport": [
+      834,
+      1194
+    ],
+    "content": [
+      834,
+      1194
+    ],
+    "mode": "wide",
+    "scrollY": false,
+    "svg": "layouts/tablet-portrait--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 24,
+        "y": 429,
+        "w": 256.6666666666667,
+        "h": 400,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 288.6666666666667,
+        "y": 429,
+        "w": 256.6666666666667,
+        "h": 400,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 296.6666666666667,
+        "y": 773,
+        "w": 240.66666666666669,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 553.3333333333334,
+        "y": 429,
+        "w": 256.6666666666667,
+        "h": 400,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 24,
+        "y": 837,
+        "w": 389,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 421,
+        "y": 837,
+        "w": 389,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 417,
+        "y": 408,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 36,
+        "y": 452,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 152.33333333333334,
+        "y": 593,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 2",
+        "x": 300.6666666666667,
+        "y": 452,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 417,
+        "y": 580,
+        "size": 21,
+        "anchor": "middle"
+      },
+      {
+        "text": "60/60",
+        "x": 417,
+        "y": 597,
+        "size": 16,
+        "anchor": "middle"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 417,
+        "y": 614,
+        "size": 17,
+        "anchor": "middle"
+      },
+      {
+        "text": "Depth 2",
+        "x": 417,
+        "y": 630,
+        "size": 15,
+        "anchor": "middle"
+      },
+      {
+        "text": "273",
+        "x": 320.6666666666667,
+        "y": 647,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 380.6666666666667,
+        "y": 647,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 431.6666666666667,
+        "y": 647,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 400,
+        "y": 804,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 565.3333333333334,
+        "y": 452,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 681.6666666666667,
+        "y": 593,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Back",
+        "x": 217.5,
+        "y": 868,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 598.5,
+        "y": 868,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 24,
+      "y": 381,
+      "w": 786,
+      "bottom": 885
+    }
+  },
+  {
+    "profile": "tablet-landscape",
+    "screen": "home",
+    "viewport": [
+      1194,
+      834
+    ],
+    "content": [
+      1194,
+      834
+    ],
+    "mode": "side",
+    "scrollY": false,
+    "svg": "layouts/tablet-landscape--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 380.28999999999996,
+        "y": 237,
+        "w": 517.71,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 910,
+        "y": 237,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 754,
+        "y": 338,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 844,
+        "y": 338,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 806,
+        "y": 412,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 392.28999999999996,
+        "y": 465,
+        "w": 242.85500000000002,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 643.145,
+        "y": 465,
+        "w": 242.85500000000002,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 910,
+        "y": 293,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 910,
+        "y": 349,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 910,
+        "y": 405,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 910,
+        "y": 461,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 380.28999999999996,
+        "y": 533,
+        "w": 789.71,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 390.28999999999996,
+        "y": 257,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 410.28999999999996,
+        "y": 277,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 470.28999999999996,
+        "y": 277,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 521.29,
+        "y": 277,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 1023,
+        "y": 268,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 422.28999999999996,
+        "y": 319,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 886,
+        "y": 336,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 392.28999999999996,
+        "y": 363,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 793,
+        "y": 369,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 824,
+        "y": 369,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 883,
+        "y": 369,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 412.28999999999996,
+        "y": 437,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 500.28999999999996,
+        "y": 437,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 846,
+        "y": 443,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 500.7175,
+        "y": 496,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 755.5725,
+        "y": 496,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 1035,
+        "y": 324,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 1031,
+        "y": 380,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 1027,
+        "y": 436,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 1019,
+        "y": 492,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 1153,
+        "y": 476,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 758.145,
+        "y": 564,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 384.28999999999996,
+        "y": 606,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 380.28999999999996,
+      "y": 237,
+      "w": 789.71,
+      "bottom": 613
+    }
+  },
+  {
+    "profile": "tablet-landscape",
+    "screen": "saves",
+    "viewport": [
+      1194,
+      834
+    ],
+    "content": [
+      1194,
+      834
+    ],
+    "mode": "side",
+    "scrollY": false,
+    "svg": "layouts/tablet-landscape--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 380.28999999999996,
+        "y": 285,
+        "w": 257.90333333333336,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 646.1933333333334,
+        "y": 285,
+        "w": 257.90333333333336,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 654.1933333333334,
+        "y": 525,
+        "w": 241.90333333333336,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 912.0966666666667,
+        "y": 285,
+        "w": 257.90333333333336,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 380.28999999999996,
+        "y": 589,
+        "w": 390.855,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 779.145,
+        "y": 589,
+        "w": 390.855,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 775.145,
+        "y": 264,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 392.28999999999996,
+        "y": 308,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 509.2416666666667,
+        "y": 449,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 2",
+        "x": 658.1933333333334,
+        "y": 308,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 775.1450000000001,
+        "y": 436,
+        "size": 21,
+        "anchor": "middle"
+      },
+      {
+        "text": "60/60",
+        "x": 775.1450000000001,
+        "y": 453,
+        "size": 16,
+        "anchor": "middle"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 775.1450000000001,
+        "y": 470,
+        "size": 17,
+        "anchor": "middle"
+      },
+      {
+        "text": "Depth 2",
+        "x": 775.1450000000001,
+        "y": 486,
+        "size": 15,
+        "anchor": "middle"
+      },
+      {
+        "text": "273",
+        "x": 678.1933333333334,
+        "y": 503,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 738.1933333333334,
+        "y": 503,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 789.1933333333334,
+        "y": 503,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 758.1450000000001,
+        "y": 556,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 924.0966666666667,
+        "y": 308,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 1041.0483333333334,
+        "y": 449,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Back",
+        "x": 574.7175,
+        "y": 620,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 957.5725,
+        "y": 620,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 380.28999999999996,
+      "y": 237,
+      "w": 789.71,
+      "bottom": 637
+    }
+  },
+  {
+    "profile": "browser",
+    "screen": "home",
+    "viewport": [
+      1440,
+      900
+    ],
+    "content": [
+      1440,
+      900
+    ],
+    "mode": "side",
+    "scrollY": false,
+    "svg": "layouts/browser--home.svg",
+    "controls": [
+      {
+        "id": "active-slot",
+        "action": "saves",
+        "label": "Choose save slot",
+        "x": 440,
+        "y": 270,
+        "w": 704,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "saves",
+        "label": "Continue",
+        "x": 1156,
+        "y": 270,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "depth-prev",
+        "label": "Previous depth",
+        "x": 1000,
+        "y": 371,
+        "w": 48,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "depth-next",
+        "label": "Next depth",
+        "x": 1090,
+        "y": 371,
+        "w": 48,
+        "h": 48,
+        "disabled": true,
+        "parent": null
+      },
+      {
+        "id": "control-3",
+        "action": "details",
+        "label": "Details",
+        "x": 1052,
+        "y": 445,
+        "w": 80,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-4",
+        "action": "explore",
+        "label": "Explore",
+        "x": 452,
+        "y": 498,
+        "w": 336,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-5",
+        "action": "battle",
+        "label": "Battle",
+        "x": 796,
+        "y": 498,
+        "w": 336,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-6",
+        "action": "cards",
+        "label": "Cards",
+        "x": 1156,
+        "y": 326,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-7",
+        "action": "market",
+        "label": "Market",
+        "x": 1156,
+        "y": 382,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-8",
+        "action": "journal",
+        "label": "Journal",
+        "x": 1156,
+        "y": 438,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-9",
+        "action": "character",
+        "label": "Character",
+        "x": 1156,
+        "y": 494,
+        "w": 260,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-10",
+        "action": "settings",
+        "label": "Settings",
+        "x": 440,
+        "y": 566,
+        "w": 976,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Slot 2 ▾ · Burn Rush  60/60",
+        "x": 450,
+        "y": 290,
+        "size": 18,
+        "anchor": "start"
+      },
+      {
+        "text": "273",
+        "x": 470,
+        "y": 310,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 530,
+        "y": 310,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 581,
+        "y": 310,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 1269,
+        "y": 301,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 482,
+        "y": 352,
+        "size": 23,
+        "anchor": "start"
+      },
+      {
+        "text": "Deepest 2",
+        "x": 1132,
+        "y": 369,
+        "size": 14,
+        "anchor": "end"
+      },
+      {
+        "text": "Depth 2/4 · Boss 4",
+        "x": 452,
+        "y": 396,
+        "size": 17,
+        "anchor": "start"
+      },
+      {
+        "text": "",
+        "x": 1039,
+        "y": 402,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "2",
+        "x": 1070,
+        "y": 402,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "",
+        "x": 1129,
+        "y": 402,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Verdant",
+        "x": 472,
+        "y": 470,
+        "size": 16,
+        "anchor": "start"
+      },
+      {
+        "text": "Weak: Fire",
+        "x": 560,
+        "y": 470,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Details",
+        "x": 1092,
+        "y": 476,
+        "size": 20,
+        "anchor": "middle"
+      },
+      {
+        "text": "Explore",
+        "x": 607,
+        "y": 529,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Battle",
+        "x": 955,
+        "y": 529,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Cards",
+        "x": 1281,
+        "y": 357,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Market",
+        "x": 1277,
+        "y": 413,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Journal",
+        "x": 1273,
+        "y": 469,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Character",
+        "x": 1265,
+        "y": 525,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "+12",
+        "x": 1399,
+        "y": 509,
+        "size": 12,
+        "anchor": "middle"
+      },
+      {
+        "text": "Settings",
+        "x": 911,
+        "y": 597,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Lv 1 · 0/100 XP",
+        "x": 444,
+        "y": 639,
+        "size": 16,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 440,
+      "y": 270,
+      "w": 976,
+      "bottom": 646
+    }
+  },
+  {
+    "profile": "browser",
+    "screen": "saves",
+    "viewport": [
+      1440,
+      900
+    ],
+    "content": [
+      1440,
+      900
+    ],
+    "mode": "side",
+    "scrollY": false,
+    "svg": "layouts/browser--saves.svg",
+    "controls": [
+      {
+        "id": "slot-select-1",
+        "action": "slot-1",
+        "label": "Select slot 1",
+        "x": 440,
+        "y": 318,
+        "w": 320,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "slot-select-2",
+        "action": "slot-2",
+        "label": "Select slot 2",
+        "x": 768,
+        "y": 318,
+        "w": 320,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-0",
+        "action": "load-2",
+        "label": "Continue",
+        "x": 776,
+        "y": 558,
+        "w": 304,
+        "h": 48,
+        "disabled": false,
+        "parent": "slot-select-2"
+      },
+      {
+        "id": "slot-select-3",
+        "action": "slot-3",
+        "label": "Select slot 3",
+        "x": 1096,
+        "y": 318,
+        "w": 320,
+        "h": 296,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-1",
+        "action": "home",
+        "label": "Back",
+        "x": 440,
+        "y": 622,
+        "w": 484,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      },
+      {
+        "id": "control-2",
+        "action": "newgame",
+        "label": "New game",
+        "x": 932,
+        "y": 622,
+        "w": 484,
+        "h": 48,
+        "disabled": false,
+        "parent": null
+      }
+    ],
+    "textBoxes": [
+      {
+        "text": "Choose a save slot",
+        "x": 928,
+        "y": 297,
+        "size": 25,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 1",
+        "x": 452,
+        "y": 341,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 600,
+        "y": 482,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Slot 2",
+        "x": 780,
+        "y": 341,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Burn Rush",
+        "x": 928,
+        "y": 469,
+        "size": 21,
+        "anchor": "middle"
+      },
+      {
+        "text": "60/60",
+        "x": 928,
+        "y": 486,
+        "size": 16,
+        "anchor": "middle"
+      },
+      {
+        "text": "Glowworm Hollows",
+        "x": 928,
+        "y": 503,
+        "size": 17,
+        "anchor": "middle"
+      },
+      {
+        "text": "Depth 2",
+        "x": 928,
+        "y": 519,
+        "size": 15,
+        "anchor": "middle"
+      },
+      {
+        "text": "273",
+        "x": 800,
+        "y": 536,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "59",
+        "x": 860,
+        "y": 536,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "0",
+        "x": 911,
+        "y": 536,
+        "size": 15,
+        "anchor": "start"
+      },
+      {
+        "text": "Continue",
+        "x": 911,
+        "y": 589,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Slot 3",
+        "x": 1108,
+        "y": 341,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "Empty slot",
+        "x": 1256,
+        "y": 482,
+        "size": 19,
+        "anchor": "middle"
+      },
+      {
+        "text": "Back",
+        "x": 681,
+        "y": 653,
+        "size": 20,
+        "anchor": "start"
+      },
+      {
+        "text": "New game",
+        "x": 1157,
+        "y": 653,
+        "size": 20,
+        "anchor": "start"
+      }
+    ],
+    "pane": {
+      "x": 440,
+      "y": 270,
+      "w": 976,
+      "bottom": 670
+    }
+  }
+]

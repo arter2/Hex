@@ -1536,3 +1536,11 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .ccrow .ccico .statico{width:26px; height:26px;}
 #lvlUp.mk .ccrow .ccname{padding-right:4px;} #lvlUp.mk .ccrow .ccname span{font-size:10px;}
 #lvlUp.mk .ccval b{font-size:20px;}
+/* level-up: icon and value pushed to the edges; the name divider sits in the middle of the gap before the dial */
+#lvlUp.mk .panel.lvl{padding-left:6px; padding-right:6px;}
+#lvlUp.mk .ccrow{grid-template-columns:28px 62px 209px 26px; column-gap:0; padding-left:0; padding-right:0; justify-content:space-between;}
+#lvlUp.mk .ccrow .ccname{position:relative; border-right:0; padding:0 0 0 6px; margin-right:-6px;}
+#lvlUp.mk .ccrow .ccname::after{content:''; position:absolute; right:-1px; top:0; bottom:0; width:1px; background:#7b9aab;}
+#lvlUp.mk .ccrow .dial{margin-left:6px; width:203px;}
+#lvlUp.mk .ccrow{grid-template-columns:26px 62px 215px 22px;} #lvlUp.mk .ccrow .dial{width:209px;}
+#lvlUp.mk .ccrow .ccname{padding-right:4px;} #lvlUp.mk .ccrow .ccname::after{right:-2px;}

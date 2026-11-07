@@ -1510,3 +1510,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .ccval{display:none;}
 #lvlUp.mk #lvSub{font-size:11.5px; white-space:nowrap;}
 #lvlUp.mk .ccstats .ccrow{padding-top:8px; padding-bottom:8px;}
+/* level-up: bigger dials, filling the row */
+#lvlUp.mk .ccrow{grid-template-columns:38px 72px minmax(0,1fr) 0; grid-template-rows:46px auto; gap:0 6px;}
+#lvlUp.mk .dial{height:44px; width:auto; max-width:none;}
+#lvlUp.mk .dial .tape i b{font-size:13px;} #lvlUp.mk .dial .tape i.cur b{font-size:18px;}
+#lvlUp.mk .ccstats .ccrow{height:auto; padding:9px 0 12px; grid-template-rows:42px auto;} #lvlUp.mk .dial{height:40px;}

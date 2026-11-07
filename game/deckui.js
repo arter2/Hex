@@ -132,12 +132,16 @@ function dkHold(el,c,tap){ let t=0, held=false, x0=0, y0=0;
   el.addEventListener('contextmenu',e=>{ e.preventDefault(); clearTimeout(t); dkPeek(c); }); }
 // the big preview: read the card, add or remove copies, or add it to another deck
 function dkPeek(c){ DK.peek=c; const box=$('#dkpCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',false,'expanded'));
-  const d=dkDeck(), n=dkCount(d,c.id);
-  $('#dkpInfo').textContent=COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · you own '+(save.owned[c.id]||0)+' · max '+dkMax(c)+' in a deck';
-  $('#dkpN').textContent=n+' in '+d.name; $('#dkpMinus').disabled=!n; $('#dkpPlus').disabled=n>=dkMax(c)||d.list.length>=RULES.max;
+  const d=dkDeck(), n=dkCount(d,c.id), own=save.owned[c.id]||0, mx=dkMax(c);
+  $('#dkpStats').innerHTML=`<span>Owned <b class="dtown">${own}</b></span><i></i><span>In ${esc(d.name)} <b class="dtin">${n}/${mx}</b></span>`;
+  $('#dkpInfo').textContent='';
+  $('#dkpN').textContent=n?n+' in this deck':'None in this deck'; $('#dkpMinus').disabled=!n;
+  const why=n>=mx?'At the limit':d.list.length>=RULES.max?'Deck is full':'';
+  $('#dkpWhy').textContent=why||'One more copy'; $('#dkpPlus').disabled=!!why;
   $('#dkpOther').innerHTML=save.decks.map((x,i)=>i===DK.slot?'':`<option value="${i}">${esc(x.name)} (${dkCount(x,c.id)} · ${x.list.length}/${RULES.max})</option>`).join('');
   $('#dkpOtherRow').hidden=save.decks.length<2; $('#dkPeek').classList.add('on'); cardPopWire($('#dkPeek'),$('#dkpCard'),()=>$('#dkpClose').onclick()); }
 $('#dkpClose').onclick=()=>{ $('#dkPeek').classList.remove('on'); DK.peek=null; };
+$('#dkpBack').onclick=()=>$('#dkpClose').onclick();
 $('#dkPeek').addEventListener('pointerdown',e=>{ if(e.target.id==='dkPeek') $('#dkpClose').onclick(); });
 $('#dkpPlus').onclick=()=>{ if(DK.peek&&dkAdd(DK.peek)){ dkChange(); dkPeek(DK.peek); } };
 $('#dkpMinus').onclick=()=>{ if(DK.peek&&dkRemove(DK.peek)){ dkChange(); dkPeek(DK.peek); } };

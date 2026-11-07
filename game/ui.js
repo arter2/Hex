@@ -180,12 +180,14 @@ if(document.fonts) document.fonts.load('12px "Hex Card"').then(()=>document.font
 
 function showDetail(c){
   const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'));
-  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on')); return; }
-  const inDeck=activeDeck().list.filter(id=>id===c.id).length;
-  $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
-    :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
-  { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
-  if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
+  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtStats').innerHTML=''; $('#dtShard').hidden=true; $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on')); return; }
+  // kit 15: owned | in your deck (of the most it can hold), then shards, Add to deck, Break and Craft
+  const dk=activeDeck(), inDeck=dk.list.filter(id=>id===c.id).length, own=save.owned[c.id]||0, mx=Math.min(copyLimit(c),own);
+  $('#dtStats').innerHTML=save.seen[c.id]?`<span>Owned <b class="dtown">${own}</b></span><i></i><span>In ${esc(dk.name)} <b class="dtin">${inDeck}/${mx}</b></span>`
+    :`<span>Not found yet</span>`;
+  $('#dtInfo').textContent=save.seen[c.id]?'':RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
+  { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=($('#dtInfo').textContent?' · ':'')+'⚗ Part of: '+found.map(r=>r.name).join(', '); }
+  if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=($('#dtInfo').textContent?' · ':'')+'Uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
   // the 512 master is in the repo copy only, never in a release: one probe a session says whether masters are here,
   // and the link is added only while this same card is still the one shown
   { const v=typeof cardArtVariants==='function'&&cardArtVariants(c), tok=showDetail.tok=(showDetail.tok||0)+1;
@@ -196,14 +198,21 @@ function showDetail(c){
 }
 // Break and Craft on the card detail: shards come from spare copies only, so a deck never loses a card
 function dtShards(c){ const box=$('#dtShard'); box.innerHTML=''; const sh=shardOf(c); box.hidden=!sh||!save.seen[c.id]; if(box.hidden) return;
-  const have=save.shards||0, spare=spareCopies(save,c.id), own=save.owned[c.id]||0;
-  box.innerHTML=`<p class="shardline">${uiIcon('shard',18)}<b>${have}</b> shards · ${spare} spare</p>`;
+  const have=save.shards||0, spare=spareCopies(save,c.id), own=save.owned[c.id]||0, dk=activeDeck();
+  const big=(id,cls,icon,title,sub)=>{ const b=document.createElement('button'); b.id=id; b.className='btn ghost '+cls; b.innerHTML=`<img class="dtico" src="menukit/icons/dt-${icon}.webp" alt=""><span><b>${title}</b><small>${sub}</small></span>`; return b; };
+  box.innerHTML=`<div class="mkrule"></div><p class="shardline"><img src="menukit/icons/shards.webp" alt=""><b>${have}</b> shards</p><div class="mkrule"></div>`;
+  // Add to deck: one more copy in the deck you fight with, or why not
+  const n=dk.list.filter(id=>id===c.id).length, lim=Math.min(copyLimit(c),own);
+  const why=n>=lim?'Deck copy limit reached.':dk.list.length>=RULES.max?'Your deck is full.':'';
+  const add=big('dtAdd','dtadd','add-deck','Add to deck',why||'Adds a copy to '+esc(dk.name)+'.'); add.disabled=!!why;
+  add.onclick=()=>{ if(why) return; dk.list.push(c.id); persist(); tip('Added to '+dk.name); showDetail(c); dtRefresh(); };
+  box.appendChild(add);
   const row=document.createElement('div'); row.className='row'; box.appendChild(row);
-  const b1=document.createElement('button'); b1.id='dtBreak'; b1.className='btn ghost'; b1.textContent='Break for '+sh[0];
-  b1.disabled=!canBreak(save,c); b1.title=spare?'':own?'Every copy is in a deck':'You have none';
+  const b1=big('dtBreak','dthalf','break','Break · '+sh[0],spare?spare+' spare cop'+(spare===1?'y':'ies'):own?'No spare copies':'You have none');
+  b1.disabled=!canBreak(save,c);
   b1.onclick=e=>armed(e.currentTarget,'Tap again to break',()=>{ const n=breakCard(save,c.id); if(!n) return; persist(); tip('+'+n+' shards'); showDetail(c); dtRefresh(); });
-  const b2=document.createElement('button'); b2.id='dtCraft'; b2.className='btn'; b2.textContent='Craft for '+sh[1];
-  b2.disabled=!canCraft(save,c); if(!craftRoom(save,c)) b2.title='You have the most a deck can use';
+  const b2=big('dtCraft','dthalf','craft','Craft · '+sh[1],!craftRoom(save,c)?'You own the most a deck uses':have>=sh[1]?'You have '+have+' shards':'Need '+sh[1]+' shards');
+  b2.disabled=!canCraft(save,c);
   b2.onclick=()=>{ const r=craftCard(save,c.id); if(!r) return; persist(); tip((r.isNew?'New: ':'Crafted ')+c.name); if(typeof cardPop==='function') cardPop(c); showDetail(c); dtRefresh(); };
   row.append(b1,b2); }
 function dtRefresh(){ const on=id=>{ const el=document.getElementById(id); return el&&el.classList.contains('on'); };
@@ -1586,9 +1595,9 @@ const CLOSERS={
   lvlUp:()=>closeLevelUp(false), shopSheet:()=>$('#shopSheet').classList.remove('on'), runSheet:()=>closeRun(),
   reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
 };
-const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings'];   // settings goes back with the ← every full screen has
+const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings','detail','dkPeek'];   // settings goes back with the ← every full screen has
 $('#setBack').onclick=()=>CLOSERS.settings();
-for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
+for(const id of ['slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
 for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
   if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');
     x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };

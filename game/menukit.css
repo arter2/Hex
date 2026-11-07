@@ -1094,3 +1094,76 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrDeck.mk .dkslot.on,#scrDeck.mk .dktab.on,#scrDeck.mk .dkpill.on{border-image-source:url(menukit/rim-small-sel.svg); background:none; box-shadow:none; filter:drop-shadow(0 0 3px rgba(37,227,246,.55));}
 #scrDeck.mk .dkok{background:linear-gradient(#01304a,#00293a 40%,#00293a 72%,#013d55); filter:drop-shadow(0 0 4px rgba(37,227,246,.4));}
 #scrDeck.mk .dkok{border-image-source:url(menukit/rim-sel-panel.svg);}
+
+/* ---- 15-17 Card detail (kit 15): a full page on the wall: header bar, the card, owned | in deck,
+   shards, Add to deck, then Break and Craft ---- */
+:is(#detail,#dkPeek).dtkit{padding:0; align-items:stretch; justify-content:center;
+  background:url(art/menu/dt-sconce-l.webp) left 0 top 68px/32px auto no-repeat,url(art/menu/dt-sconce-r.webp) right 0 top 64px/32px auto no-repeat,
+  url(art/menu/dt-mushrooms.webp) left 0 bottom 0/124px auto no-repeat,
+  radial-gradient(90% 40% at 50% 45%,rgba(10,30,44,.55),transparent 75%),linear-gradient(rgba(2,6,12,.62),rgba(2,6,12,.5) 70%,rgba(2,6,12,.66)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+:is(#detail,#dkPeek).dtkit>.panel{position:relative; width:100%; max-width:390px; height:100%; max-height:none; margin:0 auto; padding:28px 22px 18px; display:flex; flex-direction:column; gap:0; overflow-y:auto;
+  border:0; border-image:none; background:none; box-shadow:none; clip-path:none; scrollbar-width:none;}
+:is(#detail,#dkPeek).dtkit>.panel::after,:is(#detail,#dkPeek).dtkit>.panel::before{display:none;}
+:is(#detail,#dkPeek).dtkit .dtbar{position:relative; flex:none; height:40px; display:flex; align-items:center; border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch;}
+:is(#detail,#dkPeek).dtkit .dtbar::after{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat;}
+:is(#detail,#dkPeek).dtkit .dtbar h2{position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); margin:0; text-align:center; font-size:19px; letter-spacing:.03em; color:#f0ebdc; pointer-events:none;}
+:is(#detail,#dkPeek).dtkit .dtback{position:relative; width:36px; height:30px; min-width:0; min-height:0; margin:0 0 0 12px; padding:0; border:0; border-image:none; background:none; clip-path:none;}
+:is(#detail,#dkPeek).dtkit .dtback::before{content:''; position:absolute; left:50%; top:50%; width:11px; height:11px; margin:-6px 0 0 -3px; background:none; border:solid #f0ebdc; border-width:0 0 3px 3px; transform:rotate(45deg); -webkit-mask:none; mask:none;}
+:is(#detail,#dkPeek).dtkit .dtback::after{display:none;}
+:is(#detail,#dkPeek).dtkit .dtsep{width:1px; height:22px; margin-left:8px; background:#6f8790;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard){flex:none; margin:16px 0 0;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard) .card.kit{width:236px;}
+:is(#detail,#dkPeek).dtkit .card>.popx{display:none!important;}
+:is(#detail,#dkPeek).dtkit .mkrule{flex:none; margin:16px 0 0; height:8px;}
+:is(#detail,#dkPeek).dtkit .dtstats{flex:none; display:flex; align-items:center; justify-content:center; height:34px; margin:4px 0 0; font:400 15px var(--font-b); color:#e9e4d6;}
+:is(#detail,#dkPeek).dtkit .dtstats span{flex:1; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+:is(#detail,#dkPeek).dtkit .dtstats i{flex:none; width:1px; height:20px; background:#6f8790;}
+:is(#detail,#dkPeek).dtkit .dtstats b{margin-left:6px; font:400 22px var(--font-b); vertical-align:-2px;}
+:is(#detail,#dkPeek).dtkit .dtown{color:#f2b33c;} :is(#detail,#dkPeek).dtkit .dtin{color:#45d98a;}
+:is(#detail,#dkPeek).dtkit .dtstats+.dtshard,:is(#detail,#dkPeek).dtkit .dtshard{margin:0;}
+:is(#detail,#dkPeek).dtkit .dtstats{border-bottom:0;}
+:is(#detail,#dkPeek).dtkit .dtshard{display:flex; flex-direction:column; gap:0;}
+:is(#detail,#dkPeek).dtkit .dtshard[hidden]{display:none;}
+:is(#detail,#dkPeek).dtkit .dtshard::before{content:''; display:block; height:8px; margin:0; background:inherit;}
+:is(#detail,#dkPeek).dtkit .shardline{height:34px; margin:0; display:flex; align-items:center; justify-content:center; gap:8px; font:400 16px var(--font-b); color:#c9a6ff;}
+:is(#detail,#dkPeek).dtkit .shardline img{width:20px; height:20px; object-fit:contain;} :is(#detail,#dkPeek).dtkit .shardline b{font-weight:400; color:#c9a6ff;}
+:is(#detail,#dkPeek).dtkit .dtshard>.mkrule{margin:4px 8px 0;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn{min-height:0; display:flex; flex-direction:row; align-items:center; justify-content:center; gap:12px; padding:0 10px; text-align:center;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; clip-path:none; background:none; color:#e9e4d6; opacity:1;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn span{display:flex; flex-direction:column; align-items:center; gap:2px;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn b{font:400 18px/1 var(--font-b); color:#e9e4d6;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn small{font:400 12px/1.1 var(--font-b); color:#a9b6ba;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn:disabled b{color:#8d989c;} :is(#detail,#dkPeek).dtkit .dtshard .btn:disabled .dtico{opacity:.75;}
+:is(#detail,#dkPeek).dtkit .dtadd{height:60px; margin:16px 0 0;} :is(#detail,#dkPeek).dtkit .dtadd .dtico{width:30px; height:28px;}
+:is(#detail,#dkPeek).dtkit .dtshard .row{display:grid; grid-template-columns:1fr 1fr; gap:13px; margin:14px 0 0;}
+:is(#detail,#dkPeek).dtkit .dthalf{height:62px; gap:8px!important;} :is(#detail,#dkPeek).dtkit .dthalf .dtico{width:24px; height:24px; object-fit:contain;}
+:is(#detail,#dkPeek).dtkit .dtico{object-fit:contain; flex:none;}
+:is(#detail,#dkPeek).dtkit :is(#dtInfo,#dkpInfo){margin:12px 0 0; text-align:center; font-size:12px;} :is(#detail,#dkPeek).dtkit :is(#dtInfo,#dkpInfo):empty{display:none;}
+:is(#detail,#dkPeek).dtkit .dtshard::before{display:none;}
+:is(#detail,#dkPeek).dtkit .dtshard>.mkrule{margin:0 2px;} :is(#detail,#dkPeek).dtkit .dtshard>.mkrule:nth-of-type(2){margin:0 8px;}
+:is(#detail,#dkPeek).dtkit{background:url(art/menu/dt-sconce-l.webp) left 0 top 68px/32px auto no-repeat,url(art/menu/dt-sconce-r.webp) right 0 top 64px/32px auto no-repeat,
+  url(art/menu/dt-mushrooms.webp) left 0 bottom 0/124px auto no-repeat,
+  radial-gradient(62% 52% at 50% 46%,rgba(6,15,23,.92),rgba(6,15,23,.78) 60%,rgba(6,15,23,0) 100%),linear-gradient(rgba(2,6,12,.5),rgba(2,6,12,.35) 70%,rgba(2,6,12,.55)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard) .card.kit{width:250px;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn{background:linear-gradient(#2a3238,#1e252a); background-clip:padding-box; border-width:4px; border-image:url(menukit/rim-small.svg) 5 fill / 4px / 0 stretch;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn b{font-size:20px; letter-spacing:.03em;} :is(#detail,#dkPeek).dtkit .dtshard .btn small{font-size:13px;}
+:is(#detail,#dkPeek).dtkit .dtadd .dtico{width:32px; height:30px;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard){margin-top:16px;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard)+.mkrule{margin-top:12px;}
+:is(#detail,#dkPeek).dtkit .dtstats{height:32px; margin:0;} :is(#detail,#dkPeek).dtkit .shardline{height:32px;}
+:is(#detail,#dkPeek).dtkit .dtadd{margin-top:10px;} :is(#detail,#dkPeek).dtkit .dtshard .row{margin-top:12px;}
+:is(#detail,#dkPeek).dtkit .dthalf .dtico{width:28px; height:28px;}
+:is(#detail,#dkPeek).dtkit :is(#dtCard,#dkpCard) .card.kit{width:240px;}
+
+#dkPeek.dtkit .dtsign{font:400 30px/1 var(--font-b); color:#e9e4d6; width:24px; text-align:center;}
+#dkPeek.dtkit .dtshard .btn b.dtsign{font-size:30px;}
+#dkPeek.dtkit .dkpacts .row{margin-top:10px;}
+#dkPeek.dtkit .dkpother{display:flex; gap:10px; margin-top:12px;}
+#dkPeek.dtkit .dkpother select{flex:1; min-width:0; height:40px; min-height:0; font-size:14px; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#141b20;}
+#dkPeek.dtkit .dkpother .btn{flex:none; height:40px; padding:0 12px;} #dkPeek.dtkit .dkpother .btn b{font-size:16px;}
+#dkPeek.dtkit .dkpother[hidden]{display:none;}
+#dkPeek.dtkit .dkpother .btn{font:400 15px var(--font-b);}
+:is(#detail,#dkPeek).dtkit .dtshard .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+:is(#detail,#dkPeek).dtkit .dtshard .btn{min-width:0; width:auto;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn small{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
+:is(#detail,#dkPeek).dtkit .dtshard .btn span{min-width:0;}

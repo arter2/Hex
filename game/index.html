@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v262</title>
-<meta name="application-version" content="262">
+<title>Hexmancers v263</title>
+<meta name="application-version" content="263">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -477,12 +477,14 @@
       <div id="rvBtns" class="controls two"></div>
     </div>
   </div>
-  <div id="detail" class="overlay mk">
+  <div id="detail" class="overlay mk dtkit">
     <div class="panel narrow">
+      <div class="dtbar"><button id="dtClose" class="backbtn dtback" aria-label="Back"></button><i class="dtsep"></i><h2>Card detail</h2></div>
       <div id="dtCard"></div>
-      <p id="dtInfo" class="hint"></p>
+      <div class="mkrule"></div>
+      <div id="dtStats" class="dtstats"></div>
       <div id="dtShard" class="dtshard" hidden></div>
-      <button id="dtClose" class="btn ghost">Close</button>
+      <p id="dtInfo" class="hint"></p>
     </div>
   </div>
   <!-- the lab button asks which lab (enemylab.js) -->
@@ -515,14 +517,21 @@
       </div>
     </div>
   </div>
-  <div id="dkPeek" class="overlay mk">
+  <div id="dkPeek" class="overlay mk dtkit">
     <div class="panel narrow dkpeek">
+      <div class="dtbar"><button id="dkpBack" class="backbtn dtback" aria-label="Back"></button><i class="dtsep"></i><h2>Card detail</h2></div>
       <div id="dkpCard"></div>
+      <div class="mkrule"></div>
+      <div id="dkpStats" class="dtstats"></div>
+      <div class="mkrule"></div>
+      <div class="dtshard dkpacts">
+        <div class="row"><button id="dkpMinus" class="btn ghost dthalf"><b class="dtsign">−</b><span><b>Take out</b><small id="dkpN"></small></span></button><button id="dkpPlus" class="btn ghost dthalf"><img class="dtico" src="menukit/icons/dt-add-deck.webp" alt=""><span><b>Add</b><small id="dkpWhy"></small></span></button></div>
+        <div id="dkpOtherRow" class="dkpother"><select id="dkpOther" aria-label="Another deck"></select><button id="dkpAddOther" class="btn ghost">Add to that deck</button></div>
+      </div>
       <p id="dkpInfo" class="hint"></p>
-      <div class="dkprow"><button id="dkpMinus" class="btn ghost">−</button><span id="dkpN"></span><button id="dkpPlus" class="btn">+ Add</button></div>
-      <div id="dkpOtherRow" class="dkprow"><select id="dkpOther"></select><button id="dkpAddOther" class="btn ghost">Add to deck</button></div>
-      <button id="dkpClose" class="btn ghost">Close</button>
+      <button id="dkpClose" class="btn ghost" hidden>Close</button>
     </div>
+  </div>
   </div>
   <div id="xDialog" class="overlay">
     <div class="panel xdlg">

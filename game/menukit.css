@@ -1295,3 +1295,6 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrBestiary.mk .bempty h3{display:flex; justify-content:center; font-size:min(21px,5.2vw);}
 #scrBestiary.mk .bweak{font-size:min(12.5px,3.4vw); justify-content:center;}
 #scrBestiary.mk .bbook{width:min(356px,calc(100% + 24px)); margin-inline:-12px;}
+/* each creature's colour as a bar down the inside left of its box, the text moved over to clear it */
+#scrBestiary.mk .bentry{position:relative; padding-left:24px;}
+#scrBestiary.mk .bentry::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:4px; background:var(--bc,#888); box-shadow:0 0 6px color-mix(in srgb,var(--bc,#888) 55%,transparent); pointer-events:none;}

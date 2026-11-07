@@ -1346,3 +1346,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrMastery.mk .mrow{grid-template-columns:minmax(0,1fr) 74px 16px; column-gap:4px;}
 #scrMastery.mk .mthumb{width:54px; height:70px; justify-self:center;}
 #scrMastery.mk .mmore{justify-self:end;}
+/* exact: bar end → equal gap → card → equal gap → arrow (the arrow's box is just its triangle) */
+#scrMastery.mk .mrow{grid-template-columns:minmax(0,1fr) 54px 9px; column-gap:17px; padding-right:8px;}
+#scrMastery.mk .mthumb{justify-self:stretch;}
+#scrMastery.mk .mmore{width:9px; height:30px; justify-self:stretch;}
+#scrMastery.mk .mmore::before{border-width:7px 0 7px 9px;}

@@ -1476,3 +1476,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #bagUI.mk .bgslot>svg,#bagUI.mk .bgslot>img,#bagUI.mk .bgslot>canvas,#bagUI.mk .bgslot.big>svg,#bagUI.mk .bgslot.big>img,#bagUI.mk .bgslot.big>canvas{width:36px; height:36px;}
 }
 @media (orientation:portrait){ #bagUI.mk .bgfoot{padding-left:6px;} }
+@media (orientation:portrait){ #bagUI.mk .bgcol{gap:10px;} #bagUI.mk .bgdoll{align-items:start;} #bagUI.mk .bgfoot{margin-top:10px;} }
+@media (orientation:portrait){ #bagUI.mk .bgfoot{margin-top:2px;} }
+@media (orientation:portrait){ #bagUI.mk .bgfig{align-self:stretch; display:flex; align-items:center; justify-content:center;} #bagUI.mk #bgSprite{width:120px; height:140px;} }
+@media (orientation:portrait){ #bagUI.mk #bgSprite{transform:translateX(4px);} }

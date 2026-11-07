@@ -33,7 +33,8 @@ function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[
   { const pl=ch&&typeof pointsLeft==='function'?pointsLeft(ch):0, b=$('#bgPts'); b.hidden=!(pl>0); b.textContent='+'+pl; b.title=pl+' level point'+(pl===1?'':'s')+' to spend'; }
   // the character, big, on a pool of light
   const cv=$('#bgSprite'), c=cv.getContext('2d'); c.clearRect(0,0,cv.width,cv.height); c.imageSmoothingEnabled=false;
-  const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); if(spr) c.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,cv.width,cv.height);
+  // trimmed to its visible pixels and centred, so the figure sits in the middle of the space between the slot columns
+  const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); if(spr){ if(typeof ccFit==='function') ccFit(cv,spr.img); else c.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,cv.width,cv.height); }
   const slot=(k,big)=>{ const id=s.gear[k], d=document.createElement('button'); d.className='bgslot'+(big?' big':'')+(id?' full':'')+(BAGUI.sel&&BAGUI.sel.slot===k?' sel':'');
     if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c);
     d.innerHTML=(id?gearIcon(id,big?56:40):`<span class="ghost"><img src="menukit/inv/${{weapon:'sword-empty',offhand:'offhand',head:'head',body:'body',arms:'arms',ring1:'ring',ring2:'ring'}[k]||'ring'}.webp" alt=""></span>`)+`<span class="lbl">${SLOT_NAMES[k]}</span>`;

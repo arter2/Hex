@@ -62,11 +62,12 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         };
         const visible = selector => page.waitForSelector(selector, { state: 'visible' });
         await audit('main-menu', '#scrMenu');
-        // Continue opens the three save slots; the used slot's own Continue goes to its camp, which is the main menu
-        await tap(page, '#mmContinue');
+        // The slot strip opens the three save slots (since v296 Continue itself goes exploring); Back returns to the
+        // main menu, which is the camp
+        await tap(page, '#mmSlots');
         await visible('#scrSaves.on');
         await audit('save-slots', '#scrSaves');
-        await tap(page, '#svList .hm-go');
+        await tap(page, '#svBack');
         await visible('#scrMenu.on');
         await audit('camp', '#scrMenu');
         // each camp destination is in one of the menu's categories (Cards, Market, Character)
@@ -90,7 +91,8 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         await audit('settings', '#settings');
         await tap(page, '#setBack');
         await visible('#scrMenu.on');
-        await tap(page, '#mmExplore');
+        // Continue goes straight to exploring (v296); the starter deck is valid, so it does not stop at the camp
+        await tap(page, '#mmContinue');
         await visible('#scrExplore.on');
         await audit('dungeon-hud', '#scrExplore');
         await tap(page, '#xMenu');

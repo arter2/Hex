@@ -356,7 +356,8 @@ function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(
 let lvBack=null;
 function openLevelUp(back){ const ch=ensureChar(save); save.lvlNew=false; persist(); lvBack=back||null;
   if(typeof xPause==='function'&&EX&&EX.active) xPause(true);
-  $('#lvTitle').textContent='Level '+save.level+'!'; $('#lvSub').textContent='Your '+RACES[ch.race].name.toLowerCase()+' grows stronger. Spend your points on any stat (up to '+STAT_CAP+').';
+  $('#lvTitle').textContent='Level '+save.level; $('#lvSub').textContent='Spend your points on any stat (up to '+STAT_CAP+').';
+  { const spr=typeof unitSprite==='function'&&unitSprite({kind:'player',look:typeof gearLook==='function'?gearLook(save):save.look,view:'front'}); if(spr) ccFit($('#lvSprite'),spr.img); }
   lvBefore=Object.assign({},ch.spent); statDials($('#lvStats'),ch,$('#lvPts')); $('#lvlUp').classList.add('on'); }
 let lvBefore=null;
 function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lvBefore; else lockChar(ch); persist(); $('#lvlUp').classList.remove('on');

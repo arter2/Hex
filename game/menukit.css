@@ -1480,3 +1480,33 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 @media (orientation:portrait){ #bagUI.mk .bgfoot{margin-top:2px;} }
 @media (orientation:portrait){ #bagUI.mk .bgfig{align-self:stretch; display:flex; align-items:center; justify-content:center;} #bagUI.mk #bgSprite{width:120px; height:140px;} }
 @media (orientation:portrait){ #bagUI.mk #bgSprite{transform:translateX(4px);} }
+
+/* ---- 25 Level-up (kit 25): one framed page on the wall: the character, a divider, Level / points / the rule,
+   then the stat rows split by rules, Reset and Apply points ---- */
+#lvlUp.mk{background:url(art/menu/dk-torch-l.webp) left 14px top 0/40px auto no-repeat,url(art/menu/dk-torch-r.webp) right 14px top 0/40px auto no-repeat,
+  url(art/menu/dt-mushrooms.webp) left 0 bottom 0/120px auto no-repeat,radial-gradient(70% 12% at 50% 100%,rgba(30,120,255,.3),transparent 70%),
+  linear-gradient(rgba(2,6,10,.5),rgba(2,6,10,.3)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12; align-items:flex-start; padding:46px 12px 12px;}
+#lvlUp.mk .panel.lvl{position:relative; width:100%; max-width:366px; padding:10px 10px 12px; overflow-y:auto; scrollbar-width:none;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 / 8px / 0 stretch; background:#03141a url(art/menu/panel-smoke.webp) center/cover; background-clip:padding-box; clip-path:none;}
+#lvlUp.mk .panel.lvl::before{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat; z-index:3;}
+#lvlUp.mk .panel.lvl>.winx{display:none;}
+#lvlUp.mk .lvhead{display:flex; align-items:center; gap:12px; padding:0 4px 12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left bottom/6px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right bottom/6px no-repeat,
+  linear-gradient(#7b9aab,#7b9aab) 6px calc(100% - 2.5px)/calc(100% - 12px) 1px no-repeat;}
+#lvSprite{width:62px; height:72px; flex:none;}
+#lvlUp.mk .lvsep{width:1px; height:58px; background:#7b9aab; flex:none;}
+#lvlUp.mk .lvtxt{min-width:0;}
+#lvlUp.mk #lvTitle{margin:0; font-size:20px; text-align:left; letter-spacing:.04em;}
+#lvlUp.mk .lvtxt .ccpts{justify-content:flex-start; align-items:baseline; gap:10px; margin:2px 0 0; font-size:16px;}
+#lvlUp.mk .lvtxt .ccpts b{font-size:28px; line-height:1;}
+#lvlUp.mk #lvSub{margin:4px 0 0; font-size:12px; text-align:left; color:#c7cfd2;}
+#lvlUp.mk #lvStats.ccstats{margin:4px 0 0; padding:0; border:0; border-image:none; background:none;}
+#lvlUp.mk .mkfoot{margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:14px; position:static; background:none; border:0; padding:0 4px;}
+#lvlUp.mk #lvLater{display:none;}
+#lvlUp.mk .mkfoot .btn{height:34px; min-height:0; font-size:16px;}
+#lvlUp.mk #lvDone{border-image:url(menukit/rim-sel-panel.svg) 12 fill / 8px / 0 stretch; color:#5fe0f2; filter:drop-shadow(0 0 4px rgba(37,227,246,.4));}
+#lvlUp.mk{overflow-y:auto;} #lvlUp.mk .panel.lvl{overflow:visible; max-height:none; margin:0 auto;}
+#lvlUp.mk .ccval{display:none;}
+#lvlUp.mk #lvSub{font-size:11.5px; white-space:nowrap;}
+#lvlUp.mk .ccstats .ccrow{padding-top:8px; padding-bottom:8px;}

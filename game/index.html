@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v281</title>
-<meta name="application-version" content="281">
+<title>Hexmancers v282</title>
+<meta name="application-version" content="282">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -452,11 +452,9 @@
   <!-- level up: spend the new stat points on the same dials as at character creation -->
   <div id="lvlUp" class="overlay mk">
     <div class="panel lvl">
-      <h2 id="lvTitle">Level up!</h2>
-      <p id="lvSub" class="hint center"></p>
-      <div class="ccpts"><span>Points to spend</span><b id="lvPts">2</b></div>
+      <div class="lvhead"><canvas id="lvSprite" width="120" height="140"></canvas><i class="lvsep"></i><div class="lvtxt"><h2 id="lvTitle">Level up!</h2><div class="ccpts"><b id="lvPts">2</b><span>points available</span></div><p id="lvSub" class="hint"></p></div></div>
       <div id="lvStats" class="ccstats"></div>
-      <div class="row2 mkfoot"><button id="lvLater" class="btn ghost">Later</button><button id="lvReset" class="btn ghost">Reset</button><button id="lvDone" class="btn">Apply</button></div>
+      <div class="row2 mkfoot"><button id="lvLater" class="btn ghost">Later</button><button id="lvReset" class="btn ghost">Reset</button><button id="lvDone" class="btn">Apply points</button></div>
     </div>
   </div>
   <!-- save slots: switch, delete, or pick one for a new game -->

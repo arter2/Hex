@@ -1588,3 +1588,4 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #labPick.mk .panel.labpick{min-height:0; height:auto; padding-bottom:12px;}
 #labPick.mk .labpick>.winx{border:5px solid transparent!important; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch!important; background:none!important; clip-path:none!important; top:10px; right:10px;}
 #labPick.mk #lpFoes{margin-bottom:0;} #labPick.mk .panel.labpick{padding-bottom:8px;}
+#labPick.mk .labpick h2{width:100%; padding:0; margin:0; text-align:center; font-size:28px; line-height:34px; text-indent:0;}

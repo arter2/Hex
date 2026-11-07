@@ -1290,3 +1290,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrBestiary.mk.bnone{background-image:url(art/menu/dk-torch-l.webp),url(art/menu/dk-torch-r.webp),radial-gradient(70% 18% at 50% 100%,rgba(30,120,255,.35),transparent 70%),
   linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp);
   background-size:40px auto,40px auto,auto,auto,300px; background-position:left 16px top 4px,right 16px top 4px,0 0,0 0,0 0; background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat;}
+/* one line each, centered, on any phone width: the type steps down with the screen */
+#scrBestiary.mk .bintro{font-size:min(13px,3.5vw);}
+#scrBestiary.mk .bempty h3{display:flex; justify-content:center; font-size:min(21px,5.2vw);}
+#scrBestiary.mk .bweak{font-size:min(12.5px,3.4vw); justify-content:center;}
+#scrBestiary.mk .bbook{width:min(356px,calc(100% + 24px)); margin-inline:-12px;}

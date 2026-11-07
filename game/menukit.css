@@ -1351,3 +1351,104 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrMastery.mk .mthumb{justify-self:stretch;}
 #scrMastery.mk .mmore{width:9px; height:30px; justify-self:stretch;}
 #scrMastery.mk .mmore::before{border-width:7px 0 7px 9px;}
+
+/* ---- 24 Character / Bag (kit 24), at camp and in the dungeon: on the wall between banners, a top bar
+   (Back, Character, unspent points), then one panel: name and level with gold, the gear around the
+   character, weapon and stats, the tabs between rules, a 4-wide bag, what you picked, Done ---- */
+@media (orientation:portrait){
+#bagUI.mk{padding:0; align-items:stretch; justify-content:center;
+  background:url(art/menu/dk-banner-l.webp) left 3px top 0/30px auto no-repeat,url(art/menu/dk-banner-r.webp) right 3px top 0/30px auto no-repeat,
+  url(art/menu/dk-torch-l.webp) left 0 top 70px/26px auto no-repeat,url(art/menu/dk-torch-r.webp) right 0 top 70px/26px auto no-repeat,
+  url(art/menu/dt-mushrooms.webp) left 0 bottom 0/110px auto no-repeat,
+  radial-gradient(70% 14% at 50% 100%,rgba(30,120,255,.3),transparent 70%),linear-gradient(rgba(2,6,10,.5),rgba(2,6,10,.25)),url(art/menu/brick.webp) 0 0/300px repeat,#050a12;}
+#bagUI.mk .bagframe{width:100%; max-width:390px; height:100%; max-height:none; margin:0 auto; padding:38px 21px 12px; box-sizing:border-box; display:flex; flex-direction:column; gap:0;
+  border:0; border-image:none; background:none; box-shadow:none; clip-path:none; overflow-y:auto; scrollbar-width:none;}
+#bagUI.mk .bgtop{position:relative; flex:none; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; height:45px; margin:0 6px; padding:0 8px; box-sizing:border-box;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 / 8px / 0 stretch; background:#03141a url(art/menu/panel-smoke.webp) center/cover; background-clip:padding-box;}
+#bagUI.mk .bgtop::after{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat;}
+#bagUI.mk .bgback{justify-self:start; display:flex; align-items:center; gap:8px; height:24px; min-height:0; width:auto; padding:0 10px 0 9px; font:400 14px var(--font-b); color:#f0ebdc;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; box-shadow:none; clip-path:none; border-radius:0;}
+#bagUI.mk .bgback::before{content:''; position:static; width:0; height:0; margin:0; border:5px solid transparent; border-right:6px solid #f0ebdc; border-left:0; background:none; -webkit-mask:none; mask:none;}
+#bagUI.mk .bgback::after{display:none;}
+#bagUI.mk .bgscreen{margin:0; font-size:19px; letter-spacing:.06em; color:#f0ebdc;}
+#bagUI.mk .bgpts{justify-self:end; height:20px; min-height:0; min-width:0; padding:0 7px; font:400 15px var(--font-b); color:#082014; background:#2fdc8a; border:0; border-radius:2px; box-shadow:inset 0 0 0 1px #7af0b8; cursor:pointer;}
+#bagUI.mk .bgpanel{position:relative; flex:none; margin:8px 0 0; padding:14px 14px 10px; display:flex; flex-direction:column;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 / 8px / 0 stretch; background:#03141a url(art/menu/panel-smoke.webp) center/cover; background-clip:padding-box;}
+#bagUI.mk .bghead{display:flex; align-items:flex-start; gap:8px; min-height:0; margin:0; padding:0 4px 10px; border:0; border-image:none; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left bottom/6px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right bottom/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px calc(100% - 2.5px)/calc(100% - 12px) 1px no-repeat; box-shadow:none; clip-path:none;}
+#bagUI.mk .bghead::after{display:none;}
+#bagUI.mk .bgbag{display:none;}
+#bagUI.mk #bgTitle{flex:1; margin:0 0 0 10px; font-size:19px; letter-spacing:.06em; color:#f0ebdc; cursor:pointer; text-align:left;}
+#bagUI.mk #bgTitle small{display:block; margin-top:2px; font:400 13px var(--font-b); letter-spacing:.04em; color:#c7cfd2;}
+#bagUI.mk .bggold{margin:10px 8px 0 0; display:flex; align-items:center; gap:6px; font:400 16px var(--font-b); color:#f2c94c;}
+#bagUI.mk .bgbody{display:block; padding:0; overflow:visible; background:none;}
+#bagUI.mk .bgchar,#bagUI.mk .bgside{border:0; background:none; padding:0; margin:0; box-shadow:none;}
+#bagUI.mk .bgdoll{display:grid; grid-template-columns:60px 1fr 60px; align-items:start; gap:0; margin:12px 6px 0;}
+#bagUI.mk .bgcol{display:flex; flex-direction:column; gap:8px;}
+#bagUI.mk .bgslot{width:60px; height:49px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; padding:2px 0 0;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#0a1216; clip-path:none; border-radius:0;}
+#bagUI.mk .bgslot.big{width:60px; height:57px;}
+#bagUI.mk .bgslot svg,#bagUI.mk .bgslot img,#bagUI.mk .bgslot canvas{width:26px; height:26px;} #bagUI.mk .bgslot.big svg,#bagUI.mk .bgslot.big img,#bagUI.mk .bgslot.big canvas{width:34px; height:34px;}
+#bagUI.mk .bgslot .lbl{position:static; font:400 9.5px var(--font-b); color:#e3e0d4; letter-spacing:.03em; text-shadow:none;}
+#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:url(menukit/rim-small-sel.svg); filter:drop-shadow(0 0 3px rgba(37,227,246,.55));}
+#bagUI.mk .bgfig{display:flex; justify-content:center; align-items:center; align-self:center;}
+#bagUI.mk #bgSprite{width:150px; height:150px;}
+#bagUI.mk .bgfoot{display:grid; grid-template-columns:60px 1fr; align-items:center; gap:10px; margin:8px 6px 0 4px; padding:0 0 12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left bottom/6px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right bottom/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px calc(100% - 2.5px)/calc(100% - 12px) 1px no-repeat;}
+#bagUI.mk #bgOff{display:none;}
+#bagUI.mk .bgstats{display:flex; align-items:center; justify-content:space-around; gap:0; margin:0; padding:0; border:0; background:none;}
+#bagUI.mk .bgstats>div{display:flex; flex-direction:column; align-items:center; gap:2px;}
+#bagUI.mk .bgstats>i{width:1px; height:26px; background:#7b9aab;}
+#bagUI.mk .bgstats span{font:400 11px var(--font-b); letter-spacing:.06em; text-transform:uppercase; color:#e3e0d4;}
+#bagUI.mk .bgstats b{font:400 19px var(--font-b); color:#f2c94c;} #bagUI.mk .bgstats .hp b{color:#45d98a;}
+#bagUI.mk .bgtabs{display:grid; grid-template-columns:repeat(auto-fit,minmax(0,1fr)); gap:6px; margin:10px 0 0; padding:0 0 10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left bottom/6px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right bottom/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px calc(100% - 2.5px)/calc(100% - 12px) 1px no-repeat; border:0;}
+#bagUI.mk .bgtab{height:27px; min-height:0; padding:0 2px; font:400 13.5px var(--font-b); color:#f0ebdc; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; clip-path:none; white-space:nowrap; overflow:hidden;}
+#bagUI.mk .bgtab.on{border-image-source:url(menukit/rim-small-sel.svg); filter:drop-shadow(0 0 3px rgba(37,227,246,.55));}
+#bagUI.mk .bggrid{display:grid; grid-template-columns:repeat(4,1fr); gap:6px 12px; margin:10px 10px 0; max-height:none; overflow:visible; padding:0;}
+#bagUI.mk .bgcell{height:52px; min-height:0; aspect-ratio:auto; display:grid; place-items:center; padding:0; position:relative;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#0a1216; clip-path:none; border-radius:0;}
+#bagUI.mk .bgcell svg,#bagUI.mk .bgcell img,#bagUI.mk .bgcell canvas{width:32px; height:32px;}
+#bagUI.mk .bgcell .cnt{position:absolute; right:3px; bottom:1px; font:400 12px var(--font-b); color:#f0ebdc; text-shadow:0 1px 0 #000;}
+#bagUI.mk .bglist{margin:10px 2px 0;}
+#bagUI.mk .bgdetail{margin:12px 0 0; padding:8px 4px 10px; min-height:0; border:0; color:#e3e0d4;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left top/6px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right top/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px 2.5px/calc(100% - 12px) 1px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left bottom/6px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right bottom/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px calc(100% - 2.5px)/calc(100% - 12px) 1px no-repeat;}
+#bagUI.mk .bgdetail>.hint{margin:4px 14px 0; font-size:13.5px; letter-spacing:.04em; color:#e3e0d4; text-align:left;}
+#bagUI.mk .bgdone{flex:none; height:34px; margin:10px 4px 0; display:flex; align-items:center; justify-content:center; gap:14px; font:400 17px var(--font-b); letter-spacing:.04em; color:#f0ebdc; cursor:pointer;
+  border:8px solid transparent; border-image:url(menukit/rim-sel-panel.svg) 12 fill / 8px / 0 stretch; background:none; filter:drop-shadow(0 0 4px rgba(37,227,246,.35));}
+#bagUI.mk .bgdone .mki{width:16px; height:16px;}
+}
+@media (orientation:landscape){ #bagUI.mk .bgdone,#bagUI.mk .bgtop .bgscreen{display:none;} #bagUI.mk .bgtop{display:flex; justify-content:space-between;} }
+@media (orientation:portrait){
+#bagUI.mk .bgpanel{padding:8px 12px 8px;}
+#bagUI.mk .bghead{padding-bottom:8px;}
+#bagUI.mk .bgdoll{margin-top:10px;} #bagUI.mk .bgcol{gap:6px;}
+#bagUI.mk .bgfoot{margin-top:4px; padding-bottom:10px;}
+#bagUI.mk .bgtabs{margin-top:8px; padding-bottom:8px;}
+#bagUI.mk .bggrid{gap:6px 12px; margin-top:8px;} #bagUI.mk .bgcell{height:46px;}
+#bagUI.mk .bgdetail{margin-top:8px; padding:6px 4px 8px;}
+#bagUI.mk .bgdone{height:32px; margin-top:8px;}
+}
+/* the bar's Back and +N in every orientation */
+#bagUI.mk .bgback{display:flex; align-items:center; gap:8px; height:26px; min-height:0; width:auto; padding:0 10px 0 9px; font:400 14px var(--font-b); color:#f0ebdc; text-shadow:none;
+  border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:none; box-shadow:none; clip-path:none; border-radius:0;}
+#bagUI.mk .bgback::before{content:''; position:static; width:0; height:0; margin:0; border:5px solid transparent; border-right:6px solid #f0ebdc; border-left:0; background:none; -webkit-mask:none; mask:none;}
+#bagUI.mk .bgback::after{display:none;}
+#bagUI.mk .bgpts{height:20px; min-height:0; min-width:0; padding:0 7px; font:400 15px var(--font-b); color:#082014; background:#2fdc8a; border:0; border-radius:2px; box-shadow:inset 0 0 0 1px #7af0b8; text-shadow:none; cursor:pointer;}
+@media (orientation:landscape){ #bagUI.mk .bgtop{align-items:center; padding:2px 4px 6px; background:none; border:0;} }
+/* five tabs in the dungeon: a size smaller so each name fits */
+#bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{font-size:11.5px; padding:0;}
+#bagUI.mk .bgtabs:has(.bgtab:nth-child(5)){gap:4px;}
+#bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{font-size:10.5px; letter-spacing:0; border-width:4px; border-image-width:4px;}
+/* the inventory art (hexmancers-inventory-separated-layers): the brown smoky panel, the steel slot frame with
+   copper corners over a dark face, grey empty-slot icons, the coin */
+#bagUI.mk .bgpanel{background:#120e0b url(menukit/inv/panel-bg.webp) center/cover; background-clip:padding-box;}
+#bagUI.mk .bgslot,#bagUI.mk .bgcell{border:6px solid transparent; border-image:url(menukit/inv/slot-frame.png) 8 / 6px / 0 stretch;
+  background:url(menukit/inv/slot-face.svg) center/100% 100% no-repeat; background-clip:border-box; background-origin:border-box;}
+#bagUI.mk .bgslot.sel,#bagUI.mk .bgcell.sel{border-image-source:url(menukit/inv/slot-frame.png); filter:drop-shadow(0 0 3px rgba(37,227,246,.7)) drop-shadow(0 0 1px #57d8f2);}
+#bagUI.mk .bgslot .ghost{display:grid; place-items:center;}
+#bagUI.mk .bgslot .ghost img{width:28px; height:28px; object-fit:contain; opacity:.9;}
+#bagUI.mk .bgslot.big .ghost img{width:36px; height:36px;}
+#bagUI.mk .bgcoin{width:17px; height:17px;}
+@media (orientation:portrait){ #bagUI.mk .bgtab:not(.on){background:#0f0c0a99; background-clip:padding-box;} }
+#bagUI.mk .bgslot .ghost img{opacity:1; filter:brightness(1.7) contrast(1.05);} #bagUI.mk .bgslot .ghost img{width:30px; height:30px;}

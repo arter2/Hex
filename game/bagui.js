@@ -6,7 +6,7 @@
    bag is the Character screen: potions wait for the dungeon, and gear gains the camp's actions
    (merge, enchant, purify) and a Look tab. Stats are a tab in both. */
 let BAGUI={tab:'items', sel:null};
-const BAG_COLS=5, BAG_MIN=30;
+const BAG_COLS=4, BAG_MIN=16;
 function bagItems(){ const s=gearState(save), out=[];
   for(const k of Object.keys(BAG)) if(bagN(k)>0) out.push({kind:'bag',k,n:bagN(k),name:BAG[k].name,text:BAG[k].text,pic:pxIcon(BAG[k].icon,BAG[k].col,34),act:'Use'});
   for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push({kind:'key',k,n:keyN(k),name:KEYS[k].name,text:KEYS[k].text||'Kept for this dive',pic:pxIcon('key',KEYS[k].col,34)});
@@ -20,28 +20,31 @@ function bagItems(){ const s=gearState(save), out=[];
 const bagInRun=()=>!!(typeof EX!=='undefined'&&EX&&EX.active);
 const bagTabs=()=>bagInRun()?[['items','Items'],['stats','Stats'],['quests','Quests'],['journal','Journal'],['bless','Blessings']]:[['items','Items'],['stats','Stats'],['look','Look'],['bless','Blessings']];
 function openBagUI(){ BAGUI.sel=null;
-  // the menu kit's look at camp; inside a run the bag keeps the dungeon's look
-  $('#bagUI').classList.toggle('mk',!(typeof EX!=='undefined'&&EX&&EX.active)); if(!bagTabs().some(t=>t[0]===BAGUI.tab)) BAGUI.tab='items'; renderBag(); $('#bagUI').classList.add('on'); }
+  // the menu kit's look (kit 24), at camp and inside a run alike
+  $('#bagUI').classList.add('mk'); if(!bagTabs().some(t=>t[0]===BAGUI.tab)) BAGUI.tab='items'; renderBag(); $('#bagUI').classList.add('on'); }
 function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return; xPause(true); openBagUI(); }
 function closeBag(){ $('#bagUI').classList.remove('on');
   if(bagInRun()){ if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
   else if($('#scrCamp').classList.contains('on')&&typeof xpBar==='function') xpBar($('#campLevel')); }
 function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand, ch=save.char&&RACES[save.char.race]?save.char:null;
-  $('#bgTitle').innerHTML=esc((ch?RACES[ch.race].name:'Hexmancer')+' — Level '+(save.level||1))+'<small>▤ Tap to build your deck ›</small>';
+  $('#bgScreen').textContent=bagInRun()?'Your bag':'Character';
+  $('#bgTitle').innerHTML=esc((ch?RACES[ch.race].name+' hexmancer':'Hexmancer'))+'<small>Level '+(save.level||1)+' · Build your deck ›</small>';
+  // level points not yet spent: a green +N that opens the level-up (at camp)
+  { const pl=ch&&typeof pointsLeft==='function'?pointsLeft(ch):0, b=$('#bgPts'); b.hidden=!(pl>0); b.textContent='+'+pl; b.title=pl+' level point'+(pl===1?'':'s')+' to spend'; }
   // the character, big, on a pool of light
   const cv=$('#bgSprite'), c=cv.getContext('2d'); c.clearRect(0,0,cv.width,cv.height); c.imageSmoothingEnabled=false;
   const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); if(spr) c.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,cv.width,cv.height);
   const slot=(k,big)=>{ const id=s.gear[k], d=document.createElement('button'); d.className='bgslot'+(big?' big':'')+(id?' full':'')+(BAGUI.sel&&BAGUI.sel.slot===k?' sel':'');
     if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c);
-    d.innerHTML=(id?gearIcon(id,big?56:40):`<span class="ghost">${uiIcon({weapon:'staff',offhand:'buckler',head:'helm',body:'robe',arms:'bracer',ring1:'ring',ring2:'ring'}[k]||'bag',big?44:30,'#6a5440')}</span>`)+`<span class="lbl">${SLOT_NAMES[k]}</span>`;
+    d.innerHTML=(id?gearIcon(id,big?56:40):`<span class="ghost"><img src="menukit/inv/${{weapon:'sword-empty',offhand:'offhand',head:'head',body:'body',arms:'arms',ring1:'ring',ring2:'ring'}[k]||'ring'}.webp" alt=""></span>`)+`<span class="lbl">${SLOT_NAMES[k]}</span>`;
     d.dataset.drop='slot:'+k; d.onclick=()=>{ BAGUI.sel=id?{kind:'worn',k:id,slot:k}:null; renderBag(); };
     if(id) bagDrag(d,{kind:'worn',k:id,slot:k}); return d; };
   const L=$('#bgLeft'), R=$('#bgRight'); L.innerHTML=''; R.innerHTML='';
-  ['head','body','arms'].forEach(k=>L.appendChild(slot(k))); ['ring1','ring2'].forEach(k=>R.appendChild(slot(k)));
-  $('#bgWeapon').replaceChildren(slot('weapon',true)); $('#bgOff').replaceChildren(slot('offhand',true));
+  ['head','body','arms'].forEach(k=>L.appendChild(slot(k))); ['ring1','ring2','offhand'].forEach(k=>R.appendChild(slot(k)));
+  $('#bgWeapon').replaceChildren(slot('weapon',true)); $('#bgOff').replaceChildren();
   const dmg=Math.max(1,K.tap+m.tap)+'–'+Math.max(2,K.charged+m.charged), armor=Math.round((m.guard||0)*100)+'%';
-  $('#bgStats').innerHTML=`<div><span>Damage</span><b>${dmg}</b></div><div><span>Armor</span><b>${armor}</b></div><div><span>HP</span><b>${bagInRun()?EX.hp:xmaxHp()}/${xmaxHp()}</b></div>`;
-  $('#bgGold').innerHTML=uiIcon('coin',18)+' '+save.gold;
+  $('#bgStats').innerHTML=`<div><span>Damage</span><b>${dmg}</b></div><i></i><div><span>Armor</span><b>${armor}</b></div><i></i><div class="hp"><span>HP</span><b>${bagInRun()?EX.hp:xmaxHp()}/${xmaxHp()}</b></div>`;
+  $('#bgGold').innerHTML='<img class="bgcoin" src="menukit/inv/coin.webp" alt="">'+save.gold;
   // the bag side: tabs, then the grid (or a list for quests, journal and blessings)
   const tabs=$('#bgTabs'); tabs.innerHTML='';
   for(const [k,l] of bagTabs()){ const b=document.createElement('button'); b.className='bgtab'+(BAGUI.tab===k?' on':''); b.textContent=l; b.onclick=()=>{ BAGUI.tab=k; BAGUI.sel=null; renderBag(); }; tabs.appendChild(b); }
@@ -70,7 +73,7 @@ function bagDetail(){ const d=$('#bgDetail'); let it=BAGUI.sel; d.innerHTML='';
   // a merge, an enchant or a drop may have changed it: look it up again
   if(it&&it.kind!=='worn'){ const k=it.kind, id=it.k; it=bagItems().find(x=>x.kind===k&&x.k===id)||null; BAGUI.sel=it; }
   if(it&&it.kind==='worn'&&gearState(save).gear[it.slot]!==it.k){ it=null; BAGUI.sel=null; }
-  if(!it){ d.innerHTML='<p class="hint">'+(BAGUI.tab==='items'?'Tap an item or a gear slot.':'')+'</p>'; return; }
+  if(!it){ d.innerHTML='<p class="hint">'+(BAGUI.tab==='items'?'Select an item to inspect':'')+'</p>'; return; }
   const btn=(label,fn,cls)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=fn; d.querySelector('.acts').appendChild(b); };
   if(it.kind==='worn'||it.kind==='gear'){ const id=it.k, G=GEAR[id], s=gearState(save), stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
     d.innerHTML=`<div class="pic">${gearIcon(id,48)}</div><div class="nm"><b>${esc(gearName(save,id))}${it.n>1?' ×'+it.n:''} <span class="tier">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):''}</span></b><small>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</small>`
@@ -123,7 +126,8 @@ function bagDrag(el,it){ el.style.touchAction='none';
     addEventListener('pointermove',move); addEventListener('pointerup',up); addEventListener('pointercancel',up); }); }
 $('#bagUI').addEventListener('dragstart',e=>e.preventDefault());   // the browser's own image drag would cancel ours
 $('#bagUI').addEventListener('click',e=>{ if(Date.now()-(BAGUI.dragAt||0)<350){ e.stopPropagation(); e.preventDefault(); } },true);
-$('#bgClose').onclick=closeBag;
+$('#bgClose').onclick=closeBag; $('#bgDone').onclick=closeBag;
+$('#bgPts').onclick=()=>{ if(bagInRun()) return tip('Spend level points at camp'); closeBag(); if(typeof openLevelUp==='function') openLevelUp(); };
 // tap the top of the bag (its title or the bag badge) to build your deck
 for(const sel of ['#bgTitle','.bgbag']) $(sel).onclick=()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); };
 $('#bagUI').addEventListener('pointerdown',e=>{ if(e.target.id==='bagUI') closeBag(); });

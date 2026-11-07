@@ -1520,3 +1520,8 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .ccrow{column-gap:9px;} #lvlUp.mk .ccrow .ccname{padding-right:11px;}
 #lvlUp.mk .ccstats .ccrow{padding:9px 0 18px;}
 #lvlUp.mk .ccstats .ccrow{padding-bottom:21px;}
+/* level-up: the dials the same size as character creation (209x36, the same numbers) */
+#lvlUp.mk .ccrow{grid-template-columns:38px 72px 209px; justify-content:center;}
+#lvlUp.mk .dial{height:36px; width:209px;}
+#lvlUp.mk .dial .tape i b{font-size:10.4px;} #lvlUp.mk .dial .tape i.cur b{font-size:13.5px;}
+#lvlUp.mk .ccrow{grid-template-columns:36px 64px 209px; column-gap:8px;} #lvlUp.mk .ccrow .ccname{padding-right:8px;}

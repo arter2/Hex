@@ -135,6 +135,20 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         await audit('dungeon-dialog', '#xDialog');
         await tap(page, '#xDialog .winx');
         await page.waitForSelector('#xDialog.on', { state: 'hidden' });
+        // the reward popup (a win, a dungeon death, a duel result), with a tile and a card
+        await page.evaluate(() => {
+          reveal(
+            'Victory!',
+            'Well fought.',
+            [{ card: CARDS[activeDeck().list[0]], isNew: true }],
+            [['Keep exploring', () => {}]],
+            [{ pic: '<b class="xpic">XP</b>', name: '+30 XP', text: 'Level 2! +4 stat points' }]
+          );
+        });
+        await visible('#reveal.on');
+        await audit('reward-popup', '#reveal');
+        await tap(page, '#rvBtns .btn');
+        await page.waitForSelector('#reveal.on', { state: 'hidden' });
       } catch (e) {
         testError = e.message;
         if (session)

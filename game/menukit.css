@@ -1298,3 +1298,5 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 /* each creature's colour as a bar down the inside left of its box, the text moved over to clear it */
 #scrBestiary.mk .bentry{position:relative; padding-left:24px;}
 #scrBestiary.mk .bentry::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:4px; background:var(--bc,#888); box-shadow:0 0 6px color-mix(in srgb,var(--bc,#888) 55%,transparent); pointer-events:none;}
+/* the creature's name: bigger, and bold (Jersey 15 has one weight, so a thin stroke in its own colour) */
+#scrBestiary.mk .bhead b{font-size:21px; line-height:1.1; letter-spacing:.02em; -webkit-text-stroke:.7px currentColor; paint-order:stroke fill;}

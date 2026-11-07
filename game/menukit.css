@@ -1243,3 +1243,12 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #packOpen.mk .poskip input:checked+i::before{content:''; width:7px; height:7px; background:#3fc4dc;}
 #packOpen.mk .poskip input:focus-visible+i{outline:2px solid #3fc4dc; outline-offset:2px;}
 #packOpen.mk .poslot{width:95px;} #packOpen.mk .pofan{gap:12px; margin-top:20px;} #packOpen.mk .pohint{margin-top:22px;}
+
+/* panel faces: the teal smoke texture (art/menu/panel-smoke.webp) inside every studded panel and plaque on the
+   menu screens. The frame image keeps its own face only in its 8px ring; the middle shows the smoke. */
+:is(.mk .panel:not(.dkpeek):not(:is(#detail,#dkPeek) .panel),.mk .shelf,.mk .stall,.mk .pobox,.mk.screen>.bar,.mk .cc>.bar,.mk .dkdrawer,.mk .bempty,
+  .mk .ware,.mk .bounty,.mk .mrow,.mk .setrow,.mk .bentry,.mk .slrow,.mk .starter,.mk .ccstats,#scrNewChar.mk .ccinfo .ccplaque,#slots.mk.manage>.panel,
+  #scrStart.mk .sthero,#settings.mk .panel.settings>.bar,#settings.mk .setpanes,#settings.mk .setpreview,
+  #scrDeck.mk .dktop h2,#scrDeck.mk .dkpanel,#scrDeck.mk .dkmenu,:is(#detail,#dkPeek).dtkit .dtbar,#shopSheet.mk .ssheet,#packOpen.mk .pobox){
+  border-image-slice:12!important; background-color:#03141a!important; background-image:url(art/menu/panel-smoke.webp)!important; background-size:cover!important;
+  background-position:center!important; background-repeat:no-repeat!important; background-origin:padding-box!important; background-clip:padding-box!important;}

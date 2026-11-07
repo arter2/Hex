@@ -73,20 +73,23 @@ const bountyReady=()=>save&&save.bounty?save.bounty.list.filter(k=>k.done).lengt
 
 /* ---------------- the board ---------------- */
 function openBounty(){ bountyFill(); persist(); renderBounty(); show('scrBounty'); }
+// the reward pack's small picture: a dark card in the pack's colour with its element glyph
+function bountyPackPic(k){ return `<i class="bpk"><b></b><b>${typeof HexMenuUI!=='undefined'?HexMenuUI.icon(k||'spark'):''}</b></i>`; }
+const bountyTint=r=>r.pack?COLORS[r.pack].c:'#b48cff';
 function rewardChips(r){ return `<span class="bchip">${uiIcon('shard',18)}${r.shards}</span><span class="bchip">${uiIcon('coin',18)}${r.gold}</span>`+
-  `<span class="bchip pack" style="--c:${r.pack?COLORS[r.pack].c:'#c9b6ff'}">${r.pack?COLORS[r.pack].icon+' '+cName(r.pack)+' pack':'Booster pack'}</span>`; }
+  `<span class="bchip pack" style="--c:${bountyTint(r)}">${bountyPackPic(r.pack)}${r.pack?cName(r.pack)+' pack':'Booster pack'}</span>`; }
 function renderBounty(){ const box=$('#bountyList'); box.innerHTML=''; const s=deckStats(activeDeck().list);
-  $('#bShards').innerHTML=uiIcon('shard',20)+(save.shards||0);
+  $('#bShards').innerHTML=uiIcon('shard',28)+(save.shards||0);
   for(const k of save.bounty.list){ const K=BOUNTY_KINDS[k.kind], el=document.createElement('div'); el.className='bounty'+(k.done?' done':'');
-    if(k.color) el.style.setProperty('--c',COLORS[k.color].c);
+    el.style.setProperty('--c',bountyTint(k.reward));
     const meets=K.check?K.ok(s,k,{depth:99,boss:true,combos:9}):null;
     el.innerHTML=`<p class="btext">${esc(K.text(k))}</p>
       <div class="bprog"><i style="width:${Math.round(100*k.got/k.need)}%"></i><span>${k.got} / ${k.need}</span></div>
-      ${K.check&&!k.done?`<p class="bcheck ${meets?'ok':'no'}">Your deck (${esc(activeDeck().name)}): ${esc(K.check(s,k))} ${meets?'✓ counts':'✗ doesn’t count yet'}</p>`:''}
+      ${K.check&&!k.done?`<p class="bcheck ${meets?'ok':'no'}">${esc(activeDeck().name)}: ${esc(K.check(s,k))} — ${meets?'eligible':'not eligible'}</p>`:''}
       <div class="breward">${rewardChips(k.reward)}</div><div class="bbtns"></div>`;
     const bb=el.querySelector('.bbtns');
     if(k.done){ const c=document.createElement('button'); c.className='btn'; c.textContent='Claim reward'; c.onclick=()=>bountyClaim(k); bb.appendChild(c); }
-    else if(K.check&&!meets){ const c=document.createElement('button'); c.className='btn ghost'; c.textContent='Build a deck for this'; c.onclick=()=>bountyDraft(k); bb.appendChild(c); }
+    else if(K.check&&!meets){ const c=document.createElement('button'); c.className='btn ghost bbuild'; c.innerHTML=`<span class="bbi" style="--c:${bountyTint(k.reward)}"><i></i><i></i><i>${typeof HexMenuUI!=='undefined'?HexMenuUI.icon(k.reward.pack||'spark'):''}</i></span><span>Build matching deck</span>`; c.onclick=()=>bountyDraft(k); bb.appendChild(c); }
     box.appendChild(el); }
   if(!save.bounty.list.length) box.innerHTML='<p class="hint">No contracts right now. Find more cards and come back.</p>'; }
 

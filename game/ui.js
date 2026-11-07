@@ -180,12 +180,14 @@ if(document.fonts) document.fonts.load('12px "Hex Card"').then(()=>document.font
 
 function showDetail(c){
   const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'));
-  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on')); return; }
-  const inDeck=activeDeck().list.filter(id=>id===c.id).length;
-  $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
-    :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
-  { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
-  if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
+  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtStats').innerHTML=''; $('#dtShard').hidden=true; $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on')); return; }
+  // kit 15: owned | in your deck (of the most it can hold), then shards, Add to deck, Break and Craft
+  const dk=activeDeck(), inDeck=dk.list.filter(id=>id===c.id).length, own=save.owned[c.id]||0, mx=Math.min(copyLimit(c),own);
+  $('#dtStats').innerHTML=save.seen[c.id]?`<span>Owned <b class="dtown">${own}</b></span><i></i><span>In ${esc(dk.name)} <b class="dtin">${inDeck}/${mx}</b></span>`
+    :`<span>Not found yet</span>`;
+  $('#dtInfo').textContent=save.seen[c.id]?'':RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
+  { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=($('#dtInfo').textContent?' · ':'')+'⚗ Part of: '+found.map(r=>r.name).join(', '); }
+  if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=($('#dtInfo').textContent?' · ':'')+'Uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
   // the 512 master is in the repo copy only, never in a release: one probe a session says whether masters are here,
   // and the link is added only while this same card is still the one shown
   { const v=typeof cardArtVariants==='function'&&cardArtVariants(c), tok=showDetail.tok=(showDetail.tok||0)+1;
@@ -196,14 +198,21 @@ function showDetail(c){
 }
 // Break and Craft on the card detail: shards come from spare copies only, so a deck never loses a card
 function dtShards(c){ const box=$('#dtShard'); box.innerHTML=''; const sh=shardOf(c); box.hidden=!sh||!save.seen[c.id]; if(box.hidden) return;
-  const have=save.shards||0, spare=spareCopies(save,c.id), own=save.owned[c.id]||0;
-  box.innerHTML=`<p class="shardline">${uiIcon('shard',18)}<b>${have}</b> shards · ${spare} spare</p>`;
+  const have=save.shards||0, spare=spareCopies(save,c.id), own=save.owned[c.id]||0, dk=activeDeck();
+  const big=(id,cls,icon,title,sub)=>{ const b=document.createElement('button'); b.id=id; b.className='btn ghost '+cls; b.innerHTML=`<img class="dtico" src="menukit/icons/dt-${icon}.webp" alt=""><span><b>${title}</b><small>${sub}</small></span>`; return b; };
+  box.innerHTML=`<div class="mkrule"></div><p class="shardline"><img src="menukit/icons/shards.webp" alt=""><b>${have}</b> shards</p><div class="mkrule"></div>`;
+  // Add to deck: one more copy in the deck you fight with, or why not
+  const n=dk.list.filter(id=>id===c.id).length, lim=Math.min(copyLimit(c),own);
+  const why=n>=lim?'Deck copy limit reached.':dk.list.length>=RULES.max?'Your deck is full.':'';
+  const add=big('dtAdd','dtadd','add-deck','Add to deck',why||'Adds a copy to '+esc(dk.name)+'.'); add.disabled=!!why;
+  add.onclick=()=>{ if(why) return; dk.list.push(c.id); persist(); tip('Added to '+dk.name); showDetail(c); dtRefresh(); };
+  box.appendChild(add);
   const row=document.createElement('div'); row.className='row'; box.appendChild(row);
-  const b1=document.createElement('button'); b1.id='dtBreak'; b1.className='btn ghost'; b1.textContent='Break for '+sh[0];
-  b1.disabled=!canBreak(save,c); b1.title=spare?'':own?'Every copy is in a deck':'You have none';
+  const b1=big('dtBreak','dthalf','break','Break · '+sh[0],spare?spare+' spare cop'+(spare===1?'y':'ies'):own?'No spare copies':'You have none');
+  b1.disabled=!canBreak(save,c);
   b1.onclick=e=>armed(e.currentTarget,'Tap again to break',()=>{ const n=breakCard(save,c.id); if(!n) return; persist(); tip('+'+n+' shards'); showDetail(c); dtRefresh(); });
-  const b2=document.createElement('button'); b2.id='dtCraft'; b2.className='btn'; b2.textContent='Craft for '+sh[1];
-  b2.disabled=!canCraft(save,c); if(!craftRoom(save,c)) b2.title='You have the most a deck can use';
+  const b2=big('dtCraft','dthalf','craft','Craft · '+sh[1],!craftRoom(save,c)?'You own the most a deck uses':have>=sh[1]?'You have '+have+' shards':'Need '+sh[1]+' shards');
+  b2.disabled=!canCraft(save,c);
   b2.onclick=()=>{ const r=craftCard(save,c.id); if(!r) return; persist(); tip((r.isNew?'New: ':'Crafted ')+c.name); if(typeof cardPop==='function') cardPop(c); showDetail(c); dtRefresh(); };
   row.append(b1,b2); }
 function dtRefresh(){ const on=id=>{ const el=document.getElementById(id); return el&&el.classList.contains('on'); };
@@ -273,27 +282,42 @@ let ccMode=null, ccNext=null;
 const needsChar=()=>save&&(!save.char||save.char.auto||!RACES[save.char.race]);
 function withChar(next){ if(needsChar()) openNewChar(false,'existing',next); else next(); }
 function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
-  $('#ccStep').textContent=ccMode?'Make your character':'Step 1 of 2'; $('#ccGo').textContent=ccMode?'Save character ►':'Choose your deck ►';
+  $('#ccStep').textContent=ccMode?'Make your character':'1 of 2'; $('#ccGoT').textContent=ccMode?'Save':'Next';
   if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
+// draw a sprite trimmed to its painted pixels, scaled to fit and centred on its own bounds (optical centre)
+function ccFit(cv,img){ const go=()=>{ const t=document.createElement('canvas'); t.width=img.width; t.height=img.height; const tx=t.getContext('2d'); tx.drawImage(img,0,0);
+    let d; try{ d=tx.getImageData(0,0,t.width,t.height).data; }catch(e){ d=null; }
+    let x0=0,y0=0,x1=t.width,y1=t.height;
+    if(d){ x0=t.width; y0=t.height; x1=0; y1=0; for(let y=0;y<t.height;y++) for(let x=0;x<t.width;x++) if(d[(y*t.width+x)*4+3]>16){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; } x1++; y1++; if(x1<=x0){ x0=y0=0; x1=t.width; y1=t.height; } }
+    const w=x1-x0, h=y1-y0, k=Math.min(cv.width/w,cv.height/h), W=Math.round(w*k), H=Math.round(h*k), x=cv.getContext('2d');
+    x.clearRect(0,0,cv.width,cv.height); x.imageSmoothingEnabled=false; x.drawImage(img,x0,y0,w,h,Math.round((cv.width-W)/2),Math.round((cv.height-H)/2),W,H); };
+  if(img.complete===false) img.addEventListener('load',go,{once:true}); else go(); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
+// the kit's one-line tagline for each race (the full line stays in its tooltip)
+const RACE_SHORT={human:'Even in every stat',elf:'Quick, quiet and frail',dwarf:'Tough, wise, slow casting',warlock:'Silver-tongued casters',necro:'Strongest, fastest casters',shaman:'Hardy and wise',ranger:'Fast, quiet, sharp-eyed',orc:'Big hits, lots of HP'};
 function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
-  $('#ccRace').textContent=R.name+' · '+(ch.body?'woman':'man'); $('#ccText').textContent=R.text;
+  $('#ccRace').textContent=R.name; $('#ccText').textContent=RACE_SHORT[ch.race]||R.text; $('#ccText').title=R.text;
   document.querySelectorAll('#scrNewChar [data-body]').forEach(b=>{ b.classList.toggle('on',+b.dataset.body===ch.body); b.onclick=()=>{ const spent=ch.spent; ccChar=newChar(ch.race,+b.dataset.body); ccChar.spent=spent; renderNewChar(); }; });
   // the hexmancer, big
   const cv=$('#ccSprite'), x=cv.getContext('2d'); x.clearRect(0,0,192,192); x.imageSmoothingEnabled=false; const sp=ccLook(ch.look);
-  if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,192,192);
+  if(sp) ccFit(cv,sp.img);
   // the races, each shown by the look for the body you picked
   const box=$('#ccRaces'); box.innerHTML='';
-  for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64;
-    const s2=ccLook(RACES[k].looks[ch.body]); if(s2){ const y=c.getContext('2d'); y.imageSmoothingEnabled=false; y.drawImage(s2.img,0,0,s2.img.width,s2.img.height,0,0,64,64); }
+  for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64; c.className='ccrimg';
+    const s2=ccLook(RACES[k].looks[ch.body]); if(s2) ccFit(c,s2.img);
     b.appendChild(c); b.insertAdjacentHTML('beforeend',`<span>${RACES[k].name}</span>`);
     b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
   // the stats, one dial each
   statDials($('#ccStats'),ch,$('#ccPts'),()=>{ if(!pointsLeft(ccChar)) $('#ccWarn').textContent=''; }); }
+// each stat's glyph from the menu kit's line icons (menukit/menu.js), or its old emoji without the kit
+// the kit's one-line effect for each stat (the full effect and its number stay in the row's tooltip and on the Character screen)
+const STAT_SHORT={str:'Wand and staff damage',dex:'Shot speed and dodge',con:'Maximum HP',int:'Card damage, healing and shields',wis:'Find hidden doors, traps and secrets',cha:'Gold found and merchant prices',stl:'Enemy detection range',rch:'Wand fire rate and charge time',cst:'Cast speed and card readiness'};
+const STAT_GLYPH={str:'strength',dex:'dexterity',con:'constitution',int:'intelligence',wis:'wisdom',cha:'charisma',stl:'stealth',rch:'recharge',cst:'casting'};
+function statGlyph(k){ return `<img class="statico" src="menukit/stats/${k}.webp" alt="">`; }
 // a horizontal dial for each stat, spending a character's points (character creation and level ups)
 function statDials(root,ch,ptsEl,after){ root.innerHTML=''; root._ch=ch; root._pts=ptsEl; root._after=after;
   for(const k of STAT_KEYS){ const S=STATS[k], row=document.createElement('div'); row.className='ccrow'; row.dataset.k=k;
-    row.innerHTML=`<div class="ccname"><b>${S.icon} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
+    row.innerHTML=`<div class="ccico">${statGlyph(k)}</div><div class="ccname"><b>${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
     root.appendChild(row); buildDial(row,k,root); }
   dialsUpdate(root); }
 // a horizontal dial: a strip of numbered ticks under a fixed notch; dragging the strip, or tapping
@@ -318,11 +342,11 @@ function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(
   if(root._pts){ root._pts.textContent=left; root._pts.classList.toggle('none',!left); }
   root.querySelectorAll('.ccrow').forEach(row=>{ const k=row.dataset.k, v=statOf(ch,k), base=RACES[ch.race].base[k], kept=base+((ch.lock&&ch.lock[k])||0), d=row.querySelector('.dial');
     row.querySelector('.tape').style.setProperty('--v',v);
-    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v||n>cap?(n>cap?'over':''):n>kept?(ch.lock?'new':'buy'):n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); });
+    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v||n>cap?(n>cap?'over':''):n>kept?(ch.lock?'new':'buy'):n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); t.classList.toggle('far',Math.abs(n-v)>3); });
     d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=kept); d.classList.toggle('atmax',v>=cap||!left);
     const fresh=(ch.spent[k]||0)-((ch.lock&&ch.lock[k])||0);
     row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.lock?(fresh?'+'+fresh:''):(ch.spent[k]?'+'+ch.spent[k]:'');
-    const eff=statEffect(ch,k); row.querySelector('.cceff').innerHTML=`${esc(STATS[k].text)} · <b class="${v>10?'up':v<10?'down':''}">${esc(eff)}</b>`; });
+    const eff=statEffect(ch,k), ce=row.querySelector('.cceff'); ce.textContent=STAT_SHORT[k]||STATS[k].text; ce.title=eff; row.title=STATS[k].name+': '+STATS[k].text+' ('+eff+')'; });
   if(root._after) root._after(); }
 
 /* ---------------- experience and levels ----------------
@@ -332,7 +356,8 @@ function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(
 let lvBack=null;
 function openLevelUp(back){ const ch=ensureChar(save); save.lvlNew=false; persist(); lvBack=back||null;
   if(typeof xPause==='function'&&EX&&EX.active) xPause(true);
-  $('#lvTitle').textContent='Level '+save.level+'!'; $('#lvSub').textContent='Your '+RACES[ch.race].name.toLowerCase()+' grows stronger. Spend your points on any stat (up to '+STAT_CAP+').';
+  $('#lvTitle').textContent='Level '+save.level; $('#lvSub').textContent='Spend your points on any stat (up to '+STAT_CAP+').';
+  { const spr=typeof unitSprite==='function'&&unitSprite({kind:'player',look:typeof gearLook==='function'?gearLook(save):save.look,view:'front'}); if(spr) ccFit($('#lvSprite'),spr.img); }
   lvBefore=Object.assign({},ch.spent); statDials($('#lvStats'),ch,$('#lvPts')); $('#lvlUp').classList.add('on'); }
 let lvBefore=null;
 function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lvBefore; else lockChar(ch); persist(); $('#lvlUp').classList.remove('on');
@@ -343,6 +368,8 @@ function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lv
 $('#lvDone').onclick=()=>closeLevelUp(true);
 $('#campLevel').onclick=()=>{ if(pointsLeft(ensureChar(save))>0) openLevelUp(()=>openCamp()); else openCharacter(); };
 $('#lvLater').onclick=()=>closeLevelUp(false);
+// Reset takes back only this level up's new points; the ones confirmed before stay
+$('#lvReset').onclick=()=>{ const ch=save.char; if(!ch||!lvBefore) return; ch.spent=Object.assign({},lvBefore); statDials($('#lvStats'),ch,$('#lvPts')); };
 // open the panel if a level up is waiting (after a fight, back at camp, on the map)
 function maybeLevelUp(){ if(save&&save.lvlNew&&save.char&&pointsLeft(save.char)>0&&!$('#lvlUp').classList.contains('on')&&!$('#reveal').classList.contains('on')) openLevelUp(); }
 // level and XP as a bar: "Lv 3 · 40/140 XP"
@@ -358,20 +385,45 @@ function slotLine(s){ if(!s) return '<b>Empty</b>';
   return `<b>${esc(ch)} · Lv ${s.level||1}</b><small>Depth ${s.deepest} · ${s.gold} gold · ${ownedUnique(s)} cards</small>`; }
 function useSlot(n){ if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   B=null; setSlot(n); save=loadSave(); campLog.length=0; pickDepth=null; ccChar=null; }
-function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=$('#slList'); box.innerHTML='';
+function openSlots(mode){ if(!mode) return openManage(); const isNew=mode==='new', cont=mode==='continue', box=$('#slList'); box.innerHTML=''; $('#slots').classList.remove('manage'); $('#slNew').hidden=true; $('#slClose').hidden=true;
   $('#slTitle').textContent=isNew?'New game':cont?'Continue which save?':'Save slots';
   $('#slHint').textContent=isNew?'Choose a slot for the new game. Starting in a used slot replaces that save.':'Pick a slot to play. Each keeps its own character, cards, gold and gear.';
   for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), row=document.createElement('div'); row.className='slrow'+(n===SAVE_SLOT?' cur':'');
     row.innerHTML=`<span class="sln">${n}</span><div class="slinfo">${slotLine(s)}</div><div class="slbtns"></div>`;
     const bb=row.querySelector('.slbtns'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); bb.appendChild(b); return b; };
     if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
-      if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','',go); }
+      if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','newgame',go); }
     // Continue: every save can be picked up from here, straight to its camp; an empty slot can start a new game
     else if(cont){ if(s) btn('Continue','',()=>{ if(n!==SAVE_SLOT) useSlot(n); $('#slots').classList.remove('on'); withChar(()=>openCamp()); });
-      else btn('New game here','ghost',()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); }); }
+      else btn('New game here','newgame',()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); }); }
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
       if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
+  $('#slots').classList.add('on'); }
+
+// Settings › Save slots (kit screen 08): one card per slot with its hexmancer, deck, level, depth, gold and
+// cards; Manage opens that save's actions (play it, or delete it with a second tap); New game uses the first empty slot.
+function slotDeckName(s){ const d=s&&s.decks&&s.decks[s.active||0]; return d&&d.name||'Deck'; }
+function openManage(){ const box=$('#slList'); box.innerHTML=''; $('#slots').classList.add('manage');
+  $('#slTitle').textContent='Manage saves'; $('#slHint').textContent='Manage an existing run, or start in an empty slot.';
+  let empty=0;
+  for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), c=document.createElement('div'); c.className='slrow slcard'+(n===SAVE_SLOT&&s?' cur':'')+(s?'':' empty');
+    if(!s){ if(!empty) empty=n;
+      c.innerHTML=`<div class="slpic"><span class="sllbl">Slot ${n}</span><button class="slplus" aria-label="New game in slot ${n}"></button></div><div class="slinfo"><b>Empty slot</b></div>`;
+      c.querySelector('.slplus').onclick=()=>{ useSlot(n); $('#slots').classList.remove('on'); closeSettings(); openNewChar(); }; }
+    else { c.innerHTML=`<div class="slpic"><span class="sllbl">Slot ${n}</span><canvas width="72" height="92"></canvas></div>
+        <div class="slinfo"><b>${esc(slotDeckName(s))}</b><span>Level ${s.level||1}</span><span class="dim">Depth ${s.deepest||1} · ${s.gold|0} gold</span><span class="dim">${ownedUnique(s)} cards</span></div>
+        <div class="slside">${n===SAVE_SLOT?'<span class="slnow">Current run</span>':''}<button class="btn ghost slman" aria-expanded="false">Manage</button></div>
+        <div class="slacts" hidden></div>`;
+      if(window.hmDrawChar) window.hmDrawChar(c.querySelector('canvas'),s);
+      const acts=c.querySelector('.slacts'), man=c.querySelector('.slman'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); acts.appendChild(b); return b; };
+      if(n!==SAVE_SLOT) btn('Play this save','',()=>{ useSlot(n); $('#slots').classList.remove('on'); closeSettings(); openMenu(); });
+      btn('Delete','ghost danger',e=>armed(e.currentTarget,'Tap again to delete',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); }));
+      man.onclick=()=>{ const open=acts.hidden; box.querySelectorAll('.slacts').forEach(a=>a.hidden=true); box.querySelectorAll('.slman').forEach(m=>m.setAttribute('aria-expanded','false'));
+        acts.hidden=!open; man.setAttribute('aria-expanded',String(open)); }; }
+    box.appendChild(c); }
+  $('#slClose').hidden=false; const nb=$('#slNew'); nb.hidden=false; nb.disabled=!empty; nb.innerHTML='<span class="slnewi"></span>New game';
+  nb.onclick=()=>{ if(!empty) return; useSlot(empty); $('#slots').classList.remove('on'); closeSettings(); openNewChar(); };
   $('#slots').classList.add('on'); }
 
 /* ---------------- start ---------------- */
@@ -388,16 +440,26 @@ function buildStart(){
     clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
     tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
   if(!USE_STARTERS){
-    const d=document.createElement('div'); d.className='starter deal';
-    d.innerHTML=`<h3>Your first cards</h3><p>You get 80 cards dealt at random: mostly commons, a few uncommons and rares, with Gray and Brown cards and some of 2 or 3 other colors. Pick the color they lean to, and every new character gets a different mix.</p>
-      <div class="dealcols">${SIX.map(k=>`<button class="btn dealc" data-k="${k}" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${COLORS[k].name}</button>`).join('')}</div>
-      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>
-      <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b> (new): big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
-      <p class="hint center">Build v${document.querySelector('meta[name=application-version]').content}</p>`;
-    d.querySelectorAll('.dealc').forEach(b=>b.onclick=()=>begin(b.dataset.k));
-    d.querySelector('.dealr').onclick=()=>begin(SIX[Math.floor(Math.random()*SIX.length)]);
-    box.appendChild(d);
-    $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
+    // kit screen 10: who is starting, six colour tiles (pick one), Surprise me, Advanced options, a summary line and Start adventure
+    const R=ccChar&&RACES[ccChar.race]; $('#stRace').textContent=R?R.name:'Hexmancer';
+    $('#stSlot').textContent='New run · Slot '+SAVE_SLOT; $('#startWarn').textContent=save?'This replaces the save in this slot.':'Your other saves are kept.';
+    $('#startWarn').classList.toggle('warn',!!save);
+    const cv=$('#stSprite'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); const sp=ccChar&&ccLook(ccChar.look); if(sp) ccFit(cv,sp.img);
+    let pick=null; const d=document.createElement('div'); d.className='stbody';
+    d.innerHTML=`<div class="stcols">${SIX.map(k=>`<button class="stcol" data-k="${k}" style="--scene:url(menukit/elements/${k}-scene.webp)"><img src="menukit/elements/${k}.webp" alt=""><span>${COLORS[k].name}</span></button>`).join('')}</div>
+      <button class="btn ghost strnd"><i class="mki" style="--i:url(menukit/icons/dice.webp)"></i><span>Surprise me</span></button>
+      <details class="stadv"><summary><span>Advanced options</span></summary>
+        <label class="startlay"><input type="checkbox" id="startLayout" checked> <span><b>Spacious dungeon</b>: big halls, wide and diagonal passages, the camera turned 45°. Off: the classic dungeon.</span></label>
+        <p class="hint">Build v${document.querySelector('meta[name=application-version]').content}</p></details>
+      <div class="mkrule gem"></div><p class="stsum"></p>
+      <button class="btn stgo" disabled><i class="mki" style="--i:url(menukit/icons/play.webp)"></i><span>Start adventure</span></button>`;
+    const sum=d.querySelector('.stsum'), go=d.querySelector('.stgo');
+    const choose=k=>{ pick=k; d.querySelectorAll('.stcol').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); go.disabled=!k;
+      sum.textContent=[R?R.name:'Hexmancer',k?COLORS[k].name:'Choose a color','Slot '+SAVE_SLOT].join('  ·  '); };
+    d.querySelectorAll('.stcol').forEach(b=>b.onclick=()=>choose(b.dataset.k));
+    d.querySelector('.strnd').onclick=()=>choose(SIX[Math.floor(Math.random()*SIX.length)]);
+    go.onclick=()=>{ if(pick) begin(pick); };
+    choose(null); box.appendChild(d);
     show('scrStart'); return; }
   for(const s of STARTERS){
     const d=document.createElement('div'); d.className='starter';
@@ -446,8 +508,8 @@ function openCamp(){
   { const lc=lowChargeNote(), now=performance.now(); if(lc&&now>(openCamp.lcT||0)){ openCamp.lcT=now+120000; setTimeout(()=>tip(lc.trim(),4500),400); } }   // nearly spent Charge cards: the shop recharges them
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
-  show('scrCamp'); campScene(); setTimeout(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); },120);   // again once the log and fonts have settled, so the fit is right
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
+  // the camp is the main menu now (menu.js): the old camp page stays in the page for its buttons' handlers
+  openMenu();
   setTimeout(maybeLevelUp,250);
 }
 // the camp scene: the area you are about to enter, your wizard in its gear, and a fire that
@@ -584,7 +646,14 @@ $('#bUse').onclick=()=>{ save.active=editSlot; persist(); renderSlots(); tip(sav
 /* My cards: everything you own (with copies and how many are in your deck), your items, and
    a tab for the whole set of 1,006 with the ones you haven't found yet greyed out. */
 const cf={colors:new Set(), type:'', rarity:'', q:'', owned:'', mine:true, sort:'family'};
-function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); renderCollection(); show('scrCollection'); }
+function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); collTools(); renderCollection(); show('scrCollection'); }
+// My cards: the search sits beside Sort; the colour chips carry their counts and filter when tapped
+function collTools(){ const box=$('#cFilters'), top=$('#cTop'), q=box.querySelector('[data-f="q"]');
+  top.querySelectorAll('[data-f="q"]').forEach(e=>e.remove()); if(q){ q.type='search'; q.placeholder='Search cards…'; q.setAttribute('aria-label','Search cards'); q.value=cf.q||''; top.prepend(q); }
+  box.querySelectorAll('select[data-f]').forEach(el=>el.value=cf[el.dataset.f]||'');
+  box.querySelectorAll('.fc').forEach(b=>b.classList.toggle('on',cf.colors.has(b.dataset.k))); }
+function collCounts(n){ $('#cFilters').querySelectorAll('.fc').forEach(b=>{ const k=b.dataset.k; b.innerHTML=`<span class="fci">${COLORS[k].icon}</span><b>${n(k)}</b>`;
+  b.setAttribute('aria-label',COLORS[k].name+': '+n(k)); b.classList.toggle('none',/^0(\/|$)/.test(String(n(k)))); }); }
 $('#cTabMine').onclick=()=>{ cf.mine=true; cf.book=false; cf.owned=''; openCollection(); };
 $('#cTabAll').onclick=()=>{ cf.mine=false; cf.book=false; openCollection(); };
 $('#cTabBook').onclick=()=>{ cf.book=true; renderCollection(); };
@@ -604,23 +673,23 @@ $('#cSort').onchange=e=>{ cf.sort=e.target.value; renderCollection(); };
 const SORTS={family:byFamily, rank:(a,b)=>a.rank-b.rank||byFamily(a,b), rarity:(a,b)=>RAR_ORDER.indexOf(b.rarity)-RAR_ORDER.indexOf(a.rarity)||byFamily(a,b),
   copies:(a,b)=>(save.owned[b.id]||0)-(save.owned[a.id]||0)||byFamily(a,b), name:(a,b)=>a.name.localeCompare(b.name)};
 function renderCollection(){
-  $('#cTabBook').classList.toggle('on',!!cf.book); $('#cFilters').hidden=!!cf.book; $('#cSort').hidden=!!cf.book;
+  $('#cTabBook').classList.toggle('on',!!cf.book); $('#cFilters').hidden=!!cf.book; $('#cTop').hidden=!!cf.book; $('#cProgress').hidden=true;
   if(cf.book){ $('#cTabMine').classList.remove('on'); $('#cTabAll').classList.remove('on'); return renderBook(); }
   $('#cTabMine').classList.toggle('on',cf.mine); $('#cTabAll').classList.toggle('on',!cf.mine); $('#cSort').value=cf.sort;
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
   $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
   $('#cCount').innerHTML+=' · '+uiIcon('shard',14)+(save.shards||0);
-  $('#cItems').innerHTML=`<button class="item" onclick="openCharacter()">⚔ Gear, enchanting and curses are on the Character screen →</button>`; $('#cItems').hidden=!cf.mine;
+  $('#cItems').innerHTML=''; $('#cItems').hidden=true;
   if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
-    $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
+    collCounts(k=>fam[k]||0);
     const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
     paged($('#cGrid'),items,c=>{ const el=cardEl(c,chargeMark(c)+`<span class="badge" title="${inDeck[c.id]||0} in this deck, ${save.owned[c.id]} owned">${inDeck[c.id]?inDeck[c.id]+'/'+save.owned[c.id]:'×'+save.owned[c.id]}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
     if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
     return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
-  $('#cProgress').innerHTML=FAM_ORDER.map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k][0]}/${fam[k][1]}</span>`).join('');
+  collCounts(k=>fam[k]?fam[k][0]+'/'+fam[k][1]:0);
   const items=CARD_LIST.filter(c=>passes(c,cf)).sort(SORTS[cf.sort]);
   paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?chargeMark(c)+`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
 }
@@ -1478,9 +1547,9 @@ function applyViewport(){
 addEventListener('resize',applyViewport); addEventListener('orientationchange',()=>setTimeout(applyViewport,150));
 applyViewport();
 openMenu();
-// the very first launch (no save in any slot): go straight to making your character in slot 1
+// the very first launch (no save in any slot): the main menu too, on slot 1; Continue opens the slots and New game
 { let any=false; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) any=true;
-  if(!any){ useSlot(1); openNewChar(); }
+  if(!any){ useSlot(1); openMenu(); }
   if(SAVE_DAMAGED) setTimeout(()=>tip('The save in slot '+SAVE_DAMAGED.slot+' could not be read. A copy was kept in this browser ('+SAVE_DAMAGED.key+'), so nothing is overwritten.',9000),600); }
 // the same save open in another tab: when that tab saves, this one stops saving (it would undo that tab's progress)
 window.addEventListener('storage',e=>{ if(e.key!==slotKey(SAVE_SLOT)||SAVE_STALE) return; SAVE_STALE=true; saveStaleNote(); });
@@ -1488,8 +1557,8 @@ function saveStaleNote(){ tip('This save was changed in another tab or window. P
 requestAnimationFrame(frame);
 
 /* ---------------- main menu ----------------
-   The game opens here: Continue goes to camp; Explore and Battle start at the depth shown
-   (any depth from 1 to your deepest); New game picks a starter deck. */
+   The game opens here (menu.js draws it from the menu handoff): Continue opens the three save slots; Explore
+   and Battle start at the depth shown (any depth from 1 to your deepest). */
 function openMenu(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   const has=!!save;
@@ -1497,30 +1566,11 @@ function openMenu(){
   else pickDepth=1;
   // the card-art sheets load in the background while the title is up (art.js artPreload)
   if(typeof artPreload==='function') (window.requestIdleCallback||setTimeout)(()=>{ let d=null; try{ d=save&&activeDeck().list; }catch(e){} artPreload(d); });
-  $('#mmContinue').disabled=!savedSlots().length;
-  const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' · change ▾</span>';
-  $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
-    :'<span class="mmdeep">Slot '+SAVE_SLOT+' is empty.</span><span class="mmname">Start a new game.</span>');
-  $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
-  $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
-  const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
-  $('#mmExplore').disabled=$('#mmBattle').disabled=!has||!v.ok;
-  $('#mmWarn').textContent=!has?'':v.ok?'':'Your deck is not ready ('+(v.errors[0]||'invalid')+'). Fix it in the deck builder at camp.';
+  if(typeof hmHome==='function') hmHome();
   show('scrMenu');
 }
-$('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };
-$('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
-// with more than one save, Continue asks which; with one, it goes straight back to camp
 function savedSlots(){ const out=[]; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) out.push(n); return out; }
-$('#mmContinue').onclick=()=>{ const sl=savedSlots(); if(sl.length>1){ openSlots('continue'); return; }
-  if(sl.length&&sl[0]!==SAVE_SLOT) useSlot(sl[0]);   // the one save is in another slot: switch to it
-  withChar(()=>openCamp()); };
-$('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
-$('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
-$('#mmNew').onclick=()=>openSlots('new');
-$('#mmSlots').onclick=()=>openSlots();
 $('#slClose').onclick=()=>$('#slots').classList.remove('on');
-$('#mmSettings').onclick=()=>openSettings();
 $('#startBack').onclick=()=>openNewChar(true);
 $('#ccBack').onclick=()=>openMenu();
 $('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('#ccWarn').textContent='You still have '+pointsLeft(ccChar)+' points to spend. Tap again to go on anyway.'; $('#ccGo').dataset.sure='1'; return; } if(ccMode==='existing') return keepChar(); buildStart(); };
@@ -1528,6 +1578,10 @@ $('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('
 function keepChar(){ const old=save.char, ch=lockChar(ccChar); ch.earned=(old&&old.earned)||0; if(ch.earned) save.lvlNew=true;
   Object.assign(save,{char:ch, look:ch.look, hat:true}); ensureChar(save); persist(); const go=ccNext||openCamp; ccMode=ccNext=null; go(); }
 $('#ccReset').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); renderNewChar(); };
+// Random: start again from the race's values and spend every point on random stats (up to the cap)
+$('#ccRandom').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); let tries=0;
+  while(pointsLeft(ccChar)>0&&tries++<2000) spendPoint(ccChar,STAT_KEYS[Math.floor(Math.random()*STAT_KEYS.length)],1);
+  $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); };
 $('#campMenu').onclick=()=>openMenu();
 
 /* ---------------- closing windows: one way everywhere ----------------
@@ -1540,11 +1594,12 @@ const CLOSERS={
   detail:()=>$('#detail').classList.remove('on'), pick:()=>$('#pick').classList.remove('on'),
   dkPeek:()=>$('#dkpClose').onclick(), xDialog:()=>xDlgClose(), bagUI:()=>closeBag(),
   lvlUp:()=>closeLevelUp(false), shopSheet:()=>$('#shopSheet').classList.remove('on'), runSheet:()=>closeRun(),
+  labPick:()=>$('#labPick').classList.remove('on'),
   reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
 };
-const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings'];   // settings goes back with the ← every full screen has
+const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings','detail','dkPeek'];   // settings goes back with the ← every full screen has
 $('#setBack').onclick=()=>CLOSERS.settings();
-for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
+for(const id of ['slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater']){ const b=$('#'+id); if(b) b.hidden=true; }
 for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
   if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');
     x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };

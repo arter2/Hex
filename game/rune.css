@@ -11,6 +11,10 @@ body.rune{
   --r-drawer:clamp(128px, calc(30vh / var(--tz,1)), 320px);
   --r-chamfer:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
 }
+/* a phone held upright: the row (and the log above it) spans the screen with even 12-unit margins, so it sits
+   centred; the 352-unit cap and the hand-side anchoring stay for landscape, tablets and computers, where the row
+   would otherwise stretch away from the thumb */
+@media (orientation:portrait) and (max-width:600px){ body.rune{--r-rowmax:100vw;} }
 /* a bigger screen shows more dungeon, not a bigger HUD: the HUD follows only the Text size setting (--tz), not the
    screen-size part of the game's interface zoom (--ui) */
 body.rune #xTop,body.rune #xBottom,body.rune #xMini,body.rune #rChipRow,body.rune #rMiniGem,body.rune #rStatusPop{zoom:var(--tz,1);}

@@ -1,0 +1,36 @@
+{
+  "tool": "built-in image_gen",
+  "note": "Generation briefs and required invariants; native output dimensions are recorded in the asset manifest. Raster reconstruction, not recovered source layers.",
+  "assets": [
+    {
+      "asset": "hero-scene",
+      "transparent": false,
+      "source": "reference/main-approved.png",
+      "prompt": "Create ONE isolated BACKGROUND ART ASSET from this provided HEXMANCERS menu reference, for a real responsive game UI handoff. Recreate the UPPER ILLUSTRATED DUNGEON SCENE ONLY as a wide approximately1536x864 pixel-art image. Preserve the blue-lit deep cavern inside a symmetrical brick arch, hooded statues holding cyan flames, purple side banners, warm torches and candles, and the five small adventurers standing along the foreground ledge. REMOVE THE ENTIRE HEXMANCERS LOGO AND ITS METAL MOUNTING, leaving coherent cavern/architecture behind that area. No menu panels, buttons, text, HUD, or UI frames. No lower skull/book/sword/mushroom footer. Opaque background."
+    },
+    {
+      "asset": "logo",
+      "transparent": true,
+      "source": "reference/main-approved.png",
+      "prompt": "Extract/recreate JUST the HEXMANCERS LOGO from the source as ONE standalone wide transparent PNG asset, approximately1536x512. Preserve its ornate cyan runic/blackletter lettering and dark steel/bronze mounting, central upper/lower faceted blue diamond accents. Exact title spelling HEXMANCERS. Complete logo with alpha padding and no clipping. Remove all scenery, menus and other objects. True transparent alpha, crisp source-style pixel art."
+    },
+    {
+      "asset": "footer-foreground",
+      "transparent": true,
+      "source": "reference/main-approved.png",
+      "prompt": "Extract/recreate one decorative FOOTER FOREGROUND ASSET from the bottom edge: wide transparent approximately1536x512. Preserve blue-gray rock/stone steps, glowing cyan mushrooms, skull/bones lower-left, spellbooks/cards lower-right, diagonal sword right. Mostly open upper center alpha. No text/logos/menu rectangles/buttons/complete opaque background. Keep all silhouettes within bounds. Narrow irregular bottom stone footing allowed; surroundings transparent."
+    },
+    {
+      "asset": "brick-tile",
+      "transparent": false,
+      "source": "reference/main-approved.png",
+      "prompt": "One seamless tileable dark blue-gray chunky pixel-art dungeon BRICK WALL texture approximately512x512, orthographic courses, subdued contrast, subtle worn pixel grain. No perspective, arches, characters, symbols, logos, UI, torches or mushrooms. Opaque square."
+    },
+    {
+      "asset": "run-avatar-fire-wizard",
+      "transparent": true,
+      "source": "reference/continue-approved.png",
+      "prompt": "Standalone FULL-BODY CHARACTER SPRITE for Slot2: pointed red/orange wizard hat, shadowed face, red scarf/cowl, red robe with orange torn lower tails, boots, brown gloves, staff with tiny flame. Chunky pixel-art in-game proportions. Front-three-quarter idle pose, all parts inside square512x512 with transparent margins. No frame/scenery/UI/text/ground. True alpha, one character."
+    }
+  ]
+}

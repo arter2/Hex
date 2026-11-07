@@ -1342,3 +1342,7 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #scrMastery.mk .bprog{margin-top:6px;} #scrMastery.mk .mnext{margin-top:5px;}
 #scrMastery.mk .mrow.open>.mcards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:0 6px 6px 0; overflow:visible;}
 #scrMastery.mk .mrow>.mcards .card{width:100%!important; height:auto!important; min-height:0!important;}
+/* the reward card: bigger, centred in the space right of the level text, the arrow at the edge */
+#scrMastery.mk .mrow{grid-template-columns:minmax(0,1fr) 74px 16px; column-gap:4px;}
+#scrMastery.mk .mthumb{width:54px; height:70px; justify-self:center;}
+#scrMastery.mk .mmore{justify-self:end;}

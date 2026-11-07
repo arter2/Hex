@@ -99,10 +99,18 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   q('#mmXp').hidden=!has; };
 q('#mmDown').onclick=()=>{ pickDepth--; openMenu(); q('#mmDown').disabled?q('#mmUp').focus():q('#mmDown').focus(); };
 q('#mmUp').onclick=()=>{ pickDepth++; openMenu(); q('#mmUp').disabled?q('#mmDown').focus():q('#mmUp').focus(); };
-q('#mmContinue').onclick=()=>openSaves();
-q('#mmSlots').onclick=()=>openSaves();
+// Continue always goes exploring (the save list only when this slot is empty); Battle is the developers' test fight:
+// it opens the save list so you pick the character, then fights. A deck that is not ready stays on the menu with its warning.
+let SVMODE='explore';
+function goPlay(mode){ if(!save) return openSaves();
+  withChar(()=>{ if(pickDepth==null) pickDepth=save.deepest||1;
+    let ok=false; try{ ok=validateDeck(activeDeck().list,CARDS,save.owned).ok; }catch(e){}
+    if(!ok){ openCamp(); return; }
+    if(mode==='battle') fight(pickDepth); else enterExplore(pickDepth); }); }
+q('#mmContinue').onclick=()=>{ SVMODE='explore'; save?goPlay('explore'):openSaves(); };
+q('#mmSlots').onclick=()=>{ SVMODE='explore'; openSaves(); };
 q('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
-q('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
+q('#mmBattle').onclick=()=>{ SVMODE='battle'; openSaves(); };
 q('#mmSettings').onclick=()=>openSettings();
 // Duel a friend: the old camp's button, so it keeps its deck check and its way back
 q('#mmDuel').onclick=()=>withChar(()=>q('#goDuel').click());
@@ -126,7 +134,7 @@ function renderSaves(){ const box=q('#svList'); box.innerHTML='';
         <span class="hm-place" style="color:${A.glow}">${ico('cave')}<span>${esc_(A.name)}</span></span><span class="hm-muted">Depth ${s.deepest} · Lv ${s.level||1}</span><span class="hm-res">${resLine(s)}</span></div>
         <button class="hm-btn hm-cyan hm-go" type="button" aria-label="Continue slot ${n}">${ico('play')}<span>Continue</span></button>`;
       drawChar(c.querySelector('canvas'),s);
-      c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(n!==SAVE_SLOT) useSlot(n); withChar(()=>openCamp()); }; }
+      c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(n!==SAVE_SLOT) useSlot(n); goPlay(SVMODE); }; }
     c.onclick=()=>{ if(SEL===n) return; SEL=n; renderSaves(); const f=q('#svList .hm-card.sel'); if(f) f.focus(); };
     c.onkeydown=e=>{ if(e.target!==c) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); }
       if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); const nx=c.nextElementSibling; if(nx) nx.focus(); }
@@ -136,7 +144,7 @@ function renderSaves(){ const box=q('#svList'); box.innerHTML='';
   const t=newTarget(); q('#svNew').disabled=!t;
   q('#svNew').setAttribute('aria-label',t?'New game in slot '+t:'New game: all save slots are occupied');
   q('#svWhy').textContent=t?'':'All save slots are occupied. Delete one in Settings › Save slots to start a new game.'; }
-q('#svBack').onclick=()=>{ openMenu(); q('#mmContinue').focus(); };
+q('#svBack').onclick=()=>{ SVMODE='explore'; openMenu(); q('#mmContinue').focus(); };
 q('#svNew').onclick=()=>{ const t=newTarget(); if(!t||slotSave(t)) return;   // never over a save
   useSlot(t); openNewChar(); };
 document.addEventListener('keydown',e=>{ if(e.key!=='Escape') return;

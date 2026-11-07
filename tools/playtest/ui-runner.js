@@ -91,6 +91,12 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         await audit('settings', '#settings');
         await tap(page, '#setBack');
         await visible('#scrMenu.on');
+        // Duel a friend (the kit's header, frame, tiles and tabs)
+        await tap(page, '#mmDuel');
+        await visible('#scrDuel.on');
+        await audit('duel', '#scrDuel');
+        await tap(page, '#duBack');
+        await visible('#scrMenu.on');
         // Continue goes straight to exploring (v296); the starter deck is valid, so it does not stop at the camp
         await tap(page, '#mmContinue');
         await visible('#scrExplore.on');
@@ -110,6 +116,25 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         await audit('dungeon-bag', '#bagUI');
         await tap(page, '#bgClose');
         await page.waitForSelector('#bagUI.on', { state: 'hidden' });
+        // the dungeon's dialog (a trader with tabs and rows), in the kit's frame
+        await page.evaluate(() => {
+          xDlg({
+            title: 'Gruk the Trader',
+            sub: 'Goblin merchant',
+            text: 'Fresh from the deeps.',
+            tabs: [['buy', 'Buy'], ['sell', 'Sell']],
+            tab: 'buy',
+            buttons: [['Leave', null]],
+            body(box) {
+              xRow(box, '', 'Ember Dart', 'Common Fire Strike', '120 gold', () => {});
+              xRow(box, '', 'Cinder Lance', 'Common Fire Strike', '95 gold', () => {});
+            }
+          });
+        });
+        await visible('#xDialog.on');
+        await audit('dungeon-dialog', '#xDialog');
+        await tap(page, '#xDialog .winx');
+        await page.waitForSelector('#xDialog.on', { state: 'hidden' });
       } catch (e) {
         testError = e.message;
         if (session)

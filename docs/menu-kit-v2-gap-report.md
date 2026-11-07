@@ -100,3 +100,13 @@ comes back to the main menu, which is now the camp: `openCamp()` shows it, so ev
 (leaving a menu, climbing out of the dungeon, after a fight) lands there. Duel a friend is a half-width
 button beside Settings. The old camp page stays in `index.html` because its buttons carry the handlers the menu's
 categories click. The testing-only boss trials that lived on it are no longer reachable.
+
+## Update (v298): Duel, the dungeon dialog and the curse picker
+
+`#scrDuel` (Duel a friend), `#xDialog` (the dungeon's dialog: people, merchants, sanctuaries, tablets) and `#pick`
+(the curse picker) now carry `mk` in `index.html`, so they take the kit's frame, buttons, X and chips. The Host and Join
+tiles and the step track have their own `.mk` rules at the end of `menukit.css`. The dungeon HUD and pause menu keep the
+Living Rune's look (`rune.css`); the battle (and the post-fight Victory/Defeat popup and the hold-to-read card peek it
+shares with the hand screen) are unchanged. Dev tools (Card lab, Movement lab, Enemy lab, Debug) are still on the old look.
+The dialog's primary button no longer scrolls a tall dialog past its header when it takes focus (`dungeon.js`).
+

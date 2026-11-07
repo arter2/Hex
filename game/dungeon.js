@@ -1036,7 +1036,7 @@ function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o;
   const btns=(o.buttons||[]).filter(([l,fn])=>!(l==='Close'&&!fn));   // closing is the ✕ in the corner (ui.js)
   const bb=$('#xdBtns'); bb.innerHTML=''; bb.hidden=!btns.length; bb.classList.toggle('two',btns.length>1);
   btns.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ xDlgClose(); if(fn) fn(); }; bb.appendChild(b); });
-  $('#xDialog').classList.add('on'); setTimeout(()=>{ const m=bb.querySelector('.btn:not(.ghost)'); if(m) m.focus(); },40); }
+  $('#xDialog').classList.add('on'); setTimeout(()=>{ const m=bb.querySelector('.btn:not(.ghost)'); if(m) m.focus({preventScroll:true}); },40); }
 function xDlgClose(){ $('#xDialog').classList.remove('on'); if(EX) EX.dlg=null; if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
 const xDlgText=(title,text)=>xDlg({title,text,icon:['scroll','#f2c94c'],buttons:[['Close',null]]});
 // a row in a list: picture, name and text, and a button

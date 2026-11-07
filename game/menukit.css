@@ -1,7 +1,7 @@
 /* Menu kit v2: one frame, one button, one header, one dialog, one dial for the menus.
    Source: hexmancers-unified-menu-kit-v2 (shared/menu.css, tokens.json, svg/). See docs/menu-kit-v2-gap-report.md.
-   Every rule is under .mk, which index.html sets on the menu screens and overlays only: the start
-   screen, camp, dungeon and battle keep their own look.
+   Every rule is under .mk, which index.html sets on the menu screens and overlays (and the dungeon's
+   dialog, #xDialog): the battle keeps its own look, and the dungeon HUD and pause menu are the Living Rune's (rune.css).
    Type roles: the kit's sizes are for Jersey 15 drawn at its own size; style.css draws it at 130%
    (size-adjust), so each size below is the kit size divided by 1.3 and renders at the kit size. */
 :root{
@@ -1589,3 +1589,17 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #labPick.mk .labpick>.winx{border:5px solid transparent!important; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch!important; background:none!important; clip-path:none!important; top:10px; right:10px;}
 #labPick.mk #lpFoes{margin-bottom:0;} #labPick.mk .panel.labpick{padding-bottom:8px;}
 #labPick.mk .labpick h2{width:100%; padding:0; margin:0; text-align:center; font-size:28px; line-height:34px; text-indent:0;}
+
+/* ---------- Duel a friend, the dungeon dialog and the curse picker ---------- */
+/* Host and Join: the kit's frame and face, like every other button */
+.mk .dutile{border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none; text-shadow:none; color:var(--mk-text); transform:none;}
+.mk .dutile:hover{background-image:var(--mk-face-hover);}
+.mk .dutile:active{background-image:var(--mk-face-down); border-image-source:url(menukit/frame.svg); transform:none;}
+.mk .dutile:focus-visible{outline:2px dashed var(--mk-text); outline-offset:-3px;}
+.mk .dutile b{font:400 var(--mk-t-value)/1.1 var(--font-b); color:var(--mk-text); text-shadow:none;}
+.mk .dutile small{font:400 var(--mk-t-body)/1.2 var(--font-b); color:var(--mk-muted);}
+/* the step track takes the kit's cyan, not the game's blue */
+.mk .dutrack li.on{color:var(--mk-cyan); border-bottom-color:var(--mk-cyan);} .mk .dutrack li.on::before{background:var(--mk-cyan);}
+/* the curse picker's empty-state line spans the grid, and its buttons keep their labels on one line */
+#pick.mk #pkCards .hint{grid-column:1/-1;}
+#pick.mk #pkOk,#pick.mk #pkCancel{white-space:nowrap;}

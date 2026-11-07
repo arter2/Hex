@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v266</title>
-<meta name="application-version" content="266">
+<title>Hexmancers v267</title>
+<meta name="application-version" content="267">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -420,7 +420,7 @@
 
   <!-- shared overlays -->
   <div id="shopSheet" class="overlay sheet mk"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls"><button id="shopSheetClose" class="btn ghost">Cancel</button><button id="shopBuy" class="btn"></button></div></div></div>
-  <div id="packOpen" class="overlay mk"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p id="poHint" class="hint center">Tap a card to turn it over</p><button id="poAll" class="btn ghost" hidden>Reveal all</button><button id="poDone" class="btn" hidden>Collect</button></div></div>
+  <div id="packOpen" class="overlay mk"><div class="pobox"><button id="poX" class="poX" aria-label="Collect and close"></button><h2 id="poTitle" class="potitle"></h2><p class="posub"><span id="poSub"></span></p><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="pohint"><span id="poHint">Tap a card to reveal it</span></p><div class="pobtns"><button id="poAll" class="btn" hidden>Reveal all</button><button id="poDone" class="btn" hidden>Collect</button></div><label class="poskip"><input type="checkbox" id="poSkip"><i></i>Skip animation</label></div></div>
   <!-- one pause menu for the dungeon and the battle -->
   <div id="runSheet" class="overlay">
     <div class="panel narrow">

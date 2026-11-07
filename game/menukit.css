@@ -1209,3 +1209,37 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 /* the stall's name: a drop shadow so it reads over the awning */
 #scrShop.mk .stallname{z-index:2; color:#fff3d6; background:none;
   text-shadow:0 2px 0 #000,0 2px 4px rgba(0,0,0,.95),0 0 6px rgba(0,0,0,.85);}
+
+/* ---- 20 Pack reveal (kit 20): a studded panel over the shop: title and count between rules, the
+   cards face down, the hint between rules, Reveal all (or Collect), Skip animation, a square close ---- */
+#packOpen.mk{background:rgba(2,5,8,.3); align-items:flex-start; padding:216px 21px 0;}
+#packOpen.mk .pobox{position:relative; width:100%; max-width:348px; margin:0 auto; padding:20px 12px 14px; gap:0; overflow:visible;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; clip-path:none; background:none; box-shadow:0 10px 26px rgba(0,0,0,.6);}
+#packOpen.mk .pobox::before{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat; z-index:3;}
+#packOpen.mk .poX{position:absolute; top:3px; right:3px; width:30px; height:29px; min-width:0; min-height:0; padding:0; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; background:#0b151a; cursor:pointer; z-index:4;}
+#packOpen.mk .poX::before{content:''; position:absolute; left:50%; top:50%; width:15px; height:15px; margin:-7.5px 0 0 -7.5px; background:#f0ebdc;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 1 9 9M9 1 1 9' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 1 9 9M9 1 1 9' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") center/contain no-repeat;}
+#packOpen.mk .potitle{margin:0; text-align:center; font-size:23px; letter-spacing:.04em; color:#f0ebdc;}
+#packOpen.mk .posub,#packOpen.mk .pohint{display:flex; align-items:center; gap:10px; width:100%; margin:4px 0 0; padding:0 18px; font:400 14px var(--font-b); color:#e3e0d4; letter-spacing:.04em; box-sizing:border-box;}
+#packOpen.mk .posub::before,#packOpen.mk .posub::after,#packOpen.mk .pohint::before,#packOpen.mk .pohint::after{content:''; flex:1; height:6px;
+  background:linear-gradient(#7b9aab,#7b9aab) center/100% 1px no-repeat;}
+#packOpen.mk .posub::before,#packOpen.mk .pohint::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") left center/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) 6px center/100% 1px no-repeat;}
+#packOpen.mk .posub::after,#packOpen.mk .pohint::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 .6 5.4 3 3 5.4 .6 3Z' fill='none' stroke='%238e9d9b' stroke-width='1'/%3E%3C/svg%3E") right center/6px no-repeat,linear-gradient(#7b9aab,#7b9aab) -6px center/100% 1px no-repeat;}
+#packOpen.mk .posub span,#packOpen.mk .pohint span{flex:none;}
+#packOpen.mk .pohint:has(#poHint[hidden]){visibility:hidden;}
+#packOpen.mk .postage{height:160px; margin-top:18px;}
+#packOpen.mk.burst .postage{height:0; margin:0;}
+#packOpen.mk .pofan{gap:13px; min-height:0; margin:18px 0 0;}
+#packOpen.mk .poslot{width:88px;}
+#packOpen.mk .pohint{margin-top:18px;}
+#packOpen.mk .pobtns{display:flex; justify-content:center; margin-top:14px; min-height:34px;}
+#packOpen.mk .pobtns .btn{width:158px; height:34px; min-height:0; font:400 17px var(--font-b); letter-spacing:.04em; color:#f0ebdc;
+  border:8px solid transparent; border-image:url(menukit/rim-sel-panel.svg) 12 fill / 8px / 0 stretch; background:none; clip-path:none; filter:drop-shadow(0 0 4px rgba(37,227,246,.4));}
+#packOpen.mk .pobtns .btn[hidden]{display:none;}
+#packOpen.mk .poskip{display:flex; align-items:center; gap:8px; margin-top:10px; font:400 13px var(--font-b); color:#c7cfd2; letter-spacing:.03em; cursor:pointer;}
+#packOpen.mk .poskip input{position:absolute; opacity:0; width:0; height:0;}
+#packOpen.mk .poskip i{width:13px; height:13px; border:1px solid #9fb0b8; background:#0a1318; display:grid; place-items:center;}
+#packOpen.mk .poskip input:checked+i::before{content:''; width:7px; height:7px; background:#3fc4dc;}
+#packOpen.mk .poskip input:focus-visible+i{outline:2px solid #3fc4dc; outline-offset:2px;}
+#packOpen.mk .poslot{width:95px;} #packOpen.mk .pofan{gap:12px; margin-top:20px;} #packOpen.mk .pohint{margin-top:22px;}

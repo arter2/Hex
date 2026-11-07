@@ -103,8 +103,13 @@ const bNeed=d=>d.boss||d.mini||d.rare?1:BEST_KNOW;
 function bKnown(e){ const d=e.def||ENEMY_DEFS[e.id]||{}; const E=bState()[bKey(e)]; return !!E&&E.kills>=bNeed(d); }
 function openBestiary(){ renderBestiary(); show('scrBestiary'); }
 function renderBestiary(){ const S=bState(), box=$('#bestList'); if(!box) return; const ids=Object.keys(S).filter(id=>ENEMY_DEFS[id]);
-  $('#bestCount').textContent=ids.filter(id=>S[id].kills>=bNeed(ENEMY_DEFS[id])).length+' / '+ids.length+' known';
-  box.innerHTML=ids.length?'':'<div class="bempty"><h3>Your first discovery awaits</h3><p class="hint">Nothing met yet. Every creature you fight is written down here.</p><button class="btn ghost bback">Return to camp</button></div>';
+  $('#bestCount').textContent=ids.length?ids.filter(id=>S[id].kills>=bNeed(ENEMY_DEFS[id])).length+' / '+ids.length+' known':'0 discovered';
+  $('#scrBestiary').classList.toggle('bnone',!ids.length);
+  // nothing met yet (kit 22): the book between two pages, what it is for, and the way back
+  box.innerHTML=ids.length?'':'<div class="bempty"><p class="bintro">Every creature you face is recorded here.</p><img class="bbook" src="art/menu/bestiary-book.webp" alt="">'
+    +'<h3>Your first discovery awaits</h3><p class="bsub">Defeat creatures to learn their strengths and weaknesses.</p><div class="mkrule"></div>'
+    +'<p class="bweak"><img src="menukit/icons/weakness.webp" alt="">Defeat '+BEST_KNOW+' of a kind to reveal a weakness.</p>'
+    +'<button class="btn ghost bback"><img src="menukit/icons/camp.webp" alt="">Return to camp</button></div>';
   const back=box.querySelector('.bback'); if(back) back.onclick=()=>openCamp();
   ids.sort((a,b)=>(ENEMY_DEFS[a].boss?1:0)-(ENEMY_DEFS[b].boss?1:0)||ENEMY_DEFS[a].name.localeCompare(ENEMY_DEFS[b].name));
   for(const id of ids){ const d=ENEMY_DEFS[id], E=S[id], known=E.kills>=bNeed(d), col=COLORS[d.color]||{c:'#ccc',icon:'',name:d.color};

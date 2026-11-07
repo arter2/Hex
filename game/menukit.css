@@ -1252,3 +1252,41 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
   #scrDeck.mk .dktop h2,#scrDeck.mk .dkpanel,#scrDeck.mk .dkmenu,:is(#detail,#dkPeek).dtkit .dtbar,#shopSheet.mk .ssheet,#packOpen.mk .pobox){
   border-image-slice:12!important; background-color:#03141a!important; background-image:url(art/menu/panel-smoke.webp)!important; background-size:cover!important;
   background-position:center!important; background-repeat:no-repeat!important; background-origin:padding-box!important; background-clip:padding-box!important;}
+
+/* ---- 22 Bestiary, nothing met yet (kit 22): the header lower under the torches, one framed panel with the
+   book and its pages, the title, what to do, the weakness rule, Return to camp ---- */
+#scrBestiary.mk.bnone{background-image:url(art/menu/torch-l.webp),url(art/menu/torch-r.webp),radial-gradient(70% 18% at 50% 100%,rgba(30,120,255,.35),transparent 70%),
+  linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp);}
+#scrBestiary.mk.bnone>.bar{margin-top:41px;}
+#scrBestiary.mk.bnone .bhint{display:none;}
+#scrBestiary.mk.bnone #bestCount{font-size:17px; color:#45d98a;}
+#scrBestiary.mk .bempty{position:relative; margin:19px -8px 0; padding:22px 18px 22px; display:flex; flex-direction:column; align-items:center; text-align:center;}
+#scrBestiary.mk .bempty::after{display:none;}
+#scrBestiary.mk .bintro{margin:0; font-size:15px; letter-spacing:.03em; color:#e3e0d4;}
+#scrBestiary.mk .bbook{width:332px; max-width:100%; height:auto; margin:18px 0 0;
+  filter:drop-shadow(0 10px 10px rgba(0,0,0,.55));}
+#scrBestiary.mk .bempty::before{content:''; position:absolute; left:8%; right:8%; top:205px; height:90px; pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(40,90,130,.45),rgba(20,50,80,.2) 55%,transparent 75%);}
+#scrBestiary.mk .bbook,#scrBestiary.mk .bempty>*{position:relative;}
+#scrBestiary.mk .bempty h3{margin:30px 0 0; font-size:25px; letter-spacing:.02em; color:#f0ebdc;}
+#scrBestiary.mk .bsub{margin:10px 22px 0; font-size:15px; line-height:1.4; letter-spacing:.03em; color:#d8d6cc;}
+#scrBestiary.mk .bempty>.mkrule{align-self:stretch; margin:22px 10px 0; height:8px;}
+#scrBestiary.mk .bweak{display:flex; align-items:center; gap:12px; margin:14px 0 0; font-size:14px; letter-spacing:.03em; color:#e3e0d4;}
+#scrBestiary.mk .bweak img{width:20px; height:20px;}
+#scrBestiary.mk .bback{align-self:stretch; height:43px; min-height:0; margin:22px 4px 0; display:flex; flex-direction:row; align-items:center; justify-content:center; gap:22px;
+  font:400 18px var(--font-b); letter-spacing:.04em; color:#f0ebdc; border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:none; clip-path:none;}
+#scrBestiary.mk .bback img{width:38px; height:30px; object-fit:contain;}
+#scrBestiary.mk.bnone>.bar{margin-top:52px;}
+#scrBestiary.mk.bnone #bestCount{font-size:15px;}
+#scrBestiary.mk .bempty{margin-top:18px; padding:20px 14px 20px;}
+#scrBestiary.mk .bintro{font-size:13px; white-space:nowrap;}
+#scrBestiary.mk .bbook{width:356px; max-width:none; margin:14px -16px 0;}
+#scrBestiary.mk .bempty h3{width:100%; margin-top:22px; font-size:21px; text-align:center; white-space:nowrap;}
+#scrBestiary.mk .bsub{margin:8px 30px 0; font-size:13px; line-height:1.35;}
+#scrBestiary.mk .bempty>.mkrule{margin-top:18px;}
+#scrBestiary.mk .bweak{margin-top:12px; font-size:12.5px; white-space:nowrap; text-align:left;}
+#scrBestiary.mk .bback{margin-top:24px; height:40px; font-size:16px; gap:18px;}
+#scrBestiary.mk .bempty::before{top:170px;}
+#scrBestiary.mk.bnone{background-image:url(art/menu/dk-torch-l.webp),url(art/menu/dk-torch-r.webp),radial-gradient(70% 18% at 50% 100%,rgba(30,120,255,.35),transparent 70%),
+  linear-gradient(rgba(2,6,10,.45),rgba(2,6,10,.12) 30%,rgba(2,6,10,.12) 80%,rgba(2,6,10,.3)),url(art/menu/brick.webp);
+  background-size:40px auto,40px auto,auto,auto,300px; background-position:left 16px top 4px,right 16px top 4px,0 0,0 0,0 0; background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat;}

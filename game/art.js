@@ -1133,8 +1133,9 @@ function cardArtSprite(c,kind){ const v=cardArtVariants(c), at=v&&v.atlas; if(!a
   return 'background-image:'+L.map(a=>'url('+a.url+')').join(',')+';background-size:'+L.map(a=>a.size[0]+'% '+a.size[1]+'%').join(',')
     +';background-position:'+L.map(a=>a.pos[0]+'% '+a.pos[1]+'%').join(',')+';background-repeat:no-repeat'; }
 /* Card-art sheets are fetched in the background while the title is up, three at a time at low priority, and the
-   Image objects are kept so the browser's memory cache holds them: every thumbnail sheet (all short cards), then
-   the full sheets of the cards asked for (artWarm: the active deck, whose held card shows full in a fight). */
+   Image objects are kept so the browser's memory cache holds them: the active deck's thumbnail sheets first, then
+   its full sheets (artWarm: the deck, whose held card shows full in a fight). Sheets for cards outside the deck
+   (collection, shop, rewards) are not fetched ahead: a tile's background-image loads when that tile first shows. */
 const ART_HOLD=new Map(), ART_Q=[];
 let artBusy=0;
 function artPump(){ while(artBusy<3&&ART_Q.length){ const url=ART_Q.shift(); if(ART_HOLD.has(url)) continue;
@@ -1144,9 +1145,8 @@ function artWarm(ids,kind){ if(typeof document==='undefined'||typeof HEX_CARD_AR
   for(const id of ids){ const at=Object.prototype.hasOwnProperty.call(HEX_CARD_ART_VARIANTS,id)&&HEX_CARD_ART_VARIANTS[id].atlas, a=at&&at[kind];
     if(a&&!ART_HOLD.has(a.url)&&!ART_Q.includes(a.url)) ART_Q.push(a.url); }
   artPump(); }
-function artPreload(deck){ if(typeof HEX_CARD_ART_VARIANTS==='undefined') return;
-  if(!artPreload.done){ artPreload.done=1; artWarm(Object.keys(HEX_CARD_ART_VARIANTS),'thumb'); }
-  if(deck) artWarm(deck,'full'); }
+function artPreload(deck){ if(typeof HEX_CARD_ART_VARIANTS==='undefined'||!deck) return;
+  artWarm(deck,'thumb'); artWarm(deck,'full'); }
 // a card's art for small places (deck tiles, icons): a thumbnail-sheet sprite when it has painted art, else its image
 function cardArtThumb(c,cls,style){ const s=cardArtSprite(c,'thumb');
   return s?`<span class="${cls||''} art-sprite" style="${s};${style||''}" aria-hidden="true"></span>`:`<img${cls?` class="${cls}"`:''} src="${artURL(c)}" alt=""${style?` style="${style}"`:''}>`; }

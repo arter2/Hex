@@ -1525,3 +1525,14 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 #lvlUp.mk .dial{height:36px; width:209px;}
 #lvlUp.mk .dial .tape i b{font-size:10.4px;} #lvlUp.mk .dial .tape i.cur b{font-size:13.5px;}
 #lvlUp.mk .ccrow{grid-template-columns:36px 64px 209px; column-gap:8px;} #lvlUp.mk .ccrow .ccname{padding-right:8px;}
+/* level-up: icons further left, the stat's value on the right (rolls with the dial), the effect line centred between the dial and the divider */
+#lvlUp.mk .ccrow{grid-template-columns:30px 60px 209px 30px; column-gap:5px; justify-content:center;}
+#lvlUp.mk .ccrow .ccico{padding-left:0; justify-content:center; border-right:0;}
+#lvlUp.mk .ccrow .ccname{padding-right:6px;}
+#lvlUp.mk .ccval{display:block; grid-row:1; grid-column:4; text-align:center;} #lvlUp.mk .ccval b{font-size:22px;} #lvlUp.mk .ccval small{display:none;}
+#lvlUp.mk .cceff{grid-column:2/5; margin-top:0; padding-top:8px;}
+#lvlUp.mk .ccstats .ccrow{padding-bottom:16px;}
+#lvlUp.mk .ccrow{grid-template-columns:28px 58px 209px 26px; column-gap:4px; padding-left:6px; padding-right:6px;}
+#lvlUp.mk .ccrow .ccico .statico{width:26px; height:26px;}
+#lvlUp.mk .ccrow .ccname{padding-right:4px;} #lvlUp.mk .ccrow .ccname span{font-size:10px;}
+#lvlUp.mk .ccval b{font-size:20px;}

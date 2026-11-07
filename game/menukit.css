@@ -1468,3 +1468,11 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 @media (orientation:portrait){ #bagUI.mk .bgtabs{gap:6px; padding-left:2px; padding-right:2px;} #bagUI.mk .bgtab{font-size:14.5px; letter-spacing:.01em; padding:0;} }
 @media (orientation:portrait){ #bagUI.mk .bgtabs{display:flex;} #bagUI.mk .bgtab{flex:1 1 auto; min-width:0; padding:0 6px; font-size:min(14.5px,3.75vw);} #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{padding:0 3px; font-size:min(12.5px,3.2vw);} }
 @media (orientation:portrait){ #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)) .bgtab{padding:0 1px; font-size:min(12.5px,3.05vw);} #bagUI.mk .bgtabs:has(.bgtab:nth-child(5)){gap:4px;} }
+/* v280: every gear slot one size; the label smaller so the item gets the room */
+@media (orientation:portrait){
+#bagUI.mk .bgslot,#bagUI.mk .bgslot.big{width:60px; height:54px; padding:1px 0 0; gap:0; justify-content:center;}
+#bagUI.mk .bgslot .lbl{font-size:7.5px; letter-spacing:.06em; line-height:1; margin-top:1px; opacity:.85;}
+#bagUI.mk .bgslot .ghost img,#bagUI.mk .bgslot.big .ghost img{width:36px; height:36px;}
+#bagUI.mk .bgslot>svg,#bagUI.mk .bgslot>img,#bagUI.mk .bgslot>canvas,#bagUI.mk .bgslot.big>svg,#bagUI.mk .bgslot.big>img,#bagUI.mk .bgslot.big>canvas{width:36px; height:36px;}
+}
+@media (orientation:portrait){ #bagUI.mk .bgfoot{padding-left:6px;} }

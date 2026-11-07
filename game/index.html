@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v293</title>
-<meta name="application-version" content="293">
+<title>Hexmancers v294</title>
+<meta name="application-version" content="294">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -486,13 +486,14 @@
     </div>
   </div>
   <!-- the lab button asks which lab (enemylab.js) -->
-  <div id="labPick" class="overlay">
+  <div id="labPick" class="overlay mk">
     <div class="panel narrow labpick">
       <h2>Lab</h2>
+      <div class="mkrule"></div>
       <p class="hint">What do you want to test?</p>
-      <button id="lpMove" class="btn">Movement<small>Walking, the joystick and dodging shots</small></button>
-      <button id="lpFoes" class="btn">Enemies<small>Summon any enemy, see and change its attacks</small></button>
-      <button id="lpCancel" class="btn ghost">Cancel</button>
+      <button id="lpMove" class="btn lpopt sel"><img src="art/menu/lp-move.webp" alt=""><i></i><span><b>Movement</b><small>Walking, the joystick and dodging shots</small></span></button>
+      <button id="lpFoes" class="btn lpopt"><img src="art/menu/lp-foes.webp" alt=""><i></i><span><b>Enemies</b><small>Summon any enemy, see and change its attacks</small></span></button>
+      <button id="lpCancel" class="btn ghost" hidden>Cancel</button>
     </div>
   </div>
   <div id="pick" class="overlay">

@@ -1565,3 +1565,26 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 /* level-up: even gutters - divider to dial = dial to its underline = 9px; the effect line centred below */
 #lvlUp.mk .ccstats .ccrow{grid-template-rows:36px auto; padding-top:5px; padding-bottom:14px;}
 #lvlUp.mk .cceff{margin-top:9px; padding-top:10px;}
+/* ---- 26 Training picker (kit 26): studded panel with the crystal, title and ✕, a rule, one line, two option rows (icon | title + line) ---- */
+#labPick.mk .panel.labpick{position:relative; width:min(250px,calc(100vw - 48px)); max-width:none; padding:14px 10px 12px; overflow:visible; display:flex; flex-direction:column; gap:0;
+  border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:url(art/menu/panel-smoke.webp) center/cover;}
+#labPick.mk .panel.labpick::before{content:''; position:absolute; left:50%; top:-20px; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat; z-index:3;}
+#labPick.mk .labpick h2{margin:0; font-size:21px; text-align:center; letter-spacing:.06em; line-height:30px;}
+#labPick.mk .labpick>.winx{position:absolute; top:8px; right:8px; width:28px; height:28px; min-width:0; min-height:0; border-width:5px; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch;}
+#labPick.mk .labpick .mkrule{margin:10px 4px 0;}
+#labPick.mk .labpick>.hint{margin:10px 0 14px; text-align:center; font-size:14px; letter-spacing:.04em; color:#e9e4d6;}
+#labPick.mk .lpopt{display:grid; grid-template-columns:52px 1px minmax(0,1fr); align-items:center; column-gap:10px; width:100%; height:56px; min-height:0; margin:0 0 12px; padding:0 8px 0 4px;
+  text-align:left; border:8px solid transparent; border-image:url(menukit/rim-panel.svg) 12 fill / 8px / 0 stretch; background:none;}
+#labPick.mk .lpopt:last-of-type{margin-bottom:0;}
+#labPick.mk .lpopt.sel{border-image-source:url(menukit/rim-sel-panel.svg); filter:drop-shadow(0 0 4px rgba(37,227,246,.45));}
+#labPick.mk .lpopt img{justify-self:center; max-width:46px; max-height:30px; image-rendering:pixelated;}
+#labPick.mk .lpopt>i{width:1px; height:30px; background:#7b9aab;}
+#labPick.mk .lpopt span{display:flex; flex-direction:column; min-width:0;}
+#labPick.mk .lpopt b{font:400 17px/1.05 var(--font-b); letter-spacing:.06em; color:#f3eee0;}
+#labPick.mk .lpopt small{margin-top:2px; font-size:11px; letter-spacing:.03em; color:#e3e0d4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#labPick.mk #lpCancel{display:none;}
+#labPick.mk .panel.labpick{width:min(300px,calc(100vw - 48px));} #labPick.mk .lpopt{height:64px;}
+#labPick.mk .lpopt small{white-space:normal; line-height:1.15;}
+#labPick.mk .panel.labpick{min-height:0; height:auto; padding-bottom:12px;}
+#labPick.mk .labpick>.winx{border:5px solid transparent!important; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch!important; background:none!important; clip-path:none!important; top:10px; right:10px;}
+#labPick.mk #lpFoes{margin-bottom:0;} #labPick.mk .panel.labpick{padding-bottom:8px;}

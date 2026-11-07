@@ -1594,6 +1594,7 @@ const CLOSERS={
   detail:()=>$('#detail').classList.remove('on'), pick:()=>$('#pick').classList.remove('on'),
   dkPeek:()=>$('#dkpClose').onclick(), xDialog:()=>xDlgClose(), bagUI:()=>closeBag(),
   lvlUp:()=>closeLevelUp(false), shopSheet:()=>$('#shopSheet').classList.remove('on'), runSheet:()=>closeRun(),
+  labPick:()=>$('#labPick').classList.remove('on'),
   reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
 };
 const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings','detail','dkPeek'];   // settings goes back with the ← every full screen has

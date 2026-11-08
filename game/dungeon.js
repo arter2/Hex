@@ -1005,8 +1005,22 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
    floor stands still. */
 // icons are decoded once and kept; a token stops a slow decode from painting over a later dialog's picture
 const XDLG_IMG={};
+// the box around a sprite's visible pixels, and the middle of its mass across (cached per sprite image)
+const XFIT=new WeakMap();
+function xFit(im){ if(XFIT.has(im)) return XFIT.get(im); let f=null;
+  try{ const W=im.width, H=im.height, t=document.createElement('canvas'); t.width=W; t.height=H; const tc=t.getContext('2d'); tc.drawImage(im,0,0);
+    const d=tc.getImageData(0,0,W,H).data; let x0=W, y0=H, x1=-1, y1=-1, sx=0, n=0;
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++) { const a=d[(y*W+x)*4+3]; if(a>96){ if(x<x0) x0=x; if(x>x1) x1=x; if(y<y0) y0=y; if(y>y1) y1=y; sx+=(x+.5)*a; n+=a; } }
+    if(n) f={x:x0, y:y0, w:x1-x0+1, h:y1-y0+1, mx:sx/n}; }catch(e){}
+  XFIT.set(im,f); return f; }
 function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'), tok=cv.tok=(cv.tok||0)+1; c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
-  const draw=im=>{ if(im) c.drawImage(im,0,0,im.width,im.height,0,0,96,96); };
+  const draw=im=>{ if(!im||!im.width) return; const f=xFit(im); if(!f){ c.drawImage(im,0,0,im.width,im.height,0,0,96,96); return; }
+    // the figure's own pixels, scaled to fill the box (whole-pixel steps when that costs little) and centred on its mass,
+    // so a long staff or a wide cloak does not push the body off to one side
+    const room=84; let k=Math.min(room/f.w,room/f.h); if(k>=1&&Math.floor(k)/k>=.8) k=Math.floor(k);
+    const w=f.w*k, h=f.h*k; let x=48-(f.mx-f.x)*k, y=48-h/2;
+    x=Math.min(Math.max(x,96-6-w),6); if(w>96-12) x=48-w/2;
+    c.drawImage(im,f.x,f.y,f.w,f.h,Math.round(x),Math.round(y),Math.round(w),Math.round(h)); };
   if(o.look){ const s=lookSprite(o.look,'front',true); draw(s&&s.img); }
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }
   else if(o.icon){ const url=uiIconURL(o.icon[0],o.icon[1]), im=XDLG_IMG[url]||(XDLG_IMG[url]=Object.assign(new Image(),{src:url}));

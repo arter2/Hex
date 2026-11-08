@@ -63,10 +63,10 @@ const CATS={
   cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards']]],
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
-  character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle']]] };
+  character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle'],['@battle','Battle','battle']]] };
 document.querySelectorAll('#scrMenu .hm-cat').forEach(b=>b.onclick=()=>{ const [t,list]=CATS[b.dataset.cat];
   openDlg(t,'<div class="hm-list">'+list.map(([id,label,ic])=>`<button class="hm-btn" type="button" data-go="${id}">${ico(ic)}<span>${label}</span>${id==='goChar'&&save&&pointsLeft(ensureChar(save))>0?'<b class="hm-badge">+'+pointsLeft(save.char)+'</b>':''}</button>`).join('')+'</div>',b);
-  q('#hmDlgB').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>{ q('#hmDlg').classList.remove('on'); dlgBack=null; const go=document.getElementById(x.dataset.go); if(go) withChar(()=>go.click()); }); });
+  q('#hmDlgB').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>{ q('#hmDlg').classList.remove('on'); dlgBack=null; if(x.dataset.go==='@battle') return goPlay('battle'); const go=document.getElementById(x.dataset.go); if(go) withChar(()=>go.click()); }); });
 q('#mmDetails').onclick=e=>{ if(!save) return; const A=areaOf(pickDepth);
   let deck=[]; try{ deck=activeDeck().list; }catch(_){}
   openDlg('Run details',`<p class="hm-dl"><b style="color:${A.glow}">${esc_(A.name)}</b> · depth ${pickDepth}${isBossDepth(pickDepth)?' · boss floor':''}</p><p class="hm-dl">${affinityHTML(A,deck)||'No element rules here.'}</p>`,e.currentTarget); };

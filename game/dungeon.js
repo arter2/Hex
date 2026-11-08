@@ -1005,7 +1005,7 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
    floor stands still. */
 // icons are decoded once and kept; a token stops a slow decode from painting over a later dialog's picture
 const XDLG_IMG={};
-// the box around a sprite's visible pixels, and the middle of its mass across (cached per sprite image)
+// the box around a sprite's visible pixels (cached per sprite image)
 const XFIT=new WeakMap();
 function xFit(im){ if(XFIT.has(im)) return XFIT.get(im); let f=null;
   try{ const W=im.width, H=im.height, t=document.createElement('canvas'); t.width=W; t.height=H; const tc=t.getContext('2d'); tc.drawImage(im,0,0);
@@ -1015,11 +1015,10 @@ function xFit(im){ if(XFIT.has(im)) return XFIT.get(im); let f=null;
   XFIT.set(im,f); return f; }
 function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'), tok=cv.tok=(cv.tok||0)+1; c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
   const draw=im=>{ if(!im||!im.width) return; const f=xFit(im); if(!f){ c.drawImage(im,0,0,im.width,im.height,0,0,96,96); return; }
-    // the figure's own pixels, scaled to fill the box (whole-pixel steps when that costs little) and centred on its mass,
-    // so a long staff or a wide cloak does not push the body off to one side
+    // the figure's own pixels (staff and cloak included), scaled to fill the box (whole-pixel steps when that costs little)
+    // and centred so the empty space is the same on the left and right, and on the top and bottom
     const room=84; let k=Math.min(room/f.w,room/f.h); if(k>=1&&Math.floor(k)/k>=.8) k=Math.floor(k);
-    const w=f.w*k, h=f.h*k; let x=48-(f.mx-f.x)*k, y=48-h/2;
-    x=Math.min(Math.max(x,96-6-w),6); if(w>96-12) x=48-w/2;
+    const w=f.w*k, h=f.h*k, x=(96-w)/2, y=(96-h)/2;
     c.drawImage(im,f.x,f.y,f.w,f.h,Math.round(x),Math.round(y),Math.round(w),Math.round(h)); };
   if(o.look){ const s=lookSprite(o.look,'front',true); draw(s&&s.img); }
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }

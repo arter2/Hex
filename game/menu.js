@@ -32,6 +32,7 @@ const EXTRA={
   storm:'<path d="M14 1 4 14h7l-3 9 12-14h-7l3-8Z" fill="#ffe24d" stroke="#fff6b8" stroke-width=".8"/>',
   light:'<circle cx="12" cy="12" r="5" fill="#fff0b3" stroke="#f5cb60"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4M4 4l3 3m10 10 3 3M20 4l-3 3M7 17l-3 3" stroke="#f5cb60" stroke-width="2"/>',
   shadow:'<path d="M15 2a10 10 0 1 0 7 15A8 8 0 0 1 15 2Z" fill="#e0588f" stroke="#ffb3cf" stroke-width=".8"/>',
+  lab:'<path d="M9 2h6v2h-1v5l6 11v2H4v-2l6-11V4H9z" fill="#2a3a44" stroke="#9fe8ff" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 15h10l2.4 5H4.6z" fill="#5fd6a0"/><path d="M10 17h2v2h-2zM14 16h1.5v1.5H14z" fill="#d8ffee"/>',
   verdant:IC.paths.leaf, fire:IC.paths.fire };
 const paths=n=>EXTRA[n]||IC.paths[n]||IC.paths.empty;
 const iconUrl=n=>url(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${paths(n)}</svg>`);
@@ -63,8 +64,10 @@ const CATS={
   cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards']]],
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
-  character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle'],['@battle','Battle','battle']]] };
+  character:['Character',[['goChar','Character','character']]],
+  lab:['Lab',[['lpMove','Movement lab','map'],['lpFoes','Enemy lab','skull'],['@battle','Battle','battle']]] };
 document.querySelectorAll('#scrMenu .hm-cat').forEach(b=>b.onclick=()=>{ const [t,list]=CATS[b.dataset.cat];
+  if(list.length===1){ const go=document.getElementById(list[0][0]); if(go) withChar(()=>go.click()); return; }   // one place: go straight there
   openDlg(t,'<div class="hm-list">'+list.map(([id,label,ic])=>`<button class="hm-btn" type="button" data-go="${id}">${ico(ic)}<span>${label}</span>${id==='goChar'&&save&&pointsLeft(ensureChar(save))>0?'<b class="hm-badge">+'+pointsLeft(save.char)+'</b>':''}</button>`).join('')+'</div>',b);
   q('#hmDlgB').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>{ q('#hmDlg').classList.remove('on'); dlgBack=null; if(x.dataset.go==='@battle') return goPlay('battle'); const go=document.getElementById(x.dataset.go); if(go) withChar(()=>go.click()); }); });
 q('#mmDetails').onclick=e=>{ if(!save) return; const A=areaOf(pickDepth);

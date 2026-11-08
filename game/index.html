@@ -346,7 +346,7 @@
     <div id="xHurt" class="hurt-fx"></div>
     <div id="xBang" class="x-bang"></div>
     <div id="xBottom">
-      <div id="xTipCard" class="xtip" role="status"><p id="xTipText"></p><div class="xtipbtns"><button id="xTipOk" class="btn mini">Got it</button><button id="xTipOff" class="btn ghost mini">Turn off tips</button></div></div>
+      <div id="xTipCard" class="xtip mk" role="status"><div class="xtiphd"><span id="xTipHead"></span><span id="xTipStep"></span></div><p id="xTipText"></p><div class="xtipbtns"><button id="xTipOk" class="btn mini">Got it</button><button id="xTipOff" class="btn ghost mini">Turn off tips</button></div><i class="xtipbar"><b id="xTipBar"></b></i></div>
       <div id="xLog"></div>
       <div class="controls">
         <button id="xStrike" class="btn strike">Strike<small class="k">Space</small></button>
@@ -555,7 +555,8 @@
     <div class="panel xdlg">
       <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
       <p id="xdText"></p>
-      <div id="xdTabs" class="tabs"></div>
+      <div id="xdReward" class="xdreward-row" hidden></div>
+      <div id="xdTabs" class="tabs" role="tablist"></div>
       <div id="xdBody"></div>
       <div id="xdBtns" class="controls two"></div>
     </div>
@@ -764,7 +765,7 @@
   </div>
   <div id="xFps" style="display:none"></div>
   <div id="peek" class="peek"></div>
-  <div id="tip" class="tip"></div>
+  <div id="tip" class="tip" role="status" aria-live="polite"></div>
 </div>
 <script>
 /* Painted art (stone, sprites, glows) lives in canvases the page never shows. On a phone the browser

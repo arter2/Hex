@@ -1609,8 +1609,20 @@ html body .mk .card>.popx{border-radius:0; background:var(--mk-face); border:1px
 .mk .reward{border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; border-radius:0; background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none;}
 .mk .reward span{font:400 var(--mk-t-control)/1.15 var(--font-b); color:var(--mk-text);}
 .mk .reward small{font:400 var(--mk-t-body)/1.25 var(--font-b); color:var(--mk-muted);}
-/* the toast (#tip, "Not enough gold"): the kit's frame and face, one line of Jersey 15 */
-html body #tip.tip{border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; border-radius:0; background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none; padding:3px 6px; font:400 var(--mk-t-control)/1.2 var(--font-b); color:var(--mk-text); text-align:center; max-width:calc(100vw - 40px);}
+/* the toast (#tip): the message kit's shell. A dark chamfered face, a thin edge in the kind's color, a glyph, a title and an
+   optional grey second line (ui.js tip). Errors and long notices stay until tapped. */
+html body #tip.tip{--k:var(--mk-cyan); --g:url(menukit/msg/icon-info.svg); --sh:url(menukit/msg/toast-info.svg); display:flex; align-items:center; gap:10px; width:max-content; max-width:min(366px,calc(100vw - 24px));
+  padding:1px 6px 1px 4px; border:8px solid transparent; border-image:var(--sh) 8 fill / 8px / 0 stretch; border-radius:0; background:none; clip-path:none;
+  box-shadow:none; filter:drop-shadow(0 6px 12px rgba(0,0,0,.55));
+  font:400 var(--mk-t-control)/1.2 var(--font-b); color:var(--mk-text); text-align:left; pointer-events:none;}
+html body #tip.tip.stay{pointer-events:auto; cursor:pointer;}
+html body #tip.k-success{--k:var(--mk-mint); --g:url(menukit/msg/icon-check.svg); --sh:url(menukit/msg/toast-success.svg);}
+html body #tip.k-warning{--k:var(--mk-gold); --g:url(menukit/msg/icon-warning.svg); --sh:url(menukit/msg/toast-warning.svg);}
+html body #tip.k-error{--k:var(--mk-danger); --g:url(menukit/msg/icon-error.svg); --sh:url(menukit/msg/toast-error.svg);}
+html body #tip.k-quest{--k:#cc82ce; --g:url(menukit/msg/icon-quest.svg); --sh:url(menukit/msg/toast-quest.svg);}
+#tip .tipi{flex:none; width:20px; height:20px; background:var(--k); -webkit-mask:var(--g) center/contain no-repeat; mask:var(--g) center/contain no-repeat;}
+#tip .tipt{min-width:0;} #tip .tipt b{display:block; font-weight:400;}
+#tip .tipt small{display:block; margin-top:2px; font:400 var(--mk-t-body)/1.2 var(--font-b); color:var(--mk-muted);}
 /* the card peek (#peek, hold a card to read it): the card keeps its own frame; the info line under it and the X on its corner take the kit's */
 html body #peek .peekinfo{border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none; padding:0 8px; font:400 var(--mk-t-control)/1.25 var(--font-b); color:var(--mk-text); text-align:center;}
 html body #peek .card>.popx,html body #peek .card.kit>.popx{width:40px; height:40px; top:-16px; right:-16px; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; border-radius:0; background:none; box-shadow:none; font-size:0; color:var(--mk-text);}
@@ -1631,3 +1643,70 @@ html body #peek .card>.popx::before{content:''; display:block; width:18px; heigh
 
 /* the pause menu (a kit window since it left rune.css): the place line sits under the title */
 #pause #pauseWhere{text-align:left; margin:2px 0 12px;}
+
+/* ---- The dungeon tip card (#xTipCard, explore.js xTip): the message kit's tutorial shell with the mounted diamond,
+   a cyan heading, your progress through the tips (4 / 10) and a thin cyan line that fills as you learn them.
+   It hides while a dungeon dialog or shop is open, and comes back when it closes. ---- */
+html body #xTipCard.xtip{position:relative; margin:14px 0 8px; padding:4px 8px 8px; max-width:min(366px,100%); border:8px solid transparent; border-image:url(menukit/msg/tutorial-shell.svg) 8 fill / 8px / 0 stretch;
+  border-radius:0; background:none; box-shadow:none; clip-path:none; filter:drop-shadow(0 6px 14px rgba(0,0,0,.55)); color:var(--mk-text);}
+html body #xTipCard.xtip::before{content:''; position:absolute; z-index:3; top:-26px; left:50%; width:24px; height:24px; margin-left:-12px; background:url(menukit/diamond-mounted.png) center/contain no-repeat; pointer-events:none;}
+#xTipCard .xtiphd{display:flex; justify-content:space-between; gap:8px; font:400 var(--mk-t-meta)/1.2 var(--font-b); letter-spacing:.06em; text-transform:uppercase; color:var(--mk-cyan);}
+#xTipCard .xtiphd #xTipStep{color:var(--mk-muted); letter-spacing:0;}
+html body #xTipCard.xtip p{margin:6px 0 10px; font:400 var(--mk-t-section)/1.2 var(--font-b); color:var(--mk-text);}
+#xTipCard .xtipbtns{gap:8px; flex-wrap:nowrap;} #xTipCard .xtipbtns .btn{flex:1; min-width:0;}
+html body #xBottom #xTipCard .btn.mini{min-height:40px; font:400 var(--mk-t-control)/1 var(--font-b);}
+#xTipCard .xtipbar{display:block; height:2px; margin:10px 0 0; background:rgba(98,111,112,.45);}
+#xTipCard .xtipbar b{display:block; height:100%; width:0; background:var(--mk-cyan); transition:width .3s;}
+body:has(#xDialog.on) #xTipCard.xtip.on{visibility:hidden;}
+
+/* ---- Dungeon dialogs and merchants (#xDialog, dungeon.js xDlg / xTrade / xSheet): the message kit's NPC window ----
+   The kit's steel close square (a 34px face in a 48px target), a reward badge apart from your wallet, connected tabs
+   (rounded 4px tops, square bottoms; the active one taller with a cyan top edge, opening into the list), one attached
+   scrolling list, gold-coin price buttons, and the item sheet you confirm before buying. */
+#xDialog.mk .winx{border:0; border-image:none; background:url(menukit/msg/close-control.svg) center/34px 34px no-repeat; clip-path:none; top:2px; right:2px;}
+#xDialog.mk .winx::before{display:none;}
+#xDialog.mk .winx:hover{filter:brightness(1.25);}
+#xDialog #xdTitle{font:400 var(--mk-t-value)/1.05 var(--font-b);}
+#xDialog #xdGold.xdreward{padding:3px 10px; border:1px solid var(--mk-gold); background:linear-gradient(180deg,#2a2416,#14120c); color:var(--mk-gold); clip-path:var(--mk-chamfer);}
+#xDialog .xdreward-row{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; margin:2px 0; border-block:1px solid rgba(98,111,112,.27); font:400 var(--mk-t-body)/1.2 var(--font-b); color:var(--mk-muted);}
+#xDialog .xdreward-row[hidden]{display:none;}
+#xDialog .xdreward-row b{display:inline-flex; align-items:center; gap:5px; font-weight:400; color:var(--mk-gold); font-size:var(--mk-t-control);}
+#xDialog #xdTabs[hidden]{display:none;}
+#xDialog .tabs#xdTabs:not([hidden]){display:flex; align-items:flex-end; gap:0; height:42px; flex:none; position:relative; z-index:1; margin-top:4px;}
+#xDialog .xdtab{flex:1; min-width:0; height:36px; padding:3px 6px; font:400 var(--mk-t-control)/1 var(--font-b); color:var(--mk-muted); background:#0b1419; border:1px solid var(--mk-steel); border-radius:4px 4px 0 0; cursor:pointer;}
+#xDialog .xdtab+.xdtab{margin-left:-1px;}
+#xDialog .xdtab:hover{background:#1b2c33;} #xDialog .xdtab:active{background:#101a1e;}
+#xDialog .xdtab[aria-selected=true]{height:42px; color:var(--mk-text); background:#14232a; border-top:2px solid var(--mk-cyan); border-bottom-color:#14232a; z-index:2;}
+#xDialog .xdtab:focus-visible{outline:2px dashed var(--mk-cyan); outline-offset:-5px;}
+#xDialog #xdBody.stock{margin-top:-7px; padding:2px 10px; border:1px solid var(--mk-steel); background:linear-gradient(#14232a,#0d181c); gap:0;}
+#xDialog #xdBody.stock .xrow{background:none; border:0; border-bottom:1px solid rgba(98,111,112,.4); padding:8px 0; min-height:64px;}
+#xDialog #xdBody.stock .xrow:last-child{border-bottom:0;}
+#xDialog #xdBody.stock>.hint{margin:12px 0;} #xDialog #xdBody.stock>.btn{align-self:flex-start; margin:0 0 12px;}
+#xDialog .xrow .btn.price{display:inline-flex; flex-direction:row; align-items:center; justify-content:center; gap:5px; min-width:92px;}
+#xDialog .xrow .btn.price.short{color:var(--mk-muted); filter:saturate(0) brightness(.8);}
+/* a dialog with tabs keeps its header and its Leave button still; only the list scrolls */
+#xDialog .panel.xdlg.tabbed{overflow:hidden; max-height:calc(100svh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+#xDialog .panel.xdlg.tabbed #xdBody{flex:0 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain;}
+#xDialog .panel.xdlg.tabbed #xdBtns{flex:none;}
+/* the item sheet */
+#xDialog .xsheet{display:flex; flex-direction:column; gap:10px; padding:12px; border:1px solid var(--mk-steel); background:linear-gradient(#14232a,#0d181c);}
+#xDialog .xshtop{display:flex; align-items:center; gap:12px;} #xDialog .xshtop .pic{display:flex; width:48px; height:48px; align-items:center; justify-content:center; flex:none;}
+#xDialog .xshtop .pic>*{transform:scale(1.4);}
+#xDialog .xshtop b{font:400 var(--mk-t-value)/1.1 var(--font-b); color:var(--mk-text);}
+#xDialog .xshdesc{margin:0; font:400 var(--mk-t-body)/1.35 var(--font-b); color:var(--mk-muted);}
+#xDialog .xshrows{display:flex; flex-direction:column; border-top:1px solid rgba(98,111,112,.4);}
+#xDialog .xshrows>div{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid rgba(98,111,112,.4); font:400 var(--mk-t-control)/1.2 var(--font-b); color:var(--mk-muted);}
+#xDialog .xshrows b{display:inline-flex; align-items:center; gap:5px; font-weight:400; color:var(--mk-text);} #xDialog .xshrows i{font-style:normal;} #xDialog .xshrows i.neg{color:var(--mk-danger);}
+#xDialog .xsherr{margin:0; font:400 var(--mk-t-control)/1.2 var(--font-b); color:var(--mk-gold);}
+#xDialog .xsheet .controls{margin:0;}
+/* a phone held sideways: the merchant on the left, the tabs and the scrolling list on the right, Leave across the bottom */
+@media (orientation:landscape) and (max-height:520px){
+  #xDialog .panel.xdlg.tabbed{display:grid; grid-template-columns:minmax(170px,34%) minmax(0,1fr); grid-template-rows:auto auto auto minmax(0,1fr) auto; column-gap:16px; max-width:min(820px,100%);}
+  #xDialog .xdlg.tabbed>.xdh{grid-column:1; grid-row:1 / 3; grid-template-columns:auto minmax(0,1fr); align-self:start;}
+  #xDialog .xdlg.tabbed>.xdh #xdGold{grid-column:1 / -1; justify-self:start;}
+  #xDialog .xdlg.tabbed>#xdText{grid-column:1; grid-row:3 / 5; align-self:start;}
+  #xDialog .xdlg.tabbed>#xdTabs{grid-column:2; grid-row:1; margin-right:44px;}
+  #xDialog .xdlg.tabbed>#xdBody{grid-column:2; grid-row:2 / 5;}
+  #xDialog .xdlg.tabbed>#xdBtns{grid-column:1 / -1; grid-row:5;}
+  #xDialog .xdlg.tabbed>.winx{position:absolute;}
+  #xDialog .xdlg.tabbed #xdTitle{font:400 var(--mk-t-value)/1.05 var(--font-b);} #xDialog .xdlg.tabbed #xdSub{font:400 var(--mk-t-body)/1.2 var(--font-b);} }

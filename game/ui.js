@@ -14,9 +14,33 @@ addEventListener('pagehide',()=>{ if(PERSIST_SOON) persist(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden&&PERSIST_SOON) persist(); });
 const activeDeck=()=>save.decks[save.active];
 
-function show(id){ $('#tip').classList.remove('on'); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
+function show(id){ tipClear(); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
   if(id==='scrExplore'&&typeof EX!=='undefined'&&EX&&EX.active&&typeof xLoopStart==='function') xLoopStart(); }   // the dungeon's loop stops while another screen covers it
-let tipT=0; function tip(msg,ms){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),ms||1400); }
+/* Pop-up messages (#tip): one at a time, each with a glyph and a colored edge for its kind: info, success, warning, error, quest.
+   tip(msg) is info, or a warning when it reads like one ("Not enough gold", "You need…"); tip(msg,ms,{kind,sub}) picks the kind and
+   adds a second line. Info, success and quest last 2–2.5s, warnings 3s; errors and long notices (ms of 6s or more) stay until tapped.
+   A warning or error replaces what is showing; the rest wait their turn, and info and quest also wait while a dungeon dialog is open.
+   The same message twice in a row shows once. */
+const TOAST_MS={info:2000, success:2500, quest:2500, warning:3000};
+const TOAST_WARN=/^(not enough|you need|you are already|nothing to|no room|can.t |cannot |your bag is full)/i;
+let tipT=0, tipQ=[], tipCur=null;
+const tipSame=(a,b)=>a&&b&&a.msg===b.msg&&a.sub===b.sub;
+function tip(msg,ms,o){ o=o||{}; msg=String(msg); const kind=o.kind||(TOAST_WARN.test(msg)?'warning':'info');
+  const m={msg, sub:o.sub||'', kind, stay:kind==='error'||ms>=6000};
+  if(tipSame(tipCur,m)){ if(!m.stay){ clearTimeout(tipT); tipT=setTimeout(tipDone,TOAST_MS[kind]); } return; }
+  if(tipQ.some(x=>tipSame(x,m))) return;
+  if(kind==='warning'||kind==='error'||!tipCur) tipShow(m); else tipQ.push(m); }
+function tipHeld(m){ return (m.kind==='info'||m.kind==='quest')&&$('#xDialog').classList.contains('on'); }
+function tipShow(m){ if(tipHeld(m)){ tipQ.unshift(m); return; }
+  const t=$('#tip'); clearTimeout(tipT); tipCur=m;
+  t.className='tip on k-'+m.kind+(m.stay?' stay':''); t.setAttribute('role',m.kind==='error'?'alert':'status');
+  t.innerHTML='<i class="tipi" aria-hidden="true"></i><span class="tipt"><b>'+esc(m.msg)+'</b>'+(m.sub?'<small>'+esc(m.sub)+'</small>':'')+'</span>';
+  t.onclick=m.stay?()=>tipDone():null;
+  if(!m.stay) tipT=setTimeout(tipDone,TOAST_MS[m.kind]); }
+function tipDone(){ clearTimeout(tipT); tipCur=null; $('#tip').classList.remove('on'); tipT=setTimeout(tipNext,250); }
+// the next waiting message, if nothing holds it back (called when a dungeon dialog closes, too)
+function tipNext(){ if(tipCur) return; const i=tipQ.findIndex(m=>!tipHeld(m)); if(i<0) return; tipShow(tipQ.splice(i,1)[0]); }
+function tipClear(){ clearTimeout(tipT); tipCur=null; tipQ=[]; $('#tip').classList.remove('on'); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 // the same HP bar and gold readout everywhere: battle, dungeon, camp, shop, character
 function hpMeter(bar,txt,hp,max){ hp=Math.max(0,Math.ceil(hp)); bar.style.width=Math.min(100,hp/max*100)+'%'; txt.textContent='HP '+hp+'/'+max; bar.parentElement.classList.toggle('low',hp/max<=.3); }

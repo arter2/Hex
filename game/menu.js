@@ -89,7 +89,7 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   q('#mmRules').innerHTML=COLORS[k]?`<span class="hm-r">${ico(k)}<span style="color:${COLORS[k].c}">${COLORS[k].name}</span></span><span class="hm-dot">·</span>`+(W&&COLORS[W]?`<span class="hm-r">${ico(W)}Weak: ${COLORS[W].name}</span>`:''):'';
   q('#mmDetails').disabled=!has;
   let v={ok:false}; try{ v=has?validateDeck(activeDeck().list,CARDS,s.owned):{ok:false}; }catch(e){}
-  q('#mmExplore').disabled=q('#mmBattle').disabled=!has||!v.ok;
+  q('#mmExplore').disabled=!has||!v.ok;
   q('#mmContinue').querySelector('span').textContent=has?'Continue':'New game';
   // an empty slot shows only what works: New game, the slot strip (to pick another save) and Settings
   page.classList.toggle('hm-empty',!has);
@@ -114,7 +114,6 @@ function goPlay(mode){ if(!save) return openSaves();
 q('#mmContinue').onclick=()=>{ SVMODE='explore'; if(save) goPlay('explore'); else openNewChar(); };
 q('#mmSlots').onclick=()=>{ SVMODE='explore'; openSaves(); };
 q('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
-q('#mmBattle').onclick=()=>{ SVMODE='battle'; openSaves(); };
 q('#mmSettings').onclick=()=>openSettings();
 // Duel a friend: the old camp's button, so it keeps its deck check and its way back
 q('#mmDuel').onclick=()=>withChar(()=>q('#goDuel').click());

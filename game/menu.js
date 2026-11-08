@@ -90,7 +90,8 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   q('#mmDetails').disabled=!has;
   let v={ok:false}; try{ v=has?validateDeck(activeDeck().list,CARDS,s.owned):{ok:false}; }catch(e){}
   q('#mmExplore').disabled=q('#mmBattle').disabled=!has||!v.ok;
-  q('#mmWarn').textContent=!has?'This slot is empty. Continue to choose a save or start a new game.':v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
+  q('#mmContinue').querySelector('span').textContent=has?'Continue':'Start';
+  q('#mmWarn').textContent=!has?'This slot is empty. Start a new game, or pick another save from the slot menu.':v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
   page.querySelectorAll('.hm-cat').forEach(b=>b.disabled=!has); q('#mmDuel').disabled=!has;
   // level, XP and the points waiting to be spent
   const pts=has?pointsLeft(ensureChar(s)):0; q('#mmPts').hidden=!pts; q('#mmPts').textContent='+'+pts;
@@ -107,7 +108,8 @@ function goPlay(mode){ if(!save) return openSaves();
     let ok=false; try{ ok=validateDeck(activeDeck().list,CARDS,save.owned).ok; }catch(e){}
     if(!ok){ openCamp(); return; }
     if(mode==='battle') fight(pickDepth); else enterExplore(pickDepth); }); }
-q('#mmContinue').onclick=()=>{ SVMODE='explore'; save?goPlay('explore'):openSaves(); };
+// with no save in this slot the button reads Start and goes straight to making a character for it
+q('#mmContinue').onclick=()=>{ SVMODE='explore'; if(save) goPlay('explore'); else openNewChar(); };
 q('#mmSlots').onclick=()=>{ SVMODE='explore'; openSaves(); };
 q('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
 q('#mmBattle').onclick=()=>{ SVMODE='battle'; openSaves(); };

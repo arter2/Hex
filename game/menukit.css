@@ -1620,7 +1620,7 @@ html body #tip.k-success{--k:var(--mk-mint); --g:url(menukit/msg/icon-check.svg)
 html body #tip.k-warning{--k:var(--mk-gold); --g:url(menukit/msg/icon-warning.svg); --sh:url(menukit/msg/toast-warning.svg);}
 html body #tip.k-error{--k:var(--mk-danger); --g:url(menukit/msg/icon-error.svg); --sh:url(menukit/msg/toast-error.svg);}
 html body #tip.k-quest{--k:#cc82ce; --g:url(menukit/msg/icon-quest.svg); --sh:url(menukit/msg/toast-quest.svg);}
-#tip .tipi{flex:none; width:20px; height:20px; background:var(--k); -webkit-mask:var(--g) center/contain no-repeat; mask:var(--g) center/contain no-repeat;}
+#tip .tipi{flex:none; width:26px; height:26px; background:var(--k); -webkit-mask:var(--g) center/contain no-repeat; mask:var(--g) center/contain no-repeat;}
 #tip .tipt{min-width:0;} #tip .tipt b{display:block; font-weight:400;}
 #tip .tipt small{display:block; margin-top:2px; font:400 var(--mk-t-body)/1.2 var(--font-b); color:var(--mk-muted);}
 /* the card peek (#peek, hold a card to read it): the card keeps its own frame; the info line under it and the X on its corner take the kit's */

@@ -936,7 +936,14 @@ $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
     else leaveFight(); }); };
 const isFull=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
 let fullByUs=false;   // true while the player asked to leave full screen, so that exit does not pause
+const canFull=()=>{ const el=document.documentElement; return !!(el.requestFullscreen||el.webkitRequestFullscreen); };
+// iPhone Safari has no full screen for web pages; the only way is a home-screen icon
+function iosFullHint(){ let framed=false; try{ framed=window.top!==window.self; }catch(e){ framed=true; }
+  if(framed){ tip('iPhone can\'t go full screen inside a web page. Opening the game in its own tab: there, tap Share, then Add to Home Screen, and launch it from that icon.',7000);
+    setTimeout(()=>{ try{ window.open(location.href,'_blank'); }catch(e){} },900); }
+  else tip('iPhone can\'t go full screen in Safari. Tap Share, then Add to Home Screen, and launch the game from that icon for full screen.',7000); }
 function toggleFull(){ const d=document, el=d.documentElement;
+  if(!isFull()&&!canFull()){ iosFullHint(); return; }
   try{ if(isFull()){ fullByUs=true; (d.exitFullscreen||d.webkitExitFullscreen).call(d); } else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
 $('#mFull').onclick=toggleFull; $('#setFull').onclick=toggleFull;
 function onFullChange(){ lockOrient(); setTimeout(applyViewport,120); document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=isFull()?'Exit full screen':'Full screen'); setTimeout(resizeView,50);

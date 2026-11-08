@@ -1629,7 +1629,7 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;
    lobby and the duel itself (battle.js startDuel, netduel.js DuelSession). A duel ends in one place, duelOver, with
    a result card; leaving (Back, the pause menu's Leave) is duelLeave. Both stop the session, the transport and the
    timers, so nothing of a duel outlives it. */
-const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false};
+const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false, scan:null, answer:''};
 const DU_NAME_KEY='hexmancers-mpname', DU_SLOW_MSG='Could not connect. Check you are on the same Wi-Fi and try again.', DU_PROBE='hexmancers-hi';
 const DU_STEPS={role:'duRole', how:'duHow', hostcode:'duHostCode', joincode:'duJoinCode', answer:'duAnswerStep', room:'duRoomStep', wait:'duWait', lobby:'duLobby'};
 // Room (the relay) needs a page served over http: by something that runs it; itch.io pages are https and cannot reach it
@@ -1655,7 +1655,7 @@ function duelPauseSync(){ const pz=$('#dbgPause'), note=$('#dbgPauseNote'), on=!
   if(pz){ if(on&&typeof DBG!=='undefined'&&DBG.pause){ DBG.pause=false; pz.checked=false; document.body.classList.remove('dbgPaused'); } pz.disabled=on; }
   if(note) note.hidden=!on; duelDbgSync(); }
 // everything of a connection and a duel: timers, the session (which says bye and closes the transport) or the bare transport
-function duStop(){ clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeout(DU.waitT); DU.timer=DU.startT=DU.waitT=0;
+function duStop(){ duScanStop(); clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeout(DU.waitT); DU.timer=DU.startT=DU.waitT=0;
   const s=DU.session, tr=DU.tr; DU.session=DU.tr=DU.accept=null; DU.gen++;
   try{ if(s) s.leave(); else if(tr) tr.close(); }catch(e){}
   duelPauseSync(); }
@@ -1727,31 +1727,67 @@ $('#duBack').onclick=()=>{ if(DU.step==='role') return duelLeave(); duStop(); if
 $('#duHost').onclick=()=>{ DU.host=true; duStep('how'); $('#duHowTxt').textContent='You host. How will your friend connect?'; duHow(); };
 $('#duJoin').onclick=()=>{ DU.host=false; duStep('how'); $('#duHowTxt').textContent='You join. How will you connect?'; duHow(); };
 function duHow(){ const ok=duelRoomOk(location.protocol,location.hostname); $('#duRoom').hidden=!ok; $('#duRoomHint').hidden=!ok; }
-$('#duWifi').onclick=()=>{ if(DU.host) return duHostWifi(); $('#duOfferIn').value=''; $('#duAnswer').value=''; $('#duMakeAnswer').disabled=false; duStep('joincode'); };
+$('#duWifi').onclick=()=>{ if(DU.host) return duHostWifi(); duJoinStart(); };
+// ---- QR pairing: the host shows a code, the friend scans it and shows one back to the host's front camera ----
+// a code drawn as a QR into a canvas (dashes dropped: they only help people read it)
+function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getContext('2d');
+  if(!t||typeof qrcode!=='function'){ cv.width=cv.height=0; return; }
+  const q=qrcode(0,'L'); q.addData(t,'Byte'); q.make(); const n=q.getModuleCount(), pad=4, sc=Math.max(2,Math.floor(600/(n+pad*2)));
+  cv.width=cv.height=(n+pad*2)*sc; x.fillStyle='#fff'; x.fillRect(0,0,cv.width,cv.height); x.fillStyle='#000';
+  for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(q.isDark(r,c)) x.fillRect((c+pad)*sc,(r+pad)*sc,sc,sc); }
+// the camera into a video, read for a HEX1. code until one turns up (BarcodeDetector where there is one, else jsQR)
+function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
+  try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
+async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0}; DU.scan=sc;
+  const noCam=()=>{ if(sc.dead) return; duScanStop(); const d=video.closest('.dustep').querySelector('.dumanual'); if(d) d.open=true;
+    duMsg('The camera is not available here. Allow it in your browser settings, or use the codes below.'); };
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia) return noCam();
+  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:false}); }catch(e){ return noCam(); }
+  if(sc.dead){ sc.stream.getTracks().forEach(t=>t.stop()); return; }
+  video.srcObject=sc.stream; try{ await video.play(); }catch(e){}
+  let det=null; try{ if('BarcodeDetector' in window) det=new BarcodeDetector({formats:['qr_code']}); }catch(e){}
+  const cv=document.createElement('canvas'), x=cv.getContext('2d',{willReadFrequently:true});
+  const tick=async()=>{ if(sc.dead) return; let txt='';
+    try{ if(video.videoWidth){
+      if(det){ const r=await det.detect(video); if(r&&r[0]) txt=r[0].rawValue||''; }
+      else if(typeof jsQR==='function'){ const k=Math.min(1,720/Math.max(video.videoWidth,video.videoHeight)); cv.width=video.videoWidth*k|0; cv.height=video.videoHeight*k|0;
+        x.drawImage(video,0,0,cv.width,cv.height); const r=jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:'dontInvert'}); if(r) txt=r.data||''; } } }catch(e){}
+    if(sc.dead) return;
+    if(/^HEX1\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
+    sc.t=setTimeout(tick,150); };
+  tick(); }
 async function duHostWifi(){
-  duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; $('#duAccept').disabled=true;
+  duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; duQr($('#duOfferQr'),'');
+  $('#duAccept').hidden=true; $('#duHostSeen').hidden=false; DU.answer='';
   if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
   const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
-  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; $('#duAccept').disabled=false; duMsg('');
+  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
+  // like pairing a headset: their code turns up in the front camera, and the host says yes to it
+  duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
 }
-$('#duAccept').onclick=async()=>{ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
-  try{ await acc($('#duAnswerIn').value); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
+async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
+  try{ await acc(code); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
   if(g!==DU.gen) return;
-  duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
+  duScanStop(); duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
-  if(g===DU.gen) duBegin(tr,true); };
-$('#duMakeAnswer').onclick=async()=>{ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
+  if(g===DU.gen) duBegin(tr,true); }
+$('#duAccept').onclick=()=>duHostAccept(DU.answer);
+$('#duAcceptPaste').onclick=()=>duHostAccept($('#duAnswerIn').value);
+function duJoinStart(){ duStop(); $('#duOfferIn').value=''; $('#duAnswer').value=''; $('#duMakeAnswer').disabled=false; duStep('joincode');
+  const g=DU.gen; duScan($('#duJoinCam'),'environment',code=>{ if(g===DU.gen) duJoinWith(code); }); }
+async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
   if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
-  btn.disabled=true; $('#duAnswer').value='';
-  const jp=RtcTransport.join($('#duOfferIn').value); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
-  let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message); } return; }   // 'Bad code ...': stay here
+  btn.disabled=true; $('#duAnswer').value=''; duScanStop();
+  const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
+  let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   if(g!==DU.gen) return;
-  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duStep('answer');
-  // the host has to carry the code across and paste it: that wait is people's, not the network's
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer');
+  // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
-  if(g===DU.gen) duBegin(tr,false); };
+  if(g===DU.gen) duBegin(tr,false); }
+$('#duMakeAnswer').onclick=()=>duJoinWith($('#duOfferIn').value);
 $('#duRoom').onclick=()=>{ duStop(); duStep('room'); const host=DU.host, inp=$('#duRoomName'); inp.readOnly=host; $('#duRoomGo').disabled=false;
   if(host){ const L='ABCDEFGHJKLMNPQRSTUVWXYZ'; inp.value=Array.from({length:4},()=>L[Math.floor(Math.random()*L.length)]).join(''); }
   else inp.value='';

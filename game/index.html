@@ -120,35 +120,44 @@
     <div id="duRole" class="dustep">
       <p class="hint">One of you hosts the duel, the other joins it. You each fight with your saved deck, and a duel gives and costs nothing.</p>
       <div class="dutiles">
-        <button id="duHost" class="dutile"><b>Host</b><small>Start the duel and send your friend a code</small></button>
-        <button id="duJoin" class="dutile"><b>Join</b><small>Use the code your friend sends you</small></button>
+        <button id="duHost" class="dutile"><b>Host</b><small>Start the duel and show your friend a code</small></button>
+        <button id="duJoin" class="dutile"><b>Join</b><small>Scan the code on your friend's screen</small></button>
       </div>
     </div>
     <div id="duHow" class="dustep" hidden>
       <p id="duHowTxt" class="hint"></p>
       <div class="dutiles">
-        <button id="duWifi" class="dutile"><b>Wi-Fi code</b><small>Copy a code from one phone to the other. No setup.</small></button>
+        <button id="duWifi" class="dutile"><b>Scan</b><small>Scan each other's code with the camera. No setup.</small></button>
         <button id="duRoom" class="dutile" hidden><b>Room</b><small id="duRoomHint">A four-letter room name. Needs the relay script running on a computer.</small></button>
       </div>
     </div>
     <div id="duHostCode" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>1</b>Send this code to your friend (any chat will do). They tap Join, then Wi-Fi code, and paste it.</p>
-        <textarea id="duOffer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
-        <button id="duCopy" class="btn small">Copy code</button></div>
-      <div class="dupanel"><p class="dunum"><b>2</b>Paste the code they send back.</p>
-        <textarea id="duAnswerIn" class="ducode" rows="4" placeholder="Paste their code (HEX1.…)" aria-label="Their code" autocomplete="off" spellcheck="false"></textarea>
-        <div class="dubtns"><button id="duPaste1" class="btn ghost small" data-to="duAnswerIn">Paste</button><button id="duAccept" class="btn">Connect</button></div></div>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Your friend taps Join and scans this code.</p>
+        <div class="duqr"><canvas id="duOfferQr" aria-label="Your code"></canvas></div>
+        <p class="dunum"><b>2</b>Their phone then shows a code. They hold it up to the top of your screen, where your camera is.</p>
+        <video id="duHostCam" class="ducam ducam-front" playsinline muted autoplay></video>
+        <p id="duHostSeen" class="duwaiting">Watching for their code<i></i></p>
+        <button id="duAccept" class="btn" hidden>Accept</button></div>
+      <details class="dumanual"><summary>No camera? Copy codes instead</summary>
+        <div class="dupanel"><textarea id="duOffer" class="ducode" readonly rows="3" aria-label="Your code"></textarea>
+          <button id="duCopy" class="btn small">Copy code</button>
+          <textarea id="duAnswerIn" class="ducode" rows="3" placeholder="Paste their code (HEX1.…)" aria-label="Their code" autocomplete="off" spellcheck="false"></textarea>
+          <div class="dubtns"><button id="duPaste1" class="btn ghost small" data-to="duAnswerIn">Paste</button><button id="duAcceptPaste" class="btn">Connect</button></div></div></details>
     </div>
     <div id="duJoinCode" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>1</b>Paste the code your host sent you.</p>
-        <textarea id="duOfferIn" class="ducode" rows="4" placeholder="Paste the host's code (HEX1.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
-        <div class="dubtns"><button id="duPaste2" class="btn ghost small" data-to="duOfferIn">Paste</button><button id="duMakeAnswer" class="btn">Make my code</button></div></div>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Point your camera at your host's code.</p>
+        <video id="duJoinCam" class="ducam" playsinline muted autoplay></video></div>
+      <details class="dumanual"><summary>No camera? Paste a code instead</summary>
+        <div class="dupanel"><textarea id="duOfferIn" class="ducode" rows="3" placeholder="Paste the host's code (HEX1.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
+          <div class="dubtns"><button id="duPaste2" class="btn ghost small" data-to="duOfferIn">Paste</button><button id="duMakeAnswer" class="btn">Make my code</button></div></div></details>
     </div>
     <div id="duAnswerStep" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>2</b>Send this code back to your host. When they paste it in, the duel connects.</p>
-        <textarea id="duAnswer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
-        <button id="duCopy2" class="btn small">Copy code</button>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>2</b>Hold this up to the top of your host's screen. When they tap Accept, the duel connects.</p>
+        <div class="duqr"><canvas id="duAnswerQr" aria-label="Your code"></canvas></div>
         <p class="duwaiting">Waiting for your host<i></i></p></div>
+      <details class="dumanual"><summary>Copy the code instead</summary>
+        <div class="dupanel"><textarea id="duAnswer" class="ducode" readonly rows="3" aria-label="Your code"></textarea>
+          <button id="duCopy2" class="btn small">Copy code</button></div></details>
     </div>
     <div id="duRoomStep" class="dustep" hidden>
       <div class="dupanel"><p id="duRoomTxt" class="hint"></p>
@@ -777,6 +786,8 @@
 <script src="netplay.js"></script>
 <script src="netduel.js"></script>
 <script src="nettransport.js"></script>
+<script src="vendor/qrcode.js"></script>
+<script src="vendor/jsQR.js"></script>
 <script src="enemies.js"></script>
 <script src="tactics.js"></script>
 <script src="fights.js"></script>

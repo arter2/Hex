@@ -1615,3 +1615,16 @@ html body #tip.tip{border:8px solid transparent; border-image:url(menukit/frame.
 html body #peek .peekinfo{border:8px solid transparent; border-image:url(menukit/frame.svg) 8 fill / 8px / 0 stretch; background:var(--mk-face); background-origin:border-box; clip-path:var(--mk-chamfer); box-shadow:none; padding:0 8px; font:400 var(--mk-t-control)/1.25 var(--font-b); color:var(--mk-text); text-align:center;}
 html body #peek .card>.popx,html body #peek .card.kit>.popx{width:40px; height:40px; top:-16px; right:-16px; border:5px solid transparent; border-image:url(menukit/rim-small.svg) 5 fill / 5px / 0 stretch; border-radius:0; background:none; box-shadow:none; font-size:0; color:var(--mk-text);}
 html body #peek .card>.popx::before{content:''; display:block; width:18px; height:18px; background:var(--mk-text); -webkit-mask:url(menukit/close.svg) center/contain no-repeat; mask:url(menukit/close.svg) center/contain no-repeat;}
+
+/* ---- Duel: QR pairing (host shows a code, the friend scans it and shows one back to the host's front camera) ---- */
+#scrDuel .duqrpanel{align-items:center; text-align:left;}
+#scrDuel .duqrpanel .dunum{align-self:stretch;}
+#scrDuel .duqr{background:#fff; padding:6px; line-height:0; border-radius:4px;}
+#scrDuel .duqr canvas{width:min(240px,62vw); height:auto; image-rendering:pixelated; display:block;}
+#scrDuel .duqr canvas[width="0"]{width:min(240px,62vw); height:min(240px,62vw);}
+#scrDuel .ducam{width:min(240px,62vw); aspect-ratio:1; object-fit:cover; background:#05080b; border:2px solid #2a3340; border-radius:4px; display:block;}
+#scrDuel .ducam-front{width:min(150px,40vw); transform:scaleX(-1);}
+#scrDuel #duAccept{align-self:stretch;}
+#scrDuel .dumanual{margin-top:8px; color:var(--mk-muted,#c3d0de); font:400 15px var(--font-b);}
+#scrDuel .dumanual summary{cursor:pointer; text-align:center; padding:6px 0; text-decoration:underline;}
+#scrDuel .dumanual .dupanel{margin-top:6px;}

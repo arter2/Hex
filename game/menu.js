@@ -90,8 +90,10 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   q('#mmDetails').disabled=!has;
   let v={ok:false}; try{ v=has?validateDeck(activeDeck().list,CARDS,s.owned):{ok:false}; }catch(e){}
   q('#mmExplore').disabled=q('#mmBattle').disabled=!has||!v.ok;
-  q('#mmContinue').querySelector('span').textContent=has?'Continue':'Start';
-  q('#mmWarn').textContent=!has?'This slot is empty. Start a new game, or pick another save from the slot menu.':v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
+  q('#mmContinue').querySelector('span').textContent=has?'Continue':'New game';
+  // an empty slot shows only what works: New game, the slot strip (to pick another save) and Settings
+  page.classList.toggle('hm-empty',!has);
+  q('#mmWarn').textContent=!has||v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
   page.querySelectorAll('.hm-cat').forEach(b=>b.disabled=!has); q('#mmDuel').disabled=!has;
   // level, XP and the points waiting to be spent
   const pts=has?pointsLeft(ensureChar(s)):0; q('#mmPts').hidden=!pts; q('#mmPts').textContent='+'+pts;
@@ -137,7 +139,8 @@ function renderSaves(){ const box=q('#svList'); box.innerHTML='';
         <button class="hm-btn hm-cyan hm-go" type="button" aria-label="Continue slot ${n}">${ico('play')}<span>Continue</span></button>`;
       drawChar(c.querySelector('canvas'),s);
       c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(n!==SAVE_SLOT) useSlot(n); goPlay(SVMODE); }; }
-    c.onclick=()=>{ if(SEL===n) return; SEL=n; renderSaves(); const f=q('#svList .hm-card.sel'); if(f) f.focus(); };
+    // one tap does it: a saved slot continues, an empty slot starts a new game in it
+    c.onclick=()=>{ if(n!==SAVE_SLOT) useSlot(n); if(s) goPlay(SVMODE); else openNewChar(); };
     c.onkeydown=e=>{ if(e.target!==c) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); }
       if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); const nx=c.nextElementSibling; if(nx) nx.focus(); }
       if(e.key==='ArrowUp'||e.key==='ArrowLeft'){ e.preventDefault(); const pv=c.previousElementSibling; if(pv) pv.focus(); } };

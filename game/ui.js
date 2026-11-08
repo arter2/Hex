@@ -437,8 +437,11 @@ function buildStart(){
   // a new game drops the old world's run too: its floors are kept in memory (XRUN.floors) and would come back
   const fresh=()=>{ if(typeof stopExplore==='function') stopExplore(); EX=null; if(typeof XPARK!=='undefined') XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; };
   const begin=lean=>{ fresh(); save=newSave({lean}); setLayout();
-    clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
-    tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
+    clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1;
+    // Start adventure goes straight into the first floor (camp only if the deck somehow is not ready)
+    let ok=false; try{ ok=validateDeck(activeDeck().list,CARDS,save.owned).ok; }catch(e){}
+    if(ok&&typeof enterExplore==='function') enterExplore(1); else openCamp();
+    tip('Your 80 cards lean '+COLORS[lean].name+'.'); };
   if(!USE_STARTERS){
     // kit screen 10: who is starting, six colour tiles (pick one), Surprise me, Advanced options, a summary line and Start adventure
     const R=ccChar&&RACES[ccChar.race]; $('#stRace').textContent=R?R.name:'Hexmancer';

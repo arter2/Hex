@@ -1628,3 +1628,6 @@ html body #peek .card>.popx::before{content:''; display:block; width:18px; heigh
 #scrDuel .dumanual{margin-top:8px; color:var(--mk-muted,#c3d0de); font:400 15px var(--font-b);}
 #scrDuel .dumanual summary{cursor:pointer; text-align:center; padding:6px 0; text-decoration:underline;}
 #scrDuel .dumanual .dupanel{margin-top:6px;}
+
+/* the pause menu (a kit window since it left rune.css): the place line sits under the title */
+#pause #pauseWhere{text-align:left; margin:2px 0 12px;}

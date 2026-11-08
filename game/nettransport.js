@@ -2,7 +2,7 @@
 // No signalling server: the host's offer and the joiner's answer travel as short codes people copy between devices.
 // Pure helpers (packSignal, unpackSignal) also load in Node for tests; RtcTransport is browser only.
 'use strict';
-const SIGNAL_PREFIX = 'HEX1.';
+const SIGNAL_PREFIX = 'HEX1.', SIGNAL_PREFIX2 = 'HEX2.';
 
 async function pipeBytes(bytes, stream) {
   return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(stream)).arrayBuffer());
@@ -32,8 +32,71 @@ function crc16(u8) {
 }
 const OLD = () => new Error('Bad code (this browser is too old for pairing codes)');
 
-// {type, sdp} -> "HEX1.xxxx-xxxx-..."
+// ---- HEX2: the short code. Only what a data-channel connection needs is kept (type, ICE username and password, the
+// sha-256 fingerprint, each UDP host address and port); the other phone writes a plain SDP back around it.
+// Layout: [type 0|1][ufrag len][ufrag][pwd len][pwd][32 fingerprint bytes] then per address [kind 4|6|109][4|16 bytes][port 2], then crc16.
+function compactSdp(desc) {
+  const sdp = desc.sdp, line = re => (sdp.match(re) || [])[1];
+  const ufrag = line(/^a=ice-ufrag:(\S+)/m), pwd = line(/^a=ice-pwd:(\S+)/m), fp = line(/^a=fingerprint:sha-256 (\S+)/im);
+  const mid = line(/^a=mid:(\S+)/m), sctp = line(/^a=sctp-port:(\d+)/m);
+  if (!ufrag || !pwd || !fp || mid !== '0' || (sctp && sctp !== '5000') || ufrag.length > 255 || pwd.length > 255) return null;
+  if (/^m=(?!application)/m.test(sdp)) return null;
+  const fpb = fp.split(':').map(h => parseInt(h, 16));
+  if (fpb.length !== 32 || fpb.some(isNaN)) return null;
+  const out = [desc.type === 'answer' ? 1 : 0, ufrag.length, ...new TextEncoder().encode(ufrag), pwd.length, ...new TextEncoder().encode(pwd), ...fpb];
+  const seen = new Set();
+  for (const m of sdp.matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) (\d+) typ host/gim)) {
+    const addr = m[1], port = +m[2];
+    if (seen.has(addr + ':' + port) || seen.size >= 6) continue;
+    let kind, bytes;
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(addr)) { kind = 4; bytes = addr.split('.').map(Number); }
+    else if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.local$/i.test(addr)) { kind = 109; bytes = addr.slice(0, 36).replace(/-/g, '').match(/../g).map(h => parseInt(h, 16)); }
+    else if (addr.includes(':')) {
+      const [a, b] = addr.split('::'), hs = x => (x ? x.split(':') : []), l = hs(a), r = hs(b);
+      if (b === undefined && l.length !== 8) continue;
+      const g = [...l, ...Array(8 - l.length - r.length).fill('0'), ...r].map(h => parseInt(h, 16));
+      if (g.length !== 8 || g.some(v => isNaN(v) || v > 0xffff)) continue;
+      kind = 6; bytes = g.flatMap(v => [v >> 8, v & 255]);
+    } else continue;
+    seen.add(addr + ':' + port);
+    out.push(kind, ...bytes, port >> 8, port & 255);
+  }
+  if (!seen.size) return null;
+  return new Uint8Array(out);
+}
+function expandSdp(u8) {
+  let i = 0;
+  const need = n => { if (i + n > u8.length) throw new Error('short'); const v = u8.subarray(i, i + n); i += n; return v; };
+  const type = need(1)[0] === 1 ? 'answer' : 'offer', dec = new TextDecoder();
+  const ufrag = dec.decode(need(need(1)[0])), pwd = dec.decode(need(need(1)[0]));
+  if (!/^[A-Za-z0-9+/]+$/.test(ufrag + pwd)) throw new Error('ice');
+  const fp = Array.from(need(32), b => b.toString(16).toUpperCase().padStart(2, '0')).join(':');
+  const cands = [];
+  while (i < u8.length) {
+    const kind = need(1)[0];
+    let addr;
+    if (kind === 4) addr = Array.from(need(4)).join('.');
+    else if (kind === 6) { const b = need(16), g = []; for (let k = 0; k < 16; k += 2) g.push(((b[k] << 8) | b[k + 1]).toString(16)); addr = g.join(':'); }
+    else if (kind === 109) { const h = Array.from(need(16), b => b.toString(16).padStart(2, '0')).join(''); addr = h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20) + '.local'; }
+    else throw new Error('kind');
+    const p = need(2), port = (p[0] << 8) | p[1];
+    cands.push('a=candidate:' + (cands.length + 1) + ' 1 udp ' + (2122260223 - cands.length) + ' ' + addr + ' ' + port + ' typ host');
+  }
+  if (!cands.length) throw new Error('no address');
+  const sdp = ['v=0', 'o=- ' + Math.floor(Math.random() * 1e15) + ' 2 IN IP4 127.0.0.1', 's=-', 't=0 0', 'a=group:BUNDLE 0', 'a=msid-semantic: WMS',
+    'm=application 9 UDP/DTLS/SCTP webrtc-datachannel', 'c=IN IP4 0.0.0.0', ...cands, 'a=ice-ufrag:' + ufrag, 'a=ice-pwd:' + pwd,
+    'a=fingerprint:sha-256 ' + fp, 'a=setup:' + (type === 'offer' ? 'actpass' : 'active'), 'a=mid:0', 'a=sctp-port:5000', 'a=max-message-size:262144', ''].join('\r\n');
+  return { type, sdp };
+}
+
+// {type, sdp} -> "HEX2.xxxx-xxxx-..." (the short code), or "HEX1...." when the description is not one HEX2 can carry
 async function packSignal(desc) {
+  const c = compactSdp(desc);
+  if (c) {
+    const out = new Uint8Array(c.length + 2), crc = crc16(c);
+    out.set(c); out[c.length] = crc >> 8; out[c.length + 1] = crc & 255;
+    return SIGNAL_PREFIX2 + bytesToB64url(out).match(/.{1,4}/g).join('-');
+  }
   if (typeof CompressionStream === 'undefined') throw OLD();
   const json = JSON.stringify({ type: desc.type, sdp: desc.sdp });
   const z = await pipeBytes(new TextEncoder().encode(json), new CompressionStream('deflate-raw'));
@@ -51,7 +114,16 @@ async function unpackSignal(code) {
   if (typeof DecompressionStream === 'undefined') throw OLD();
   if (typeof code !== 'string') throw bad('empty');
   const c = code.replace(/\s+/g, '');
-  if (c.slice(0, SIGNAL_PREFIX.length).toUpperCase() !== SIGNAL_PREFIX) throw bad('it should start with HEX1.');
+  if (c.slice(0, SIGNAL_PREFIX2.length).toUpperCase() === SIGNAL_PREFIX2) {
+    const body2 = c.slice(SIGNAL_PREFIX2.length).replace(/-/g, '');
+    let z2;
+    try { z2 = b64urlToBytes(body2); } catch (e) { throw bad('characters are wrong'); }
+    if (z2.length < 40 || bytesToB64url(z2) !== body2) throw bad('check the characters');
+    const zz2 = z2.subarray(0, z2.length - 2);
+    if (crc16(zz2) !== ((z2[z2.length - 2] << 8) | z2[z2.length - 1])) throw bad('check the characters');
+    try { return expandSdp(zz2); } catch (e) { throw bad('it is damaged or incomplete'); }
+  }
+  if (c.slice(0, SIGNAL_PREFIX.length).toUpperCase() !== SIGNAL_PREFIX) throw bad('it should start with HEX2.');
   const body = c.slice(SIGNAL_PREFIX.length).replace(/-/g, '');
   if (!body) throw bad('nothing after HEX1.');
   let z;

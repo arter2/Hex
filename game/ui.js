@@ -1735,7 +1735,7 @@ function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getConte
   const q=qrcode(0,'L'); q.addData(t,'Byte'); q.make(); const n=q.getModuleCount(), pad=4, sc=Math.max(2,Math.floor(600/(n+pad*2)));
   cv.width=cv.height=(n+pad*2)*sc; x.fillStyle='#fff'; x.fillRect(0,0,cv.width,cv.height); x.fillStyle='#000';
   for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(q.isDark(r,c)) x.fillRect((c+pad)*sc,(r+pad)*sc,sc,sc); }
-// the camera into a video, read for a HEX1. code until one turns up (BarcodeDetector where there is one, else jsQR)
+// the camera into a video, read for a HEX1./HEX2. code until one turns up (BarcodeDetector where there is one, else jsQR)
 function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
   try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
 async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0}; DU.scan=sc;
@@ -1753,7 +1753,7 @@ async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:f
       else if(typeof jsQR==='function'){ const k=Math.min(1,720/Math.max(video.videoWidth,video.videoHeight)); cv.width=video.videoWidth*k|0; cv.height=video.videoHeight*k|0;
         x.drawImage(video,0,0,cv.width,cv.height); const r=jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:'dontInvert'}); if(r) txt=r.data||''; } } }catch(e){}
     if(sc.dead) return;
-    if(/^HEX1\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
+    if(/^HEX[12]\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
     sc.t=setTimeout(tick,150); };
   tick(); }
 async function duHostWifi(){

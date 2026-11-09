@@ -1104,10 +1104,10 @@ function xTrade(p){ const M=MERCHANTS[p.mkind]||MERCHANTS.goblin;
           let pic='', name='', text='', where='Added to your bag';
           if(s.kind==='gear'){ pic=gearIcon(s.id,32); name=GEAR[s.id].name+(GEAR[s.id].legendary?' ✹':''); text=(s.shady?'No questions asked. It may be cursed. ':'')+lootLabel(save,s.id).text; where='Added to your gear'; }
           if(s.kind==='card'){ pic=typeof cardArtThumb==='function'?cardArtThumb(s.card,'pxi','width:32px;height:32px'):pxIcon('cards',COLORS[s.card.color].c); name=s.card.name; text=RARITY[s.card.rarity].n+' '+COLORS[s.card.color].name+' '+TYPES[s.card.type].name+': '+cardText(s.card); where='Added to your cards'; }
-          if(s.kind==='key'){ pic=pxIcon('key',KEYS[s.k].col); name=KEYS[s.k].name; text=KEYS[s.k].text||'for this dive'; }
-          if(s.kind==='bag'){ pic=pxIcon(BAG[s.k].icon,BAG[s.k].col); name=BAG[s.k].name; text=BAG[s.k].text; }
-          if(s.kind==='mat'){ pic=pxIcon('gem',MATS[s.k].col); name=MATS[s.k].name; text='for upgrades at a smith'; }
-          if(s.kind==='perm'){ pic=pxIcon('gem','#ff5d6c'); name='Vial of '+PERM[s.k].name; text='Permanent: '+PERM[s.k].text; where='A permanent blessing'; }
+          if(s.kind==='key'){ pic=keyIcon(s.k); name=KEYS[s.k].name; text=KEYS[s.k].text||'for this dive'; }
+          if(s.kind==='bag'){ pic=bagIcon(s.k); name=BAG[s.k].name; text=BAG[s.k].text; }
+          if(s.kind==='mat'){ pic=matIcon(s.k); name=MATS[s.k].name; text='for upgrades at a smith'; }
+          if(s.kind==='perm'){ pic=permIcon(s.k); name='Vial of '+PERM[s.k].name; text='Permanent: '+PERM[s.k].text; where='A permanent blessing'; }
           xOffer(box,o,{pic,name,text,price:s.price,doneSub:where+' · −'+s.price+' gold',go(){ save.gold-=s.price; s.sold=true;
             if(s.kind==='gear'){ const res=addLoot(save,s.id,XR); if(res&&res.cursed) setTimeout(()=>tip(res.msg,0,{kind:'warning'}),2700); }
             if(s.kind==='card') addCards(save,[s.card]); if(s.kind==='key') addKey(s.k); if(s.kind==='bag') addBag(s.k); if(s.kind==='mat') addMat(s.k); if(s.kind==='perm') addPerm(s.k); }}); } }
@@ -1116,7 +1116,7 @@ function xTrade(p){ const M=MERCHANTS[p.mkind]||MERCHANTS.goblin;
           const price=Math.round(gearPrice(id)*rate), nm=gearName(save,id);
           xOffer(box,o,{pic:gearIcon(id,32),name:nm+(s.items[id]-worn>1?' ×'+(s.items[id]-worn):''),text:'Not worn',full:lootLabel(save,id).text,price:-price,verb:'Sell',done:'Sold '+nm,go(){ s.items[id]--; save.gold+=price; }}); }
         for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; const price=Math.round(MATS[m].price*(p.mkind==='curio'&&m==='shard'?1.6:1));
-          xOffer(box,o,{pic:pxIcon('gem',MATS[m].col),name:MATS[m].name+' ×'+matN(m),text:p.mkind==='curio'&&m==='shard'?'The collector pays well for shards':'',price:-price,verb:'Sell one',done:'Sold '+MATS[m].name,go(){ save.mats[m]--; save.gold+=price; }}); }
+          xOffer(box,o,{pic:matIcon(m),name:MATS[m].name+' ×'+matN(m),text:p.mkind==='curio'&&m==='shard'?'The collector pays well for shards':'',price:-price,verb:'Sell one',done:'Sold '+MATS[m].name,go(){ save.mats[m]--; save.gold+=price; }}); }
         if(!n) empty('Nothing to sell. Gear you are wearing and your starter wand stay with you.',['Browse wares',()=>{ o.tab='buy'; xDlg(o); }]); }
       if(o.tab==='services'){ const sv=M.services||[], s=gearState(save); let n=0;
         if(sv.includes('upgrade')) for(const slot of SLOTS){ const id=s.gear[slot]; if(!id||!GEAR[id]) continue; const isW=GEAR[id].slot==='weapon'; if((M.slot==='weapon')!==isW) continue;
@@ -1131,7 +1131,7 @@ function xTrade(p){ const M=MERCHANTS[p.mkind]||MERCHANTS.goblin;
         if(sv.includes('reroll')){ n++;
           xOffer(box,o,{pic:pxIcon('cards','#b48cff'),name:'Shuffle the stock',text:'New cards on the table',price:40,off:p.used.reroll?'Already shuffled.':'',label:'Done',verb:'Shuffle',done:'New stock on the table',go(){ save.gold-=40; p.used.reroll=1; p.stock=xStock(p.mkind); o.tab='buy'; }}); }
         if(sv.includes('shards')){ n++; const left=Object.keys(PERM).filter(k=>(save.perm[k]||0)<PERM[k].max);
-          xOffer(box,o,{pic:pxIcon('gem',MATS.shard.col),name:'Shards for a blessing',text:'Trade 3 Relic Shards for a permanent blessing (you have '+matN('shard')+')',price:0,
+          xOffer(box,o,{pic:matIcon('shard'),name:'Shards for a blessing',text:'Trade 3 Relic Shards for a permanent blessing (you have '+matN('shard')+')',price:0,
             off:matN('shard')<3?'You need 3 Relic Shards (you have '+matN('shard')+').':!left.length?'You are fully blessed.':'',label:'Trade',verb:'Trade',
             go(){ save.mats.shard-=3; xGrant({perm:xpick(left)},'The collector’s blessing'); return false; }}); }
         if(!n) empty('Nothing to offer you right now.'); } } };
@@ -1151,19 +1151,19 @@ function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return
   const o={title:'Your bag', sub:'Depth '+EX.depth+' · '+(EX.branch?'Hidden Sanctum':areaOf(EX.depth).name), icon:['bag','#f2c94c'], text:'', tabs:[['items','Items'],['quests','Quests'],['journal','Journal'],['bless','Blessings']], tab:'items', buttons:[['Close',null]],
     body(box,o){ const refresh=()=>xDlg(o);
       if(o.tab==='items'){ let n=0;
-        for(const k of Object.keys(BAG)) if(bagN(k)>0){ n++; xRow(box,pxIcon(BAG[k].icon,BAG[k].col),BAG[k].name+' ×'+bagN(k),BAG[k].text,'Use',()=>{ xUseBag(k); refresh(); }); }
-        for(const k of Object.keys(KEYS)) if(keyN(k)>0){ n++; xRow(box,pxIcon('key',KEYS[k].col),KEYS[k].name+' ×'+keyN(k),KEYS[k].text||'Kept for this dive'); }
-        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; xRow(box,pxIcon('gem',MATS[m].col),MATS[m].name+' ×'+matN(m),m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it'); }
+        for(const k of Object.keys(BAG)) if(bagN(k)>0){ n++; xRow(box,bagIcon(k),BAG[k].name+' ×'+bagN(k),BAG[k].text,'Use',()=>{ xUseBag(k); refresh(); }); }
+        for(const k of Object.keys(KEYS)) if(keyN(k)>0){ n++; xRow(box,keyIcon(k),KEYS[k].name+' ×'+keyN(k),KEYS[k].text||'Kept for this dive'); }
+        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; xRow(box,matIcon(m),MATS[m].name+' ×'+matN(m),m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it'); }
         if(EX.carrying){ n++; xRow(box,pxIcon('bag','#8a5a32'),EX.carrying.owner+'’s crate','Bring it back to its owner on this floor'); }
         if(!n) box.innerHTML='<p class="hint">Empty. Chests, caches, merchants and grateful people fill it.</p>'; }
       if(o.tab==='quests'){ const qs=XRUN?XRUN.quests:[]; if(!qs.length) box.innerHTML='<p class="hint">No quests. People on the floors ask for help now and then.</p>';
         for(const q of qs){ const what=(typeof xMissionText==='function'&&xMissionText(q))||(q.kind==='fetch'?'Find '+q.giver+'’s '+q.item+' on depth '+q.depth:q.kind==='samples'?'Defeat '+q.need+' '+COLORS[q.color].name+' creatures for '+q.giver+' ('+Math.min(q.need,(XRUN.kills[q.color]||0)-q.base)+'/'+q.need+')':'Bring '+q.giver+' a Relic Shard (depth '+q.depth+')');
-          xRow(box,pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+' · reward: '+rewardText(q.reward)); }
+          xRow(box,q.kind==='fetch'&&q.item?questItemIcon(q.item):pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+' · reward: '+rewardText(q.reward)); }
         for(const p of EX.props) if(p.role==='lost'&&p.state==='follow') xRow(box,pxIcon('hero','#8fe4ff'),'Escort','Lead '+p.name+' to the stairs, up or down');
         for(const p of EX.props) if(p.role==='peddler'&&p.state==='active') xRow(box,pxIcon('bag','#8a5a32'),'Find the crate','Bring '+p.name+'’s crate back to them on this floor'); }
       if(o.tab==='journal'){ const read=LORE.filter(l=>dState().lore[l.id]); box.insertAdjacentHTML('beforeend','<p class="hint">'+read.length+' of '+LORE.length+' tales found. Tablets, hermits, caches and secret rooms hold the rest.</p>');
         for(const l of read) xRow(box,pxIcon('scroll','#f2c94c'),l.title,l.text); }
-      if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,pxIcon('gem',['#ff5d6c','#ff9a3a','#8fe4ff','#f2c94c'][Object.keys(PERM).indexOf(k)]),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text+' each, for good'); }
+      if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,permIcon(k),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text+' each, for good'); }
         if(XRUN&&XRUN.attuned){ n++; xRow(box,pxIcon('hero','#fff2c0'),'Shrine’s blessing','If you fall in this dive, you wake at the stairs up, once'); }
         if(!n) box.innerHTML='<p class="hint">No blessings yet. Orbs in hidden shrines, freed prisoners and rare quests grant them.</p>'; } } };
   xDlg(o); }
@@ -1219,7 +1219,7 @@ function xMiniExtra(c,s,dot){
   if(EX.hints) for(const h of EX.hints){ c.fillStyle='#ff5d6c'; c.fillRect(xcx(h)*s-1,xcy(h)*s+1,s+2,1); c.fillRect(xcx(h)*s+1,xcy(h)*s-1,1,s+2); } }
 // the status strip: keys you carry, ailments, the shrine's blessing, quests
 function xHudExtra(){ const el=$('#xStatus'); if(!el) return; const out=[];
-  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push(`<span class="xs" title="${KEYS[k].name}">${pxIcon('key',KEYS[k].col,18)}${keyN(k)>1?keyN(k):''}</span>`);
+  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push(`<span class="xs" title="${KEYS[k].name}">${keyIcon(k,18)}${keyN(k)>1?keyN(k):''}</span>`);
   if(EX.ail&&EX.ail.poison>0) out.push('<span class="xs bad">☠ Poisoned</span>'); if(EX.ail&&EX.ail.curse) out.push('<span class="xs bad">☾ Cursed</span>');
   if(XRUN&&XRUN.attuned) out.push('<span class="xs good">✦ Blessed</span>');
   if(typeof xDeepHud==='function') xDeepHud(out);

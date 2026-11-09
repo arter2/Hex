@@ -8,9 +8,9 @@
 let BAGUI={tab:'items', sel:null};
 const BAG_COLS=4, BAG_MIN=16;
 function bagItems(){ const s=gearState(save), out=[];
-  for(const k of Object.keys(BAG)) if(bagN(k)>0) out.push({kind:'bag',k,n:bagN(k),name:BAG[k].name,text:BAG[k].text,pic:pxIcon(BAG[k].icon,BAG[k].col,34),act:'Use'});
-  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push({kind:'key',k,n:keyN(k),name:KEYS[k].name,text:KEYS[k].text||'Kept for this dive',pic:pxIcon('key',KEYS[k].col,34)});
-  for(const m of Object.keys(MATS)) if(matN(m)>0) out.push({kind:'mat',k:m,n:matN(m),name:MATS[m].name,text:m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it',pic:pxIcon('gem',MATS[m].col,34)});
+  for(const k of Object.keys(BAG)) if(bagN(k)>0) out.push({kind:'bag',k,n:bagN(k),name:BAG[k].name,text:BAG[k].text,pic:bagIcon(k,34),act:'Use'});
+  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push({kind:'key',k,n:keyN(k),name:KEYS[k].name,text:KEYS[k].text||'Kept for this dive',pic:keyIcon(k,34)});
+  for(const m of Object.keys(MATS)) if(matN(m)>0) out.push({kind:'mat',k:m,n:matN(m),name:MATS[m].name,text:m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it',pic:matIcon(m,34)});
   for(const k of Object.keys(SCROLLS)) if(s.scrolls[k]>0) out.push({kind:'scroll',k,n:s.scrolls[k],name:SCROLLS[k].name,text:SCROLLS[k].text+' (at camp)',pic:lootPic('scroll:'+k,34)});
   if(EX&&EX.carrying) out.push({kind:'crate',k:'crate',n:1,name:EX.carrying.owner+'’s crate',text:'Bring it back to its owner on this floor',pic:pxIcon('bag','#8a5a32',34)});
   const worn=new Set(SLOTS.map(k=>s.gear[k]).filter(Boolean));
@@ -64,9 +64,9 @@ function xBagLists(box,o){
   if(o.tab==='look') renderLooks(box);
   if(o.tab==='quests'){ const qs=XRUN?XRUN.quests:[]; if(!qs.length) box.innerHTML='<p class="hint">No quests. People on the floors ask for help now and then.</p>';
     for(const q of qs){ const what=(typeof xMissionText==='function'&&xMissionText(q))||(q.kind==='fetch'?'Find '+q.giver+'’s '+q.item+' on depth '+q.depth:q.giver||'A task');
-      xRow(box,pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+(q.reward?' · reward: '+rewardText(q.reward):'')); } }
+      xRow(box,q.kind==='fetch'&&q.item?questItemIcon(q.item):pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+(q.reward?' · reward: '+rewardText(q.reward):'')); } }
   if(o.tab==='journal'){ const read=LORE.filter(l=>dState().lore[l.id]); box.insertAdjacentHTML('beforeend','<p class="hint">'+read.length+' of '+LORE.length+' tales found.</p>'); for(const l of read) xRow(box,pxIcon('scroll','#f2c94c'),l.title,l.text); }
-  if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,pxIcon('gem','#f2c94c'),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text||''); }
+  if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,permIcon(k),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text||''); }
     if(XRUN&&XRUN.attuned){ n++; xRow(box,pxIcon('hero','#fff2c0'),'Shrine’s blessing','If you fall in this dive, you wake at the stairs up, once'); }
     if(!n) box.innerHTML='<p class="hint">No blessings yet. Orbs in hidden shrines, freed prisoners and rare quests grant them.</p>'; } }
 // the strip under the grid: what you picked, and what you can do with it

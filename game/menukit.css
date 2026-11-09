@@ -1717,3 +1717,7 @@ body:has(#xDialog.on) #xTipCard.xtip.on{visibility:hidden;}
 #xDialog .xrow .btn{width:92px; min-width:0; min-height:40px; padding:0 4px; justify-content:center; text-align:center; justify-self:end;}
 #xDialog .xrow .btn.price{gap:4px;}
 #xDialog .xsheet .xshtop .pic{width:64px; height:64px;} #xDialog .xsheet .xshtop .pic>*{transform:none; width:64px; height:64px;}
+/* the small description under an item's name sits tight; the picture and button centre on the name and text together */
+#xDialog .xrow{align-items:center;}
+#xDialog .xrow .nm{justify-content:center; gap:2px;}
+#xDialog .xrow .nm small{line-height:1.05;}

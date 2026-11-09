@@ -1712,8 +1712,8 @@ body:has(#xDialog.on) #xTipCard.xtip.on{visibility:hidden;}
   #xDialog .xdlg.tabbed>.winx{position:absolute;}
   #xDialog .xdlg.tabbed #xdTitle{font:400 var(--mk-t-value)/1.05 var(--font-b);} #xDialog .xdlg.tabbed #xdSub{font:400 var(--mk-t-body)/1.2 var(--font-b);} }
 /* dungeon lists: bigger item pictures, and one button size with its label centred in the button */
-#xDialog .xrow{grid-template-columns:52px minmax(0,1fr) 116px; gap:10px;}
+#xDialog .xrow{grid-template-columns:52px minmax(0,1fr) 92px; gap:8px;}
 #xDialog .xrow .pic .pxi{width:48px; height:48px;}
-#xDialog .xrow .btn{width:116px; min-width:0; min-height:44px; padding:0 6px; justify-content:center; text-align:center; justify-self:end;}
-#xDialog .xrow .btn.price{gap:6px;}
+#xDialog .xrow .btn{width:92px; min-width:0; min-height:40px; padding:0 4px; justify-content:center; text-align:center; justify-self:end;}
+#xDialog .xrow .btn.price{gap:4px;}
 #xDialog .xsheet .xshtop .pic{width:64px; height:64px;} #xDialog .xsheet .xshtop .pic>*{transform:none; width:64px; height:64px;}

@@ -852,6 +852,8 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 
 /* dungeon polish: a vignette that closes the view in, and a tidier control bar */
 #xVig{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 75% 70% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 85%,rgba(0,0,0,.85) 100%);}
+/* the Low graphics setting: the vignette the frame's last pass draws on High, laid over the picture here instead (look.js gfxVig) */
+#scrExplore.gfx-vig #xVig{background:var(--gfx-vig), radial-gradient(ellipse 75% 70% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 85%,rgba(0,0,0,.85) 100%);}
 #xBottom .btn.mini{min-height:38px; min-width:0; font-size:14px; padding:0 8px;}
 #xBottom .keys.learned{display:none!important;}   /* beats the touch rule that forces the line on */
 /* first-time tips (explore.js xTip): one card above the log, with Got it and Turn off */

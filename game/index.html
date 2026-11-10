@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v304</title>
-<meta name="application-version" content="304">
+<title>Hexmancers v306</title>
+<meta name="application-version" content="306">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -571,6 +571,7 @@
       <div class="srow"><span>Full screen</span><button id="setFull" class="btn ghost small fullBtn">Full screen</button></div>
       <div class="srow"><span>Sound effects<small>Whispers near secrets, clicks, chimes and grinding stone in the dungeon</small></span><button id="setSfx" class="btn ghost small"></button></div>
       <div class="srow"><span>Cast card<small>How a card shows when you cast it. Big: the full card in the middle. Side: a small card at the left edge. Ribbon: just its name under the top bar. Ghost: the big card, see-through and quick.</small></span><button id="setCastFx" class="btn ghost small"></button></div>
+      <div class="srow"><span>Graphics<small>Auto picks Low on devices that can't keep up. Low turns off blur and soft shading and draws simpler walls.</small></span><button id="setGfx" class="btn ghost small">Auto</button></div>
       <div class="srow"><span>Touch movement<small>How a finger moves you on the dungeon floor. Tap + hold (the default): a quick tap walks you there; hold or slide your finger and you steer like a thumbstick (nothing is drawn under your finger). Walk to touch: go where you tap or drag, and keep going after you let go. Floating stick: put a finger down anywhere and slide it like a thumbstick. Fixed stick: a thumbstick in the bottom-left corner (tap elsewhere to walk there). Follow finger: hold and you chase your finger; let go to stop. Trackpad: slide anywhere and you move the same way, as in battle.</small></span><button id="setXMove" class="btn ghost small"></button></div>
       <div class="srow"><span>Dungeon tips<small>A short tip the first time you meet doors, chests, traps, sleeping enemies and more. Turning them back on shows every tip again.</small></span><button id="setXTips" class="btn ghost small"></button></div>
       <div class="srow"><span>Fire button<small>Which side of the screen Fire sits on. Cast takes the other side.</small></span><button id="setFire" class="btn ghost small"></button></div>
@@ -665,6 +666,9 @@
       <div class="srow"><span>Cut stone black inside<small>On: faces inside the stonework that the cut opens are black. Off: you see the blocks' own faces.</small></span><label class="scheck"><input id="dbg_dShInner" type="checkbox"></label></div>
       <div class="srow"><span>Keep doors in the cut<small>On: doors and their frames are only thinned (half shown, dithered) up to the height below, so you see both the door and yourself. Off: cut like walls.</small></span><label class="scheck"><input id="dbg_dShDoor" type="checkbox"></label></div>
       <div class="srow"><span>Door kept up to<small>How high a door is kept whole in the cut, and how high its frame stands in a low near wall, in world units (a door's arch tops out near 3.4). 3.6 is normal.</small></span><span class="srange"><input id="dbg_dShDoorH" type="range" min="0" max="8" step="0.1"><b id="dbg_dShDoorHV"></b></span></div>
+      <div class="srow"><span>Shadow shape<small>On: you and enemies in sight show as a dark shape wherever a wall, arch, pillar or furniture covers them.</small></span><label class="scheck"><input id="dbg_dShade" type="checkbox"></label></div>
+      <div class="srow"><span>Shadow strength<small>How solid the shadow shape is. 0.55 is normal.</small></span><span class="srange"><input id="dbg_dShadeA" type="range" min="0" max="1" step="0.05"><b id="dbg_dShadeAV"></b></span></div>
+      <div class="srow"><span>Shadow tint<small>How much of the area's glow colour is in the shadow shape. 0 is plain dark; 0.35 is normal.</small></span><span class="srange"><input id="dbg_dShadeTint" type="range" min="0" max="1" step="0.05"><b id="dbg_dShadeTintV"></b></span></div>
       <div class="srow"><span>Field of view (lens)<small>The lens, in degrees. 46 is normal. Wider shows more around you with more depth; narrower is flatter.</small></span><span class="srange"><input id="dbg_dFov" type="range" min="20" max="120" step="1"><b id="dbg_dFovV"></b></span></div>
       <div class="srow"><span>Aim ahead<small>Points the camera further up the screen (above 0) so you stand lower and see more ahead, in tiles.</small></span><span class="srange"><input id="dbg_dAim" type="range" min="-4" max="6" step="0.1"><b id="dbg_dAimV"></b></span></div>
       <div class="srow"><span>Look-ahead<small>How far the camera leads you as you walk. 0 keeps you dead centre; 1 is normal.</small></span><span class="srange"><input id="dbg_dAhead" type="range" min="0" max="6" step="0.05"><b id="dbg_dAheadV"></b></span></div>

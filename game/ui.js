@@ -916,6 +916,10 @@ function showCast(c,inst){ const box=$('#castFx'), rib=$('#castRib'), mode=castF
     d.innerHTML=`<b>✦ ${esc(c.name)}</b>${combo?`<span>${esc(combo)}</span>`:''}`; rib.appendChild(d); return; }
   box.appendChild(cardEl(c,combo?`<span class="tag">✦ ${esc(combo)}</span>`:'')); }
 function applyCastFx(){ const b=$('#setCastFx'); if(b) b.textContent=CAST_FX_NAME[castFxMode()]; }
+// Graphics: Auto, High or Low (look.js gfxSet; a floor you are on is built again for it)
+const GFX_NAME={auto:'Auto',high:'High',low:'Low'}, GFX_ORDER=['auto','high','low'];
+function applyGfx(){ const b=$('#setGfx'); if(b&&typeof gfxMode==='function') b.textContent=GFX_NAME[gfxMode()]; }
+if($('#setGfx')){ $('#setGfx').onclick=()=>{ if(typeof gfxSet!=='function') return; gfxSet(GFX_ORDER[(GFX_ORDER.indexOf(gfxMode())+1)%3]); applyGfx(); }; window.addEventListener('load',applyGfx); }   // (look.js loads after this file)
 $('#setCastFx').onclick=()=>{ const m=CAST_FX[(CAST_FX.indexOf(castFxMode())+1)%CAST_FX.length]; try{ localStorage.setItem('hexmancers-castfx',m); }catch(e){} applyCastFx(); };
 applyCastFx();
 function banner(text,color){ const b=$('#banner'); b.textContent=text; b.style.setProperty('--bc',color); b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }

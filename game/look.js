@@ -21,7 +21,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
 const XLIT_DEF={ amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
-  dPitch:48, dDist:9.4, dView:12, dViewP:7, dStepOn:true, dStepLow:.17, dShOn:false, dShW:1.25, dShUp:1.3, dShDown:2.6, dShBack:1.1, dShEdge:.18, dShInner:true, dShDoor:true, dShDoorH:3.6, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
+  dPitch:48, dDist:9.4, dView:12, dViewP:7, dStepOn:true, dStepLow:.17, dShOn:false, dShW:1.25, dShUp:1.3, dShDown:2.6, dShBack:1.1, dShEdge:.18, dShInner:true, dShDoor:true, dShDoorH:3.6, dShade:true, dShadeA:.55, dShadeTint:.35, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
 // v228: movement tuned in the Movement lab is saved per browser and was overriding the defaults there, so one
@@ -132,6 +132,32 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    second and a half steps down (sharpness 2, 1.5, 1 then .75 screen pixels per pixel; then no
    screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
    menu, the look stays as set. */
+/* The Graphics setting (Settings > Display): High, Low or Auto, kept in this browser (hexmancers-gfx).
+   High is the full look. Low is for devices that cannot keep up: the dungeon draws no full-screen pass (no soft
+   shading, no blur; the vignette is drawn by the page), two torch lights where High has four, sharpness 1 at most,
+   plain wall blocks and half the dust and weather (explore.js reads gfxLow when it builds a floor). Auto is High
+   until the first floor has been timed (gfxSample), then whichever that chose. The battle is not affected. */
+const GFX={auto:'high',done:false,n:0,ms:[]};
+try{ const a=localStorage.getItem('hexmancers-gfx-auto'); if(a==='low'||a==='high'){ GFX.auto=a; GFX.done=true; } }catch(e){}   // what an earlier session measured
+/* Auto's one measurement: the dungeon hands in each drawn frame's time (explore.js xLoop: not while a dialog, the map
+   or a fight's hand-off is up, or the page is hidden). The first 30 are the floor warming up and are ignored; a frame
+   over 250 ms is a hitch, not the device's pace. After 90 more, a median over 22 ms means Low. Decided once and kept
+   (hexmancers-gfx-auto), so later sessions start right; choosing High or Low yourself overrides it. */
+function gfxSample(ms){ if(GFX.done||gfxMode()!=='auto'||!(ms>0)||ms>250) return; if(++GFX.n<=30) return; GFX.ms.push(ms); if(GFX.ms.length<90) return;
+  const a=GFX.ms.slice().sort((x,y)=>x-y); GFX.auto=a[45]>22?'low':'high'; GFX.done=true; GFX.ms.length=0;
+  try{ localStorage.setItem('hexmancers-gfx-auto',GFX.auto); }catch(e){} if(GFX.auto==='low') gfxApply(); }
+function gfxMode(){ try{ const m=localStorage.getItem('hexmancers-gfx'); return m==='high'||m==='low'?m:'auto'; }catch(e){ return 'auto'; } }
+function gfxLow(){ const m=gfxMode(); return m==='low'||(m==='auto'&&GFX.auto==='low'); }
+function gfxSet(mode){ try{ if(mode==='high'||mode==='low') localStorage.setItem('hexmancers-gfx',mode); else localStorage.removeItem('hexmancers-gfx'); }catch(e){} gfxApply(); }
+// the setting changed: a floor you are on is built again for it (xGfxRebuild, explore.js), and the page's vignette follows
+function gfxApply(){ const live=typeof EX!=='undefined'&&EX&&EX.active&&typeof X3!=='undefined'&&X3&&X3.group;
+  if(live&&X3.low!==gfxLow()&&typeof xGfxRebuild==='function') xGfxRebuild(); gfxVig(); }
+/* Low's vignette: the same darkening toward the corners that the frame's last pass draws on High (1 - vig x smoothstep
+   from vigR to vigR + vigSoft of the way to a corner), as a gradient over the dungeon's picture (#xVig, style.css). */
+function gfxVig(){ if(typeof document==='undefined') return; const el=document.getElementById('scrExplore'); if(!el) return;
+  const on=!!(typeof X3!=='undefined'&&X3&&X3.low&&XLIT.vig>0); el.classList.toggle('gfx-vig',on); if(!on) return;
+  const R=XLIT.vigR, S=Math.max(.05,XLIT.vigSoft), stops=[]; for(let k=0;k<=6;k++){ const t=k/6, a=Math.min(1,XLIT.vig*t*t*(3-2*t)); stops.push('rgba(0,0,0,'+a.toFixed(3)+') '+((R+S*t)*100).toFixed(1)+'%'); }
+  el.style.setProperty('--gfx-vig','radial-gradient(ellipse farthest-corner at 50% 50%,'+stops.join(',')+')'); }
 // (sharpness never drops below 1 until the shading and lights have: below 1 the people go soft and blocky)
 const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:1,lights:4,noSsao:1},{pr:1,lights:2,noSsao:1},{pr:.75,lights:2,noSsao:1}];
 const LQ={step:0,avg:16,slowT:0,fastT:0,upWait:3,upAt:-1e9};
@@ -147,6 +173,7 @@ function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } cons
 // the pixel ratio a renderer should draw at now
 const lookPR=()=>Math.min(window.devicePixelRatio||1,LQ_STEPS[LQ.step].pr);
 function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
+  if(G.low){ r.render(G.scene,G.cam); return; }   // the Low graphics setting (the dungeon's): the picture as drawn, no pass after it
   // depth of field and its focus view need the focus distance (the battle's board, you in the dungeon); the vignette goes on any frame
   const ssao=XLIT.ssao&&!LQ_STEPS[LQ.step].noSsao, dof=!!(G.dof&&XLIT.dof&&XLIT.dofBlur>0), show=!!(G.dof&&XLIT.dofShow), post=dof||show||XLIT.vig>0;
   if((!ssao&&!post)||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
@@ -325,13 +352,13 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ...['Spell','Defend','Backdate','Send','Smooth'].map(k=>['dbgMp'+k,()=>XLIT,'mp'+k,'hexmancers-xl-mp'+k,0,'mp']),   // a duel's timings, read live by battle.js duelSettings; the group 'mp' touches nothing else
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ...[['dPitch',0,''],['dDist',1,''],['dView',0,''],['dViewP',1,''],['dStepOn',null,'xwalls'],['dStepLow',2,'xwalls'],['dShOn',null,''],['dShW',2,''],['dShUp',2,''],['dShDown',2,''],['dShBack',2,''],['dShEdge',2,''],['dShInner',null,''],['dShDoor',null,''],['dShDoorH',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
+  ...[['dPitch',0,''],['dDist',1,''],['dView',0,''],['dViewP',1,''],['dStepOn',null,'xwalls'],['dStepLow',2,'xwalls'],['dShOn',null,''],['dShW',2,''],['dShUp',2,''],['dShDown',2,''],['dShBack',2,''],['dShEdge',2,''],['dShInner',null,''],['dShDoor',null,''],['dShDoorH',1,''],['dShade',null,'xshade'],['dShadeA',2,'xshade'],['dShadeTint',2,'xshade'],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
-  else if(what==='xpaint'||what==='xwalls'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
+  else if(what==='xpaint'||what==='xwalls'||what==='xshade'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
@@ -510,6 +537,5 @@ function lookWatch(renderer,getScene){ const cv=renderer.domElement;
 if(typeof document!=='undefined') document.addEventListener('visibilitychange',()=>{ if(document.hidden) return;
   setTimeout(()=>{ for(const [r,g] of lookWatch.all||[]) try{ lookRevive(r,g()); }catch(e){ console.warn('revive',e); } },250); });
 // PBR switched: both screens are built again with the other materials
-function lookRebuild(){ if(typeof EX!=='undefined'&&EX&&typeof xBuildScene==='function'&&typeof X3!=='undefined'&&X3){ xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed&&typeof xTrapMesh==='function') xTrapMesh(tr);
-    xUpdateVis(); xFadeCells(10); }   // what you can see, at once (a new scene starts all in the dark)
+function lookRebuild(){ if(typeof EX!=='undefined'&&EX&&typeof xGfxRebuild==='function'&&typeof X3!=='undefined'&&X3) xGfxRebuild();   // what you can see, at once (a new scene starts all in the dark)
   if(typeof AR!=='undefined'&&AR) AR.key=null; }

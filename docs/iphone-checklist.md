@@ -58,3 +58,10 @@ Open the itch.io page in **Safari**, not an in-app browser, and play in both ori
 
 For anything that fails: phone model, iOS version, portrait or landscape, which screen, what you did and what
 happened. A screenshot or screen recording helps most.
+
+## Dungeon graphics (v305, v306)
+
+- [ ] Settings > Display > Graphics: on each of Auto, High and Low, walk a floor: no black frames, the picture is whole, the frame rate is steady.
+- [ ] Change Graphics while standing on a floor: you stay where you were, doors and found rooms are as they were.
+- [ ] Walk behind an arch, a pillar and a bookcase: you show as a dark shape where covered; so does an enemy in sight.
+- [ ] Turn and walk quickly through a big hall: no wall, trim, pillar or growth pops in late at the screen's edge.

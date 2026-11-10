@@ -5,13 +5,13 @@
    Opens from the dungeon (B or the Bag button); it pauses the floor while open. At camp the same
    bag is the Character screen: potions wait for the dungeon, and gear gains the camp's actions
    (merge, enchant, purify) and a Look tab. Stats are a tab in both. */
-let BAGUI={tab:'items', sel:null};
+let BAGUI={tab:'items', sel:null, pick:null};   // pick: a scroll waiting for the gear it goes on ('enchant' or 'purify')
 const BAG_COLS=4, BAG_MIN=16;
 function bagItems(){ const s=gearState(save), out=[];
   for(const k of Object.keys(BAG)) if(bagN(k)>0) out.push({kind:'bag',k,n:bagN(k),name:BAG[k].name,text:BAG[k].text,pic:bagIcon(k,34),act:'Use'});
   for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push({kind:'key',k,n:keyN(k),name:KEYS[k].name,text:KEYS[k].text||'Kept for this dive',pic:keyIcon(k,34)});
   for(const m of Object.keys(MATS)) if(matN(m)>0) out.push({kind:'mat',k:m,n:matN(m),name:MATS[m].name,text:m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it',pic:matIcon(m,34)});
-  for(const k of Object.keys(SCROLLS)) if(s.scrolls[k]>0) out.push({kind:'scroll',k,n:s.scrolls[k],name:SCROLLS[k].name,text:SCROLLS[k].text+' (at camp)',pic:lootPic('scroll:'+k,34)});
+  for(const k of Object.keys(SCROLLS)) if(s.scrolls[k]>0) out.push({kind:'scroll',k,n:s.scrolls[k],name:SCROLLS[k].name,text:SCROLLS[k].text,pic:lootPic('scroll:'+k,34)});
   if(EX&&EX.carrying) out.push({kind:'crate',k:'crate',n:1,name:EX.carrying.owner+'’s crate',text:'Bring it back to its owner on this floor',pic:pxIcon('bag','#8a5a32',34)});
   const worn=new Set(SLOTS.map(k=>s.gear[k]).filter(Boolean));
   for(const id of Object.keys(GEAR)){ const n=(s.items[id]||0)-(worn.has(id)?1:0)-(s.gear.ring1===id&&s.gear.ring2===id?1:0); if(n>0)
@@ -19,11 +19,11 @@ function bagItems(){ const s=gearState(save), out=[];
   return out; }
 const bagInRun=()=>!!(typeof EX!=='undefined'&&EX&&EX.active);
 const bagTabs=()=>bagInRun()?[['items','Items'],['stats','Stats'],['quests','Quests'],['journal','Journal'],['bless','Blessings']]:[['items','Items'],['stats','Stats'],['look','Look'],['bless','Blessings']];
-function openBagUI(){ BAGUI.sel=null;
+function openBagUI(){ BAGUI.sel=null; BAGUI.pick=null; bagAskClose();
   // the menu kit's look (kit 24), at camp and inside a run alike
   $('#bagUI').classList.add('mk'); if(!bagTabs().some(t=>t[0]===BAGUI.tab)) BAGUI.tab='items'; renderBag(); $('#bagUI').classList.add('on'); }
 function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return; xPause(true); openBagUI(); }
-function closeBag(){ $('#bagUI').classList.remove('on');
+function closeBag(){ $('#bagUI').classList.remove('on'); BAGUI.pick=null; bagAskClose();
   if(bagInRun()){ if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
   else if($('#scrCamp').classList.contains('on')&&typeof xpBar==='function') xpBar($('#campLevel')); }
 function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand, ch=save.char&&RACES[save.char.race]?save.char:null;
@@ -35,10 +35,10 @@ function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[
   const cv=$('#bgSprite'), c=cv.getContext('2d'); c.clearRect(0,0,cv.width,cv.height); c.imageSmoothingEnabled=false;
   // trimmed to its visible pixels and centred, so the figure sits in the middle of the space between the slot columns
   const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); if(spr){ if(typeof ccFit==='function') ccFit(cv,spr.img); else c.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,cv.width,cv.height); }
-  const slot=(k,big)=>{ const id=s.gear[k], d=document.createElement('button'); d.className='bgslot'+(big?' big':'')+(id?' full':'')+(BAGUI.sel&&BAGUI.sel.slot===k?' sel':'');
+  const slot=(k,big)=>{ const id=s.gear[k], d=document.createElement('button'); d.className='bgslot'+(big?' big':'')+(id?' full':'')+(BAGUI.sel&&BAGUI.sel.slot===k?' sel':'')+(id?gearGlow(id):'')+(BAGUI.pick?(id&&pickOk(id)?' pickok':' pickno'):'');
     if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c);
     d.innerHTML=(id?gearIcon(id,big?56:40):`<span class="ghost"><img src="menukit/inv/${{weapon:'sword-empty',offhand:'offhand',head:'head',body:'body',arms:'arms',ring1:'ring',ring2:'ring'}[k]||'ring'}.webp" alt=""></span>`)+`<span class="lbl">${SLOT_NAMES[k]}</span>`;
-    d.dataset.drop='slot:'+k; d.onclick=()=>{ BAGUI.sel=id?{kind:'worn',k:id,slot:k}:null; renderBag(); };
+    d.dataset.drop='slot:'+k; d.onclick=()=>{ if(BAGUI.pick){ if(id) pickGear(id); return; } BAGUI.sel=id?{kind:'worn',k:id,slot:k}:null; renderBag(); };
     if(id) bagDrag(d,{kind:'worn',k:id,slot:k}); return d; };
   const L=$('#bgLeft'), R=$('#bgRight'); L.innerHTML=''; R.innerHTML='';
   ['head','body','arms'].forEach(k=>L.appendChild(slot(k))); ['ring1','ring2','offhand'].forEach(k=>R.appendChild(slot(k)));
@@ -48,11 +48,12 @@ function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[
   $('#bgGold').innerHTML='<img class="bgcoin" src="menukit/inv/coin.webp" alt="">'+save.gold;
   // the bag side: tabs, then the grid (or a list for quests, journal and blessings)
   const tabs=$('#bgTabs'); tabs.innerHTML='';
-  for(const [k,l] of bagTabs()){ const b=document.createElement('button'); b.className='bgtab'+(BAGUI.tab===k?' on':''); b.textContent=l; b.onclick=()=>{ BAGUI.tab=k; BAGUI.sel=null; renderBag(); }; tabs.appendChild(b); }
+  for(const [k,l] of bagTabs()){ const b=document.createElement('button'); b.className='bgtab'+(BAGUI.tab===k?' on':''); b.textContent=l; b.onclick=()=>{ BAGUI.tab=k; BAGUI.sel=null; BAGUI.pick=null; renderBag(); }; tabs.appendChild(b); }
   const box=$('#bgGrid'); box.innerHTML=''; box.className=BAGUI.tab==='items'?'bggrid':'bglist'; box.dataset.drop='bag'; $('#bgSprite').dataset.drop='me';
   if(BAGUI.tab==='items'){ const items=bagItems(), n=Math.max(BAG_MIN,Math.ceil((items.length+1)/BAG_COLS)*BAG_COLS);
-    for(let i=0;i<n;i++){ const it=items[i], d=document.createElement('button'); d.className='bgcell'+(it?' full':'')+(it&&BAGUI.sel&&BAGUI.sel.kind===it.kind&&BAGUI.sel.k===it.k?' sel':'');
-      if(it){ if(it.fam) d.style.setProperty('--fc',it.fam); d.innerHTML=it.pic+(it.n>1?`<span class="cnt">${it.n}</span>`:'')+(it.tier?`<span class="tier">${it.tier}</span>`:''); d.title=it.name; d.onclick=()=>{ BAGUI.sel=it; renderBag(); }; if(it.kind==='gear'||(it.kind==='bag'&&bagInRun())) bagDrag(d,it); }
+    for(let i=0;i<n;i++){ const it=items[i], d=document.createElement('button'); d.className='bgcell'+(it?' full':'')+(it&&BAGUI.sel&&BAGUI.sel.kind===it.kind&&BAGUI.sel.k===it.k?' sel':'')+(it&&it.kind==='gear'?gearGlow(it.k):'')
+        +(it&&BAGUI.pick?(it.kind==='gear'&&pickOk(it.k)?' pickok':(BAGUI.sel&&BAGUI.sel.kind===it.kind&&BAGUI.sel.k===it.k?'':' pickno')):'');
+      if(it){ if(it.fam) d.style.setProperty('--fc',it.fam); d.innerHTML=it.pic+(it.n>1?`<span class="cnt">${it.n}</span>`:'')+(it.tier?`<span class="tier">${it.tier}</span>`:''); d.title=it.name; d.onclick=()=>{ if(BAGUI.pick){ if(it.kind==='gear') pickGear(it.k); return; } BAGUI.sel=it; renderBag(); }; if(it.kind==='gear'||(it.kind==='bag'&&bagInRun())) bagDrag(d,it); }
       else d.disabled=true;
       box.appendChild(d); } }
   else xBagLists(box,{tab:BAGUI.tab});
@@ -77,7 +78,7 @@ function bagDetail(){ const d=$('#bgDetail'); let it=BAGUI.sel; d.innerHTML='';
   if(!it){ d.innerHTML='<p class="hint">'+(BAGUI.tab==='items'?'Select an item to inspect':'')+'</p>'; return; }
   const btn=(label,fn,cls)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=fn; d.querySelector('.acts').appendChild(b); };
   if(it.kind==='worn'||it.kind==='gear'){ const id=it.k, G=GEAR[id], s=gearState(save), stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
-    d.innerHTML=`<div class="pic">${gearIcon(id,48)}</div><div class="nm"><b>${esc(gearName(save,id))}${it.n>1?' ×'+it.n:''} <span class="tier">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):''}</span></b><small>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</small>`
+    d.innerHTML=`<div class="pic${gearGlow(id)}">${gearIcon(id,48)}</div><div class="nm"><b>${esc(gearName(save,id))}${it.n>1?' ×'+it.n:''} <span class="tier">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):''}</span></b><small>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</small>`
       +(set?`<small class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</small>`:'')
       +(unworn(save,id)?'<small class="fresh">Not worn yet: it may be enchanted or cursed.</small>':'')
       +(stuck?`<small class="curse">☠ Cursed ${esc(CURSES[s.cursed[id]].name)}: ${esc(CURSES[s.cursed[id]].text)}</small>`:'')+'</div><div class="acts"></div>';
@@ -86,13 +87,43 @@ function bagDetail(){ const d=$('#bgDetail'); let it=BAGUI.sel; d.innerHTML='';
     else btn('Equip',()=>{ const sl=G.slot==='ring'?(!s.gear.ring1?'ring1':'ring2'):G.slot; const r=equip(save,sl,id); if(r.msg) tip(r.msg); if(r.ok) persist(); BAGUI.sel=null; renderBag(); });
     // at camp: merge two copies, enchant, and break a curse
     if(!bagInRun()){ const keep=()=>{ BAGUI.sel=it; };
-      if(s.items[id]>1&&lv<MAX_LEVEL) btn('Merge → +'+(lv+1),()=>{ keep(); charMsg(mergeGear(save,id)); },'ghost');
-      if(!s.ench[id]&&s.scrolls.enchant>0) btn('Enchant ('+s.scrolls.enchant+')',()=>{ keep(); charMsg(enchantGear(save,id)); },'ghost');
-      if(stuck){ if(s.scrolls.purify>0) btn('Purify ('+s.scrolls.purify+')',()=>{ keep(); charMsg(purifyGear(save,id)); },'ghost'); btn('Sacrifice 3 rune '+curseRune(save,id),()=>pickSacrifice(id),'ghost'); } }
+      if(s.items[id]>1&&lv<MAX_LEVEL) btn('Merge → +'+(lv+1),()=>bagAsk('Merge two '+GEAR[id].name+'?','Two copies become one piece at +'+(lv+1)+'.','Merge',()=>{ keep(); charMsg(mergeGear(save,id)); }),'ghost');
+      if(!s.ench[id]&&s.scrolls.enchant>0) btn('Enchant ('+s.scrolls.enchant+')',()=>askScroll('enchant',id),'ghost');
+      if(stuck){ if(s.scrolls.purify>0) btn('Purify ('+s.scrolls.purify+')',()=>askScroll('purify',id),'ghost'); btn('Sacrifice 3 rune '+curseRune(save,id),()=>pickSacrifice(id),'ghost'); } }
     return; }
+  // a scroll in use: choose the gear for it
+  if(BAGUI.pick){ d.innerHTML=`<div class="pic">${it.pic}</div><div class="nm"><b>${BAGUI.pick==='enchant'?'Choose gear to enchant':'Choose cursed gear to purify'}</b><small>Tap a glowing piece in your bag or on you.</small></div><div class="acts"></div>`;
+    btn('Cancel',()=>{ BAGUI.pick=null; renderBag(); },'ghost'); return; }
   d.innerHTML=`<div class="pic">${it.pic}</div><div class="nm"><b>${esc(it.name)}${it.n>1?' ×'+it.n:''}</b><small>${esc(it.text||'')}</small></div><div class="acts"></div>`;
-  if(it.kind==='bag'){ if(bagInRun()) btn('Use',()=>{ xUseBag(it.k); BAGUI.sel=bagN(it.k)>0?it:null; renderBag(); }); else d.querySelector('.acts').innerHTML='<span class="dim">Use it in the dungeon</span>'; }
+  const cancel=()=>btn('Cancel',()=>{ BAGUI.sel=null; renderBag(); },'ghost');
+  if(it.kind==='bag'){ if(bagInRun()){ btn('Use',()=>askPotion(it.k)); cancel(); } else d.querySelector('.acts').innerHTML='<span class="dim">Use it in the dungeon</span>'; }
+  if(it.kind==='scroll'){ btn('Use',()=>{ const P=it.k, any=Object.keys(GEAR).some(id=>gearState(save).items[id]>0&&pickOk(id,P));
+      if(!any) return tip(P==='enchant'?'Every piece you have is already enchanted':'None of your gear is cursed',0,{kind:'warning'});
+      BAGUI.pick=P; renderBag(); }); cancel(); }
 }
+/* Scrolls and potions: every use asks first. A scroll picks its gear (pick mode), then confirms;
+   enchanted gear wears a blue outline glow in the bag, known-cursed gear a red one. */
+const gearGlow=id=>{ const s=gearState(save); return s.cursed[id]?' gcurse':s.ench[id]?' gench':''; };
+function pickOk(id,P){ P=P||BAGUI.pick; const s=gearState(save); return P==='enchant'?!s.ench[id]:P==='purify'?isStuck(save,id):false; }
+function pickGear(id){ if(!pickOk(id)) return tip(BAGUI.pick==='enchant'?'That piece is already enchanted':'That piece is not cursed');
+  askScroll(BAGUI.pick,id); }
+function askScroll(P,id){ const nm=gearName(save,id);
+  if(P==='enchant') bagAsk('Enchant '+nm+'?','Uses 1 Scroll of Enchanting. The enchantment is chosen at random.','Enchant',()=>{
+    const r=enchantGear(save,id); BAGUI.pick=null; if(!r.ok) return tip(r.msg,0,{kind:'warning'}); persist(); tip('Enchanted',0,{kind:'success',sub:gearName(save,id)}); BAGUI.sel=bagSel(id); renderBag(); });
+  else bagAsk('Purify '+nm+'?','Uses 1 Scroll of Purifying. The curse is lifted and the piece can come off.','Purify',()=>{
+    const r=purifyGear(save,id); BAGUI.pick=null; if(!r.ok) return tip(r.msg,0,{kind:'warning'}); persist(); tip('Curse lifted',0,{kind:'success',sub:gearName(save,id)}); BAGUI.sel=bagSel(id); renderBag(); }); }
+// after a scroll, keep the piece selected so its new name and glow show
+function bagSel(id){ const s=gearState(save), k=SLOTS.find(x=>s.gear[x]===id); return k?{kind:'worn',k:id,slot:k}:bagItems().find(x=>x.kind==='gear'&&x.k===id)||null; }
+function askPotion(k){ bagAsk('Use '+BAG[k].name+'?',BAG[k].text+'. It is used up.','Use',()=>{ const n=bagN(k); xUseBag(k); BAGUI.sel=bagN(k)>0?bagItems().find(x=>x.kind==='bag'&&x.k===k)||null:null; renderBag(); if(bagN(k)<n) tip(BAG[k].name+' used',0,{kind:'success'}); }); }
+// the are-you-sure box, inside the bag
+function bagAsk(title,text,yes,fn){ let a=$('#bgAsk');
+  if(!a){ a=document.createElement('div'); a.id='bgAsk'; a.className='bgask'; a.setAttribute('role','dialog'); a.setAttribute('aria-modal','true');
+    a.innerHTML='<div class="panel bgaskp"><h3></h3><p></p><div class="row"><button class="btn ghost" data-a="no">Cancel</button><button class="btn" data-a="yes"></button></div></div>';
+    $('#bagUI').appendChild(a); a.addEventListener('pointerdown',e=>{ if(e.target===a) bagAskClose(); }); }
+  a.querySelector('h3').textContent=title; a.querySelector('p').textContent=text; a.querySelector('[data-a=yes]').textContent=yes;
+  a.querySelector('[data-a=no]').onclick=bagAskClose; a.querySelector('[data-a=yes]').onclick=()=>{ bagAskClose(); fn(); };
+  a.classList.add('on'); a.querySelector('[data-a=yes]').focus(); }
+function bagAskClose(){ const a=$('#bgAsk'); if(a) a.classList.remove('on'); }
 /* Drag and drop: drag gear from the bag onto its slot (or onto your character) to put it on, a worn
    piece back into the bag to take it off, a ring between the two ring slots, and a potion onto your
    character to drink it. A tap without a drag still selects, as before. */
@@ -103,7 +134,7 @@ function bagDropsFor(it){ if(it.kind==='bag') return bagInRun()?['me']:[];
   if(it.kind==='worn') return ['bag',...(it.slot==='ring1'?['slot:ring2']:it.slot==='ring2'?['slot:ring1']:[])];
   return []; }
 function bagDrop(it,to){ let r=null;
-  if(it.kind==='bag'&&to==='me'){ xUseBag(it.k); BAGUI.sel=null; renderBag(); return; }
+  if(it.kind==='bag'&&to==='me'){ askPotion(it.k); return; }
   if(it.kind==='gear'){ const G=GEAR[it.k], sl=to==='me'?(G.slot==='ring'?(!gearState(save).gear.ring1?'ring1':'ring2'):G.slot):to.slice(5); r=equip(save,sl,it.k); }
   if(it.kind==='worn'&&to==='bag'){ if(GEAR[it.k].starter&&it.slot==='weapon') r={ok:false,msg:'Your first wand stays in hand until you hold another'}; else r=equip(save,it.slot,null); }
   if(it.kind==='worn'&&to.startsWith('slot:ring')){ const k2=to.slice(5), s=gearState(save), other=s.gear[k2];
@@ -131,5 +162,6 @@ $('#bgClose').onclick=closeBag; $('#bgDone').onclick=closeBag;
 $('#bgPts').onclick=()=>{ if(bagInRun()) return tip('Spend level points at camp'); closeBag(); if(typeof openLevelUp==='function') openLevelUp(); };
 // tap the top of the bag (its title or the bag badge) to build your deck
 for(const sel of ['#bgTitle','.bgbag']) $(sel).onclick=()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); };
-$('#bagUI').addEventListener('pointerdown',e=>{ if(e.target.id==='bagUI') closeBag(); });
-document.addEventListener('keydown',e=>{ if(!$('#bagUI').classList.contains('on')) return; const k=e.key.toLowerCase(); if(k==='escape'||(typeof keyAct==='function'&&keyAct(k,'map')==='bag')){ e.preventDefault(); e.stopImmediatePropagation(); closeBag(); } },true);
+$('#bagUI').addEventListener('pointerdown',e=>{ if(e.target.id==='bagUI'&&!BAGUI.pick) closeBag(); });
+document.addEventListener('keydown',e=>{ if(!$('#bagUI').classList.contains('on')) return; const k=e.key.toLowerCase(); if(k==='escape'||(typeof keyAct==='function'&&keyAct(k,'map')==='bag')){ e.preventDefault(); e.stopImmediatePropagation();
+    const a=$('#bgAsk'); if(a&&a.classList.contains('on')) return bagAskClose(); if(BAGUI.pick){ BAGUI.pick=null; return renderBag(); } closeBag(); } },true);

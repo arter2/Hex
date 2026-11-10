@@ -306,12 +306,13 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
 
 /* The clutter, drawn (x2Clutter): one merged mesh per room (or gallery piece), shown once any of its cells is seen.
-   Light ruins are pale marble with gold trim, dark ones basalt with the area's glow in their cracks. A fire pillar's
+   Ruins are cut from the area's own stone: light ones from its upper tones with dull gold trim, dark ones from its lower
+   tones with the area's glow in their cracks. A fire pillar's
    flame is a light of its own (EX.glows, like a brazier) and goes when you snuff it (xSnuff). */
 function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')');
   for(const mk of EX.marks){ if(mk.kind!=='clutter') continue; const D=mk.dark, glow=new THREE.Color(A.glow||'#ffb060');
-    const ST=new THREE.Color(D?'#3d3a44':'#d3c9b4'), SH=new THREE.Color(D?'#29272e':'#a99f8a'), LT=new THREE.Color(D?'#57525f':'#ebe3d1'), TRIM=D?glow.clone().multiplyScalar(.55):new THREE.Color('#c9a24e');
-    if(mk.nat){ ST.lerp(tone(.5),.35); SH.lerp(tone(.3),.35); LT.lerp(tone(.65),.35); }
+    // the area's own stone: light ruins from its upper tones, dark ones from its lower, so they sit with the walls and floor
+    const ST=tone(D?.3:.56), SH=tone(D?.18:.42), LT=tone(D?.42:.68), TRIM=D?glow.clone().multiplyScalar(.55):new THREE.Color('#b08a44').lerp(tone(.5),.45);
     const ROCK=tone(.42), ROCK2=tone(.28), ROCK3=tone(.58), SOIL=new THREE.Color('#2b2117'), LEAF=new THREE.Color(S.moss||'#4f7a3a'), LEAF2=LEAF.clone().lerp(new THREE.Color('#1e3a1a'),.45), FLOW=[0xd9465a,0xf2c94c,0xb48cff,0xf0f0e0];
     const M=xMerger(), L=xMerger(), seen=new Set();
     for(const it of mk.items){ const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;

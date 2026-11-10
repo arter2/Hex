@@ -22,6 +22,7 @@ body.rune #xMini.big{zoom:1;}
 /* one controlled atmosphere: the second vignette and the dark band under the controls go (the world stays visible) */
 body.rune #scrExplore .x-vignette{display:none;}
 body.rune #xVig{background:radial-gradient(ellipse 80% 75% at 50% 46%,rgba(0,0,0,0) 60%,rgba(0,0,0,.4) 88%,rgba(0,0,0,.7) 100%);}
+body.rune #scrExplore.gfx-vig #xVig{background:var(--gfx-vig), radial-gradient(ellipse 80% 75% at 50% 46%,rgba(0,0,0,0) 60%,rgba(0,0,0,.4) 88%,rgba(0,0,0,.7) 100%);}
 
 /* ---------------- top: compact vitals (the handoff's compact-header: every position below is from it) ---------------- */
 /* the frames are the handoff's own skins, nine-sliced: --r-s-* (rune.js) */

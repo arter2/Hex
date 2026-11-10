@@ -275,7 +275,7 @@ function xInit3D(){
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
   lookWatch(renderer,()=>scene);
-  X3={renderer,scene,cam,amb,sun,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
+  X3={renderer,scene,cam,amb,sun,lamp,dust,pool,poolAll:pool,low:false,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   // the search reticle: pixel art laid on the floor over the 3 x 3 tiles a search covers (xRetTex)
   const rm=new THREE.MeshBasicMaterial({map:xRetTex(),transparent:true,opacity:.9,depthTest:false,depthWrite:false,fog:false}), ret=new THREE.Group();
   const rq=new THREE.Mesh(new THREE.PlaneGeometry(XCS*3,XCS*3),rm); rq.rotation.x=-Math.PI/2; ret.add(rq);
@@ -452,6 +452,11 @@ function xBuildScene(){
       for(const k of ['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap']) free(m[k]);
       if(m.userData&&m.userData.nmap) free(m.userData.nmap); if(m.userData&&m.userData.rmap) free(m.userData.rmap); free(m); } }); }
   XLITMATS.clear();
+  // the Graphics setting, read once per floor: Low keeps two of the four torch lights (the others leave the scene, so
+  // every material's shader is built for fewer lights) and draws at sharpness 1 with no pass after the picture
+  G.low=typeof gfxLow==='function'&&gfxLow(); G.w=0;
+  { const n=G.low?2:4; G.poolAll.forEach((P,k)=>{ if(k<n){ if(!P.parent) G.scene.add(P); } else { if(P.parent) G.scene.remove(P); } P.intensity=0; P.userData.L=null; P.userData.next=undefined; P.position.set(0,-50,0); }); G.pool=G.poolAll.slice(0,n); }
+  if(typeof gfxVig==='function') gfxVig();
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
   EX.natural=EX.layout===2&&XNATURAL.has(A.id);   // a cave area: rough rock walls and floors, no masonry dressing (nature.js)
@@ -1831,7 +1836,7 @@ function xLoop(ts){
   if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; }
   xGuard(()=>xDoorTick(dt||.016)); xGuard(()=>xDraw(ts/1000,dt));
 }
-function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600, pr=lookPR(); if(G.renderer.getPixelRatio()!==pr){ G.renderer.setPixelRatio(pr); G.w=0; } if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
+function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600, pr=G.low?Math.min(1,lookPR()):lookPR(); /* (the Low graphics setting: sharpness 1 at most) */ if(G.renderer.getPixelRatio()!==pr){ G.renderer.setPixelRatio(pr); G.w=0; } if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 /* The frame's loops over enemies, lights and dust live in small functions of their own: the browser compiles small
    functions to fast code, and leaves one as long as xDraw running slowly and making garbage with every sum. */
 function xDrawGroups(T){

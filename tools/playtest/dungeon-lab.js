@@ -126,13 +126,13 @@ function install() {
   };
 }
 
-// open the game. opt: {gfx:'auto'|'high'|'low', storage:{key:value}, memory:true, width, height}
+// open the game. opt: {gfx:'auto'|'high'|'low', storage:{key:value}, memory:true, width, height, dpr}
 async function open(opt = {}) {
   const host = await Runner.serve();
   const { browser } = await Runner.launch({ preciseMemory: !!opt.memory });
   const context = await browser.newContext({
     viewport: { width: opt.width || 390, height: opt.height || 844 },
-    deviceScaleFactor: 1
+    deviceScaleFactor: opt.dpr || 1
   });
   const storage = Object.assign({}, opt.storage);
   if (opt.gfx) storage['hexmancers-gfx'] = opt.gfx;

@@ -132,6 +132,24 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    second and a half steps down (sharpness 2, 1.5, 1 then .75 screen pixels per pixel; then no
    screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
    menu, the look stays as set. */
+/* The Graphics setting (Settings > Display): High, Low or Auto, kept in this browser (hexmancers-gfx).
+   High is the full look. Low is for devices that cannot keep up: the dungeon draws no full-screen pass (no soft
+   shading, no blur; the vignette is drawn by the page), two torch lights where High has four, sharpness 1 at most,
+   plain wall blocks and half the dust and weather (explore.js reads gfxLow when it builds a floor). Auto is High
+   until the first floor has been timed (gfxSample), then whichever that chose. The battle is not affected. */
+const GFX={auto:'high'};
+function gfxMode(){ try{ const m=localStorage.getItem('hexmancers-gfx'); return m==='high'||m==='low'?m:'auto'; }catch(e){ return 'auto'; } }
+function gfxLow(){ const m=gfxMode(); return m==='low'||(m==='auto'&&GFX.auto==='low'); }
+function gfxSet(mode){ try{ if(mode==='high'||mode==='low') localStorage.setItem('hexmancers-gfx',mode); else localStorage.removeItem('hexmancers-gfx'); }catch(e){} gfxApply(); }
+// the setting changed: a floor you are on is built again for it (xGfxRebuild, explore.js), and the page's vignette follows
+function gfxApply(){ const live=typeof EX!=='undefined'&&EX&&EX.active&&typeof X3!=='undefined'&&X3&&X3.group;
+  if(live&&X3.low!==gfxLow()&&typeof xGfxRebuild==='function') xGfxRebuild(); gfxVig(); }
+/* Low's vignette: the same darkening toward the corners that the frame's last pass draws on High (1 - vig x smoothstep
+   from vigR to vigR + vigSoft of the way to a corner), as a gradient over the dungeon's picture (#xVig, style.css). */
+function gfxVig(){ if(typeof document==='undefined') return; const el=document.getElementById('scrExplore'); if(!el) return;
+  const on=!!(typeof X3!=='undefined'&&X3&&X3.low&&XLIT.vig>0); el.classList.toggle('gfx-vig',on); if(!on) return;
+  const R=XLIT.vigR, S=Math.max(.05,XLIT.vigSoft), stops=[]; for(let k=0;k<=6;k++){ const t=k/6, a=Math.min(1,XLIT.vig*t*t*(3-2*t)); stops.push('rgba(0,0,0,'+a.toFixed(3)+') '+((R+S*t)*100).toFixed(1)+'%'); }
+  el.style.setProperty('--gfx-vig','radial-gradient(ellipse farthest-corner at 50% 50%,'+stops.join(',')+')'); }
 // (sharpness never drops below 1 until the shading and lights have: below 1 the people go soft and blocky)
 const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:1,lights:4,noSsao:1},{pr:1,lights:2,noSsao:1},{pr:.75,lights:2,noSsao:1}];
 const LQ={step:0,avg:16,slowT:0,fastT:0,upWait:3,upAt:-1e9};
@@ -147,6 +165,7 @@ function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } cons
 // the pixel ratio a renderer should draw at now
 const lookPR=()=>Math.min(window.devicePixelRatio||1,LQ_STEPS[LQ.step].pr);
 function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
+  if(G.low){ r.render(G.scene,G.cam); return; }   // the Low graphics setting (the dungeon's): the picture as drawn, no pass after it
   // depth of field and its focus view need the focus distance (the battle's board, you in the dungeon); the vignette goes on any frame
   const ssao=XLIT.ssao&&!LQ_STEPS[LQ.step].noSsao, dof=!!(G.dof&&XLIT.dof&&XLIT.dofBlur>0), show=!!(G.dof&&XLIT.dofShow), post=dof||show||XLIT.vig>0;
   if((!ssao&&!post)||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }

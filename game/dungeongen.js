@@ -24,12 +24,13 @@ function x2Shape(R,ri,w,h,big){ const r=R();
   if(w>=7&&h>=6&&r<(big?.85:.55)) return {k:'L',c:ri(0,3),cw:Math.min(w-3,Math.max(3,Math.round(w*(.4+R()*.15)))),ch:Math.min(h-3,Math.max(3,Math.round(h*(.4+R()*.15))))};
   return null; }
 function x2In(r,lx,ly){ const S=r.shape; if(!S) return true; const w=r.w, h=r.h;
+  if(S.k==='T') return '#BD'.includes(S.g[ly][lx]);   // a template (roomshapes.js): floor, bridge or doorway
   if(S.k==='L'){ const cx=S.c&1?lx<S.cw:lx>=w-S.cw, cy=S.c&2?ly>=h-S.ch:ly<S.ch; return !(cx&&cy); }
   if(S.k==='X'){ const ox=(w-S.a)>>1, oy=(h-S.b)>>1; return lx>=ox&&lx<ox+S.a||ly>=oy&&ly<oy+S.b; }
   if(S.k==='H'){ const u=S.v?ly:lx, v=S.v?lx:ly, U=S.v?h:w, V=S.v?w:h, o=(V-S.b)>>1; return u<S.a||u>=U-S.a||v>=o&&v<o+S.b; }
   return true; }
 // the room's middle for the stairs, a boss or a centrepiece: the floor cell deepest inside it, nearest the box's middle
-function x2Centre(r,room){ let best=null, bs=-1; const mx=r.x+r.w/2-.5, my=r.y+r.h/2-.5;
+function x2Centre(r,room){ let best=null, bs=-Infinity; const mx=r.x+r.w/2-.5, my=r.y+r.h/2-.5;
   for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++){ if(room[xi(i,j)]!==r.id) continue; let d=0;
     while(d<6){ let ok=true; for(let dy=-d-1;dy<=d+1&&ok;dy++) for(let dx=-d-1;dx<=d+1;dx++) if(room[xi(i+dx,j+dy)]!==r.id){ ok=false; break; } if(!ok) break; d++; }
     const sc=d*100-Math.hypot(i-mx,j-my); if(sc>bs){ bs=sc; best=[i,j]; } }
@@ -46,7 +47,7 @@ function x2Walls(rooms,F,R,ri){ const {t,room}=F, low=F.low||[];
   const clear=(i,j,r)=>{ for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) if(room[xi(i+dx,j+dy)]!==r.id) return false; return Math.hypot(i-r.cx,j-r.cy)>2.5; };
   const whole=r=>x2Whole(r,room);
   const PIECES=[[[0,0],[1,0],[2,0]],[[0,0],[1,0],[2,0],[3,0]],[[0,0],[0,1],[0,2]],[[0,0],[0,1],[0,2],[0,3]],[[0,0]],[[0,0],[1,0],[0,1],[1,1]],[[0,0],[1,0],[2,0],[0,1]],[[0,0],[0,1],[1,1],[2,1]]];
-  for(const r of rooms){ if(r.side||r.w<8||r.h<7) continue; const area=r.w*r.h, want=r.mark?ri(0,1):r.landmark?ri(2,4):area>=60&&R()<.75?ri(1,2):R()<.35?1:0;
+  for(const r of rooms){ if(r.side||r.w<8||r.h<7||r.shape&&r.shape.k==='T') continue; const area=r.w*r.h, want=r.mark?ri(0,1):r.landmark?ri(2,4):area>=60&&R()<.75?ri(1,2):R()<.35?1:0;
     for(let n=0,k=0;n<want&&k<40;k++){ const P=PIECES[ri(0,PIECES.length-1)], ox=ri(r.x+2,r.x+r.w-3), oy=ri(r.y+2,r.y+r.h-3);
       const cells=P.map(([dx,dy])=>[ox+dx,oy+dy]); if(!cells.every(([i,j])=>clear(i,j,r))) continue;
       for(const [i,j] of cells){ const c=xi(i,j); t[c]=T_ROCK; room[c]=-1; }
@@ -67,8 +68,9 @@ const X2MARK={
   archive:{need:2, small:{need:2, pieces:[[[-3,-3],[-2,-3]],[[2,-3],[3,-3]],[[-3,3],[-2,3]],[[2,3],[3,3]]]}, pieces:[[[-4,-3],[-3,-3],[-2,-3]],[[2,-3],[3,-3],[4,-3]],[[-4,3],[-3,3],[-2,3]],[[2,3],[3,3],[4,3]]]},
   hall:{need:4, pieces:[-4,-2,0,2,4].flatMap(u=>[[[u,-3]],[[u,3]]])} };
 function x2Marks(rooms,F,R){ const {t,room}=F, low=F.low||(F.low=[]), marks=F.marks||(F.marks=[]);
+  x2Feats(rooms,F);
   const deck=Object.keys(X2MARK).sort(()=>R()-.5); let next=0;
-  for(const r of rooms){ if(!r.landmark||r.side) continue; const horiz=r.w>=r.h;
+  for(const r of rooms){ if(!r.landmark||r.side||r.shape&&r.shape.k==='T') continue; const horiz=r.w>=r.h;
     for(let k=0;k<deck.length;k++){ const kind=deck[(next+k)%deck.length];
       for(const K of [X2MARK[kind],X2MARK[kind].small].filter(Boolean)) for(const s of [1,-1]){ if(r.mark) break; const at=([u,v])=>horiz?xi(r.cx+u,r.cy+v*s):xi(r.cx+v*s,r.cy+u), placed=[];
         for(const P of K.pieces){ const cells=P.map(at), mine=new Set(cells);
@@ -81,12 +83,28 @@ function x2Marks(rooms,F,R){ const {t,room}=F, low=F.low||(F.low=[]), marks=F.ma
         for(const p of placed) for(const c of p){ t[c]=T_FLOOR; room[c]=r.id; } }
       if(r.mark) break; } } }
 
+/* A template room's own pieces, once the floor is stamped (its floor, bridges and doorways are already floor):
+   L low walls and W water and C chasm cells are solid underfoot but seen over (F.low); P pillars stay full walls.
+   Water, chasm and bridge cells are listed in F.marks (kinds pool, pit, bridge) for the scene to draw (xShapeFeats). */
+function x2Feats(rooms,F){ const low=F.low, marks=F.marks;
+  for(const r of rooms){ const S=r.shape; if(!S||S.k!=='T') continue; const got={pool:[],pit:[],bridge:[]};
+    for(let ly=0;ly<r.h;ly++) for(let lx=0;lx<r.w;lx++){ const ch=S.g[ly][lx], c=xi(r.x+lx,r.y+ly);
+      if(ch==='L'||ch==='W'||ch==='C') low.push(c);
+      if(ch==='W') got.pool.push(c); else if(ch==='C') got.pit.push(c); else if(ch==='B') got.bridge.push(c); }
+    for(const kind of ['pool','pit','bridge']) if(got[kind].length) marks.push({room:r.id,kind,pieces:[got[kind]],cx:r.cx,cy:r.cy}); } }
+
 // rooms: landmark halls first (they need the room), then ordinary rooms; null when too few fit
-function x2Rooms(R,ri,plan){ const rooms=[], small=!!plan.small, want=small?X2.small:ri(...X2.rooms);
+/* Template rooms (roomshapes.js): most landmark halls take one of the six hall shapes (a different one each), and
+   about a third of the ordinary rooms one of the room shapes (the cave pocket only in a natural area). The box is the
+   template's own size. Template rooms keep their own pillars and pools: no low walls or centrepiece is added. */
+const X2T={hall:.7, room:.35};
+function x2Rooms(R,ri,plan,depth){ const rooms=[], small=!!plan.small, want=small?X2.small:ri(...X2.rooms);
+  const tpl=typeof rsPick==='function', nat=tpl&&depth&&typeof areaOf==='function'&&typeof XNATURAL!=='undefined'&&XNATURAL.has(areaOf(depth).id), usedT=new Set();
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
   const lm=small?0:ri(...X2.landmarks);
-  for(let k=0;k<2500&&rooms.length<want;k++){ const big=rooms.length<lm, w=big?ri(13,18):ri(7,13), h=big?ri(12,16):ri(6,11), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
-    if(free(x,y,w,h,X2.marg)) rooms.push({x,y,w,h,lit:big||R()<.68,landmark:big||undefined,shape:x2Shape(R,ri,w,h,big)||undefined});
+  for(let k=0;k<2500&&rooms.length<want;k++){ const big=rooms.length<lm, T=tpl&&R()<(big?X2T.hall:X2T.room)?rsPick(R,big?'hall':'room',nat,big?usedT:null):null;
+    const w=T?T.g[0].length:big?ri(13,18):ri(7,13), h=T?T.g.length:big?ri(12,16):ri(6,11), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
+    if(free(x,y,w,h,X2.marg)){ if(T&&big) usedT.add(T.id); rooms.push({x,y,w,h,lit:big||R()<.68,landmark:big||undefined,shape:T||x2Shape(R,ri,w,h,big)||undefined}); }
     else if(big&&k>600) break; }   // no room left for a hall: the floor is tried again
   if(rooms.filter(r=>r.landmark).length<lm||rooms.length<(small?5:X2.rooms[0])) return null;
   return rooms; }
@@ -100,6 +118,11 @@ function x2Corridors(main,F,R,ri){ const {t,room,doors}=F, n=main.length;
   // a doorway on room a's side facing (tx,ty): the door cell in the wall ring and the vestibule outside it
   const SIDES=[[1,0],[-1,0],[0,1],[0,-1]];
   const doorways=(a,tx,ty)=>{ const vx=tx-a.cx, vy=ty-a.cy, out=[];
+    // a template room: only its own doorways (D on its edge), the ones facing the target first
+    if(a.shape&&a.shape.k==='T'){ const list=rsDoors(a.shape.g).sort((p,q)=>(q[2]*vx+q[3]*vy)-(p[2]*vx+p[3]*vy));
+      for(const [lx,ly,sx,sy] of list){ const x=a.x+lx+sx, y=a.y+ly+sy, vx2=x+sx, vy2=y+sy; if(!inside(vx2,vy2)) continue; const d=xi(x,y), v=xi(vx2,vy2);
+        if(prot(v)) continue; let near=false; for(let k=-2;k<=2;k++){ const c=sx?xi(x,y+k):xi(x+k,y); if(doors.has(c)) near=true; } if(near) continue; out.push({d,v}); }
+      return out; }
     const order=SIDES.slice().sort((p,q)=>(q[0]*vx+q[1]*vy)-(p[0]*vx+p[1]*vy));
     for(const [sx,sy] of order.slice(0,2)) for(const off of [0,2,-2,4,-4]){
       let x, y; if(sx){ x=sx>0?a.x+a.w:a.x-1; y=Math.max(a.y+1,Math.min(a.y+a.h-2,ty))+off; if(y<a.y+1||y>a.y+a.h-2) continue; }
@@ -171,7 +194,30 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
     const cells=mk.pieces.flat(); for(const c of cells){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
     const footing=c=>{ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS; M.add(XG.box,MID,x,-.2,z,0,0,0,XCS,.5,XCS); };
     const local=c=>{ const dx=xcx(c)-mk.cx, dy=xcy(c)-mk.cy; return horiz?[dx,dy*s]:[dy,dx*s]; };
-    if(mk.kind==='shrine'){ cells.forEach(footing);
+    // a template room's water, chasm and bridges (roomshapes.js, x2Feats)
+    const gap=n=>n>=0&&n<XN*XN&&EX.t[n]===T_ROCK&&xMarkCell(n), open=n=>n>=0&&n<XN*XN&&EX.t[n]!==T_ROCK;
+    const edges=c=>[[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dz])=>[dx,dz,c+dx+dz*XN]);
+    if(mk.kind==='pool'){ const WATER=new THREE.Color('#1d4f63').lerp(GLOW,.08), DEEP=new THREE.Color('#0b2230');
+      for(const c of cells){ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS;
+        M.add(XG.box,DEEP,x,-1.2,z,0,0,0,XCS,.1,XCS); M.add(XG.box,WATER,x,-.32,z,0,0,0,XCS,.04,XCS);   // the bed, and the still surface
+        if(R()<.35) L.add(XG.box,new THREE.Color('#9fdcf0').multiplyScalar(.35),x+(R()-.5)*XCS*.6,-.29,z+(R()-.5)*XCS*.6,0,R()*3,0,.5+R()*.4,.01,.05);   // a glint
+        for(const [dx,dz,n] of edges(c)){ if(!open(n)) continue; const ex=x+dx*XCS/2, ez=z+dz*XCS/2, along=dx?0:1;
+          M.add(XG.box,DK,ex-dx*.06,-.6,ez-dz*.06,0,0,0,along?XCS:.12,1.2,along?.12:XCS);   // the pool's side
+          M.add(XG.box,LT,ex-dx*.1,.05,ez-dz*.1,0,0,0,along?XCS+.02:.34,.12,along?.34:XCS+.02); } } }   // its coping
+    else if(mk.kind==='pit'){
+      for(const c of cells){ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS;
+        for(const [dx,dz,n] of edges(c)){ if(!open(n)) continue; const ex=x+dx*XCS/2, ez=z+dz*XCS/2, along=dx?0:1;
+          M.add(XG.box,DK,ex-dx*.08,-3,ez-dz*.08,0,0,0,along?XCS:.16,6,along?.16:XCS);
+          for(let k=0;k<3;k++){ const o=(k-1)*XCS/3+(R()-.5)*.15; M.add(XG.rock,MID,ex+(along?o:-dx*.1),.02,ez+(along?-dz*.1:o),R()*3,R()*3,0,.35+R()*.25,.18+R()*.12,.35+R()*.25); } }
+        L.add(XG.box,GLOW.clone().multiplyScalar(.35),x,-6,z,0,0,0,XCS,.05,XCS); } }
+    else if(mk.kind==='bridge'){
+      for(const c of cells){ const x=(xcx(c)+.5)*XCS, z=(xcy(c)+.5)*XCS, ns=gap(c-XN)||gap(c+XN), ew=gap(c-1)||gap(c+1), run=ns&&!ew?0:1;   // run 1: east-west
+        M.add(XG.box,WOOD2,x,.04,z,0,0,0,XCS,.08,XCS);
+        for(let k=0;k<4;k++){ const o=(k-1.5)*XCS/4; M.add(XG.box,R()<.2?WOOD2:WOOD,run?x+o:x,.1,run?z:z+o,0,0,0,run?XCS/4-.06:XCS-.1,.05,run?XCS-.1:XCS/4-.06); }   // planks across the way
+        for(const [dx,dz,n] of edges(c)){ if(!gap(n)) continue; const ex=x+dx*(XCS/2-.08), ez=z+dz*(XCS/2-.08), along=dx?0:1;
+          for(const o of [-.38,.38]) M.add(XG.box,WOOD2,along?ex+o*XCS:ex,.45,along?ez:ez+o*XCS,0,0,0,.1,.8,.1);   // posts
+          M.add(XG.box,WOOD,ex,.82,ez,0,0,0,along?XCS:.07,.07,along?.07:XCS); } } }   // the rail
+    else if(mk.kind==='shrine'){ cells.forEach(footing);
       box(DK,0,3,.12,3.2,.24,1.3); box(ST,0,3,.3,2.6,.14,1.05);   // the dais and its step
       box(LT,0,3.1,.85,1.1,.95,.42); box(ST,0,3.1,1.36,1.3,.1,.5); box(AREA,0,3.1,1.42,1.36,.02,.32); box(AREA,0,2.86,1.2,.36,.5,.02);   // the altar and its top slab
       box(ACC,0,2.88,.85,.5,.5,.02,0,L);   // a rune cut in its face, glowing

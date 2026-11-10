@@ -1,6 +1,6 @@
 # Dungeon room shapes and puzzles
 
-Date: 2026-11-09 · Status: designed and approved in chat, not built · For: the spacious dungeon (layout 2)
+Date: 2026-11-09 · Status: room shapes built (game/roomshapes.js); the six puzzles not built yet · For: the spacious dungeon (layout 2)
 
 This is the reference for the two pieces of the dungeon work that are still to be built: the new
 room shapes and the new puzzle kinds. The full design, with the room themes, is in

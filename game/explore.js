@@ -78,7 +78,7 @@ function tryFloor(depth,R,plan){
   const t=new Uint8Array(XN*XN), room=new Int16Array(XN*XN).fill(-1), rooms=[];
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
   const v2=plan.layout===2&&typeof x2Rooms==='function';   // the spacious floor (dungeongen.js)
-  if(v2){ const r2=x2Rooms(R,ri,plan); if(!r2) return null; rooms.push(...r2); }
+  if(v2){ const r2=x2Rooms(R,ri,plan,depth); if(!r2) return null; rooms.push(...r2); }
   else { const want=plan.small?8:20;   // a floor is about twice the size it once was (68 x 68 cells)
     for(let k=0;k<900&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
       if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }

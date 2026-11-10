@@ -238,7 +238,7 @@ function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Mat
   while(true){ if(x0===x1&&y0===y1) return true; const i=xi(x0,y0); if(i!==a&&!xClear(i)) return false;
     const e2=2*e; if(e2>=dy){ e+=dy; x0+=sx; } if(e2<=dx){ e+=dx; y0+=sy; } } }
 function xUpdateVis(){
-  const v=EX.vis; v.fill(0); const pc=EX.pc;
+  const v=EX.vis; v.fill(0); const pc=EX.pc; EX.visV=(EX.visV|0)+1;   // (what is in sight changed: the minimap draws its ground again)
   // the spacious floor (layout 2) sees much further: 6 cells in corridors and unlit rooms, 8 lit, 3 (5 with a torch) in the dark
   const v2=EX.layout===2, here=EX.room[pc]; let rad=v2?6:1.6;
   // a lit room shows all of itself and its walls; on the spacious floor only its own footprint (an L, H or X room's box
@@ -1911,7 +1911,7 @@ function xDraw(T,dt){
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=xDraw.lo||(xDraw.lo=$('#xLowHp')); if(lo){ const r=EX.hp/(EX.maxHp||xmaxHp()), o=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; if(lo.style.opacity!==o) lo.style.opacity=o; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
   lookUse(EX.aoTex,XN*XCS,0,0); { const v=(xDraw.v||(xDraw.v=new THREE.Vector3())).set(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G);   // the blur's focus: you xFpsTick(dt);
-  if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
+  if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();   // (ten times a second; it only redraws the ground when something on it changed)
 }
 // the searched wave: the middle tile flashes, then the eight round it a beat later, each fading out in
 // steps of a quarter (a pixel-art fade) over the floor where the search was
@@ -1941,7 +1941,33 @@ function xMini(){
     x0=Math.round((a+A+1)/2-nx/2); y0=Math.round((b+B+1)/2-ny/2); }
   EX.miniView={x0,y0,s,n};
   // the backing store is reallocated only when the map's size changes (it was every redraw, ten times a second)
-  if(cv.width!==nx*s||cv.height!==ny*s){ cv.width=nx*s; cv.height=ny*s; } c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
+  if(cv.width!==nx*s||cv.height!==ny*s){ cv.width=nx*s; cv.height=ny*s; }
+  /* The ground (cells, doors, chests, traps, props, enemies) is drawn on a canvas of its own, and only when what it
+     shows has changed (xMiniSig) or a second has passed, in case something it shows is not in that sum; the map
+     itself is that picture with the pulsing stairs marker and your dot laid over it. Drawing every cell of the floor
+     ten times a second was most of what the dungeon's script did while you stood still. */
+  const bc=xMini.base||(xMini.base=document.createElement('canvas')), sig=xMiniSig(big,rune,x0,y0,s,nx,ny), stale=((EX.miniT||0)-(xMini.at||0))>=60||(EX.miniT||0)<(xMini.at||0);
+  if(bc.width!==cv.width||bc.height!==cv.height||sig!==xMini.sig||xMini.ex!==EX||stale){ if(bc.width!==cv.width||bc.height!==cv.height){ bc.width=cv.width; bc.height=cv.height; }
+    xMini.sig=sig; xMini.ex=EX; xMini.at=EX.miniT||0; xMiniBase++; xMiniGround(bc.getContext('2d'),bc,big,rune,x0,y0,s); }
+  c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height); c.drawImage(bc,0,0); c.translate(-x0*s,-y0*s);
+  const MI=rune&&big&&window.RUNE_MAPI;
+  if(!(MI&&!isBossDepth(EX.depth))) xStairsMark(c,s);
+  if(!(MI&&MI.player&&MI.player.complete)){ const r=rune&&!big?1:2, i=EX.pc; c.fillStyle='#ffffff'; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); }
+  else { const z=s*1.6, i=EX.pc; c.drawImage(MI.player,xcx(i)*s+s/2-z/2,xcy(i)*s+s/2-z/2,z,z); }
+}
+let xMiniBase=0;   // how many times the ground has been drawn (the frame test reads it)
+// a sum of everything the map's ground shows: it is drawn again when this changes
+function xMiniSig(big,rune,x0,y0,s,nx,ny){ let h=0x1234567; const M=v=>{ h=Math.imul(h^(v|0),16777619)&0x3fffffff; };   // (kept to 30 bits: a small integer the browser never has to box)
+  M(EX.visV); M(EX.depth); M(big?1:0); M(rune?1:0); M(x0); M(y0); M(s); M(nx); M(ny); M(EX.down); M(EX.up); M(EX.pc===EX.up?1:0);
+  for(const d of EX.doors.values()){ M(d.state.charCodeAt(0)+d.state.length*256); }
+  for(const ch of EX.chests) M(ch.open?ch.cell:-ch.cell-1);
+  for(const tr of EX.traps) M(tr.known&&tr.armed?tr.cell:-1);
+  for(const p of EX.props||[]) M((p.gone?1:0)+(p.taken?2:0)+(p.state==='done'?4:0)+(p.target&&p.target.open?8:0)+p.cell*16);
+  for(const it of EX.items||[]) M(it.cell);
+  for(const g of EX.groups) M(EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2)?g.cell*4+(g.mini||g.elite?2:1):-1);
+  if(rune&&big&&window.RUNE_MAPI){ const I=window.RUNE_MAPI; M((I.stairs&&I.stairs.complete?1:0)+(I.chest&&I.chest.complete?2:0)); }
+  return h; }
+function xMiniGround(c,cv,big,rune,x0,y0,s){ c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,cv.width,cv.height);
   if(!rune){ c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); } c.translate(-x0*s,-y0*s);
   const g=rune&&big?Math.max(1,Math.round(s*.06)):0;   // the thin dark seam between the handoff's tiles
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ if(!rune){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); } continue; }
@@ -1955,8 +1981,6 @@ function xMini(){
   for(const tr of EX.traps) if(tr.known&&tr.armed) dot(tr.cell,'#ff4d5e',1);
   if(typeof xMiniExtra==='function') xMiniExtra(c,s,dot);
   for(const g of EX.groups) if(EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2)) dot(g.cell,g.tagCol||(g.mini?'#ff9a3a':'#ff6b6b'),g.mini||g.elite?2:1);
-  if(!(MI&&!isBossDepth(EX.depth))) xStairsMark(c,s);
-  if(!(MI&&ico(EX.pc,MI.player,1.6))) dot(EX.pc,'#ffffff',rune&&!big?1:2);
 }
 const xMapIsOpen=()=>$('#xMini').classList.contains('big');
 function xMapOpen(){ if(!EX||EX.busy) return; xPause(true); $('#xMini').classList.add('big'); $('#xMapShade').hidden=false; $('#xMapClose').hidden=false; xMini(); }

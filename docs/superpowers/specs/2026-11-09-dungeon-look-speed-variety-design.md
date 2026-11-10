@@ -45,8 +45,9 @@ Assumptions (not stated in chat; say so if any is wrong):
 | Floor textures per area | 3: one for passages, two for rooms (`xAreaFloors`, `nature.js`) |
 | Furniture sets | 5 (`XROOM_KINDS`), picked per room from 4–5 per area (`XAREA_KIND`) |
 
-- **Occlusion.** Walls between the camera and you are cut by a dithered shaft in the shader
-  (`xSinkShader`), and near walls stand low (`xStepLow`). Furniture, landmark pieces, arches seen
+- **Occlusion.** Near walls stand low (`xStepLow`). Walls between the camera and you can also be
+  cut by a dithered shaft in the shader (`xSinkShader`), but that is off by default in v301
+  (`dShOn`). Furniture, landmark pieces, arches seen
   from the side, pillars and classic-layout props are not cut, so they cover the sprites.
 - **Quality.** `lookQuality` steps down `LQ_STEPS` only after the frame time has averaged over
   20 ms for 1.5 s. Every device starts on the top step.
@@ -88,9 +89,6 @@ enemy out of sight.
 
 - **No allocation in the frame loop.** `xWallCut`, `xWallFade`, `xLightPool` and `xDraw` reuse
   module-level scratch objects (matrix, colour, set, arrays).
-- **Furniture merged per room.** Each room's furniture already goes through `xMerger`; rooms
-  whose pieces are still separate meshes (pots aside, since they break) are merged to one mesh
-  per room per material.
 - **Minimap on change.** `xMini` runs when the player's cell, the seen map, a door or a marker
   changed, or the map is open; otherwise it is skipped.
 - **Light list.** `xWallCut`'s walk over `EX.glows` and `EX.onWall` runs only when the cut line

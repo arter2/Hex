@@ -628,6 +628,7 @@ function xMeshProp(p){
     case 'pot': { const clay=xMat(p.tint||0xa0603a), rim=xMat(0x5a3220);
       if(p.crate){ g.add(xBox(.7,.62,.7,wood,0,.31,0), xBox(.74,.08,.74,dark,0,.6,0), xBox(.74,.08,.74,dark,0,.06,0)); }
       else { g.add(xBall(.3,clay,0,.3,0), xCyl(.16,.2,clay,0,.62,0), xCyl(.2,.06,rim,0,.72,0)); g.children[0].scale.y=1.1; }
+      if(p.big&&!p.crate){ g.add(xCyl(.31,.05,rim,0,.42,0)); g.scale.setScalar(1.7); }   // a big urn, banded
       g.rotation.y=p.rot||0; break; }
     case 'seal': if(typeof xSealMesh==='function') xSealMesh(p,g); break;
     default: if(typeof xRareMesh==='function'&&xRareMesh(p,g)) break; if(typeof xPuzzMesh==='function'&&xPuzzMesh(p,g)) break; if(typeof xMissionMesh==='function') xMissionMesh(p,g);
@@ -1284,13 +1285,31 @@ function xDisarmAlt(){ if(!EX) return null; const pc=EX.pc;
    button) starts the fight with a First Strike: it opens hurt, stunned and slow to act. */
 function xPlacePots(){ if(EX.branch) return;
   for(const r of EX.rooms){ if(r.side||r.safe||r.nook||r.role) continue;
-    const n=xri(0,r.w*r.h>30?4:2);
+    const n=xri(1,r.w*r.h>30?4:2);
     for(let k=0;k<n;k++){ const c=xFreeCell(r); if(c<0) break;
-      const crate=XR()<.3; xProp('pot',c,{solid:false,crate,rot:XR()*6,tint:xpick([0xa0603a,0x8a5a3a,0xb07040,0x7a6a5a])}); } } }
+      const crate=XR()<.25, big=!crate&&XR()<.3; xProp('pot',c,{solid:false,crate,big,rot:XR()*6,tint:xpick([0xa0603a,0x8a5a3a,0xb07040,0x7a6a5a,0x6a7a8a])}); } }
+  // and along the passages: pots and big urns against the walls
+  if(EX.layout===2) for(let k=0,n=0;k<600&&n<10;k++){ const c=xri(0,XN*XN-1); if(EX.t[c]!==T_FLOOR||EX.room[c]>=0||EX.doors.has(c)||EX.taken.has(c)||c===EX.up||c===EX.down) continue;
+    if(!xAdj4(c).some(q=>EX.t[q]===T_ROCK&&!xLow(q))||xAdj4(c).some(q=>EX.doors.has(q))) continue;
+    xProp('pot',c,{solid:false,big:XR()<.45,rot:XR()*6,tint:xpick([0xa0603a,0x8a5a3a,0xb07040,0x6a7a8a])}); n++; } }
+/* Fire pillars (dungeongen.js x2Clutter): a swing puts the flame out. Its light goes, and close by (3 cells) enemies
+   spot you at about half the distance; now and then the embers hold a little gold. Kept with the floor (item.out). */
+function xSnuff(it){ const c=it.cells[0]; it.out=true; EX.darkS=null;
+  const L=EX.fireL&&EX.fireL.get(c); if(L){ L.g.visible=false; if(L.g.parent) L.g.parent.remove(L.g); const i=EX.glows.indexOf(L); if(i>=0) EX.glows.splice(i,1); EX.fireL.delete(c); }
+  xSfx('whisper'); xShards(xw(c),xz(c),0x3a3a3a);
+  let msg='The flame gutters out. Shadows pool around the pillar: harder to spot you here.';
+  if(Math.random()<.35){ const g=Math.round((3+EX.depth*2)*rnd(.6,1.4)); save.gold+=g; msg+=' +'+g+' gold in the embers.'; xPopText('+'+g,'#f2c94c',c); }
+  xLog(msg,'good'); persistSoon(); xHud(); }
+// is this cell in the dark of a snuffed fire pillar?
+function xDarkAt(c){ if(!EX||!EX.marks) return false;
+  if(!EX.darkS){ EX.darkS=new Set(); for(const mk of EX.marks) if(mk.kind==='clutter') for(const it of mk.items) if(it.k==='fire'&&it.out){ const x0=xcx(it.cells[0]), y0=xcy(it.cells[0]);
+    for(let dy=-3;dy<=3;dy++) for(let dx=-3;dx<=3;dx++) if(dx*dx+dy*dy<=12) EX.darkS.add(xi(x0+dx,y0+dy)); } }
+  return EX.darkS.has(c); }
 function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'shatter');
   xShards(xw(p.cell),xz(p.cell),p.crate?0x7a4a22:(p.tint||0xa0603a));
-  const r=Math.random(), d=EX.depth;
-  if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); if(typeof xCoins==='function') xCoins(p.cell,4); }
+  if(p.big) xShards(xw(p.cell),xz(p.cell),p.tint||0xa0603a);   // a big urn: twice the shards
+  const r=Math.random()*(p.big?.6:1), d=EX.depth;
+  if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)*(p.big?2.2:1)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); if(typeof xCoins==='function') xCoins(p.cell,4); }
   else if(r<.42){ const h=Math.min(xmaxHp(),EX.hp+10)-EX.hp; if(h>0){ EX.hp+=h; xLog('A healing herb: +'+h+' HP.','good'); xPopText('+'+h+' HP','#39ff8a',p.cell); } }
   else if(r<.45){ const c=rollCard({depth:d}); const res=addCards(save,[c]); xLog('Tucked inside: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xPopText('Card!','#8fe4ff',p.cell); }
   if(r<.32||r>=.42&&r<.45) persistSoon();   // gold or a card from a pot is saved too (at a quiet moment, as a pickup is)
@@ -1355,5 +1374,6 @@ function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action) return;
   if(G&&G.swing&&G.swing.parent!==G.group) G.group.add(G.swing);
   EX.swingDir=(EX.face||1)<0?Math.PI:0; xSfx('swing');
   for(const p of EX.props) if(p.kind==='pot'&&!p.gone&&Math.hypot(xw(p.cell)-EX.px,xz(p.cell)-EX.pz)<XCS*1.6) xBreakPot(p);
+  if(EX.marks) for(const mk of EX.marks) if(mk.kind==='clutter') for(const it of mk.items) if(it.k==='fire'&&!it.out&&Math.hypot(xw(it.cells[0])-EX.px,xz(it.cells[0])-EX.pz)<XCS*1.7) xSnuff(it);
   const foe=xStrikeFoe();
   if(foe) xEngage(foe.g,'strike'); }

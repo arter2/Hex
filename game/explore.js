@@ -120,7 +120,7 @@ function tryFloor(depth,R,plan){
   let gateDoors=null;
   if(plan.gate){ const d0=xbfs(t,doors,startI,false); let far=null, fd=-1; for(const r of main){ const d=d0[xi(r.cx,r.cy)]; if(d>fd){ fd=d; far=r; } }
     if(far&&far!==main[0]){ const before=new Set(doors.keys()); if(v2){ if(!F2.link(main[0],far,X2.wide)) far=null; } else carve(main[0],far,null); if(far) gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
-  if(v2){ x2Marks(main,F2,R); x2Walls(main,F2,R,ri); }   // low walls inside the rooms, once every corridor is dug
+  if(v2){ x2Marks(main,F2,R); x2Walls(main,F2,R,ri); if(typeof x2Clutter==='function') x2Clutter(main,F2,R,ri,depth); }   // low walls inside the rooms, once every corridor is dug
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
@@ -466,6 +466,9 @@ function xBuildScene(){
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
   // a spacious floor wears its area's own floors (nature.js xAreaFloors): one for the passages, two for the rooms
   const areaF=EX.layout===2&&typeof xAreaFloors==='function'?xAreaFloors(A,S,seed):null;
+  // the clutter's solid cells (dungeongen.js x2Clutter) stand on their room's floor
+  const under=new Map(); for(const m of EX.marks||[]) if(m.kind==='clutter') for(const c of m.pieces.flat()) under.set(c,m.room);
+  for(const [c,rm] of under) variant[c]=areaF?(rm>=0?1+EX.rooms[rm].style:0):EX.natural?0:rm>=0?1+EX.rooms[rm].style:EX.layout===2?2:0;
   for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=areaF?(EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0):EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
   const floorTex=areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
@@ -623,7 +626,7 @@ function xBuildScene(){
   if(!EX.natural) xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(typeof xClutter==='function') xClutter(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
   if(typeof xNature==='function') xNature(grp,A,S,seed);   // the area's own natural dressing (nature.js)
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
@@ -1702,7 +1705,8 @@ function xEnemies(dt){
    tiles. Walls block it all, and Stealth shrinks the distances. The map draws these zones on
    the floor (xFov), so you can see where to sneak past or creep up for an ambush. */
 const XFOV={r:7.5, half:Math.PI/3, near:1.5, wake:2.6};
-function xSeesCell(g,c,sn){ const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz)/XCS;
+function xSeesCell(g,c,sn){ if(typeof xDarkAt==='function'&&xDarkAt(c)) sn*=.55;   // beside a snuffed fire pillar (dungeon.js xSnuff): harder to spot
+  const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz)/XCS;
   if(g.state==='sleep'){ if(d>XFOV.wake*sn) return false; }
   else { if(d>XFOV.r*sn) return false;
     if(g.state!=='chase'&&d>XFOV.near*sn){ let a=Math.atan2(dz,dx)-(g.head||0); a=Math.atan2(Math.sin(a),Math.cos(a)); if(Math.abs(a)>XFOV.half) return false; } }

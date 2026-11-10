@@ -93,6 +93,50 @@ function x2Feats(rooms,F){ const low=F.low, marks=F.marks;
       if(ch==='W') got.pool.push(c); else if(ch==='C') got.pit.push(c); else if(ch==='B') got.bridge.push(c); }
     for(const kind of ['pool','pit','bridge']) if(got[kind].length) marks.push({room:r.id,kind,pieces:[got[kind]],cx:r.cx,cy:r.cy}); } }
 
+/* Clutter: things to fill the spacious floor's rooms and galleries (placed when the floor is dug, so they are kept
+   with it). Each room rolls a kit and gets a few pieces, more in a landmark hall:
+     pillar   a standing column (some broken)            fire     a column with a fire bowl on top: swing at it
+     ruin     a broken stretch of temple wall (3 cells)  column   a fallen column (3 cells)
+     planter  a long stone planter, overgrown (2 cells)  boulder  a big rock; bigrock: four cells of them
+     rubble   loose stones you walk over
+   Everything but rubble is solid underfoot and seen over (F.low), only ever where the room stays in one piece, two
+   cells clear of its edge (doorways) and of its middle (the stairs). Ruins are pale marble in bright areas and dark
+   basalt in grim ones. Galleries (passages five wide) get pillars and fire pillars along their sides. Template rooms
+   get only a few, clear of their own pieces. One F.marks entry per room ({kind:'clutter', items}) is what the scene draws (xClutter);
+   a fire pillar's item.out says it was snuffed. */
+const X2C={room:.8, kits:{temple:['pillar','pillar','fire','ruin','ruin','column','planter','rubble'], garden:['planter','planter','planter','boulder','pillar','fire','rubble'],
+  cave:['boulder','boulder','bigrock','bigrock','rubble','rubble','fire','ruin'], hall:['pillar','pillar','pillar','fire','fire','ruin','column','planter','rubble']}};
+const XDARK_RUIN=new Set(['rifts','abyss','deeps']);
+function x2Clutter(rooms,F,R,ri,depth){ const {t,room,doors}=F, low=F.low||(F.low=[]), marks=F.marks||(F.marks=[]);
+  const aid=depth&&typeof areaOf==='function'?areaOf(depth).id:'hollows', nat=typeof XNATURAL!=='undefined'&&XNATURAL.has(aid), dark=XDARK_RUIN.has(aid);
+  const SH={pillar:[[[0,0]]], fire:[[[0,0]]], boulder:[[[0,0]]], bigrock:[[[0,0],[1,0],[0,1],[1,1]]], planter:[[[0,0],[1,0]],[[0,0],[0,1]]],
+    column:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]]], ruin:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]],[[0,0],[1,0],[0,1]],[[0,0],[1,0],[1,1]]]};
+  for(const r of rooms){ if(r.side||r.nook||r.w<7||r.h<6||R()>X2C.room) continue; const tpl=!!(r.shape&&r.shape.k==='T');
+    const kit=X2C.kits[r.landmark?(nat&&R()<.5?'cave':'hall'):nat?(R()<.65?'cave':'garden'):(R()<.6?'temple':'garden')];
+    const want=tpl?ri(2,4):r.mark?ri(2,4):r.landmark?ri(7,11):r.w*r.h>=60?ri(4,6):ri(2,4), items=[], solid=[];
+    // a clear ring of one cell round each piece (so the box's edge stays a walkway), two cells from any doorway, off the middle
+    const clear=(i,j)=>{ if(i<r.x+1||j<r.y+1||i>r.x+r.w-2||j>r.y+r.h-2||Math.hypot(i-r.cx,j-r.cy)<2) return false;
+      for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++) if(room[xi(i+dx,j+dy)]!==r.id) return false;
+      for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) if(doors.has(xi(i+dx,j+dy))) return false; return true; };
+    let rub=0;
+    for(let n=0,k=0;n<want&&k<120;k++){ const kind=kit[ri(0,kit.length-1)], ox=ri(r.x+1,r.x+r.w-2), oy=ri(r.y+1,r.y+r.h-2);
+      if(kind==='rubble'){ const c=xi(ox,oy); if(rub<2&&room[c]===r.id&&!items.some(it=>it.cells.includes(c))){ items.push({k:'rubble',cells:[c],sd:ri(0,9999)}); n++; rub++; } continue; }
+      const P=SH[kind][ri(0,SH[kind].length-1)], cells=P.map(([dx,dy])=>[ox+dx,oy+dy]); if(!cells.every(([i,j])=>clear(i,j))) continue;
+      const cs=cells.map(([i,j])=>xi(i,j)); for(const c of cs){ t[c]=T_ROCK; room[c]=-1; }
+      if(!x2Whole(r,room)){ for(const c of cs){ t[c]=T_FLOOR; room[c]=r.id; } continue; }
+      low.push(...cs); solid.push(...cs); items.push({k:kind,cells:cs,sd:ri(0,9999),v:cs.length>1&&xcx(cs[1])===xcx(cs[0])?1:0}); n++; }
+    if(!items.length) continue; if(solid.length) r.walls=true;
+    marks.push({kind:'clutter',room:r.id,dark,nat,items,pieces:[solid],cx:r.cx,cy:r.cy}); }
+  // galleries: a passage cell against a straight wall with four more cells of passage across from it
+  const pass=c=>t[c]===T_FLOOR&&room[c]<0&&!doors.has(c), rock=c=>t[c]===T_ROCK&&room[c]<0&&!low.includes(c), placed=[];
+  const nearDoor=c=>{ for(let dy=-3;dy<=3;dy++) for(let dx=-3;dx<=3;dx++) if(doors.has(c+dy*XN+dx)) return true; return false; };
+  for(let k=0;k<4000&&placed.length<14;k++){ const x=ri(3,XN-4), y=ri(3,XN-4), c=xi(x,y); if(!pass(c)) continue;
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const back=c-dx-dy*XN, side=dx?XN:1; if(!rock(back)||!rock(back+side)||!rock(back-side)) continue;
+      let ok=true; for(let s2=1;s2<=4&&ok;s2++){ const f=c+(dx+dy*XN)*s2; if(!pass(f)||!pass(f+side)||!pass(f-side)) ok=false; } if(!ok||!pass(c+side)||!pass(c-side)) continue;
+      if(nearDoor(c)||placed.some(q=>Math.max(Math.abs(xcx(q)-x),Math.abs(xcy(q)-y))<5)) continue;
+      t[c]=T_ROCK; low.push(c); placed.push(c);
+      marks.push({kind:'clutter',room:-1,dark,nat,items:[{k:R()<.4?'fire':'pillar',cells:[c],sd:ri(0,9999),v:0}],pieces:[[c]],cx:x,cy:y}); break; } } }
+
 // rooms: landmark halls first (they need the room), then ordinary rooms; null when too few fit
 /* Template rooms (roomshapes.js): most landmark halls take one of the six hall shapes (a different one each), and
    about a third of the ordinary rooms one of the room shapes (the cave pocket only in a natural area). The box is the
@@ -186,7 +230,8 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
   const ST=tone(.55), DK=tone(.22), LT=tone(.72), MID=tone(.4), WOOD=0x5a3a20, WOOD2=0x3e2814, GLOW=new THREE.Color(A.glow||'#ffb060'), ACC=new THREE.Color(S.spark||'#ffd080');
   // cloth in the area's colour, dyed dark: the lamp you carry washes a bright cloth out into a glowing strip
   const AREA=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').lerp(tone(.22),.6).multiplyScalar(.5);
-  for(const mk of EX.marks){ const M=xMerger(), L=xMerger(), seen=new Set(), {horiz,s}=mk;
+  for(const mk of EX.marks){ if(mk.kind==='clutter') continue;   // (drawn by xClutter)
+    const M=xMerger(), L=xMerger(), seen=new Set(), {horiz,s}=mk;
     // hall-local (u along, v across, toward the piece's side) to world
     const W=(u,v)=>{ const lx=horiz?u:v*s, ly=horiz?v*s:u; return [(mk.cx+lx+.5)*XCS,(mk.cy+ly+.5)*XCS]; };
     // a block lu long (along the hall) by lv deep, in cells; lean tips its top toward -v (its +v end up), in radians
@@ -259,6 +304,57 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
         if(!broken) box(LT,u,v,XWALL,.78,.26,.78); else for(let q=0;q<3;q++) M.add(XG.rock,ST,x+(R()-.5)*1.4,.12,z+(R()-.5)*1.4,R()*3,R()*3,0,.4,.25,.4); }); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xPhong({vertexColors:true}))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
+
+/* The clutter, drawn (x2Clutter): one merged mesh per room (or gallery piece), shown once any of its cells is seen.
+   Light ruins are pale marble with gold trim, dark ones basalt with the area's glow in their cracks. A fire pillar's
+   flame is a light of its own (EX.glows, like a brazier) and goes when you snuff it (xSnuff). */
+function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')');
+  for(const mk of EX.marks){ if(mk.kind!=='clutter') continue; const D=mk.dark, glow=new THREE.Color(A.glow||'#ffb060');
+    const ST=new THREE.Color(D?'#3d3a44':'#d3c9b4'), SH=new THREE.Color(D?'#29272e':'#a99f8a'), LT=new THREE.Color(D?'#57525f':'#ebe3d1'), TRIM=D?glow.clone().multiplyScalar(.55):new THREE.Color('#c9a24e');
+    if(mk.nat){ ST.lerp(tone(.5),.35); SH.lerp(tone(.3),.35); LT.lerp(tone(.65),.35); }
+    const ROCK=tone(.42), ROCK2=tone(.28), ROCK3=tone(.58), SOIL=new THREE.Color('#2b2117'), LEAF=new THREE.Color(S.moss||'#4f7a3a'), LEAF2=LEAF.clone().lerp(new THREE.Color('#1e3a1a'),.45), FLOW=[0xd9465a,0xf2c94c,0xb48cff,0xf0f0e0];
+    const M=xMerger(), L=xMerger(), seen=new Set();
+    for(const it of mk.items){ const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;
+      for(const c of cs){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
+      const B=(col,bx,by,bz,sx,sy,sz,ry,to)=>(to||M).add(XG.box,col,bx,by,bz,0,ry||0,0,sx,sy,sz), C=(col,bx,by,bz,r,h,to)=>(to||M).add(XG.cyl,col,bx,by,bz,0,0,0,r*2,h,r*2);
+      const rock=(col,bx,by,bz,sz)=>M.add(XG.rock,col,bx,by,bz,R()*3,R()*3,R()*3,sz*(.8+R()*.4),sz*(.6+R()*.3),sz*(.8+R()*.4));
+      const along=it.v?[0,1]:[1,0], len=cs.length*XCS;
+      if(it.k==='pillar'||it.k==='fire'){ const fire=it.k==='fire', broken=!fire&&R()<.3, h=fire?2.3:broken?1.2+R()*1.6:4.4+R()*.4;
+        B(SH,x,.18,z,1.5,.36,1.5,R()*.2); B(ST,x,.46,z,1.2,.2,1.2);
+        C(ST,x,.56+h/2,z,.42,h); for(const yy of [.75,.56+h-.25]) C(LT,x,yy,z,.47,.1);   // the shaft and its rings
+        if(D) B(TRIM,x,.56+h*.55,z,.88,.06,.88,0,L);   // dark ruins: a glowing band
+        if(fire){ C(SH,x,.56+h+.15,z,.5,.3); C(ST,x,.56+h+.42,z,.62,.24); C(new THREE.Color('#1a1512'),x,.56+h+.55,z,.5,.04); xFireGlow(grp,x,z,.56+h+.58,cs[0],it.out); }
+        else if(broken){ for(let k=0;k<3;k++) rock(ST,x+(R()-.5)*1.4,.15,z+(R()-.5)*1.4,.45); B(LT,x+(R()-.5)*.2,.56+h,z,.7,.12,.6,R()*3); }
+        else B(LT,x,.56+h+.16,z,1.25,.32,1.25); }
+      else if(it.k==='ruin'){ for(const c of cs){ const cx=(xcx(c)+.5)*XCS, cz=(xcy(c)+.5)*XCS, top=.9+R()*2.6; let y=0;
+          for(let k=0;y<top;k++){ const hh=Math.min(.55,top-y+.05), sx=XCS*(.92-R()*.12), sz=XCS*(.62-R()*.1), col=k%2?ST:ST.clone().lerp(SH,.35);
+            B(col,cx+(R()-.5)*.1,y+hh/2,cz+(R()-.5)*.1,cs.length>1&&xcx(cs[1])===xcx(cs[0])?sz:sx,hh,cs.length>1&&xcx(cs[1])===xcx(cs[0])?sx:sz,(R()-.5)*.08); y+=hh; }
+          B(LT,cx,y+.06,cz,XCS*.5,.12,XCS*.4,R()*3);   // a loose block on top
+          if(D&&R()<.6) B(TRIM,cx,y*.5,cz,XCS*.95,.05,XCS*.66,0,L);
+          rock(ST,cx+(R()-.5)*1.2,.12,cz+(R()-.5)*1.2,.4); } }
+      else if(it.k==='column'){ const rx=it.v?Math.PI/2:0, rz=it.v?0:Math.PI/2;
+        M.add(XG.cyl,ST,x,.48,z,rx,0,rz,.9,len-.6,.9); for(let k=-1;k<=1;k++) M.add(XG.cyl,LT,x+along[0]*k*XCS,.48,z+along[1]*k*XCS,rx,0,rz,.96,.08,.96);
+        B(LT,x+along[0]*(len/2-.3),.6,z+along[1]*(len/2-.3),1.2,1.2,1.2,R()*.4); for(let k=0;k<4;k++) rock(ST,x+(R()-.5)*len*.8*along[0]+(R()-.5)*.6,.1,z+(R()-.5)*len*.8*along[1]+(R()-.5)*.6,.3); }
+      else if(it.k==='planter'){ const lx=it.v?XCS-.25:len-.25, lz=it.v?len-.25:XCS-.25;
+        B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.06,z,lx-.3,.06,lz-.3);
+        if(D) B(TRIM,x,.55,z,lx+.02,.06,lz+.02,0,L);
+        const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2;
+          M.add(R()<.35?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,R()*3,0,s2*1.3,s2*1.4,s2*1.3); }
+        for(let k=0;k<4;k++) if(R()<.7) M.add(XG.ball,new THREE.Color(FLOW[R()*FLOW.length|0]),x+(R()-.5)*(lx-.6),1.5+R()*.4,z+(R()-.5)*(lz-.6),0,0,0,.18,.18,.18); }
+      else if(it.k==='boulder'||it.k==='bigrock'){ const big=it.k==='bigrock', n=big?5:3;
+        for(let k=0;k<n;k++){ const sz=(big?2.2:1.5)*(k?.55+R()*.35:1); rock(k%2?ROCK2:ROCK,x+(R()-.5)*(big?2:.8),sz*.32,z+(R()-.5)*(big?2:.8),sz); }
+        if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
+      else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); } }
+    const g=new THREE.Group(); if(M.size()) g.add(M.build(xDitherMat(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
+// a fire pillar's flame: coals, two cones and a halo, a light like a brazier's (none once snuffed)
+function xFireGlow(grp,x,z,y,cell,out){ if(out) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), g=new THREE.Group(), mats=[]; g.position.set(x,0,z);
+  const coal=new THREE.Mesh(new THREE.CylinderGeometry(.45,.45,.05,10),new THREE.MeshBasicMaterial({color:0xff5a20})); coal.position.y=y; g.add(coal);
+  const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
+  const f1=new THREE.Mesh(new THREE.ConeGeometry(.42,1.05,7),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.22,.7,7),fm(0xffe08a)); f1.position.y=.52; f2.position.y=.35; flame.add(f1,f2); flame.position.y=y; g.add(flame);
+  const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0xffa040,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(5,5,1); halo.position.y=y+.6; halo.renderOrder=2; g.add(halo);
+  const floor=[cell+1,cell-1,cell+XN,cell-XN].find(n=>EX.t[n]===T_FLOOR); g.visible=false; grp.add(g);
+  const Lt={g,floor:floor!=null?floor:cell,mats,halo,flame,torch:true,ph:Math.random()*6}; EX.glows.push(Lt); EX.fireL.set(cell,Lt); }
 
 /* Arches over the wide passages (spacious floors): every so often a straight run of a 3- or 5-wide corridor is
    spanned by a stone arch, a pier against each wall and a low, wide arch of dressed stones with a keystone, its

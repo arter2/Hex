@@ -33,11 +33,11 @@ function storeWrite(st){ const keys=Object.keys(st.floors).sort((a,b)=>st.floors
 // the parts of a floor that only matter while you stand on it
 // in-flight effects (sparks and puffs, shards, floating numbers) are scene objects: kept, they come back as nulls and
 // every frame on the floor would throw
-const TRANSIENT=['cutD','camT','maxHp','lowS','markS','wdg','action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give','fx','shards','pops'],
+const TRANSIENT=['cutD','camT','maxHp','lowS','markS','darkS','wdg','action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give','fx','shards','pops'],
   TRANSIENT_LISTS=['path','fx','shards','pops'];
 // what the 3D scene works out again each time it is built (explore.js xBuildScene, look.js xBakeAO): left out
 const SCENE=['aoData','aoTex','fog','fogCur','fogTgt','fogTex','wIdx','wms','shown','wCut','wList','gSlot','wGhost','dress','decor','onWall','glows',
-  'motes','bats','drips','puddles','lanterns','trimMesh','skirtMesh','corMesh','upMesh','downMesh','runeRing','beam','me','myGlow','pillShaft','pillCap','pillBase','pillCave','veil','arches','deepFace','sectM','stepT','stepKey','stepTan','doorClip','nat','natM','natPools'];
+  'motes','bats','drips','puddles','lanterns','trimMesh','skirtMesh','corMesh','upMesh','downMesh','runeRing','beam','me','myGlow','pillShaft','pillCap','pillBase','pillCave','veil','arches','deepFace','sectM','stepT','stepKey','stepTan','doorClip','nat','natM','natPools','fireL'];
 // a floor without what its scene works out again (a copy; the floor itself is untouched)
 function xFloorPlain(ex){ const o=Object.assign({},ex); for(const k of SCENE) delete o[k]; return o; }
 function xFloorStore(ex){ if(!save||save.temp||!ex||ex.branch||!worldSeed()) return;

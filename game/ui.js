@@ -14,9 +14,33 @@ addEventListener('pagehide',()=>{ if(PERSIST_SOON) persist(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden&&PERSIST_SOON) persist(); });
 const activeDeck=()=>save.decks[save.active];
 
-function show(id){ $('#tip').classList.remove('on'); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
+function show(id){ tipClear(); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
   if(id==='scrExplore'&&typeof EX!=='undefined'&&EX&&EX.active&&typeof xLoopStart==='function') xLoopStart(); }   // the dungeon's loop stops while another screen covers it
-let tipT=0; function tip(msg,ms){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),ms||1400); }
+/* Pop-up messages (#tip): one at a time, each with a glyph and a colored edge for its kind: info, success, warning, error, quest.
+   tip(msg) is info, or a warning when it reads like one ("Not enough gold", "You need…"); tip(msg,ms,{kind,sub}) picks the kind and
+   adds a second line. Info, success and quest last 2–2.5s, warnings 3s; errors and long notices (ms of 6s or more) stay until tapped.
+   A warning or error replaces what is showing; the rest wait their turn, and info and quest also wait while a dungeon dialog is open.
+   The same message twice in a row shows once. */
+const TOAST_MS={info:2000, success:2500, quest:2500, warning:3000};
+const TOAST_WARN=/^(not enough|you need|you are already|nothing to|no room|can.t |cannot |your bag is full)/i;
+let tipT=0, tipQ=[], tipCur=null;
+const tipSame=(a,b)=>a&&b&&a.msg===b.msg&&a.sub===b.sub;
+function tip(msg,ms,o){ o=o||{}; msg=String(msg); const kind=o.kind||(TOAST_WARN.test(msg)?'warning':'info');
+  const m={msg, sub:o.sub||'', kind, stay:kind==='error'||ms>=6000};
+  if(tipSame(tipCur,m)){ if(!m.stay){ clearTimeout(tipT); tipT=setTimeout(tipDone,TOAST_MS[kind]); } return; }
+  if(tipQ.some(x=>tipSame(x,m))) return;
+  if(kind==='warning'||kind==='error'||!tipCur) tipShow(m); else tipQ.push(m); }
+function tipHeld(m){ return (m.kind==='info'||m.kind==='quest')&&$('#xDialog').classList.contains('on'); }
+function tipShow(m){ if(tipHeld(m)){ tipQ.unshift(m); return; }
+  const t=$('#tip'); clearTimeout(tipT); tipCur=m;
+  t.className='tip on k-'+m.kind+(m.stay?' stay':''); t.setAttribute('role',m.kind==='error'?'alert':'status');
+  t.innerHTML='<i class="tipi" aria-hidden="true"></i><span class="tipt"><b>'+esc(m.msg)+'</b>'+(m.sub?'<small>'+esc(m.sub)+'</small>':'')+'</span>';
+  t.onclick=m.stay?()=>tipDone():null;
+  if(!m.stay) tipT=setTimeout(tipDone,TOAST_MS[m.kind]); }
+function tipDone(){ clearTimeout(tipT); tipCur=null; $('#tip').classList.remove('on'); tipT=setTimeout(tipNext,250); }
+// the next waiting message, if nothing holds it back (called when a dungeon dialog closes, too)
+function tipNext(){ if(tipCur) return; const i=tipQ.findIndex(m=>!tipHeld(m)); if(i<0) return; tipShow(tipQ.splice(i,1)[0]); }
+function tipClear(){ clearTimeout(tipT); tipCur=null; tipQ=[]; $('#tip').classList.remove('on'); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 // the same HP bar and gold readout everywhere: battle, dungeon, camp, shop, character
 function hpMeter(bar,txt,hp,max){ hp=Math.max(0,Math.ceil(hp)); bar.style.width=Math.min(100,hp/max*100)+'%'; txt.textContent='HP '+hp+'/'+max; bar.parentElement.classList.toggle('low',hp/max<=.3); }
@@ -936,7 +960,14 @@ $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
     else leaveFight(); }); };
 const isFull=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
 let fullByUs=false;   // true while the player asked to leave full screen, so that exit does not pause
+const canFull=()=>{ const el=document.documentElement; return !!(el.requestFullscreen||el.webkitRequestFullscreen); };
+// iPhone Safari has no full screen for web pages; the only way is a home-screen icon
+function iosFullHint(){ let framed=false; try{ framed=window.top!==window.self; }catch(e){ framed=true; }
+  if(framed){ tip('iPhone can\'t go full screen inside a web page. Opening the game in its own tab: there, tap Share, then Add to Home Screen, and launch it from that icon.',7000);
+    setTimeout(()=>{ try{ window.open(location.href,'_blank'); }catch(e){} },900); }
+  else tip('iPhone can\'t go full screen in Safari. Tap Share, then Add to Home Screen, and launch the game from that icon for full screen.',7000); }
 function toggleFull(){ const d=document, el=d.documentElement;
+  if(!isFull()&&!canFull()){ iosFullHint(); return; }
   try{ if(isFull()){ fullByUs=true; (d.exitFullscreen||d.webkitExitFullscreen).call(d); } else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
 $('#mFull').onclick=toggleFull; $('#setFull').onclick=toggleFull;
 function onFullChange(){ lockOrient(); setTimeout(applyViewport,120); document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=isFull()?'Exit full screen':'Full screen'); setTimeout(resizeView,50);
@@ -1622,7 +1653,7 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;
    lobby and the duel itself (battle.js startDuel, netduel.js DuelSession). A duel ends in one place, duelOver, with
    a result card; leaving (Back, the pause menu's Leave) is duelLeave. Both stop the session, the transport and the
    timers, so nothing of a duel outlives it. */
-const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false};
+const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false, scan:null, answer:''};
 const DU_NAME_KEY='hexmancers-mpname', DU_SLOW_MSG='Could not connect. Check you are on the same Wi-Fi and try again.', DU_PROBE='hexmancers-hi';
 const DU_STEPS={role:'duRole', how:'duHow', hostcode:'duHostCode', joincode:'duJoinCode', answer:'duAnswerStep', room:'duRoomStep', wait:'duWait', lobby:'duLobby'};
 // Room (the relay) needs a page served over http: by something that runs it; itch.io pages are https and cannot reach it
@@ -1648,7 +1679,7 @@ function duelPauseSync(){ const pz=$('#dbgPause'), note=$('#dbgPauseNote'), on=!
   if(pz){ if(on&&typeof DBG!=='undefined'&&DBG.pause){ DBG.pause=false; pz.checked=false; document.body.classList.remove('dbgPaused'); } pz.disabled=on; }
   if(note) note.hidden=!on; duelDbgSync(); }
 // everything of a connection and a duel: timers, the session (which says bye and closes the transport) or the bare transport
-function duStop(){ clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeout(DU.waitT); DU.timer=DU.startT=DU.waitT=0;
+function duStop(){ duScanStop(); clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeout(DU.waitT); DU.timer=DU.startT=DU.waitT=0;
   const s=DU.session, tr=DU.tr; DU.session=DU.tr=DU.accept=null; DU.gen++;
   try{ if(s) s.leave(); else if(tr) tr.close(); }catch(e){}
   duelPauseSync(); }
@@ -1720,31 +1751,67 @@ $('#duBack').onclick=()=>{ if(DU.step==='role') return duelLeave(); duStop(); if
 $('#duHost').onclick=()=>{ DU.host=true; duStep('how'); $('#duHowTxt').textContent='You host. How will your friend connect?'; duHow(); };
 $('#duJoin').onclick=()=>{ DU.host=false; duStep('how'); $('#duHowTxt').textContent='You join. How will you connect?'; duHow(); };
 function duHow(){ const ok=duelRoomOk(location.protocol,location.hostname); $('#duRoom').hidden=!ok; $('#duRoomHint').hidden=!ok; }
-$('#duWifi').onclick=()=>{ if(DU.host) return duHostWifi(); $('#duOfferIn').value=''; $('#duAnswer').value=''; $('#duMakeAnswer').disabled=false; duStep('joincode'); };
+$('#duWifi').onclick=()=>{ if(DU.host) return duHostWifi(); duJoinStart(); };
+// ---- QR pairing: the host shows a code, the friend scans it and shows one back to the host's front camera ----
+// a code drawn as a QR into a canvas (dashes dropped: they only help people read it)
+function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getContext('2d');
+  if(!t||typeof qrcode!=='function'){ cv.width=cv.height=0; return; }
+  const q=qrcode(0,'L'); q.addData(t,'Byte'); q.make(); const n=q.getModuleCount(), pad=4, sc=Math.max(2,Math.floor(600/(n+pad*2)));
+  cv.width=cv.height=(n+pad*2)*sc; x.fillStyle='#fff'; x.fillRect(0,0,cv.width,cv.height); x.fillStyle='#000';
+  for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(q.isDark(r,c)) x.fillRect((c+pad)*sc,(r+pad)*sc,sc,sc); }
+// the camera into a video, read for a HEX1./HEX2. code until one turns up (BarcodeDetector where there is one, else jsQR)
+function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
+  try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
+async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0}; DU.scan=sc;
+  const noCam=()=>{ if(sc.dead) return; duScanStop(); const d=video.closest('.dustep').querySelector('.dumanual'); if(d) d.open=true;
+    duMsg('The camera is not available here. Allow it in your browser settings, or use the codes below.'); };
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia) return noCam();
+  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:false}); }catch(e){ return noCam(); }
+  if(sc.dead){ sc.stream.getTracks().forEach(t=>t.stop()); return; }
+  video.srcObject=sc.stream; try{ await video.play(); }catch(e){}
+  let det=null; try{ if('BarcodeDetector' in window) det=new BarcodeDetector({formats:['qr_code']}); }catch(e){}
+  const cv=document.createElement('canvas'), x=cv.getContext('2d',{willReadFrequently:true});
+  const tick=async()=>{ if(sc.dead) return; let txt='';
+    try{ if(video.videoWidth){
+      if(det){ const r=await det.detect(video); if(r&&r[0]) txt=r[0].rawValue||''; }
+      else if(typeof jsQR==='function'){ const k=Math.min(1,720/Math.max(video.videoWidth,video.videoHeight)); cv.width=video.videoWidth*k|0; cv.height=video.videoHeight*k|0;
+        x.drawImage(video,0,0,cv.width,cv.height); const r=jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:'dontInvert'}); if(r) txt=r.data||''; } } }catch(e){}
+    if(sc.dead) return;
+    if(/^HEX[12]\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
+    sc.t=setTimeout(tick,150); };
+  tick(); }
 async function duHostWifi(){
-  duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; $('#duAccept').disabled=true;
+  duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; duQr($('#duOfferQr'),'');
+  $('#duAccept').hidden=true; $('#duHostSeen').hidden=false; DU.answer='';
   if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
   const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
-  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; $('#duAccept').disabled=false; duMsg('');
+  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
+  // like pairing a headset: their code turns up in the front camera, and the host says yes to it
+  duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
 }
-$('#duAccept').onclick=async()=>{ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
-  try{ await acc($('#duAnswerIn').value); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
+async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
+  try{ await acc(code); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
   if(g!==DU.gen) return;
-  duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
+  duScanStop(); duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
-  if(g===DU.gen) duBegin(tr,true); };
-$('#duMakeAnswer').onclick=async()=>{ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
+  if(g===DU.gen) duBegin(tr,true); }
+$('#duAccept').onclick=()=>duHostAccept(DU.answer);
+$('#duAcceptPaste').onclick=()=>duHostAccept($('#duAnswerIn').value);
+function duJoinStart(){ duStop(); $('#duOfferIn').value=''; $('#duAnswer').value=''; $('#duMakeAnswer').disabled=false; duStep('joincode');
+  const g=DU.gen; duScan($('#duJoinCam'),'environment',code=>{ if(g===DU.gen) duJoinWith(code); }); }
+async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
   if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
-  btn.disabled=true; $('#duAnswer').value='';
-  const jp=RtcTransport.join($('#duOfferIn').value); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
-  let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message); } return; }   // 'Bad code ...': stay here
+  btn.disabled=true; $('#duAnswer').value=''; duScanStop();
+  const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
+  let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   if(g!==DU.gen) return;
-  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duStep('answer');
-  // the host has to carry the code across and paste it: that wait is people's, not the network's
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer');
+  // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
-  if(g===DU.gen) duBegin(tr,false); };
+  if(g===DU.gen) duBegin(tr,false); }
+$('#duMakeAnswer').onclick=()=>duJoinWith($('#duOfferIn').value);
 $('#duRoom').onclick=()=>{ duStop(); duStep('room'); const host=DU.host, inp=$('#duRoomName'); inp.readOnly=host; $('#duRoomGo').disabled=false;
   if(host){ const L='ABCDEFGHJKLMNPQRSTUVWXYZ'; inp.value=Array.from({length:4},()=>L[Math.floor(Math.random()*L.length)]).join(''); }
   else inp.value='';

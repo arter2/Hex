@@ -188,8 +188,20 @@ function gearIconName(id){ const G=typeof GEAR!=='undefined'&&GEAR[id]; if(!G) r
   if(G.slot==='offhand') return id==='buckler'?'buckler':'tower';
   if(G.slot==='arms') return 'bracer';
   return 'ring'; }
+// the painted sprite for a gear id or an item id (sprites.js), or null
+function itemArt(id){ return (typeof GEAR_SPRITES!=='undefined'&&GEAR_SPRITES[id])||(typeof ITEM_SPRITES!=='undefined'&&ITEM_SPRITES[id])||null; }
+const artImg=(src,size)=>`<img class="pxi" src="${src}" width="${size}" height="${size}" alt="">`;
+// an item's picture: its painted sprite when it has one, else the small drawn icon (name, accent)
+function itemIcon(id,size,name,accent){ const a=itemArt(id); return a?artImg(a,size||32):uiIcon(name,size||32,accent); }
+const bagIcon=(k,size)=>itemIcon(k,size,BAG[k].icon,BAG[k].col);
+const keyIcon=(k,size)=>itemIcon(k+'_key',size,'key',KEYS[k].col);
+const matIcon=(k,size)=>itemIcon(k,size,'gem',MATS[k].col);
+const PERM_COL={vigor:'#ff5d6c', might:'#ff9a3a', insight:'#8fe4ff', fortune:'#f2c94c'};
+const permIcon=(k,size)=>itemIcon('vial_'+k,size,'gem',PERM_COL[k]||'#f2c94c');
+// a lost belonging a quest asks for ("grandfather's ring" is grandfathers_ring)
+const questItemIcon=(name,size)=>itemIcon(String(name).toLowerCase().replace(/[’']/g,'').replace(/\s+/g,'_'),size,'scroll','#f2c94c');
 function gearIcon(id,size=48){ const G=GEAR[id], col=(COLORS[G.family]||{}).c||'#b4b8c8';
-  if(typeof GEAR_SPRITES!=='undefined'&&GEAR_SPRITES[id]) return `<img class="pxi" src="${GEAR_SPRITES[id]}" width="${size}" height="${size}" alt="">`;
+  if(itemArt(id)) return artImg(itemArt(id),size);
   return `<img class="pxi" src="${icon(gearIconName(id),col)}" width="${size}" height="${size}" alt="">`; }
 function uiIcon(name,size=48,accent){ return `<img class="pxi" src="${icon(name,accent)}" width="${size}" height="${size}" alt="">`; }
 
@@ -403,5 +415,5 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
 }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install(); }
 
-Object.assign(root,{PX,cardFrame,uiIcon,uiIconURL:icon,gearIcon,gearIconName,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
+Object.assign(root,{PX,cardFrame,uiIcon,uiIconURL:icon,gearIcon,gearIconName,itemArt,itemIcon,bagIcon,keyIcon,matIcon,permIcon,questItemIcon,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
 })(typeof window!=='undefined'?window:globalThis);

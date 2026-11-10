@@ -178,42 +178,10 @@ body.rune #xMini.big{width:calc(var(--r-mapw) - 24px)!important; height:calc(var
 body.rune .x-map-close{display:none!important;}
 body.rune .x-map-shade{background:rgba(3,9,13,.35);}
 
-/* ---------------- the shared pause menu (the handoff: 336 wide on a phone, 368 elsewhere; 52 px rows, 6 apart) ---------------- */
-body.rune #pause{background:rgba(2,8,12,.48);}
-body.rune #pause .panel{max-width:368px; width:calc(100vw / var(--ui,1) - 24px); box-sizing:border-box; padding:16px 16px 14px; position:relative; isolation:isolate; overflow:visible;
-  background:none; border:0; border-image:none; box-shadow:0 10px 30px rgba(0,0,0,.45); clip-path:none;}
-body.rune #pause .panel::after{content:''; position:absolute; inset:0; z-index:-1; border:10px solid transparent; border-image:var(--r-s-panel) 10 fill / 10px; pointer-events:none;}
-body.rune #pause .panel::before{content:''; position:absolute; top:-10px; left:50%; width:20px; height:20px; margin-left:-10px; background:var(--r-crystal) center/contain no-repeat; z-index:1;}   /* the crystal on the top edge */
-body.rune #pause h2{font:400 29px/1 var(--font-h); color:var(--r-gold); text-align:center; letter-spacing:.02em; margin:8px 0 0; text-shadow:0 1px 0 #071016;}
-body.rune #pause #pauseWhere{font:400 14px var(--font-h); color:var(--r-muted); margin:8px 0 14px;}
-body.rune #pause .stack{gap:6px;}
-body.rune #pause .stack .btn{position:relative; isolation:isolate; min-height:52px; height:52px; padding:3px 12px 0 40px; display:flex; align-items:center; justify-content:center; font:400 15.5px var(--font-h); color:var(--r-text); text-shadow:0 1px 0 #071016;
-  background:none; border:0; border-image:none; box-shadow:none; clip-path:none;}
-body.rune #pause .stack .btn::after{content:''; position:absolute; inset:3px 1px 1px; z-index:-1; border:8px solid transparent; border-image:var(--r-s-btn) 8 fill / 8px;}
-body.rune #pause .stack .btn::before{content:''; position:absolute; left:14px; top:50%; width:20px; height:20px; margin-top:-9px; background:var(--r-pi) center/contain no-repeat;}
-body.rune #pause .stack .btn:active::after{border-image-source:var(--r-s-btn-p);}
-body.rune #pause .stack .btn:focus-visible::after{border-image-source:var(--r-s-btn-f);}
-body.rune #pause .stack .btn:disabled{opacity:1; color:rgba(243,241,231,.45);}
-body.rune #pause .stack .btn:disabled::before{opacity:.45;}
-body.rune #pause .stack .btn:disabled::after{border-image-source:var(--r-s-btn-d);}
-body.rune #pause #mResume{color:var(--r-gold); --r-pi:var(--r-i-resume-gold); height:54px; min-height:54px;}
-body.rune #pause #mResume::after{border-image-source:var(--r-s-gold); inset:3px 1px 3px;}
-body.rune #pause #mResume:active::after{border-image-source:var(--r-s-gold-p);}
-body.rune #pause #mResume:focus-visible::after{border-image-source:var(--r-s-gold-f);}
-body.rune #pause #mSave{--r-pi:var(--r-i-save);} body.rune #pause #mLoad{--r-pi:var(--r-i-load);} body.rune #pause #mSettings{--r-pi:var(--r-i-settings);}
-body.rune #pause #mFull{--r-pi:var(--r-i-fullscreen);} body.rune #pause #mLeave,body.rune #pause #mRun{--r-pi:var(--r-i-flag);}
-body.rune #pause #mLeave{margin-top:0;}
-body.rune #pause #mPoint{font:400 13px var(--font-h); color:var(--r-muted); margin:6px 0 4px;}
-body.rune #pause .row2{gap:6px;}
-body.rune #pause .row2 .btn{padding-left:36px;}
-body.rune #pause .row2 .btn::before{left:14px;}
+/* the pause menu is a menu-kit window now (menukit.css); only the walking help stays off it */
+#pause #pauseHint{display:none;}
 /* the rule above Flee (the handoff's divider) */
 body.rune #rPauseRule{height:1px; margin:13px 16px 7px; background:rgba(97,126,132,.35);}
-/* the panel's own close button (ui.js adds it to every panel), on the hand side */
-body.rune #pause .winx{top:8px; left:0; right:auto; width:48px; height:48px; border:0; border-image:none; background:var(--r-i-close) center/17px no-repeat; z-index:2;}
-body.rune.rune-right #pause .winx{left:auto; right:0;}
-body.rune #pause .winx::before,body.rune #pause .winx::after{display:none;}
-body.rune #pause #pauseHint{display:none;}   /* the walking help lives in the tips and Settings, not over the menu */
 body.rune #rLeaveCost{margin:4px 0 0; text-align:center; font:400 13px var(--font-h); color:var(--r-danger);}
 body.rune #rLeaveCost:empty{display:none;}
 
@@ -221,12 +189,10 @@ body.rune #rLeaveCost:empty{display:none;}
 @media (max-width:340px){ body.rune #xBottom .controls .btn{font-size:13px;} body.rune #xTop .hpmeter{width:132px;} body.rune #xTop .hpmeter .r-hptrack{left:78px; width:46px;} }
 
 /* short screens: the pause menu scrolls; short landscape phones: title to the left, close top right, two across */
-@media (max-height:620px){ body.rune #pause .panel{max-height:calc(100vh / var(--ui,1) - 32px); overflow-y:auto; overscroll-behavior:contain;} body.rune #pause .panel::before{top:0;} }
+@media (max-height:620px){ body.rune #pause .panel{max-height:calc(100vh / var(--ui,1) - 32px); overflow-y:auto; overscroll-behavior:contain;} }
 @media (orientation:landscape) and (max-height:520px){
   body.rune #pause .panel{max-width:368px; padding:10px 16px 12px;}
-  body.rune #pause h2{font-size:23px; text-align:left; margin:2px 0 0;}
   body.rune #pause #pauseWhere{text-align:left; margin:4px 0 8px;}
-  body.rune #pause .winx,body.rune.rune-right #pause .winx{top:4px; left:auto; right:0;}
   body.rune #pause .stack{display:grid; grid-template-columns:1fr 1fr; gap:6px;}
   body.rune #pause .stack > *{grid-column:auto;}
   body.rune #pause #mResume,body.rune #pause #mPoint,body.rune #pause #rLeaveCost,body.rune #pause .row2,body.rune #rPauseRule,body.rune #pause #mLeave,body.rune #pause #mRun{grid-column:1 / -1;}
@@ -234,4 +200,3 @@ body.rune #rLeaveCost:empty{display:none;}
   body.rune #rPauseRule{display:none;}
 }
 /* the opening focus lands on Resume: its skin's cyan keyline marks it, not the browser's outline */
-body.rune #pause .btn:focus,body.rune #pause .btn:focus-visible,body.rune #xBottom .controls .btn:focus,body.rune #rCtx .btn:focus{outline:none;}

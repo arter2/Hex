@@ -528,7 +528,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),true,bev(v)),2,wallTex[xWT(v)]);
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]); mat.userData.xdet=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -1239,12 +1239,14 @@ function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
 let XSINK_DOOR=false, XSINK_CLIP=null;
 function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0;
-  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
+    // uvj 2 (rough rock, which has no courses to keep level): each block shows its own half of a texture twice the size,
+    // anywhere in it, so no two blocks share a face.
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
     // so no two neighbours show the same face; on a spacious floor a block standing lower (a low near wall, xStepLow)
     // shows fewer courses of the same stone, not squashed stone (its faces' v runs from its foot)
-    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
+    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); '+(uvj===2?'vUv=vUv*.5+vec2(hh,fract(hh*7.13));':'vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     sh.fragmentShader='varying vec3 vXWP; uniform vec3 uBall; uniform float uRad; uniform float uPx;\n'
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'

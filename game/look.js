@@ -55,9 +55,9 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   m.extensions=Object.assign(m.extensions||{},{derivatives:true});
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
-  const det=!!m.userData.xdet; if(det) xDetailN();
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det':'');
+  const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'');
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -97,10 +97,10 @@ void main() {`);
 function xDetailN(){ if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=a(i,j)*7+b(i,j)*3+c(i,j)*1.2;
   const t=new THREE.CanvasTexture(xNormalMap(H,N,.9)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return XLITU.uXDetN.value=t; }
-function xDetShader(sh){ let f=sh.fragmentShader;
+function xDetShader(sh,wall){ let f=sh.fragmentShader;
   if(!f.includes('#include <normal_fragment_maps>')) return;
   f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps.replace('mapN.xy *= normalScale;',`mapN.xy *= normalScale;
-  { vec2 xw=vec2(vXLW.x,-vXLW.z);
+  { vec2 xw=${wall?'vec2(vXLW.x+vXLW.z,vXLW.y)':'vec2(vXLW.x,-vXLW.z)'};
     vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
     float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
     mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));
@@ -344,7 +344,8 @@ function xTileFloor(S,seed,checker){ const N=256, T=16, n=N/T, R=caveRng(seed), 
   for(const s0 of st) if(s0.crack){ let px=s0.x0+2+R()*(s0.w-4), py=s0.y0+2, a=1.2+R()*.7; for(let q=0;q<s0.h-3;q++){ x.fillRect(px|0,py|0,1,1); H[(py|0)*N+(px|0)]-=1.2; a+=(R()-.5)*.6; px+=Math.cos(a)*.7; py+=Math.max(.4,Math.sin(a)); if(px<s0.x0+1||px>s0.x0+s0.w-2) break; } }
   xSpeck(c,S,R,10,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
-function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
+function xRockWall(S,seed){ const N=128,   // (twice the old size: each block shows only its own part of it, explore.js xDitherMat uvj 2)
+  R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
   // the height: rough lumps with the strata standing out as ledges
   const c=xPaint(N,(i,j)=>{ const sb=Math.sin((j+st(i,j)*14)*.55); H[j*N+i]=f(i,j)*6+Math.max(0,sb)*1.6; let t=f(i,j)*1.1-.05+sb*.08; if(j<2) t+=.3; return xTone(S,Math.max(0,Math.min(1,t))); });
   c.h=H; c.hk=.5; return c; }

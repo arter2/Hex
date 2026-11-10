@@ -34,6 +34,8 @@
 .hm-btn:disabled,.hm-sq:disabled{border-image-source:var(--hm-steel-disabled); color:rgba(243,241,231,.42); cursor:default;}
 .hm-btn:disabled .hm-i,.hm-sq:disabled .hm-i{opacity:.45;}
 .hm-cyan{border-image-source:var(--hm-cyan-idle);}
+.hm-danger{border-image-source:var(--hm-danger-idle); color:#ffd9d1;}
+.hm-danger:hover:not(:disabled){border-image-source:var(--hm-danger-hover);} .hm-danger:active:not(:disabled){border-image-source:var(--hm-danger-pressed);} .hm-danger:focus-visible{border-image-source:var(--hm-danger-focus);}
 .hm-cyan:hover:not(:disabled){border-image-source:var(--hm-cyan-hover);} .hm-cyan:active:not(:disabled){border-image-source:var(--hm-cyan-pressed);} .hm-cyan:focus-visible{border-image-source:var(--hm-cyan-focus);}
 .hm-i{display:inline-block; flex:none; width:22px; height:22px; background:center/contain no-repeat;}
 .hm-gem{position:absolute; z-index:2; width:12px; height:12px; background:var(--hm-gem) center/contain no-repeat; pointer-events:none;}

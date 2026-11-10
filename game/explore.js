@@ -78,7 +78,7 @@ function tryFloor(depth,R,plan){
   const t=new Uint8Array(XN*XN), room=new Int16Array(XN*XN).fill(-1), rooms=[];
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
   const v2=plan.layout===2&&typeof x2Rooms==='function';   // the spacious floor (dungeongen.js)
-  if(v2){ const r2=x2Rooms(R,ri,plan); if(!r2) return null; rooms.push(...r2); }
+  if(v2){ const r2=x2Rooms(R,ri,plan,depth); if(!r2) return null; rooms.push(...r2); }
   else { const want=plan.small?8:20;   // a floor is about twice the size it once was (68 x 68 cells)
     for(let k=0;k<900&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
       if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }
@@ -484,7 +484,8 @@ function xBuildScene(){
     const tv=EX.layout===2?.04:.1; for(let k=0;k<col.length;k+=18){ const t=1-tv+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*tv;   // (small tiles: barely, or the cells show through as big squares)
     for(let j=0;j<18;j++) col[k+j]*=t; }
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
-    grp.add(new THREE.Mesh(geo,xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv))); });
+    const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
   EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);

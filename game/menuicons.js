@@ -1,4 +1,4 @@
-/* From the menu handoff (docs/ui-menu/source/icons.js), unchanged: the menu's colour pixel icons. */
+/* From the menu handoff (docs/ui-menu/source/icons.js), plus a trash icon for Delete: the menu's colour pixel icons. */
 /* Editable color pixel constructions. 24x24 logical grid, no background. */
 (function(root){
 const paths={
@@ -6,6 +6,7 @@ const paths={
  back:'<path d="M17 4 4 12 17 20Z" fill="#7dd8e6" stroke="#d4fbff" stroke-width=".7"/>',
  next:'<path d="M7 4 20 12 7 20Z" fill="#a8b6b8"/>',
  down:'<path d="M4 8 12 17 20 8Z" fill="#a8b6b8"/>',
+ trash:'<path d="M9 2h6v2h6v3H3V4h6Z" fill="#ec9384" stroke="#ffd2c8" stroke-width=".7"/><path d="M5 8h14l-1 14H6Z" fill="#a8463a" stroke="#ffd2c8" stroke-width=".7"/><path d="M9 11v8m3-8v8m3-8v8" stroke="#ffd2c8" stroke-width="1.2"/>',
  plus:'<path d="M11 4h2v7h7v2h-7v7h-2v-7H4v-2h7Z" fill="#a8b6b8"/>',
  coin:'<path d="M6 2h12l4 4v12l-4 4H6l-4-4V6Z" fill="#d39b24" stroke="#ffe8a2"/><path d="M8 4h8l4 4v8l-4 4H8l-4-4V8Z" fill="#f5cb60"/><path d="M10 5h2v14h-2m4-14h1v14h-1" fill="#b47b1c"/>',
  crystal:'<path d="M13 1 21 9 18 22 8 20 6 9Z" fill="#a47ce0" stroke="#d9beff" stroke-width=".7"/><path d="m13 1-1 18 6 3 3-13Z" fill="#704399"/><path d="M2 12h6l3 6-3 5H2l-1-6Z" fill="#bc98f6"/>',

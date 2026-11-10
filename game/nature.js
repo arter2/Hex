@@ -216,13 +216,21 @@ function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0
           if(mv>.56) col=xfMix(col,moss,(mv-.56)*4.5);
           const a=Math.abs(r1(i,j)-.5), b=Math.abs(r2(i,j)-.5); if(a<.012||b<.009){ col=xfMix(root,T(.6),a<.005||b<.004?.25:0); H[j*N+i]+=1.4; } return col; });
         pebbles(c,R,H,60); return c; },30),
-      // mossy flagstones, G a side (6: ordinary, 4: big)
-      ...[6,4].map(G=>s=>make(s+G,(R,H)=>{ const V=xfVoro(N,G,R,.75), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), m=xFbm(N,R,5), gap=X('#1c2a18'), moss=X(S.moss);
-        return xPaint(N,(i,j)=>{ const o=j*N+i, e=V.e[o], fv=f(i,j), mv=m(i,j);
-          if(e<1.7){ H[o]=-1; return xfMix(gap,moss,mv*1.2-.2); }
-          let col=T(.4+rv[V.id[o]]*.22+(fv-.5)*.2-(e<4?.07:0)); H[o]=2.2+fv*1.5-(e<4?.6:0);
-          if(mv>.58&&e<8) col=xfMix(col,moss,(mv-.58)*5);
-          if(mv>.7) col=xfMix(col,moss,(mv-.7)*3); return col; }); },24)) ],
+      // rough cobbled rock, G stones a side over the texture's eight cells (18: small, 13: mixed): warped, chipped
+      // edges, a domed face with fine grain, flecks and the odd crack, moss and grit in the joints. Drawn at 512 for
+      // the detail, in smooth tones (xTone steps would flatten each stone to one colour).
+      ...[18,13].map(G=>s=>{ const N2=512, R=caveRng(s+G), H=new Float32Array(N2*N2), V=xfVoro(N2,G,R,.95), rv=Array.from({length:V.n},()=>R()), rk=Array.from({length:V.n},()=>R());
+        const wx=xNoise(N2,22,R), wy=xNoise(N2,22,R), ch=xFbm(N2,R,40), gr=xFbm(N2,R,64), co=xFbm(N2,R,6), m=xFbm(N2,R,8), ck=xNoise(N2,30,R), gap=X('#141a12'), grit=X('#3a3226'), moss=X(S.moss);
+        const ramp=S.rock.map(X), Tc=t=>{ t=Math.max(0,Math.min(1,t))*(ramp.length-1); const i=Math.min(ramp.length-2,Math.floor(t)); return xfMix(ramp[i],ramp[i+1],t-i); };
+        const c=xPaint(N2,(i,j)=>{ const si=((i+Math.round((wx(i,j)-.5)*9))%N2+N2)%N2, sj=((j+Math.round((wy(i,j)-.5)*9))%N2+N2)%N2, q=sj*N2+si, o=j*N2+i;
+          const id=V.id[q], e=V.e[q]-(ch(i,j)-.5)*3.2, mv=m(i,j), g=gr(i,j);
+          if(e<1.6){ H[o]=-1.5; let col=xfMix(gap,grit,g); if(mv>.5) col=xfMix(col,moss,Math.min(1,(mv-.5)*3)); return col; }
+          const dome=Math.sqrt(Math.min(e,7)/7);
+          let t=.28+rv[id]*.26+(g-.5)*.3+(co(i,j)-.5)*.14+dome*.08-(e<3?.08:0); H[o]=1.2+dome*2.6+(g-.5)*1.4;
+          if(rk[id]<.35&&Math.abs(ck(i,j)-.5)<.01){ t-=.18; H[o]-=1.2; }   // a cracked stone
+          if(((i*7+j*13+id*31)%97)<2) t+=.12;   // pale flecks
+          let col=Tc(t); if(mv>.6&&e<6) col=xfMix(col,moss,Math.min(.8,(mv-.6)*4)); return col; });
+        xSpeck(c,S,R,60); c.h=H; c.hk=.6; return c; }) ],
     deeps:[
       // rock silvered with frost
       s=>make(s,(R,H)=>{ const g=rock(R,H,.05,.3), fr=xFbm(N,R,5), w=X('#e6f6ff'), cv=g.c, x=cv.getContext('2d'), im=x.getImageData(0,0,N,N);

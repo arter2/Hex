@@ -29,7 +29,7 @@ const DBG={pause:false};
 // saves new ones afterwards.
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
-const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
+const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
@@ -55,8 +55,9 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   m.extensions=Object.assign(m.extensions||{},{derivatives:true});
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'');
+  const det=!!m.userData.xdet; if(det) xDetailN();
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det':'');
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -89,6 +90,21 @@ void main() {`);
   if(uXSteps>.5){ vec3 xd=reflectedLight.directDiffuse+reflectedLight.indirectDiffuse, xl3=xd/max(diffuseColor.rgb,vec3(.004)); float xl=max(xl3.r,max(xl3.g,xl3.b));
     if(xl>.0005){ float xs=ceil(xl*uXSteps-.25)/uXSteps/xl; reflectedLight.directDiffuse*=xs; reflectedLight.indirectDiffuse*=xs; } }
   }`);
+  sh.fragmentShader=f; }
+/* A second, finer relief on the floors (material.userData.xdet), so the painted floor's repeat breaks up: a tiling
+   noise normal map laid in world space at two scales that never line up with the floor texture's eight cells, its
+   strength wandering across the floor (a third, very wide lookup), added to the floor's own normal before lighting. */
+function xDetailN(){ if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=a(i,j)*7+b(i,j)*3+c(i,j)*1.2;
+  const t=new THREE.CanvasTexture(xNormalMap(H,N,.9)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return XLITU.uXDetN.value=t; }
+function xDetShader(sh){ let f=sh.fragmentShader;
+  if(!f.includes('#include <normal_fragment_maps>')) return;
+  f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps.replace('mapN.xy *= normalScale;',`mapN.xy *= normalScale;
+  { vec2 xw=vec2(vXLW.x,-vXLW.z);
+    vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
+    float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
+    mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));
+  f=f.replace('void main() {','uniform sampler2D uXDetN; uniform float uXDetK;\nvoid main() {');
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;

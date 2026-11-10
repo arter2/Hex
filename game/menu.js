@@ -20,7 +20,7 @@ const url=svg=>'url("data:image/svg+xml,'+encodeURIComponent(svg)+'")';
 // so its 5-unit chamfers and bronze corner pins never stretch
 const skinUrl=(tone,state,w,h)=>url(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${SK.skin(w,h,tone,state)}</svg>`);
 const R=document.documentElement.style;
-for(const t of ['steel','cyan']) for(const st of ['idle','hover','pressed','disabled','focus']) R.setProperty(`--hm-${t}-${st}`,skinUrl(t,st,72,48));
+for(const t of ['steel','cyan','danger']) for(const st of ['idle','hover','pressed','disabled','focus']) R.setProperty(`--hm-${t}-${st}`,skinUrl(t,st,72,48));
 R.setProperty('--hm-panel',skinUrl('steel','idle',96,96)); R.setProperty('--hm-panel-cyan',skinUrl('cyan','idle',96,96));
 // the same frames without their ink surface, for menukit.css: its own smoke faces show through
 const rimUrl=(tone,w,h)=>url(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${['rim','highlight','keyline','corners'].map(k=>SK.skin(w,h,tone,'idle',k)).join('')}</svg>`);
@@ -57,7 +57,7 @@ const resLine=s=>`<span class="hm-r gold">${ico('coin')}${s.gold|0}</span><span 
 let dlgBack=null;
 function openDlg(title,html,from){ q('#hmDlgT').textContent=title; q('#hmDlgB').innerHTML=html; paintIcons(q('#hmDlg')); dlgBack=from||document.activeElement;
   q('#hmDlg').classList.add('on'); const f=q('#hmDlgB button')||q('#hmDlgX'); f.focus(); }
-function closeDlg(){ q('#hmDlg').classList.remove('on'); if(dlgBack&&dlgBack.focus) dlgBack.focus(); dlgBack=null; }
+function closeDlg(){ q('#hmDlg').classList.remove('on'); q('#hmDlgX').hidden=false; if(dlgBack&&dlgBack.focus) dlgBack.focus(); dlgBack=null; }
 q('#hmDlgX').onclick=closeDlg; q('#hmDlg').addEventListener('click',e=>{ if(e.target.id==='hmDlg') closeDlg(); });
 // Cards, Market, Journal, Character: the camp's own buttons, so every destination keeps its real handler
 const CATS={
@@ -122,10 +122,10 @@ q('#mmSettings').onclick=()=>openSettings();
 q('#mmDuel').onclick=()=>withChar(()=>q('#goDuel').click());
 
 /* ---------------- the three save slots ---------------- */
-let SEL=1;
+let SEL=1, SVDEL=false;   // SVDEL: all three slots are full and New game was pressed, so the slots offer Delete
 function firstEmpty(){ for(let n=1;n<=SAVE_SLOTS;n++) if(!slotSave(n)) return n; return 0; }
 function newTarget(){ return !slotSave(SEL)?SEL:firstEmpty(); }
-function openSaves(){ SEL=SAVE_SLOT; renderSaves(); show('scrSaves'); q('#scrSaves .hm-scroll').scrollTop=0;
+function openSaves(){ SEL=SAVE_SLOT; SVDEL=false; renderSaves(); show('scrSaves'); q('#scrSaves .hm-scroll').scrollTop=0;
   const c=q('#svList .hm-card.sel'); const f=c&&(c.querySelector('.hm-go')||c); if(f) f.focus(); }
 window.openSaves=openSaves; window.hmDrawChar=drawChar;
 function renderSaves(){ const box=q('#svList'); box.innerHTML='';
@@ -138,22 +138,36 @@ function renderSaves(){ const box=q('#svList'); box.innerHTML='';
       c.innerHTML=(n===SEL?'<i class="hm-gem tc"></i>':'')+`<div class="hm-ava"><canvas width="96" height="96"></canvas></div>
         <div class="hm-cinfo"><b class="hm-ct">Slot ${n}</b><span class="hm-cn"><span class="hm-name" title="${esc_(deckName(s))}">${esc_(deckName(s))}</span><span class="hm-hp">${maxHp(s)}/${maxHp(s)}</span></span>
         <span class="hm-place" style="color:${A.glow}">${ico('cave')}<span>${esc_(A.name)}</span></span><span class="hm-muted">Depth ${s.deepest} · Lv ${s.level||1}</span><span class="hm-res">${resLine(s)}</span></div>
-        <button class="hm-btn hm-cyan hm-go" type="button" aria-label="Continue slot ${n}">${ico('play')}<span>Continue</span></button>`;
+        ${SVDEL?`<button class="hm-btn hm-danger hm-go" type="button" aria-label="Delete slot ${n}">${ico('trash')}<span>Delete</span></button>`
+               :`<button class="hm-btn hm-cyan hm-go" type="button" aria-label="Continue slot ${n}">${ico('play')}<span>Continue</span></button>`}`;
       drawChar(c.querySelector('canvas'),s);
-      c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(n!==SAVE_SLOT) useSlot(n); goPlay(SVMODE); }; }
-    // one tap does it: a saved slot continues, an empty slot starts a new game in it
-    c.onclick=()=>{ if(n!==SAVE_SLOT) useSlot(n); if(s) goPlay(SVMODE); else openNewChar(); };
+      c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(SVDEL) return askDelete(n,s,e.currentTarget); if(n!==SAVE_SLOT) useSlot(n); goPlay(SVMODE); }; }
+    // one tap does it: a saved slot continues, an empty slot starts a new game in it (in delete mode only the red button acts)
+    c.onclick=()=>{ if(SVDEL) return; if(n!==SAVE_SLOT) useSlot(n); if(s) goPlay(SVMODE); else openNewChar(); };
     c.onkeydown=e=>{ if(e.target!==c) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); }
       if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); const nx=c.nextElementSibling; if(nx) nx.focus(); }
       if(e.key==='ArrowUp'||e.key==='ArrowLeft'){ e.preventDefault(); const pv=c.previousElementSibling; if(pv) pv.focus(); } };
     box.appendChild(c); }
   paintIcons(box);
-  const t=newTarget(); q('#svNew').disabled=!t;
-  q('#svNew').setAttribute('aria-label',t?'New game in slot '+t:'New game: all save slots are occupied');
-  q('#svWhy').textContent=t?'':'All save slots are occupied. Delete one in Settings › Save slots to start a new game.'; }
-q('#svBack').onclick=()=>{ SVMODE='explore'; openMenu(); q('#mmContinue').focus(); };
-q('#svNew').onclick=()=>{ const t=newTarget(); if(!t||slotSave(t)) return;   // never over a save
+  const t=newTarget(); if(t) SVDEL=false; q('#svNew').disabled=SVDEL;
+  q('#svNew').setAttribute('aria-label',t?'New game in slot '+t:'New game: delete a save first');
+  q('#svWhy').textContent=SVDEL?'All three slots are full. Delete a save to start a new game.':''; }
+// Back leaves delete mode first, then the screen
+q('#svBack').onclick=()=>{ if(SVDEL){ SVDEL=false; renderSaves(); q('#svNew').focus(); return; } SVMODE='explore'; openMenu(); q('#mmContinue').focus(); };
+// all three slots full: New game turns the slots' Continue buttons into red Delete buttons
+q('#svNew').onclick=()=>{ const t=newTarget();
+  if(!t){ SVDEL=true; renderSaves(); const d=q('#svList .hm-danger'); if(d) d.focus(); return; }
+  if(slotSave(t)) return;   // never over a save
   useSlot(t); openNewChar(); };
+// are you sure? Delete clears the slot and starts the new game in it
+function askDelete(n,s,from){
+  openDlg('Delete slot '+n+'?',`<p class="hm-dl"><b>${esc_(deckName(s))}</b> · depth ${s.deepest||1} · Lv ${s.level||1}</p><p class="hm-dl">This save is gone for good. A new game starts in this slot.</p>
+    <div class="hm-two"><button class="hm-btn" type="button" data-a="no"><span>Cancel</span></button><button class="hm-btn hm-danger" type="button" data-a="yes">${ico('trash')}<span>Delete</span></button></div>`,from);
+  q('#hmDlgX').hidden=true;
+  q('#hmDlgB [data-a=no]').onclick=closeDlg;
+  q('#hmDlgB [data-a=yes]').onclick=()=>{ q('#hmDlg').classList.remove('on'); q('#hmDlgX').hidden=false; dlgBack=null;
+    clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; }
+    SVDEL=false; useSlot(n); openNewChar(); tip('Slot '+n+' deleted'); }; }
 document.addEventListener('keydown',e=>{ if(e.key!=='Escape') return;
   if(q('#hmDlg').classList.contains('on')){ e.preventDefault(); closeDlg(); return; }
   if(q('#scrSaves').classList.contains('on')&&!document.querySelector('.overlay.on')){ e.preventDefault(); q('#svBack').click(); } });

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v301</title>
-<meta name="application-version" content="301">
+<title>Hexmancers v302</title>
+<meta name="application-version" content="302">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -649,6 +649,9 @@
       <div class="srow"><span>Cut stone black inside<small>On: faces inside the stonework that the cut opens are black. Off: you see the blocks' own faces.</small></span><label class="scheck"><input id="dbg_dShInner" type="checkbox"></label></div>
       <div class="srow"><span>Keep doors in the cut<small>On: doors and their frames are only thinned (half shown, dithered) up to the height below, so you see both the door and yourself. Off: cut like walls.</small></span><label class="scheck"><input id="dbg_dShDoor" type="checkbox"></label></div>
       <div class="srow"><span>Door kept up to<small>How high a door is kept whole in the cut, and how high its frame stands in a low near wall, in world units (a door's arch tops out near 3.4). 3.6 is normal.</small></span><span class="srange"><input id="dbg_dShDoorH" type="range" min="0" max="8" step="0.1"><b id="dbg_dShDoorHV"></b></span></div>
+      <div class="srow"><span>Shadow shape<small>On: you and enemies in sight show as a dark shape wherever a wall, arch, pillar or furniture covers them.</small></span><label class="scheck"><input id="dbg_dShade" type="checkbox"></label></div>
+      <div class="srow"><span>Shadow strength<small>How solid the shadow shape is. 0.55 is normal.</small></span><span class="srange"><input id="dbg_dShadeA" type="range" min="0" max="1" step="0.05"><b id="dbg_dShadeAV"></b></span></div>
+      <div class="srow"><span>Shadow tint<small>How much of the area's glow colour is in the shadow shape. 0 is plain dark; 0.35 is normal.</small></span><span class="srange"><input id="dbg_dShadeTint" type="range" min="0" max="1" step="0.05"><b id="dbg_dShadeTintV"></b></span></div>
       <div class="srow"><span>Field of view (lens)<small>The lens, in degrees. 46 is normal. Wider shows more around you with more depth; narrower is flatter.</small></span><span class="srange"><input id="dbg_dFov" type="range" min="20" max="120" step="1"><b id="dbg_dFovV"></b></span></div>
       <div class="srow"><span>Aim ahead<small>Points the camera further up the screen (above 0) so you stand lower and see more ahead, in tiles.</small></span><span class="srange"><input id="dbg_dAim" type="range" min="-4" max="6" step="0.1"><b id="dbg_dAimV"></b></span></div>
       <div class="srow"><span>Look-ahead<small>How far the camera leads you as you walk. 0 keeps you dead centre; 1 is normal.</small></span><span class="srange"><input id="dbg_dAhead" type="range" min="0" max="6" step="0.05"><b id="dbg_dAheadV"></b></span></div>

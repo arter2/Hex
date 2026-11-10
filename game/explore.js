@@ -320,7 +320,15 @@ function xInit3D(){
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
   x.font='700 22px "Jersey 15",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
-function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false,h}; return s; }
+function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false,h};
+  // the shadow shape: the same picture again as a flat dark shape, drawn only where something nearer has already been
+  // drawn (a wall, an arch, a pillar, furniture), so a covered character still shows. A child of the sprite, so it
+  // stands, moves, scales and hides with it; drawn before the characters, so one never shades another (xShadeLook)
+  const sh=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35,depthFunc:THREE.GreaterDepth,depthWrite:false,fog:false,color:0x0b0d12,opacity:.55})); sh.center.copy(s.center); sh.renderOrder=-1; s.add(sh); s.userData.shade=sh;
+  return s; }
+// the shadow shape's colour, strength and on/off (debug menu > Dungeon view): near black, tinted with the area's glow
+function xShadeLook(){ if(!EX||!EX.me) return; const c=new THREE.Color(0x0b0d12).lerp(new THREE.Color(EX.area&&EX.area.glow||'#ffffff'),Math.max(0,Math.min(1,XLIT.dShadeTint))).multiplyScalar(.45), a=Math.max(0,Math.min(1,XLIT.dShadeA));
+  for(const s of [EX.me].concat((EX.groups||[]).map(g=>g.sprite))){ const sh=s&&s.userData.shade; if(!sh) continue; sh.material.color.copy(c); sh.material.opacity=a; sh.visible=!!XLIT.dShade; } }
 /* A sprite always faces the camera, so it leans back as the camera looks down, and its head
    would sink into the wall behind it. Stood up, it is slid toward the camera along the line of
    sight (and shrunk to match), so it looks exactly the same but sits in front of the back wall;
@@ -333,7 +341,7 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
   if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip;
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
-    s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; } }
+    s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; const sh=s.userData.shade; if(sh){ sh.material.map=s.material.map; sh.material.needsUpdate=true; } } }
 const xMat=(c,o)=>xPhong(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
@@ -611,6 +619,7 @@ function xBuildScene(){
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
+  xShadeLook();
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
   xBakeAO(); xLitAll(); xWarmShaders();
 }
@@ -1090,7 +1099,7 @@ function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(siz
 function xDropGroup(g){ for(const o of [g.sprite,g.zz,g.bang,g.ring,g.tag,g.base,g.label]){ if(!o) continue; if(o.parent) o.parent.remove(o);
     o.traverse(q=>{ if(q.geometry&&!Object.values(XG).includes(q.geometry)) q.geometry.dispose(); const M=q.material; if(M){ if(M.map&&M.map!==xGlowTex.t) M.map.dispose(); M.dispose(); } }); } }
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Math.max(.75,Math.min(1.7,d.scale||1));
-  gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
+  gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite); xShadeLook();
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
   // every group stands on a shadow and a thin ring of its colour; a red ring pulses when it closes on you
   // the ring tells the threat: grey-green for vermin, the element's colour for most, a big red ring for a boss
@@ -1287,6 +1296,7 @@ function xDoorOp(d){ const op=Math.max(XLIT.dDoorMin,d.cutY==null?1:d.cutY), sol
   if(d.sill) d.sill.material.opacity=XLIT.dDoorGlow; }
 // the debug menu changed how walls, doors or remembered ground look: show it now
 function xDbgDungeon(what){ if(!EX||!EX.wList) return;
+  if(what==='xshade') return xShadeLook();
   if(what==='xwalls'){ const touched=new Set(); for(const c of EX.wList){ xWallFade(c,EX.wCut[c]); const w=EX.wIdx.get(c); if(w){ touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); } }
     for(const M of touched) M.instanceMatrix.needsUpdate=true; for(const [,d] of EX.doors) if(d.mesh) xDoorOp(d); }
   xUpdateVis(); }

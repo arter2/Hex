@@ -160,16 +160,36 @@ joined by one passage where the area has another to give.
 
 ### 3b. New room shapes
 
-Added to `x2Shape` / `x2In` beside L, H and X. Each keeps whole cells along the middle of all
-four sides of its box, as the existing shapes do, so doorways still open straight onto the room.
+Shapes become **templates**: a named grid of tile codes, one string per row, kept in a new
+`game/roomshapes.js`. The generator picks a template that fits the room's box, turns or mirrors
+it at random, and stamps it. L, H and X stay as they are (`x2Shape` / `x2In`).
 
-- **O (octagon):** the four corners cut on the diagonal; uses the existing diagonal wall pieces
-  (`xWedge`).
-- **C (round):** a disc of cells for boxes 9 × 9 and up, stepped with diagonal pieces.
-- **P (pillared hall):** a rectangle with a grid of solid pillars every third cell, clear of the
-  edge ring and the middle.
-- **K (cave pocket):** natural areas only; an irregular outline grown from the box's middle by a
-  seeded cellular pass, kept in one piece.
+Tile codes: `.` rock, `#` floor, `P` pillar (solid, full height), `L` low wall (solid, seen
+over), `W` water, `C` chasm, `B` bridge, `D` a spot where a doorway may open.
+
+| Template | Box | What it is |
+|---|---|---|
+| Octagon | 11 | corners cut on the diagonal |
+| Round | 11 | a disc |
+| Pillared hall | 11 | pillars every third cell |
+| Cave pocket | 11 | irregular outline, natural areas only |
+| Ring and sanctum | 11 | a vault inside the hall, one door in |
+| Keyhole | 11 | a round head on a long nave |
+| Cathedral | 15 | nave, transept, apse, two rows of pillars |
+| Quatrefoil | 15 | four round lobes on a crossing |
+| Honeycomb | 15 | three joined hexagons |
+| Cloister | 15 | a colonnade round a pool |
+| Spiral | 15 | winds in to a sealed heart that holds the reward |
+| Chasm hall | 15 | a drop across the hall, two bridges |
+
+- The 15-cell templates are landmark halls (3 or 4 a floor); the 11-cell ones are ordinary rooms.
+- Stepped corners are built with the existing diagonal wall pieces (`xWedge`).
+- Corridors join a template only at its `D` cells, so a doorway always opens onto floor.
+- Water and chasm are impassable; a bridge is walkable. Enemies path the same way.
+- **Your own shapes.** The Room Shaper artifact (claude.ai/artifact/TjFjM8YiwdmQUxTTqmSNac)
+  saves shapes in the same row-string format. Shapes saved there are added to
+  `game/roomshapes.js` after a check that all floor is connected and there is at least one
+  doorway.
 
 ### 3c. Shaped rooms hold puzzles, lairs and special rooms
 
@@ -187,8 +207,8 @@ with a shape or low walls. That rule goes, for L, H and X as well as the new sha
 - **Lairs and special rooms.** Their furniture and set pieces are laid out in the fitted
   rectangle; the rest of the shaped room is ordinary floor round it. A pillared hall counts its
   pillars as taken cells.
-- **Round and cave-pocket rooms** are made at least 9 × 9 when the floor plan needs a role room
-  and no plain room is free, so a 5 × 5 rectangle always fits one.
+- Every built-in template has a clear rectangle of at least 3 × 3; the Spiral's heart and the
+  Ring's sanctum hold a chest or a lair, not a grid puzzle.
 
 ### 3d. Saves
 
@@ -206,23 +226,21 @@ saved under `docs/` for review.
 ## Piece 4: new puzzle kinds
 
 Today there are 14 kinds of puzzle room: levers, plates, mirrors, runes, statues, trial, path,
-memory, bells, ice, scales, shift, riddle and braziers. Eight are added, to make 22. Each is one
+memory, bells, ice, scales, shift, riddle and braziers. Six are added, to make 20. Each is one
 entry in `PUZZLE_BUILD` with its interaction, tick, mesh and first-time tip, like the round 4
 puzzles in `puzzles.js`, and each opens the rich chest at its heart when solved.
 
 | Kind | What you do | Why it can always be solved |
 |---|---|---|
 | Lanterns | Step on a floor lantern and it and its neighbours flip; light them all | Built lit, then scrambled by legal steps |
-| Crumbling floor | Cross to the chest stepping on every stone once; each falls behind you | The path is laid first; a lever resets it |
-| Code lock | Set three rune dials; the lock shows how many are right and how many are misplaced | Six tries, any order of guesses; the code is on a tablet elsewhere on the floor as a second way |
-| Water jugs | Fill, pour and empty three basins to leave the amount the door asks for | Target is picked from the amounts a solver reaches |
 | Sliding mural | Slide the eight stone panels of a wall mural back into the picture | Built solved, then slid at random |
-| Crystal lenses | Turn three coloured lenses so the beam reaching the door is the door's colour | Colour is picked from the mixes the lenses can make |
 | Sentries | Cross the hall while stone heads sweep their gaze; seen, you are sent back | Sweep timing always leaves a gap wider than a walk across it |
-| Counterweights | Hang weights on a chain of four linked platforms so all sit level | Built level, then weights taken off and scattered in the room |
+| Herding | A wisp flees from you; drive it onto a rune plate | The room is laid out with no corner the wisp cannot be driven out of |
+| Echo | A ghost repeats your steps a few seconds late; use it to hold two plates at once | The plates are placed along a path the delay makes possible |
+| Hidden bridge | The way across only shows in the dark; put out the room's lights to see it | The bridge is laid first; the lights are all in reach |
 
 - Wrong moves cost what today's puzzles cost: a bite, a reset or a walk back, never a lost run.
-- Frequency is unchanged (a puzzle room on 60% of floors, one at most); with 22 kinds a run of
+- Frequency is unchanged (a puzzle room on 60% of floors, one at most); with 20 kinds a run of
   24 floors rarely repeats one.
 - Each kind is added to `puzzle-lab.js` and solved many times by the bot in plain and shaped
   rooms before it ships.

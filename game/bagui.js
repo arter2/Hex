@@ -108,7 +108,11 @@ function pickOk(id,P){ P=P||BAGUI.pick; const s=gearState(save); return P==='enc
 function pickGear(id){ if(!pickOk(id)) return tip(BAGUI.pick==='enchant'?'That piece is already enchanted':'That piece is not cursed');
   askScroll(BAGUI.pick,id); }
 function askScroll(P,id){ const nm=gearName(save,id);
-  if(P==='enchant') bagAsk('Enchant '+nm+'?','Uses 1 Scroll of Enchanting. The enchantment is chosen at random.','Enchant',()=>{
+  // an enchanting scroll on cursed gear only lifts the curse: the piece becomes normal, not enchanted
+  if(P==='enchant'&&isStuck(save,id)) bagAsk('Use Enchanting on '+nm+'?','It is cursed, so the scroll only lifts the curse. The piece becomes normal, not enchanted.','Use scroll',()=>{
+    const st=gearState(save); BAGUI.pick=null; if(!(st.scrolls.enchant>0)) return tip('No scroll of enchanting',0,{kind:'warning'});
+    st.scrolls.enchant--; delete st.cursed[id]; persist(); tip('Curse lifted',0,{kind:'success',sub:gearName(save,id)}); BAGUI.sel=bagSel(id); renderBag(); });
+  else if(P==='enchant') bagAsk('Enchant '+nm+'?','Uses 1 Scroll of Enchanting. The enchantment is chosen at random.','Enchant',()=>{
     const r=enchantGear(save,id); BAGUI.pick=null; if(!r.ok) return tip(r.msg,0,{kind:'warning'}); persist(); tip('Enchanted',0,{kind:'success',sub:gearName(save,id)}); BAGUI.sel=bagSel(id); renderBag(); });
   else bagAsk('Purify '+nm+'?','Uses 1 Scroll of Purifying. The curse is lifted and the piece can come off.','Purify',()=>{
     const r=purifyGear(save,id); BAGUI.pick=null; if(!r.ok) return tip(r.msg,0,{kind:'warning'}); persist(); tip('Curse lifted',0,{kind:'success',sub:gearName(save,id)}); BAGUI.sel=bagSel(id); renderBag(); }); }

@@ -270,10 +270,8 @@ function xInit3D(){
   // or coloured pool on the floor and walls around it, and the rest of the room sinks into shadow
   const pool=[]; for(let k=0;k<4;k++){ const L=new THREE.PointLight(0xffa040,0,10,1.6); L.position.set(0,-50,0); scene.add(L); pool.push(L); }
   // dust drifting through the light around you, in the area's glow, as in the battle cave
-  const DN=70, dpos=new Float32Array(DN*3); for(let k=0;k<DN;k++){ dpos[k*3]=(Math.random()-.5)*20; dpos[k*3+1]=Math.random()*3.2; dpos[k*3+2]=(Math.random()-.5)*16; }
-  const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
-  const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
-  dust.renderOrder=3; scene.add(dust);
+  const dust=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  dust.renderOrder=3; scene.add(dust); xDustFill(dust,70);
   lookWatch(renderer,()=>scene);
   X3={renderer,scene,cam,amb,sun,lamp,dust,pool,poolAll:pool,low:false,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   // the search reticle: pixel art laid on the floor over the 3 x 3 tiles a search covers (xRetTex)
@@ -317,6 +315,9 @@ function xInit3D(){
   $('#xMapClose').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
   return X3;
 }
+// the dust's motes, scattered round you: 70 of them, half that on the Low graphics setting (xBuildScene)
+function xDustFill(dust,n){ const cur=dust.geometry.attributes.position; if(cur&&cur.count===n) return; const dpos=new Float32Array(n*3); for(let k=0;k<n;k++){ dpos[k*3]=(Math.random()-.5)*20; dpos[k*3+1]=Math.random()*3.2; dpos[k*3+2]=(Math.random()-.5)*16; }
+  dust.geometry.dispose(); dust.geometry=new THREE.BufferGeometry(); dust.geometry.setAttribute('position',new THREE.BufferAttribute(dpos,3)); }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
   x.font='700 22px "Jersey 15",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
@@ -456,7 +457,7 @@ function xBuildScene(){
   // every material's shader is built for fewer lights) and draws at sharpness 1 with no pass after the picture
   G.low=typeof gfxLow==='function'&&gfxLow(); G.w=0;
   { const n=G.low?2:4; G.poolAll.forEach((P,k)=>{ if(k<n){ if(!P.parent) G.scene.add(P); } else { if(P.parent) G.scene.remove(P); } P.intensity=0; P.userData.L=null; P.userData.next=undefined; P.position.set(0,-50,0); }); G.pool=G.poolAll.slice(0,n); }
-  if(typeof gfxVig==='function') gfxVig();
+  if(typeof gfxVig==='function') gfxVig(); xDustFill(G.dust,G.low?35:70);
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
   EX.natural=EX.layout===2&&XNATURAL.has(A.id);   // a cave area: rough rock walls and floors, no masonry dressing (nature.js)
@@ -516,9 +517,10 @@ function xBuildScene(){
   // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
   // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
   // a cave area (xNatural): every wall is the same rough, lumpy rock, rounded off at its clear corners
-  const tall=XWALL!==XWALL_B, nat=EX.natural, wgeos=nat?[0,1,2].map(k=>xWallGeo(true,seed+k,0,tall,false,true)).concat([0,1,2].map(k=>xWedgeGeo(true,seed+k,true)),[xWallGeo(true,seed+3,0,tall,true,true)])
-    :[xWallGeo(true,seed,0,tall),xWallGeo(false,seed,0,tall),xWallGeo(false,seed+1,0,tall),xWedgeGeo(true,seed),xWedgeGeo(false,seed),xWedgeGeo(false,seed+1),xWallGeo(false,seed+2,0,tall,true)];
-  const bev=v=>!XSINK||v>=3&&v<=5?0:nat||XWT[v]===0?.25:XBEV_LOOP/2;   // how far a clear corner is rounded in (none on diagonal pieces)
+  // (the Low graphics setting: plain blocks, one step up their height, no stacked tops and no rounded corners)
+  const tall=XWALL!==XWALL_B, nat=EX.natural, lowG=!!G.low, caps=tall&&!lowG, wgeos=nat?[0,1,2].map(k=>xWallGeo(true,seed+k,0,tall,lowG,true)).concat([0,1,2].map(k=>xWedgeGeo(true,seed+k,true)),[xWallGeo(true,seed+3,0,tall,true,true)])
+    :[xWallGeo(true,seed,0,caps,lowG),xWallGeo(false,seed,0,caps,lowG),xWallGeo(false,seed+1,0,caps,lowG),xWedgeGeo(true,seed),xWedgeGeo(false,seed),xWedgeGeo(false,seed+1),xWallGeo(false,seed+2,0,caps,true)];
+  const bev=v=>lowG||!XSINK||v>=3&&v<=5?0:nat||XWT[v]===0?.25:XBEV_LOOP/2;   // how far a clear corner is rounded in (none on diagonal pieces)
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
@@ -526,7 +528,8 @@ function xBuildScene(){
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
-      const wm=new THREE.InstancedMesh(g,mat,cells.length); wm.userData.v=v; wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
+      const wm=new THREE.InstancedMesh(g,mat,cells.length); wm.frustumCulled=true; wm.userData.v=v;   // (three.js turns culling off for instanced meshes: without this line the chunks' bounds were never used, and every wall of the floor was drawn every frame)
+      wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
       for(let k=0;k<cells.length;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
       // a wall takes a slot the first time it is seen (xPaintCells), so walls you have not found cost nothing to draw
       cells.forEach(c=>EX.wIdx.set(c,[wm,-1])); wm.count=0; wm.userData.n=0; wm.visible=false; }
@@ -632,6 +635,9 @@ function xBuildScene(){
 /* Every shader the floor needs is built now, while the floor loads, not the first time a door, chest
    or room comes into sight (a phone can freeze for a moment on each new one). Hidden things are
    shown for the build and hidden again. */
+/* The floor's scene built again as the floor stands (the Graphics setting changed, or the materials did: lookRebuild):
+   the run is untouched; what you have found is shown again at once. */
+function xGfxRebuild(){ if(!EX||!X3) return; xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed) xTrapMesh(tr); xUpdateVis(); xFadeCells(10); }
 function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) return; const hid=[];
   G.scene.traverse(o=>{ if(!o.visible){ hid.push(o); o.visible=true; } });
   try{ G.renderer.compile(G.scene,G.cam); }catch(e){ console.warn('warm-up:',e); }
@@ -773,7 +779,7 @@ function xRuneTex(){ if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.c
    sparks in the Storm Vault, ash falling in the Ember Rifts, gold dust in the Ruins and twinkling
    motes in the Abyss. Now and then bats flit over, and in damp places drips ripple on the floor. */
 const XWEATHER={ crystal:'fireflies', ice:'snow', storm:'sparks', lava:'ash', gold:'gold', stars:'twinkle' };
-function xWeather(grp,A){ const kind=XWEATHER[A.veins]||'twinkle', N=kind==='snow'?160:kind==='ash'?140:90, pos=new Float32Array(N*3), col=new Float32Array(N*3), st=[];
+function xWeather(grp,A){ const kind=XWEATHER[A.veins]||'twinkle', N=Math.round((kind==='snow'?160:kind==='ash'?140:90)*(X3&&X3.low?.5:1)), pos=new Float32Array(N*3), col=new Float32Array(N*3), st=[];
   const base=new THREE.Color({fireflies:'#9dff7a',snow:'#eef6ff',sparks:'#fff39a',ash:'#a09890',gold:'#f2c94c',twinkle:'#e9f0ff'}[kind]);
   for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*30; pos[k*3+1]=Math.random()*6; pos[k*3+2]=(Math.random()-.5)*24; st.push({ph:Math.random()*6.3,sp:.5+Math.random(),ember:kind==='ash'&&Math.random()<.25}); col[k*3]=base.r; col[k*3+1]=base.g; col[k*3+2]=base.b; }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
@@ -890,7 +896,7 @@ function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalShee
   EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   mk(2,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3}),.8)); }
 // glowing motes that rise and wink around the lights near you
-function xMotes(grp,A){ const N=48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+function xMotes(grp,A){ const N=X3&&X3.low?24:48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
   EX.motes=new THREE.Points(g,new THREE.PointsMaterial({color:0xffd9a0,size:.14,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false})); EX.motes.userData.ph=Array.from({length:N},()=>Math.random()); grp.add(EX.motes); }
 function xAirTick(T,dt){
   if(EX.rise){ const a=EX.rise.geometry.attributes.position.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*(.6+((k*7)%5)*.12); if(a[k+1]>-.3) a[k+1]=-9; } EX.rise.geometry.attributes.position.needsUpdate=true; EX.rise.position.set(EX.px,0,EX.pz); }
@@ -962,17 +968,17 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   for(const r of EX.rooms){ if(r.nook) continue; for(const [x,y] of [[r.x-1,r.y-1],[r.x+r.w,r.y-1],[r.x-1,r.y+r.h],[r.x+r.w,r.y+r.h]]) if(rock(x,y)&&EX.wIdx.has(xi(x,y))) pills.push(xi(x,y)); }
   for(const [i] of EX.doors){ const x=xcx(i), y=xcy(i), ew=floorAt(x-1,y)&&floorAt(x+1,y); for(const [dx,dy] of ew?[[0,-1],[0,1]]:[[-1,0],[1,0]]){ const n=xi(x+dx,y+dy); if(EX.wIdx.has(n)&&!pills.includes(n)&&!xWedge(n)) pills.push(n); } }
   const acc=new THREE.Color(S.spark).lerp(new THREE.Color('rgb('+xTone(S,.6).join(',')+')'),.55);
-  const tm=new THREE.InstancedMesh(trimGeo,xSinkPatch(new THREE.MeshBasicMaterial({color:acc,fog:true})),Math.max(1,trims.length)), zero=new THREE.Matrix4().makeScale(0,0,0);
-  for(let k=0;k<tm.count;k++) tm.setMatrixAt(k,zero); grp.add(tm); EX.trimMesh=tm;
+  const trimCells=trims.map(t=>t[0]), tm=xChunkInst(grp,trimGeo,xSinkPatch(new THREE.MeshBasicMaterial({color:acc,fog:true})),trimCells), zero=new THREE.Matrix4().makeScale(0,0,0);
+  EX.trimMesh=tm;
   trims.forEach(([c,dx,dy],k)=>{ const a=EX.dress.get(c)||{}; (a.trim=a.trim||[]).push([k,dx,dy]); EX.dress.set(c,a); });
   // along the same room faces: a stone cornice at the top (the lit line sits on it) and a dark skirting at the foot
-  const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,n)=>{ const im=new THREE.InstancedMesh(XG.box,mat,Math.max(1,n)); for(let k=0;k<im.count;k++) im.setMatrixAt(k,zero); grp.add(im); return im; };
-  EX.corMesh=inst(xDitherMat(xPhong({color:tone(.62)})),trims.length); EX.skirtMesh=inst(xDitherMat(xPhong({color:tone(.16)})),trims.length);
+  const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,cells)=>xChunkInst(grp,XG.box,mat,cells);
+  EX.corMesh=inst(xDitherMat(xPhong({color:tone(.62)})),trimCells); EX.skirtMesh=inst(xDitherMat(xPhong({color:tone(.16)})),trimCells);
   // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
   // where the halls are built, rough rock columns in the caves
   const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
-  EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
-  EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
+  EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),pills);
+  EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills); EX.pillCave=cave;
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
@@ -1043,6 +1049,17 @@ function xWebTex(){ if(xWebTex.c) return xWebTex.c; const N=32, c=document.creat
   for(let r=6;r<N;r+=6){ x.beginPath(); for(let a=0;a<5;a++){ const px=Math.cos(a*.39)*r, py=Math.sin(a*.39)*r; a?x.lineTo(px,py):x.moveTo(px,py); } x.stroke(); }
   return xWebTex.c=xTex(c); }
 // a wall cell shown or sinking: its trim line and pillar follow its height
+/* Many copies of one shape, each belonging to a cell (a wall's trim, cornice and skirting, a pillar's parts), drawn as
+   one instanced mesh per chunk of the floor (XWCH x XWCH cells, as the walls are), each with its own bounds: only the
+   chunks on screen are drawn. As one mesh for the whole floor, every copy on the floor was drawn every frame. It is
+   used like the instanced mesh it replaces: setMatrixAt(k, matrix), then instanceMatrix.needsUpdate = true. */
+function xChunkInst(grp,geo,mat,cells){ const by=new Map(), slot=new Array(cells.length), dirty=new Set(), meshes=[];
+  cells.forEach((c,k)=>{ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); let L=by.get(key); if(!L) by.set(key,L=[]); slot[k]=[key,L.length]; L.push(k); });
+  for(const [key,L] of by){ const g=new THREE.BufferGeometry(); for(const a in geo.attributes) g.setAttribute(a,geo.attributes[a]); if(geo.index) g.index=geo.index;
+    g.boundingSphere=new THREE.Sphere(new THREE.Vector3(((key%64)+.5)*XWCH*XCS,XWALL/2,(((key/64)|0)+.5)*XWCH*XCS),XWCH*XCS*.75+XWALL+2);
+    const im=new THREE.InstancedMesh(g,mat,L.length); im.frustumCulled=true; for(let j=0;j<L.length;j++) im.setMatrixAt(j,XS_ZERO); grp.add(im); meshes.push(im); for(const k of L) slot[k][0]=im; }
+  return { count:cells.length, meshes, setMatrixAt(k,m){ const s=slot[k]; if(!s) return; s[0].setMatrixAt(s[1],m); dirty.add(s[0]); },
+    instanceMatrix:{ set needsUpdate(v){ for(const im of dirty) im.instanceMatrix.needsUpdate=true; dirty.clear(); }, get needsUpdate(){ return false; } } }; }
 function xDressShow(c,cut,touched){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), top=XWALL*cut-.04;
   if(cut<=0){ const z=new THREE.Matrix4().makeScale(0,0,0); if(a.trim){ for(const [k] of a.trim){ EX.corMesh.setMatrixAt(k,z); EX.trimMesh.setMatrixAt(k,z); EX.skirtMesh.setMatrixAt(k,z); } EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
     if(a.pill!=null){ for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]){ P.setMatrixAt(a.pill,z); P.instanceMatrix.needsUpdate=true; } } if(a.sect) xSectShow(c,a.sect,0); return; }

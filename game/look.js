@@ -529,6 +529,5 @@ function lookWatch(renderer,getScene){ const cv=renderer.domElement;
 if(typeof document!=='undefined') document.addEventListener('visibilitychange',()=>{ if(document.hidden) return;
   setTimeout(()=>{ for(const [r,g] of lookWatch.all||[]) try{ lookRevive(r,g()); }catch(e){ console.warn('revive',e); } },250); });
 // PBR switched: both screens are built again with the other materials
-function lookRebuild(){ if(typeof EX!=='undefined'&&EX&&typeof xBuildScene==='function'&&typeof X3!=='undefined'&&X3){ xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed&&typeof xTrapMesh==='function') xTrapMesh(tr);
-    xUpdateVis(); xFadeCells(10); }   // what you can see, at once (a new scene starts all in the dark)
+function lookRebuild(){ if(typeof EX!=='undefined'&&EX&&typeof xGfxRebuild==='function'&&typeof X3!=='undefined'&&X3) xGfxRebuild();   // what you can see, at once (a new scene starts all in the dark)
   if(typeof AR!=='undefined'&&AR) AR.key=null; }

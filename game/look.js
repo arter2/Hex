@@ -29,7 +29,7 @@ const DBG={pause:false};
 // saves new ones afterwards.
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
-const XLITU={ uXDetN:{value:null}, uXDetK:{value:.75}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
+const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];

@@ -195,7 +195,7 @@ function xCamper(p,L){ const d=EX.depth, price=Math.round(50+8*d), m=xmaxHp();
   xDlg({look:p.look, title:p.name, sub:p.title, text:L,
     body(box){
       xRow(box,pxIcon('hero','#ff9a3a'),'Share the fire','Heal 35% of your health. Once.',p.rested?'Done':'Rest',()=>{ p.rested=true; EX.hp=Math.min(m,EX.hp+Math.round(m*.35)); xSfx('chime'); xLog('You rest by '+p.name+'’s fire. Some of your wounds close.','good'); xHud(); xCamper(p,'Rest well.'); },!!p.rested);
-      xRow(box,pxIcon(BAG.draught.icon,BAG.draught.col),BAG.draught.name+' ('+p.stock+' left)',BAG.draught.text,'40 gold',()=>{ if(save.gold<40) return tip('Not enough gold'); save.gold-=40; p.stock--; addBag('draught'); persist(); xSfx('click'); xHud(); xCamper(p,'Spare it well.'); },p.stock<=0||save.gold<40);
+      xRow(box,bagIcon('draught'),BAG.draught.name+' ('+p.stock+' left)',BAG.draught.text,'40 gold',()=>{ if(save.gold<40) return tip('Not enough gold'); save.gold-=40; p.stock--; addBag('draught'); persist(); xSfx('click'); xHud(); xCamper(p,'Spare it well.'); },p.stock<=0||save.gold<40);
       const has=XRUN&&XRUN.ally&&XRUN.ally.fights>0;
       xRow(box,pxIcon('bow','#f2c94c'),'Fight beside me','They join your next 3 fights, shooting your foes. '+price+' gold, or a '+BAG.draught.name+' for their wounds.',has||p.joined?'Joined':'Hire',()=>{
         if(bagN('draught')>0) dState().bag.draught--; else if(save.gold>=price) save.gold-=price; else return tip('You need '+price+' gold or a '+BAG.draught.name);

@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v302</title>
-<meta name="application-version" content="302">
+<title>Hexmancers v305</title>
+<meta name="application-version" content="305">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hexmancers">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rune.css">
 <link rel="stylesheet" href="menu.css">
@@ -40,7 +44,7 @@
         <div class="hm-work">
           <div class="hm-runcol">
             <button id="mmSlots" class="hm-strip hm-f" type="button" aria-label="Choose save slot"><i class="hm-gem tl"></i><canvas id="mmThumb" width="64" height="64"></canvas><span class="hm-slot" id="mmSlotTag">Slot 1 ▾</span><span class="hm-sep"></span><span id="mmSave" class="hm-res"></span></button>
-            <button id="mmContinue" class="hm-btn hm-cyan" type="button"><i class="hm-gem bl"></i><i class="hm-i" data-i="play"></i><span>Continue</span></button>
+            <button id="mmContinue" class="hm-btn hm-cyan" type="button"><i class="hm-i" data-i="play"></i><span>Continue</span></button>
             <div class="hm-run hm-f" id="mmRun">
               <i class="hm-gem tc"></i>
               <div class="hm-runhd"><i class="hm-i hm-cave" data-i="cave"></i><b id="mmArea"></b><span class="hm-deep">Deepest: <b id="mmDeep">1</b></span></div>
@@ -48,7 +52,7 @@
                 <button id="mmDown" class="hm-sq" type="button" aria-label="Shallower"><i class="hm-i" data-i="back"></i></button><b id="mmDepth" class="hm-dnum">1</b><button id="mmUp" class="hm-sq" type="button" aria-label="Deeper"><i class="hm-i" data-i="play"></i></button></div>
               <div id="mmNodes" class="hm-nodes" aria-hidden="true"></div>
               <div class="hm-rules"><span id="mmRules" class="hm-rtxt"></span><button id="mmDetails" class="hm-link" type="button" aria-haspopup="dialog">Run details <i class="hm-i" data-i="down"></i></button></div>
-              <div class="hm-two"><button id="mmExplore" class="hm-btn" type="button"><i class="hm-i" data-i="map"></i><span>Explore</span></button><button id="mmBattle" class="hm-btn" type="button"><i class="hm-i" data-i="battle"></i><span>Battle</span></button></div>
+              <button id="mmExplore" class="hm-btn" type="button"><i class="hm-i" data-i="map"></i><span>Explore</span></button>
             </div>
             <p id="mmWarn" class="hm-warn"></p>
           </div>
@@ -58,8 +62,10 @@
               <button class="hm-btn hm-cat" type="button" data-cat="market" aria-haspopup="menu"><i class="hm-i" data-i="market"></i><span>Market</span></button>
               <button class="hm-btn hm-cat" type="button" data-cat="journal" aria-haspopup="menu"><i class="hm-i" data-i="journal"></i><span>Journal</span></button>
               <button class="hm-btn hm-cat" type="button" data-cat="character" aria-haspopup="menu"><i class="hm-i" data-i="character"></i><span>Character</span><b id="mmPts" class="hm-badge" hidden></b></button>
+              <button class="hm-btn hm-cat" type="button" data-cat="lab" aria-haspopup="menu"><i class="hm-i" data-i="lab"></i><span>Lab</span></button>
+              <button id="mmDuel" class="hm-btn" type="button"><i class="hm-i" data-i="battle"></i><span>Duel</span></button>
             </div>
-            <div class="hm-two"><button id="mmDuel" class="hm-btn" type="button"><i class="hm-i" data-i="battle"></i><span>Duel</span></button><button id="mmSettings" class="hm-btn" type="button"><i class="hm-i" data-i="settings"></i><span>Settings</span></button></div>
+            <button id="mmSettings" class="hm-btn" type="button"><i class="hm-i" data-i="settings"></i><span>Settings</span></button>
             <div id="mmXp" class="hm-xp"><span id="mmXpTxt"></span><i><b id="mmXpFill"></b></i></div>
             <button id="mmLab" class="hm-btn" type="button" hidden>🧪 Card lab</button>
           </nav>
@@ -116,35 +122,44 @@
     <div id="duRole" class="dustep">
       <p class="hint">One of you hosts the duel, the other joins it. You each fight with your saved deck, and a duel gives and costs nothing.</p>
       <div class="dutiles">
-        <button id="duHost" class="dutile"><b>Host</b><small>Start the duel and send your friend a code</small></button>
-        <button id="duJoin" class="dutile"><b>Join</b><small>Use the code your friend sends you</small></button>
+        <button id="duHost" class="dutile"><b>Host</b><small>Start the duel and show your friend a code</small></button>
+        <button id="duJoin" class="dutile"><b>Join</b><small>Scan the code on your friend's screen</small></button>
       </div>
     </div>
     <div id="duHow" class="dustep" hidden>
       <p id="duHowTxt" class="hint"></p>
       <div class="dutiles">
-        <button id="duWifi" class="dutile"><b>Wi-Fi code</b><small>Copy a code from one phone to the other. No setup.</small></button>
+        <button id="duWifi" class="dutile"><b>Scan</b><small>Scan each other's code with the camera. No setup.</small></button>
         <button id="duRoom" class="dutile" hidden><b>Room</b><small id="duRoomHint">A four-letter room name. Needs the relay script running on a computer.</small></button>
       </div>
     </div>
     <div id="duHostCode" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>1</b>Send this code to your friend (any chat will do). They tap Join, then Wi-Fi code, and paste it.</p>
-        <textarea id="duOffer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
-        <button id="duCopy" class="btn small">Copy code</button></div>
-      <div class="dupanel"><p class="dunum"><b>2</b>Paste the code they send back.</p>
-        <textarea id="duAnswerIn" class="ducode" rows="4" placeholder="Paste their code (HEX1.…)" aria-label="Their code" autocomplete="off" spellcheck="false"></textarea>
-        <div class="dubtns"><button id="duPaste1" class="btn ghost small" data-to="duAnswerIn">Paste</button><button id="duAccept" class="btn">Connect</button></div></div>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Your friend taps Join and scans this code.</p>
+        <div class="duqr"><canvas id="duOfferQr" aria-label="Your code"></canvas></div>
+        <p class="dunum"><b>2</b>Their phone then shows a code. They hold it up to the top of your screen, where your camera is.</p>
+        <video id="duHostCam" class="ducam ducam-front" playsinline muted autoplay></video>
+        <p id="duHostSeen" class="duwaiting">Watching for their code<i></i></p>
+        <button id="duAccept" class="btn" hidden>Accept</button></div>
+      <details class="dumanual"><summary>No camera? Copy codes instead</summary>
+        <div class="dupanel"><textarea id="duOffer" class="ducode" readonly rows="3" aria-label="Your code"></textarea>
+          <button id="duCopy" class="btn small">Copy code</button>
+          <textarea id="duAnswerIn" class="ducode" rows="3" placeholder="Paste their code (HEX2.…)" aria-label="Their code" autocomplete="off" spellcheck="false"></textarea>
+          <div class="dubtns"><button id="duPaste1" class="btn ghost small" data-to="duAnswerIn">Paste</button><button id="duAcceptPaste" class="btn">Connect</button></div></div></details>
     </div>
     <div id="duJoinCode" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>1</b>Paste the code your host sent you.</p>
-        <textarea id="duOfferIn" class="ducode" rows="4" placeholder="Paste the host's code (HEX1.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
-        <div class="dubtns"><button id="duPaste2" class="btn ghost small" data-to="duOfferIn">Paste</button><button id="duMakeAnswer" class="btn">Make my code</button></div></div>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Point your camera at your host's code.</p>
+        <video id="duJoinCam" class="ducam" playsinline muted autoplay></video></div>
+      <details class="dumanual"><summary>No camera? Paste a code instead</summary>
+        <div class="dupanel"><textarea id="duOfferIn" class="ducode" rows="3" placeholder="Paste the host's code (HEX2.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
+          <div class="dubtns"><button id="duPaste2" class="btn ghost small" data-to="duOfferIn">Paste</button><button id="duMakeAnswer" class="btn">Make my code</button></div></div></details>
     </div>
     <div id="duAnswerStep" class="dustep" hidden>
-      <div class="dupanel"><p class="dunum"><b>2</b>Send this code back to your host. When they paste it in, the duel connects.</p>
-        <textarea id="duAnswer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
-        <button id="duCopy2" class="btn small">Copy code</button>
+      <div class="dupanel duqrpanel"><p class="dunum"><b>2</b>Hold this up to the top of your host's screen. When they tap Accept, the duel connects.</p>
+        <div class="duqr"><canvas id="duAnswerQr" aria-label="Your code"></canvas></div>
         <p class="duwaiting">Waiting for your host<i></i></p></div>
+      <details class="dumanual"><summary>Copy the code instead</summary>
+        <div class="dupanel"><textarea id="duAnswer" class="ducode" readonly rows="3" aria-label="Your code"></textarea>
+          <button id="duCopy2" class="btn small">Copy code</button></div></details>
     </div>
     <div id="duRoomStep" class="dustep" hidden>
       <div class="dupanel"><p id="duRoomTxt" class="hint"></p>
@@ -331,7 +346,7 @@
     <div id="xHurt" class="hurt-fx"></div>
     <div id="xBang" class="x-bang"></div>
     <div id="xBottom">
-      <div id="xTipCard" class="xtip" role="status"><p id="xTipText"></p><div class="xtipbtns"><button id="xTipOk" class="btn mini">Got it</button><button id="xTipOff" class="btn ghost mini">Turn off tips</button></div></div>
+      <div id="xTipCard" class="xtip mk" role="status"><div class="xtiphd"><span id="xTipHead"></span><span id="xTipStep"></span></div><p id="xTipText"></p><div class="xtipbtns"><button id="xTipOk" class="btn mini">Got it</button><button id="xTipOff" class="btn ghost mini">Turn off tips</button></div><i class="xtipbar"><b id="xTipBar"></b></i></div>
       <div id="xLog"></div>
       <div class="controls">
         <button id="xStrike" class="btn strike">Strike<small class="k">Space</small></button>
@@ -433,7 +448,7 @@
       </div>
     </div>
   </div>
-  <div id="pause" class="overlay">
+  <div id="pause" class="overlay mk">
     <div class="panel narrow">
       <h2>Paused</h2>
       <p id="pauseWhere" class="hint center"></p>
@@ -540,7 +555,8 @@
     <div class="panel xdlg">
       <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
       <p id="xdText"></p>
-      <div id="xdTabs" class="tabs"></div>
+      <div id="xdReward" class="xdreward-row" hidden></div>
+      <div id="xdTabs" class="tabs" role="tablist"></div>
       <div id="xdBody"></div>
       <div id="xdBtns" class="controls two"></div>
     </div>
@@ -752,7 +768,7 @@
   </div>
   <div id="xFps" style="display:none"></div>
   <div id="peek" class="peek"></div>
-  <div id="tip" class="tip"></div>
+  <div id="tip" class="tip" role="status" aria-live="polite"></div>
 </div>
 <script>
 /* Painted art (stone, sprites, glows) lives in canvases the page never shows. On a phone the browser
@@ -776,6 +792,8 @@
 <script src="netplay.js"></script>
 <script src="netduel.js"></script>
 <script src="nettransport.js"></script>
+<script src="vendor/qrcode.js"></script>
+<script src="vendor/jsQR.js"></script>
 <script src="enemies.js"></script>
 <script src="tactics.js"></script>
 <script src="fights.js"></script>

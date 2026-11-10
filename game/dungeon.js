@@ -967,11 +967,11 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
   if((p.role==='captive'||p.role==='scout')&&typeof xMissionTalk==='function') return xMissionTalk(p);
   const L=xpick(LINES[p.role]||['…']), d=EX.depth;
   const done=t=>xDlg({look:p.look, title:p.name, sub:p.title, text:t, buttons:[['Farewell',null]]});
-  if(p.role==='quest'){ if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' I lost my '+p.item+(p.where===d?' somewhere on this floor':' on the floor below')+'. Find it and you’ll have '+rewardText(p.reward)+'.',
-      buttons:[['I’ll find it',()=>{ p.state='active'; const q={id:'q'+Date.now(), kind:'fetch', giver:p.name, item:p.item, depth:p.where, reward:p.reward, done:false, placed:false}; XRUN.quests.push(q); if(p.where===d){ xPlaceQuestItem(q); const it=EX.items[EX.items.length-1]; if(it&&it.qid===q.id) xMeshItem(it); xUpdateVis(); } xLog('Quest: find '+p.name+'’s '+p.item+(p.where===d?' on this floor.':' on depth '+p.where+'.'),'loot'); }],['Not now',null,true]]});
+  if(p.role==='quest'){ if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' I lost my '+p.item+(p.where===d?' somewhere on this floor':' on the floor below')+'. Find it and you’ll have '+rewardText(p.reward)+'.', reward:p.reward,
+      buttons:[['I’ll find it',()=>{ p.state='active'; const q={id:'q'+Date.now(), kind:'fetch', giver:p.name, item:p.item, depth:p.where, reward:p.reward, done:false, placed:false}; XRUN.quests.push(q); if(p.where===d){ xPlaceQuestItem(q); const it=EX.items[EX.items.length-1]; if(it&&it.qid===q.id) xMeshItem(it); xUpdateVis(); } xLog('Quest: find '+p.name+'’s '+p.item+(p.where===d?' on this floor.':' on depth '+p.where+'.'),'loot'); tip('Find '+p.name+'’s '+p.item,0,{kind:'quest',sub:(p.where===d?'On this floor':'On depth '+p.where)+' · Reward: '+rewardText(p.reward)}); }],['Not now',null,true]]});
     const q=XRUN.quests.find(x=>x.giver===p.name); return done(q&&q.done?'You found it! Thank you, truly.':'Any luck with my '+p.item+'?'); }
-  if(p.role==='lost'){ if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' Lead me to the stairs, up or down, and '+rewardText(p.reward)+' is yours.',
-      buttons:[['Follow me',()=>{ p.state='follow'; xLog(p.name+' falls in behind you. Reach the stairs together.','loot'); }],['Not now',null,true]]});
+  if(p.role==='lost'){ if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' Lead me to the stairs, up or down, and '+rewardText(p.reward)+' is yours.', reward:p.reward,
+      buttons:[['Follow me',()=>{ p.state='follow'; xLog(p.name+' falls in behind you. Reach the stairs together.','loot'); tip(p.name+' is following you',0,{kind:'quest',sub:'Reach either staircase · Reward: '+rewardText(p.reward)}); }],['Not now',null,true]]});
     return done('Lead on. I’m right behind you.'); }
   if(p.role==='prisoner'){ if(p.state==='idle'){ p.state='done'; const r=xRollReward(d,[['perm',3],['gear',2],['gold',2],['key',2]],true);
       xDlg({look:p.look,title:p.name,sub:'Freed prisoner',text:L+' Here, I hid this from them. It’s yours: '+rewardText(r)+'.',buttons:[['Go, quickly',()=>{ xGrant(r,'A prisoner’s thanks'); xRemoveProp(p); }]]}); return; }
@@ -980,8 +980,8 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
       if(matN('shard')>0) return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' Is that a Relic Shard? Let me study it and I’ll give you '+rewardText(p.reward)+'.',buttons:[['Trade a shard',()=>{ save.mats.shard--; p.state='done'; xGrant(p.reward,'The scholar’s trade'); }],['Keep it',null,true]]});
       if(p.state==='idle'){ p.state='active'; XRUN.quests.push({id:'s'+Date.now(),kind:'shard',giver:p.name,depth:d,reward:p.reward,done:false}); }
       return done(L+' I seek a Relic Shard. They hide in closets and caches, behind loose stones. Bring me one and you’ll have '+rewardText(p.reward)+'.'); }
-    if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' I study '+COLORS[p.color].name+' creatures. Defeat '+p.need+' of them, anywhere in the dungeon, and I’ll share '+rewardText(p.reward)+'.',
-      buttons:[['Agreed',()=>{ p.state='active'; XRUN.quests.push({id:'k'+Date.now(),kind:'samples',giver:p.name,color:p.color,need:p.need,base:XRUN.kills[p.color]||0,reward:p.reward,done:false}); xLog('Quest: defeat '+p.need+' '+COLORS[p.color].name+' creatures for '+p.name+'.','loot'); }],['Not now',null,true]]});
+    if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' I study '+COLORS[p.color].name+' creatures. Defeat '+p.need+' of them, anywhere in the dungeon, and I’ll share '+rewardText(p.reward)+'.', reward:p.reward,
+      buttons:[['Agreed',()=>{ p.state='active'; XRUN.quests.push({id:'k'+Date.now(),kind:'samples',giver:p.name,color:p.color,need:p.need,base:XRUN.kills[p.color]||0,reward:p.reward,done:false}); xLog('Quest: defeat '+p.need+' '+COLORS[p.color].name+' creatures for '+p.name+'.','loot'); tip('Defeat '+p.need+' '+COLORS[p.color].name+' creatures',0,{kind:'quest',sub:'For '+p.name+' · Reward: '+rewardText(p.reward)}); }],['Not now',null,true]]});
     return done('Samples, samples. '+COLORS[p.color].icon+' ones, if you please.'); }
   if(p.role==='peddler'){ if(EX.carrying&&EX.carrying.owner===p.name){ EX.carrying=null; p.state='shop';
       Object.assign(p,{mkind:'goblin', stock:xStock('goblin').map(o=>Object.assign(o,{price:Math.round(o.price*.6)})), used:{}}); addBag('draught'); persist();
@@ -1005,8 +1005,21 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
    floor stands still. */
 // icons are decoded once and kept; a token stops a slow decode from painting over a later dialog's picture
 const XDLG_IMG={};
+// the box around a sprite's visible pixels (cached per sprite image)
+const XFIT=new WeakMap();
+function xFit(im){ if(XFIT.has(im)) return XFIT.get(im); let f=null;
+  try{ const W=im.width, H=im.height, t=document.createElement('canvas'); t.width=W; t.height=H; const tc=t.getContext('2d'); tc.drawImage(im,0,0);
+    const d=tc.getImageData(0,0,W,H).data; let x0=W, y0=H, x1=-1, y1=-1, sx=0, n=0;
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++) { const a=d[(y*W+x)*4+3]; if(a>96){ if(x<x0) x0=x; if(x>x1) x1=x; if(y<y0) y0=y; if(y>y1) y1=y; sx+=(x+.5)*a; n+=a; } }
+    if(n) f={x:x0, y:y0, w:x1-x0+1, h:y1-y0+1, mx:sx/n}; }catch(e){}
+  XFIT.set(im,f); return f; }
 function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'), tok=cv.tok=(cv.tok||0)+1; c.clearRect(0,0,96,96); c.imageSmoothingEnabled=false;
-  const draw=im=>{ if(im) c.drawImage(im,0,0,im.width,im.height,0,0,96,96); };
+  const draw=im=>{ if(!im||!im.width) return; const f=xFit(im); if(!f){ c.drawImage(im,0,0,im.width,im.height,0,0,96,96); return; }
+    // the figure's own pixels (staff and cloak included), scaled to fill the box (whole-pixel steps when that costs little)
+    // and centred so the empty space is the same on the left and right, and on the top and bottom
+    const room=84; let k=Math.min(room/f.w,room/f.h); if(k>=1&&Math.floor(k)/k>=.8) k=Math.floor(k);
+    const w=f.w*k, h=f.h*k, x=(96-w)/2, y=(96-h)/2;
+    c.drawImage(im,f.x,f.y,f.w,f.h,Math.round(x),Math.round(y),Math.round(w),Math.round(h)); };
   if(o.look){ const s=lookSprite(o.look,'front',true); draw(s&&s.img); }
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }
   else if(o.icon){ const url=uiIconURL(o.icon[0],o.icon[1]), im=XDLG_IMG[url]||(XDLG_IMG[url]=Object.assign(new Image(),{src:url}));
@@ -1027,17 +1040,28 @@ function xCardShow(){ if(!EX) return; EX.cardQT=0; let q=EX.cardQ||[]; if(!q.len
     text:(one?'It goes':'They go')+' into your collection. Add '+(one?'it':'them')+' to a deck from the bag (tap its title) or at camp.',
     body:b=>{ const row=document.createElement('div'); row.className='xcards'; q.forEach(({c,isNew})=>{ const el=cardEl(c,isNew?'<span class="xnew">NEW</span>':''); el.tabIndex=-1; row.appendChild(el); }); b.appendChild(row); },
     buttons:[['Got it',null],['Build deck',()=>{ if(typeof openDeckUI==='function') openDeckUI('dungeon'); },true]]}); xSfx('chime'); }
-function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o;
+function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o; clearTimeout(xTipT);   // a tip waits, hidden, while a dialog is open
   $('#xdTitle').textContent=o.title||''; $('#xdSub').textContent=o.sub||''; $('#xdText').textContent=o.text||''; xDlgPic(o);
-  goldText($('#xdGold'));
-  const tabs=$('#xdTabs'); tabs.innerHTML=''; tabs.hidden=!o.tabs;
-  if(o.tabs) o.tabs.forEach(([id,label])=>{ const b=document.createElement('button'); b.className='chip'+(o.tab===id?' on':''); b.textContent=label; b.onclick=()=>{ o.tab=id; xDlg(o); }; tabs.appendChild(b); });
-  const body=$('#xdBody'); body.innerHTML=''; if(o.body) o.body(body,o);
+  // a quest offer shows what it pays (a gold badge where your wallet would be, and a line under the text), kept apart from your gold
+  const g=$('#xdGold'); g.classList.toggle('xdreward',!!o.reward);
+  if(o.reward&&o.reward.gold) g.innerHTML=uiIcon('coin',20)+'<span>'+o.reward.gold+'</span>'; else if(o.reward) g.innerHTML=''; else goldText(g);
+  const rr=$('#xdReward'); rr.hidden=!o.reward; if(o.reward) rr.innerHTML='<span>Reward on completion</span><b>'+(o.reward.gold?uiIcon('coin',16):'')+esc(rewardText(o.reward))+'</b>';
+  // tabs (a shop's Buy / Sell / Services, the bag): connected tabs over one attached panel; arrows, Home and End move between them
+  const tabs=$('#xdTabs'), panel=$('#xDialog .xdlg'); tabs.innerHTML=''; const sheet=!!o.sheet; tabs.hidden=!o.tabs||sheet; panel.classList.toggle('tabbed',!!o.tabs);
+  if(o.tabs) o.tabs.forEach(([id,label],i)=>{ const b=document.createElement('button'), on=o.tab===id; b.className='xdtab'; b.type='button'; b.textContent=label;
+    b.setAttribute('role','tab'); b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; b.dataset.tab=id;
+    b.onclick=()=>{ o.tab=id; o.sheet=null; xDlg(o); const f=$('#xdTabs [aria-selected=true]'); if(f) f.focus({preventScroll:true}); };
+    b.onkeydown=e=>{ const n=o.tabs.length, j={ArrowRight:(i+1)%n, ArrowLeft:(i+n-1)%n, Home:0, End:n-1}[e.key]; if(j==null) return; e.preventDefault(); tabs.children[j].click(); };
+    tabs.appendChild(b); });
+  const body=$('#xdBody'); body.innerHTML=''; body.classList.toggle('stock',!!o.tabs&&!sheet); body.setAttribute('role',o.tabs&&!sheet?'tabpanel':'');
+  if(sheet) xSheet(body,o); else if(o.body) o.body(body,o);
   const btns=(o.buttons||[]).filter(([l,fn])=>!(l==='Close'&&!fn));   // closing is the ✕ in the corner (ui.js)
   const bb=$('#xdBtns'); bb.innerHTML=''; bb.hidden=!btns.length; bb.classList.toggle('two',btns.length>1);
   btns.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ xDlgClose(); if(fn) fn(); }; bb.appendChild(b); });
-  $('#xDialog').classList.add('on'); setTimeout(()=>{ const m=bb.querySelector('.btn:not(.ghost)'); if(m) m.focus({preventScroll:true}); },40); }
-function xDlgClose(){ $('#xDialog').classList.remove('on'); if(EX) EX.dlg=null; if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
+  const was=$('#xDialog').classList.contains('on'); $('#xDialog').classList.add('on');
+  if(!was) setTimeout(()=>{ const m=bb.querySelector('.btn:not(.ghost)')||body.querySelector('.xsheet .btn:not(:disabled)'); if(m&&!bb.hidden) m.focus({preventScroll:true}); },40); }
+function xDlgClose(){ $('#xDialog').classList.remove('on'); if(EX) EX.dlg=null; if(!$('#pause').classList.contains('on')) xPause(false); xHud();
+  if($('#xTipCard').classList.contains('on')){ clearTimeout(xTipT); xTipT=setTimeout(xTipNext,9000); } tipNext(); }
 const xDlgText=(title,text)=>xDlg({title,text,icon:['scroll','#f2c94c'],buttons:[['Close',null]]});
 // a row in a list: picture, name and text, and a button
 function xRow(box,pic,name,text,btn,fn,dis){ const r=document.createElement('div'); r.className='xrow';
@@ -1045,39 +1069,72 @@ function xRow(box,pic,name,text,btn,fn,dis){ const r=document.createElement('div
   if(btn){ const b=document.createElement('button'); b.className='btn small'+(dis?' ghost':''); b.textContent=btn; b.disabled=!!dis; b.onclick=fn; r.appendChild(b); } box.appendChild(r); return r; }
 const pxIcon=(n,col,s)=>uiIcon(n,s||32,col);
 
-/* ---------------- trading ---------------- */
+/* ---------------- trading ----------------
+   A merchant: Buy / Sell / Services tabs over one list. Tapping a row's price opens its sheet first (xSheet): the full
+   description, the price, your gold before and after, and Confirm / Cancel. Rows you cannot afford stay tappable so you can
+   read them; their Confirm is off and the sheet says how much you are short. Cancel changes nothing; Confirm pays once,
+   then a success message says what you got. */
+const coinTxt=(n,sign)=>uiIcon('coin',16)+'<span>'+(sign||'')+n+' gold</span>';
+// one priced row: o is the dialog, f the offer {pic,name,text,full,price (gold you pay; negative when you are paid),
+// label (the button when it is not a price), ore (Deep Iron it also takes), off (why it cannot be had at all), verb, go, done}
+function xOffer(box,o,f){ const r=xRow(box,f.pic,f.name,f.text,'x',()=>{ o.sheet=f; xDlg(o); },!!f.off); const b=r.querySelector('.btn');
+  b.innerHTML=f.off?esc(f.label||'—'):f.price<0?coinTxt(-f.price,'+'):coinTxt(f.price); b.classList.add('price');
+  if(!f.off&&xShort(f)) b.classList.add('short'); return r; }
+const xShort=f=>{ const g=Math.max(0,(f.price||0)-save.gold), ore=Math.max(0,(f.ore||0)-matN('ore'));
+  return g&&ore?'You need '+g+' more gold and '+ore+' more Deep Iron.':g?'You need '+g+' more gold.':ore?'You need '+ore+' more Deep Iron.':''; };
+function xSheet(box,o){ const f=o.sheet, short=f.off||xShort(f), after=save.gold-(f.price||0);
+  const el=document.createElement('div'); el.className='xsheet';
+  el.innerHTML='<div class="xshtop"><span class="pic">'+(f.pic||'')+'</span><b>'+esc(f.name)+'</b></div>'
+    +'<p class="xshdesc">'+esc(f.full||f.text||'')+'</p>'
+    +'<div class="xshrows"><div><span>'+(f.price<0?'They pay':'Price')+'</span><b>'+coinTxt(Math.abs(f.price||0))+(f.ore?' + '+f.ore+' Deep Iron':'')+'</b></div>'
+    +'<div><span>Your gold</span><b>'+save.gold+(short?'':' → <i>'+after+'</i>')+'</b></div></div>'
+    +(short?'<p class="xsherr" role="status">'+esc(short)+'</p>':'')
+    +'<div class="controls two"><button class="btn xshok">'+esc(f.verb||'Buy')+'</button><button class="btn ghost xshno">Cancel</button></div>';
+  box.appendChild(el);
+  const ok=el.querySelector('.xshok'); ok.disabled=!!short;
+  ok.onclick=()=>{ if(f.off||xShort(f)) return; o.sheet=null; const res=f.go(); xSfx('chime'); persist(); xDlg(o); xHud();
+    if(res!==false) tip(f.done||f.name+' purchased',0,{kind:'success',sub:f.doneSub||(f.price>0?'−'+f.price+' gold':f.price<0?'+'+(-f.price)+' gold':'')}); };
+  el.querySelector('.xshno').onclick=()=>{ o.sheet=null; xDlg(o); };
+  setTimeout(()=>(ok.disabled?el.querySelector('.xshno'):ok).focus({preventScroll:true}),30); }
 function xTrade(p){ const M=MERCHANTS[p.mkind]||MERCHANTS.goblin;
   const o={look:p.look, title:p.name, sub:M.name, text:M.greet, tabs:[['buy','Buy'],['sell','Sell'],['services','Services']], tab:'buy', buttons:[['Leave',null]],
-    body(box,o){ const refresh=()=>xDlg(o);
-      if(o.tab==='buy'){ if(!p.stock.some(s=>!s.sold)) box.innerHTML='<p class="hint">Sold out.</p>';
-        for(const s of p.stock){ if(s.sold) continue; const can=save.gold>=s.price;
-          let pic='', name='', text='';
-          if(s.kind==='gear'){ pic=gearIcon(s.id,32); name=GEAR[s.id].name+(GEAR[s.id].legendary?' ✹':''); text=(s.shady?'No questions asked. It may be cursed. ':'')+lootLabel(save,s.id).text; }
-          if(s.kind==='card'){ pic=typeof cardArtThumb==='function'?cardArtThumb(s.card,'pxi','width:32px;height:32px'):pxIcon('cards',COLORS[s.card.color].c); name=s.card.name; text=RARITY[s.card.rarity].n+' '+COLORS[s.card.color].name+' '+TYPES[s.card.type].name+': '+cardText(s.card); }
-          if(s.kind==='key'){ pic=pxIcon('key',KEYS[s.k].col); name=KEYS[s.k].name; text=KEYS[s.k].text||'for this dive'; }
-          if(s.kind==='bag'){ pic=pxIcon(BAG[s.k].icon,BAG[s.k].col); name=BAG[s.k].name; text=BAG[s.k].text; }
-          if(s.kind==='mat'){ pic=pxIcon('gem',MATS[s.k].col); name=MATS[s.k].name; text='for upgrades at a smith'; }
-          if(s.kind==='perm'){ pic=pxIcon('gem','#ff5d6c'); name='Vial of '+PERM[s.k].name; text='Permanent: '+PERM[s.k].text; }
-          xRow(box,pic,name,text,s.price+' gold',()=>{ if(save.gold<s.price) return tip('Not enough gold'); save.gold-=s.price; s.sold=true;
-            if(s.kind==='gear'){ const res=addLoot(save,s.id,XR); if(res&&res.cursed) tip(res.msg); }
-            if(s.kind==='card') addCards(save,[s.card]); if(s.kind==='key') addKey(s.k); if(s.kind==='bag') addBag(s.k); if(s.kind==='mat') addMat(s.k); if(s.kind==='perm') addPerm(s.k);
-            persist(); xSfx('chime'); refresh(); },!can); } }
+    body(box,o){ const empty=(t,act)=>{ box.innerHTML='<p class="hint">'+t+'</p>'; if(act){ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=act[0]; b.onclick=act[1]; box.appendChild(b); } };
+      if(o.tab==='buy'){ if(!p.stock.some(s=>!s.sold)) empty('Sold out.');
+        for(const s of p.stock){ if(s.sold) continue;
+          let pic='', name='', text='', where='Added to your bag';
+          if(s.kind==='gear'){ pic=gearIcon(s.id,32); name=GEAR[s.id].name+(GEAR[s.id].legendary?' ✹':''); text=(s.shady?'No questions asked. It may be cursed. ':'')+lootLabel(save,s.id).text; where='Added to your gear'; }
+          if(s.kind==='card'){ pic=typeof cardArtThumb==='function'?cardArtThumb(s.card,'pxi','width:32px;height:32px'):pxIcon('cards',COLORS[s.card.color].c); name=s.card.name; text=RARITY[s.card.rarity].n+' '+COLORS[s.card.color].name+' '+TYPES[s.card.type].name+': '+cardText(s.card); where='Added to your cards'; }
+          if(s.kind==='key'){ pic=keyIcon(s.k); name=KEYS[s.k].name; text=KEYS[s.k].text||'for this dive'; }
+          if(s.kind==='bag'){ pic=bagIcon(s.k); name=BAG[s.k].name; text=BAG[s.k].text; }
+          if(s.kind==='mat'){ pic=matIcon(s.k); name=MATS[s.k].name; text='for upgrades at a smith'; }
+          if(s.kind==='perm'){ pic=permIcon(s.k); name='Vial of '+PERM[s.k].name; text='Permanent: '+PERM[s.k].text; where='A permanent blessing'; }
+          xOffer(box,o,{pic,name,text,price:s.price,doneSub:where+' · −'+s.price+' gold',go(){ save.gold-=s.price; s.sold=true;
+            if(s.kind==='gear'){ const res=addLoot(save,s.id,XR); if(res&&res.cursed) setTimeout(()=>tip(res.msg,0,{kind:'warning'}),2700); }
+            if(s.kind==='card') addCards(save,[s.card]); if(s.kind==='key') addKey(s.k); if(s.kind==='bag') addBag(s.k); if(s.kind==='mat') addMat(s.k); if(s.kind==='perm') addPerm(s.k); }}); } }
       if(o.tab==='sell'){ const s=gearState(save), rate=p.mkind==='black'?.55:.35; let n=0;
         for(const id of Object.keys(s.items).filter(id=>GEAR[id]&&s.items[id]>0&&!GEAR[id].starter)){ const worn=SLOTS.filter(k=>s.gear[k]===id).length; if(s.items[id]-worn<=0) continue; n++;
-          const price=Math.round(gearPrice(id)*rate); xRow(box,gearIcon(id,32),gearName(save,id)+(s.items[id]-worn>1?' ×'+(s.items[id]-worn):''),'Not worn',price+' gold',()=>{ s.items[id]--; save.gold+=price; persist(); xSfx('chime'); refresh(); }); }
-        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; const price=Math.round(MATS[m].price*(p.mkind==='curio'&&m==='shard'?1.6:1)); xRow(box,pxIcon('gem',MATS[m].col),MATS[m].name+' ×'+matN(m),p.mkind==='curio'&&m==='shard'?'The collector pays well for shards':'',price+' gold',()=>{ save.mats[m]--; save.gold+=price; persist(); refresh(); }); }
-        if(!n) box.innerHTML='<p class="hint">Nothing to sell: gear you are wearing and your starter wand stay with you.</p>'; }
+          const price=Math.round(gearPrice(id)*rate), nm=gearName(save,id);
+          xOffer(box,o,{pic:gearIcon(id,32),name:nm+(s.items[id]-worn>1?' ×'+(s.items[id]-worn):''),text:'Not worn',full:lootLabel(save,id).text,price:-price,verb:'Sell',done:'Sold '+nm,go(){ s.items[id]--; save.gold+=price; }}); }
+        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; const price=Math.round(MATS[m].price*(p.mkind==='curio'&&m==='shard'?1.6:1));
+          xOffer(box,o,{pic:matIcon(m),name:MATS[m].name+' ×'+matN(m),text:p.mkind==='curio'&&m==='shard'?'The collector pays well for shards':'',price:-price,verb:'Sell one',done:'Sold '+MATS[m].name,go(){ save.mats[m]--; save.gold+=price; }}); }
+        if(!n) empty('Nothing to sell. Gear you are wearing and your starter wand stay with you.',['Browse wares',()=>{ o.tab='buy'; xDlg(o); }]); }
       if(o.tab==='services'){ const sv=M.services||[], s=gearState(save); let n=0;
         if(sv.includes('upgrade')) for(const slot of SLOTS){ const id=s.gear[slot]; if(!id||!GEAR[id]) continue; const isW=GEAR[id].slot==='weapon'; if((M.slot==='weapon')!==isW) continue;
-          const lv=s.gearLv[id]||0, gold=Math.round(120*(lv+1)*(1+.04*EX.depth)), ore=lv+1; n++;
-          xRow(box,gearIcon(id,32),'Upgrade '+gearName(save,id),lv>=MAX_LEVEL?'Already at +'+MAX_LEVEL:'To +'+(lv+1)+': '+gold+' gold and '+ore+' Deep Iron (you have '+matN('ore')+')',lv>=MAX_LEVEL?'—':'Upgrade',()=>{
-            if(save.gold<gold||matN('ore')<ore) return tip('You need '+gold+' gold and '+ore+' Deep Iron'); save.gold-=gold; save.mats.ore-=ore; s.gearLv[id]=lv+1; persist(); xSfx('chime'); xLog('Your '+gearName(save,id)+' is stronger.','good'); refresh(); },lv>=MAX_LEVEL); }
-        if(sv.includes('curse')) for(const id of Object.keys(s.cursed)){ if(!GEAR[id]) continue; n++; const price=Math.round(150*(1+.03*EX.depth));
-          xRow(box,gearIcon(id,32),'Lift the curse on '+gearName(save,id),CURSES[s.cursed[id]].text,price+' gold',()=>{ if(save.gold<price) return tip('Not enough gold'); save.gold-=price; delete s.cursed[id]; persist(); xSfx('chime'); refresh(); }); }
-        if(sv.includes('map')){ n++; const price=Math.round(90*(1+.03*EX.depth)); xRow(box,pxIcon('map','#d9dee2'),'Map of this floor','Every room and corridor, and a mark wherever something is hidden',p.used.map?'Bought':price+' gold',()=>{ if(save.gold<price) return tip('Not enough gold'); save.gold-=price; p.used.map=1; xReveal(true); persist(); refresh(); },!!p.used.map); }
-        if(sv.includes('reroll')){ n++; xRow(box,pxIcon('cards','#b48cff'),'Shuffle the stock','New cards on the table',p.used.reroll?'Done':'40 gold',()=>{ if(save.gold<40) return tip('Not enough gold'); save.gold-=40; p.used.reroll=1; p.stock=xStock(p.mkind); persist(); o.tab='buy'; refresh(); },!!p.used.reroll); }
-        if(sv.includes('shards')){ n++; xRow(box,pxIcon('gem',MATS.shard.col),'Shards for a blessing','Trade 3 Relic Shards for a permanent blessing (you have '+matN('shard')+')','Trade',()=>{ if(matN('shard')<3) return tip('You need 3 Relic Shards'); const left=Object.keys(PERM).filter(k=>(save.perm[k]||0)<PERM[k].max); if(!left.length) return tip('You are fully blessed'); save.mats.shard-=3; xGrant({perm:xpick(left)},'The collector’s blessing'); refresh(); },matN('shard')<3); }
-        if(!n) box.innerHTML='<p class="hint">Nothing to offer you right now.</p>'; } } };
+          const lv=s.gearLv[id]||0, gold=Math.round(120*(lv+1)*(1+.04*EX.depth)), ore=lv+1, nm=gearName(save,id); n++;
+          xOffer(box,o,{pic:gearIcon(id,32),name:'Upgrade '+nm,text:lv>=MAX_LEVEL?'Already at +'+MAX_LEVEL:'To +'+(lv+1)+': '+gold+' gold and '+ore+' Deep Iron (you have '+matN('ore')+')',
+            price:gold,ore,off:lv>=MAX_LEVEL?'Already at +'+MAX_LEVEL+'.':'',label:'Maxed',verb:'Upgrade',done:nm+' upgraded',doneSub:'Now +'+(lv+1)+' · −'+gold+' gold, −'+ore+' Deep Iron',
+            go(){ save.gold-=gold; save.mats.ore-=ore; s.gearLv[id]=lv+1; xLog('Your '+nm+' is stronger.','good'); }}); }
+        if(sv.includes('curse')) for(const id of Object.keys(s.cursed)){ if(!GEAR[id]) continue; n++; const price=Math.round(150*(1+.03*EX.depth)), nm=gearName(save,id);
+          xOffer(box,o,{pic:gearIcon(id,32),name:'Lift the curse on '+nm,text:CURSES[s.cursed[id]].text,price,verb:'Lift it',done:'Curse lifted',doneSub:nm+' · −'+price+' gold',go(){ save.gold-=price; delete s.cursed[id]; }}); }
+        if(sv.includes('map')){ n++; const price=Math.round(90*(1+.03*EX.depth));
+          xOffer(box,o,{pic:pxIcon('map','#d9dee2'),name:'Map of this floor',text:'Every room and corridor, and a mark wherever something is hidden',price,off:p.used.map?'You already bought it.':'',label:'Bought',done:'Floor mapped',go(){ save.gold-=price; p.used.map=1; xReveal(true); }}); }
+        if(sv.includes('reroll')){ n++;
+          xOffer(box,o,{pic:pxIcon('cards','#b48cff'),name:'Shuffle the stock',text:'New cards on the table',price:40,off:p.used.reroll?'Already shuffled.':'',label:'Done',verb:'Shuffle',done:'New stock on the table',go(){ save.gold-=40; p.used.reroll=1; p.stock=xStock(p.mkind); o.tab='buy'; }}); }
+        if(sv.includes('shards')){ n++; const left=Object.keys(PERM).filter(k=>(save.perm[k]||0)<PERM[k].max);
+          xOffer(box,o,{pic:matIcon('shard'),name:'Shards for a blessing',text:'Trade 3 Relic Shards for a permanent blessing (you have '+matN('shard')+')',price:0,
+            off:matN('shard')<3?'You need 3 Relic Shards (you have '+matN('shard')+').':!left.length?'You are fully blessed.':'',label:'Trade',verb:'Trade',
+            go(){ save.mats.shard-=3; xGrant({perm:xpick(left)},'The collector’s blessing'); return false; }}); }
+        if(!n) empty('Nothing to offer you right now.'); } } };
   xDlg(o); }
 
 /* ---------------- sanctuaries ---------------- */
@@ -1094,19 +1151,19 @@ function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return
   const o={title:'Your bag', sub:'Depth '+EX.depth+' · '+(EX.branch?'Hidden Sanctum':areaOf(EX.depth).name), icon:['bag','#f2c94c'], text:'', tabs:[['items','Items'],['quests','Quests'],['journal','Journal'],['bless','Blessings']], tab:'items', buttons:[['Close',null]],
     body(box,o){ const refresh=()=>xDlg(o);
       if(o.tab==='items'){ let n=0;
-        for(const k of Object.keys(BAG)) if(bagN(k)>0){ n++; xRow(box,pxIcon(BAG[k].icon,BAG[k].col),BAG[k].name+' ×'+bagN(k),BAG[k].text,'Use',()=>{ xUseBag(k); refresh(); }); }
-        for(const k of Object.keys(KEYS)) if(keyN(k)>0){ n++; xRow(box,pxIcon('key',KEYS[k].col),KEYS[k].name+' ×'+keyN(k),KEYS[k].text||'Kept for this dive'); }
-        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; xRow(box,pxIcon('gem',MATS[m].col),MATS[m].name+' ×'+matN(m),m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it'); }
+        for(const k of Object.keys(BAG)) if(bagN(k)>0){ n++; xRow(box,bagIcon(k),BAG[k].name+' ×'+bagN(k),BAG[k].text,'Use',()=>{ xUseBag(k); refresh(); }); }
+        for(const k of Object.keys(KEYS)) if(keyN(k)>0){ n++; xRow(box,keyIcon(k),KEYS[k].name+' ×'+keyN(k),KEYS[k].text||'Kept for this dive'); }
+        for(const m of Object.keys(MATS)) if(matN(m)>0){ n++; xRow(box,matIcon(m),MATS[m].name+' ×'+matN(m),m==='ore'?'Smiths use it to upgrade gear':m==='shard'?'Scholars and collectors want these':'Sells well; some trade for it'); }
         if(EX.carrying){ n++; xRow(box,pxIcon('bag','#8a5a32'),EX.carrying.owner+'’s crate','Bring it back to its owner on this floor'); }
         if(!n) box.innerHTML='<p class="hint">Empty. Chests, caches, merchants and grateful people fill it.</p>'; }
       if(o.tab==='quests'){ const qs=XRUN?XRUN.quests:[]; if(!qs.length) box.innerHTML='<p class="hint">No quests. People on the floors ask for help now and then.</p>';
         for(const q of qs){ const what=(typeof xMissionText==='function'&&xMissionText(q))||(q.kind==='fetch'?'Find '+q.giver+'’s '+q.item+' on depth '+q.depth:q.kind==='samples'?'Defeat '+q.need+' '+COLORS[q.color].name+' creatures for '+q.giver+' ('+Math.min(q.need,(XRUN.kills[q.color]||0)-q.base)+'/'+q.need+')':'Bring '+q.giver+' a Relic Shard (depth '+q.depth+')');
-          xRow(box,pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+' · reward: '+rewardText(q.reward)); }
+          xRow(box,q.kind==='fetch'&&q.item?questItemIcon(q.item):pxIcon('scroll',q.done?'#39ff8a':q.failed?'#ff5d6c':'#f2c94c'),q.done?'Done':q.failed?'Failed':'In progress',what+' · reward: '+rewardText(q.reward)); }
         for(const p of EX.props) if(p.role==='lost'&&p.state==='follow') xRow(box,pxIcon('hero','#8fe4ff'),'Escort','Lead '+p.name+' to the stairs, up or down');
         for(const p of EX.props) if(p.role==='peddler'&&p.state==='active') xRow(box,pxIcon('bag','#8a5a32'),'Find the crate','Bring '+p.name+'’s crate back to them on this floor'); }
       if(o.tab==='journal'){ const read=LORE.filter(l=>dState().lore[l.id]); box.insertAdjacentHTML('beforeend','<p class="hint">'+read.length+' of '+LORE.length+' tales found. Tablets, hermits, caches and secret rooms hold the rest.</p>');
         for(const l of read) xRow(box,pxIcon('scroll','#f2c94c'),l.title,l.text); }
-      if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,pxIcon('gem',['#ff5d6c','#ff9a3a','#8fe4ff','#f2c94c'][Object.keys(PERM).indexOf(k)]),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text+' each, for good'); }
+      if(o.tab==='bless'){ const P=dState().perm; let n=0; for(const k of Object.keys(PERM)) if(P[k]){ n++; xRow(box,permIcon(k),PERM[k].name+' ×'+P[k]+' / '+PERM[k].max,PERM[k].text+' each, for good'); }
         if(XRUN&&XRUN.attuned){ n++; xRow(box,pxIcon('hero','#fff2c0'),'Shrine’s blessing','If you fall in this dive, you wake at the stairs up, once'); }
         if(!n) box.innerHTML='<p class="hint">No blessings yet. Orbs in hidden shrines, freed prisoners and rare quests grant them.</p>'; } } };
   xDlg(o); }
@@ -1162,7 +1219,7 @@ function xMiniExtra(c,s,dot){
   if(EX.hints) for(const h of EX.hints){ c.fillStyle='#ff5d6c'; c.fillRect(xcx(h)*s-1,xcy(h)*s+1,s+2,1); c.fillRect(xcx(h)*s+1,xcy(h)*s-1,1,s+2); } }
 // the status strip: keys you carry, ailments, the shrine's blessing, quests
 function xHudExtra(){ const el=$('#xStatus'); if(!el) return; const out=[];
-  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push(`<span class="xs" title="${KEYS[k].name}">${pxIcon('key',KEYS[k].col,18)}${keyN(k)>1?keyN(k):''}</span>`);
+  for(const k of Object.keys(KEYS)) if(keyN(k)>0) out.push(`<span class="xs" title="${KEYS[k].name}">${keyIcon(k,18)}${keyN(k)>1?keyN(k):''}</span>`);
   if(EX.ail&&EX.ail.poison>0) out.push('<span class="xs bad">☠ Poisoned</span>'); if(EX.ail&&EX.ail.curse) out.push('<span class="xs bad">☾ Cursed</span>');
   if(XRUN&&XRUN.attuned) out.push('<span class="xs good">✦ Blessed</span>');
   if(typeof xDeepHud==='function') xDeepHud(out);

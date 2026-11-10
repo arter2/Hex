@@ -2026,7 +2026,7 @@ function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return;
 /* One short card the first time you meet each thing, in place of the long how-to line.
    Settings › Dungeon tips turns them off; turning them back on shows them all again. */
 const XTIPS={
-  move:   ()=>matchMedia('(pointer:coarse)').matches?XMOVE_TIP[xMoveMode()]:'Click a spot to walk there, or move with WASD or the arrow keys.',
+  move:   ()=>matchMedia('(pointer:coarse)').matches?XMOVE_TIP[xMoveMode()]:'Click a tile to move, or use WASD / arrow keys.',
   stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; tap the map to see it big.':' Tap the minimap to see it big.'),
   door:   ()=>'Walk into a door to open it.',
   locked: ()=>'A locked door. Find its key on this floor, or buy one from a merchant.',
@@ -2037,6 +2037,8 @@ const XTIPS={
   puzzle: ()=>'A puzzle. Walk into levers, statues and stones to use them; clues may be elsewhere on the floor.',
   hidden: ()=>'Stand still for a moment to notice hidden doors and traps, or use Search to look harder.',
 };
+// the small cyan line over each tip; the counter beside it is how many of the tips you have seen so far
+const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', hidden:'Secrets'};
 const XTIP_PUZZLE=new Set(['lever','plever','plate','statue','mirror','runestone','block']);
 const xTipsOn=()=>{ try{ return localStorage.getItem('hexmancers-xtips')!=='0'; }catch(e){ return true; } };
 const xStairsMarkOn=()=>{ try{ return localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){ return true; } };
@@ -2049,6 +2051,8 @@ function xTipNext(){ const card=$('#xTipCard'); clearTimeout(xTipT);
   const k=xTipQ.shift();
   if(!k||!xTipsOn()){ card.classList.remove('on'); xTipQ=[]; return; }
   const seen=xTipSeenSet(); seen.add(k); try{ localStorage.setItem('hexmancers-xtipseen',JSON.stringify([...seen])); }catch(e){}
+  const all=Object.keys(XTIPS).length, n=Object.keys(XTIPS).filter(t=>seen.has(t)).length;
+  $('#xTipHead').textContent=XTIP_HEAD[k]||'Tip'; $('#xTipStep').textContent=n+' / '+all; $('#xTipBar').style.width=Math.round(n/all*100)+'%';
   $('#xTipText').textContent=XTIPS[k](); card.classList.add('on'); xTipT=setTimeout(xTipNext,9000); }
 function xTipHide(){ clearTimeout(xTipT); xTipQ=[]; const c=$('#xTipCard'); if(c) c.classList.remove('on'); }
 $('#xTipOk').onclick=()=>xTipNext();

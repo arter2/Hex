@@ -83,7 +83,7 @@
 
 /* ---------------- main: camp categories, settings, XP ---------------- */
 .hm-cats{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
-.hm-cat .hm-i{width:26px; height:26px;}
+.hm-cats .hm-i{width:26px; height:26px;}
 .hm-xp{display:flex; align-items:center; gap:10px; min-height:28px; padding:0 4px; font:400 13.5px var(--font-h); color:var(--hm-text);}
 .hm-xp i{flex:1 1 auto; height:6px; background:#1b262c; border:1px solid #3f5058; position:relative; overflow:hidden;}
 .hm-xp i b{position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(#c5f7ff,#4fd3ee);}
@@ -155,3 +155,6 @@
 }
 /* 320-360 wide: a used slot's Continue takes its own full-width row, so the deck and place names keep their room */
 @media (max-width:360px){ .hm-card{flex-wrap:wrap;} .hm-card .hm-cinfo{flex:1 1 150px;} .hm-card .hm-go{flex:1 1 100%; width:100%; padding:0 6px;} }
+/* an empty slot: only New game, the slot strip and Settings */
+#scrMenu.hm-empty #mmRun,#scrMenu.hm-empty .hm-cats,#scrMenu.hm-empty #mmDuel,#scrMenu.hm-empty #mmXp{display:none;}
+

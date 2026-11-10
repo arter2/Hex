@@ -110,11 +110,11 @@ Expected: PASS, no page errors.
 Run: `node tools/playtest/selftest.js && node tools/playtest/ui-runner.js out/ui`
 Expected: both pass as on `main`.
 
-- [ ] **Step 6: Build v302.** Raise the build number, add the status row ("Shadow shape: you and enemies in sight show as a dark shape where scenery covers them…"), commit.
+- [ ] **Step 6: Build v305.** Raise the build number, add the status row ("Shadow shape: you and enemies in sight show as a dark shape where scenery covers them…"), commit.
 
 ```bash
 git add game/explore.js game/look.js game/index.html tools/dungeon-shade-test.js docs/status.md
-git commit -m "v302: shadow shape for covered characters"
+git commit -m "v305: shadow shape for covered characters"
 ```
 
 ### Task 3: A frame loop that allocates nothing
@@ -195,7 +195,7 @@ git commit -am "Minimap redraws on change"
 - [ ] **Step 1: Write the failing test.** For `high` and `low` (set through `localStorage` before load) on seeded depth 9:
 
 ```js
-// high: unchanged from v302
+// high: unchanged from v305
 assert(prof.postPasses===3 && prof.pointLights===5 && X3.renderer.getPixelRatio()===Math.min(devicePixelRatio,2));
 // low
 assert(prof.postPasses===0);
@@ -307,15 +307,15 @@ Expected: all PASS.
 git commit -am "Graphics setting with Auto: weak devices start on Low"
 ```
 
-### Task 8: Measure, record, build v303
+### Task 8: Measure, record, build v306
 
 **Files:**
-- Create: `docs/test-results/dungeon-profile-v303.json`, `docs/test-results/dungeon-profile-v303-low.json`
+- Create: `docs/test-results/dungeon-profile-v306.json`, `docs/test-results/dungeon-profile-v306-low.json`
 - Modify: `game/index.html` (build 303), `docs/status.md`, `docs/iphone-checklist.md` (three lines: Graphics setting on each value; shadow shape behind an arch; a floor after switching preset)
 
 - [ ] **Step 1: Profile both presets.**
 
-Run: `node tools/playtest/dungeon-profile.js docs/test-results/dungeon-profile-v303.json --gfx high && node tools/playtest/dungeon-profile.js docs/test-results/dungeon-profile-v303-low.json --gfx low`
+Run: `node tools/playtest/dungeon-profile.js docs/test-results/dungeon-profile-v306.json --gfx high && node tools/playtest/dungeon-profile.js docs/test-results/dungeon-profile-v306-low.json --gfx low`
 
 - [ ] **Step 2: Check the targets against `dungeon-profile-v301.json`.** High: `tris`, `programs` and `postPasses` equal to v301 on every row, `calls` higher by at most the number of visible characters, `scriptMs` not above v301's. Low: `postPasses` 0, `tris` ≤ half of High's, `pointLights` 3. If a target is missed, stop and report the row; do not adjust the target.
 - [ ] **Step 3: Run the touch dungeon bot on both presets.**
@@ -323,9 +323,9 @@ Run: `node tools/playtest/dungeon-profile.js docs/test-results/dungeon-profile-v
 Run: `node tools/playtest/touch-dungeon-runner.js out/touch --depths 1,9,17 --floors 1 --minutes 4 --device phone`
 Expected: no lost WebGL context, no black frames, no new stuck or off-floor reports compared with a run on `main`.
 
-- [ ] **Step 4: Build v303.** Raise the build number; add the status row with the measured before and after figures from the three profile files; commit.
+- [ ] **Step 4: Build v306.** Raise the build number; add the status row with the measured before and after figures from the three profile files; commit.
 
 ```bash
-git add docs/test-results/dungeon-profile-v303*.json game/index.html docs/status.md docs/iphone-checklist.md
-git commit -m "v303: dungeon speed pass and the Low graphics preset"
+git add docs/test-results/dungeon-profile-v306*.json game/index.html docs/status.md docs/iphone-checklist.md
+git commit -m "v306: dungeon speed pass and the Low graphics preset"
 ```

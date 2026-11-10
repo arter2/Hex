@@ -32,6 +32,7 @@ const EXTRA={
   storm:'<path d="M14 1 4 14h7l-3 9 12-14h-7l3-8Z" fill="#ffe24d" stroke="#fff6b8" stroke-width=".8"/>',
   light:'<circle cx="12" cy="12" r="5" fill="#fff0b3" stroke="#f5cb60"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4M4 4l3 3m10 10 3 3M20 4l-3 3M7 17l-3 3" stroke="#f5cb60" stroke-width="2"/>',
   shadow:'<path d="M15 2a10 10 0 1 0 7 15A8 8 0 0 1 15 2Z" fill="#e0588f" stroke="#ffb3cf" stroke-width=".8"/>',
+  lab:'<path d="M9 2h6v2h-1v5l6 11v2H4v-2l6-11V4H9z" fill="#2a3a44" stroke="#9fe8ff" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 15h10l2.4 5H4.6z" fill="#5fd6a0"/><path d="M10 17h2v2h-2zM14 16h1.5v1.5H14z" fill="#d8ffee"/>',
   verdant:IC.paths.leaf, fire:IC.paths.fire };
 const paths=n=>EXTRA[n]||IC.paths[n]||IC.paths.empty;
 const iconUrl=n=>url(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${paths(n)}</svg>`);
@@ -63,10 +64,12 @@ const CATS={
   cards:['Cards',[['goBuilder','Deck builder','cards'],['goCollection','My cards','cards']]],
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
-  character:['Character',[['goChar','Character','character'],['goMove','Movement lab','battle']]] };
+  character:['Character',[['goChar','Character','character']]],
+  lab:['Lab',[['lpMove','Movement lab','map'],['lpFoes','Enemy lab','skull'],['@battle','Battle','battle']]] };
 document.querySelectorAll('#scrMenu .hm-cat').forEach(b=>b.onclick=()=>{ const [t,list]=CATS[b.dataset.cat];
+  if(list.length===1){ const go=document.getElementById(list[0][0]); if(go) withChar(()=>go.click()); return; }   // one place: go straight there
   openDlg(t,'<div class="hm-list">'+list.map(([id,label,ic])=>`<button class="hm-btn" type="button" data-go="${id}">${ico(ic)}<span>${label}</span>${id==='goChar'&&save&&pointsLeft(ensureChar(save))>0?'<b class="hm-badge">+'+pointsLeft(save.char)+'</b>':''}</button>`).join('')+'</div>',b);
-  q('#hmDlgB').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>{ q('#hmDlg').classList.remove('on'); dlgBack=null; const go=document.getElementById(x.dataset.go); if(go) withChar(()=>go.click()); }); });
+  q('#hmDlgB').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>{ q('#hmDlg').classList.remove('on'); dlgBack=null; if(x.dataset.go==='@battle') return goPlay('battle'); const go=document.getElementById(x.dataset.go); if(go) withChar(()=>go.click()); }); });
 q('#mmDetails').onclick=e=>{ if(!save) return; const A=areaOf(pickDepth);
   let deck=[]; try{ deck=activeDeck().list; }catch(_){}
   openDlg('Run details',`<p class="hm-dl"><b style="color:${A.glow}">${esc_(A.name)}</b> · depth ${pickDepth}${isBossDepth(pickDepth)?' · boss floor':''}</p><p class="hm-dl">${affinityHTML(A,deck)||'No element rules here.'}</p>`,e.currentTarget); };
@@ -89,9 +92,11 @@ window.hmHome=function(){ const s=save, has=!!s, d=pickDepth||1, A=areaOf(d), pa
   q('#mmRules').innerHTML=COLORS[k]?`<span class="hm-r">${ico(k)}<span style="color:${COLORS[k].c}">${COLORS[k].name}</span></span><span class="hm-dot">·</span>`+(W&&COLORS[W]?`<span class="hm-r">${ico(W)}Weak: ${COLORS[W].name}</span>`:''):'';
   q('#mmDetails').disabled=!has;
   let v={ok:false}; try{ v=has?validateDeck(activeDeck().list,CARDS,s.owned):{ok:false}; }catch(e){}
-  q('#mmExplore').disabled=q('#mmBattle').disabled=!has||!v.ok;
-  q('#mmContinue').querySelector('span').textContent=has?'Continue':'Start';
-  q('#mmWarn').textContent=!has?'This slot is empty. Start a new game, or pick another save from the slot menu.':v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
+  q('#mmExplore').disabled=!has||!v.ok;
+  q('#mmContinue').querySelector('span').textContent=has?'Continue':'New game';
+  // an empty slot shows only what works: New game, the slot strip (to pick another save) and Settings
+  page.classList.toggle('hm-empty',!has);
+  q('#mmWarn').textContent=!has||v.ok?'':'Your deck is not ready ('+(v.errors&&v.errors[0]||'invalid')+'). Fix it in the deck builder.';
   page.querySelectorAll('.hm-cat').forEach(b=>b.disabled=!has); q('#mmDuel').disabled=!has;
   // level, XP and the points waiting to be spent
   const pts=has?pointsLeft(ensureChar(s)):0; q('#mmPts').hidden=!pts; q('#mmPts').textContent='+'+pts;
@@ -112,7 +117,6 @@ function goPlay(mode){ if(!save) return openSaves();
 q('#mmContinue').onclick=()=>{ SVMODE='explore'; if(save) goPlay('explore'); else openNewChar(); };
 q('#mmSlots').onclick=()=>{ SVMODE='explore'; openSaves(); };
 q('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
-q('#mmBattle').onclick=()=>{ SVMODE='battle'; openSaves(); };
 q('#mmSettings').onclick=()=>openSettings();
 // Duel a friend: the old camp's button, so it keeps its deck check and its way back
 q('#mmDuel').onclick=()=>withChar(()=>q('#goDuel').click());
@@ -137,7 +141,8 @@ function renderSaves(){ const box=q('#svList'); box.innerHTML='';
         <button class="hm-btn hm-cyan hm-go" type="button" aria-label="Continue slot ${n}">${ico('play')}<span>Continue</span></button>`;
       drawChar(c.querySelector('canvas'),s);
       c.querySelector('.hm-go').onclick=e=>{ e.stopPropagation(); if(n!==SAVE_SLOT) useSlot(n); goPlay(SVMODE); }; }
-    c.onclick=()=>{ if(SEL===n) return; SEL=n; renderSaves(); const f=q('#svList .hm-card.sel'); if(f) f.focus(); };
+    // one tap does it: a saved slot continues, an empty slot starts a new game in it
+    c.onclick=()=>{ if(n!==SAVE_SLOT) useSlot(n); if(s) goPlay(SVMODE); else openNewChar(); };
     c.onkeydown=e=>{ if(e.target!==c) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); }
       if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); const nx=c.nextElementSibling; if(nx) nx.focus(); }
       if(e.key==='ArrowUp'||e.key==='ArrowLeft'){ e.preventDefault(); const pv=c.previousElementSibling; if(pv) pv.focus(); } };

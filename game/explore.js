@@ -1852,6 +1852,7 @@ function xLoop(ts){
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; }
   xGuard(()=>xDoorTick(dt||.016)); xGuard(()=>xDraw(ts/1000,dt));
+  if(typeof gfxSample==='function'&&EX&&EX.active&&!EX.busy&&!xPaused&&!xMapIsOpen()&&!document.hidden) gfxSample(dt*1000);   // (the Graphics setting's Auto times the first floor: look.js)
 }
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600, pr=G.low?Math.min(1,lookPR()):lookPR(); /* (the Low graphics setting: sharpness 1 at most) */ if(G.renderer.getPixelRatio()!==pr){ G.renderer.setPixelRatio(pr); G.w=0; } if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 /* The frame's loops over enemies, lights and dust live in small functions of their own: the browser compiles small

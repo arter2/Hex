@@ -137,7 +137,15 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    shading, no blur; the vignette is drawn by the page), two torch lights where High has four, sharpness 1 at most,
    plain wall blocks and half the dust and weather (explore.js reads gfxLow when it builds a floor). Auto is High
    until the first floor has been timed (gfxSample), then whichever that chose. The battle is not affected. */
-const GFX={auto:'high'};
+const GFX={auto:'high',done:false,n:0,ms:[]};
+try{ const a=localStorage.getItem('hexmancers-gfx-auto'); if(a==='low'||a==='high'){ GFX.auto=a; GFX.done=true; } }catch(e){}   // what an earlier session measured
+/* Auto's one measurement: the dungeon hands in each drawn frame's time (explore.js xLoop: not while a dialog, the map
+   or a fight's hand-off is up, or the page is hidden). The first 30 are the floor warming up and are ignored; a frame
+   over 250 ms is a hitch, not the device's pace. After 90 more, a median over 22 ms means Low. Decided once and kept
+   (hexmancers-gfx-auto), so later sessions start right; choosing High or Low yourself overrides it. */
+function gfxSample(ms){ if(GFX.done||gfxMode()!=='auto'||!(ms>0)||ms>250) return; if(++GFX.n<=30) return; GFX.ms.push(ms); if(GFX.ms.length<90) return;
+  const a=GFX.ms.slice().sort((x,y)=>x-y); GFX.auto=a[45]>22?'low':'high'; GFX.done=true; GFX.ms.length=0;
+  try{ localStorage.setItem('hexmancers-gfx-auto',GFX.auto); }catch(e){} if(GFX.auto==='low') gfxApply(); }
 function gfxMode(){ try{ const m=localStorage.getItem('hexmancers-gfx'); return m==='high'||m==='low'?m:'auto'; }catch(e){ return 'auto'; } }
 function gfxLow(){ const m=gfxMode(); return m==='low'||(m==='auto'&&GFX.auto==='low'); }
 function gfxSet(mode){ try{ if(mode==='high'||mode==='low') localStorage.setItem('hexmancers-gfx',mode); else localStorage.removeItem('hexmancers-gfx'); }catch(e){} gfxApply(); }

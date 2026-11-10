@@ -7,8 +7,13 @@ const Runner = require('./runner-common.js');
 // what the page gets (runs in the browser)
 function install() {
   window.requestAnimationFrame = () => 0; // the tests draw the frames themselves
+  const nativeRandom = Math.random;
   window.DPROF = {
     T: 0,
+    // back to the browser's own dice (the seeded ones return boxed numbers, garbage the real game never makes)
+    realRandom() {
+      Math.random = nativeRandom;
+    },
     // a fresh game on one floor: the same floor every time for a depth and layout
     enter(depth, layout) {
       const keep = {};
@@ -162,6 +167,38 @@ async function open(opt = {}) {
     async throttle(rate) {
       const cdp = await context.newCDPSession(page);
       await cdp.send('Emulation.setCPUThrottlingRate', { rate });
+    },
+    // bytes of garbage a piece of page script makes, and which functions made it (the sampling heap profiler,
+    // counting what the collector has already taken away too): {kb, top:[[function, kb]...]}
+    async allocations(fn, arg) {
+      const cdp = await context.newCDPSession(page);
+      await cdp.send('HeapProfiler.enable');
+      await cdp.send('HeapProfiler.startSampling', {
+        samplingInterval: 512,
+        includeObjectsCollectedByMajorGC: true,
+        includeObjectsCollectedByMinorGC: true
+      });
+      await page.evaluate(fn, arg);
+      const { profile } = await cdp.send('HeapProfiler.stopSampling');
+      const by = {};
+      let total = 0;
+      const visit = n => {
+        if (n.selfSize) {
+          const k = n.callFrame.functionName || '(anonymous)';
+          by[k] = (by[k] || 0) + n.selfSize;
+          total += n.selfSize;
+        }
+        for (const c of n.children || []) visit(c);
+      };
+      visit(profile.head);
+      await cdp.detach();
+      return {
+        kb: total / 1024,
+        top: Object.entries(by)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 12)
+          .map(([k, v]) => [k, +(v / 1024).toFixed(1)])
+      };
     },
     async close() {
       await browser.close();

@@ -1381,10 +1381,18 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:e.timeStamp,px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]]}; });
+  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:e.timeStamp,px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]],k:gestK()}; });
+/* Thumb gestures in board terms: the stick's reach, the tap slop and the flick speeds are tuned in screen pixels on a
+   412 x 915 phone, where your half of the board is GEST_REF px across. On a bigger board (a tablet, a computer) they
+   grow with it, so the same push or swipe means the same share of a tile everywhere (a 26 px push was full speed on a
+   tablet's twice-as-big tiles, and an ordinary swipe there passed the flick speed). */
+const GEST_REF=435;   // (measured once the fight has begun: the camera sits closer than while you pick cards)
+function gestK(){ if(typeof TILES==='undefined'||!TILES.length) return 1; let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+  for(const t of TILES){ if(t.side!=='p') continue; const [x,y]=proj(t.wx,0,t.wz); x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
+  const w=Math.max(x1-x0,y1-y0); return w>0&&isFinite(w)?Math.max(.75,Math.min(4,w/GEST_REF)):1; }
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY); d.x=ax; d.y=ay;
   const now=performance.now(); d.hist.push([now,ax,ay]); while(d.hist.length>2&&now-d.hist[0][0]>400) d.hist.shift();   // the thumb's last moments, for a flick
-  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')) d.moved=true;
+  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')*(d.k||1)) d.moved=true;
   if(!d.moved||XLIT.mvStick) return;   // the joystick steers every frame (stickWalk)
   // follow finger: your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
   const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
@@ -1395,8 +1403,8 @@ const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging
   // a flick: let go with the thumb still moving fast and your mage is thrown that way (battle.js flickThrow)
   if((d.moved||d.stick)&&XLIT.mvStick&&MV('mvFlick')&&B&&B.player&&d.hist){ const now=performance.now(), H=d.hist.filter(h=>now-h[0]<=MV('mvFlickWin'));
     if(H.length>=2){ const [t0,x0,y0]=H[0], [,x1,y1]=H[H.length-1], vx=(x1-x0)/Math.max(16,now-t0)*1000, vy=(y1-y0)/Math.max(16,now-t0)*1000, v=Math.hypot(vx,vy);
-      if(v>=MV('mvFlickV0')){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
-        flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0'))/Math.max(1,MV('mvFlickV1')-MV('mvFlickV0'))); } } } };
+      if(v>=MV('mvFlickV0')*(d.k||1)){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
+        flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0')*(d.k||1))/Math.max(1,(MV('mvFlickV1')-MV('mvFlickV0'))*(d.k||1))); } } } };
 /* How long a finger has been held, counted in frames and at most 50 ms a frame: the first frame after a stall
    comes before the stalled finger's release is handled, and must not turn a quick tap into a hold. (ui.js battle
    board; explore.js has the same for the dungeon.) */
@@ -1405,7 +1413,7 @@ function heldMs(h){ const now=performance.now(); h.heldMs=(h.heldMs||0)+Math.max
 function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fight') return;
   if(!d.stick&&(d.moved||heldMs(d)>=MV('mvTapMs'))) d.stick=true;
   if(!d.stick) return; stickDraw();
-  const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
+  const p=B.player, R=MV('mvStickR')*(d.k||1), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
   if(l<MV('mvDead')){ if(!d.still){ d.still=true; if(MV('mvMomentum')) freeEnd(); else freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest; with momentum, you coast to a stop as if you let go)
   d.still=false;
   const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
@@ -1413,7 +1421,7 @@ function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fig
   const [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+dx/(l*R)*60,sy+dy/(l*R)*60,fx,fz), wl=Math.hypot(wx-fx,wz-fz)||1;
   freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); if(B.player.free) B.player.free.tps=MV('mvStickSpeed'); }
 function stickDraw(){ const el=$('#bStick'); if(!el) return; const d=dragging, on=!!(d&&d.stick&&XLIT.mvStick&&XLIT.mvStickShow);
-  el.hidden=!on; if(!on) return; const R=MV('mvStickR'); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
+  el.hidden=!on; if(!on) return; const R=MV('mvStickR')*(d.k||1); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
   let dx=d.x-d.x0, dy=d.y-d.y0; const l=Math.hypot(dx,dy); if(l>R){ dx*=R/l; dy*=R/l; }
   const dz=el.firstElementChild; dz.style.width=dz.style.height=2*R*MV('mvDead')+'px'; el.lastElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));

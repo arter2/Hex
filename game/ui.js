@@ -1815,8 +1815,8 @@ async function duHostWifi(){
   if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
   // the camera goes on first: while it runs, the browser puts the phone's real Wi-Fi address in the code (not only a
   // hidden .local name another phone may not be able to look up). Like pairing a headset: their code turns up in the
-  // front camera, and the host says yes to it
-  await duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
+  // back camera (Switch camera for the front one), and the host says yes to it
+  await duScan($('#duHostCam'),'environment',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
   if(g!==DU.gen) return;
   const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }

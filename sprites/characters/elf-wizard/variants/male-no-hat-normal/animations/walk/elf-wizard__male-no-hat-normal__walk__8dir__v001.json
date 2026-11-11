@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "class": "elf-wizard",
+  "variant": "male-no-hat-normal",
+  "animation": "walk",
+  "revision": "v001",
+  "sheet": "elf-wizard__male-no-hat-normal__walk__8dir__v001.png",
+  "sha256": "3e32eb56789f6fb1eee92b975e44f764266d34a28786ffb2805b847614404aad",
+  "width": 2048,
+  "height": 2048,
+  "frameWidth": 128,
+  "frameHeight": 128,
+  "framesPerDirection": 12,
+  "startColumn": 1,
+  "indexing": "workshop rows and columns are 1-based; pixels and frameIndex are 0-based",
+  "labelRow": 1,
+  "directionRows": {
+    "s": 2,
+    "sw": 3,
+    "w": 4,
+    "nw": 5,
+    "n": 6,
+    "ne": 7,
+    "e": 8,
+    "se": 9
+  },
+  "background": "#00ff00",
+  "opaque": true,
+  "fps": 10,
+  "loop": true,
+  "pivotPixels": {
+    "x": 64,
+    "y": 112,
+    "note": "ground contact between the feet, relative to each 128x128 frame origin"
+  },
+  "reference": "sprites/sources/elf-wizard/male-no-hat-normal/elf-wizard__male-no-hat-normal__idle-se__reference.gif",
+  "review": null,
+  "approval": null,
+  "preview": "elf-wizard__male-no-hat-normal__walk__8dir__v001__preview.gif",
+  "generator": "sprites/tools/elf_wizard_walk_gen.py",
+  "notes": "DRAFT. Rendered procedurally from a simple 3D puppet (sprites/tools/elf_wizard_walk_gen.py), not hand-drawn and not from an art tool. Every direction is its own render; nothing is mirrored; staff stays in the character's left hand. Palette sampled from the reference, but the detail level is well below the reference art. Not reviewed, not approved."
+}

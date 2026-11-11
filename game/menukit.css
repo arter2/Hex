@@ -1738,3 +1738,12 @@ body:has(#xDialog.on) #xTipCard.xtip.on{visibility:hidden;}
 #bagUI .bgaskp p{margin:0; color:var(--mk-text,#e3e0d4); text-align:center; line-height:1.3;}
 #bagUI .bgaskp .row{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
 #bagUI .bgaskp .btn{min-height:44px; justify-content:center; text-align:center;}
+
+/* duel: Accept sits at the top of the host's panel; once their code is in it lights up, pulses and glows */
+#scrDuel .duaccept{display:block; width:100%; margin:0 0 10px; min-height:52px; font-size:17px;}
+#scrDuel .duaccept:disabled{opacity:.55; filter:saturate(0); cursor:default;}
+#scrDuel .duaccept.ready{background:#39d98a; color:#062414; border-color:#bfffe0; text-shadow:none; animation:duready 1s ease-in-out infinite;}
+@keyframes duready{0%,100%{transform:scale(1); box-shadow:0 0 6px 1px rgba(57,217,138,.55);} 50%{transform:scale(1.04); box-shadow:0 0 22px 6px rgba(57,217,138,.9);}}
+@media (prefers-reduced-motion:reduce){ #scrDuel .duaccept.ready{animation:none; box-shadow:0 0 16px 4px rgba(57,217,138,.8);} }
+#scrDuel .dulog{margin:14px 12px 24px;} #scrDuel .dulog summary{cursor:pointer; color:var(--mk-muted,#a8b6b8);}
+#scrDuel .dulog textarea{width:100%; box-sizing:border-box; font:12px/1.35 ui-monospace,Menlo,Consolas,monospace; white-space:pre-wrap; overflow:auto; margin:6px 0;}

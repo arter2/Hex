@@ -359,14 +359,14 @@ test('forfeit on transport close', () => {
 });
 test('silence timeout', () => {
   const r = rawFight();
-  advance(r.w, 4999, [r.S]);
+  advance(r.w, 9999, [r.S]);
   assert.equal(r.S.log('end').length, 0);
   advance(r.w, 1, [r.S]);
   assert.deepEqual(r.S.log('end'), [{ result: 'win', reason: 'timeout' }]);
   const q = rawFight();
-  advance(q.w, 4900, [q.S]);
+  advance(q.w, 9900, [q.S]);
   q.say({ t: 'ping', ts: q.w.T, n: 1 });
-  advance(q.w, 4999, [q.S]);
+  advance(q.w, 9999, [q.S]);
   assert.equal(q.S.log('end').length, 0);
   advance(q.w, 1, [q.S]);
   assert.deepEqual(q.S.log('end'), [{ result: 'win', reason: 'timeout' }]);

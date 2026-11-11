@@ -134,13 +134,14 @@
       </div>
     </div>
     <div id="duHostCode" class="dustep" hidden>
-      <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Your friend taps Join and scans this code.</p>
+      <div class="dupanel duqrpanel"><button id="duAccept" class="btn duaccept" disabled>Waiting for their code…</button>
+        <p class="dunum"><b>1</b>Your friend taps Join and scans this code.</p>
         <div class="duqr"><canvas id="duOfferQr" aria-label="Your code"></canvas></div>
         <p class="dunum"><b>2</b>Their phone then shows a code. Point your camera at it (Switch camera uses the front one instead).</p>
         <video id="duHostCam" class="ducam" playsinline muted autoplay></video>
         <button class="btn ghost small duflip" type="button" data-cam="duHostCam">Switch camera</button>
         <p id="duHostSeen" class="duwaiting">Watching for their code<i></i></p>
-        <button id="duAccept" class="btn" hidden>Accept</button></div>
+</div>
       <details class="dumanual"><summary>No camera? Copy codes instead</summary>
         <div class="dupanel"><textarea id="duOffer" class="ducode" readonly rows="3" aria-label="Your code"></textarea>
           <button id="duCopy" class="btn small">Copy code</button>
@@ -180,6 +181,10 @@
       <p class="hint ducenter">Both of you are in. The duel starts in a moment.</p>
     </div>
     <p id="duMsg" class="hint warn" role="alert"></p>
+    <details id="duLogBox" class="dulog"><summary>Connection log</summary>
+      <p class="hint">Everything the pairing did, step by step. Copy it and send it along if a duel will not connect.</p>
+      <textarea id="duLog" class="ducode" readonly rows="10" aria-label="Connection log"></textarea>
+      <button id="duLogCopy" class="btn small" type="button">Copy log</button></details>
   </section>
 
   <!-- new game, step 1: your hexmancer: race, body and stats -->

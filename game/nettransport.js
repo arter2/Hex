@@ -51,7 +51,7 @@ async function rtcIceServers() {
       const ctl = typeof AbortController !== 'undefined' ? new AbortController() : null, t = setTimeout(() => ctl && ctl.abort(), 5000);
       const r = await fetch(R.url, ctl ? { signal: ctl.signal } : {}); clearTimeout(t);
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      const j = await r.json(), list = (Array.isArray(j) ? j : j && j.iceServers) || [];
+      const j = await r.json(), list = Array.isArray(j) ? j : j && Array.isArray(j.iceServers) ? j.iceServers : j && j.iceServers ? [j.iceServers] : [];
       if (!list.length) throw new Error('no servers in the reply');
       rtcRelayCache = { t: Date.now(), list }; out.push(...list); rtcRelayNote = 'relay: ' + list.length + ' server(s) from ' + new URL(R.url).host;
     } catch (e) { rtcRelayNote = 'relay: could not get logins (' + (e.name === 'AbortError' ? 'timed out' : e.message) + '); direct only'; }

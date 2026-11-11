@@ -5,7 +5,7 @@
               Metered (metered.ca): https://<your-app>.metered.live/api/v1/turn/credentials?apiKey=<your API key>
               (the credential API key is made for use in a web page; never put an account secret key here).
               Cloudflare Realtime TURN needs a secret token, so it goes behind a small Worker of your own whose
-              address goes here.
+              address goes here: tools/turn-worker (worker.js, and README.md for the setup).
      servers  fixed ICE servers, e.g. [{urls:'turn:relay.example.com:3478', username:'u', credential:'p'}].
    Logins fetched from url are kept for an hour. */
 window.DUEL_RELAY={ url:'', servers:null };

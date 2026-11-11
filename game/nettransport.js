@@ -48,7 +48,7 @@ function compactSdp(desc) {
   const fpb = fp.split(':').map(h => parseInt(h, 16));
   if (fpb.length !== 32 || fpb.some(isNaN)) return null;
   const out = [desc.type === 'answer' ? 1 : 0, ufrag.length, ...new TextEncoder().encode(ufrag), pwd.length, ...new TextEncoder().encode(pwd), ...fpb];
-  const seen = new Set();
+  const seen = new Set(), took = { 4: 0, 109: 0, 6: 0, 44: 0 }, MAX = { 4: 2, 109: 1, 6: 1, 44: 1 };   // few addresses, so the code (and its QR) stays small enough to scan
   // host addresses, then the public one a STUN server saw (srflx, IPv4 only: kind 44)
   for (const m of sdp.matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) (\d+) typ (host|srflx)/gim)) {
     const addr = m[1], port = +m[2], srflx = m[3].toLowerCase() === 'srflx';
@@ -64,7 +64,8 @@ function compactSdp(desc) {
       if (g.length !== 8 || g.some(v => isNaN(v) || v > 0xffff)) continue;
       kind = 6; bytes = g.flatMap(v => [v >> 8, v & 255]);
     } else continue;
-    seen.add(addr + ':' + port);
+    if (took[kind] >= MAX[kind]) continue;
+    took[kind]++; seen.add(addr + ':' + port);
     out.push(kind, ...bytes, port >> 8, port & 255);
   }
   if (!seen.size) return null;

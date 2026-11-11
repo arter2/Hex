@@ -1774,15 +1774,20 @@ function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getConte
 // the camera into a video, read for a HEX1./HEX2. code until one turns up (BarcodeDetector where there is one, else jsQR)
 function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
   try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
-// facing: the camera this view starts with ('user' the front one, 'environment' the back); Switch camera keeps the
-// other one for this view (video.dataset.facing) for the rest of the session
-async function duScan(video,facing,onCode){ duScanStop(); facing=video.dataset.facing||facing; const sc={video,dead:false,t:0,facing,onCode}; DU.scan=sc;
-  video.classList.toggle('mirror',facing==='user');
+// facing: the camera this view asks for first ('user' the front one, 'environment' the back). Switch camera moves on to
+// the phone's next real camera (by its device id, kept for this view in video.dataset.dev), whatever the first one was.
+// A sharp picture (up to 1280 x 720) and continuous focus, so a dense code can be read from a phone held close.
+async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0,facing,onCode}; DU.scan=sc;
   const noCam=()=>{ if(sc.dead) return; duScanStop(); const d=video.closest('.dustep').querySelector('.dumanual'); if(d) d.open=true;
     duMsg('The camera is not available here. Allow it in your browser settings, or use the codes below.'); };
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia) return noCam();
-  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:false}); }catch(e){ return noCam(); }
+  const want=video.dataset.dev?{deviceId:{exact:video.dataset.dev}}:{facingMode:{ideal:facing}};
+  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:Object.assign(want,{width:{ideal:1280},height:{ideal:720}}),audio:false}); }
+  catch(e){ if(video.dataset.dev){ delete video.dataset.dev; return duScan(video,facing,onCode); } return noCam(); }
   if(sc.dead){ sc.stream.getTracks().forEach(t=>t.stop()); return; }
+  { const tr=sc.stream.getVideoTracks()[0], st=tr&&tr.getSettings?tr.getSettings():{}; sc.dev=st.deviceId||''; sc.facing=st.facingMode||(video.dataset.dev?'':facing);
+    video.classList.toggle('mirror',sc.facing==='user');   // the selfie camera shows as a mirror
+    try{ const cap=tr.getCapabilities&&tr.getCapabilities(); if(cap&&cap.focusMode&&cap.focusMode.includes('continuous')) tr.applyConstraints({advanced:[{focusMode:'continuous'}]}).catch(()=>{}); }catch(e){} }
   video.srcObject=sc.stream; try{ await video.play(); }catch(e){}
   let det=null; try{ if('BarcodeDetector' in window) det=new BarcodeDetector({formats:['qr_code']}); }catch(e){}
   const cv=document.createElement('canvas'), x=cv.getContext('2d',{willReadFrequently:true});
@@ -1795,10 +1800,15 @@ async function duScan(video,facing,onCode){ duScanStop(); facing=video.dataset.f
     if(/^HEX[12]\./i.test(txt.trim())){ sc.found=true; buzz(20); onCode(txt.trim()); return; }   // the camera stays on until the caller stops it (duScanStop)
     sc.t=setTimeout(tick,150); };
   tick(); }
-// Switch camera: the same view, the other camera (the scan goes on; a code already found stays found)
-document.querySelectorAll('#scrDuel .duflip').forEach(b=>b.onclick=()=>{ const v=$('#'+b.dataset.cam), sc=DU.scan;
-  const cur=v.dataset.facing||(v.classList.contains('ducam-front')?'user':'environment'); v.dataset.facing=cur==='user'?'environment':'user';
-  if(sc&&sc.video===v&&!sc.found) duScan(v,v.dataset.facing,sc.onCode); });
+// Switch camera: the same view, the phone's next camera (the scan goes on; a code already found stays found)
+document.querySelectorAll('#scrDuel .duflip').forEach(b=>b.onclick=async()=>{ const v=$('#'+b.dataset.cam), sc=DU.scan; if(!sc||sc.video!==v||sc.found) return;
+  let cams=[]; try{ cams=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='videoinput'&&d.deviceId); }catch(e){}
+  if(cams.length<2) return duMsg('This phone has only one camera the browser can use.');
+  // front and back first (a phone may list extra back lenses that cannot focus close), then the rest
+  const lab=d=>(d.label||'').toLowerCase(), front=cams.find(d=>/front|user|face/.test(lab(d))), back=cams.find(d=>/back|rear|environment/.test(lab(d)));
+  let next=null; if(front&&back) next=sc.dev===front.deviceId?back:front;
+  if(!next){ const i=cams.findIndex(d=>d.deviceId===sc.dev); next=cams[(i+1)%cams.length]; }
+  v.dataset.dev=next.deviceId; duMsg(''); duScan(v,sc.facing,sc.onCode); });
 async function duHostWifi(){
   duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; duQr($('#duOfferQr'),'');
   $('#duAccept').hidden=true; $('#duHostSeen').hidden=false; DU.answer='';

@@ -1774,7 +1774,10 @@ function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getConte
 // the camera into a video, read for a HEX1./HEX2. code until one turns up (BarcodeDetector where there is one, else jsQR)
 function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
   try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
-async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0}; DU.scan=sc;
+// facing: the camera this view starts with ('user' the front one, 'environment' the back); Switch camera keeps the
+// other one for this view (video.dataset.facing) for the rest of the session
+async function duScan(video,facing,onCode){ duScanStop(); facing=video.dataset.facing||facing; const sc={video,dead:false,t:0,facing,onCode}; DU.scan=sc;
+  video.classList.toggle('mirror',facing==='user');
   const noCam=()=>{ if(sc.dead) return; duScanStop(); const d=video.closest('.dustep').querySelector('.dumanual'); if(d) d.open=true;
     duMsg('The camera is not available here. Allow it in your browser settings, or use the codes below.'); };
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia) return noCam();
@@ -1789,19 +1792,26 @@ async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:f
       else if(typeof jsQR==='function'){ const k=Math.min(1,720/Math.max(video.videoWidth,video.videoHeight)); cv.width=video.videoWidth*k|0; cv.height=video.videoHeight*k|0;
         x.drawImage(video,0,0,cv.width,cv.height); const r=jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:'dontInvert'}); if(r) txt=r.data||''; } } }catch(e){}
     if(sc.dead) return;
-    if(/^HEX[12]\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
+    if(/^HEX[12]\./i.test(txt.trim())){ sc.found=true; buzz(20); onCode(txt.trim()); return; }   // the camera stays on until the caller stops it (duScanStop)
     sc.t=setTimeout(tick,150); };
   tick(); }
+// Switch camera: the same view, the other camera (the scan goes on; a code already found stays found)
+document.querySelectorAll('#scrDuel .duflip').forEach(b=>b.onclick=()=>{ const v=$('#'+b.dataset.cam), sc=DU.scan;
+  const cur=v.dataset.facing||(v.classList.contains('ducam-front')?'user':'environment'); v.dataset.facing=cur==='user'?'environment':'user';
+  if(sc&&sc.video===v&&!sc.found) duScan(v,v.dataset.facing,sc.onCode); });
 async function duHostWifi(){
   duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; duQr($('#duOfferQr'),'');
   $('#duAccept').hidden=true; $('#duHostSeen').hidden=false; DU.answer='';
   if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
+  // the camera goes on first: while it runs, the browser puts the phone's real Wi-Fi address in the code (not only a
+  // hidden .local name another phone may not be able to look up). Like pairing a headset: their code turns up in the
+  // front camera, and the host says yes to it
+  await duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
+  if(g!==DU.gen) return;
   const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
   DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
-  // like pairing a headset: their code turns up in the front camera, and the host says yes to it
-  duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
 }
 async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
   try{ await acc(code); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
@@ -1815,10 +1825,10 @@ function duJoinStart(){ duStop(); $('#duOfferIn').value=''; $('#duAnswer').value
   const g=DU.gen; duScan($('#duJoinCam'),'environment',code=>{ if(g===DU.gen) duJoinWith(code); }); }
 async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
   if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
-  btn.disabled=true; $('#duAnswer').value=''; duScanStop();
+  btn.disabled=true; $('#duAnswer').value='';   // (the camera stays on while the answer is made: see duHostWifi)
   const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
-  if(g!==DU.gen) return;
+  duScanStop(); if(g!==DU.gen) return;
   DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer');
   // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }

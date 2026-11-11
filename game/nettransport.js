@@ -35,6 +35,10 @@ const OLD = () => new Error('Bad code (this browser is too old for pairing codes
 // ---- HEX2: the short code. Only what a data-channel connection needs is kept (type, ICE username and password, the
 // sha-256 fingerprint, each UDP host address and port); the other phone writes a plain SDP back around it.
 // Layout: [type 0|1][ufrag len][ufrag][pwd len][pwd][32 fingerprint bytes] then per address [kind 4|6|109][4|16 bytes][port 2], then crc16.
+// Public STUN servers: each phone learns the address the internet sees it at (a srflx candidate), so two phones whose
+// local addresses are hidden behind random .local names (mDNS, which many Wi-Fi networks do not pass between devices)
+// can still find each other through their router. No game data goes through them; they only answer "this is you".
+const RTC_ICE = [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun.cloudflare.com:3478'] }];
 function compactSdp(desc) {
   const sdp = desc.sdp, line = re => (sdp.match(re) || [])[1];
   const ufrag = line(/^a=ice-ufrag:(\S+)/m), pwd = line(/^a=ice-pwd:(\S+)/m), fp = line(/^a=fingerprint:sha-256 (\S+)/im);
@@ -45,11 +49,13 @@ function compactSdp(desc) {
   if (fpb.length !== 32 || fpb.some(isNaN)) return null;
   const out = [desc.type === 'answer' ? 1 : 0, ufrag.length, ...new TextEncoder().encode(ufrag), pwd.length, ...new TextEncoder().encode(pwd), ...fpb];
   const seen = new Set();
-  for (const m of sdp.matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) (\d+) typ host/gim)) {
-    const addr = m[1], port = +m[2];
-    if (seen.has(addr + ':' + port) || seen.size >= 6) continue;
+  // host addresses, then the public one a STUN server saw (srflx, IPv4 only: kind 44)
+  for (const m of sdp.matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) (\d+) typ (host|srflx)/gim)) {
+    const addr = m[1], port = +m[2], srflx = m[3].toLowerCase() === 'srflx';
+    if (srflx && !/^\d+\.\d+\.\d+\.\d+$/.test(addr)) continue;
+    if (seen.has(addr + ':' + port) || seen.size >= 8) continue;
     let kind, bytes;
-    if (/^\d+\.\d+\.\d+\.\d+$/.test(addr)) { kind = 4; bytes = addr.split('.').map(Number); }
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(addr)) { kind = srflx ? 44 : 4; bytes = addr.split('.').map(Number); }
     else if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.local$/i.test(addr)) { kind = 109; bytes = addr.slice(0, 36).replace(/-/g, '').match(/../g).map(h => parseInt(h, 16)); }
     else if (addr.includes(':')) {
       const [a, b] = addr.split('::'), hs = x => (x ? x.split(':') : []), l = hs(a), r = hs(b);
@@ -75,12 +81,12 @@ function expandSdp(u8) {
   while (i < u8.length) {
     const kind = need(1)[0];
     let addr;
-    if (kind === 4) addr = Array.from(need(4)).join('.');
+    if (kind === 4 || kind === 44) addr = Array.from(need(4)).join('.');
     else if (kind === 6) { const b = need(16), g = []; for (let k = 0; k < 16; k += 2) g.push(((b[k] << 8) | b[k + 1]).toString(16)); addr = g.join(':'); }
     else if (kind === 109) { const h = Array.from(need(16), b => b.toString(16).padStart(2, '0')).join(''); addr = h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20) + '.local'; }
     else throw new Error('kind');
     const p = need(2), port = (p[0] << 8) | p[1];
-    cands.push('a=candidate:' + (cands.length + 1) + ' 1 udp ' + (2122260223 - cands.length) + ' ' + addr + ' ' + port + ' typ host');
+    cands.push('a=candidate:' + (cands.length + 1) + ' 1 udp ' + ((kind === 44 ? 1686052607 : 2122260223) - cands.length) + ' ' + addr + ' ' + port + (kind === 44 ? ' typ srflx raddr 0.0.0.0 rport 0' : ' typ host'));
   }
   if (!cands.length) throw new Error('no address');
   const sdp = ['v=0', 'o=- ' + Math.floor(Math.random() * 1e15) + ' 2 IN IP4 127.0.0.1', 's=-', 't=0 0', 'a=group:BUNDLE 0', 'a=msid-semantic: WMS',
@@ -241,7 +247,7 @@ class RtcTransport {
     });
   }
   static async host() {
-    const pc = new RTCPeerConnection({ iceServers: [] });
+    const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
     const transport = new RtcTransport(pc);
     await pc.setLocalDescription(await pc.createOffer());
     await RtcTransport._gathered(pc);
@@ -263,7 +269,7 @@ class RtcTransport {
   static async join(offerCode) {
     const d = await unpackSignal(offerCode);
     if (d.type !== 'offer') throw new Error('Bad code (that is an answer, not an offer)');
-    const pc = new RTCPeerConnection({ iceServers: [] });
+    const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
     const transport = new RtcTransport(pc);
     try {
       await pc.setRemoteDescription(d);

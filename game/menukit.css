@@ -1635,7 +1635,9 @@ html body #peek .card>.popx::before{content:''; display:block; width:18px; heigh
 #scrDuel .duqr canvas{width:min(240px,62vw); height:auto; image-rendering:pixelated; display:block;}
 #scrDuel .duqr canvas[width="0"]{width:min(240px,62vw); height:min(240px,62vw);}
 #scrDuel .ducam{width:min(240px,62vw); aspect-ratio:1; object-fit:cover; background:#05080b; border:2px solid #2a3340; border-radius:4px; display:block;}
-#scrDuel .ducam-front{width:min(150px,40vw); transform:scaleX(-1);}
+#scrDuel .ducam-front{width:min(150px,40vw);}
+#scrDuel .ducam.mirror{transform:scaleX(-1);}   /* the selfie camera, shown as a mirror */
+#scrDuel .duflip{margin:6px auto 0; display:block;}
 #scrDuel #duAccept{align-self:stretch;}
 #scrDuel .dumanual{margin-top:8px; color:var(--mk-muted,#c3d0de); font:400 15px var(--font-b);}
 #scrDuel .dumanual summary{cursor:pointer; text-align:center; padding:6px 0; text-decoration:underline;}

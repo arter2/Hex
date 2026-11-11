@@ -138,6 +138,7 @@
         <div class="duqr"><canvas id="duOfferQr" aria-label="Your code"></canvas></div>
         <p class="dunum"><b>2</b>Their phone then shows a code. They hold it up to the top of your screen, where your camera is.</p>
         <video id="duHostCam" class="ducam ducam-front" playsinline muted autoplay></video>
+        <button class="btn ghost small duflip" type="button" data-cam="duHostCam">Switch camera</button>
         <p id="duHostSeen" class="duwaiting">Watching for their code<i></i></p>
         <button id="duAccept" class="btn" hidden>Accept</button></div>
       <details class="dumanual"><summary>No camera? Copy codes instead</summary>
@@ -148,7 +149,8 @@
     </div>
     <div id="duJoinCode" class="dustep" hidden>
       <div class="dupanel duqrpanel"><p class="dunum"><b>1</b>Point your camera at your host's code.</p>
-        <video id="duJoinCam" class="ducam" playsinline muted autoplay></video></div>
+        <video id="duJoinCam" class="ducam" playsinline muted autoplay></video>
+        <button class="btn ghost small duflip" type="button" data-cam="duJoinCam">Switch camera</button></div>
       <details class="dumanual"><summary>No camera? Paste a code instead</summary>
         <div class="dupanel"><textarea id="duOfferIn" class="ducode" rows="3" placeholder="Paste the host's code (HEX2.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
           <div class="dubtns"><button id="duPaste2" class="btn ghost small" data-to="duOfferIn">Paste</button><button id="duMakeAnswer" class="btn">Make my code</button></div></div></details>

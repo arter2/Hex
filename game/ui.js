@@ -1706,7 +1706,7 @@ function openDuel(from){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catc
   dk.innerHTML=why?esc(why):'Deck: <b>'+esc(d.name||'My deck')+'</b> · '+d.list.length+' cards';
   duStep('role'); show('scrDuel'); }
 const duRace=(p,ms)=>new Promise((res,rej)=>{ const t=setTimeout(()=>rej(new Error(DU_SLOW_MSG)),ms); p.then(v=>{ clearTimeout(t); res(v); },e=>{ clearTimeout(t); rej(e); }); });
-function duFail(g,msg){ if(g!==DU.gen) return; duStop(); duStep('how',msg instanceof Error?msg.message:msg||DU_SLOW_MSG); }
+function duFail(g,msg){ if(g!==DU.gen) return; const diag=DU.diag; DU.diag=''; duStop(); duStep('how',(msg instanceof Error?msg.message:msg||DU_SLOW_MSG)+(diag?' '+diag:'')); }
 
 // the duel session over a transport that is open (both ends): lobby, start, result
 function duBegin(tr,host){
@@ -1823,11 +1823,23 @@ async function duHostWifi(){
   if(g!==DU.gen) return;
   DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
 }
+// what the connection is doing, under Connecting…: the ICE state, and once it fails, what each side offered, so the
+// reason can be read off a phone (both on one Wi-Fi? a guest network that keeps phones apart? mobile data?)
+function duWatch(tr,g){ const pc=tr&&tr.pc; DU.diag=''; if(!pc) return; const el=$('#duWaitTxt'), base=el.textContent;
+  const kinds=sdp=>{ const k={wifi:0,hidden:0,public:0,v6:0}; for(const m of String(sdp||'').matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) \d+ typ (\w+)/gim)){ const a=m[1];
+      if(m[2]==='srflx') k.public++; else if(/\.local$/i.test(a)) k.hidden++; else if(a.includes(':')) k.v6++; else k.wifi++; } return k; };
+  const say=k=>k.wifi+' Wi-Fi, '+k.hidden+' hidden, '+k.public+' public'+(k.v6?', '+k.v6+' IPv6':'');
+  const upd=()=>{ if(g!==DU.gen||DU.session) return; const st=pc.iceConnectionState;
+    { const me=kinds(pc.localDescription&&pc.localDescription.sdp), them=kinds(pc.remoteDescription&&pc.remoteDescription.sdp); DU.diag='(Connection: '+st+'. This phone offered '+say(me)+'; the other '+say(them)+'.)'; }
+    el.textContent=base+' ('+({new:'starting',checking:'trying addresses',connected:'connected',completed:'connected',disconnected:'dropped',failed:'no route',closed:'closed'}[st]||st)+')';
+    if(st==='failed'){ const me=kinds(pc.localDescription&&pc.localDescription.sdp), them=kinds(pc.remoteDescription&&pc.remoteDescription.sdp);
+      duMsg('The phones could not reach each other. This phone offered '+say(me)+'; the other '+say(them)+'. Put both on the same Wi-Fi (not a guest network) with mobile data off, and try again.'); } };
+  pc.addEventListener('iceconnectionstatechange',upd); upd(); }
 async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
   try{ await acc(code); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
   if(g!==DU.gen) return;
   duScanStop(); duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
-  const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
+  const tr=DU.tr; duWatch(tr,g); try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
   if(g===DU.gen) duBegin(tr,true); }
 $('#duAccept').onclick=()=>duHostAccept(DU.answer);
 $('#duAcceptPaste').onclick=()=>duHostAccept($('#duAnswerIn').value);
@@ -1839,7 +1851,7 @@ async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('
   const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   duScanStop(); if(g!==DU.gen) return;
-  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer');
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer'); duWatch(j.transport,g);
   // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
   if(g===DU.gen) duBegin(tr,false); }

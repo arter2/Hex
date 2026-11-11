@@ -50,7 +50,11 @@ function compactSdp(desc) {
   const out = [desc.type === 'answer' ? 1 : 0, ufrag.length, ...new TextEncoder().encode(ufrag), pwd.length, ...new TextEncoder().encode(pwd), ...fpb];
   const seen = new Set(), took = { 4: 0, 109: 0, 6: 0, 44: 0 }, MAX = { 4: 2, 109: 1, 6: 1, 44: 1 };   // few addresses, so the code (and its QR) stays small enough to scan
   // host addresses, then the public one a STUN server saw (srflx, IPv4 only: kind 44)
-  for (const m of sdp.matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) (\d+) typ (host|srflx)/gim)) {
+  // best first: the browser ranks the Wi-Fi above mobile data and VPNs (its priority, and network-cost when it gives one),
+  // so the few addresses kept are the ones the other phone can reach
+  const cl = [...sdp.matchAll(/^a=candidate:\S+ 1 udp (\d+) (\S+) (\d+) typ (host|srflx)([^\r\n]*)/gim)].map(m => ({ pri: +m[1], addr: m[2], port: m[3], typ: m[4], cost: +((m[5].match(/network-cost (\d+)/) || [])[1] || 0) }))
+    .sort((a, b) => a.cost - b.cost || b.pri - a.pri);
+  for (const m of cl.map(c => [null, c.addr, c.port, c.typ])) {
     const addr = m[1], port = +m[2], srflx = m[3].toLowerCase() === 'srflx';
     if (srflx && !/^\d+\.\d+\.\d+\.\d+$/.test(addr)) continue;
     if (seen.has(addr + ':' + port) || seen.size >= 8) continue;

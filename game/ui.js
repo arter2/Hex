@@ -1839,10 +1839,20 @@ function duCands(d){ const out=[]; for(const m of String(d&&d.sdp||'').matchAll(
 // every state change of the connection, its address errors, and the address pair it settles on
 function duPcLog(tr,who){ const pc=tr&&tr.pc; if(!pc||pc.__logged) return; pc.__logged=1;
   pc.addEventListener('icegatheringstatechange',()=>duLog(who+': gathering '+pc.iceGatheringState));
-  pc.addEventListener('iceconnectionstatechange',()=>{ duLog(who+': ICE '+pc.iceConnectionState); if(/connected|completed|failed|disconnected/.test(pc.iceConnectionState)) duPair(pc,who); });
+  // while it is trying, every 2.5 s: each address pair, its state, and the checks sent and answered (none answered on a
+  // pair between two Wi-Fi addresses: the network keeps the phones apart)
+  let poll=0; const stopPoll=()=>{ clearInterval(poll); poll=0; };
+  pc.addEventListener('iceconnectionstatechange',()=>{ const st=pc.iceConnectionState; duLog(who+': ICE '+st);
+    if(st==='checking'&&!poll){ duPairs(pc,who); poll=setInterval(()=>{ if(pc.signalingState==='closed'||DU.session) return stopPoll(); duPairs(pc,who); },2500); }
+    if(/connected|completed/.test(st)){ stopPoll(); duPair(pc,who); } if(/failed|closed/.test(st)) stopPoll(); });
   pc.addEventListener('connectionstatechange',()=>duLog(who+': connection '+pc.connectionState));
   pc.addEventListener('icecandidateerror',e=>duLog(who+': address error '+(e.errorCode||'')+' '+(e.errorText||'')+' '+(e.url||'')));
   for(const ch of [tr.safe,tr.fast]) if(ch){ ch.addEventListener('open',()=>duLog(who+': channel '+ch.label+' open')); ch.addEventListener('close',()=>duLog(who+': channel '+ch.label+' closed')); } }
+async function duPairs(pc,who){ try{ const st=await pc.getStats(), c=x=>x?x.candidateType+' '+(x.address||x.ip||'?')+':'+x.port:'?', rows=[]; let rc=0;
+    st.forEach(r=>{ if(r.type==='remote-candidate') rc++; if(r.type==='candidate-pair') rows.push(r); });
+    rows.sort((a,b)=>(b.requestsSent||0)-(a.requestsSent||0));
+    duLog(who+': '+rows.length+' pairs, '+rc+' remote addresses'+(rows.length?':':''));
+    for(const r of rows.slice(0,6)) duLog('   '+c(st.get(r.localCandidateId))+' -> '+c(st.get(r.remoteCandidateId))+'  '+r.state+'  sent '+(r.requestsSent||0)+' answered '+(r.responsesReceived||0)+' heard '+(r.requestsReceived||0)); }catch(e){} }
 async function duPair(pc,who){ try{ const st=await pc.getStats(); let pair=null; st.forEach(r=>{ if(r.type==='candidate-pair'&&(r.nominated||r.selected)&&r.state==='succeeded') pair=r; });
     if(!pair){ let n=0, states={}; st.forEach(r=>{ if(r.type==='candidate-pair'){ n++; states[r.state]=(states[r.state]||0)+1; } }); return duLog(who+': no working address pair ('+n+' tried: '+JSON.stringify(states)+')'); }
     const L=st.get(pair.localCandidateId), R=st.get(pair.remoteCandidateId), c=x=>x?x.candidateType+' '+(x.address||x.ip||'?')+':'+x.port:'?';

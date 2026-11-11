@@ -104,7 +104,7 @@ function xDetShader(sh,wall){ let f=sh.fragmentShader;
     vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
     float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
     mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));
-  f=f.replace('void main() {','uniform sampler2D uXDetN; uniform float uXDetK;\nvoid main() {');
+  f=f.replace('void main() {',(f.includes('uniform sampler2D uXDetN')?'':'uniform sampler2D uXDetN; ')+'uniform float uXDetK;\nvoid main() {');
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;

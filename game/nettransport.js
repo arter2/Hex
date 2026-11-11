@@ -251,9 +251,11 @@ class RtcTransport {
       pc.addEventListener('icecandidate', cand);
     });
   }
-  static async host() {
+  // onPc(transport): called as soon as the connection exists, before anything is sent (the duel log watches it from the start)
+  static async host(onPc) {
     const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
     const transport = new RtcTransport(pc);
+    if (onPc) onPc(transport);
     await pc.setLocalDescription(await pc.createOffer());
     await RtcTransport._gathered(pc);
     const offerCode = await packSignal(pc.localDescription);
@@ -271,11 +273,12 @@ class RtcTransport {
       }
     };
   }
-  static async join(offerCode) {
+  static async join(offerCode, onPc) {
     const d = await unpackSignal(offerCode);
     if (d.type !== 'offer') throw new Error('Bad code (that is an answer, not an offer)');
     const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
     const transport = new RtcTransport(pc);
+    if (onPc) onPc(transport);
     try {
       await pc.setRemoteDescription(d);
       await pc.setLocalDescription(await pc.createAnswer());

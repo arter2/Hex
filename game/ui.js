@@ -1827,7 +1827,7 @@ async function duHostWifi(){
   await duScan($('#duHostCam'),'environment',code=>{ if(g!==DU.gen) return; DU.answer=code; duLog('Their code read by the camera ('+code.length+' characters)'); $('#duHostSeen').hidden=true; duAcceptReady(true); duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
   if(g!==DU.gen) return;
   duLog('Host: camera '+(DU.scan&&DU.scan.stream?'on ('+(DU.scan.facing||'?')+')':'off')+'; making the offer');
-  const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
+  const hp=RtcTransport.host(t=>duPcLog(t,'host')); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
   DU.tr=h.transport; DU.accept=h.accept; duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
@@ -1852,7 +1852,7 @@ async function duPairs(pc,who){ try{ const st=await pc.getStats(), c=x=>x?x.cand
     st.forEach(r=>{ if(r.type==='remote-candidate') rc++; if(r.type==='candidate-pair') rows.push(r); });
     rows.sort((a,b)=>(b.requestsSent||0)-(a.requestsSent||0));
     duLog(who+': '+rows.length+' pairs, '+rc+' remote addresses'+(rows.length?':':''));
-    for(const r of rows.slice(0,6)) duLog('   '+c(st.get(r.localCandidateId))+' -> '+c(st.get(r.remoteCandidateId))+'  '+r.state+'  sent '+(r.requestsSent||0)+' answered '+(r.responsesReceived||0)+' heard '+(r.requestsReceived||0)); }catch(e){} }
+    for(const r of rows.slice(0,14)) duLog('   '+c(st.get(r.localCandidateId))+' -> '+c(st.get(r.remoteCandidateId))+'  '+r.state+'  sent '+(r.requestsSent||0)+' answered '+(r.responsesReceived||0)+' heard '+(r.requestsReceived||0)); }catch(e){} }
 async function duPair(pc,who){ try{ const st=await pc.getStats(); let pair=null; st.forEach(r=>{ if(r.type==='candidate-pair'&&(r.nominated||r.selected)&&r.state==='succeeded') pair=r; });
     if(!pair){ let n=0, states={}; st.forEach(r=>{ if(r.type==='candidate-pair'){ n++; states[r.state]=(states[r.state]||0)+1; } }); return duLog(who+': no working address pair ('+n+' tried: '+JSON.stringify(states)+')'); }
     const L=st.get(pair.localCandidateId), R=st.get(pair.remoteCandidateId), c=x=>x?x.candidateType+' '+(x.address||x.ip||'?')+':'+x.port:'?';
@@ -1882,7 +1882,7 @@ async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('
   if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
   btn.disabled=true; $('#duAnswer').value='';   // (the camera stays on while the answer is made: see duHostWifi)
   duLog('Join: host code in ('+String(code).length+' characters); camera '+(DU.scan&&DU.scan.stream?'on':'off')+'; making the answer');
-  const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
+  const jp=RtcTransport.join(code,t=>duPcLog(t,'join')); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   duScanStop(); if(g!==DU.gen) return;
   duLog('Join: the host offers '+duCands(j.transport.pc.remoteDescription)); duLog('Join: answer ready, '+j.answerCode.length+' characters; it offers '+duCands(j.transport.pc.localDescription)); duPcLog(j.transport,'join');

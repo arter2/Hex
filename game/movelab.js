@@ -108,9 +108,10 @@ function mlabProfiles(f){ const P=mlabProfs(), names=[...Object.keys(MLAB_PRESET
   del.onclick=()=>{ if(!del.dataset.armed){ del.dataset.armed='1'; del.textContent='Tap to delete “'+mlabCur+'”'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.armed; del.textContent='Delete'; } },2500); return; }
     const Q=mlabProfs(); delete Q[mlabCur]; mlabProfsKeep(Q); mlabSetCur(''); renderMlab(); };
   f.appendChild(bar); mlabProfMark(); }
-/* The joystick's speed against how far you push, drawn under its settings: grey, the dead zone; the line,
+/* The joystick's speed against how far you push, drawn under its settings (the Movement lab's, and Debug › Battle movement's): grey, the dead zone; the line,
    your share of walking speed from the middle of the stick (left) to its rim (right). */
-function mlabCurve(){ const c=document.getElementById('mlabCurve'); if(!c) return; const g=c.getContext('2d'), W=c.width, H=c.height, L=28, T=8, w=W-L-8, h=H-T-18;
+function mlabCurve(){ for(const id of ['mlabCurve','dbgCurve']) mlabCurveOn(document.getElementById(id)); }
+function mlabCurveOn(c){ if(!c) return; const g=c.getContext('2d'), W=c.width, H=c.height, L=28, T=8, w=W-L-8, h=H-T-18;
   g.clearRect(0,0,W,H); g.fillStyle='rgba(255,255,255,.08)'; g.fillRect(L,T,w*MV('mvDead'),h);
   g.strokeStyle='rgba(255,255,255,.25)'; g.lineWidth=1; g.strokeRect(L+.5,T+.5,w,h);
   g.beginPath(); for(let i=0;i<=120;i++){ const l=i/120, d=MV('mvDead'), u=Math.min(1,(l-d)/Math.max(.01,MV('mvStickFull')-d)), k=l<d?0:MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));

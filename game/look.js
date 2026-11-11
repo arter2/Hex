@@ -371,7 +371,8 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
   ...[['dPitch',0,''],['dDist',1,''],['dView',0,''],['dViewP',1,''],['dStepOn',null,'xwalls'],['dStepLow',2,'xwalls'],['dShOn',null,''],['dShW',2,''],['dShUp',2,''],['dShDown',2,''],['dShBack',2,''],['dShEdge',2,''],['dShInner',null,''],['dShDoor',null,''],['dShDoorH',1,''],['dShade',null,'xshade'],['dShadeA',2,'xshade'],['dShadeTint',2,'xshade'],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
-function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
+function xDbgApply(what){ if(typeof mlabCurve==='function') mlabCurve();   // (the joystick curve, in the debug menu and the Movement lab)
+  if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
@@ -384,6 +385,10 @@ function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(con
   xDbgPanes(); xRowTools(box,'.srow',row=>{ const s=row.querySelector('small'); return s?s.textContent:''; });
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   { const pz=document.getElementById('dbgPause'); if(pz){ pz.checked=DBG.pause; pz.onchange=()=>{ DBG.pause=pz.checked; document.body.classList.toggle('dbgPaused',DBG.pause); }; } }
+  // the Speed button in the title bar: the same switch as Show movement in fights (the readout and gizmos in real fights)
+  { const sb=document.getElementById('dbgSpeedBtn'), sg=document.getElementById('dbg_mvShowGame');
+    if(sb&&sg){ const sync=()=>sb.setAttribute('aria-pressed',sg.checked?'true':'false'); sb.onclick=()=>{ sg.click(); sync(); }; sg.addEventListener('change',sync); sync(); } }
+  if(typeof mlabCurve==='function') mlabCurve();
   // while a slider is dragged the menu fades away but for that slider's row, so the whole field of play shows
   { let row=null, t=0; const end=()=>{ clearTimeout(t); t=setTimeout(()=>{ box.classList.remove('tuning'); if(row) row.classList.remove('dbgActive'); row=null; },250); };
     box.addEventListener('pointerdown',e=>{ const r=e.target.closest&&e.target.closest('input[type=range]'); if(!r) return; clearTimeout(t); if(row) row.classList.remove('dbgActive');

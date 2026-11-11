@@ -392,7 +392,7 @@
     <button id="btnAce" class="ace-btn" hidden aria-label="Fire the Ace"><span class="ace-ic">♠</span><span id="aceName" class="ace-nm"></span></button>
     <canvas id="board3d"></canvas>
     <canvas id="board"></canvas>
-    <canvas id="mvGraph" class="mvgraph" width="260" height="96" hidden></canvas>
+    <canvas id="mvGraph" class="mvgraph" width="260" height="110" hidden></canvas>
     <div id="bStick" class="x-stick bstick" hidden><i class="bdead"></i><i class="x-knob"></i></div>
     <div id="castFx" class="cast-fx"></div>
     <div id="banner" class="banner"></div>
@@ -596,9 +596,9 @@
   <div id="debug" class="overlay">
     <div class="panel settings debug">
       <div id="dbgBody" class="dbgbody">
-      <div class="bar"><h2>Debug</h2><button id="dbgExplain" type="button" class="dbgex" aria-pressed="false">Notes</button></div>
+      <div class="bar"><h2>Debug</h2><label class="dbgex dbgtog" title="Pause the game: holds the fight or the dungeon still while it keeps being drawn. Not saved."><input id="dbgPause" type="checkbox">Pause</label><button id="dbgSpeedBtn" type="button" class="dbgex" aria-pressed="false" title="The speed readout in fights: speed now, top speed, frames a second, the stick's screen scale">Speed</button><button id="dbgExplain" type="button" class="dbgex" aria-pressed="false">Notes</button></div>
+      <p id="dbgPauseNote" class="hint warn" hidden>Pause is off while a duel is running: it would stall the other player.</p>
       <p class="hint">Test settings for the look of the dungeon and the battle (they share them). The view behind this panel changes as you slide. Saved in this browser. Open with three fingers tapped three times (or the ` key). Drag the bar at the bottom to resize; tap it to fold or unfold.</p>
-      <div class="srow"><span>Pause the game<small>Holds the fight or the dungeon still (nothing moves, no timers run) while everything keeps being drawn, so you can tune with the debug menu open. Not saved.</small><small id="dbgPauseNote" class="warn" hidden>Off while a duel is running: it would stall the other player.</small></span><label class="scheck"><input id="dbgPause" type="checkbox"></label></div>
       <div class="srow"><span>Show Card lab<small>Adds a Card lab button to the front page, to build a card from its parts and try it in a test battle. Saved in this browser only.</small></span><label class="scheck"><input id="dbgLab" type="checkbox"></label></div>
       <h3>Card art</h3>
       <div class="srow"><span>Sharpen card art<small>Sharpens the painted art on every card, live (an unsharp 3 × 3 pass on screen; the art files are not changed). 0 is off. Saved in this browser only.</small></span><span class="srange"><input id="dbgSharp" type="range" min="0" max="2" step="0.05"><b id="dbgSharpV"></b></span></div>
@@ -722,6 +722,7 @@
       <div class="srow"><span>Slowest<small>Your speed just past the dead zone, as a share of walking speed.</small></span><span class="srange"><input id="dbg_mvStickMin" type="range" min="0" max="1" step="0.01"><b id="dbg_mvStickMinV"></b></span></div>
       <div class="srow"><span>Full speed at<small>How far you push, as a share of the reach, to walk at full speed.</small></span><span class="srange"><input id="dbg_mvStickFull" type="range" min="0.1" max="1" step="0.01"><b id="dbg_mvStickFullV"></b></span></div>
       <div class="srow"><span>Curve<small>How speed rises between Slowest and full: 1 a straight line, below 1 quick to get going, above 1 slow then sudden.</small></span><span class="srange"><input id="dbg_mvCurve" type="range" min="0.2" max="4" step="0.05"><b id="dbg_mvCurveV"></b></span></div>
+      <div class="srow mvcurverow"><canvas id="dbgCurve" class="mvcurve" width="300" height="90" aria-label="Joystick speed against how far you push"></canvas></div>
       <div class="srow"><span>Tap time<small>A touch shorter than this (ms) that hardly moves is a tap: walk to that tile.</small></span><span class="srange"><input id="dbg_mvTapMs" type="range" min="50" max="600" step="10"><b id="dbg_mvTapMsV"></b></span></div>
       <div class="srow"><span>Tap slop<small>How far (px) a finger can wander and still be a tap.</small></span><span class="srange"><input id="dbg_mvTapPx" type="range" min="2" max="40" step="1"><b id="dbg_mvTapPxV"></b></span></div>
       <div class="srow"><span>Stick top speed<small>Tiles a second with the joystick pushed all the way (taps and keys keep Walk speed).</small></span><span class="srange"><input id="dbg_mvStickSpeed" type="range" min="1" max="12" step="0.1"><b id="dbg_mvStickSpeedV"></b></span></div>

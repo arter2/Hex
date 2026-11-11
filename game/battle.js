@@ -1534,7 +1534,7 @@ function mvGizmos(ctx,p,mx,my){ const d=p.mvDiag; if(!d) return; const c=MV_COL[
    the part of the move (MV_COL), with a line at top speed; and the part you are in now, how long you have been in
    it against its setting, and the turn. */
 function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; const on=!!(mvShowing()&&p&&p.mvHist); c.hidden=!on; if(!on) return;
-  const g=c.getContext('2d'), W=c.width, H=c.height, top=16, gh=H-top-28, y=f=>top+gh-Math.min(1.25,f)/1.25*gh, h=p.mvHist, d=p.mvDiag||{};
+  const g=c.getContext('2d'), W=c.width, H=c.height, top=16, gh=H-top-40, y=f=>top+gh-Math.min(1.25,f)/1.25*gh, h=p.mvHist, d=p.mvDiag||{};
   g.clearRect(0,0,W,H); g.fillStyle='rgba(8,11,15,.82)'; g.fillRect(0,0,W,H);
   g.strokeStyle='rgba(57,255,138,.45)'; g.setLineDash([4,3]); g.beginPath(); g.moveTo(0,y(1)); g.lineTo(W,y(1)); g.stroke(); g.setLineDash([]);
   g.fillStyle='rgba(57,255,138,.7)'; g.font='9px system-ui,sans-serif'; g.textAlign='right'; g.fillText('top',W-3,y(1)-2);
@@ -1553,7 +1553,10 @@ function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; 
   g.font='10px system-ui,sans-serif'; g.fillStyle='#d8e2ee'; g.fillText(info,4,H-8);
   // the numbers: speed now and the push's top, in tiles a second; frames a second and fight updates a frame; which battle
   { const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz))), v=Math.hypot(p.vx||0,p.vz||0)/sp, P=typeof PERF!=='undefined'?PERF:null;
-    g.fillStyle='#ffe066'; g.fillText(v.toFixed(1)+' t/s · top '+((p.free&&p.free.tps)||MV('mvStickSpeed')).toFixed(1)+(P?' · '+Math.round(P.fps)+' fps · '+P.upf.toFixed(2)+'/f':'')+' · #'+(B.no||1),4,H-20); } }
+    g.fillStyle='#ffe066'; g.fillText(v.toFixed(1)+' t/s · top '+((p.free&&p.free.tps)||MV('mvStickSpeed')).toFixed(1)+(P?' · '+Math.round(P.fps)+' fps · '+P.upf.toFixed(2)+'/f':'')+' · #'+(B.no||1),4,H-20);
+    // on screen: a tile's size in pixels, so the speed in pixels a second, and the stick's scale for this screen (ui.js gestK)
+    const n=neighbors(p.tile)[0], a=proj(p.tile.wx,0,p.tile.wz), b2=n?proj(n.wx,0,n.wz):a, tpx=Math.hypot(a[0]-b2[0],a[1]-b2[1]);
+    g.fillStyle='#8fe4ff'; g.fillText(Math.round(v*tpx)+' px/s · tile '+Math.round(tpx)+' px · stick ×'+(typeof gestK==='function'?gestK().toFixed(2):'1')+' · '+Math.round(View.w)+'×'+Math.round(View.h),4,H-32); } }
 // canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)
 function unprojGround(x,y,wx,wz){ for(let i=0;i<5;i++){ const [a,b]=proj(wx,0,wz), [a1,b1]=proj(wx+.5,0,wz), [a2,b2]=proj(wx,0,wz+.5);
     const j11=(a1-a)*2, j21=(b1-b)*2, j12=(a2-a)*2, j22=(b2-b)*2, det=j11*j22-j12*j21; if(Math.abs(det)<1e-9) break;

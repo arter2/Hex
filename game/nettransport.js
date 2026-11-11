@@ -39,6 +39,25 @@ const OLD = () => new Error('Bad code (this browser is too old for pairing codes
 // local addresses are hidden behind random .local names (mDNS, which many Wi-Fi networks do not pass between devices)
 // can still find each other through their router. No game data goes through them; they only answer "this is you".
 const RTC_ICE = [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun.cloudflare.com:3478'] }];
+// The relay (duelrelay.js): its servers added to RTC_ICE when it is set. rtcRelayNote says what happened, for the log.
+const relayOn = () => { const R = typeof window !== 'undefined' && window.DUEL_RELAY; return !!(R && (R.url || (R.servers && R.servers.length))); };
+let rtcRelayCache = null, rtcRelayNote = 'relay: not set';
+async function rtcIceServers() {
+  const R = (typeof window !== 'undefined' && window.DUEL_RELAY) || {}, out = RTC_ICE.slice();
+  if (Array.isArray(R.servers) && R.servers.length) { out.push(...R.servers); rtcRelayNote = 'relay: ' + R.servers.length + ' fixed server(s)'; }
+  if (R.url) {
+    if (rtcRelayCache && Date.now() - rtcRelayCache.t < 3600e3) { out.push(...rtcRelayCache.list); rtcRelayNote = 'relay: ' + rtcRelayCache.list.length + ' server(s), kept'; return out; }
+    try {
+      const ctl = typeof AbortController !== 'undefined' ? new AbortController() : null, t = setTimeout(() => ctl && ctl.abort(), 5000);
+      const r = await fetch(R.url, ctl ? { signal: ctl.signal } : {}); clearTimeout(t);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json(), list = (Array.isArray(j) ? j : j && j.iceServers) || [];
+      if (!list.length) throw new Error('no servers in the reply');
+      rtcRelayCache = { t: Date.now(), list }; out.push(...list); rtcRelayNote = 'relay: ' + list.length + ' server(s) from ' + new URL(R.url).host;
+    } catch (e) { rtcRelayNote = 'relay: could not get logins (' + (e.name === 'AbortError' ? 'timed out' : e.message) + '); direct only'; }
+  }
+  return out;
+}
 function compactSdp(desc) {
   const sdp = desc.sdp, line = re => (sdp.match(re) || [])[1];
   const ufrag = line(/^a=ice-ufrag:(\S+)/m), pwd = line(/^a=ice-pwd:(\S+)/m), fp = line(/^a=fingerprint:sha-256 (\S+)/im);
@@ -48,18 +67,18 @@ function compactSdp(desc) {
   const fpb = fp.split(':').map(h => parseInt(h, 16));
   if (fpb.length !== 32 || fpb.some(isNaN)) return null;
   const out = [desc.type === 'answer' ? 1 : 0, ufrag.length, ...new TextEncoder().encode(ufrag), pwd.length, ...new TextEncoder().encode(pwd), ...fpb];
-  const seen = new Set(), took = { 4: 0, 109: 0, 6: 0, 44: 0 }, MAX = { 4: 2, 109: 1, 6: 1, 44: 1 };   // few addresses, so the code (and its QR) stays small enough to scan
+  const seen = new Set(), took = { 4: 0, 109: 0, 6: 0, 44: 0, 45: 0 }, MAX = { 4: 2, 109: 1, 6: 1, 44: 1, 45: 2 };   // few addresses, so the code (and its QR) stays small enough to scan
   // host addresses, then the public one a STUN server saw (srflx, IPv4 only: kind 44)
   // best first: the browser ranks the Wi-Fi above mobile data and VPNs (its priority, and network-cost when it gives one),
   // so the few addresses kept are the ones the other phone can reach
-  const cl = [...sdp.matchAll(/^a=candidate:\S+ 1 udp (\d+) (\S+) (\d+) typ (host|srflx)([^\r\n]*)/gim)].map(m => ({ pri: +m[1], addr: m[2], port: m[3], typ: m[4], cost: +((m[5].match(/network-cost (\d+)/) || [])[1] || 0) }))
+  const cl = [...sdp.matchAll(/^a=candidate:\S+ 1 udp (\d+) (\S+) (\d+) typ (host|srflx|relay)([^\r\n]*)/gim)].map(m => ({ pri: +m[1], addr: m[2], port: m[3], typ: m[4], cost: +((m[5].match(/network-cost (\d+)/) || [])[1] || 0) }))
     .sort((a, b) => a.cost - b.cost || b.pri - a.pri);
   for (const m of cl.map(c => [null, c.addr, c.port, c.typ])) {
-    const addr = m[1], port = +m[2], srflx = m[3].toLowerCase() === 'srflx';
-    if (srflx && !/^\d+\.\d+\.\d+\.\d+$/.test(addr)) continue;
-    if (seen.has(addr + ':' + port) || seen.size >= 8) continue;
+    const addr = m[1], port = +m[2], srflx = m[3].toLowerCase() === 'srflx', relay = m[3].toLowerCase() === 'relay';
+    if ((srflx || relay) && !/^\d+\.\d+\.\d+\.\d+$/.test(addr)) continue;
+    if (seen.has(addr + ':' + port) || seen.size >= 9) continue;
     let kind, bytes;
-    if (/^\d+\.\d+\.\d+\.\d+$/.test(addr)) { kind = srflx ? 44 : 4; bytes = addr.split('.').map(Number); }
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(addr)) { kind = relay ? 45 : srflx ? 44 : 4; bytes = addr.split('.').map(Number); }
     else if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.local$/i.test(addr)) { kind = 109; bytes = addr.slice(0, 36).replace(/-/g, '').match(/../g).map(h => parseInt(h, 16)); }
     else if (addr.includes(':')) {
       const [a, b] = addr.split('::'), hs = x => (x ? x.split(':') : []), l = hs(a), r = hs(b);
@@ -86,12 +105,12 @@ function expandSdp(u8) {
   while (i < u8.length) {
     const kind = need(1)[0];
     let addr;
-    if (kind === 4 || kind === 44) addr = Array.from(need(4)).join('.');
+    if (kind === 4 || kind === 44 || kind === 45) addr = Array.from(need(4)).join('.');
     else if (kind === 6) { const b = need(16), g = []; for (let k = 0; k < 16; k += 2) g.push(((b[k] << 8) | b[k + 1]).toString(16)); addr = g.join(':'); }
     else if (kind === 109) { const h = Array.from(need(16), b => b.toString(16).padStart(2, '0')).join(''); addr = h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20) + '.local'; }
     else throw new Error('kind');
     const p = need(2), port = (p[0] << 8) | p[1];
-    cands.push('a=candidate:' + (cands.length + 1) + ' 1 udp ' + ((kind === 44 ? 1686052607 : 2122260223) - cands.length) + ' ' + addr + ' ' + port + (kind === 44 ? ' typ srflx raddr 0.0.0.0 rport 0' : ' typ host'));
+    cands.push('a=candidate:' + (cands.length + 1) + ' 1 udp ' + ((kind === 45 ? 41885439 : kind === 44 ? 1686052607 : 2122260223) - cands.length) + ' ' + addr + ' ' + port + (kind === 45 ? ' typ relay raddr 0.0.0.0 rport 0' : kind === 44 ? ' typ srflx raddr 0.0.0.0 rport 0' : ' typ host'));
   }
   if (!cands.length) throw new Error('no address');
   const sdp = ['v=0', 'o=- ' + Math.floor(Math.random() * 1e15) + ' 2 IN IP4 127.0.0.1', 's=-', 't=0 0', 'a=group:BUNDLE 0', 'a=msid-semantic: WMS',
@@ -243,9 +262,9 @@ class RtcTransport {
       const cand = e => {
         clearTimeout(idle);
         if (!e.candidate) finish();
-        else idle = setTimeout(finish, 1200);
+        else idle = setTimeout(finish, relayOn() ? 2500 : 1200);   // (a relay's address comes last, after its login)
       };
-      const cap = setTimeout(finish, 5000);
+      const cap = setTimeout(finish, relayOn() ? 7000 : 5000);
       if (pc.iceGatheringState === 'complete') return finish();
       pc.addEventListener('icegatheringstatechange', done);
       pc.addEventListener('icecandidate', cand);
@@ -253,7 +272,7 @@ class RtcTransport {
   }
   // onPc(transport): called as soon as the connection exists, before anything is sent (the duel log watches it from the start)
   static async host(onPc) {
-    const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
+    const pc = new RTCPeerConnection({ iceServers: await rtcIceServers() });
     const transport = new RtcTransport(pc);
     if (onPc) onPc(transport);
     await pc.setLocalDescription(await pc.createOffer());
@@ -276,7 +295,7 @@ class RtcTransport {
   static async join(offerCode, onPc) {
     const d = await unpackSignal(offerCode);
     if (d.type !== 'offer') throw new Error('Bad code (that is an answer, not an offer)');
-    const pc = new RTCPeerConnection({ iceServers: RTC_ICE });
+    const pc = new RTCPeerConnection({ iceServers: await rtcIceServers() });
     const transport = new RtcTransport(pc);
     if (onPc) onPc(transport);
     try {
@@ -347,3 +366,4 @@ class WsTransport {
 }
 
 if (typeof module !== 'undefined' && module.exports) module.exports = { packSignal, unpackSignal };
+if (typeof window !== 'undefined') window.rtcRelayInfo = () => rtcRelayNote;

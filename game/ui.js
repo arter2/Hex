@@ -1830,7 +1830,7 @@ async function duHostWifi(){
   const hp=RtcTransport.host(t=>duPcLog(t,'host')); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
-  DU.tr=h.transport; DU.accept=h.accept; duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
+  DU.tr=h.transport; DU.accept=h.accept; duLog('Host: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
 }
 // what the connection is doing, under Connecting…: the ICE state, and once it fails, what each side offered, so the
 // reason can be read off a phone (both on one Wi-Fi? a guest network that keeps phones apart? mobile data?)
@@ -1885,7 +1885,7 @@ async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('
   const jp=RtcTransport.join(code,t=>duPcLog(t,'join')); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   duScanStop(); if(g!==DU.gen) return;
-  duLog('Join: the host offers '+duCands(j.transport.pc.remoteDescription)); duLog('Join: answer ready, '+j.answerCode.length+' characters; it offers '+duCands(j.transport.pc.localDescription)); duPcLog(j.transport,'join');
+  duLog('Join: the host offers '+duCands(j.transport.pc.remoteDescription)); duLog('Join: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Join: answer ready, '+j.answerCode.length+' characters; it offers '+duCands(j.transport.pc.localDescription)); duPcLog(j.transport,'join');
   DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer'); duWatch(j.transport,g);
   // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }

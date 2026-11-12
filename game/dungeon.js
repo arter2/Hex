@@ -250,6 +250,9 @@ function xPickMerchant(depth){ return xpick(Object.keys(MERCHANTS).filter(k=>!ME
 /* Rooms with a role hold no chests, traps or monsters of their own: the merchant's and the
    sanctuary's are safe (monsters will not enter), the puzzle room holds its puzzle, a lair holds
    a miniboss and its hoard. Rooms behind a bronze lock get a rich chest. */
+// does a role's block of floor fit in this room? (fn carries the role's box size when it is a special room: xRareAssign)
+function xRoleFits(r,fn){ const w=fn&&fn.w||4, h=fn&&fn.h||3; if(typeof pzRect!=='function') return false;
+  return !!pzRect(r,[Math.max(1,Math.max(w,h)-2),Math.max(1,Math.max(w,h)-2)],[Math.max(1,Math.min(w,h)-2),Math.max(1,Math.min(w,h)-2)],true); }
 function xAssignRooms(){
   const F=EX.plan?EX.plan.feats:{}, mid=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.start&&r!==EX.exit&&!r.behind);
   // puzzles, lairs and the special rooms are laid out on a plain rectangle: a shaped or walled room never gets one
@@ -263,8 +266,11 @@ function xAssignRooms(){
   // and a room with a clear stretch of floor for one first (most of the puzzles are laid out on one)
   const fits=r=>r.w>=5&&r.h>=5&&(typeof pzRect!=='function'||!!pzRect(r,[4,4],[3,3],true));
   if(F.puzzle&&!give(take(fits)||take(fits,true)||take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
-  if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
-  if(typeof xRareAssign==='function') xRareAssign(F,give,take);
+  // a lair: a plain room first, else a shaped one with a clear 4 x 4 of its own floor round the hoard and its keeper
+  const lairFits=r=>xRoomCells(r).length>=20&&(typeof pzRect!=='function'||!!pzRect(r,[2,2],[2,2],false));
+  if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20)||take(lairFits,true),'lair')) F.mini='corruptknight';
+  // a special room the same way: a shaped room only when a clear block of its floor the size the room asks for fits
+  if(typeof xRareAssign==='function') xRareAssign(F,give,(fn,any)=>take(fn,any)||take(r=>fn(r)&&xRoleFits(r,fn),true));
 }
 
 /* ---------------- filling a floor ---------------- */

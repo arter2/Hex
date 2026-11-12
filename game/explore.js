@@ -962,6 +962,11 @@ function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,
 const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack','table','rack'], shrine:['urn','urn','candles','statue','brazier','shelf'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
   cave:['rubble','rubble','mushrooms','bones','skeleton'], study:['shelf','shelf','table','candles','urn','brazier'] };
 const XAREA_KIND={ hollows:['cave','cave','store','crypt','study'], deeps:['store','cave','crypt','study'], vault:['store','shrine','study','store'], rifts:['cave','crypt','store','shrine'], ruins:['shrine','shrine','study','store','crypt'], abyss:['crypt','shrine','cave','study'] };
+// a themed room's furniture along its walls (dungeongen.js XTHEMES)
+const XTHEME_WALL={ armory:['rack','rack','crate','barrel','table'], flooded:['rubble','urn','mushrooms','bones'], overgrown:['mushrooms','rubble','urn','mushrooms'],
+  collapsed:['rubble','rubble','crate','bones'], library:['shelf','shelf','shelf','table','candles'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
+  forge:['barrel','crate','rack','rubble','brazier'], bathhouse:['urn','urn','candles','statue'], barracks:['table','barrel','crate','rack','sack'],
+  fungus:['mushrooms','mushrooms','rubble','bones'], temple:['urn','urn','candles','statue','brazier','shelf'] };
 const XWALLSIDE=['shelf','rack','skeleton'];   // these stand right against a wall
 function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]!==T_ROCK, rock=(x,y)=>!floorAt(x,y);
   EX.dress=new Map(); EX.decor=[]; EX.onWall=[];
@@ -988,7 +993,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
-  EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], pool=XROOM_KINDS[rk];
+  EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk0=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], rk=r.theme&&XTHEME_WALL[r.theme]?r.theme:rk0, pool=XTHEME_WALL[r.theme]||XROOM_KINDS[rk];
     const M=xMerger(), L=xMerger(), cells=[];
     const ok=c=>EX.t[c]===T_FLOOR&&!EX.taken.has(c)&&!EX.itemAt.has(c)&&!EX.chests.some(ch=>ch.cell===c)&&c!==EX.up&&c!==EX.down&&!EX.traps.some(t=>t.cell===c)&&!xAdj4(c).some(n=>EX.doors.has(n));
     const edge=[]; for(let x=r.x;x<r.x+r.w;x++){ edge.push([x,r.y,0,-1],[x,r.y+r.h-1,0,1]); } for(let y=r.y+1;y<r.y+r.h-1;y++){ edge.push([r.x,y,-1,0],[r.x+r.w-1,y,1,0]); }

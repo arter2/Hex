@@ -1,6 +1,6 @@
 # Dungeon: shadow shape, speed on weak devices, room variety, new puzzles
 
-Date: 2026-11-09 · Status: pieces 1, 2, 3a, 3b and 4 built; 3c half done (puzzles go in shaped rooms; lairs and special rooms do not yet) · Base build: v301
+Date: 2026-11-09 · Status: all four pieces built (3c: puzzles, lairs and special rooms all fit shaped rooms) · Base build: v301
 
 ## Goal
 
@@ -195,6 +195,12 @@ over), `W` water, `C` chasm, `B` bridge, `D` a spot where a doorway may open.
   doorway.
 
 ### 3c. Shaped rooms hold puzzles, lairs and special rooms
+
+As built: a role takes a plain room first, then a shaped one where its block fits (`dungeon.js xRoleFits`; the
+puzzle room prefers a clear 6 x 6, then 6 x 5). Plates, statues, mirrors, runes, trial and riddle now lay out in
+`pzRect`; levers already used the room's real walls. The mirrors' lamp stands on the floor at the west end. On 60
+floors with every role forced: 60/60 puzzles, 117/117 special rooms, 60/60 lairs placed, none empty; all twenty
+puzzle kinds appear, and the puzzle lab solves each (trial aside: its fight sometimes runs past the lab's limit).
 
 Today `xAssignRooms` (`dungeon.js`) and the special-room planner (`rooms.js`) pass over any room
 with a shape or low walls. That rule goes, for L, H and X as well as the new shapes.

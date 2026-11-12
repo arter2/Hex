@@ -264,8 +264,9 @@ function xAssignRooms(){
   // a puzzle fits itself into a shaped room's own floor (pzRect, puzzles.js), so one may go there when no plain room is
   // free: on a spacious floor nearly every room is shaped or has clutter in it, and puzzles had stopped appearing there
   // and a room with a clear stretch of floor for one first (most of the puzzles are laid out on one)
-  const fits=r=>r.w>=5&&r.h>=5&&(typeof pzRect!=='function'||!!pzRect(r,[4,4],[3,3],true));
-  if(F.puzzle&&!give(take(fits)||take(fits,true)||take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
+  // (a clear 6 x 6 first, which every puzzle fits, then a 6 x 5, which most do)
+  const fits=(L,W)=>r=>r.w>=5&&r.h>=5&&(typeof pzRect!=='function'||!!pzRect(r,[L,L],[W,W],true)), big=fits(4,4), mid2=fits(4,3);
+  if(F.puzzle&&!give(take(big)||take(big,true)||take(mid2)||take(mid2,true)||take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
   // a lair: a plain room first, else a shaped one with a clear 4 x 4 of its own floor round the hoard and its keeper
   const lairFits=r=>xRoomCells(r).length>=20&&(typeof pzRect!=='function'||!!pzRect(r,[2,2],[2,2],false));
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20)||take(lairFits,true),'lair')) F.mini='corruptknight';
@@ -488,8 +489,7 @@ function xArrival(){ const F=EX.plan?EX.plan.feats:{};
 const DIRV=[[0,-1],[1,0],[0,1],[-1,0]];   // north, east, south, west
 const WHEEL_ICON={fire:'🔥',frost:'❄',storm:'⚡',verdant:'🌿',light:'☀',shadow:'☾'};
 function xPlacePuzzle(r){
-  // the old six and the round 4 puzzles (puzzles.js); the mirrors' beam is laid across the room's box, so a plain room only
-  const kinds=Object.keys(PUZZLE_BUILD).filter(k=>k!=='mirrors'||!(r.shape||r.walls)).sort(()=>XR()-.5);
+  const kinds=Object.keys(PUZZLE_BUILD).sort(()=>XR()-.5);   // the old six and the round 4 puzzles (puzzles.js)
   for(const k of kinds){ const snap={props:EX.props.length, taken:new Set(EX.taken)};
     const pz=PUZZLE_BUILD[k](r); if(pz){ EX.puzzle=Object.assign(pz,{kind:k, room:r.id, solved:false}); return; }
     // undo a half-built attempt
@@ -497,44 +497,44 @@ function xPlacePuzzle(r){
     EX.taken=snap.taken; }
   r.role=null; }
 const PUZZLE_BUILD={
-  // each plate with its block two cells south and room to push from behind it: a run of four of the room's own floor
-  // cells down one column, the northmost such run in it (a spacious floor's room is shaped: its box holds wall)
-  plates(r){ if(r.w<5||r.h<5) return null; const own=c=>EX.room[c]===r.id&&EX.t[c]===T_FLOOR;
-    const run=x=>{ for(let y=r.y+1;y+3<=r.y+r.h-1;y++){ const cs=[0,1,2,3].map(k=>xi(x,y+k)); if(cs.every(own)&&cs.every(c=>!EX.taken.has(c))&&cs.slice(0,3).every(c=>!nearDoor(c))) return y; } return -1; };
-    const cols=[]; for(let x=r.x+1;x<=r.x+r.w-2;x++) if(run(x)>=0) cols.push(x); cols.sort(()=>XR()-.5);
-    const pick2=cols.find(a=>cols.some(b=>Math.abs(a-b)>=2)), c2=cols.find(b=>Math.abs(b-pick2)>=2); if(pick2==null||c2==null) return null;
-    const plates=[], blocks=[]; let low=0;
-    for(const x of [pick2,c2]){ const y=run(x), pl=xi(x,y), bl=xi(x,y+2); low=Math.max(low,y+3);
-      plates.push(xProp('plate',pl,{solid:false})); if(!xSolidOK(bl)) return null; blocks.push(xProp('block',bl,{home:bl})); }
-    // the reset plate: on the room's own floor along its southern edge, below the blocks
-    const rest=xRoomCells(r).filter(c=>own(c)&&xcy(c)>low&&!EX.taken.has(c)&&!nearDoor(c)&&!plates.some(p=>xcx(p.cell)===xcx(c))), far=Math.max(-1,...rest.map(xcy)), corner=rest.filter(c=>xcy(c)===far);
-    if(!corner.length) return null; xProp('reset',xpick(corner),{solid:false});
+  /* Each lays itself out in a clear rectangle of the room's own floor with a walkway round it (pzRect, puzzles.js), so
+     it fits a shaped room as well as a plain one (before, these read the room's box, and a shaped room's box holds
+     wall). L cells along, W across; u runs along, v across (R.at(u,v)). */
+  // two plates, each with its block two cells behind it and room to push from behind that; the reset plate in the back row
+  plates(r){ const R=pzRect(r,[3,6],[4,4],true); if(!R) return null; const us=[];
+    for(let u=0;u<R.L;u++) us.push(u); us.sort(()=>XR()-.5); const u1=us[0], u2=us.find(u=>Math.abs(u-u1)>=2); if(u2==null) return null;
+    const plates=[], blocks=[];
+    for(const u of [u1,u2]){ const pl=R.at(u,0), bl=R.at(u,2); plates.push(xProp('plate',pl,{solid:false})); if(!xSolidOK(bl)) return null; blocks.push(xProp('block',bl,{home:bl})); }
+    const back=[]; for(let u=0;u<R.L;u++) if(u!==u1&&u!==u2) back.push(R.at(u,3)); if(!back.length) return null; xProp('reset',xpick(back),{solid:false});
     return {plates,blocks}; },
-  statues(r){ if(r.w<5||r.h<5) return null; const core=xi(r.cx,r.cy); if(!xSolidOK(core)) return null; xProp('core',core,{});
-    const spots=xInterior(r).filter(c=>c!==core&&!EX.taken.has(c)&&!nearDoor(c)&&Math.abs(xcx(c)-r.cx)!==Math.abs(xcy(c)-r.cy)).sort(()=>XR()-.5), st=[];
+  // three statues round a gold-eyed altar, each to be turned to face it
+  statues(r){ const R=pzRect(r,[4,5],[4,5],true); if(!R) return null; const mu=R.L>>1, mv=R.W>>1, core=R.at(mu,mv); if(!xSolidOK(core)) return null; xProp('core',core,{});
+    const spots=[]; for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++) if(Math.abs(u-mu)!==Math.abs(v-mv)) spots.push(R.at(u,v)); spots.sort(()=>XR()-.5);
+    const cx=xcx(core), cy=xcy(core), st=[];
     for(const c of spots){ if(st.length>=3) break; if(st.some(s=>Math.abs(xcx(s.cell)-xcx(c))+Math.abs(xcy(s.cell)-xcy(c))<2)) continue; if(!xSolidOK(c)) continue;
-      const dx=r.cx-xcx(c), dy=r.cy-xcy(c), want=Math.abs(dx)>Math.abs(dy)?(dx>0?1:3):(dy>0?2:0);
+      const dx=cx-xcx(c), dy=cy-xcy(c), want=Math.abs(dx)>Math.abs(dy)?(dx>0?1:3):(dy>0?2:0);
       st.push(xProp('statue',c,{want, face:(want+xri(1,3))%4})); }
     return st.length>=3?{statues:st}:null; },
-  mirrors(r){ if(r.w<6||r.h<4) return null;
-    for(let tries=0;tries<20;tries++){ const y1=xri(r.y+1,r.y+r.h-2), y2=xri(r.y,r.y+r.h-1); if(y2===y1) continue;
-      const xa=xri(r.x+1,r.x+r.w-4), xb=xri(xa+2,r.x+r.w-2), wall=xi(r.x-1,y1);
-      if(EX.t[wall]!==T_ROCK||EX.wallAt.has(wall)) continue;
-      const lane=[]; for(let x=r.x;x<xa;x++) lane.push(xi(x,y1)); for(let y=Math.min(y1,y2)+1;y<Math.max(y1,y2);y++) lane.push(xi(xa,y)); for(let x=xa+1;x<xb;x++) lane.push(xi(x,y2));
-      const A=xi(xa,y1), Bc=xi(xa,y2), C=xi(xb,y2);
-      if(lane.concat([A,Bc,C]).some(c=>EX.taken.has(c))||[A,Bc,C].some(nearDoor)) continue;
-      if(!xSolidOK(A)) continue; const ma=xProp('mirror',A,{want:y2>y1?'\\':'/'}); ma.o=ma.want==='/'?'\\':'/';
-      if(!xSolidOK(Bc)){ EX.props.pop(); EX.propAt.delete(A); EX.taken.delete(A); continue; }
-      const mb=xProp('mirror',Bc,{want:y2>y1?'\\':'/'}); mb.o=mb.want==='/'?'\\':'/';
+  // a lamp at the west end shines east; two mirrors to turn bring it round to the crystal
+  mirrors(r){ const R=pzRect(r,[4,8],[3,4],false); if(!R) return null;
+    for(let tries=0;tries<20;tries++){ const y1=xri(0,R.W-1), y2=xri(0,R.W-1); if(y2===y1) continue;
+      const xa=xri(1,R.L-3), xb=xri(xa+2,R.L-1), A=R.at(xa,y1), Bc=R.at(xa,y2), C=R.at(xb,y2), lamp=R.at(-1,y1);
+      if([A,Bc,C].some(nearDoor)||EX.taken.has(lamp)||!xSolidOK(lamp)) continue;
+      const em=xProp('emitter',lamp,{});
+      if(!xSolidOK(A)){ EX.props.pop(); EX.propAt.delete(lamp); EX.taken.delete(lamp); continue; }
+      const ma=xProp('mirror',A,{want:y2>y1?'\\':'/'}); ma.o=ma.want==='/'?'\\':'/';
+      if(!xSolidOK(Bc)) return null; const mb=xProp('mirror',Bc,{want:y2>y1?'\\':'/'}); mb.o=mb.want==='/'?'\\':'/';
       if(!xSolidOK(C)) return null; xProp('crystal',C,{});
-      xWallProp('emitter',wall,xi(r.x,y1),{});
-      return {emit:xi(r.x,y1), mirrors:[ma,mb], target:C}; }
+      return {emit:R.at(0,y1), mirrors:[ma,mb], target:C, lamp:em}; }
     return null; },
-  runes(r){ const start=xpick(SIX), seq=[start]; while(seq.length<4) seq.push(BEATS[seq[seq.length-1]]);
-    const spots=xInterior(r).filter(c=>!EX.taken.has(c)&&!nearDoor(c)).sort(()=>XR()-.5), stones=[];
+  // four runestones about a clear patch of floor, and the tablet that names the first
+  runes(r){ const R=pzRect(r,[4,6],[3,4],true); if(!R) return null; const start=xpick(SIX), seq=[start]; while(seq.length<4) seq.push(BEATS[seq[seq.length-1]]);
+    const spots=[]; for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++) spots.push(R.at(u,v)); spots.sort(()=>XR()-.5); const stones=[];
     for(const c of spots){ if(stones.length>=4) break; if(stones.some(s=>Math.abs(xcx(s.cell)-xcx(c))+Math.abs(xcy(s.cell)-xcy(c))<2)) continue; if(!xSolidOK(c)) continue; stones.push(xProp('runestone',c,{color:seq[stones.length]})); }
     if(stones.length<4) return null;
-    const t=xFreeSolid(r,false); if(t<0) return null; xProp('tablet',t,{text:'Begin with '+COLORS[start].name+' '+WHEEL_ICON[start]+'. Then touch what it overcomes, and so on, four in all.'});
+    const rim=[]; for(let u=-1;u<=R.L;u++) for(const v of [-1,R.W]) rim.push(R.at(u,v));
+    const t=rim.filter(c=>!EX.taken.has(c)&&!nearDoor(c)).sort(()=>XR()-.5).find(xSolidOK); if(t==null) return null;
+    xProp('tablet',t,{text:'Begin with '+COLORS[start].name+' '+WHEEL_ICON[start]+'. Then touch what it overcomes, and so on, four in all.'});
     return {seq, stones, step:0}; },
   levers(r){ const marks=['☀','☾','✦'], order=marks.slice().sort(()=>XR()-.5), levers=[];
     for(const m of marks){ const s=xWallSpot(r,(n)=>EX.doors.has(n)||levers.some(l=>Math.abs(xcx(l.cell)-xcx(n))+Math.abs(xcy(l.cell)-xcy(n))<2)); if(!s) return null; levers.push(xWallProp('plever',s[0],s[1],{sym:m,on:false})); }
@@ -542,7 +542,8 @@ const PUZZLE_BUILD={
     const reach=xReach(), others=xOpenRooms(reach).filter(x=>x!==r), wr=others.length?xpick(others):null, ws=wr&&xWallSpot(wr,n=>EX.doors.has(n));
     if(ws) xWallProp('inscription',ws[0],ws[1],{text:'Scratched into the stone: '+order.join(' then ')+'.'});
     return {order, levers, step:0}; },
-  trial(r){ const c=xi(r.cx,r.cy); if(!xSolidOK(c)) return null; xProp('trialaltar',c,{rule:xpick(['order','survive','switches'])}); return {}; },
+  // the altar stands in the middle of a clear 3 x 3 (the fight's start; a shaped room's middle can be wall)
+  trial(r){ const R=pzRect(r,[3,3],[3,3],false); if(!R) return null; const c=R.at(1,1); if(!xSolidOK(c)) return null; xProp('trialaltar',c,{rule:xpick(['order','survive','switches'])}); return {}; },
 };
 // a puzzle is solved: something grinds open at its heart
 function xPuzzleSolved(){ const pz=EX.puzzle; if(!pz||pz.solved) return; pz.solved=true; xXp(30+3*EX.depth,'puzzle solved'); const r=EX.rooms[pz.room];
@@ -599,7 +600,9 @@ function xMeshProp(p){
     case 'core': { g.add(xBox(1,.5,1,dark,0,.25,0)); const s=xBall(.18,xGlowMat(0xf2c94c),0,.75,0); g.add(s); p.glow=s; break; }
     case 'mirror': { const fr=new THREE.Group(); fr.add(xBox(1.3,1.2,.06,xMat(0xcfd8e6,{shininess:80,specular:0xffffff,emissive:0x202830}),0,.85,0), xBox(1.4,.08,.12,xMat(0x6e5418),0,.25,0)); fr.rotation.y=p.o==='/'?Math.PI/4:-Math.PI/4; p.rot=fr; g.add(fr, xBox(.3,.25,.3,dark,0,.12,0)); break; }
     case 'crystal': { const m=xGlowMat(0x8fe4ff,{transparent:true,opacity:.75}); g.add(xCone(.25,1.1,m,0,.55,0,5), xCone(.14,.6,m,.25,.3,.1,5)); p.glowMat=m; break; }
-    case 'emitter': { g.add(xBox(.5,.5,.08,dark,0,.9,0)); const e=xBall(.14,xGlowMat(0xfff2a0),0,.9,.06); g.add(e); break; }
+    case 'emitter': { if(p.wall){ g.add(xBox(.5,.5,.08,dark,0,.9,0)); const e=xBall(.14,xGlowMat(0xfff2a0),0,.9,.06); g.add(e); break; }
+      // standing at the west end of the mirrors' floor, shining east (floors from before stood it in the wall)
+      g.add(xBox(.6,.3,.6,stone,0,.15,0), xBox(.3,.6,.3,dark,0,.6,0), xBox(.5,.4,.4,dark,.1,.95,0), xBall(.16,xGlowMat(0xfff2a0),.36,.95,0)); break; }
     case 'runestone': { g.add(xBox(.6,1.15,.4,stone,0,.58,0)); const m=xGlowMat(new THREE.Color(COLORS[p.color].c),{transparent:true,opacity:.45}); const face=xBox(.4,.4,.02,m,0,.8,.21); g.add(face); p.glowMat=m; break; }
     case 'tablet': { const s=xBox(1,1.1,.18,xMat(0x8a8478),0,.6,0); s.rotation.x=-.2; g.add(s); for(let k=0;k<4;k++) g.add(xBox(.7,.04,.02,xMat(0x3a3630),0,.35+k*.18,.12-k*.035)); break; }
     case 'inscription': { g.add(xBox(1.1,.6,.03,xMat(0xb8b0a0),0,1,0)); for(let k=0;k<3;k++) g.add(xBox(.8,.04,.04,dark,0,.85+k*.15,.02)); break; }

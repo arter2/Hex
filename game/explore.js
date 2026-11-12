@@ -1558,10 +1558,11 @@ function xGoalAt(ax,ay){ if(!EX||!EX.active||EX.busy) return;
   const path=c===EX.pc?[]:xPathToCell(c); if(!path) return;
   EX.goal={cell:c, x:g.x, z:g.z}; EX.path=path; }
 function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
-// can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
+// can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you; a low wall or a
+// piece of clutter is seen over but not walked through: xClear lets the eye past it, so it is ruled out here as well)
 function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
   for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
-    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)||xPadCell(c)&&!(EX.goal&&EX.goal.cell===c)) return false; } }
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||EX.t[c]===T_ROCK||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)||xPadCell(c)&&!(EX.goal&&EX.goal.cell===c)) return false; } }
   return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;

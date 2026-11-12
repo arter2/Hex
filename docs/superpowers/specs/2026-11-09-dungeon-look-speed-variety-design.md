@@ -1,6 +1,6 @@
 # Dungeon: shadow shape, speed on weak devices, room variety, new puzzles
 
-Date: 2026-11-09 · Status: approved in chat, awaiting spec review · Base build: v301
+Date: 2026-11-09 · Status: pieces 1, 2, 3a, 3b and 4 built; 3c half done (puzzles go in shaped rooms; lairs and special rooms do not yet) · Base build: v301
 
 ## Goal
 
@@ -128,6 +128,11 @@ rise. The software GPU here gives relative numbers only; a real phone check foll
 ## Piece 3: variety
 
 ### 3a. Room themes
+
+As built: themes are assigned in `dungeongen.js` (`x2Themes`, `XTHEMES`, `XTHEME_AREA`), with an eleventh, Temple,
+for the old temple clutter. Each theme has its own clutter kit and underfoot pieces (`x2Clutter`, drawn by
+`xClutterThemed`), wall furniture (`explore.js XTHEME_WALL`), floor (`nature.js xThemeFloor`, the five themes with
+the most floor on a level; Temple keeps the area floor) and torch colour and reach (`explore.js XTHEME_LIGHT`).
 
 A theme is one table entry: a floor painter, a wall-dressing list, a furniture pool, a light
 colour and strength, and optional floor features. `xAssignThemes` gives each ordinary room a

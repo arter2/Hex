@@ -473,7 +473,15 @@ function xBuildScene(){
   for(const [c,rm] of under) variant[c]=areaF?(rm>=0?1+EX.rooms[rm].style:0):EX.natural?0:rm>=0?1+EX.rooms[rm].style:EX.layout===2?2:0;
   for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=areaF?(EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0):EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
-  const floorTex=areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
+  const floorTex=(areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)]).slice();   // spacious floors: small clean tiles
+  // themed rooms (dungeongen.js x2Themes) wear their theme's floor (nature.js xThemeFloor): the five themes with the
+  // most floor on this level; a room of any other theme keeps its area floor
+  if(EX.layout===2&&typeof xThemeFloor==='function'){ const area=new Map();
+    for(let i=0;i<XN*XN;i++){ const rm=EX.room[i]; if(rm<0||variant[i]<0) continue; const th=EX.rooms[rm].theme; if(th) area.set(th,(area.get(th)||0)+1); }
+    const pick=[...area.entries()].sort((a,b)=>b[1]-a[1]).map(([th])=>[th,xThemeFloor(th,A,S)]).filter(([,cv])=>cv).slice(0,5), at=new Map();
+    for(const [th,cv] of pick){ at.set(th,floorTex.length); floorTex.push(cv); }
+    const vOf=rm=>rm>=0&&EX.rooms[rm].theme&&at.has(EX.rooms[rm].theme)?at.get(EX.rooms[rm].theme):-1;
+    for(let i=0;i<XN*XN;i++){ if(variant[i]<0) continue; const v=vOf(EX.room[i]>=0?EX.room[i]:under.has(i)?under.get(i):-1); if(v>=0) variant[i]=v; } }
   floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
@@ -704,18 +712,26 @@ function xAreaLights(grp,A){
       halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
       g.add(xPool(tex,col,2.4)); g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,ph:R()*6}); }
     // one or two wall torches: an iron bracket, a flickering flame and a warm pool on the floor
-    for(let k=Math.min(ok.length,1+(R()<.4?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
+    const TL=XTHEME_LIGHT[r.theme]||XTHEME_LIGHT.temple;
+    for(let k=Math.min(ok.length,1+(R()<.4?1:0)+(TL.k>1.1?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
       const g=new THREE.Group(); g.position.set((wx+.5+dx*.5)*XCS+dx*.04,0,(wy+.5+dy*.5)*XCS+dy*.04); g.rotation.y=Math.atan2(dx,dy);
-      const iron=xMat(0x2a2620), warm=new THREE.Color(0xffa040), mats=[];
+      const iron=xMat(0x2a2620), warm=new THREE.Color(TL.glow==='area'?A.glow:TL.light), mats=[];
       g.add(xBox(.12,.55,.12,iron,0,1.45,.12), xBox(.34,.1,.34,iron,0,1.75,.22), xBox(.36,.06,.07,iron,0,1.45,.04));
       const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
-      const f1=new THREE.Mesh(new THREE.ConeGeometry(.24,.7,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.13,.45,6),fm(0xffe08a));
+      const f1=new THREE.Mesh(new THREE.ConeGeometry(.24,.7,6),fm(TL.glow==='area'?A.glow:TL.flame[0])), f2=new THREE.Mesh(new THREE.ConeGeometry(.13,.45,6),fm(TL.flame[1]));
       f1.position.y=.35; f2.position.y=.24; flame.add(f1,f2); flame.position.set(0,1.8,.22); g.add(flame);
       const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:warm,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
       halo.scale.set(4,4,1); halo.position.set(0,2.05,.35); halo.renderOrder=2; g.add(halo);
       const pool=xPool(tex,warm,4.2); g.add(pool);
-      g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6}); } }
+      g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6,tint:warm,tk:TL.k}); } }
 }
+// a themed room's torches (dungeongen.js XTHEMES): the flame's colours, the light's colour and how far it reaches
+const XTHEME_LIGHT={ temple:{flame:[0xff7a2a,0xffe08a],light:0xffa040,k:1}, armory:{flame:[0xff7a2a,0xffe08a],light:0xffa040,k:1},
+  barracks:{flame:[0xff8a3a,0xffe8a0],light:0xffb060,k:1}, library:{flame:[0xffa040,0xfff0b0],light:0xffc070,k:.9},
+  forge:{flame:[0xff5010,0xffb040],light:0xff6a20,k:1.35}, collapsed:{flame:[0xd07030,0xf0c080],light:0xc08850,k:.75},
+  flooded:{flame:[0x4a9ac0,0xc8f0ff],light:0x7ab8d8,k:.8}, crypt:{flame:[0x8aa8c8,0xe8f4ff],light:0xb8d0e8,k:.85},
+  bathhouse:{flame:[0x6ac0e0,0xe0f8ff],light:0x9fd8ff,k:1}, overgrown:{flame:[0x8ad060,0xe8ffc0],light:0xa8e080,k:.9},
+  fungus:{glow:'area',flame:[0,0xffffff],light:0,k:1.25} };
 // the four real lights go to the lit torches and crystals nearest you; each fades in and out as it moves
 // how bright a torch or crystal burns: once found it keeps burning (the debug menu's light memory), fading in as it is first seen
 function xLightF(L){ const f=EX.fogCur[L.floor]; return Math.max(f,Math.min(1,XLIT.dLightMem)*Math.min(1,f/.2)); }
@@ -724,7 +740,7 @@ function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX
 /* The four torch lights follow the torches and crystals nearest you. A light stays with its torch
    while that torch is still among the nearest; one that is no longer wanted fades out fully before it
    moves to the next torch and fades in there, so lights never jump or blink as you walk about. */
-function xLightPlace(P,L){ P.userData.L=L; P.userData.next=undefined; if(!L) return; const wp=XS_V; (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; }
+function xLightPlace(P,L){ P.userData.L=L; P.userData.next=undefined; if(!L) return; const wp=XS_V; (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.tint||(L.torch?0xffa448:EX.area.glow)); P.distance=(L.torch?11:8)*XLIT.torchRad*(L.tk||1); }
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt; const place=xLightPlace;
   if(EX.lpT<=0){ EX.lpT=.3;
     // the nearest torches and crystals in sight, nearest first (as many as there are lights); equal distances keep their order

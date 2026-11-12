@@ -13,7 +13,8 @@
                before the flame you carry dies (45 s; any lit brazier gives you a fresh flame).
      lanterns  Lanterns: step on a floor lantern and it and its neighbours flip. Light them all. Walk into the violet
                rune stone in the room to put them back as they were.
-     mural     Sliding mural: walk into the mural on the wall and slide its eight panels back into the picture.
+     mural     Sliding mural: walk into the mural on the wall and slide its eight panels back into the picture (a
+               piece of painted card art).
    Floor features (yours):
      circuit   Switch circuit (a special room): coloured switches all over the floor, pulled in the
                order of the mural on the sealed door, open a vault. A wrong one resets them all.
@@ -162,17 +163,35 @@ Object.assign(PUZZLE_BUILD,{
     const s=xWallSpot(r,(n,c)=>bad(n,c)||xcy(n)>=xcy(c))||xWallSpot(r,(n,c)=>bad(n,c)||xcy(n)>xcy(c)); if(!s) return null;
     const b=[0,1,2,3,4,5,6,7,8], n=24+EX.depth*3; let gap=8, last=-1;
     for(let k=0;k<n||pzMuralDone(b);k++){ const m=xpick(pzMuralNbrs(gap).filter(x=>x!==last)); b[gap]=b[m]; b[m]=8; last=gap; gap=m; }
-    const p=xWallProp('mural',s[0],s[1],{board:b, begin:b.slice(), hue:xri(0,PZM_PAL.length-1)});
+    const arts=pzMuralCards(), p=xWallProp('mural',s[0],s[1],{board:b, begin:b.slice(), hue:xri(0,PZM_PAL.length-1), card:arts.length?xpick(arts):null});
+    if(typeof document!=='undefined') pzMuralPic(p);   // start loading the picture now: it is ready by the time you reach it
     return {mural:p}; },
 });
-// the picture: a sunset over hills, a river and a tower, in one of a few palettes; drawn once per palette
+// the old picture (murals made before card art): a sunset over hills, a river and a tower, in one of a few palettes
 const PZM_PAL=[
   {sky:['#2a2350','#e8925a'], sun:'#ffe08a', far:'#6a4a72', near:'#3a2a48', land:'#2c3a2e', water:'#9fd8ff', tower:'#1c1622'},
   {sky:['#0f2a3a','#7fd0c8'], sun:'#f4f7d0', far:'#3e6a74', near:'#24424a', land:'#1e3428', water:'#d8fbff', tower:'#0e1a20'},
   {sky:['#3a1420','#f2b45a'], sun:'#fff0a0', far:'#7a3a3a', near:'#4a1e26', land:'#3a2a1a', water:'#ffd8a0', tower:'#200c10'},
   {sky:['#1a1a3e','#b48cff'], sun:'#ffffff', far:'#4a3a7a', near:'#2a2050', land:'#22243a', water:'#cfc0ff', tower:'#0e0c1e'}];
 const PZM_PIC=new Map();
-function pzMuralPic(hue){ if(PZM_PIC.has(hue)) return PZM_PIC.get(hue); const P=PZM_PAL[hue]||PZM_PAL[0], S=240, cv=document.createElement('canvas'); cv.width=cv.height=S; const c=cv.getContext('2d');
+// the cards with painted art (cards/art-variants.js): a mural shows one of them
+const pzMuralCards=()=>typeof HEX_CARD_ART_VARIANTS==='undefined'||typeof CARDS==='undefined'?[]:Object.keys(HEX_CARD_ART_VARIANTS).filter(id=>CARDS[id]&&HEX_CARD_ART_VARIANTS[id].large).sort();
+// a mural's picture: its card's painted art, cropped square and framed. It loads in the background; until it has, a
+// dark stone face stands in, and when it arrives the wall and an open close-up are redrawn. A mural from before this
+// (or with no painted card to show) keeps the drawn sunset
+function pzMuralPic(p){ const id=p.card; if(!id||typeof HEX_CARD_ART_VARIANTS==='undefined'||!HEX_CARD_ART_VARIANTS[id]) return pzMuralSunset(p.hue);
+  const key='card:'+id; if(PZM_PIC.has(key)) return PZM_PIC.get(key);
+  const S=240, cv=document.createElement('canvas'); cv.width=cv.height=S; const c=cv.getContext('2d');
+  c.fillStyle='#2a2420'; c.fillRect(0,0,S,S); pzMuralFrame(c,S);
+  const out={cv, url:cv.toDataURL(), ready:false}; PZM_PIC.set(key,out);
+  const im=new Image(); im.onload=()=>{ const w=im.naturalWidth, h=im.naturalHeight, m=Math.min(w,h);
+    c.drawImage(im,(w-m)/2,(h-m)/2,m,m,0,0,S,S); pzMuralFrame(c,S);
+    try{ out.url=cv.toDataURL(); }catch(e){} out.ready=true;
+    if(EX) for(const q of EX.props) if(q.kind==='mural'&&q.card===id){ pzMuralPaint(q); if(EX.dlg&&EX.dlg.title==='The sliding mural') pzMuralBody($('#xdBody'),q); } };
+  im.src=HEX_CARD_ART_VARIANTS[id].large; return out; }
+// a carved frame: the edges show which way round the panels go
+function pzMuralFrame(c,S){ c.strokeStyle='rgba(20,14,10,.85)'; c.lineWidth=10; c.strokeRect(5,5,S-10,S-10); c.strokeStyle='rgba(240,220,180,.55)'; c.lineWidth=2; c.strokeRect(11,11,S-22,S-22); }
+function pzMuralSunset(hue){ if(PZM_PIC.has(hue)) return PZM_PIC.get(hue); const P=PZM_PAL[hue]||PZM_PAL[0], S=240, cv=document.createElement('canvas'); cv.width=cv.height=S; const c=cv.getContext('2d');
   const g=c.createLinearGradient(0,0,0,S*.7); g.addColorStop(0,P.sky[0]); g.addColorStop(1,P.sky[1]); c.fillStyle=g; c.fillRect(0,0,S,S);
   c.fillStyle='rgba(255,255,255,.8)'; for(const [x,y,r] of [[22,20,1.6],[48,38,1.2],[70,16,1.8],[30,60,1],[96,44,1.3],[60,82,.9]]){ c.beginPath(); c.arc(x,y,r,0,7); c.fill(); }
   c.strokeStyle=P.sun; c.globalAlpha=.55; c.lineWidth=3; for(let k=0;k<12;k++){ const a=k*Math.PI/6; c.beginPath(); c.moveTo(172+Math.cos(a)*36,74+Math.sin(a)*36); c.lineTo(172+Math.cos(a)*52,74+Math.sin(a)*52); c.stroke(); }
@@ -186,21 +205,21 @@ function pzMuralPic(hue){ if(PZM_PIC.has(hue)) return PZM_PIC.get(hue); const P=
   // the tower on the left hill, with a lit window
   c.fillStyle=P.tower; c.fillRect(34,104,18,58); c.beginPath(); c.moveTo(30,106); c.lineTo(43,84); c.lineTo(56,106); c.fill(); c.fillRect(30,104,26,5);
   c.fillStyle=P.sun; c.fillRect(40,118,6,9);
-  // a carved frame: the edges show which way round the panels go
-  c.strokeStyle='rgba(20,14,10,.85)'; c.lineWidth=10; c.strokeRect(5,5,S-10,S-10); c.strokeStyle='rgba(240,220,180,.55)'; c.lineWidth=2; c.strokeRect(11,11,S-22,S-22);
-  const out={cv, url:cv.toDataURL()}; PZM_PIC.set(hue,out); return out; }
+  pzMuralFrame(c,S);
+  const out={cv, url:cv.toDataURL(), ready:true}; PZM_PIC.set(hue,out); return out; }
 // the mural as it stands now, on the wall
-function pzMuralPaint(p){ if(!p.tex) return; const S=p.tex.image.width, t=S/3, c=p.tex.image.getContext('2d'), pic=pzMuralPic(p.hue).cv, ps=pic.width/3;
+function pzMuralPaint(p){ if(!p.tex) return; const S=p.tex.image.width, t=S/3, c=p.tex.image.getContext('2d'), pic=pzMuralPic(p).cv, ps=pic.width/3;
   c.fillStyle='#16110e'; c.fillRect(0,0,S,S);
   p.board.forEach((k,i)=>{ if(k===8&&!pzMuralDone(p.board)) return; c.drawImage(pic,(k%3)*ps,((k/3)|0)*ps,ps,ps,(i%3)*t+1,((i/3)|0)*t+1,t-2,t-2); });
   p.tex.needsUpdate=true; }
 // close up: tap a panel beside the gap to slide it in
 function pzMuralDlg(p){ const pz=EX.puzzle; if(!pz||pz.kind!=='mural') return;
-  if(pz.solved) return xDlgText('The mural','The picture is whole again: a tower above a river, and the sun going down behind the hills.');
+  const C=p.card&&typeof CARDS!=='undefined'&&CARDS[p.card];
+  if(pz.solved) return xDlgText('The mural','The picture is whole again'+(C?': '+C.name+'.':': a tower above a river, and the sun going down behind the hills.'));
   const o={title:'The sliding mural', sub:'Sliding mural', icon:['scroll','#f2c94c'], text:'Eight stone panels and a gap. Tap a panel beside the gap to slide it in, until the picture is whole. The small carving shows how it goes.',
     body:b=>pzMuralBody(b,p), buttons:[['Leave',null]]};
   xDlg(o); }
-function pzMuralBody(b,p){ b.innerHTML=''; const pic=pzMuralPic(p.hue), gap=p.board.indexOf(8), can=pzMuralNbrs(gap), box=document.createElement('div'); box.className='pzm';
+function pzMuralBody(b,p){ b.innerHTML=''; const pic=pzMuralPic(p), gap=p.board.indexOf(8), can=pzMuralNbrs(gap), box=document.createElement('div'); box.className='pzm';
   const grid=document.createElement('div'); grid.className='pzm-grid';
   p.board.forEach((k,i)=>{ const t=document.createElement('button'); t.type='button'; t.className='pzm-tile'+(k===8?' gap':can.includes(i)?' can':''); t.dataset.spot=i;
     if(k!==8){ t.style.backgroundImage='url('+pic.url+')'; t.style.backgroundPosition=(k%3)*50+'% '+((k/3)|0)*50+'%'; t.setAttribute('aria-label','Panel '+(k+1)+(can.includes(i)?', can slide':'')); t.onclick=()=>pzMuralSlide(p,i,b); }

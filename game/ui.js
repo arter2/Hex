@@ -1830,11 +1830,16 @@ async function duHostWifi(){
   const hp=RtcTransport.host(t=>duPcLog(t,'host')); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
-  DU.tr=h.transport; DU.accept=h.accept; duLog('Host: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
+  DU.tr=h.transport; DU.accept=h.accept; duLog('Host: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; setTimeout(()=>{ if(g===DU.gen) duVpnCheck(h.transport.pc.localDescription); },0); duQr($('#duOfferQr'),h.offerCode); duMsg('');
 }
 // what the connection is doing, under Connecting…: the ICE state, and once it fails, what each side offered, so the
 // reason can be read off a phone (both on one Wi-Fi? a guest network that keeps phones apart? mobile data?)
 // the addresses a description offers, as a short list (kind address:port), for the log
+// a VPN (or an ad blocker or firewall that works as one) shows as an address in the documentation range 2001:db8::/32;
+// with one on, the other phone on the same Wi-Fi never hears this one, so say so at once
+function duVpnCheck(d){ if(!/^a=candidate:.* 2001:db8:/im.test(String(d&&d.sdp||''))) return;
+  duLog('Warning: this phone seems to have a VPN (or an ad blocker or firewall app) on');
+  duMsg('This phone seems to have a VPN, ad blocker or firewall app on. Turn it off (and mobile data) for a duel on the same Wi-Fi.'); }
 function duCands(d){ const out=[]; for(const m of String(d&&d.sdp||'').matchAll(/^a=candidate:\S+ \d+ (\w+) \d+ (\S+) (\d+) typ (\w+)/gim)) out.push(m[4]+' '+m[1].toLowerCase()+' '+m[2]+':'+m[3]); return out.length?out.join(', '):'no addresses'; }
 // every state change of the connection, its address errors, and the address pair it settles on
 function duPcLog(tr,who){ const pc=tr&&tr.pc; if(!pc||pc.__logged) return; pc.__logged=1;
@@ -1886,7 +1891,7 @@ async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
   duScanStop(); if(g!==DU.gen) return;
   duLog('Join: the host offers '+duCands(j.transport.pc.remoteDescription)); duLog('Join: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Join: answer ready, '+j.answerCode.length+' characters; it offers '+duCands(j.transport.pc.localDescription)); duPcLog(j.transport,'join');
-  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer'); duWatch(j.transport,g);
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer'); duVpnCheck(j.transport.pc.localDescription); duWatch(j.transport,g);
   // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
   if(g===DU.gen) duBegin(tr,false); }

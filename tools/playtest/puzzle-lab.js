@@ -3,7 +3,7 @@ const Runner = require('./runner-common.js');
 let host, browser;
 const kinds = (
     process.argv[2] ||
-    'statues,mirrors,runes,levers,plates,trial,path,memory,bells,ice,scales,shift,riddle,braziers,lanterns,mural'
+    'statues,mirrors,runes,levers,plates,trial,path,memory,bells,ice,scales,shift,riddle,braziers,lanterns,mural,sentries,herding,echo,bridge'
   ).split(','),
   n = +(process.argv[3] || 6),
   prof = process.argv[4] || 'good';

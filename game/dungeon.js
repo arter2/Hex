@@ -260,7 +260,9 @@ function xAssignRooms(){
   if(F.sanct&&!give(take(()=>true,true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
   // a puzzle fits itself into a shaped room's own floor (pzRect, puzzles.js), so one may go there when no plain room is
   // free: on a spacious floor nearly every room is shaped or has clutter in it, and puzzles had stopped appearing there
-  if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
+  // and a room with a clear stretch of floor for one first (most of the puzzles are laid out on one)
+  const fits=r=>r.w>=5&&r.h>=5&&(typeof pzRect!=='function'||!!pzRect(r,[4,4],[3,3],true));
+  if(F.puzzle&&!give(take(fits)||take(fits,true)||take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
   if(typeof xRareAssign==='function') xRareAssign(F,give,take);
 }

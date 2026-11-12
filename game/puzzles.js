@@ -13,6 +13,13 @@
                before the flame you carry dies (45 s; any lit brazier gives you a fresh flame).
      lanterns  Lanterns: step on a floor lantern and it and its neighbours flip. Light them all. Walk into the violet
                rune stone in the room to put them back as they were.
+     sentries  Sentries: cross the hall from the green plate to the gold one while stone heads open and close their
+               eyes; step into a gaze and you are back at the start. An eye flickers before it opens.
+     herding   Herding: a wisp flees from you. Drive it onto the rune plate in a corner of the field.
+     echo      Echo: walk into the echo stone and a ghost walks your steps a few seconds behind you. Hold both
+               plates at once, one with you and one with your echo.
+     bridge    Hidden bridge: a drop with a pedestal out in it. The way across only shows in the dark: put out the
+               room's lamps (walk into them) and step along the planks that glow.
      mural     Sliding mural: walk into the mural on the wall and slide its eight panels back into the picture (a
                piece of painted card art).
    Floor features (yours):
@@ -236,6 +243,66 @@ function pzMuralSlide(p,i,b){ const pz=EX.puzzle, gap=p.board.indexOf(8); if(!pz
   if(pzMuralDone(p.board)){ xDlgClose(); pzTone(784,.6); xLog('The last panel grinds home. The picture is whole.','good'); xPuzzleSolved(); return; }
   pzMuralBody(b,p); }
 
+
+/* ---------------- sentries, herding, echo and the hidden bridge ---------------- */
+// put you back on a cell (caught by a sentry's gaze)
+function pzSendTo(c){ EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.path=[]; EX.goal=null; xUpdateVis(); }
+// a sentry's eye: open for `on` seconds of every `per`, from its own phase; it flickers for .6 s before it opens
+const pzEye=(s,t)=>{ const k=((t+s.ph)%s.per+s.per)%s.per; return {open:k<s.on, warn:k>=s.per-.6, left:k<s.on?s.on-k:s.per-k}; };
+// the echo's place: where you were `delay` seconds ago
+function pzEchoAt(pz){ const tr=pz.trail; if(!tr||!tr.length) return null; const t=pz.clock-pz.delay; if(t<tr[0].t) return null;
+  let i=tr.length-1; while(i>0&&tr[i].t>t) i--; return tr[i]; }
+Object.assign(PUZZLE_BUILD,{
+  // a hall three cells wide: the start plate at one end, the gold plate at the other; stone heads in the rim look across
+  // their column of it. Each eye is shut longer than it takes to cross a column, so there is always a gap
+  sentries(r){ const R=pzRect(r,[5,7],[3,3],true); if(!R) return null; const d=EX.depth;
+    const sc=R.at(-1,1), ec=R.at(R.L,1); if(EX.taken.has(sc)||EX.taken.has(ec)) return null;
+    const cols=[]; for(let u=1;u<=R.L-2;u+=2) cols.push(u); if(cols.length<2) return null;
+    const heads=[], per=d>=6?3.2:3.6, on=d>=6?1.6:1.4;
+    for(const u of cols){ const side=XR()<.5?-1:R.W, alt=side<0?R.W:-1;
+      let c=R.at(u,side), dv=side<0?1:-1; if(EX.taken.has(c)||!xSolidOK(c)){ c=R.at(u,alt); dv=-dv; if(EX.taken.has(c)||!xSolidOK(c)) continue; }
+      heads.push(xProp('sentry',c,{u, dv, W:R.W, per, on, ph:XR()*per})); }
+    if(heads.length<2) return null;
+    const field=[]; for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++){ const c=R.at(u,v); field.push(c); xProp('hall',c,{solid:false}); }
+    const start=xProp('pplate',sc,{solid:false, role:'start'}), end=xProp('pplate',ec,{solid:false, role:'end'});
+    return {heads, field, start, end, run:false, clock:0, ax:R.ax, x0:R.x0, y0:R.y0}; },
+  // a field of the room's own floor with the rune plate in one corner; the wisp starts at the far side
+  herding(r){ const R=pzRect(r,[4,6],[3,5],true); if(!R) return null;
+    const corner=[[0,0],[0,R.W-1],[R.L-1,0],[R.L-1,R.W-1]][xri(0,3)], pc=R.at(corner[0],corner[1]);
+    const wu=corner[0]?1:R.L-2, wv=corner[1]?1:R.W-2, wc=R.at(wu,wv);
+    const area=[]; for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++){ const c=R.at(u,v); area.push(c); if(c!==pc) xProp('hall',c,{solid:false, pale:true}); }
+    const plate=xProp('wplate',pc,{solid:false}), wisp=xProp('wisp',wc,{solid:false});
+    if(EX.propAt.get(wc)===wisp) EX.propAt.delete(wc);   // it moves: never a thing to walk into
+    return {area, plate, wisp, wt:0, stuck:0}; },
+  // the echo stone in the rim, and two plates a short walk apart (closer than the echo's delay)
+  echo(r){ const R=pzRect(r,[4,7],[3,5],true); if(!R) return null; const cells=[];
+    for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++) cells.push(R.at(u,v));
+    let a=-1, b=-1; for(let t=0;t<60&&b<0;t++){ const x=xpick(cells), y=xpick(cells), m=Math.abs(xcx(x)-xcx(y))+Math.abs(xcy(x)-xcy(y)); if(m>=3&&m<=5){ a=x; b=y; } }
+    if(b<0) return null;
+    const rim=[]; for(let u=-1;u<=R.L;u++) for(const v of [-1,R.W]) rim.push(R.at(u,v)); for(let v=0;v<R.W;v++) for(const u of [-1,R.L]) rim.push(R.at(u,v));
+    const sc=rim.filter(c=>!EX.taken.has(c)).sort(()=>XR()-.5).find(xSolidOK); if(sc==null) return null;
+    const stone=xProp('echostone',sc,{}), A=xProp('eplate',a,{solid:false}), B=xProp('eplate',b,{solid:false});
+    return {stone, plates:[A,B], delay:EX.depth>=6?2.5:3, clock:0, trail:null, echoT:0}; },
+  // a drop filling a rectangle of the room, a pedestal on an island in it, and a winding plank way to it that only shows
+  // in the dark; the lamps that light the room stand round it, and walking into one puts it out
+  bridge(r){ const R=pzRect(r,[4,6],[3,4],true); if(!R) return null;
+    const iu=R.L-2, iv=R.W>=3?xri(1,R.W-2):1, way=[]; let v=xri(0,R.W-1);
+    for(let u=0;u<=iu;u++){ way.push(R.at(u,v)); const tv=u===iu?iv:u<iu&&XR()<.5?xri(0,R.W-1):v; while(v!==tv){ v+=Math.sign(tv-v); way.push(R.at(u,v)); } }
+    const isle=R.at(iu,iv), ws=new Set(way); ws.delete(isle);
+    const drop=[], planks=[];
+    for(let u=0;u<R.L;u++) for(let v=0;v<R.W;v++){ const c=R.at(u,v); if(c===isle) continue;
+      if(ws.has(c)) planks.push(xProp('plank',c,{solid:false})); else drop.push(xProp('pzdrop',c,{})); }
+    // the lamps stand round the drop, a cell back from its edge (the ring right round it stays a clear walkway), spread out
+    const goal=xProp('isle',isle,{solid:false}), lamps=[], near=new Set();
+    for(let u=-1;u<=R.L;u++) for(let v=-1;v<=R.W;v++) near.add(R.at(u,v));
+    const ring=k=>xRoomCells(r).filter(c=>{ if(near.has(c)) return false; const x=xcx(c), y=xcy(c), dx=Math.max(R.x0-x,0,x-R.x1), dy=Math.max(R.y0-y,0,y-R.y1); return Math.max(dx,dy)===k; });
+    for(const c of [...ring(2).sort(()=>XR()-.5),...ring(3).sort(()=>XR()-.5)]){ if(lamps.length>=3) break;
+      if(EX.taken.has(c)||nearDoor(c)||lamps.some(l=>Math.hypot(xcx(l.cell)-xcx(c),xcy(l.cell)-xcy(c))<3)) continue;
+      if(xSolidOK(c)) lamps.push(xProp('pzlamp',c,{lit:true})); }
+    if(lamps.length<2) return null;
+    return {drop, planks, goal, lamps, dark:false}; },
+});
+
 /* ---------------- touching puzzle things ---------------- */
 const BRAZIER_FLAME=45;   // seconds a carried flame lasts (30 before v123: it kept dying between rooms)
 const BELL_F=[392,494,587,698], BELL_C=[0xff7a5a,0xf2c94c,0x7fe3ff,0xb48cff];
@@ -263,10 +330,18 @@ function xPuzzInteract(p){ const pz=EX.puzzle, d=EX.depth;
     case 'ghosttable': return pzTable(p), true;
     case 'cleanse': return pzCleanse(p), true;
     case 'mural': return pzMuralDlg(p), true;
+    case 'sentry': return xSay('sentry','A stone head. Its eyes open and shut, and its gaze falls across the hall.'), true;
+    case 'echostone': { if(!pz||pz.kind!=='echo') return true; if(pz.solved) return xSay('echo','The echo stone is quiet.'), true;
+      pz.trail=[]; pz.echoT=25; pzTone(523,.5); setTimeout(()=>pzTone(523,.4),pz.delay*1000); xLog('The stone hums. Something walks where you walk, '+pz.delay+' seconds behind.','dim'); return true; }
+    case 'pzdrop': return xSay('pzdrop','A sheer drop. Something might cross it, if you could see it.'), true;
+    case 'pzlamp': { const P=pz&&pz.kind==='bridge'?pz:null; if(!P||!p.lit) return true;
+      p.lit=false; xSfx('whisper'); const left=P.lamps.filter(l=>l.lit).length;
+      if(!left){ P.dark=true; const rr=EX.rooms[P.goal&&EX.room[P.goal.cell]]; if(rr){ rr.lit=false; xUpdateVis(); } xLog('The last lamp goes out. In the dark, planks glow faintly across the drop.','good'); }
+      else xLog('You pinch out the lamp. '+left+' still burning.','dim'); return true; }
     case 'lreset': { if(!pz||pz.kind!=='lanterns'||pz.solved) return xSay('lreset','A violet rune stone. It is quiet now.'), true;
       if(pz.tiles.every((t,i)=>t.lit===pz.begin[i])) return xSay('lreset','A violet rune stone. The lanterns are as they were when you came.'), true;
       pz.tiles.forEach((t,i)=>{ t.lit=pz.begin[i]; }); xSfx('grind'); xLog('The rune stone hums. The lanterns go back as they were.','dim'); return true; }
-    case 'ptile': case 'pplate': case 'pipe': case 'pipeend': case 'icefloor': case 'lantern': return true;
+    case 'ptile': case 'pplate': case 'pipe': case 'pipeend': case 'icefloor': case 'lantern': case 'wplate': case 'wisp': case 'hall': case 'eplate': case 'plank': case 'isle': return true;
   }
   return false; }
 // stepping on things
@@ -281,6 +356,11 @@ function xPuzzEnter(p){ const pz=EX.puzzle;
     if(!p.safe&&pz.run){ pz.run=false; p.badT=.6; if(pz.mem){ pzTone(130,.5); xLog('The stone goes cold and dead under you. Start again from the plate.','bad'); xHurt(Math.round(2+EX.depth*.3),'a dead stone'); }
       else { xLog('The stone bites! Spikes jab up through the cracks.','bad'); xHurt(Math.round(6+EX.depth*.6),'a biting stone'); } }
     return true; }
+  if(p.kind==='pplate'&&pz&&pz.kind==='sentries'){ if(pz.solved) return true;
+    if(p.role==='start'){ if(!pz.run) xLog('You step onto the plate. Cross to the gold one without a stone head seeing you.','dim'); pz.run=true; }
+    else if(pz.run){ pz.run=false; xPuzzleSolved(); }
+    else xLog('Start from the other plate.','dim'); return true; }
+  if(p.kind==='isle'&&pz&&pz.kind==='bridge'&&!pz.solved){ xPuzzleSolved(); return true; }
   if(p.kind==='lantern'&&pz&&pz.kind==='lanterns'&&!pz.solved){ pzLanternFlip(pz.tiles,p); pzTone(p.lit?660:330,.25); if(pz.tiles.every(t=>t.lit)) xPuzzleSolved(); return true; }
   if(p.kind==='pipe'&&pz&&pz.kind==='shift'&&!pz.solved){ p.rot=(p.rot+1)%4; xSfx('grind'); if(pzPipesJoined(pz)){ pz.lit=true; setTimeout(()=>xPuzzleSolved(),400); } return true; }
   return false; }
@@ -297,6 +377,21 @@ function xPuzzTick(dt){ const pz=EX.puzzle;
         if(n===pz.goal.cell){ EX.slide=null; if(!pz.solved) xPuzzleSolved(); }
         else if(EX.t[n]===T_ROCK||xSolid(n)||(d&&d.state!=='open')||EX.room[n]!==pz.room){ EX.slide=null; xSfx('click'); }
         else { EX.pc=n; EX.px=xw(n); EX.pz=xz(n); xUpdateVis(); if(!ice.has(n)) EX.slide=null; } } } }
+  if(pz&&!pz.solved&&pz.kind==='sentries'){ pz.clock+=dt; const F=pz._f||(pz._f=new Set(pz.field));
+    if(pz.run&&!F.has(EX.pc)&&EX.pc!==pz.start.cell&&EX.pc!==pz.end.cell){ pz.run=false; xLog('You left the hall. Start again from the green plate.','dim'); }
+    if(pz.run&&F.has(EX.pc)) for(const h of pz.heads){ if(!pzEye(h,pz.clock).open) continue; const u=pz.ax?xcy(EX.pc)-pz.y0:xcx(EX.pc)-pz.x0;
+      if(u===h.u){ pzTone(140,.5); xMakeNoise(6); xLog('A stone head’s gaze falls on you. You are back at the start.','bad'); pzSendTo(pz.start.cell); break; } } }
+  if(pz&&!pz.solved&&pz.kind==='herding'){ const w=pz.wisp, A=pz._a||(pz._a=new Set(pz.area)); pz.wt+=dt;
+    const dist=c=>Math.hypot(xcx(c)-xcx(EX.pc),xcy(c)-xcy(EX.pc));
+    if(pz.wt>=.38&&dist(w.cell)<=2.6){ pz.wt=0; const opts=xAdj4(w.cell).filter(c=>A.has(c)&&c!==EX.pc), here=dist(w.cell);
+      if(opts.length){ const best=opts.map(c=>[c,dist(c)+XR()*.2]).sort((a,b)=>b[1]-a[1])[0];
+        if(best[1]>here+.05){ w.cell=best[0]; pz.stuck=0; } else if(++pz.stuck>=3){ w.cell=xpick(opts); pz.stuck=0; } }   // cornered: it darts past
+      if(w.cell===pz.plate.cell){ pzTone(784,.5); xLog('The wisp drifts onto the rune plate and is caught in a ring of light.','good'); xPuzzleSolved(); } } }
+  if(pz&&!pz.solved&&pz.kind==='echo'&&pz.echoT>0){ pz.clock+=dt; pz.echoT-=dt; pz.trail.push({t:pz.clock, c:EX.pc, x:EX.px, z:EX.pz});
+    while(pz.trail.length>2&&pz.trail[1].t<pz.clock-pz.delay-.5) pz.trail.shift();
+    const g=pzEchoAt(pz), [A,B]=pz.plates;
+    if(g&&(EX.pc===A.cell&&g.c===B.cell||EX.pc===B.cell&&g.c===A.cell)){ pz.echoT=0; xLog('You and your echo hold both plates. Stone grinds.','good'); xPuzzleSolved(); }
+    else if(pz.echoT<=0){ pz.trail=null; xLog('The echo fades. Walk into the stone to call it again.','dim'); } }
   EX.lastPc=EX.pc;
   if(EX.cursed&&!EX.cursed.done) EX.cursedT=(EX.cursedT||0)+dt; }
 // while sliding you have no say in where you go
@@ -456,17 +551,45 @@ function xPuzzMesh(p,g){ const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30), iron=x
     case 'mural': { const S=192, cv=document.createElement('canvas'); cv.width=cv.height=S; p.tex=new THREE.CanvasTexture(cv);
       g.add(xBox(1.6,1.6,.1,xMat(0x4a3a2c),0,1.25,.02), new THREE.Mesh(new THREE.PlaneGeometry(1.4,1.4),new THREE.MeshBasicMaterial({map:p.tex, color:0xd8cfc0})));
       g.children[1].position.set(0,1.25,.08); pzMuralPaint(p); return true; }
+    case 'sentry': { g.add(xBox(.8,.5,.8,stone,0,.25,0), xBox(.62,.7,.56,stone,0,.85,0), xBox(.7,.12,.62,xMat(0x5a5650),0,1.25,0));
+      p.eyes=[]; for(const x of [-.14,.14]){ const e=xBall(.07,xGlowMat(0xff5d6c),x,.95,.29*p.dv); g.add(e); p.eyes.push(e); }
+      p.gaze=new THREE.Mesh(new THREE.PlaneGeometry(XCS*.9,XCS*p.W),new THREE.MeshBasicMaterial({color:0xff4a4a,transparent:true,opacity:0,depthWrite:false}));
+      p.gaze.rotation.x=-Math.PI/2; p.gaze.position.set(0,.07,p.dv*(p.W+1)/2*XCS); g.add(p.gaze); return true; }
+    case 'wplate': { g.add(xCyl(.6,.08,stone,0,.04,0), xCyl(.42,.04,xGlowMat(0x8fe4ff),0,.09,0)); const ring=new THREE.Mesh(new THREE.TorusGeometry(.5,.03,6,24),xGlowMat(0x8fe4ff)); ring.rotation.x=Math.PI/2; ring.position.y=.12; g.add(ring); return true; }
+    case 'wisp': { p.orb=xBall(.28,xGlowMat(0xe6fbff),0,.8,0); p.halo=xBall(.5,xGlowMat(0x7fd8ff,{transparent:true,opacity:.32,depthWrite:false}),0,.8,0); g.add(p.orb,p.halo); return true; }
+    case 'echostone': { g.add(xBox(.7,1.2,.5,stone,0,.6,0)); p.rune=xBox(.34,.34,.02,xGlowMat(0x9fd0ff,{transparent:true,opacity:.6}),0,.8,.26); g.add(p.rune); return true; }
+    case 'eplate': { g.add(xCyl(.55,.08,stone,0,.04,0), xCyl(.38,.04,xGlowMat(0x9fd0ff),0,.09,0)); return true; }
+    case 'hall': { g.add(xBox(XCS*.94,.04,XCS*.94,xMat(p.pale?0x5e6a70:0x4a4642),0,.02,0)); return true; }
+    case 'pzdrop': { g.add(xBox(XCS,.04,XCS,new THREE.MeshBasicMaterial({color:0x040408}),0,.02,0)); return true; }
+    case 'plank': { const m=new THREE.MeshBasicMaterial({color:0x8fd8ff,transparent:true,opacity:0,depthWrite:false}); p.glowMat=m;
+      g.add(xBox(XCS,.04,XCS,new THREE.MeshBasicMaterial({color:0x040408}),0,.02,0)); for(let k=-1;k<=1;k++) g.add(xBox(XCS*.9,.03,XCS*.24,m,0,.06,k*XCS*.3)); return true; }
+    case 'isle': { g.add(xBox(XCS*.9,.3,XCS*.9,stone,0,.15,0), xBox(.4,.6,.4,xMat(0x8a8478),0,.6,0)); p.orb=xBall(.16,xGlowMat(0xf2c94c),0,1.05,0); g.add(p.orb); return true; }
+    case 'pzlamp': { g.add(xCyl(.3,.12,iron,0,.06,0), xCyl(.09,1.3,iron,0,.7,0), xCyl(.36,.16,iron,0,1.38,0)); for(const a of [0,2.1,4.2]) g.add(xBox(.05,.36,.05,iron,Math.cos(a)*.3,1.22,Math.sin(a)*.3));
+      p.flame=xCone(.26,.62,xGlowMat(0xffb060,{transparent:true,opacity:.92}),0,1.76,0); g.add(p.flame); return true; }
     case 'cleanse': { g.add(xBox(1.1,.7,.7,stone,0,.35,0), xCyl(.4,.12,xMat(0x8a8478),0,.76,0)); const w=xCyl(.34,.02,xGlowMat(0x9fdcff,{transparent:true,opacity:.75}),0,.83,0); g.add(w); return true; }
   }
   return false; }
-function xPuzzAnim(T,dt){ if(!EX) return; const pz=EX.puzzle;
+function xPuzzAnim(T,dt){ if(!EX) return; const pz=EX.puzzle; pzEchoMesh(pz);
   for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
     if(p.kind==='ptile'&&p.glow){ const show=pz&&pz.mem&&pz.showT>0&&p.safe; p.badT=Math.max(0,(p.badT||0)-(dt||.016)); p.glow.material.opacity=p.badT>0?.6:show?.55+.2*Math.sin(T*8):0; p.glow.material.color.setHex(p.badT>0?0xff5d6c:0x9dffc0); }
     if(p.kind==='bell'&&p.bellMat){ p.flashT=Math.max(0,(p.flashT||0)-(dt||.016)); p.bellMat.emissive.copy(p.col3).multiplyScalar(.15+(p.flashT>0?1.2*p.flashT:0)); }
     if(p.kind==='pipe'&&p.ch){ const want=-p.rot*Math.PI/2; p.ch.rotation.y+=(want-p.ch.rotation.y)*.25; if(pz&&pz.lit) p.chMat.color.setHex(0xf2c94c); }
     if(p.kind==='weight'&&p.stone){ const y=p.on?.75:.4; p.stone.position.y+=(y-p.stone.position.y)*.2; if(p.mark) p.mark.position.y=p.stone.position.y+.02+.15+p.v*.05; }
     if(p.kind==='lantern'&&p.bulb){ p.bulb.color.setHex(p.lit?0xffd27a:0x22222c); p.flame.visible=p.pool.visible=!!p.lit; if(p.lit){ const f=.85+.15*Math.sin(T*7+p.cell); p.flame.scale.set(1,f,1); p.pool.material.opacity=.75+.25*f; } }
+    if(p.kind==='sentry'&&p.gaze&&pz&&pz.kind==='sentries'){ const e=pz.solved?{open:false,warn:false}:pzEye(p,pz.clock);
+      p.gaze.material.opacity=e.open?.38:e.warn?.12+.1*Math.sin(T*30):0; for(const y of p.eyes) y.material.color.setHex(e.open?0xff5d6c:e.warn?0xffa040:0x3a2020); }
+    if(p.kind==='wisp'&&p.orb){ const g=p.mesh, tx=xw(p.cell), tz=xz(p.cell); g.position.x+=(tx-g.position.x)*.18; g.position.z+=(tz-g.position.z)*.18; p.orb.position.y=p.halo.position.y=.8+Math.sin(T*3)*.1; }
+    if(p.kind==='plank'&&p.glowMat){ const P=pz&&pz.kind==='bridge'?pz:null; p.glowMat.opacity=P&&(P.dark||P.solved)?.55+.15*Math.sin(T*2+p.cell):0; }
+    if(p.kind==='pzlamp'&&p.flame){ p.flame.visible=!!p.lit; p.flame.scale.y=.85+.2*Math.sin(T*9+p.cell); }
+    if(p.kind==='isle'&&p.orb) p.orb.position.y=1.05+Math.sin(T*2)*.05;
     if(p.kind==='icegoal'&&p.orb) p.orb.position.y=1.2+Math.sin(T*2)*.06;
     if(p.kind==='pbrazier'&&p.flame){ p.flame.visible=!!p.lit; p.flame.scale.y=.85+.2*Math.sin(T*9+p.cell); }
     if(p.kind==='ghosttable'&&p.dish) p.need.forEach((e,i)=>{ p.dish[i].visible=p.placed.includes(e); });
     if(p.kind==='guardian'&&p.eyes){ const pzr=EX.puzzle; p.eyes.visible=!(pzr&&pzr.kind==='riddle'&&(pzr.wrong>=2||pzr.solved)); } } }
+
+// your echo: a pale figure where you were a few seconds ago (one mesh, made when first needed)
+function pzEchoMesh(pz){ const on=pz&&pz.kind==='echo'&&!pz.solved&&pz.echoT>0, g=on&&pzEchoAt(pz);
+  if(EX.echoMesh&&X3&&EX.echoMesh.parent!==X3.group) EX.echoMesh=null;   // the scene was built again
+  if(!EX.echoMesh){ if(!g||!X3||!X3.group) return; const m=new THREE.Group(), mat=new THREE.MeshBasicMaterial({color:0xbfe4ff,transparent:true,opacity:.62,depthWrite:false}), aura=new THREE.MeshBasicMaterial({color:0x7fc8ff,transparent:true,opacity:.22,depthWrite:false});
+    m.add(xCyl(.3,1.1,mat,0,.65,0), xBall(.26,mat,0,1.45,0), xCyl(.48,1.5,aura,0,.8,0), xCyl(.5,.03,xGlowMat(0x9fd0ff,{transparent:true,opacity:.5}),0,.03,0)); X3.group.add(m); EX.echoMesh=m; }
+  EX.echoMesh.visible=!!g; if(g) EX.echoMesh.position.set(g.x,0,g.z); }

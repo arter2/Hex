@@ -37,7 +37,7 @@ const TRANSIENT=['cutD','camT','maxHp','lowS','markS','darkS','wdg','action','ai
   TRANSIENT_LISTS=['path','fx','shards','pops'];
 // what the 3D scene works out again each time it is built (explore.js xBuildScene, look.js xBakeAO): left out
 const SCENE=['aoData','aoTex','fog','fogCur','fogTgt','fogTex','wIdx','wms','shown','wCut','wList','gSlot','wGhost','dress','decor','onWall','glows',
-  'motes','bats','drips','puddles','lanterns','trimMesh','skirtMesh','corMesh','upMesh','downMesh','runeRing','beam','me','myGlow','pillShaft','pillCap','pillBase','pillCave','veil','arches','deepFace','sectM','stepT','stepKey','stepTan','doorClip','nat','natM','natPools','fireL'];
+  'motes','bats','drips','puddles','lanterns','trimMesh','skirtMesh','corMesh','upMesh','downMesh','runeRing','beam','me','myGlow','pillShaft','pillCap','pillBase','pillCave','veil','arches','deepFace','sectM','stepT','stepKey','stepTan','doorClip','nat','natM','natPools','fireL','echoMesh'];
 // a floor without what its scene works out again (a copy; the floor itself is untouched)
 function xFloorPlain(ex){ const o=Object.assign({},ex); for(const k of SCENE) delete o[k]; return o; }
 function xFloorStore(ex){ if(!save||save.temp||!ex||ex.branch||!worldSeed()) return;

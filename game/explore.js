@@ -1902,7 +1902,8 @@ function xGuard(f){ try{ f(); }catch(e){ if(xErrShown++<3) console.error('dungeo
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   xRaf=requestAnimationFrame(xLoop);
-  const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
+  // never below 0: the first frame's timestamp can be from a little before the loop was started (xLoopStart)
+  const dt=Math.max(0,Math.min(.1,(ts-xLast)/1000)); xLast=ts;
   // a search or disarm never takes more than a few seconds, whatever happens
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
   if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt));
@@ -2095,11 +2096,15 @@ const XTIPS={
   puzzle: ()=>'A puzzle. Walk into levers, statues and stones to use them; clues may be elsewhere on the floor.',
   lanterns:()=>'Lanterns: step on one and it flips, with the ones beside it. Light them all. Walk into the violet rune stone to put them back as they were.',
   mural:  ()=>'A sliding mural: walk into it, then slide the panels back into the picture.',
+  sentries:()=>'Sentries: start on the green plate and cross to the gold one. A stone head’s gaze sends you back; its eyes flicker just before they open.',
+  herding:()=>'A wisp! It flees from you. Herd it onto the glowing rune plate.',
+  echo:   ()=>'An echo stone: walk into it and a ghost follows your steps a few seconds behind. Hold both plates at once, you on one and your echo on the other.',
+  bridge: ()=>'A drop with nothing across it… Put out the room’s lamps (walk into them) and see what the light hides.',
   hidden: ()=>'Stand still for a moment to notice hidden doors and traps, or use Search to look harder.',
 };
 // the small cyan line over each tip; the counter beside it is how many of the tips you have seen so far
-const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', lanterns:'Puzzles', mural:'Puzzles', hidden:'Secrets'};
-const XTIP_KIND={lantern:'lanterns', mural:'mural'};   // a puzzle with its own first-time tip
+const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', lanterns:'Puzzles', mural:'Puzzles', sentries:'Puzzles', herding:'Puzzles', echo:'Puzzles', bridge:'Puzzles', hidden:'Secrets'};
+const XTIP_KIND={lantern:'lanterns', mural:'mural', sentry:'sentries', wisp:'herding', echostone:'echo', pzdrop:'bridge'};   // a puzzle with its own first-time tip
 const XTIP_PUZZLE=new Set(['lever','plever','plate','statue','mirror','runestone','block']);
 const xTipsOn=()=>{ try{ return localStorage.getItem('hexmancers-xtips')!=='0'; }catch(e){ return true; } };
 const xStairsMarkOn=()=>{ try{ return localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){ return true; } };

@@ -1,6 +1,6 @@
 # Dungeon room shapes and puzzles
 
-Date: 2026-11-09 · Status: room shapes built (game/roomshapes.js); puzzles: Lanterns and Sliding mural built (game/puzzles.js), the other four not yet · For: the spacious dungeon (layout 2)
+Date: 2026-11-09 · Status: room shapes built (game/roomshapes.js); all six puzzles built (game/puzzles.js) · For: the spacious dungeon (layout 2)
 
 This is the reference for the two pieces of the dungeon work that are still to be built: the new
 room shapes and the new puzzle kinds. The full design, with the room themes, is in
@@ -342,6 +342,19 @@ As built:
 - **Sliding mural** hangs on a wall the camera can see. Walking into it opens a close-up: tap a panel
   beside the gap to slide it. A small copy of the picture and a Start over button sit beside the panels.
   The panels on the wall show the mural as it stands.
+- **Sentries** is a hall three cells wide (5 to 7 long), its floor slabbed. Stone heads in the rim watch
+  every other column; each eye is shut 2.2 s of every 3.6 s (1.6 of 3.2 from depth 6) and flickers orange
+  for 0.6 s before it opens, its gaze a red strip across the hall. Start on the green plate; a gaze, or
+  leaving the hall, sends you back. The gold plate at the far end solves it.
+- **Herding** is a field of pale slabs with the rune plate in one corner and the wisp across from it. The
+  wisp steps away from you (one cell every 0.38 s) when you come within about 2.5 cells. Cornered, it
+  darts past you after a moment, so no corner holds it for good.
+- **Echo**: walking into the echo stone wakes a ghost that walks your steps 3 seconds behind (2.5 from
+  depth 6) for 25 seconds. The two plates are 3 to 5 steps apart, under a second's walk, so you cross one
+  and wait on the other.
+- **Hidden bridge** is a black drop with a pedestal on an island and a winding plank way to it. Two or
+  three lamps stand a cell back from the drop's edge; walking into one puts it out. With all out the room
+  goes dark and the planks glow. Stepping onto the pedestal solves it.
 - Each has its own first-time tip.
 - A puzzle may now go in a shaped room when no plain room is free (on the spacious floor nearly every
   room is shaped or has clutter, and puzzle rooms had stopped appearing there). Mirrors stays in plain

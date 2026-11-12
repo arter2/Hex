@@ -1147,6 +1147,14 @@ body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:
 #bagUI.dragging .drophover{outline:3px solid #39ff8a; outline-offset:2px; filter:brightness(1.25);}
 #bagUI.dragging #bgSprite.dropok{outline-offset:-4px; border-radius:12px;}
 /* a card found in the dungeon */
+.pzm{display:flex; gap:12px; justify-content:center; align-items:flex-start; flex-wrap:wrap; margin:4px 0 8px;}
+.pzm-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:3px; width:min(270px,70vw); aspect-ratio:1; padding:4px; background:#16110e; border-radius:6px; box-shadow:inset 0 0 0 2px #4a3a2c;}
+.pzm-tile{border:0; padding:0; border-radius:3px; background-size:300% 300%; background-color:#2a2420; cursor:default; box-shadow:inset 0 0 0 1px rgba(0,0,0,.5);}
+.pzm-tile.can{cursor:pointer; box-shadow:inset 0 0 0 2px #f2c94c, 0 0 8px rgba(242,201,76,.45);}
+.pzm-tile.gap{background:#0c0907; box-shadow:inset 0 2px 8px rgba(0,0,0,.8);}
+.pzm-side{display:flex; flex-direction:column; align-items:center; gap:6px;}
+.pzm-goal{width:84px; height:84px; border-radius:4px; background-size:cover; box-shadow:0 0 0 2px #4a3a2c; opacity:.9;}
+.pzm-side small{opacity:.75;}
 .xcards{display:flex; gap:10px; justify-content:center; margin:4px 0 8px;}
 .xcards .card{flex:0 1 210px; min-width:0; width:auto; cursor:default;}
 .xcards .card{aspect-ratio:auto; height:auto;} .xcards .card .tx{overflow:visible; max-height:none; -webkit-line-clamp:unset; display:block; flex:none;}

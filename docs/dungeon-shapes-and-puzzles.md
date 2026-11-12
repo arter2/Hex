@@ -1,6 +1,6 @@
 # Dungeon room shapes and puzzles
 
-Date: 2026-11-09 · Status: room shapes built (game/roomshapes.js); the six puzzles not built yet · For: the spacious dungeon (layout 2)
+Date: 2026-11-09 · Status: room shapes built (game/roomshapes.js); puzzles: Lanterns and Sliding mural built (game/puzzles.js), the other four not yet · For: the spacious dungeon (layout 2)
 
 This is the reference for the two pieces of the dungeon work that are still to be built: the new
 room shapes and the new puzzle kinds. The full design, with the room themes, is in
@@ -40,8 +40,8 @@ Rules every template follows:
   floor.
 - Only newly dug floors get these shapes. Floors already saved keep their layout.
 
-Open point: water and chasm are impassable in this design. Wading through water, or falling into a
-chasm and landing a floor below, was raised and not decided.
+Water and chasm are impassable (decided). Wading through water, or falling into a chasm and landing a
+floor below, is not planned.
 
 ### Your own shapes
 
@@ -333,6 +333,20 @@ like the round 4 puzzles in `game/puzzles.js`. Solving one opens the rich chest 
 | **Echo** | A ghost repeats your steps a few seconds late. Use it to hold two plates at once. | The plates are placed along a path the delay makes possible. |
 | **Hidden bridge** | The way across only shows in the dark. Put out the room's lights to see it. | The bridge is laid first; the lights are all in reach. |
 
+As built:
+
+- **Lanterns** is a 3 x 3 field (on a 3 x 3 field exactly one set of steps lights them all). It is
+  scrambled with 3 steps, 4 from depth 5 and 5 from depth 8. A violet rune stone elsewhere in the room
+  puts the lanterns back as they were; it is something you walk into, so walking round the field never
+  touches it. A tap to move walks round the lanterns.
+- **Sliding mural** hangs on a wall the camera can see. Walking into it opens a close-up: tap a panel
+  beside the gap to slide it. A small copy of the picture and a Start over button sit beside the panels.
+  The panels on the wall show the mural as it stands.
+- Each has its own first-time tip.
+- A puzzle may now go in a shaped room when no plain room is free (on the spacious floor nearly every
+  room is shaped or has clutter, and puzzle rooms had stopped appearing there). Mirrors stays in plain
+  rooms only.
+
 Rules for all six:
 
 - A wrong move costs what today's puzzles cost: a bite, a reset or a walk back. Never a lost run.
@@ -352,5 +366,4 @@ These were proposed and cut because the game already has the mechanic:
 
 ## What is not decided yet
 
-- Whether water and chasm stay impassable.
 - The implementation plans for shapes, themes and puzzles. Each gets its own plan.

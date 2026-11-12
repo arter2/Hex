@@ -918,7 +918,9 @@
     const av = avoidSet();
     if (allow) for (const c of allow) av.delete(c);
     const field =
-      TASKNAME.startsWith('puzzle') || typeof xPuzzField !== 'function' ? new Set() : xPuzzField();
+      (TASKNAME.startsWith('puzzle') && TASKNAME !== 'puzzle:lanterns') || typeof xPuzzField !== 'function' // every step on a lantern counts: walk round them
+        ? new Set()
+        : xPuzzField();
     if (field.has(goal) || field.has(EX.pc) || (allow && allow.length)) field.clear();
     const blocked = f => n =>
       n !== EX.pc &&
@@ -1137,7 +1139,7 @@
     if (EX.pc !== s) {
       const ok = yield* walk(s, o);
       if (!ok) {
-        R.bumpWhy = 'could not walk there';
+        R.bumpWhy = 'could not walk there (' + R.walkWhy + (R.blockInfo ? ' ' + JSON.stringify(R.blockInfo) : '') + ')';
         return false;
       }
     }
@@ -1388,6 +1390,9 @@
     'pplate',
     'pipe',
     'pipeend',
+    'lantern',
+    'lreset',
+    'mural',
     'icefloor',
     'iceboulder',
     'icegoal',
@@ -2515,6 +2520,118 @@
       }
       if (!pz.solved) giveUp('could not join the channel');
     })();
+  // lanterns: work out the fewest lanterns to step on (a stone's flip undone by stepping back over it), then step on them
+  PUZ.lanterns = pz =>
+    (function* () {
+      const cells = new Set(pz.tiles.map(t => t.cell)),
+        outside = c => !cells.has(c) && EX.room[c] === pz.room && !xSolid(c);
+      const solve = () => {
+        const n = pz.tiles.length;
+        let best = null;
+        for (let m = 1; m < 1 << n; m++) {
+          const lit = pz.tiles.map(t => t.lit);
+          let cnt = 0;
+          for (let i = 0; i < n; i++)
+            if ((m >> i) & 1) {
+              cnt++;
+              const a = pz.tiles[i];
+              pz.tiles.forEach((t, j) => {
+                if (Math.abs(t.u - a.u) + Math.abs(t.v - a.v) <= 1) lit[j] = !lit[j];
+              });
+            }
+          if (lit.every(x => x) && (!best || cnt < best.length)) best = pz.tiles.filter((t, i) => (m >> i) & 1);
+        }
+        return best || [];
+      };
+      // one cell over, by tapping it (as a phone player does): the keys can carry you into the lantern beside it
+      function* tap(c) {
+        EX.goal = { cell: c, x: xw(c), z: xz(c) };
+        EX.path = [c];
+        const t0 = R.T;
+        while (EX.pc !== c && R.T - t0 < 1.5) yield;
+        const t1 = R.T;
+        while (EX.goal && R.T - t1 < 0.6) yield;
+        EX.goal = null;
+        EX.path = [];
+        return EX.pc === c;
+      }
+      yield* think(between(1, 3) * P.slow);
+      // on a 3 x 3 field one set of lanterns lights them all, so it is worked out afresh before every step (a stray flip
+      // on the way changes it)
+      for (let k = 0; k < 40 && !pz.solved; k++) {
+        const plan = solve();
+        if (!plan.length) break;
+        let t = plan.find(x => adj4(x.cell).some(outside)) || plan[0];
+        if (!chance(P.logic)) t = pick(pz.tiles);
+        const out = adj4(t.cell).filter(outside);
+        if (out.length) {
+          if (!out.includes(EX.pc)) {
+            const ok = yield* walk(out[0], { careful: true, max: 30 });
+            if (!ok) break;
+          }
+          if (!adj4(EX.pc).includes(t.cell) || cells.has(EX.pc)) continue; // stopped somewhere else: look again
+          yield* think(between(0.3, 0.9) * P.slow);
+          yield* tap(t.cell);
+          if (PZ) PZ.steps++;
+          if (pz.solved) break;
+          const back = adj4(EX.pc).filter(outside);
+          if (back.length) yield* tap(back[0]);
+        } else {
+          // a middle lantern: in over a neighbour and back the same way (the neighbour flips twice)
+          const via = adj4(t.cell).find(n => cells.has(n) && adj4(n).some(outside));
+          if (!via) break;
+          const o2 = adj4(via).find(outside);
+          if (EX.pc !== o2) {
+            const ok = yield* walk(o2, { careful: true, max: 30 });
+            if (!ok) break;
+          }
+          if (EX.pc !== o2) continue;
+          yield* tap(via);
+          yield* tap(t.cell);
+          if (pz.solved) break;
+          yield* tap(via);
+          yield* tap(o2);
+          if (PZ) PZ.steps += 4;
+        }
+      }
+      if (!pz.solved) giveUp('could not light the lanterns');
+    })();
+  // the sliding mural: walk into it; the dialog part (dialogTick) slides the panels
+  PUZ.mural = pz =>
+    (function* () {
+      for (let att = 0; att < 3 && !pz.solved; att++) {
+        yield* bump(pz.mural.cell, { max: 300 });
+        const t0 = R.T;
+        while (R.T - t0 < 1 && !EX.dlg) yield;
+        // standing at it and the keys did not reach it (they slide along the wall): walk into it the way the game does
+        if (!EX.dlg && EX.pc === pz.mural.front) xBumpExtra(pz.mural.cell, true);
+        while (EX.dlg || xPaused) yield;
+      }
+      if (!pz.solved) giveUp('could not put the mural back');
+    })();
+  // how far each mural layout is from whole (every layout a slide can reach), worked out once
+  let MURAL_D = null;
+  function muralDist() {
+    if (MURAL_D) return MURAL_D;
+    const start = '012345678',
+      D = new Map([[start, 0]]),
+      q = [start];
+    for (let h = 0; h < q.length; h++) {
+      const s = q[h],
+        g = s.indexOf('8');
+      for (const m of pzMuralNbrs(g)) {
+        const a = s.split('');
+        a[g] = a[m];
+        a[m] = '8';
+        const n = a.join('');
+        if (!D.has(n)) {
+          D.set(n, D.get(s) + 1);
+          q.push(n);
+        }
+      }
+    }
+    return (MURAL_D = D);
+  }
   PUZ.riddle = pz =>
     (function* () {
       const g = EX.props.find(p => p.kind === 'guardian');
@@ -2626,6 +2743,27 @@
       const p = lore ? P.lore : P.wheel;
       const b = right && chance(p) ? right : pick(btns);
       return click(b);
+    }
+    if (title === 'The sliding mural') {
+      const p = EX.puzzle && EX.puzzle.mural;
+      if (!p) return closeIt();
+      const D = muralDist(),
+        g = p.board.indexOf(8),
+        moves = pzMuralNbrs(g).map(i => {
+          const a = p.board.slice();
+          a[g] = a[i];
+          a[i] = 8;
+          return { i, d: D.get(a.join('')) ?? 99 };
+        });
+      const best = moves.sort((a, b) => a.d - b.d)[0],
+        mv = chance(0.6 + 0.4 * P.logic) ? best : pick(moves);
+      const tile = document.querySelector('#xdBody .pzm-tile[data-spot="' + mv.i + '"]');
+      if (!tile) return closeIt();
+      DLG.n = 0;
+      if (PZ) PZ.steps++;
+      click(tile);
+      DLG.t = R.T + between(0.4, 1.0) * P.slow;
+      return;
     }
     if (/^Trial of/.test(title)) {
       const go = btns.find(b => /Begin/.test(b.textContent));
@@ -3534,6 +3672,7 @@
           Object.assign(PUZZLE_BUILD, all);
         }
       };
+      if (typeof clearFloors === 'function') clearFloors(); // a kept floor from the last run would come back instead of a new one
       openCamp();
       enterExplore(save.deepest);
       if (!EX) {
@@ -3635,7 +3774,8 @@
         fights: R.labF,
         scr: [...document.querySelectorAll('.scr.on,.overlay.on')].map(e => e.id).join(','),
         task: TASKNAME,
-        dlg: EX && EX.dlg && EX.dlg.title
+        dlg: EX && EX.dlg && EX.dlg.title,
+        dump: typeof window.PZDUMP === 'function' ? window.PZDUMP(pz) : undefined // a debugging look at the puzzle as it was left
       });
       stopExplore();
       EX = null;

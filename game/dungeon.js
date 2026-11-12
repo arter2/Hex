@@ -258,7 +258,9 @@ function xAssignRooms(){
   // a merchant or sanctuary with no room to stand in tries again on the next floor
   if(F.merchant&&!give(take(()=>true,true),'merchant',true)){ delete F.merchant; XRUN.next.merchant=EX.depth+1; }
   if(F.sanct&&!give(take(()=>true,true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
-  if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5),'puzzle')) delete F.puzzle;
+  // a puzzle fits itself into a shaped room's own floor (pzRect, puzzles.js), so one may go there when no plain room is
+  // free: on a spacious floor nearly every room is shaped or has clutter in it, and puzzles had stopped appearing there
+  if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5)||take(r=>r.w>=5&&r.h>=5,true),'puzzle')) delete F.puzzle;
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
   if(typeof xRareAssign==='function') xRareAssign(F,give,take);
 }
@@ -478,7 +480,8 @@ function xArrival(){ const F=EX.plan?EX.plan.feats:{};
 const DIRV=[[0,-1],[1,0],[0,1],[-1,0]];   // north, east, south, west
 const WHEEL_ICON={fire:'🔥',frost:'❄',storm:'⚡',verdant:'🌿',light:'☀',shadow:'☾'};
 function xPlacePuzzle(r){
-  const kinds=Object.keys(PUZZLE_BUILD).sort(()=>XR()-.5);   // the old six and the round 4 puzzles (puzzles.js)
+  // the old six and the round 4 puzzles (puzzles.js); the mirrors' beam is laid across the room's box, so a plain room only
+  const kinds=Object.keys(PUZZLE_BUILD).filter(k=>k!=='mirrors'||!(r.shape||r.walls)).sort(()=>XR()-.5);
   for(const k of kinds){ const snap={props:EX.props.length, taken:new Set(EX.taken)};
     const pz=PUZZLE_BUILD[k](r); if(pz){ EX.puzzle=Object.assign(pz,{kind:k, room:r.id, solved:false}); return; }
     // undo a half-built attempt

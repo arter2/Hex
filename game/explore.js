@@ -2093,10 +2093,13 @@ const XTIPS={
   trap:   ()=>'A trap! Step around it, or stand next to it and Disarm it.',
   person: ()=>'Walk into people to talk to them.',
   puzzle: ()=>'A puzzle. Walk into levers, statues and stones to use them; clues may be elsewhere on the floor.',
+  lanterns:()=>'Lanterns: step on one and it flips, with the ones beside it. Light them all. Walk into the violet rune stone to put them back as they were.',
+  mural:  ()=>'A sliding mural: walk into it, then slide the panels back into the picture.',
   hidden: ()=>'Stand still for a moment to notice hidden doors and traps, or use Search to look harder.',
 };
 // the small cyan line over each tip; the counter beside it is how many of the tips you have seen so far
-const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', hidden:'Secrets'};
+const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', lanterns:'Puzzles', mural:'Puzzles', hidden:'Secrets'};
+const XTIP_KIND={lantern:'lanterns', mural:'mural'};   // a puzzle with its own first-time tip
 const XTIP_PUZZLE=new Set(['lever','plever','plate','statue','mirror','runestone','block']);
 const xTipsOn=()=>{ try{ return localStorage.getItem('hexmancers-xtips')!=='0'; }catch(e){ return true; } };
 const xStairsMarkOn=()=>{ try{ return localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){ return true; } };
@@ -2125,8 +2128,10 @@ function xTipScan(dt){ if(!EX||!xTipsOn()) return;
   if(want('chest')&&EX.chests.some(c=>!c.open&&V[c.cell])) xTip('chest');
   if(want('sleeper')&&EX.groups.some(g=>g.state==='sleep'&&!g.dormant&&V[g.cell])) xTip('sleeper');
   if(want('trap')&&EX.traps.some(t=>t.known&&t.armed&&V[t.cell])) xTip('trap');
-  if((want('person')||want('puzzle'))&&EX.props) for(const p of EX.props){ if(p.gone||!V[p.wall?p.front:p.cell]) continue;
-    if(p.kind==='npc'||p.kind==='merchant') xTip('person'); else if(XTIP_PUZZLE.has(p.kind)) xTip('puzzle'); }
+  if(EX.props) for(const p of EX.props){ if(p.gone||!V[p.wall?p.front:p.cell]) continue;
+    if(p.kind==='npc'||p.kind==='merchant'){ if(want('person')) xTip('person'); }
+    else if(XTIP_KIND[p.kind]){ if(want(XTIP_KIND[p.kind])) xTip(XTIP_KIND[p.kind]); }
+    else if(XTIP_PUZZLE.has(p.kind)&&want('puzzle')) xTip('puzzle'); }
 }
 
 // the stairs down on the minimap, once seen: a pulsing ring and a down arrow in the floor's color (red on a boss floor)

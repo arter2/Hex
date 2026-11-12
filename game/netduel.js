@@ -6,7 +6,7 @@ const _np=(typeof require==='function'&&typeof module!=='undefined')?require('./
 const NET_COLS=14;   // duel board width; hit tiles are mirrored c' = NET_COLS-1-c (BOARD_COLS is a mutable game global, so not reused)
 const NET_DEFAULTS={mpSpell:10,mpDefend:50,mpBackdate:250,mpSend:16,mpSmooth:33};
 const NET_DECK_MIN=45, NET_DECK_MAX=60;
-const NET_SILENCE_MS=5000, NET_PING_MS=1000, NET_BURST_N=8, NET_BURST_GAP=20, NET_SYNC_MS=200;
+const NET_SILENCE_MS=10000, NET_PING_MS=1000, NET_BURST_N=8, NET_BURST_GAP=20, NET_SYNC_MS=200;
 const NET_DEATH_GRACE_MS=300, NET_DEATH_MARGIN_MS=50, NET_SPELL_GRACE_MS=2000, NET_HISTORY_MS=1000;
 
 // Where the local mage stood over time; entries are sorted by ts.
@@ -277,6 +277,10 @@ class DuelSession{
   tick(){
     if(this._left||this.state==='over') return;
     const n=this.now();
+    // this phone itself froze (building the battle, a slow frame, the app in the background): that time is not the
+    // other side's silence, and messages that came meanwhile have not been read yet
+    if(this._lastTick&&n-this._lastTick>1500) this._lastRx+=n-this._lastTick;
+    this._lastTick=n;
     if(this.state==='connecting') return;
     while(this._burstLeft>0&&n>=this._burstNext){ this._ping(); this._burstLeft--; this._burstNext+=NET_BURST_GAP; }
     if(n-this._lastPingAt>=NET_PING_MS) this._ping();

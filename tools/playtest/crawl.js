@@ -873,10 +873,28 @@
   function releaseKeys() {
     for (const k in XKEY) XKEY[k] = false;
   }
+  // a grid direction, with the keys a player would press: the keys move you across the screen, and the spacious floor's
+  // camera is turned (explore.js xScreenDir), so one grid step there is two keys at once
   function hold(dir) {
     releaseKeys();
-    const k = keyOf(dir);
-    if (k) XKEY[k] = true;
+    const g = { up: [0, -1], right: [1, 0], down: [0, 1], left: [-1, 0] }[dir],
+      a = ((typeof xYaw === 'function' && EX ? xYaw() : 0) * Math.PI) / 180;
+    let keys = [dir];
+    if (g && a) {
+      const c = Math.cos(a),
+        s = Math.sin(a),
+        ix = c * g[0] - s * g[1],
+        iz = s * g[0] + c * g[1];
+      keys = [];
+      if (ix > 0.3) keys.push('right');
+      if (ix < -0.3) keys.push('left');
+      if (iz > 0.3) keys.push('down');
+      if (iz < -0.3) keys.push('up');
+    }
+    for (const d of keys) {
+      const k = keyOf(d);
+      if (k) XKEY[k] = true;
+    }
     if (EX) EX.needInput = false;
   } // a real key-down clears needInput (explore.js)
   const DIRN = [
@@ -918,7 +936,9 @@
     const av = avoidSet();
     if (allow) for (const c of allow) av.delete(c);
     const field =
-      TASKNAME.startsWith('puzzle') || typeof xPuzzField !== 'function' ? new Set() : xPuzzField();
+      (TASKNAME.startsWith('puzzle') && TASKNAME !== 'puzzle:lanterns') || typeof xPuzzField !== 'function' // every step on a lantern counts: walk round them
+        ? new Set()
+        : xPuzzField();
     if (field.has(goal) || field.has(EX.pc) || (allow && allow.length)) field.clear();
     const blocked = f => n =>
       n !== EX.pc &&
@@ -1137,7 +1157,7 @@
     if (EX.pc !== s) {
       const ok = yield* walk(s, o);
       if (!ok) {
-        R.bumpWhy = 'could not walk there';
+        R.bumpWhy = 'could not walk there (' + R.walkWhy + (R.blockInfo ? ' ' + JSON.stringify(R.blockInfo) : '') + ')';
         return false;
       }
     }
@@ -1388,6 +1408,19 @@
     'pplate',
     'pipe',
     'pipeend',
+    'lantern',
+    'lreset',
+    'mural',
+    'sentry',
+    'hall',
+    'wplate',
+    'wisp',
+    'echostone',
+    'eplate',
+    'pzdrop',
+    'plank',
+    'isle',
+    'pzlamp',
     'icefloor',
     'iceboulder',
     'icegoal',
@@ -2515,6 +2548,248 @@
       }
       if (!pz.solved) giveUp('could not join the channel');
     })();
+  // one cell over by tapping it (as a phone player does), for the puzzles where every step counts
+  function* tap1(c, settle) {
+    EX.goal = { cell: c, x: xw(c), z: xz(c) };
+    EX.path = [c];
+    const t0 = R.T;
+    while (EX.pc !== c && R.T - t0 < 1.5) yield;
+    const t1 = R.T;
+    while (EX.goal && R.T - t1 < (settle ?? 0.4)) yield;
+    EX.goal = null;
+    EX.path = [];
+    return EX.pc === c;
+  }
+  // sentries: along the middle row, into a watched column only when its eye has just shut
+  PUZ.sentries = pz =>
+    (function* () {
+      const uOf = c => (pz.ax ? xcy(c) - pz.y0 : xcx(c) - pz.x0),
+        vOf = c => (pz.ax ? xcx(c) - pz.x0 : xcy(c) - pz.y0);
+      const row = pz.field.filter(c => vOf(c) === 1).sort((a, b) => uOf(a) - uOf(b));
+      for (let att = 0; att < 6 && !pz.solved; att++) {
+        if (EX.pc !== pz.start.cell) {
+          const ok = yield* walk(pz.start.cell, { max: 60 });
+          if (!ok) {
+            giveUp('could not reach the start plate');
+            return;
+          }
+        }
+        yield* think(between(0.5, 1.5) * P.slow);
+        let caught = false;
+        for (const c of [...row, pz.end.cell]) {
+          const h = pz.heads.find(x => x.u === uOf(c) && pz.field.includes(c));
+          if (h) {
+            const need = chance(P.logic) ? 1.2 : 0.4;
+            const t0 = R.T;
+            while (R.T - t0 < 12) {
+              const e = pzEye(h, pz.clock);
+              if (!e.open && e.left >= need) break;
+              yield;
+            }
+          }
+          const ok = yield* tap1(c);
+          if (PZ) PZ.steps++;
+          if (pz.solved) return;
+          if (!ok || EX.pc === pz.start.cell) {
+            caught = true;
+            if (PZ) PZ.mistakes++;
+            break;
+          }
+        }
+        if (!caught && !pz.solved) yield* think(0.5);
+      }
+      if (!pz.solved) giveUp('kept being seen by the sentries');
+    })();
+  // herding: stand on the far side of the wisp from the plate and close in, one step at a time
+  PUZ.herding = pz =>
+    (function* () {
+      const A = new Set(pz.area),
+        d2 = (a, b) => Math.hypot(xcx(a) - xcx(b), xcy(a) - xcy(b));
+      const t0 = R.T;
+      if (!A.has(EX.pc)) {
+        const near = [...A].filter(c => c !== pz.wisp.cell && d2(c, pz.wisp.cell) > 3).sort((a, b) => d2(a, EX.pc) - d2(b, EX.pc))[0];
+        if (near != null) yield* walk(near, { max: 60 });
+      }
+      while (!pz.solved && R.T - t0 < 150) {
+        const w = pz.wisp.cell,
+          pl = pz.plate.cell,
+          sx = Math.sign(xcx(w) - xcx(pl)),
+          sy = Math.sign(xcy(w) - xcy(pl));
+        let tgt = xi(xcx(w) + sx, xcy(w) + sy);
+        if (!A.has(tgt)) tgt = A.has(xi(xcx(w) + sx, xcy(w))) ? xi(xcx(w) + sx, xcy(w)) : xi(xcx(w), xcy(w) + sy);
+        if (!A.has(EX.pc)) {
+          // outside the field: walk in, behind the wisp if that cell is free
+          const into = A.has(tgt) && tgt !== w ? tgt : [...A].filter(c => c !== w).sort((a, b) => d2(a, EX.pc) - d2(b, EX.pc))[0];
+          const ok = yield* walk(into, { max: 40 });
+          if (!ok) yield* think(0.5);
+          continue;
+        }
+        const opts = [EX.pc, ...adj4(EX.pc)].filter(c => (A.has(c) || c === EX.pc) && c !== w && !xSolid(c));
+        // going round the wisp: keep out of its reach unless already behind it
+        const score = c => d2(c, tgt) + (d2(c, w) < 2.2 && d2(c, tgt) > 1.5 ? 3 : 0) + rand() * 0.3;
+        const best = opts.sort((a, b) => score(a) - score(b))[0];
+        if (best === EX.pc) {
+          yield* think(0.2);
+          const n = adj4(EX.pc).find(c => A.has(c) && c !== w && d2(c, w) < d2(EX.pc, w));
+          if (n != null) yield* tap1(n, 0.05);
+        } else yield* tap1(best, 0.05);
+        if (PZ) PZ.steps++;
+      }
+      if (!pz.solved) giveUp('the wisp kept getting away');
+    })();
+  // echo: wake the stone, cross one plate, stand on the other and wait for the echo
+  PUZ.echo = pz =>
+    (function* () {
+      for (let att = 0; att < 4 && !pz.solved; att++) {
+        yield* bump(pz.stone.cell, { max: 60 });
+        if (!(pz.echoT > 0) && adj4(EX.pc).includes(pz.stone.cell)) xInteract(pz.stone);
+        if (!(pz.echoT > 0)) {
+          yield* think(0.5);
+          continue;
+        }
+        const [A, B] = pz.plates;
+        const near = d => Math.hypot(xcx(d.cell) - xcx(EX.pc), xcy(d.cell) - xcy(EX.pc));
+        const [first, second] = near(A) <= near(B) ? [A, B] : [B, A];
+        yield* walk(first.cell, { max: 30 });
+        yield* walk(second.cell, { max: 30 });
+        const t0 = R.T;
+        while (!pz.solved && R.T - t0 < pz.delay + 1.5) yield;
+      }
+      if (!pz.solved) giveUp('could not hold both plates');
+    })();
+  // the hidden bridge: put out every lamp, then walk the planks that show
+  PUZ.bridge = pz =>
+    (function* () {
+      for (let pass = 0; pass < 3 && !pz.dark; pass++)
+        for (const l of pz.lamps) {
+          if (!l.lit) continue;
+          yield* bump(l.cell, { max: 90 });
+          if (l.lit && adj4(EX.pc).includes(l.cell)) {
+            yield* think(0.4);
+            xInteract(l); // standing at it: the walk-into the keys did not make
+          }
+          yield* think(between(0.2, 0.6));
+        }
+      if (!pz.dark) {
+        giveUp('could not put the lamps out');
+        return;
+      }
+      yield* think(between(1, 2) * P.slow);
+      yield* walk(pz.goal.cell, { max: 90, careful: true });
+      if (!pz.solved) giveUp('could not cross the planks');
+    })();
+  // lanterns: work out the fewest lanterns to step on (a stone's flip undone by stepping back over it), then step on them
+  PUZ.lanterns = pz =>
+    (function* () {
+      const cells = new Set(pz.tiles.map(t => t.cell)),
+        outside = c => !cells.has(c) && EX.room[c] === pz.room && !xSolid(c);
+      const solve = () => {
+        const n = pz.tiles.length;
+        let best = null;
+        for (let m = 1; m < 1 << n; m++) {
+          const lit = pz.tiles.map(t => t.lit);
+          let cnt = 0;
+          for (let i = 0; i < n; i++)
+            if ((m >> i) & 1) {
+              cnt++;
+              const a = pz.tiles[i];
+              pz.tiles.forEach((t, j) => {
+                if (Math.abs(t.u - a.u) + Math.abs(t.v - a.v) <= 1) lit[j] = !lit[j];
+              });
+            }
+          if (lit.every(x => x) && (!best || cnt < best.length)) best = pz.tiles.filter((t, i) => (m >> i) & 1);
+        }
+        return best || [];
+      };
+      // one cell over, by tapping it (as a phone player does): the keys can carry you into the lantern beside it
+      function* tap(c) {
+        EX.goal = { cell: c, x: xw(c), z: xz(c) };
+        EX.path = [c];
+        const t0 = R.T;
+        while (EX.pc !== c && R.T - t0 < 1.5) yield;
+        const t1 = R.T;
+        while (EX.goal && R.T - t1 < 0.6) yield;
+        EX.goal = null;
+        EX.path = [];
+        return EX.pc === c;
+      }
+      yield* think(between(1, 3) * P.slow);
+      // on a 3 x 3 field one set of lanterns lights them all, so it is worked out afresh before every step (a stray flip
+      // on the way changes it)
+      for (let k = 0; k < 40 && !pz.solved; k++) {
+        const plan = solve();
+        if (!plan.length) break;
+        let t = plan.find(x => adj4(x.cell).some(outside)) || plan[0];
+        if (!chance(P.logic)) t = pick(pz.tiles);
+        const out = adj4(t.cell).filter(outside);
+        if (out.length) {
+          if (!out.includes(EX.pc)) {
+            const ok = yield* walk(out[0], { careful: true, max: 30 });
+            if (!ok) break;
+          }
+          if (!adj4(EX.pc).includes(t.cell) || cells.has(EX.pc)) continue; // stopped somewhere else: look again
+          yield* think(between(0.3, 0.9) * P.slow);
+          yield* tap(t.cell);
+          if (PZ) PZ.steps++;
+          if (pz.solved) break;
+          const back = adj4(EX.pc).filter(outside);
+          if (back.length) yield* tap(back[0]);
+        } else {
+          // a middle lantern: in over a neighbour and back the same way (the neighbour flips twice)
+          const via = adj4(t.cell).find(n => cells.has(n) && adj4(n).some(outside));
+          if (!via) break;
+          const o2 = adj4(via).find(outside);
+          if (EX.pc !== o2) {
+            const ok = yield* walk(o2, { careful: true, max: 30 });
+            if (!ok) break;
+          }
+          if (EX.pc !== o2) continue;
+          yield* tap(via);
+          yield* tap(t.cell);
+          if (pz.solved) break;
+          yield* tap(via);
+          yield* tap(o2);
+          if (PZ) PZ.steps += 4;
+        }
+      }
+      if (!pz.solved) giveUp('could not light the lanterns');
+    })();
+  // the sliding mural: walk into it; the dialog part (dialogTick) slides the panels
+  PUZ.mural = pz =>
+    (function* () {
+      for (let att = 0; att < 3 && !pz.solved; att++) {
+        yield* bump(pz.mural.cell, { max: 300 });
+        const t0 = R.T;
+        while (R.T - t0 < 1 && !EX.dlg) yield;
+        // standing at it and the keys did not reach it (they slide along the wall): walk into it the way the game does
+        if (!EX.dlg && EX.pc === pz.mural.front) xBumpExtra(pz.mural.cell, true);
+        while (EX.dlg || xPaused) yield;
+      }
+      if (!pz.solved) giveUp('could not put the mural back');
+    })();
+  // how far each mural layout is from whole (every layout a slide can reach), worked out once
+  let MURAL_D = null;
+  function muralDist() {
+    if (MURAL_D) return MURAL_D;
+    const start = '012345678',
+      D = new Map([[start, 0]]),
+      q = [start];
+    for (let h = 0; h < q.length; h++) {
+      const s = q[h],
+        g = s.indexOf('8');
+      for (const m of pzMuralNbrs(g)) {
+        const a = s.split('');
+        a[g] = a[m];
+        a[m] = '8';
+        const n = a.join('');
+        if (!D.has(n)) {
+          D.set(n, D.get(s) + 1);
+          q.push(n);
+        }
+      }
+    }
+    return (MURAL_D = D);
+  }
   PUZ.riddle = pz =>
     (function* () {
       const g = EX.props.find(p => p.kind === 'guardian');
@@ -2626,6 +2901,27 @@
       const p = lore ? P.lore : P.wheel;
       const b = right && chance(p) ? right : pick(btns);
       return click(b);
+    }
+    if (title === 'The sliding mural') {
+      const p = EX.puzzle && EX.puzzle.mural;
+      if (!p) return closeIt();
+      const D = muralDist(),
+        g = p.board.indexOf(8),
+        moves = pzMuralNbrs(g).map(i => {
+          const a = p.board.slice();
+          a[g] = a[i];
+          a[i] = 8;
+          return { i, d: D.get(a.join('')) ?? 99 };
+        });
+      const best = moves.sort((a, b) => a.d - b.d)[0],
+        mv = chance(0.6 + 0.4 * P.logic) ? best : pick(moves);
+      const tile = document.querySelector('#xdBody .pzm-tile[data-spot="' + mv.i + '"]');
+      if (!tile) return closeIt();
+      DLG.n = 0;
+      if (PZ) PZ.steps++;
+      click(tile);
+      DLG.t = R.T + between(0.4, 1.0) * P.slow;
+      return;
     }
     if (/^Trial of/.test(title)) {
       const go = btns.find(b => /Begin/.test(b.textContent));
@@ -3534,6 +3830,7 @@
           Object.assign(PUZZLE_BUILD, all);
         }
       };
+      if (typeof clearFloors === 'function') clearFloors(); // a kept floor from the last run would come back instead of a new one
       openCamp();
       enterExplore(save.deepest);
       if (!EX) {
@@ -3635,7 +3932,8 @@
         fights: R.labF,
         scr: [...document.querySelectorAll('.scr.on,.overlay.on')].map(e => e.id).join(','),
         task: TASKNAME,
-        dlg: EX && EX.dlg && EX.dlg.title
+        dlg: EX && EX.dlg && EX.dlg.title,
+        dump: typeof window.PZDUMP === 'function' ? window.PZDUMP(pz) : undefined // a debugging look at the puzzle as it was left
       });
       stopExplore();
       EX = null;

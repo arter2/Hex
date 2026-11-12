@@ -120,7 +120,7 @@ function tryFloor(depth,R,plan){
   let gateDoors=null;
   if(plan.gate){ const d0=xbfs(t,doors,startI,false); let far=null, fd=-1; for(const r of main){ const d=d0[xi(r.cx,r.cy)]; if(d>fd){ fd=d; far=r; } }
     if(far&&far!==main[0]){ const before=new Set(doors.keys()); if(v2){ if(!F2.link(main[0],far,X2.wide)) far=null; } else carve(main[0],far,null); if(far) gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
-  if(v2){ x2Marks(main,F2,R); x2Walls(main,F2,R,ri); }   // low walls inside the rooms, once every corridor is dug
+  if(v2){ x2Marks(main,F2,R); x2Walls(main,F2,R,ri); if(typeof x2Clutter==='function') x2Clutter(main,F2,R,ri,depth); }   // low walls inside the rooms, once every corridor is dug
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
@@ -424,7 +424,9 @@ function xWallMatrix(m,c,rock,cut){ const W=xWedge(c), h=Math.sin(c*91.7+EX.dept
   // a diagonal run keeps one height (the pieces and the blocks touching them), so its top reads as one clean line
   const even=W||EX.layout===2&&(xWedge(c-1)||xWedge(c+1)||xWedge(c-XN)||xWedge(c+XN));
   const deepK=EX.deepFace&&EX.deepFace[c]>=0?.8+Math.floor(r*5)*.06:1;   // the mass behind the walls: an uneven skyline
-  const sy=deepK*(rock&&!even?.9+r*.22:1)*(cut==null?1:cut)*(xLow(c)?.42*XWALL_B/XWALL:1);   // a low wall stays knee-high whatever the walls' height
+  // a cave's rock: heights from a slow wave over the floor, not each block's own dice, so neighbours rise and fall together
+  const rs=EX.natural&&EX.layout===2?.5+.25*(Math.sin(xcx(c)*.41+xcy(c)*.23+EX.depth)+Math.sin(xcx(c)*.17-xcy(c)*.37+1.3)):r;
+  const sy=deepK*(rock&&!even?.88+rs*.26:1)*(cut==null?1:cut)*(xLow(c)?.42*XWALL_B/XWALL:1);   // a low wall stays knee-high whatever the walls' height
   if(W){ // a diagonal wall (xWedge): the angled piece (xWedgeGeo) turned so its face looks into the open half
     m.makeRotationY(Math.PI/4-W.ang); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); return; }
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
@@ -466,6 +468,9 @@ function xBuildScene(){
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
   // a spacious floor wears its area's own floors (nature.js xAreaFloors): one for the passages, two for the rooms
   const areaF=EX.layout===2&&typeof xAreaFloors==='function'?xAreaFloors(A,S,seed):null;
+  // the clutter's solid cells (dungeongen.js x2Clutter) stand on their room's floor
+  const under=new Map(); for(const m of EX.marks||[]) if(m.kind==='clutter') for(const c of m.pieces.flat()) under.set(c,m.room);
+  for(const [c,rm] of under) variant[c]=areaF?(rm>=0?1+EX.rooms[rm].style:0):EX.natural?0:rm>=0?1+EX.rooms[rm].style:EX.layout===2?2:0;
   for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=areaF?(EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0):EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
   const floorTex=areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
@@ -512,7 +517,7 @@ function xBuildScene(){
     for(let r=1;r<=3;r++){ const next=[]; for(const f of ring) for(const n of [f-1,f+1,f-XN,f+XN]){ if(n<0||n>=XN*XN||face[n]>=0||EX.t[n]!==T_ROCK||xMarkCell(n)) continue;
         const x=xcx(n), y=xcy(n); if(x<1||y<1||x>=XN-1||y>=XN-1) continue; face[n]=face[f]; next.push(n); walls[6].push(n); deep[n]=face[f]; } ring=next; } }
   EX.deepFace=deep;
-  const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)];
+  const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
   EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN); EX.wCut=new Float32Array(XN*XN).fill(1); EX.wList=[];
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
   // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
@@ -525,7 +530,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),true,bev(v)),2,wallTex[xWT(v)]);
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]); mat.userData.xdet=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -623,7 +628,7 @@ function xBuildScene(){
   if(!EX.natural) xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(typeof xClutter==='function') xClutter(grp,A,S,seed); if(EX.natural&&EX.layout===2) xRockFoot(grp,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
   if(typeof xNature==='function') xNature(grp,A,S,seed);   // the area's own natural dressing (nature.js)
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
@@ -1236,18 +1241,68 @@ function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
 let XSINK_DOOR=false, XSINK_CLIP=null;
 function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0;
-  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
+    // uvj 2 (rough rock, which has no courses to keep level): each block shows its own half of a texture twice the size,
+    // anywhere in it, so no two blocks share a face.
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
     // so no two neighbours show the same face; on a spacious floor a block standing lower (a low near wall, xStepLow)
     // shows fewer courses of the same stone, not squashed stone (its faces' v runs from its foot)
-    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25); }\n  #endif');
+    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); '+(uvj===2?'vUv=vUv*.5+vec2(hh,fract(hh*7.13));':'vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
+    // uvj 2 (rough rock): the stone is laid in world space round the whole wall, not per block (xRockShader)
+    if(uvj===2) xRockShader(sh);
     sh.fragmentShader='varying vec3 vXWP; uniform vec3 uBall; uniform float uRad; uniform float uPx;\n'
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'
       +sh.fragmentShader.replace('void main() {','void main() {\n  if(uRad>0.0&&vXWP.z>uBall.z+.25){ float d=distance(vXWP,uBall); if(d<uRad){ float f=1.0-smoothstep(uRad*.5,uRad,d); if(xb4(floor(gl_FragCoord.xy/uPx))<f*.94) discard; } }');
     if(bev) xBevelV(sh,bev); };
   return m; }
+/* Kitbash for cave walls: broken rock heaped against the foot of the rough walls, now and then a big slab leaning on
+   them, so a run of blocks loses its row-of-columns outline. Drawn in the walls' own world-laid rock (xRockShader), so
+   they melt into the face behind. Pure dressing (all within the wall's cell and a hand's width out); one merged mesh
+   per stretch of the floor, shown once the floor in front is seen. */
+let XROCKTEX=null;
+function xRockFoot(grp,S,seed){ if(!XROCKTEX) return; const R=caveRng(seed+1213), tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), groups=new Map();
+  for(const c of EX.wIdx.keys()){ if(xLow(c)||xWedge(c)) continue; const x=xcx(c), y=xcy(c); if(x<1||y<1||x>=XN-1||y>=XN-1) continue;
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const f=c+dx+dy*XN; if(EX.t[f]===T_ROCK||EX.doors.has(f)||R()>.5) continue;
+      const key=((y/6)|0)*64+((x/6)|0); if(!groups.has(key)) groups.set(key,{M:xMerger(),cells:new Set()}); const G=groups.get(key); G.cells.add(f);
+      const cx=(x+.5)*XCS+dx*XCS*.5, cz=(y+.5)*XCS+dy*XCS*.5, tx=dy?1:0, tz=dx?1:0, n=1+(R()*3|0);
+      for(let k=0;k<n;k++){ const o=(R()-.5)*XCS*.9, sz=.45+R()*.8, out=R()*.35; G.M.add(XG.rock,tone(.5+R()*.25),cx+tx*o+dx*(out-.15),sz*.28,cz+tz*o+dy*(out-.15),R()*3,R()*3,R()*3,sz*1.2,sz*.8,sz); }
+      if(R()<.18){ const o=(R()-.5)*XCS*.5, h=1.4+R()*1.1; G.M.add(XG.rock,tone(.55+R()*.2),cx+tx*o-dx*.1,h*.42,cz+tz*o-dy*.1,dy?(R()-.5)*.3+dy*.25:0,R()*3,dx?-dx*.25:0,1.1+R()*.5,h,.8+R()*.4); }   // a slab leaning in
+      break; } }
+  const mat=xLitTag(xDitherMat(xPhong({map:xTex(XROCKTEX,true),vertexColors:true}),2),2);   // (no normal map: the merged rocks have no uv for one)
+  for(const G of groups.values()){ if(!G.M.size()) continue; const g=new THREE.Group(); g.add(G.M.build(mat)); g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...G.cells],ph:0}); } }
+/* Rough rock walls as one mass (uvj 2). Each block's own uv is ignored: the rock texture is laid in world space on
+   all three axes (triplanar, so it runs straight across from one block to the next and round diagonal walls), and
+   each face mixes two copies of it, turned and scaled differently, through a world noise (texture bombing), so it
+   never repeats. Broad noise darkens and lightens whole stretches, the foot of the wall is grimier and the tops
+   paler, so a run of blocks reads as one rock face. The noise is the floors' detail map (look.js xDetailN). */
+function xRockShader(sh){
+  // the rock's lumps, from where each point stands in the world: blocks side by side move their shared edges alike, so
+  // the joints close and a run of blocks bulges and leans as one face; the tops follow a slow skyline
+  sh.vertexShader='float xrn(vec3 p){ return sin(p.x*1.31+p.y*.73+sin(p.z*.91))*sin(p.z*1.17-p.y*.61+sin(p.x*.83))*.6+sin(p.x*.47+p.z*.59+p.y*.29)*.4; }\n'
+    +sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+  #if defined(USE_INSTANCING)&&__VERSION__>=300
+  { vec3 wq=(modelMatrix*(instanceMatrix*vec4(transformed,1.0))).xyz, d=vec3(xrn(wq),0.0,xrn(wq.zyx+7.3))*.38*smoothstep(.05,.9,wq.y);
+    if(normal.y>.5) d.y+=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55;
+    transformed+=inverse(mat3(modelMatrix)*mat3(instanceMatrix))*d; }
+  #endif`);
+  sh.vertexShader='varying vec3 vXWN;\n'+sh.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n  { vec3 xn=objectNormal;\n  #ifdef USE_INSTANCING\n  xn=mat3(instanceMatrix)*xn;\n  #endif\n  vXWN=normalize(mat3(modelMatrix)*xn); }');
+  sh.fragmentShader='varying vec3 vXWN; uniform sampler2D uXDetN;\n'+sh.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
+  { vec3 an=abs(normalize(vXWN)); an=pow(an,vec3(4.0)); an/=an.x+an.y+an.z;
+    vec3 P=vXWP*.25;   // one texture every four units (two cells)
+    float nb=texture2D(uXDetN,vXWP.xz*.047+vXWP.y*.031).r*.5+texture2D(uXDetN,vXWP.zy*.053+.37).g*.5, bm=smoothstep(.38,.62,nb);
+    mat2 rt=mat2(.6,-.8,.8,.6);
+    vec4 sx=mix(texture2D(map,P.zy),texture2D(map,rt*P.zy*1.37+.41),bm);
+    vec4 sz=mix(texture2D(map,P.xy),texture2D(map,rt*P.xy*1.37+.17),bm);
+    vec4 sy=mix(texture2D(map,P.xz),texture2D(map,rt*P.xz*1.37+.73),bm);
+    vec4 texelColor=sx*an.x+sy*an.y+sz*an.z;
+    float mac=texture2D(uXDetN,vXWP.xz*.009+vXWP.y*.004).g*.6+texture2D(uXDetN,vXWP.xz*.023).b*.4;
+    texelColor.rgb*=mix(.72,1.18,smoothstep(.3,.7,mac));
+    texelColor.rgb*=mix(.7,1.0,smoothstep(0.0,1.6,vXWP.y));   // grime at the foot
+    texelColor.rgb*=1.0+.12*an.y;   // tops catch a little more
+    texelColor=mapTexelToLinear(texelColor); diffuseColor*=texelColor; }
+#endif`); }
 /* The rounded corners: an instanced wall block's upright corner that stands clear (no wall in either cell beside it,
    from the solid map's green, xBuildScene) is pulled in to the middle of a chamfer between the edge loops either side
    (xWallGeo), and its normal turns to face out of the corner, so the light rolls round it. A corner against a
@@ -1702,7 +1757,8 @@ function xEnemies(dt){
    tiles. Walls block it all, and Stealth shrinks the distances. The map draws these zones on
    the floor (xFov), so you can see where to sneak past or creep up for an ambush. */
 const XFOV={r:7.5, half:Math.PI/3, near:1.5, wake:2.6};
-function xSeesCell(g,c,sn){ const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz)/XCS;
+function xSeesCell(g,c,sn){ if(typeof xDarkAt==='function'&&xDarkAt(c)) sn*=.55;   // beside a snuffed fire pillar (dungeon.js xSnuff): harder to spot
+  const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz)/XCS;
   if(g.state==='sleep'){ if(d>XFOV.wake*sn) return false; }
   else { if(d>XFOV.r*sn) return false;
     if(g.state!=='chase'&&d>XFOV.near*sn){ let a=Math.atan2(dz,dx)-(g.head||0); a=Math.atan2(Math.sin(a),Math.cos(a)); if(Math.abs(a)>XFOV.half) return false; } }
@@ -1846,7 +1902,8 @@ function xGuard(f){ try{ f(); }catch(e){ if(xErrShown++<3) console.error('dungeo
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   xRaf=requestAnimationFrame(xLoop);
-  const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
+  // never below 0: the first frame's timestamp can be from a little before the loop was started (xLoopStart)
+  const dt=Math.max(0,Math.min(.1,(ts-xLast)/1000)); xLast=ts;
   // a search or disarm never takes more than a few seconds, whatever happens
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
   if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt));
@@ -2037,10 +2094,17 @@ const XTIPS={
   trap:   ()=>'A trap! Step around it, or stand next to it and Disarm it.',
   person: ()=>'Walk into people to talk to them.',
   puzzle: ()=>'A puzzle. Walk into levers, statues and stones to use them; clues may be elsewhere on the floor.',
+  lanterns:()=>'Lanterns: step on one and it flips, with the ones beside it. Light them all. Walk into the violet rune stone to put them back as they were.',
+  mural:  ()=>'A sliding mural: walk into it, then slide the panels back into the picture.',
+  sentries:()=>'Sentries: start on the green plate and cross to the gold one. A stone head’s gaze sends you back; its eyes flicker just before they open.',
+  herding:()=>'A wisp! It flees from you. Herd it onto the glowing rune plate.',
+  echo:   ()=>'An echo stone: walk into it and a ghost follows your steps a few seconds behind. Hold both plates at once, you on one and your echo on the other.',
+  bridge: ()=>'A drop with nothing across it… Put out the room’s lamps (walk into them) and see what the light hides.',
   hidden: ()=>'Stand still for a moment to notice hidden doors and traps, or use Search to look harder.',
 };
 // the small cyan line over each tip; the counter beside it is how many of the tips you have seen so far
-const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', hidden:'Secrets'};
+const XTIP_HEAD={move:'Getting around', stairs:'Stairs', door:'Doors', locked:'Doors', chest:'Treasure', sleeper:'Foes', trap:'Traps', person:'People', puzzle:'Puzzles', lanterns:'Puzzles', mural:'Puzzles', sentries:'Puzzles', herding:'Puzzles', echo:'Puzzles', bridge:'Puzzles', hidden:'Secrets'};
+const XTIP_KIND={lantern:'lanterns', mural:'mural', sentry:'sentries', wisp:'herding', echostone:'echo', pzdrop:'bridge'};   // a puzzle with its own first-time tip
 const XTIP_PUZZLE=new Set(['lever','plever','plate','statue','mirror','runestone','block']);
 const xTipsOn=()=>{ try{ return localStorage.getItem('hexmancers-xtips')!=='0'; }catch(e){ return true; } };
 const xStairsMarkOn=()=>{ try{ return localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){ return true; } };
@@ -2069,8 +2133,10 @@ function xTipScan(dt){ if(!EX||!xTipsOn()) return;
   if(want('chest')&&EX.chests.some(c=>!c.open&&V[c.cell])) xTip('chest');
   if(want('sleeper')&&EX.groups.some(g=>g.state==='sleep'&&!g.dormant&&V[g.cell])) xTip('sleeper');
   if(want('trap')&&EX.traps.some(t=>t.known&&t.armed&&V[t.cell])) xTip('trap');
-  if((want('person')||want('puzzle'))&&EX.props) for(const p of EX.props){ if(p.gone||!V[p.wall?p.front:p.cell]) continue;
-    if(p.kind==='npc'||p.kind==='merchant') xTip('person'); else if(XTIP_PUZZLE.has(p.kind)) xTip('puzzle'); }
+  if(EX.props) for(const p of EX.props){ if(p.gone||!V[p.wall?p.front:p.cell]) continue;
+    if(p.kind==='npc'||p.kind==='merchant'){ if(want('person')) xTip('person'); }
+    else if(XTIP_KIND[p.kind]){ if(want(XTIP_KIND[p.kind])) xTip(XTIP_KIND[p.kind]); }
+    else if(XTIP_PUZZLE.has(p.kind)&&want('puzzle')) xTip('puzzle'); }
 }
 
 // the stairs down on the minimap, once seen: a pulsing ring and a down arrow in the floor's color (red on a boss floor)

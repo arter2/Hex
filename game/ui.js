@@ -1381,10 +1381,18 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:e.timeStamp,px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]]}; });
+  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:e.timeStamp,px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]],k:gestK()}; });
+/* Thumb gestures in board terms: the stick's reach, the tap slop and the flick speeds are tuned in screen pixels on a
+   412 x 915 phone, where your half of the board is GEST_REF px across. On a bigger board (a tablet, a computer) they
+   grow with it, so the same push or swipe means the same share of a tile everywhere (a 26 px push was full speed on a
+   tablet's twice-as-big tiles, and an ordinary swipe there passed the flick speed). */
+const GEST_REF=435;   // (measured once the fight has begun: the camera sits closer than while you pick cards)
+function gestK(){ if(typeof TILES==='undefined'||!TILES.length) return 1; let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+  for(const t of TILES){ if(t.side!=='p') continue; const [x,y]=proj(t.wx,0,t.wz); x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
+  const w=Math.max(x1-x0,y1-y0); return w>0&&isFinite(w)?Math.max(.75,Math.min(4,w/GEST_REF)):1; }
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY); d.x=ax; d.y=ay;
   const now=performance.now(); d.hist.push([now,ax,ay]); while(d.hist.length>2&&now-d.hist[0][0]>400) d.hist.shift();   // the thumb's last moments, for a flick
-  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')) d.moved=true;
+  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')*(d.k||1)) d.moved=true;
   if(!d.moved||XLIT.mvStick) return;   // the joystick steers every frame (stickWalk)
   // follow finger: your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
   const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
@@ -1395,8 +1403,8 @@ const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging
   // a flick: let go with the thumb still moving fast and your mage is thrown that way (battle.js flickThrow)
   if((d.moved||d.stick)&&XLIT.mvStick&&MV('mvFlick')&&B&&B.player&&d.hist){ const now=performance.now(), H=d.hist.filter(h=>now-h[0]<=MV('mvFlickWin'));
     if(H.length>=2){ const [t0,x0,y0]=H[0], [,x1,y1]=H[H.length-1], vx=(x1-x0)/Math.max(16,now-t0)*1000, vy=(y1-y0)/Math.max(16,now-t0)*1000, v=Math.hypot(vx,vy);
-      if(v>=MV('mvFlickV0')){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
-        flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0'))/Math.max(1,MV('mvFlickV1')-MV('mvFlickV0'))); } } } };
+      if(v>=MV('mvFlickV0')*(d.k||1)){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
+        flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0')*(d.k||1))/Math.max(1,(MV('mvFlickV1')-MV('mvFlickV0'))*(d.k||1))); } } } };
 /* How long a finger has been held, counted in frames and at most 50 ms a frame: the first frame after a stall
    comes before the stalled finger's release is handled, and must not turn a quick tap into a hold. (ui.js battle
    board; explore.js has the same for the dungeon.) */
@@ -1405,7 +1413,7 @@ function heldMs(h){ const now=performance.now(); h.heldMs=(h.heldMs||0)+Math.max
 function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fight') return;
   if(!d.stick&&(d.moved||heldMs(d)>=MV('mvTapMs'))) d.stick=true;
   if(!d.stick) return; stickDraw();
-  const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
+  const p=B.player, R=MV('mvStickR')*(d.k||1), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
   if(l<MV('mvDead')){ if(!d.still){ d.still=true; if(MV('mvMomentum')) freeEnd(); else freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest; with momentum, you coast to a stop as if you let go)
   d.still=false;
   const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
@@ -1413,7 +1421,7 @@ function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fig
   const [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+dx/(l*R)*60,sy+dy/(l*R)*60,fx,fz), wl=Math.hypot(wx-fx,wz-fz)||1;
   freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); if(B.player.free) B.player.free.tps=MV('mvStickSpeed'); }
 function stickDraw(){ const el=$('#bStick'); if(!el) return; const d=dragging, on=!!(d&&d.stick&&XLIT.mvStick&&XLIT.mvStickShow);
-  el.hidden=!on; if(!on) return; const R=MV('mvStickR'); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
+  el.hidden=!on; if(!on) return; const R=MV('mvStickR')*(d.k||1); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
   let dx=d.x-d.x0, dy=d.y-d.y0; const l=Math.hypot(dx,dy); if(l>R){ dx*=R/l; dy*=R/l; }
   const dz=el.firstElementChild; dz.style.width=dz.style.height=2*R*MV('mvDead')+'px'; el.lastElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
@@ -1690,7 +1698,15 @@ function duStop(){ duScanStop(); clearInterval(DU.timer); clearTimeout(DU.startT
 // leave a duel (or its pairing) at any point: the local battle stops and the game is back at the menu (quiet: no menu)
 function duelLeave(quiet){ duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false;
   if(B&&B.pvp) B=null; DU.over=false; if(!quiet) duHome(); }
+/* The connection log under the duel screen: what pairing did, step by step, to copy and send when a duel will not connect */
+function duLog(t){ const L=DU.log||(DU.log=[]), d=new Date(), ts=d.toTimeString().slice(0,8)+'.'+String(d.getMilliseconds()).padStart(3,'0');
+  L.push(ts+'  '+t); if(L.length>400) L.splice(0,L.length-400); const el=document.getElementById('duLog'); if(el){ el.value=L.join('\n'); el.scrollTop=el.scrollHeight; } }
+$('#duLogCopy').onclick=()=>duCopy($('#duLogCopy'),$('#duLog'));
+// Accept, at the top of the host's panel: grey and waiting, then lit, pulsing and glowing once their code is in
+function duAcceptReady(on){ const b=$('#duAccept'); b.disabled=!on; b.classList.toggle('ready',on); b.textContent=on?'Accept · start the duel':'Waiting for their code…'; if(on){ buzz(40); try{ b.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){} } }
 function openDuel(from){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catch(e){}
+  // the log is kept across visits (a duel that dropped mid-fight can still be read back here), with a divider
+  if(DU.log&&DU.log.length) duLog('──────── duel screen opened again ────────'); duLog('Duel screen · '+navigator.userAgent); duLog('Page '+location.protocol+'//'+location.host+(window.isSecureContext?' (secure)':' (NOT secure: no camera)'));
   DU.from=from==='camp'?'camp':'menu';
   try{ $('#duName').value=localStorage.getItem(DU_NAME_KEY)||''; }catch(e){}
   duSprite($('#duMe'),playerLook());
@@ -1698,26 +1714,26 @@ function openDuel(from){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catc
   dk.innerHTML=why?esc(why):'Deck: <b>'+esc(d.name||'My deck')+'</b> · '+d.list.length+' cards';
   duStep('role'); show('scrDuel'); }
 const duRace=(p,ms)=>new Promise((res,rej)=>{ const t=setTimeout(()=>rej(new Error(DU_SLOW_MSG)),ms); p.then(v=>{ clearTimeout(t); res(v); },e=>{ clearTimeout(t); rej(e); }); });
-function duFail(g,msg){ if(g!==DU.gen) return; duStop(); duStep('how',msg instanceof Error?msg.message:msg||DU_SLOW_MSG); }
+function duFail(g,msg){ if(g!==DU.gen) return; duLog('FAILED: '+(msg instanceof Error?msg.message:msg||DU_SLOW_MSG)); const diag=DU.diag; DU.diag=''; duStop(); duStep('how',(msg instanceof Error?msg.message:msg||DU_SLOW_MSG)+(diag?' '+diag:'')); }
 
 // the duel session over a transport that is open (both ends): lobby, start, result
-function duBegin(tr,host){
+function duBegin(tr,host){ duLog('Connected: duel session starting ('+(host?'host':'join')+')');
   const d=activeDeck(), s=new DuelSession(tr,{name:duelName(),deck:d.list.slice(),host,look:playerLook()});
   try{ localStorage.setItem(DU_NAME_KEY,$('#duName').value.trim().slice(0,20)); }catch(e){}
   DU.session=s; DU.tr=tr; DU.list=d.list.slice(); DU.over=false; DU.closed=false;
-  const g=DU.gen, oc=tr.onclose; tr.onclose=()=>{ DU.closed=true; if(oc) oc(); };   // a bye comes before a close; a close alone is a lost connection
+  const g=DU.gen, oc=tr.onclose; tr.onclose=()=>{ duLog('Connection closed'+(tr.pc?' (ICE '+tr.pc.iceConnectionState+')':'')); DU.closed=true; if(oc) oc(); };   // a bye comes before a close; a close alone is a lost connection
   // the session needs a tick at least once a second (its heartbeat) even when the page is hidden, the pause menu is open
   // or the phone is locked, and the frame loop is not running then: a timer does it
   DU.timer=setInterval(()=>{ try{ s.tick(); }catch(e){ console.error('duel tick:',e); } },500);
   duelPauseSync();
   clearTimeout(DU.waitT); DU.waitT=setTimeout(()=>{ if(DU.session===s&&s.state==='connecting') duFail(g,DU_SLOW_MSG); },DU.timeout);
-  s.on('lobby',m=>{ if(DU.session!==s) return; clearTimeout(DU.waitT); duStep('lobby');
+  s.on('lobby',m=>{ duLog('Session: in the lobby with '+(m.name||'?')); if(DU.session!==s) return; clearTimeout(DU.waitT); duStep('lobby');
     $('#duVsMeName').textContent=duelName(); $('#duLobbyTxt').textContent=m.name||'Hexmancer';
     duSprite($('#duVsMe'),playerLook()); duSprite($('#duVsOpp'),m.look||'wizard'); });
-  s.on('refused',m=>{ if(DU.session!==s) return;
+  s.on('refused',m=>{ duLog('Session: refused ('+m.reason+')'); if(DU.session!==s) return;
     const why=m.reason==='timeout'?DU_SLOW_MSG:m.reason==='peer left'?'The other player left.':'Duel refused: '+m.reason+(m.reason==='invalid deck size'?' (a duel deck has 45 to 60 cards)':'')+'.';
     duStop(); $('#duWaitTxt').textContent=''; duMsg(why); });
-  s.on('start',()=>{ if(DU.session!==s) return; clearTimeout(DU.startT); DU.startT=setTimeout(()=>duRun(s),1200); });   // a beat on the lobby, so the names can be read
+  s.on('start',()=>{ duLog('Session: start'); if(DU.session!==s) return; clearTimeout(DU.startT); DU.startT=setTimeout(()=>duRun(s),1200); });   // a beat on the lobby, so the names can be read
   s.on('end',m=>duelOver(s,m.result,m.reason));
 }
 function duRun(s){ if(DU.session!==s||DU.over) return;
@@ -1734,7 +1750,7 @@ function duRun(s){ if(DU.session!==s||DU.over) return;
   }catch(e){ console.error('duel start:',e); duelLeave(); tip('The duel could not start.'); }
 }
 // the one end of a duel: close the card screen, stop everything, show the result
-function duelOver(s,result,reason){ if(DU.session!==s||DU.over) return; DU.over=true;
+function duelOver(s,result,reason){ duLog('Session: over ('+result+', '+reason+')'+(DU.closed?' after the connection closed':'')); if(DU.session!==s||DU.over) return; DU.over=true;
   const title=result==='draw'?'Draw':result==='lose'?'You lost':reason==='timeout'||(reason==='left'&&DU.closed)?'Connection lost':reason==='left'?'Opponent left':'You won';
   const text={'Draw':'You both fell at the same moment.','You lost':'Their spell found you first.','You won':'You outlasted them.','Opponent left':'The other player left the duel.','Connection lost':'The other phone stopped answering.'}[title];
   duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false; dragAbort();
@@ -1766,12 +1782,20 @@ function duQr(cv,code){ const t=String(code||'').replace(/-/g,''), x=cv.getConte
 // the camera into a video, read for a HEX1./HEX2. code until one turns up (BarcodeDetector where there is one, else jsQR)
 function duScanStop(){ const sc=DU.scan; DU.scan=null; if(!sc) return; sc.dead=true; clearTimeout(sc.t);
   try{ sc.stream&&sc.stream.getTracks().forEach(t=>t.stop()); }catch(e){} if(sc.video) sc.video.srcObject=null; }
-async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0}; DU.scan=sc;
+// facing: the camera this view asks for first ('user' the front one, 'environment' the back). Switch camera moves on to
+// the phone's next real camera (by its device id, kept for this view in video.dataset.dev), whatever the first one was.
+// A sharp picture (up to 1280 x 720) and continuous focus, so a dense code can be read from a phone held close.
+async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:false,t:0,facing,onCode}; DU.scan=sc;
   const noCam=()=>{ if(sc.dead) return; duScanStop(); const d=video.closest('.dustep').querySelector('.dumanual'); if(d) d.open=true;
     duMsg('The camera is not available here. Allow it in your browser settings, or use the codes below.'); };
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia) return noCam();
-  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:false}); }catch(e){ return noCam(); }
+  const want=video.dataset.dev?{deviceId:{exact:video.dataset.dev}}:{facingMode:{ideal:facing}};
+  try{ sc.stream=await navigator.mediaDevices.getUserMedia({video:Object.assign(want,{width:{ideal:1280},height:{ideal:720}}),audio:false}); }
+  catch(e){ if(video.dataset.dev){ delete video.dataset.dev; return duScan(video,facing,onCode); } return noCam(); }
   if(sc.dead){ sc.stream.getTracks().forEach(t=>t.stop()); return; }
+  { const tr=sc.stream.getVideoTracks()[0], st=tr&&tr.getSettings?tr.getSettings():{}; sc.dev=st.deviceId||''; sc.facing=st.facingMode||(video.dataset.dev?'':facing);
+    video.classList.toggle('mirror',sc.facing==='user');   // the selfie camera shows as a mirror
+    try{ const cap=tr.getCapabilities&&tr.getCapabilities(); if(cap&&cap.focusMode&&cap.focusMode.includes('continuous')) tr.applyConstraints({advanced:[{focusMode:'continuous'}]}).catch(()=>{}); }catch(e){} }
   video.srcObject=sc.stream; try{ await video.play(); }catch(e){}
   let det=null; try{ if('BarcodeDetector' in window) det=new BarcodeDetector({formats:['qr_code']}); }catch(e){}
   const cv=document.createElement('canvas'), x=cv.getContext('2d',{willReadFrequently:true});
@@ -1781,25 +1805,79 @@ async function duScan(video,facing,onCode){ duScanStop(); const sc={video,dead:f
       else if(typeof jsQR==='function'){ const k=Math.min(1,720/Math.max(video.videoWidth,video.videoHeight)); cv.width=video.videoWidth*k|0; cv.height=video.videoHeight*k|0;
         x.drawImage(video,0,0,cv.width,cv.height); const r=jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:'dontInvert'}); if(r) txt=r.data||''; } } }catch(e){}
     if(sc.dead) return;
-    if(/^HEX[12]\./i.test(txt.trim())){ duScanStop(); buzz(20); onCode(txt.trim()); return; }
+    if(/^HEX[12]\./i.test(txt.trim())){ sc.found=true; buzz(20); onCode(txt.trim()); return; }   // the camera stays on until the caller stops it (duScanStop)
     sc.t=setTimeout(tick,150); };
   tick(); }
+// Switch camera: the same view, the phone's next camera (the scan goes on; a code already found stays found)
+document.querySelectorAll('#scrDuel .duflip').forEach(b=>b.onclick=async()=>{ const v=$('#'+b.dataset.cam), sc=DU.scan; if(!sc||sc.video!==v||sc.found) return;
+  let cams=[]; try{ cams=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='videoinput'&&d.deviceId); }catch(e){}
+  if(cams.length<2) return duMsg('This phone has only one camera the browser can use.');
+  // front and back first (a phone may list extra back lenses that cannot focus close), then the rest
+  const lab=d=>(d.label||'').toLowerCase(), front=cams.find(d=>/front|user|face/.test(lab(d))), back=cams.find(d=>/back|rear|environment/.test(lab(d)));
+  let next=null; if(front&&back) next=sc.dev===front.deviceId?back:front;
+  if(!next){ const i=cams.findIndex(d=>d.deviceId===sc.dev); next=cams[(i+1)%cams.length]; }
+  v.dataset.dev=next.deviceId; duMsg(''); duScan(v,sc.facing,sc.onCode); });
 async function duHostWifi(){
   duStop(); const g=DU.gen; duStep('hostcode','Making your code…'); $('#duOffer').value=''; $('#duAnswerIn').value=''; duQr($('#duOfferQr'),'');
-  $('#duAccept').hidden=true; $('#duHostSeen').hidden=false; DU.answer='';
+  duAcceptReady(false); $('#duHostSeen').hidden=false; DU.answer='';
   if(typeof RTCPeerConnection==='undefined') return duFail(g,'This browser cannot make Wi-Fi codes. Try another browser.');
-  const hp=RtcTransport.host(); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
+  // the camera goes on first: while it runs, the browser puts the phone's real Wi-Fi address in the code (not only a
+  // hidden .local name another phone may not be able to look up). Like pairing a headset: their code turns up in the
+  // back camera (Switch camera for the front one), and the host says yes to it
+  await duScan($('#duHostCam'),'environment',code=>{ if(g!==DU.gen) return; DU.answer=code; duLog('Their code read by the camera ('+code.length+' characters)'); $('#duHostSeen').hidden=true; duAcceptReady(true); duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
+  if(g!==DU.gen) return;
+  duLog('Host: camera '+(DU.scan&&DU.scan.stream?'on ('+(DU.scan.facing||'?')+')':'off')+'; making the offer');
+  const hp=RtcTransport.host(t=>duPcLog(t,'host')); hp.then(h=>{ if(g!==DU.gen) h.transport.close(); },()=>{});   // one that arrives after Back or a timeout is closed
   let h; try{ h=await duRace(hp,DU.timeout); }catch(e){ return duFail(g,e); }
   if(g!==DU.gen) return;
-  DU.tr=h.transport; DU.accept=h.accept; $('#duOffer').value=h.offerCode; duQr($('#duOfferQr'),h.offerCode); duMsg('');
-  // like pairing a headset: their code turns up in the front camera, and the host says yes to it
-  duScan($('#duHostCam'),'user',code=>{ if(g!==DU.gen) return; DU.answer=code; $('#duHostSeen').hidden=true; $('#duAccept').hidden=false; duMsg('Your friend\'s code is in. Tap Accept to duel.'); });
+  DU.tr=h.transport; DU.accept=h.accept; duLog('Host: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Host: offer ready, '+h.offerCode.length+' characters; it offers '+duCands(h.transport.pc.localDescription)); duPcLog(h.transport,'host'); $('#duOffer').value=h.offerCode; setTimeout(()=>{ if(g===DU.gen) duVpnCheck(h.transport.pc.localDescription); },0); duQr($('#duOfferQr'),h.offerCode); duMsg('');
 }
-async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg('');
-  try{ await acc(code); }catch(e){ if(g===DU.gen) duMsg(e.message); return; }   // 'Bad code ...': stay here
+// what the connection is doing, under Connecting…: the ICE state, and once it fails, what each side offered, so the
+// reason can be read off a phone (both on one Wi-Fi? a guest network that keeps phones apart? mobile data?)
+// the addresses a description offers, as a short list (kind address:port), for the log
+// a VPN (or an ad blocker or firewall that works as one) shows as an address in the documentation range 2001:db8::/32;
+// with one on, the other phone on the same Wi-Fi never hears this one, so say so at once
+function duVpnCheck(d){ if(!/^a=candidate:.* 2001:db8:/im.test(String(d&&d.sdp||''))) return;
+  duLog('Warning: this phone seems to have a VPN (or an ad blocker or firewall app) on');
+  duMsg('This phone seems to have a VPN, ad blocker or firewall app on. Turn it off (and mobile data) for a duel on the same Wi-Fi.'); }
+function duCands(d){ const out=[]; for(const m of String(d&&d.sdp||'').matchAll(/^a=candidate:\S+ \d+ (\w+) \d+ (\S+) (\d+) typ (\w+)/gim)) out.push(m[4]+' '+m[1].toLowerCase()+' '+m[2]+':'+m[3]); return out.length?out.join(', '):'no addresses'; }
+// every state change of the connection, its address errors, and the address pair it settles on
+function duPcLog(tr,who){ const pc=tr&&tr.pc; if(!pc||pc.__logged) return; pc.__logged=1;
+  pc.addEventListener('icegatheringstatechange',()=>duLog(who+': gathering '+pc.iceGatheringState));
+  // while it is trying, every 2.5 s: each address pair, its state, and the checks sent and answered (none answered on a
+  // pair between two Wi-Fi addresses: the network keeps the phones apart)
+  let poll=0; const stopPoll=()=>{ clearInterval(poll); poll=0; };
+  pc.addEventListener('iceconnectionstatechange',()=>{ const st=pc.iceConnectionState; duLog(who+': ICE '+st);
+    if(st==='checking'&&!poll){ duPairs(pc,who); poll=setInterval(()=>{ if(pc.signalingState==='closed'||DU.session) return stopPoll(); duPairs(pc,who); },2500); }
+    if(/connected|completed/.test(st)){ stopPoll(); duPair(pc,who); } if(/failed|closed/.test(st)) stopPoll(); });
+  pc.addEventListener('connectionstatechange',()=>duLog(who+': connection '+pc.connectionState));
+  pc.addEventListener('icecandidateerror',e=>duLog(who+': address error '+(e.errorCode||'')+' '+(e.errorText||'')+' '+(e.url||'')));
+  for(const ch of [tr.safe,tr.fast]) if(ch){ ch.addEventListener('open',()=>duLog(who+': channel '+ch.label+' open')); ch.addEventListener('close',()=>duLog(who+': channel '+ch.label+' closed')); } }
+async function duPairs(pc,who){ try{ const st=await pc.getStats(), c=x=>x?x.candidateType+' '+(x.address||x.ip||'?')+':'+x.port:'?', rows=[]; let rc=0;
+    st.forEach(r=>{ if(r.type==='remote-candidate') rc++; if(r.type==='candidate-pair') rows.push(r); });
+    rows.sort((a,b)=>(b.requestsSent||0)-(a.requestsSent||0));
+    duLog(who+': '+rows.length+' pairs, '+rc+' remote addresses'+(rows.length?':':''));
+    for(const r of rows.slice(0,14)) duLog('   '+c(st.get(r.localCandidateId))+' -> '+c(st.get(r.remoteCandidateId))+'  '+r.state+'  sent '+(r.requestsSent||0)+' answered '+(r.responsesReceived||0)+' heard '+(r.requestsReceived||0)); }catch(e){} }
+async function duPair(pc,who){ try{ const st=await pc.getStats(); let pair=null; st.forEach(r=>{ if(r.type==='candidate-pair'&&(r.nominated||r.selected)&&r.state==='succeeded') pair=r; });
+    if(!pair){ let n=0, states={}; st.forEach(r=>{ if(r.type==='candidate-pair'){ n++; states[r.state]=(states[r.state]||0)+1; } }); return duLog(who+': no working address pair ('+n+' tried: '+JSON.stringify(states)+')'); }
+    const L=st.get(pair.localCandidateId), R=st.get(pair.remoteCandidateId), c=x=>x?x.candidateType+' '+(x.address||x.ip||'?')+':'+x.port:'?';
+    duLog(who+': using '+c(L)+' -> '+c(R)+(pair.currentRoundTripTime!=null?' · '+Math.round(pair.currentRoundTripTime*1000)+' ms':'')); }catch(e){ duLog(who+': stats '+e.message); } }
+function duWatch(tr,g){ const pc=tr&&tr.pc; DU.diag=''; if(!pc) return; const el=$('#duWaitTxt'), base=el.textContent;
+  const kinds=sdp=>{ const k={wifi:0,hidden:0,public:0,v6:0}; for(const m of String(sdp||'').matchAll(/^a=candidate:\S+ 1 udp \d+ (\S+) \d+ typ (\w+)/gim)){ const a=m[1];
+      if(m[2]==='srflx') k.public++; else if(/\.local$/i.test(a)) k.hidden++; else if(a.includes(':')) k.v6++; else k.wifi++; } return k; };
+  const say=k=>k.wifi+' Wi-Fi, '+k.hidden+' hidden, '+k.public+' public'+(k.v6?', '+k.v6+' IPv6':'');
+  const upd=()=>{ if(g!==DU.gen||DU.session) return; const st=pc.iceConnectionState;
+    { const me=kinds(pc.localDescription&&pc.localDescription.sdp), them=kinds(pc.remoteDescription&&pc.remoteDescription.sdp); DU.diag='(Connection: '+st+'. This phone offered '+say(me)+'; the other '+say(them)+'.)'; }
+    el.textContent=base+' ('+({new:'starting',checking:'trying addresses',connected:'connected',completed:'connected',disconnected:'dropped',failed:'no route',closed:'closed'}[st]||st)+')';
+    if(st==='failed'){ const me=kinds(pc.localDescription&&pc.localDescription.sdp), them=kinds(pc.remoteDescription&&pc.remoteDescription.sdp);
+      duMsg('The phones could not reach each other. This phone offered '+say(me)+'; the other '+say(them)+'. Put both on the same Wi-Fi (not a guest network) with mobile data off, and try again.'); } };
+  pc.addEventListener('iceconnectionstatechange',upd); upd(); }
+async function duHostAccept(code){ const g=DU.gen, acc=DU.accept; if(!acc) return; duMsg(''); duLog('Host: Accept tapped');
+  try{ await acc(code); }catch(e){ duLog('Host: their code refused: '+e.message); if(g===DU.gen) duMsg(e.message); return; }
+  duLog('Host: their answer offers '+duCands(DU.tr&&DU.tr.pc&&DU.tr.pc.remoteDescription));   // 'Bad code ...': stay here
   if(g!==DU.gen) return;
   duScanStop(); duStep('wait'); $('#duWaitTxt').textContent='Connecting…';
-  const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
+  const tr=DU.tr; duWatch(tr,g); try{ await duRace(tr.opened(DU.timeout),DU.timeout); }catch(e){ return duFail(g,DU_SLOW_MSG); }
   if(g===DU.gen) duBegin(tr,true); }
 $('#duAccept').onclick=()=>duHostAccept(DU.answer);
 $('#duAcceptPaste').onclick=()=>duHostAccept($('#duAnswerIn').value);
@@ -1807,11 +1885,13 @@ function duJoinStart(){ duStop(); $('#duOfferIn').value=''; $('#duAnswer').value
   const g=DU.gen; duScan($('#duJoinCam'),'environment',code=>{ if(g===DU.gen) duJoinWith(code); }); }
 async function duJoinWith(code){ const g=DU.gen, btn=$('#duMakeAnswer'); duMsg('');
   if(typeof RTCPeerConnection==='undefined') return duMsg('This browser cannot make Wi-Fi codes. Try another browser.');
-  btn.disabled=true; $('#duAnswer').value=''; duScanStop();
-  const jp=RtcTransport.join(code); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
+  btn.disabled=true; $('#duAnswer').value='';   // (the camera stays on while the answer is made: see duHostWifi)
+  duLog('Join: host code in ('+String(code).length+' characters); camera '+(DU.scan&&DU.scan.stream?'on':'off')+'; making the answer');
+  const jp=RtcTransport.join(code,t=>duPcLog(t,'join')); jp.then(j=>{ if(g!==DU.gen) j.transport.close(); },()=>{});
   let j; try{ j=await duRace(jp,DU.timeout); }catch(e){ if(g===DU.gen){ btn.disabled=false; duMsg(e.message+' Try scanning again.'); duScan($('#duJoinCam'),'environment',c=>{ if(g===DU.gen) duJoinWith(c); }); } return; }
-  if(g!==DU.gen) return;
-  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer');
+  duScanStop(); if(g!==DU.gen) return;
+  duLog('Join: the host offers '+duCands(j.transport.pc.remoteDescription)); duLog('Join: '+(typeof rtcRelayInfo==='function'?rtcRelayInfo():'relay: ?')); duLog('Join: answer ready, '+j.answerCode.length+' characters; it offers '+duCands(j.transport.pc.localDescription)); duPcLog(j.transport,'join');
+  DU.tr=j.transport; $('#duAnswer').value=j.answerCode; duQr($('#duAnswerQr'),j.answerCode); duStep('answer'); duVpnCheck(j.transport.pc.localDescription); duWatch(j.transport,g);
   // the host has to see the code and tap Accept: that wait is people's, not the network's
   const tr=DU.tr; try{ await duRace(tr.opened(DU.timeout*3),DU.timeout*3); }catch(e){ return duFail(g,DU_SLOW_MSG); }
   if(g===DU.gen) duBegin(tr,false); }

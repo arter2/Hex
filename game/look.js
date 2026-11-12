@@ -55,9 +55,9 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   m.extensions=Object.assign(m.extensions||{},{derivatives:true});
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
-  const det=!!m.userData.xdet; if(det) xDetailN();
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det':'');
+  const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'');
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -97,14 +97,14 @@ void main() {`);
 function xDetailN(){ if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=a(i,j)*7+b(i,j)*3+c(i,j)*1.2;
   const t=new THREE.CanvasTexture(xNormalMap(H,N,.9)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return XLITU.uXDetN.value=t; }
-function xDetShader(sh){ let f=sh.fragmentShader;
+function xDetShader(sh,wall){ let f=sh.fragmentShader;
   if(!f.includes('#include <normal_fragment_maps>')) return;
   f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps.replace('mapN.xy *= normalScale;',`mapN.xy *= normalScale;
-  { vec2 xw=vec2(vXLW.x,-vXLW.z);
+  { vec2 xw=${wall?'vec2(vXLW.x+vXLW.z,vXLW.y)':'vec2(vXLW.x,-vXLW.z)'};
     vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
     float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
     mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));
-  f=f.replace('void main() {','uniform sampler2D uXDetN; uniform float uXDetK;\nvoid main() {');
+  f=f.replace('void main() {',(f.includes('uniform sampler2D uXDetN')?'':'uniform sampler2D uXDetN; ')+'uniform float uXDetK;\nvoid main() {');
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;
@@ -344,7 +344,8 @@ function xTileFloor(S,seed,checker){ const N=256, T=16, n=N/T, R=caveRng(seed), 
   for(const s0 of st) if(s0.crack){ let px=s0.x0+2+R()*(s0.w-4), py=s0.y0+2, a=1.2+R()*.7; for(let q=0;q<s0.h-3;q++){ x.fillRect(px|0,py|0,1,1); H[(py|0)*N+(px|0)]-=1.2; a+=(R()-.5)*.6; px+=Math.cos(a)*.7; py+=Math.max(.4,Math.sin(a)); if(px<s0.x0+1||px>s0.x0+s0.w-2) break; } }
   xSpeck(c,S,R,10,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
-function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
+function xRockWall(S,seed){ const N=128,   // (twice the old size: each block shows only its own part of it, explore.js xDitherMat uvj 2)
+  R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
   // the height: rough lumps with the strata standing out as ledges
   const c=xPaint(N,(i,j)=>{ const sb=Math.sin((j+st(i,j)*14)*.55); H[j*N+i]=f(i,j)*6+Math.max(0,sb)*1.6; let t=f(i,j)*1.1-.05+sb*.08; if(j<2) t+=.3; return xTone(S,Math.max(0,Math.min(1,t))); });
   c.h=H; c.hk=.5; return c; }
@@ -370,7 +371,8 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
   ...[['dPitch',0,''],['dDist',1,''],['dView',0,''],['dViewP',1,''],['dStepOn',null,'xwalls'],['dStepLow',2,'xwalls'],['dShOn',null,''],['dShW',2,''],['dShUp',2,''],['dShDown',2,''],['dShBack',2,''],['dShEdge',2,''],['dShInner',null,''],['dShDoor',null,''],['dShDoorH',1,''],['dShade',null,'xshade'],['dShadeA',2,'xshade'],['dShadeTint',2,'xshade'],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dTurn',0,''],['dMoveX',1,''],['dMoveY',1,''],['dMoveZ',1,''],['dRotX',0,''],['dRotY',0,''],['dRotZ',0,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dCutFollow',null,'xwalls'],['dCutReach',1,'xwalls'],['dCutStart',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShowGame',null,''],['mvStick',null,''],['mvStickShow',null,''],['mvStickR',0,''],['mvDead',2,''],['mvStickMin',2,''],['mvStickFull',2,''],['mvCurve',2,''],['mvTapMs',0,''],['mvTapPx',0,''],['mvStickSpeed',1,''],['mvEven',2,''],['mvSnapTime',2,''],['mvSnapAhead',null,''],['mvStride',2,''],['mvFaceWalk',null,''],['mvMomentum',null,''],['mvMAccel',2,''],['mvMBrake',2,''],['mvMSkid',2,''],['mvGrip',2,''],['mvFlick',null,''],['mvFlickV0',0,''],['mvFlickV1',0,''],['mvFlickMin',0,''],['mvFlickMax',0,''],['mvFlickTime',2,''],['mvFlickWin',0,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
-function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
+function xDbgApply(what){ if(typeof mlabCurve==='function') mlabCurve();   // (the joystick curve, in the debug menu and the Movement lab)
+  if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
@@ -383,6 +385,10 @@ function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(con
   xDbgPanes(); xRowTools(box,'.srow',row=>{ const s=row.querySelector('small'); return s?s.textContent:''; });
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   { const pz=document.getElementById('dbgPause'); if(pz){ pz.checked=DBG.pause; pz.onchange=()=>{ DBG.pause=pz.checked; document.body.classList.toggle('dbgPaused',DBG.pause); }; } }
+  // the Speed button in the title bar: the same switch as Show movement in fights (the readout and gizmos in real fights)
+  { const sb=document.getElementById('dbgSpeedBtn'), sg=document.getElementById('dbg_mvShowGame');
+    if(sb&&sg){ const sync=()=>sb.setAttribute('aria-pressed',sg.checked?'true':'false'); sb.onclick=()=>{ sg.click(); sync(); }; sg.addEventListener('change',sync); sync(); } }
+  if(typeof mlabCurve==='function') mlabCurve();
   // while a slider is dragged the menu fades away but for that slider's row, so the whole field of play shows
   { let row=null, t=0; const end=()=>{ clearTimeout(t); t=setTimeout(()=>{ box.classList.remove('tuning'); if(row) row.classList.remove('dbgActive'); row=null; },250); };
     box.addEventListener('pointerdown',e=>{ const r=e.target.closest&&e.target.closest('input[type=range]'); if(!r) return; clearTimeout(t); if(row) row.classList.remove('dbgActive');

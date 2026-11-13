@@ -1928,7 +1928,7 @@ function xLoop(ts){
   const dt=Math.max(0,Math.min(.1,(ts-xLast)/1000)); xLast=ts;
   // a search or disarm never takes more than a few seconds, whatever happens
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
-  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt));
+  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt)); if(EX.active&&!EX.busy&&typeof xPrewarmTick==='function') xGuard(()=>xPrewarmTick(dt));
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; }
   xGuard(()=>xDoorTick(dt||.016)); xGuard(()=>xDraw(ts/1000,dt));

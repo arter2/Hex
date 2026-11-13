@@ -200,8 +200,10 @@ function xfVoro(N,G,R,jit,off){ const S=N/G, P=[];
   return {id,e,d,n:P.length}; }
 // a hash of a stone's place (for the rectangular layouts)
 const xfH=(a,b,s)=>{ const v=Math.sin(a*12.9898+b*78.233+s*.7311)*43758.5453; return v-Math.floor(v); };
-function xAreaFloors(A,S,seed){ if(A&&XAREA_FLOOR_KEEP.id===A.id&&XAREA_FLOOR_KEEP.set) return XAREA_FLOOR_KEEP.set;
-  const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
+// only: paint just that one of the area's floors and keep it (the background painter, xPrewarmTick), returning null
+function xAreaFloors(A,S,seed,only){ const id=A&&A.id, kept=XAREA_FLOOR_KEEP.get(id);
+  if(only==null&&kept&&kept.length&&kept.every(Boolean)) return kept;
+  const N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
   const make=(sd,fn,speck)=>{ const R=caveRng(sd), H=new Float32Array(N*N), c=fn(R,H); if(speck) xSpeck(c,S,R,speck); c.h=H; c.hk=.55; return c; };
   const pebbles=(c,R,H,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, h=1+R()*2|0;
       x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+T((lo||.45)+R()*.35).join(',')+')'; x.fillRect(px,py,w,h); for(let j=py;j<py+h;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
@@ -311,10 +313,28 @@ function xAreaFloors(A,S,seed){ if(A&&XAREA_FLOOR_KEEP.id===A.id&&XAREA_FLOOR_KE
           if(on){ H[o]=2.6; return xfMix(st,T(.8),.2); } if(Math.abs(r-24)<.6){ H[o]=1.4; return T(.42); }
           H[o]=2+fv*.6; return T(.14+xfH(i>>6,j>>6,s)*.08+(fv-.5)*.08); });
         const x=c.getContext('2d'); for(let k=0;k<120;k++){ x.fillStyle='rgba('+st.join(',')+','+(.3+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1,1); } return c; },0) ] };
-  const L=F[id]; if(!L) return null; const out=L.map((g,k)=>g(seed+k*101)); XAREA_FLOOR_KEEP.id=id; XAREA_FLOOR_KEEP.set=out; return out; }
-// the last area's floors, kept: the next floor of the same area wears them again instead of painting its own (the
-// Hollows' cobbles take most of a second on a slow phone), so only the first floor of an area pays for them
-const XAREA_FLOOR_KEEP={id:null, set:null};
+  const L=F[id]; if(!L) return null; const set=kept||new Array(L.length);
+  XAREA_FLOOR_KEEP.delete(id); XAREA_FLOOR_KEEP.set(id,set); for(const k of [...XAREA_FLOOR_KEEP.keys()]) if(XAREA_FLOOR_KEEP.size>2) XAREA_FLOOR_KEEP.delete(k);
+  if(only!=null){ if(only<L.length&&!set[only]) set[only]=L[only](seed+only*101); return null; }
+  for(let k=0;k<L.length;k++) if(!set[k]) set[k]=L[k](seed+k*101);
+  return set; }
+// the floors of the last two areas, kept: the next floor of an area wears them again instead of painting its own (the
+// Hollows' cobbles take most of a second on a slow phone), and the next area's are painted ahead (xPrewarmTick)
+const XAREA_FLOOR_KEEP=new Map();
+/* Painting the next area's floors ahead. On the last floor of an area, once you have seen the stairs down and are
+   within a dozen cells of them, the floors of the area below (its own three and its themes' floors) are painted one
+   at a time, each only after you have stood still for a moment, so a pause of the painting falls where you are not
+   moving. The next floor then builds as fast as any other in its area. */
+function xPrewarmTick(dt){ if(!EX||EX.layout!==2||!EX.active||EX.dlg||EX.fighting||typeof areaOf!=='function') return;
+  const nd=EX.depth+1, NA=areaOf(nd); if(!NA||!EX.area||NA.id===EX.area.id) return;
+  let W=EX.prewarm; if(!W||W.depth!==nd){ const S=NA.stone||AREAS[0].stone, jobs=[];
+      for(let k=0;k<3;k++) jobs.push(()=>xAreaFloors(NA,S,nd*31,k));
+      const TA=typeof XTHEME_AREA!=='undefined'&&XTHEME_AREA[NA.id]; if(TA) for(const th of Object.keys(TA)) jobs.push(()=>xThemeFloor(th,NA,S));
+      W=EX.prewarm={depth:nd, jobs, still:0, at:-1}; }
+  if(!W.jobs.length||!EX.seen[EX.down]||Math.hypot(xcx(EX.pc)-xcx(EX.down),xcy(EX.pc)-xcy(EX.down))>12) return;
+  const here=EX.px*1000+EX.pz; if(here!==W.at||(EX.path&&EX.path.length)){ W.at=here; W.still=0; return; }
+  if((W.still+=dt)<.6) return;
+  W.still=0; const job=W.jobs.shift(); try{ job(); }catch(e){} }
 
 /* ---------------- the room themes' floors (dungeongen.js XTHEMES) ----------------
    One painter per theme (Temple keeps the area's own floors), in the area's rock tones where the theme is stone, in

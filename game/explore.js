@@ -502,7 +502,7 @@ function xBuildScene(){
         return h(ix,iz)*(1-u)*(1-w)+h(ix+1,iz)*u*(1-w)+h(ix,iz+1)*(1-u)*w+h(ix+1,iz+1)*u*w; };
       for(let v=0;v<pos.length;v+=3){ const x=pos[v]/XCS, z=pos[v+2]/XCS, a=vn(x*.23,z*.23,1)*.6+vn(x*.61,z*.61,2)*.4, b=vn(x*.17+9,z*.17+4,3)-.5, m=vn(x*.31+3,z*.31+8,4), l=.52+.78*a;
         col[v]*=l*(1+.2*b); col[v+1]*=l; col[v+2]*=l*(1-.2*b);
-        if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.2*k; col[v+1]*=1+.04*k; col[v+2]*=1-.16*k; } } }   // (damp, greenish corners)
+        if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.24*k; col[v+1]*=1-.25*k; col[v+2]*=1-.26*k; } } }   // (damp corners: darker gray)
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
     const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
     if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)

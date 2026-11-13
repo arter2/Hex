@@ -112,7 +112,7 @@ function xDetShader(sh,wall){ let f=sh.fragmentShader;
    by whole cells and a quarter turn of a cell maps the library's basket weave onto itself (each square's planks turn
    and its place's parity turns with them), so the joints stay whole; the relief is read from the same place and its
    slopes turned the same way, so the light still falls right. Each cell also takes its own tint, warmer or cooler,
-   and two wide world-space noises lay darker stains and damp, greenish patches across the floor. The lookups take
+   and two wide world-space noises lay darker stains and damp patches (gray, not green) across the floor. The lookups take
    the derivatives of the unshifted coordinates, so the jumps at cell edges do not drop a mip level and draw a seam.
    uXBombK (0 or 1, the debug menu's or a test's switch) turns all of it off. */
 function xBombShader(sh,n){ let f=sh.fragmentShader; const N=(+n).toFixed(1);
@@ -139,7 +139,7 @@ void main() {`);
     float xs=texture2D(uXDetN,xw*.021).r*.6+texture2D(uXDetN,xw*.047+.37).g*.4;
     diffuseColor.rgb*=mix(.52,1.06,smoothstep(.3,.64,xs));
     float xd=texture2D(uXDetN,xw*.013+.71).g;
-    diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.72,.9,.68),smoothstep(.55,.72,xd)*.85); }
+    diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.7,.69,.68),smoothstep(.55,.72,xd)*.85); }
 #endif`);
   if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
   f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');

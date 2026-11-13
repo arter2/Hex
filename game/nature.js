@@ -200,7 +200,8 @@ function xfVoro(N,G,R,jit,off){ const S=N/G, P=[];
   return {id,e,d,n:P.length}; }
 // a hash of a stone's place (for the rectangular layouts)
 const xfH=(a,b,s)=>{ const v=Math.sin(a*12.9898+b*78.233+s*.7311)*43758.5453; return v-Math.floor(v); };
-function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
+function xAreaFloors(A,S,seed){ if(A&&XAREA_FLOOR_KEEP.id===A.id&&XAREA_FLOOR_KEEP.set) return XAREA_FLOOR_KEEP.set;
+  const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
   const make=(sd,fn,speck)=>{ const R=caveRng(sd), H=new Float32Array(N*N), c=fn(R,H); if(speck) xSpeck(c,S,R,speck); c.h=H; c.hk=.55; return c; };
   const pebbles=(c,R,H,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, h=1+R()*2|0;
       x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+T((lo||.45)+R()*.35).join(',')+')'; x.fillRect(px,py,w,h); for(let j=py;j<py+h;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
@@ -310,7 +311,10 @@ function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0
           if(on){ H[o]=2.6; return xfMix(st,T(.8),.2); } if(Math.abs(r-24)<.6){ H[o]=1.4; return T(.42); }
           H[o]=2+fv*.6; return T(.14+xfH(i>>6,j>>6,s)*.08+(fv-.5)*.08); });
         const x=c.getContext('2d'); for(let k=0;k<120;k++){ x.fillStyle='rgba('+st.join(',')+','+(.3+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1,1); } return c; },0) ] };
-  const L=F[id]; if(!L) return null; return L.map((g,k)=>g(seed+k*101)); }
+  const L=F[id]; if(!L) return null; const out=L.map((g,k)=>g(seed+k*101)); XAREA_FLOOR_KEEP.id=id; XAREA_FLOOR_KEEP.set=out; return out; }
+// the last area's floors, kept: the next floor of the same area wears them again instead of painting its own (the
+// Hollows' cobbles take most of a second on a slow phone), so only the first floor of an area pays for them
+const XAREA_FLOOR_KEEP={id:null, set:null};
 
 /* ---------------- the room themes' floors (dungeongen.js XTHEMES) ----------------
    One painter per theme (Temple keeps the area's own floors), in the area's rock tones where the theme is stone, in

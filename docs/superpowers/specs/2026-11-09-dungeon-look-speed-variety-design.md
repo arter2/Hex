@@ -225,7 +225,8 @@ with a shape or low walls. That rule goes, for L, H and X as well as the new sha
   save. Floors saved before this build have neither and are drawn exactly as now.
 - Only newly dug floors get themes and the new shapes.
 
-**Checks.** 400 seeded floors: all build, every room reachable, 12–16 rooms, worst build time
+**Checks** (run 2026-11-13, docs/test-results/2026-11-13-400-floor-check.md: all pass but the worst build time, which
+is the first floor of an area painting its floors). 400 seeded floors: all build, every room reachable, 12–16 rooms, worst build time
 within 20% of v301's; every planned puzzle, lair and special room is placed (none dropped for
 want of a room), and at least a third of them land in shaped rooms. `puzzle-lab.js` solves every
 puzzle kind in each room shape. The crawl bots and `touch-dungeon-runner.js` run on depths 1, 5, 9, 13, 17

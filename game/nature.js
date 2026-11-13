@@ -132,7 +132,8 @@ function xNatPatches(grp,K,R,floorOK,pz){ if(!K.patch) return; const cv=document
   const tex=new THREE.CanvasTexture(cv), P=[], U=[];
   const quad=(cx,cz,w,d,rot)=>{ const cs=Math.cos(rot), sn=Math.sin(rot), pt=(u,v)=>[cx+u*w/2*cs-v*d/2*sn,.022,cz+u*w/2*sn+v*d/2*cs], a=pt(-1,-1), b=pt(-1,1), c=pt(1,1), e=pt(1,-1);
     P.push(...a,...b,...c,...a,...c,...e); U.push(0,0, 0,1, 1,1, 0,0, 1,1, 1,0); };
-  for(let c=0;c<XN*XN;c++){ if(!floorOK(c)||EX.room[c]===pz&&pz>=0) continue;
+  const bare=c=>{ const r=EX.room[c]; return r>=0&&EX.rooms[r]&&EX.rooms[r].theme==='library'; };   // (a library's floor stays clear of moss)
+  for(let c=0;c<XN*XN;c++){ if(!floorOK(c)||EX.room[c]===pz&&pz>=0||bare(c)) continue;
     for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]){ const w=c+dx+dy*XN; if(!EX.wIdx.has(w)||R()>K.patch.n) continue;
       quad(xw(c)+dx*.55+(R()-.5)*.6,xz(c)+dy*.55+(R()-.5)*.6,1.4+R()*1.2,.9+R()*.8,dx?Math.PI/2:0); } }
   if(!P.length) return; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.computeVertexNormals();
@@ -355,7 +356,7 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
         H[o]=2+fv*1.5; return T(.38+h((i+(row&1)*32)>>6,row,sd)*.16+(fv-.5)*.2-(w(i,j)>.62?.1:0)); }); break; }
     // dark wet tiles, shallow standing water in the low places
     case 'flooded': { const f=xFbm(N,R,6), p=xFbm(N,R,3), wet=X('#183640'), hi=X('#6ab0c0');
-      c=xPaint(N,(i,j)=>{ const u=i&31, v=j&31, o=j*N+i, fv=f(i,j), pv=p(i,j), joint=u===31||v===31;
+      c=xPaint(N,(i,j)=>{ const u=i&31, v=j&31, o=j*N+i, fv=f(i,j), pv=p(i,j), joint=u===31||v===31||u===0||v===0;   // (joints on both edges: a bombed tile can be turned)
         let col=mix(joint?T(.06):T(.24+h(i>>5,j>>5,sd)*.1+(fv-.5)*.1),wet,.35); H[o]=joint?-1:2+fv*.5;
         if(pv>.56){ const k=Math.min(1,(pv-.56)*7); col=mix(col,wet,k*.85); H[o]=1.2; if(pv>.6&&h(i,j,sd)<.025) col=mix(col,hi,.7); }
         return col; }); break; }
@@ -391,7 +392,7 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
     // big flagstones, some of them grave slabs with a carved border and cross
     case 'crypt': { const f=xFbm(N,R,6), k=xNoise(N,10,R);
       c=xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j), tid=h(i>>6,j>>6,sd);
-        if(u===63||v===63){ H[o]=-1.2; return T(.05); }
+        if(u===63||v===63||u===0||v===0){ H[o]=-1.2; return T(.05); }   // (joints on both edges: a bombed slab can be turned)
         let t=.34+tid*.12+(fv-.5)*.14; H[o]=2+fv;
         if(tid<.45){ const inR=u>13&&u<49&&v>5&&v<57, edge=inR&&(u===14||u===48||v===6||v===56), cross=(Math.abs(u-31)<1.6&&v>13&&v<45)||(Math.abs(v-24)<1.6&&u>21&&u<41);
           if(inR) t+=.06; if(edge||cross){ t-=.22; H[o]=.6; } }
@@ -405,7 +406,7 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
     // a mosaic of small tiles: pale ground, blue bands, a ring in each square
     case 'bathhouse': { const f=xFbm(N,R,6), Cs=[X('#e4e0d4'),X('#b4d4dc'),X('#3a7a9a'),X('#1e4a6a')];
       c=xPaint(N,(i,j)=>{ const o=j*N+i, ti=i>>3, tj=j>>3; if((i&7)===7||(j&7)===7){ H[o]=-.6; return [72,76,74]; }
-        const band=(ti&15)===0||(tj&15)===0||(ti&15)===1||(tj&15)===1, ring=Math.abs(Math.hypot((ti&15)-8,(tj&15)-8)-4.5)<.8;
+        const band=(ti&15)===0||(tj&15)===0||(ti&15)===15||(tj&15)===15, ring=Math.abs(Math.hypot((ti&15)-7.5,(tj&15)-7.5)-4.5)<.8;   // (centred: a bombed square can be turned)
         const k=band?2:ring?3:h(ti,tj,sd)<.16?1:0; H[o]=1.6+h(ti,tj,sd+1)*.6; return mix(Cs[k],[0,0,0],Math.max(0,(f(i,j)-.4)*.4+h(ti,tj,sd+3)*.08)); }); break; }
     // long plain boards, nailed down
     case 'barracks': { const f=xFbm(N,R,8), W1=X('#6a4a2c'), W2=X('#56391f');
@@ -422,9 +423,12 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
       const x=c.getContext('2d'); for(let k=0;k<110;k++){ x.fillStyle='rgba('+glow.join(',')+','+(.4+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1+(R()<.2?1:0),1); } break; }
     default: return null; }
   c.h=H; c.hk=.55;
-  // the planks: twice the pixels over the same eight cells (each plank half the size), laid with texture bombing and
-  // painted vertices (explore.js xBuildScene, look.js xBombShader); 8: the texture's cells a side, the bombing's step
-  if(th==='library'){ c.bomb=8; c.paint=1; }
+  // theme floors are laid with texture bombing and painted vertices (explore.js xBuildScene, look.js xBombShader); the
+  // library's planks are painted at twice the pixels over the same eight cells, each plank half the size
+  // the bombing's step is the pattern's repeat, in the texture's cells a side: whole tiles (8 a side: flooded), whole
+  // slabs (4: overgrown, crypt), the mosaic's banded squares (2: bathhouse). A floor whose pattern does not repeat on
+  // the cell grid (the armory's staggered slabs, broken paving, cracks, earth, the barracks' boards) is painted only
+  c.paint=1; const BOMB={library:8, flooded:8, overgrown:4, crypt:4, bathhouse:2}; if(BOMB[th]) c.bomb=BOMB[th];
   XTHEME_FLOOR_CACHE.set(key,c); return c; }
 
 /* ---------------- normal maps for what has no painted height ----------------

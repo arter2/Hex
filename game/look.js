@@ -29,7 +29,7 @@ const DBG={pause:false};
 // saves new ones afterwards.
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
-const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
+const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
@@ -108,31 +108,43 @@ function xDetShader(sh,wall){ let f=sh.fragmentShader;
   f=f.replace('void main() {',(f.includes('uniform sampler2D uXDetN')?'':'uniform sampler2D uXDetN; ')+'uniform float uXDetK;\nvoid main() {');
   sh.fragmentShader=f; }
 /* Texture bombing for a patterned floor (material.userData.xbomb = the texture's cells a side, n): each floor cell
-   shows another cell of the texture, chosen by a hash of where it is, shifted by whole cells so a pattern laid on
-   the cell grid (the library's planks) keeps its joints; its relief moves with it. Each cell also takes its own
-   small tint, and a wide world-space noise lays darker stains across the floor. The lookups take the derivatives of
-   the unshifted coordinates, so the jumps at cell edges do not drop a mip level and draw a seam. */
+   shows another cell of the texture, chosen by a hash of where it is, and turned a random quarter turn. The shift is
+   by whole cells and a quarter turn of a cell maps the library's basket weave onto itself (each square's planks turn
+   and its place's parity turns with them), so the joints stay whole; the relief is read from the same place and its
+   slopes turned the same way, so the light still falls right. Each cell also takes its own tint, warmer or cooler,
+   and two wide world-space noises lay darker stains and damp, greenish patches across the floor. The lookups take
+   the derivatives of the unshifted coordinates, so the jumps at cell edges do not drop a mip level and draw a seam.
+   uXBombK (0 or 1, the debug menu's or a test's switch) turns all of it off. */
 function xBombShader(sh,n){ let f=sh.fragmentShader; const N=(+n).toFixed(1);
-  const look=`vec4 xBombTex(sampler2D t,vec2 uv){ vec2 c=floor(uv*${N}); vec2 o=floor(vec2(xbh(c),xbh(c+17.31))*${N})/${N};
+  f=f.replace('void main() {',`uniform float uXBombK;
+float xbh(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+float xBombR(vec2 uv){ return uXBombK>.5?floor(xbh(floor(uv*${N})+3.71)*4.):0.; }
+vec2 xBombUV(vec2 uv){ if(uXBombK<.5) return uv; vec2 c=floor(uv*${N}), q=fract(uv*${N}); float r=xBombR(uv);
+  if(r==1.) q=vec2(q.y,1.-q.x); else if(r==2.) q=1.-q; else if(r==3.) q=vec2(1.-q.y,q.x);
+  return (floor(vec2(xbh(c),xbh(c+17.31))*${N})+q)/${N}; }
+vec2 xBombN(vec2 n,float r){ return r==1.?vec2(-n.y,n.x):r==2.?-n:r==3.?vec2(n.y,-n.x):n; }
+vec4 xBombTex(sampler2D t,vec2 uv){
 #if __VERSION__>=300
-  return textureGrad(t,uv+o,dFdx(uv),dFdy(uv));
+  return textureGrad(t,xBombUV(uv),dFdx(uv),dFdy(uv));
 #else
-  return texture2D(t,uv+o);
+  return texture2D(t,xBombUV(uv));
 #endif
-}`;
-  f=f.replace('void main() {',`float xbh(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
-${look}
+}
 void main() {`);
   if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('texture2D( map, vUv )','xBombTex( map, vUv )')+`
 #ifdef USE_MAP
-  { vec2 xc=floor(vUv*${N}); diffuseColor.rgb*=mix(.86,1.1,xbh(xc+5.13));
-    float xs=texture2D(uXDetN,vec2(vXLW.x,-vXLW.z)*.021).r*.6+texture2D(uXDetN,vec2(vXLW.x,-vXLW.z)*.047+.37).g*.4;
-    diffuseColor.rgb*=mix(.78,1.04,smoothstep(.32,.62,xs)); }
+  if(uXBombK>.5){ vec2 xc=floor(vUv*${N}); float xt=xbh(xc+8.9)-.5;
+    diffuseColor.rgb*=mix(.68,1.18,xbh(xc+5.13))*vec3(1.+.12*xt,1.,1.-.12*xt);
+    vec2 xw=vec2(vXLW.x,-vXLW.z);
+    float xs=texture2D(uXDetN,xw*.021).r*.6+texture2D(uXDetN,xw*.047+.37).g*.4;
+    diffuseColor.rgb*=mix(.52,1.06,smoothstep(.3,.64,xs));
+    float xd=texture2D(uXDetN,xw*.013+.71).g;
+    diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.72,.9,.68),smoothstep(.55,.72,xd)*.85); }
 #endif`);
   if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
-  f=f.replace('texture2D( normalMap, vUv )','xBombTex( normalMap, vUv )');
-  f=f.replace('mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK','mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*1.6');   // (the finer relief, stronger: the bombed floor's normal changes)
-  if(!f.includes('uniform sampler2D uXDetN')) f=f.replace('float xbh(','uniform sampler2D uXDetN;\nfloat xbh(');
+  f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');
+  f=f.replace('mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK','mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(1.,1.8,uXBombK)');   // (the finer relief, stronger: the bombed floor's normal changes)
+  if(!f.includes('uniform sampler2D uXDetN')) f=f.replace('uniform float uXBombK;','uniform float uXBombK; uniform sampler2D uXDetN;');
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;

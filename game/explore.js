@@ -498,10 +498,11 @@ function xBuildScene(){
     for(let j=0;j<18;j++) col[k+j]*=t; }
     // painted vertices (a bombed floor, nature.js cv.paint): smooth noise over the floor's corners, so neighbouring cells
     // share it and it drifts across them: lighter and darker patches, a little warmer or cooler
-    if(cv.paint){ const vn=(x,z,s)=>{ const h=(a,b)=>{ const v=Math.sin(a*127.1+b*311.7+s*74.7)*43758.5453; return v-Math.floor(v); }, ix=Math.floor(x), iz=Math.floor(z), fx=x-ix, fz=z-iz, u=fx*fx*(3-2*fx), w=fz*fz*(3-2*fz);
+    if(cv.paint&&XFLOORFX.paint){ const vn=(x,z,s)=>{ const h=(a,b)=>{ const v=Math.sin(a*127.1+b*311.7+s*74.7)*43758.5453; return v-Math.floor(v); }, ix=Math.floor(x), iz=Math.floor(z), fx=x-ix, fz=z-iz, u=fx*fx*(3-2*fx), w=fz*fz*(3-2*fz);
         return h(ix,iz)*(1-u)*(1-w)+h(ix+1,iz)*u*(1-w)+h(ix,iz+1)*(1-u)*w+h(ix+1,iz+1)*u*w; };
-      for(let v=0;v<pos.length;v+=3){ const x=pos[v]/XCS, z=pos[v+2]/XCS, a=vn(x*.23,z*.23,1)*.65+vn(x*.61,z*.61,2)*.35, b=vn(x*.17+9,z*.17+4,3)-.5, l=.74+.4*a;
-        col[v]*=l*(1+.07*b); col[v+1]*=l; col[v+2]*=l*(1-.07*b); } }
+      for(let v=0;v<pos.length;v+=3){ const x=pos[v]/XCS, z=pos[v+2]/XCS, a=vn(x*.23,z*.23,1)*.6+vn(x*.61,z*.61,2)*.4, b=vn(x*.17+9,z*.17+4,3)-.5, m=vn(x*.31+3,z*.31+8,4), l=.52+.78*a;
+        col[v]*=l*(1+.2*b); col[v+1]*=l; col[v+2]*=l*(1-.2*b);
+        if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.2*k; col[v+1]*=1+.04*k; col[v+2]*=1-.16*k; } } }   // (damp, greenish corners)
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
     const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
     if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)
@@ -986,6 +987,8 @@ const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack','table','rac
   cave:['rubble','rubble','mushrooms','bones','skeleton'], study:['shelf','shelf','table','candles','urn','brazier'] };
 const XAREA_KIND={ hollows:['cave','cave','store','crypt','study'], deeps:['store','cave','crypt','study'], vault:['store','shrine','study','store'], rifts:['cave','crypt','store','shrine'], ruins:['shrine','shrine','study','store','crypt'], abyss:['crypt','shrine','cave','study'] };
 // a themed room's furniture along its walls (dungeongen.js XTHEMES)
+// a test's or the debug menu's switches for the floors' painted vertices (the bombing has its own: look.js uXBombK)
+const XFLOORFX={paint:1};
 const XTHEME_WALL={ armory:['rack','rack','crate','barrel','table'], flooded:['rubble','urn','mushrooms','bones'], overgrown:['mushrooms','rubble','urn','mushrooms'],
   collapsed:['rubble','rubble','crate','bones'], library:['shelf','shelf','shelf','table','candles'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
   forge:['barrel','crate','rack','rubble','brazier'], bathhouse:['urn','urn','candles','statue'], barracks:['table','barrel','crate','rack','sack'],

@@ -55,7 +55,7 @@ JavaScript with three.js (r128) and has no build step.
 
 Checked: a [400-floor check against v301](test-results/2026-11-13-400-floor-check.md): every floor built and fully reachable, all 192 puzzles and 58 lairs placed and 169 of 172 special rooms; build times at or under v301's.
 
-### Earlier changes (v71 to v96)
+### Earlier changes (v71 to v214, and v305–v306 in detail)
 
 | Build | Change |
 |---|---|

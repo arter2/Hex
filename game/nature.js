@@ -373,12 +373,21 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
         if(r<.2||e<1.5){ H[q]=-1.5; return mix(grit,T(.18),fv); }
         H[q]=1.5+fv+Math.min(e,6)*.15; return T(.3+r*.28+(fv-.5)*.16); });
       pebbles(c,160,.28); break; }
-    // a basket weave of oak planks
-    case 'library': { const f=xFbm(N,R,8), Ws=[X('#7a5232'),X('#5e3e22'),X('#8a6238')];
-      c=xPaint(N,(i,j)=>{ const o=j*N+i, sq=((i>>5)+(j>>5))&1, across=sq?i:j, along=sq?j:i, pid=(across>>3)*7+(along>>5)*13+sq;
-        if((across&7)===7||(along&31)===31){ H[o]=-1; return [30,18,10]; }
-        const gr=Math.sin(across*2.3+h(pid,1,sd)*20+f(i,j)*6)*.5+.5; H[o]=2+gr*.4;
-        return mix(Ws[Math.floor(h(pid,0,sd)*3)],[30,18,8],gr*.25+(f(i,j)-.5)*.3); }); break; }
+    // a basket weave of old planks, stained gray and beaten up: water stains with a dark tide line, scratches, worn
+    // ends, dirt packed in the joints, the odd plank rotted dark or gone (grit in the hole)
+    case 'library': { const f=xFbm(N,R,8), st=xFbm(N,R,3), st2=xFbm(N,R,5), sc1=xNoise(N,22,R), sc2=xNoise(N,17,R), dirt=X('#25221f'),
+        Ws=[X('#6c6862'),X('#5a5651'),X('#78736b'),X('#4c4945'),X('#64605a')];
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, sq=((i>>5)+(j>>5))&1, across=sq?i:j, along=sq?j:i, pid=(across>>3)*7+(along>>5)*13+sq, fv=f(i,j);
+        if((across&7)===7||(along&31)===31){ H[o]=-1.2; return mix(dirt,[12,11,10],fv*.6); }
+        if(h(pid,0,sd)<.045){ H[o]=-.9; return mix(dirt,T(.18),fv); }
+        const gr=Math.sin(across*2.3+h(pid,1,sd)*20+fv*6)*.5+.5, e=Math.min(along&31,31-(along&31)), side=Math.min(across&7,6-(across&7));
+        let col=mix(Ws[Math.floor(h(pid,2,sd)*5)],[22,20,18],gr*.2+(fv-.5)*.4); H[o]=2+gr*.35-(e<2?.6:0);
+        if(e<3||side<1) col=mix(col,dirt,e<2?.4:.22);
+        if(h(pid,3,sd)<.12) col=mix(col,dirt,.35);
+        const sv=st(i,j), sv2=st2(i,j); if(sv>.58) col=mix(col,[40,36,32],Math.min(.55,(sv-.58)*2.4)); if(Math.abs(sv-.58)<.005) col=mix(col,[26,23,20],.55);
+        if(sv2>.66) col=mix(col,[92,88,80],Math.min(.3,(sv2-.66)*2));
+        if(Math.abs(sc1(i,j)-.5)<.004||Math.abs(sc2(i,j)-.5)<.003){ col=mix(col,[158,152,142],.32); H[o]-=.35; }
+        return col; }); break; }
     // big flagstones, some of them grave slabs with a carved border and cross
     case 'crypt': { const f=xFbm(N,R,6), k=xNoise(N,10,R);
       c=xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j), tid=h(i>>6,j>>6,sd);

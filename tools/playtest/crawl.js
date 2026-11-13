@@ -2119,19 +2119,24 @@
     (function* () {
       for (const pl of pz.plates) {
         if (pz.blocks.some(b => b.cell === pl.cell)) continue;
+        // its block stands in line with it (the puzzle can lie either way round)
+        const inLine = b => xcx(b.cell) === xcx(pl.cell) || xcy(b.cell) === xcy(pl.cell);
         const b = pz.blocks
-          .filter(b => xcx(b.cell) === xcx(pl.cell) && !pz.plates.some(q => q.cell === b.cell))
-          .sort((a, c) => xcy(a.cell) - xcy(c.cell))[0];
+          .filter(b => inLine(b) && !pz.plates.some(q => q.cell === b.cell))
+          .sort((a, c) => Math.abs(xcx(a.cell) - xcx(pl.cell)) + Math.abs(xcy(a.cell) - xcy(pl.cell)) - Math.abs(xcx(c.cell) - xcx(pl.cell)) - Math.abs(xcy(c.cell) - xcy(pl.cell)))[0];
         if (!b) continue;
+        const sx = Math.sign(xcx(pl.cell) - xcx(b.cell)),
+          sy = Math.sign(xcy(pl.cell) - xcy(b.cell)),
+          dir = sx > 0 ? 'right' : sx < 0 ? 'left' : sy > 0 ? 'down' : 'up';
         for (let k = 0; k < 6 && b.cell !== pl.cell && !pz.solved; k++) {
-          const behind = b.cell + XN;
+          const behind = b.cell - sx - sy * XN;
           if (behind !== EX.pc) {
             const ok = yield* walk(behind, { careful: true, max: 30 });
             if (!ok) break;
           }
-          // push up: hold until the block moves one cell, then let go (sometimes a beat late)
+          // push toward the plate: hold until the block moves one cell, then let go (sometimes a beat late)
           const c0 = b.cell;
-          hold('up');
+          hold(dir);
           const t0 = R.T;
           while (b.cell === c0 && R.T - t0 < 1.5) yield;
           if (!chance(P.care) && b.cell !== c0) {
@@ -2866,8 +2871,10 @@
         const gh = btns.find(b => b.classList.contains('ghost'));
         if (gh) gh.click();
         else {
-          const close = btns.find(b => /^(Close|Leave|Cancel)$/.test(b.textContent.trim()));
+          const close = btns.find(b => /^(Close|Leave|Cancel)$/.test(b.textContent.trim())),
+            winx = document.querySelector('#xDialog .winx'); // the ✕ every pop-up has in its corner (ui.js CLOSERS)
           if (close) close.click();
+          else if (winx) winx.click();
           else recover('missing close control', String(o.title || '?'), () => xDlgClose());
         }
       };

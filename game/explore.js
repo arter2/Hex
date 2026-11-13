@@ -473,7 +473,15 @@ function xBuildScene(){
   for(const [c,rm] of under) variant[c]=areaF?(rm>=0?1+EX.rooms[rm].style:0):EX.natural?0:rm>=0?1+EX.rooms[rm].style:EX.layout===2?2:0;
   for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=areaF?(EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0):EX.natural?0:EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:EX.layout===2?2:0;   // spacious floors: passages are paved too
   const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
-  const floorTex=areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];   // spacious floors: small clean tiles
+  const floorTex=(areaF?areaF:EX.layout===2?[xRockFloor(S,seed+1),xTileFloor(S,seed+2,false),xTileFloor(S,seed+3,true)]:[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)]).slice();   // spacious floors: small clean tiles
+  // themed rooms (dungeongen.js x2Themes) wear their theme's floor (nature.js xThemeFloor): the five themes with the
+  // most floor on this level; a room of any other theme keeps its area floor
+  if(EX.layout===2&&typeof xThemeFloor==='function'){ const area=new Map();
+    for(let i=0;i<XN*XN;i++){ const rm=EX.room[i]; if(rm<0||variant[i]<0) continue; const th=EX.rooms[rm].theme; if(th) area.set(th,(area.get(th)||0)+1); }
+    const pick=[...area.entries()].sort((a,b)=>b[1]-a[1]).map(([th])=>[th,xThemeFloor(th,A,S)]).filter(([,cv])=>cv).slice(0,5), at=new Map();
+    for(const [th,cv] of pick){ at.set(th,floorTex.length); floorTex.push(cv); }
+    const vOf=rm=>rm>=0&&EX.rooms[rm].theme&&at.has(EX.rooms[rm].theme)?at.get(EX.rooms[rm].theme):-1;
+    for(let i=0;i<XN*XN;i++){ if(variant[i]<0) continue; const v=vOf(EX.room[i]>=0?EX.room[i]:under.has(i)?under.get(i):-1); if(v>=0) variant[i]=v; } }
   floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
@@ -488,8 +496,16 @@ function xBuildScene(){
     const col=new Array(pos.length).fill(1);
     const tv=EX.layout===2?.04:.1; for(let k=0;k<col.length;k+=18){ const t=1-tv+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*tv;   // (small tiles: barely, or the cells show through as big squares)
     for(let j=0;j<18;j++) col[k+j]*=t; }
+    // painted vertices (a bombed floor, nature.js cv.paint): smooth noise over the floor's corners, so neighbouring cells
+    // share it and it drifts across them: lighter and darker patches, a little warmer or cooler
+    if(cv.paint&&XFLOORFX.paint){ const vn=(x,z,s)=>{ const h=(a,b)=>{ const v=Math.sin(a*127.1+b*311.7+s*74.7)*43758.5453; return v-Math.floor(v); }, ix=Math.floor(x), iz=Math.floor(z), fx=x-ix, fz=z-iz, u=fx*fx*(3-2*fx), w=fz*fz*(3-2*fz);
+        return h(ix,iz)*(1-u)*(1-w)+h(ix+1,iz)*u*(1-w)+h(ix,iz+1)*(1-u)*w+h(ix+1,iz+1)*u*w; };
+      for(let v=0;v<pos.length;v+=3){ const x=pos[v]/XCS, z=pos[v+2]/XCS, a=vn(x*.23,z*.23,1)*.6+vn(x*.61,z*.61,2)*.4, b=vn(x*.17+9,z*.17+4,3)-.5, m=vn(x*.31+3,z*.31+8,4), l=.52+.78*a;
+        col[v]*=l*(1+.2*b); col[v+1]*=l; col[v+2]*=l*(1-.2*b);
+        if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.24*k; col[v+1]*=1-.25*k; col[v+2]*=1-.26*k; } } }   // (damp corners: darker gray)
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
     const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
@@ -704,18 +720,26 @@ function xAreaLights(grp,A){
       halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
       g.add(xPool(tex,col,2.4)); g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,ph:R()*6}); }
     // one or two wall torches: an iron bracket, a flickering flame and a warm pool on the floor
-    for(let k=Math.min(ok.length,1+(R()<.4?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
+    const TL=XTHEME_LIGHT[r.theme]||XTHEME_LIGHT.temple;
+    for(let k=Math.min(ok.length,1+(R()<.4?1:0)+(TL.k>1.1?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
       const g=new THREE.Group(); g.position.set((wx+.5+dx*.5)*XCS+dx*.04,0,(wy+.5+dy*.5)*XCS+dy*.04); g.rotation.y=Math.atan2(dx,dy);
-      const iron=xMat(0x2a2620), warm=new THREE.Color(0xffa040), mats=[];
+      const iron=xMat(0x2a2620), warm=new THREE.Color(TL.glow==='area'?A.glow:TL.light), mats=[];
       g.add(xBox(.12,.55,.12,iron,0,1.45,.12), xBox(.34,.1,.34,iron,0,1.75,.22), xBox(.36,.06,.07,iron,0,1.45,.04));
       const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
-      const f1=new THREE.Mesh(new THREE.ConeGeometry(.24,.7,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.13,.45,6),fm(0xffe08a));
+      const f1=new THREE.Mesh(new THREE.ConeGeometry(.24,.7,6),fm(TL.glow==='area'?A.glow:TL.flame[0])), f2=new THREE.Mesh(new THREE.ConeGeometry(.13,.45,6),fm(TL.flame[1]));
       f1.position.y=.35; f2.position.y=.24; flame.add(f1,f2); flame.position.set(0,1.8,.22); g.add(flame);
       const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:warm,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
       halo.scale.set(4,4,1); halo.position.set(0,2.05,.35); halo.renderOrder=2; g.add(halo);
       const pool=xPool(tex,warm,4.2); g.add(pool);
-      g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6}); } }
+      g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6,tint:warm,tk:TL.k}); } }
 }
+// a themed room's torches (dungeongen.js XTHEMES): the flame's colours, the light's colour and how far it reaches
+const XTHEME_LIGHT={ temple:{flame:[0xff7a2a,0xffe08a],light:0xffa040,k:1}, armory:{flame:[0xff7a2a,0xffe08a],light:0xffa040,k:1},
+  barracks:{flame:[0xff8a3a,0xffe8a0],light:0xffb060,k:1}, library:{flame:[0xffa040,0xfff0b0],light:0xffc070,k:.9},
+  forge:{flame:[0xff5010,0xffb040],light:0xff6a20,k:1.35}, collapsed:{flame:[0xd07030,0xf0c080],light:0xc08850,k:.75},
+  flooded:{flame:[0x4a9ac0,0xc8f0ff],light:0x7ab8d8,k:.8}, crypt:{flame:[0x8aa8c8,0xe8f4ff],light:0xb8d0e8,k:.85},
+  bathhouse:{flame:[0x6ac0e0,0xe0f8ff],light:0x9fd8ff,k:1}, overgrown:{flame:[0x8ad060,0xe8ffc0],light:0xa8e080,k:.9},
+  fungus:{glow:'area',flame:[0,0xffffff],light:0,k:1.25} };
 // the four real lights go to the lit torches and crystals nearest you; each fades in and out as it moves
 // how bright a torch or crystal burns: once found it keeps burning (the debug menu's light memory), fading in as it is first seen
 function xLightF(L){ const f=EX.fogCur[L.floor]; return Math.max(f,Math.min(1,XLIT.dLightMem)*Math.min(1,f/.2)); }
@@ -724,7 +748,7 @@ function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX
 /* The four torch lights follow the torches and crystals nearest you. A light stays with its torch
    while that torch is still among the nearest; one that is no longer wanted fades out fully before it
    moves to the next torch and fades in there, so lights never jump or blink as you walk about. */
-function xLightPlace(P,L){ P.userData.L=L; P.userData.next=undefined; if(!L) return; const wp=XS_V; (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; }
+function xLightPlace(P,L){ P.userData.L=L; P.userData.next=undefined; if(!L) return; const wp=XS_V; (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.tint||(L.torch?0xffa448:EX.area.glow)); P.distance=(L.torch?11:8)*XLIT.torchRad*(L.tk||1); }
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt; const place=xLightPlace;
   if(EX.lpT<=0){ EX.lpT=.3;
     // the nearest torches and crystals in sight, nearest first (as many as there are lights); equal distances keep their order
@@ -962,6 +986,13 @@ function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,
 const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack','table','rack'], shrine:['urn','urn','candles','statue','brazier','shelf'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
   cave:['rubble','rubble','mushrooms','bones','skeleton'], study:['shelf','shelf','table','candles','urn','brazier'] };
 const XAREA_KIND={ hollows:['cave','cave','store','crypt','study'], deeps:['store','cave','crypt','study'], vault:['store','shrine','study','store'], rifts:['cave','crypt','store','shrine'], ruins:['shrine','shrine','study','store','crypt'], abyss:['crypt','shrine','cave','study'] };
+// a themed room's furniture along its walls (dungeongen.js XTHEMES)
+// a test's or the debug menu's switches for the floors' painted vertices (the bombing has its own: look.js uXBombK)
+const XFLOORFX={paint:1};
+const XTHEME_WALL={ armory:['rack','rack','crate','barrel','table'], flooded:['rubble','urn','mushrooms','bones'], overgrown:['mushrooms','rubble','urn','mushrooms'],
+  collapsed:['rubble','rubble','crate','bones'], library:['shelf','shelf','shelf','table','candles'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
+  forge:['barrel','crate','rack','rubble','brazier'], bathhouse:['urn','urn','candles','statue'], barracks:['table','barrel','crate','rack','sack'],
+  fungus:['mushrooms','mushrooms','rubble','bones'], temple:['urn','urn','candles','statue','brazier','shelf'] };
 const XWALLSIDE=['shelf','rack','skeleton'];   // these stand right against a wall
 function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]!==T_ROCK, rock=(x,y)=>!floorAt(x,y);
   EX.dress=new Map(); EX.decor=[]; EX.onWall=[];
@@ -988,7 +1019,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
-  EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], pool=XROOM_KINDS[rk];
+  EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk0=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], rk=r.theme&&XTHEME_WALL[r.theme]?r.theme:rk0, pool=XTHEME_WALL[r.theme]||XROOM_KINDS[rk];
     const M=xMerger(), L=xMerger(), cells=[];
     const ok=c=>EX.t[c]===T_FLOOR&&!EX.taken.has(c)&&!EX.itemAt.has(c)&&!EX.chests.some(ch=>ch.cell===c)&&c!==EX.up&&c!==EX.down&&!EX.traps.some(t=>t.cell===c)&&!xAdj4(c).some(n=>EX.doors.has(n));
     const edge=[]; for(let x=r.x;x<r.x+r.w;x++){ edge.push([x,r.y,0,-1],[x,r.y+r.h-1,0,1]); } for(let y=r.y+1;y<r.y+r.h-1;y++){ edge.push([r.x,y,-1,0],[r.x+r.w-1,y,1,0]); }
@@ -1537,10 +1568,11 @@ function xGoalAt(ax,ay){ if(!EX||!EX.active||EX.busy) return;
   const path=c===EX.pc?[]:xPathToCell(c); if(!path) return;
   EX.goal={cell:c, x:g.x, z:g.z}; EX.path=path; }
 function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
-// can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
+// can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you; a low wall or a
+// piece of clutter is seen over but not walked through: xClear lets the eye past it, so it is ruled out here as well)
 function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
   for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
-    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)||xPadCell(c)&&!(EX.goal&&EX.goal.cell===c)) return false; } }
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||EX.t[c]===T_ROCK||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)||xPadCell(c)&&!(EX.goal&&EX.goal.cell===c)) return false; } }
   return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;
@@ -1818,7 +1850,15 @@ function xEngage(g,forced){
   if(opening==='strike') xLog('First strike on the '+name+'!','good');
   xFlashView(500); setTimeout(()=>xFlashView(260),560);
   const b=$('#xBang'); b.textContent=opening==='strike'?'First Strike!':opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening==='strike'?'ambush':opening||'');
-  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null,tier:g.tier||0}); },700);
+  // Camera intros: the camera swings in (the camera code above) and the view fades to black; the battle fades in
+  // (the cut waits for the black, up to half a second more: on a slow frame the timers can come before it)
+  const cine=typeof cineOn==='function'&&cineOn(); EX.engDir=Math.random()<.5?-1:1; let black=!cine;
+  if(cine) setTimeout(()=>{ if(EX&&EX.fighting===g) veilTo(1,260,null,()=>{ black=true; }); else black=true; },430);
+  const go=t0=>{ if(!black&&performance.now()-t0<500) return requestAnimationFrame(()=>go(t0));
+    b.className='x-bang'; if(!EX||EX.fighting!==g){ if(cine) veilTo(0,200); return; } EX.active=false;
+    fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null,tier:g.tier||0});
+    if(cine) veilTo(0,480); };
+  setTimeout(()=>go(performance.now()),700);
 }
 
 /* ---------------- floors, camp, death ---------------- */
@@ -1906,7 +1946,7 @@ function xLoop(ts){
   const dt=Math.max(0,Math.min(.1,(ts-xLast)/1000)); xLast=ts;
   // a search or disarm never takes more than a few seconds, whatever happens
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
-  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt));
+  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt)); if(EX.active&&!EX.busy&&typeof xPrewarmTick==='function') xGuard(()=>xPrewarmTick(dt));
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; }
   xGuard(()=>xDoorTick(dt||.016)); xGuard(()=>xDraw(ts/1000,dt));
@@ -1959,12 +1999,23 @@ function xDraw(T,dt){
   // Its angle, distance, lens, look-ahead and aim are the debug menu's Dungeon camera
   if(G.cam.fov!==XLIT.dFov){ G.cam.fov=XLIT.dFov; G.cam.updateProjectionMatrix(); }
   const pitch=XLIT.dPitch*Math.PI/180, k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, D=EX.layout===2?xViewDist(pitch):XLIT.dDist*XCS*k, hgt=D*Math.sin(pitch), back=D*Math.cos(pitch);   // the debug menu's zoom brings it closer
-  const rm=XRM&&XRM.matches; let zk=1; if(EX.fighting&&EX.busy&&!rm){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
+  // a fight starting: the camera rushes in (with Camera intros on, further, lower and swinging round toward the enemy)
+  const rm=XRM&&XRM.matches, cine=typeof cineMoves==='function'&&cineMoves(); let zk=1, swing=0, low=1;
+  if(EX.fighting&&EX.busy&&!rm){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7);
+    if(cine){ const s=e*e*(3-2*e); zk=1-.46*s; swing=(EX.engDir||1)*.42*s; low=1-.22*s; } else zk=1-.32*e*e; } else EX.engT=0;
   const sh=EX.shakeT>0?(EX.shakeT-=dt,rm?0:EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; { const CT=EX.camT||(EX.camT=[0,0]); CT[0]=cx+jx; CT[1]=cz-1.2-XLIT.dAim*XCS; }
+  G.cam.position.set(cx+jx,hgt*zk*low+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; { const CT=EX.camT||(EX.camT=[0,0]); CT[0]=cx+jx; CT[1]=cz-1.2-XLIT.dAim*XCS; }
+  // turn the camera about the spot it looks at by a, and pull it out by s and up by u (the swing and the opening)
+  const orbit=(a,s,u)=>{ const tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS, P=G.cam.position, ox=P.x-tx, oz=P.z-tz;
+    P.set(tx+(ox*Math.cos(a)+oz*Math.sin(a))*s, P.y*u, tz+(-ox*Math.sin(a)+oz*Math.cos(a))*s); G.cam.lookAt(tx,.6,tz); };
+  if(swing) orbit(swing,1,1);
+  // a level's opening (enterExplore): from high and far round to one side, easing down to you; walking hurries it
+  if(EX.intro){ const I=EX.intro; I.t+=dt*((EX.path&&EX.path.length)||Math.hypot(EX.vx||0,EX.vz||0)>.1?3:1);
+    const u=Math.min(1,I.t/I.dur), e=u*u*u*(u*(u*6-15)+10);
+    if(u>=1||rm) EX.intro=null; else orbit(-(1-e)*1.25,1+(1-e)*1.5,1+(1-e)*1.8); }
   // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
   // forward (in tiles) and tilt, pan and roll it (degrees)
   const turn=xYaw();
@@ -2173,6 +2224,8 @@ function enterExplore(depth){
     else buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart(); xTip('move');
   xBanner(depth);
+  // the opening: out of black, the camera sweeping down to you (Settings › Camera intros)
+  if(typeof cineOn==='function'&&cineOn()){ veilTo(0,1100,1); if(cineMoves()) EX.intro={t:0, dur:2.6}; }
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over
 // info.ruleOK: a trial's rule was kept (dungeon.js pays out)

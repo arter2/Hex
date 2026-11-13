@@ -118,7 +118,7 @@ Object.assign(PUZZLE_BUILD,{
     for(const t of tiles) if(t.need){ let g=0; while(pzFits(t)&&g++<8) t.rot=(t.rot+1)%4; }
     xProp('pipeend',inlet,{solid:false, out:false}); xProp('pipeend',outlet,{solid:false, out:true});
     return {tiles, y0, y1:y}; },
-  riddle(r){ const c=xi(r.cx,r.cy); if(!xSolidOK(c)) return null; xProp('guardian',c,{}); return {wrong:0}; },
+  riddle(r){ const R=pzRect(r,[3,3],[3,3],false); if(!R) return null; const c=R.at(1,1); if(!xSolidOK(c)) return null; xProp('guardian',c,{}); return {wrong:0}; },
   braziers(r){ const c=xFreeSolid(r,true); if(c<0) return null; const src=xProp('pbrazier',c,{lit:true, src:true});
     // the cold ones within 48 steps of it (a 45 s flame walks about 150); a spacious floor is half as wide again, so further
     const reachMax=EX.layout===2?Math.round(48*XN/68):48;

@@ -1,6 +1,6 @@
 # Dungeon: shadow shape, speed on weak devices, room variety, new puzzles
 
-Date: 2026-11-09 · Status: approved in chat, awaiting spec review · Base build: v301
+Date: 2026-11-09 · Status: all four pieces built (3c: puzzles, lairs and special rooms all fit shaped rooms) · Base build: v301
 
 ## Goal
 
@@ -129,6 +129,11 @@ rise. The software GPU here gives relative numbers only; a real phone check foll
 
 ### 3a. Room themes
 
+As built: themes are assigned in `dungeongen.js` (`x2Themes`, `XTHEMES`, `XTHEME_AREA`), with an eleventh, Temple,
+for the old temple clutter. Each theme has its own clutter kit and underfoot pieces (`x2Clutter`, drawn by
+`xClutterThemed`), wall furniture (`explore.js XTHEME_WALL`), floor (`nature.js xThemeFloor`, the five themes with
+the most floor on a level; Temple keeps the area floor) and torch colour and reach (`explore.js XTHEME_LIGHT`).
+
 A theme is one table entry: a floor painter, a wall-dressing list, a furniture pool, a light
 colour and strength, and optional floor features. `xAssignThemes` gives each ordinary room a
 theme from the area's weighted list, seeded by the floor, never the same theme for two rooms
@@ -191,6 +196,12 @@ over), `W` water, `C` chasm, `B` bridge, `D` a spot where a doorway may open.
 
 ### 3c. Shaped rooms hold puzzles, lairs and special rooms
 
+As built: a role takes a plain room first, then a shaped one where its block fits (`dungeon.js xRoleFits`; the
+puzzle room prefers a clear 6 x 6, then 6 x 5). Plates, statues, mirrors, runes, trial and riddle now lay out in
+`pzRect`; levers already used the room's real walls. The mirrors' lamp stands on the floor at the west end. On 60
+floors with every role forced: 60/60 puzzles, 117/117 special rooms, 60/60 lairs placed, none empty; all twenty
+puzzle kinds appear, and the puzzle lab solves each (trial aside: its fight sometimes runs past the lab's limit).
+
 Today `xAssignRooms` (`dungeon.js`) and the special-room planner (`rooms.js`) pass over any room
 with a shape or low walls. That rule goes, for L, H and X as well as the new shapes.
 
@@ -214,7 +225,8 @@ with a shape or low walls. That rule goes, for L, H and X as well as the new sha
   save. Floors saved before this build have neither and are drawn exactly as now.
 - Only newly dug floors get themes and the new shapes.
 
-**Checks.** 400 seeded floors: all build, every room reachable, 12–16 rooms, worst build time
+**Checks** (run 2026-11-13, docs/test-results/2026-11-13-400-floor-check.md: all pass but the worst build time, which
+is the first floor of an area painting its floors). 400 seeded floors: all build, every room reachable, 12–16 rooms, worst build time
 within 20% of v301's; every planned puzzle, lair and special room is placed (none dropped for
 want of a room), and at least a third of them land in shaped rooms. `puzzle-lab.js` solves every
 puzzle kind in each room shape. The crawl bots and `touch-dungeon-runner.js` run on depths 1, 5, 9, 13, 17

@@ -106,25 +106,64 @@ function x2Feats(rooms,F){ const low=F.low, marks=F.marks;
    a fire pillar's item.out says it was snuffed. */
 const X2C={room:.8, kits:{temple:['pillar','pillar','fire','ruin','ruin','column','planter','rubble'], garden:['planter','planter','planter','boulder','pillar','fire','rubble'],
   cave:['boulder','boulder','bigrock','bigrock','rubble','rubble','fire','ruin'], hall:['pillar','pillar','pillar','fire','fire','ruin','column','planter','rubble']}};
+/* Room themes (docs/superpowers/specs/2026-11-09-dungeon-look-speed-variety-design.md, 3a). Every ordinary room of a
+   spacious floor gets one, from its area's weighted list, seeded by the floor; a room's nearest neighbours do not share
+   it while the area has another to give. A theme picks the room's clutter (kit: what stands in the room; walk: what
+   lies underfoot, at most two) and its furniture along the walls (explore.js XTHEME_WALL). Landmark halls keep the
+   hall and cave kits. The theme is kept on the room (r.theme), in the floor save. */
+const XTHEMES={
+  armory:   {name:'Armory',      kit:['weaprack','weaprack','anvil','cratestack','pillar','cratestack'], walk:['rubble']},
+  flooded:  {name:'Flooded',     kit:['pool','pool','pillar','boulder'], walk:['reeds','puddle','puddle']},
+  overgrown:{name:'Overgrown',   kit:['planter','sapling','sapling','boulder','ruin'], walk:['roots','caps']},
+  collapsed:{name:'Collapsed',   kit:['bigrock','beam','beam','column','ruin','boulder'], walk:['rubble','rubble']},
+  library:  {name:'Library',     kit:['bookcase','bookcase','bookcase','desk','desk','pillar'], walk:['scrolls']},
+  crypt:    {name:'Crypt',       kit:['sarcophagus','sarcophagus','urnbig','pillar','urnbig'], walk:['bones','bones']},
+  forge:    {name:'Forge',       kit:['furnace','anvil','anvil','trough','cratestack'], walk:['coal','coal']},
+  bathhouse:{name:'Bathhouse',   kit:['basin','bench','bench','urnbig','pillar'], walk:['puddle']},
+  barracks: {name:'Barracks',    kit:['bunk','bunk','bunk','table2','cratestack','weaprack'], walk:['straw']},
+  fungus:   {name:'Fungus grove',kit:['bigcap','bigcap','bigcap','boulder'], walk:['caps','caps']},
+  temple:   {name:'Temple',      kit:['pillar','pillar','fire','ruin','ruin','column','planter'], walk:['rubble']},
+};
+const XTHEME_AREA={
+  hollows:{overgrown:3, fungus:3, collapsed:2, flooded:1, temple:1, library:1},
+  deeps:  {flooded:3, crypt:3, collapsed:2, fungus:1, bathhouse:1, barracks:1},
+  vault:  {armory:3, library:2, barracks:2, temple:2, bathhouse:1, collapsed:1},
+  rifts:  {forge:4, collapsed:3, armory:1, barracks:1, fungus:1},
+  ruins:  {temple:3, library:3, bathhouse:2, overgrown:2, crypt:1},
+  abyss:  {crypt:3, collapsed:2, temple:2, library:1, forge:1, fungus:1},
+};
+const XWALK_K=new Set(['rubble','reeds','puddle','roots','caps','scrolls','bones','coal','straw']);
+function x2Themes(rooms,R,aid){ const W=XTHEME_AREA[aid]||XTHEME_AREA.hollows, done=[];
+  for(const r of rooms){ if(r.side||r.nook) continue;
+    const near=done.slice().sort((a,b)=>Math.hypot(a.cx-r.cx,a.cy-r.cy)-Math.hypot(b.cx-r.cx,b.cy-r.cy)).slice(0,2).map(x=>x.theme);
+    let list=Object.entries(W).filter(([k])=>!near.includes(k)); if(!list.length) list=Object.entries(W);
+    let tot=list.reduce((a,[,w])=>a+w,0), roll=R()*tot; r.theme=list[list.length-1][0]; for(const [k,w] of list){ roll-=w; if(roll<0){ r.theme=k; break; } }
+    done.push(r); } }
 const XDARK_RUIN=new Set(['rifts','abyss','deeps']);
 function x2Clutter(rooms,F,R,ri,depth){ const {t,room,doors}=F, low=F.low||(F.low=[]), marks=F.marks||(F.marks=[]);
   const aid=depth&&typeof areaOf==='function'?areaOf(depth).id:'hollows', nat=typeof XNATURAL!=='undefined'&&XNATURAL.has(aid), dark=XDARK_RUIN.has(aid);
   const SH={pillar:[[[0,0]]], fire:[[[0,0]]], boulder:[[[0,0]]], bigrock:[[[0,0],[1,0],[0,1],[1,1]]], planter:[[[0,0],[1,0]],[[0,0],[0,1]]],
     column:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]]], ruin:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]],[[0,0],[1,0],[0,1]],[[0,0],[1,0],[1,1]]]};
-  for(const r of rooms){ if(r.side||r.nook||r.w<7||r.h<6||R()>X2C.room) continue; const tpl=!!(r.shape&&r.shape.k==='T');
-    const kit=X2C.kits[r.landmark?(nat&&R()<.5?'cave':'hall'):nat?(R()<.65?'cave':'garden'):(R()<.6?'temple':'garden')];
+  const one=[[[0,0]]], two=[[[0,0],[1,0]],[[0,0],[0,1]]], sq=[[[0,0],[1,0],[0,1],[1,1]]];
+  Object.assign(SH,{weaprack:one, anvil:one, cratestack:one, sapling:one, urnbig:one, bigcap:one, pool:sq, basin:sq, furnace:sq, beam:SH.column,
+    bookcase:two, desk:two, sarcophagus:two, trough:two, bench:two, bunk:two, table2:two});
+  x2Themes(rooms,R,aid);
+  for(const r of rooms){ if(r.side||r.nook||r.w<7||r.h<6||R()>X2C.room) continue; const tpl=!!(r.shape&&r.shape.k==='T'), TH=XTHEMES[r.theme];
+    const kit=r.landmark?X2C.kits[nat&&R()<.5?'cave':'hall']:TH?TH.kit.concat(TH.walk):X2C.kits[nat?'cave':'temple'];
     const want=tpl?ri(2,4):r.mark?ri(2,4):r.landmark?ri(7,11):r.w*r.h>=60?ri(4,6):ri(2,4), items=[], solid=[];
     // a clear ring of one cell round each piece (so the box's edge stays a walkway), two cells from any doorway, off the middle
     const clear=(i,j)=>{ if(i<r.x+1||j<r.y+1||i>r.x+r.w-2||j>r.y+r.h-2||Math.hypot(i-r.cx,j-r.cy)<2) return false;
       for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++) if(room[xi(i+dx,j+dy)]!==r.id) return false;
       for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) if(doors.has(xi(i+dx,j+dy))) return false; return true; };
     let rub=0;
-    for(let n=0,k=0;n<want&&k<120;k++){ const kind=kit[ri(0,kit.length-1)], ox=ri(r.x+1,r.x+r.w-2), oy=ri(r.y+1,r.y+r.h-2);
-      if(kind==='rubble'){ const c=xi(ox,oy); if(rub<2&&room[c]===r.id&&!items.some(it=>it.cells.includes(c))){ items.push({k:'rubble',cells:[c],sd:ri(0,9999)}); n++; rub++; } continue; }
+    // a theme's big pieces (a pool, a furnace, bookcases, beds) are tried first, while the room is still clear
+    const big=r.landmark?[]:kit.filter(k=>SH[k]&&SH[k][0].length>=2&&k!=='ruin'&&k!=='column'); let nBig=0;
+    for(let n=0,k=0;n<want&&k<240;k++){ const early=big.length&&k<90&&nBig<2, kind=early?big[ri(0,big.length-1)]:kit[ri(0,kit.length-1)], ox=ri(r.x+1,r.x+r.w-2), oy=ri(r.y+1,r.y+r.h-2);
+      if(XWALK_K.has(kind)){ const c=xi(ox,oy); if(rub<2&&room[c]===r.id&&!items.some(it=>it.cells.includes(c))){ items.push({k:kind,cells:[c],sd:ri(0,9999)}); rub++; } continue; }   // underfoot: walked over (two at most, besides the pieces)
       const P=SH[kind][ri(0,SH[kind].length-1)], cells=P.map(([dx,dy])=>[ox+dx,oy+dy]); if(!cells.every(([i,j])=>clear(i,j))) continue;
       const cs=cells.map(([i,j])=>xi(i,j)); for(const c of cs){ t[c]=T_ROCK; room[c]=-1; }
       if(!x2Whole(r,room)){ for(const c of cs){ t[c]=T_FLOOR; room[c]=r.id; } continue; }
-      low.push(...cs); solid.push(...cs); items.push({k:kind,cells:cs,sd:ri(0,9999),v:cs.length>1&&xcx(cs[1])===xcx(cs[0])?1:0}); n++; }
+      low.push(...cs); solid.push(...cs); items.push({k:kind,cells:cs,sd:ri(0,9999),v:cs.length>1&&xcx(cs[1])===xcx(cs[0])?1:0}); n++; if(big.includes(kind)) nBig++; }
     if(!items.length) continue; if(solid.length) r.walls=true;
     marks.push({kind:'clutter',room:r.id,dark,nat,items,pieces:[solid],cx:r.cx,cy:r.cy}); }
   // galleries: a passage cell against a straight wall with four more cells of passage across from it
@@ -345,9 +384,70 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
       else if(it.k==='boulder'||it.k==='bigrock'){ const big=it.k==='bigrock', n=big?5:3;
         for(let k=0;k<n;k++){ const sz=(big?2.2:1.5)*(k?.55+R()*.35:1); rock(k%2?ROCK2:ROCK,x+(R()-.5)*(big?2:.8),sz*.32,z+(R()-.5)*(big?2:.8),sz); }
         if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
-      else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); } }
+      else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); }
+      else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len}); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xDitherMat(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
+// the themed rooms' pieces (x2Themes): drawn from boxes, cylinders, cones and balls like the rest of the clutter
+function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len}=P, cs=it.cells;
+  const col=h=>new THREE.Color(h), WOOD=col('#6e4a2a'), WOOD2=col('#4a3018'), IRON=col('#2e2c2a'), IRON2=col('#55524e'), BONE=col('#d8d0b8'), WATER=col('#1f4f5e'), WATER2=col('#3f8c9a'), CLOTH=[col('#7a2a24'),col('#2a4a6a'),col('#3a5a2a'),col('#5a2a5a')];
+  const ry=it.v?Math.PI/2:0, lx=it.v?XCS*.7:len-.35, lz=it.v?len-.35:XCS*.7;   // a two-cell piece's footprint, along its cells
+  const A=(u,v)=>[x+along[0]*u+(it.v?v:0)*1, z+along[1]*u+(it.v?0:v)];      // u along the piece, v across it
+  switch(it.k){
+    case 'weaprack': { B(WOOD2,x,.08,z,1.3,.16,.5); for(const u of [-.55,.55]) B(WOOD2,x+u,.8,z,.1,1.6,.12); B(WOOD2,x,1.45,z,1.2,.08,.12); B(WOOD2,x,.7,z,1.2,.08,.12);
+      for(let k=0;k<5;k++){ const px=x-.44+k*.22; M.add(XG.cyl,col('#5a4030'),px,.95,z+(k%2?.06:-.06),0,0,(R()-.5)*.08,.05,1.7,.05); L.add(XG.cone,col('#b8c0c8'),px,1.88,z+(k%2?.06:-.06),0,0,0,.1,.22,.1); }
+      M.add(XG.cyl,CLOTH[R()*4|0],x+.75,.45,z,Math.PI/2,0,0,.7,.08,.7); break; }
+    case 'anvil': { B(WOOD2,x,.3,z,.7,.6,.7); B(IRON,x,.72,z,.9,.24,.42); B(IRON,x,.62,z,.4,.2,.3); M.add(XG.cone,IRON,x+.6,.74,z,0,0,-Math.PI/2,.24,.4,.24);
+      M.add(XG.cyl,WOOD,x-.1,.9,z+.12,0,0,Math.PI/2.4,.06,.5,.06); B(IRON2,x+.08,.95,z+.12,.16,.14,.12); break; }
+    case 'cratestack': { const s1=.95; B(col('#8a6034'),x,s1/2,z,s1,s1,s1,R()*.3); B(WOOD2,x,s1/2,z,s1*1.03,.1,s1*1.03);
+      B(col('#8a6034'),x+(R()-.5)*.2,s1+.36,z+(R()-.5)*.2,.7,.7,.7,R()*.8); if(R()<.6){ M.add(XG.cyl,WOOD,x+.75,.42,z+.3,0,0,0,.6,.84,.6); M.add(XG.cyl,IRON,x+.75,.18,z+.3,0,0,0,.62,.06,.62); } break; }
+    case 'sapling': { B(SOIL,x,.06,z,1.2,.12,1.2); M.add(XG.cyl,col('#4a3420'),x,1.1,z,0,0,(R()-.5)*.15,.22,2.2,.22);
+      for(let k=0;k<7;k++){ const a=R()*6.3, d=R()*.7, s2=.7+R()*.5; M.add(XG.ball,R()<.5?LEAF:LEAF2,x+Math.cos(a)*d,2.1+R()*.8,z+Math.sin(a)*d,0,R()*3,0,s2,s2*.8,s2); }
+      for(let k=0;k<3;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.45,.08,z+Math.sin(a)*.45,Math.PI/2,a,0,.08,.7,.08); } break; }
+    case 'urnbig': { const c=R()<.5?col('#9a5a34'):col('#7a6a5a'); B(SH,x,.12,z,1.1,.24,1.1); M.add(XG.ball,c,x,.85,z,0,0,0,1.05,1.25,1.05); M.add(XG.cyl,c,x,1.55,z,0,0,0,.45,.3,.45);
+      M.add(XG.cyl,c.clone().multiplyScalar(.7),x,1.72,z,0,0,0,.6,.08,.6); if(D) B(TRIM,x,.9,z,1.08,.06,1.08,0,L); break; }
+    case 'bigcap': { const h=1.6+R()*1.2, rr=.9+R()*.5, g=new THREE.Color(glow); M.add(XG.cyl,col('#d8d0c0'),x,h/2,z,0,0,(R()-.5)*.1,.3,h,.3);
+      M.add(XG.half,col(['#8a1e5e','#4a2a8a','#9a3a1e','#1e5a7a'][R()*4|0]),x,h-.05,z,0,0,0,rr*2,rr*1.1,rr*2); L.add(XG.cyl,g.clone().multiplyScalar(.8),x,h-.06,z,0,0,0,rr*1.92,.05,rr*1.92);   // a lit cap, its gills glowing
+      for(let k=0;k<5;k++){ const a=R()*6.3, d=R()*rr*.7; L.add(XG.ball,g,x+Math.cos(a)*d,h-.05+rr*.55*Math.sqrt(1-(d/rr)**2),z+Math.sin(a)*d,0,0,0,.26,.12,.26); }
+      for(let k=0;k<3;k++){ const a=R()*6.3, d=.6+R()*.4, hh=.3+R()*.5; M.add(XG.cyl,col('#d8d0c0'),x+Math.cos(a)*d,hh/2,z+Math.sin(a)*d,0,0,0,.08,hh,.08); L.add(XG.half,g,x+Math.cos(a)*d,hh,z+Math.sin(a)*d,0,0,0,.36,.2,.36); } break; }
+    case 'pool': case 'basin': { const bath=it.k==='basin', w=XCS*2-.3, rim=bath?LT:ROCK2;
+      for(const [dx,dz,sx,sz] of [[0,-w/2,w,.3],[0,w/2,w,.3],[-w/2,0,.3,w],[w/2,0,.3,w]]) B(rim,x+dx,bath?.28:.14,z+dz,sx,bath?.56:.28,sz);
+      B(WATER,x,bath?.36:.1,z,w-.3,.04,w-.3); L.add(XG.box,WATER2,x+(R()-.5)*.6,bath?.39:.13,z+(R()-.5)*.6,0,R()*3,0,.9,.01,.4);
+      if(bath){ for(const [dx,dz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) C(LT,x+dx*w/2,.75,z+dz*w/2,.14,.4); B(col('#7aa8b0'),x,.37,z,w-.5,.02,w-.5); }
+      else for(let k=0;k<4;k++) rock(k%2?ROCK:ROCK2,x+(R()-.5)*w*.8,.15,z+(R()-.5)*w*.8,.35+R()*.3); break; }
+    case 'furnace': { const w=XCS*2-.5; B(SH,x,1.1,z,w,2.2,w); B(LT,x,2.28,z,w+.15,.16,w+.15); C(SH,x+.5,3.1,z-.5,.42,1.6); C(LT,x+.5,3.9,z-.5,.5,.12);
+      B(col('#1a1210'),x,.75,z+w/2,1.1,.9,.06); L.add(XG.box,col('#ff6a20'),x,.6,z+w/2+.02,0,0,0,.9,.5,.02); L.add(XG.box,col('#ffb040'),x,.48,z+w/2+.03,0,0,0,.7,.18,.02);
+      xFireGlow(grp,x,z+w/2+.4,.3,cs[0],false); break; }
+    case 'beam': { const rx=it.v?Math.PI/2:0; M.add(XG.box,WOOD2,x,.4+R()*.15,z,0,ry,(R()-.5)*.25,len-.4,.55,.55);
+      M.add(XG.box,WOOD,x+along[0]*(len/2-.6),.95,z+along[1]*(len/2-.6),0,ry,.6,.5,1.6,.45); for(let k=0;k<5;k++) rock(R()<.5?ROCK:ROCK2,x+(R()-.5)*len*.8*along[0]+(R()-.5)*.8,.12,z+(R()-.5)*len*.8*along[1]+(R()-.5)*.8,.3+R()*.3); break; }
+    case 'bookcase': { B(WOOD2,x,1.2,z,lx,2.4,lz); B(WOOD,x,2.45,z,lx+.1,.1,lz+.1);
+      for(let r2=0;r2<4;r2++){ const y=.3+r2*.55; let u=-len/2+.35; while(u<len/2-.4){ const w2=.1+R()*.1, h=.3+R()*.14, [bx,bz]=A(u,0);
+        for(const sd of [-1,1]) M.add(XG.box,CLOTH[R()*4|0],bx+(it.v?sd*(XCS*.36):0),y+h/2,bz+(it.v?0:sd*(XCS*.36)),0,ry,R()<.12?.25:0,it.v?.06:w2,h,it.v?w2:.06); u+=w2+.02; } } break; }
+    case 'desk': { B(WOOD,x,.82,z,lx,.1,lz); for(const u of [-1,1]) for(const v of [-1,1]){ const [a,b]=A(u*(len/2-.4),v*.5); B(WOOD2,a,.4,b,.12,.8,.12); }
+      const [cx,cz]=A(-len/4,0); for(let k=0;k<3;k++) B(col('#e4d8b8'),cx+(R()-.5)*.4,.88+k*.03,cz+(R()-.5)*.3,.5,.03,.36,R()*3);
+      const [kx,kz]=A(len/4,.1); C(col('#eae2c8'),kx,1.0,kz,.07,.3); L.add(XG.cone,col('#ffc060'),kx,1.2,kz,0,0,0,.08,.16,.08);
+      const [bx,bz]=A(len/6,-.2); B(CLOTH[R()*4|0],bx,.92,bz,.5,.12,.36,R()); break; }
+    case 'sarcophagus': { B(SH,x,.45,z,lx,.9,lz); B(LT,x,.98,z,lx+.12,.16,lz+.12); B(ST,x,1.12,z,lx-.3,.14,lz-.3);
+      const [hx,hz]=A(len/2-.6,0); M.add(XG.ball,ST,hx,1.3,hz,0,0,0,.4,.3,.4); if(D) B(TRIM,x,.6,z,lx+.02,.05,lz+.02,0,L); break; }
+    case 'trough': { B(SH,x,.3,z,lx,.6,lz); B(WATER,x,.56,z,lx-.3,.04,lz-.3); L.add(XG.box,WATER2,x,.58,z,0,ry,0,lx*.4,.01,lz*.4);
+      const [a,b]=A(len/2-.3,0); B(IRON2,a,.75,b,.2,.3,.2); break; }
+    case 'bench': { B(LT,x,.48,z,lx,.12,lz*.7); for(const u of [-1,1]){ const [a,b]=A(u*(len/2-.4),0); B(SH,a,.22,b,it.v?.6:.3,.44,it.v?.3:.6); } break; }
+    case 'bunk': { for(const y of [.4,1.35]){ B(WOOD,x,y,z,lx,.14,lz); B(col('#8a7a5a'),x,y+.13,z,lx-.15,.12,lz-.15); const [px,pz]=A(len/2-.5,0); B(col('#d8ccb0'),px,y+.24,pz,it.v?.5:.4,.1,it.v?.4:.5); }
+      for(const u of [-1,1]) for(const v of [-1,1]){ const [a,b]=A(u*(len/2-.2),v*.6); B(WOOD2,a,.85,b,.1,1.7,.1); }
+      const [ax,az]=A(0,.62); B(CLOTH[R()*4|0],ax,.75,az,it.v?.04:len-.6,.5,it.v?len-.6:.04); break; }
+    case 'table2': { B(WOOD,x,.8,z,lx,.12,lz); for(const u of [-1,1]) for(const v of [-1,1]){ const [a,b]=A(u*(len/2-.35),v*.48); B(WOOD2,a,.38,b,.12,.76,.12); }
+      for(let k=0;k<3;k++){ const [a,b]=A((k-1)*len/3.4,(R()-.5)*.5); C(IRON2,a,.95,b,.1,.18); }
+      for(const v of [-1,1]){ const [a,b]=A(0,v*.95); B(WOOD2,a,.45,b,it.v?.35:len-.5,.08,it.v?len-.5:.35); } break; }
+    // underfoot: walked over, never in the way
+    case 'reeds': for(let k=0;k<9;k++){ const px=x+(R()-.5)*1.4, pz=z+(R()-.5)*1.4, h=.5+R()*.7; M.add(XG.cone,R()<.5?LEAF:LEAF2,px,h/2,pz,(R()-.5)*.2,0,(R()-.5)*.2,.08,h,.08); } break;
+    case 'puddle': { M.add(XG.cyl,WATER,x+(R()-.5)*.4,.02,z+(R()-.5)*.4,0,0,0,1.3+R()*.5,.02,1+R()*.4); L.add(XG.cyl,WATER2,x,.035,z,0,0,0,.5,.005,.3); break; }
+    case 'roots': for(let k=0;k<5;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.4,.06,z+Math.sin(a)*.4,Math.PI/2,a,0,.07,1+R()*.6,.07); } M.add(XG.ball,LEAF2,x,.05,z,0,0,0,1,.1,.8); break;
+    case 'caps': { const g=new THREE.Color(glow); for(let k=0;k<5;k++){ const px=x+(R()-.5)*1.3, pz=z+(R()-.5)*1.3, h=.12+R()*.25; M.add(XG.cyl,col('#d8d0c0'),px,h/2,pz,0,0,0,.06,h,.06); L.add(XG.half,g,px,h,pz,0,0,0,.24,.14,.24); } break; }
+    case 'scrolls': for(let k=0;k<4;k++) M.add(XG.cyl,col('#e4d8b8'),x+(R()-.5)*1.2,.07,z+(R()-.5)*1.2,0,R()*3,Math.PI/2,.13,.5+R()*.3,.13); break;
+    case 'bones': { for(let k=0;k<5;k++) B(BONE,x+(R()-.5)*1.2,.03,z+(R()-.5)*1.2,.5,.06,.08,R()*3); M.add(XG.ball,BONE,x+(R()-.5)*.6,.12,z+(R()-.5)*.6,0,0,0,.26,.22,.26); break; }
+    case 'coal': { for(let k=0;k<7;k++) rock(col('#1e1a18'),x+(R()-.5)*1.2,.06,z+(R()-.5)*1.2,.16+R()*.18); for(let k=0;k<3;k++) L.add(XG.rock,col('#ff6a20'),x+(R()-.5)*.9,.08,z+(R()-.5)*.9,R()*3,R()*3,0,.1,.1,.1); break; }
+    case 'straw': { M.add(XG.cyl,col('#b89a5a'),x,.03,z,0,0,0,1.5,.04,1.1); for(let k=0;k<10;k++) B(col('#d0b070'),x+(R()-.5)*1.3,.06,z+(R()-.5)*1.1,.4,.02,.03,R()*3); break; }
+  } }
 // a fire pillar's flame: coals, two cones and a halo, a light like a brazier's (none once snuffed)
 function xFireGlow(grp,x,z,y,cell,out){ if(out) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), g=new THREE.Group(), mats=[]; g.position.set(x,0,z);
   const coal=new THREE.Mesh(new THREE.CylinderGeometry(.45,.45,.05,10),new THREE.MeshBasicMaterial({color:0xff5a20})); coal.position.y=y; g.add(coal);

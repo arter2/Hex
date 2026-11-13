@@ -45,7 +45,8 @@ function xRarePlan(depth,F,boss){ if(!XRUN||boss||depth<2) return; if(XRUN.next.
   const n=XR()<.35?2:1; F.rare=pool.sort(()=>XR()-.5).slice(0,n); }
 // rooms get their role once the floor is dug; one with no room to fit tries again next floor
 function xRareAssign(F,give,take){ if(!F.rare) return;
-  for(const k of F.rare){ const R=RARE_ROOMS[k], r=give(take(x=>x.w>=R.w&&x.h>=R.h&&(!R.fit||R.fit(x))),'rare',R.safe); if(r) r.rare=k; else if(XRUN) XRUN.next.rare=EX.depth+1; } }
+  for(const k of F.rare){ const R=RARE_ROOMS[k], fn=Object.assign(x=>x.w>=R.w&&x.h>=R.h&&(!R.fit||R.fit(x)),{w:R.w,h:R.h});   // (the size: a shaped room must hold a clear block of it, dungeon.js xRoleFits)
+    const r=give(take(fn),'rare',R.safe); if(r) r.rare=k; else if(XRUN) XRUN.next.rare=EX.depth+1; } }
 const rareRoom=k=>EX.rooms.find(r=>r.rare===k);
 const xRareName=k=>RARE_ROOMS[k]?RARE_ROOMS[k].icon+' '+RARE_ROOMS[k].name:k;
 
@@ -255,7 +256,8 @@ function xBridgeSplit(r){ const cells=xRoomCells(r), doorSide=f=>[...EX.doors.ke
 const xRareSpeed=()=>{ const i=EX&&EX.room[EX.pc]; return i>=0&&EX.rooms[i].flood?.55:1; };
 function xFillExplore(r){ const d=EX.depth, c=xFreeSolid(r,true);
   switch(r.rare){
-    case 'flood': { r.flood=true; xProp('water',xi(r.cx,r.cy),{solid:false, room:r.id});
+    case 'flood': { r.flood=true; const mid=xRoomCells(r).sort((a,b)=>Math.hypot(xcx(a)-r.cx,xcy(a)-r.cy)-Math.hypot(xcx(b)-r.cx,xcy(b)-r.cy))[0];   // (a shaped room's middle can be wall)
+      xProp('water',mid!=null?mid:xi(r.cx,r.cy),{solid:false, room:r.id});
       const finds=[{kind:'gold',n:Math.round(50+18*d)},{kind:'key',key:d>=5&&XR()<.4?'silver':'bronze'},{kind:'gear',gear:rollLoot(d+1,XR)},{kind:'potion',bag:'draught'}].sort(()=>XR()-.5).slice(0,3);
       for(const f of finds){ const s=xFreeCell(r,true); if(s>=0) xProp('sunken',s,{solid:false, found:false, find:f}); } return true; }
     case 'dark': { r.dark=true; r.lit=false; const far=xRoomCells(r).filter(x=>!EX.taken.has(x)&&!nearDoor(x)).sort((a,b)=>xDoorDist(r,b)-xDoorDist(r,a))[0];

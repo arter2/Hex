@@ -200,7 +200,10 @@ function xfVoro(N,G,R,jit,off){ const S=N/G, P=[];
   return {id,e,d,n:P.length}; }
 // a hash of a stone's place (for the rectangular layouts)
 const xfH=(a,b,s)=>{ const v=Math.sin(a*12.9898+b*78.233+s*.7311)*43758.5453; return v-Math.floor(v); };
-function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
+// only: paint just that one of the area's floors and keep it (the background painter, xPrewarmTick), returning null
+function xAreaFloors(A,S,seed,only){ const id=A&&A.id, kept=XAREA_FLOOR_KEEP.get(id);
+  if(only==null&&kept&&kept.length&&kept.every(Boolean)) return kept;
+  const N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
   const make=(sd,fn,speck)=>{ const R=caveRng(sd), H=new Float32Array(N*N), c=fn(R,H); if(speck) xSpeck(c,S,R,speck); c.h=H; c.hk=.55; return c; };
   const pebbles=(c,R,H,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, h=1+R()*2|0;
       x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+T((lo||.45)+R()*.35).join(',')+')'; x.fillRect(px,py,w,h); for(let j=py;j<py+h;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
@@ -310,7 +313,119 @@ function xAreaFloors(A,S,seed){ const id=A&&A.id, N=256, T=t=>xTone(S,Math.max(0
           if(on){ H[o]=2.6; return xfMix(st,T(.8),.2); } if(Math.abs(r-24)<.6){ H[o]=1.4; return T(.42); }
           H[o]=2+fv*.6; return T(.14+xfH(i>>6,j>>6,s)*.08+(fv-.5)*.08); });
         const x=c.getContext('2d'); for(let k=0;k<120;k++){ x.fillStyle='rgba('+st.join(',')+','+(.3+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1,1); } return c; },0) ] };
-  const L=F[id]; if(!L) return null; return L.map((g,k)=>g(seed+k*101)); }
+  const L=F[id]; if(!L) return null; const set=kept||new Array(L.length);
+  XAREA_FLOOR_KEEP.delete(id); XAREA_FLOOR_KEEP.set(id,set); for(const k of [...XAREA_FLOOR_KEEP.keys()]) if(XAREA_FLOOR_KEEP.size>2) XAREA_FLOOR_KEEP.delete(k);
+  if(only!=null){ if(only<L.length&&!set[only]) set[only]=L[only](seed+only*101); return null; }
+  for(let k=0;k<L.length;k++) if(!set[k]) set[k]=L[k](seed+k*101);
+  return set; }
+// the floors of the last two areas, kept: the next floor of an area wears them again instead of painting its own (the
+// Hollows' cobbles take most of a second on a slow phone), and the next area's are painted ahead (xPrewarmTick)
+const XAREA_FLOOR_KEEP=new Map();
+/* Painting the next area's floors ahead. On the last floor of an area, once you have seen the stairs down and are
+   within a dozen cells of them, the floors of the area below (its own three and its themes' floors) are painted one
+   at a time, each only after you have stood still for a moment, so a pause of the painting falls where you are not
+   moving. The next floor then builds as fast as any other in its area. */
+function xPrewarmTick(dt){ if(!EX||EX.layout!==2||!EX.active||EX.dlg||EX.fighting||typeof areaOf!=='function') return;
+  const nd=EX.depth+1, NA=areaOf(nd); if(!NA||!EX.area||NA.id===EX.area.id) return;
+  let W=EX.prewarm; if(!W||W.depth!==nd){ const S=NA.stone||AREAS[0].stone, jobs=[];
+      for(let k=0;k<3;k++) jobs.push(()=>xAreaFloors(NA,S,nd*31,k));
+      const TA=typeof XTHEME_AREA!=='undefined'&&XTHEME_AREA[NA.id]; if(TA) for(const th of Object.keys(TA)) jobs.push(()=>xThemeFloor(th,NA,S));
+      W=EX.prewarm={depth:nd, jobs, still:0, at:-1}; }
+  if(!W.jobs.length||!EX.seen[EX.down]||Math.hypot(xcx(EX.pc)-xcx(EX.down),xcy(EX.pc)-xcy(EX.down))>12) return;
+  const here=EX.px*1000+EX.pz; if(here!==W.at||(EX.path&&EX.path.length)){ W.at=here; W.still=0; return; }
+  if((W.still+=dt)<.6) return;
+  W.still=0; const job=W.jobs.shift(); try{ job(); }catch(e){} }
+
+/* ---------------- the room themes' floors (dungeongen.js XTHEMES) ----------------
+   One painter per theme (Temple keeps the area's own floors), in the area's rock tones where the theme is stone, in
+   its own colours where it is wood, tile or earth. 256 pixels over eight cells, with a height field for the lighting
+   (look.js xLitTag). Painted once per theme and area, then kept: a floor of five themes costs nothing the second time. */
+const XTHEME_FLOOR_CACHE=new Map();
+function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.has(key)) return XTHEME_FLOOR_CACHE.get(key);
+  const N=th==='library'?512:256, X=h=>xHexRGB(h), ramp=S.rock.map(X), T=t=>{ t=Math.max(0,Math.min(1,t))*(ramp.length-1); const i=Math.min(ramp.length-2,Math.floor(t)); return xfMix(ramp[i],ramp[i+1],t-i); };
+  const sd=[...th].reduce((a,c)=>a*31+c.charCodeAt(0),7)&0xffff, R=caveRng(sd+1), H=new Float32Array(N*N), mix=xfMix, h=xfH;
+  const pebbles=(c,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, hh=1+R()*2|0;
+      x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,hh); x.fillStyle='rgb('+T((lo||.4)+R()*.3).join(',')+')'; x.fillRect(px,py,w,hh); for(let j=py;j<py+hh;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
+  let c=null;
+  switch(th){
+    // worn slabs in courses, bound with riveted iron
+    case 'armory': { const f=xFbm(N,R,6), w=xFbm(N,R,3), iron=X('#2a2826'), rivet=X('#7a746a');
+      c=xPaint(N,(i,j)=>{ const row=j>>5, u=(i+(row&1)*32)&63, v=j&31, o=j*N+i, fv=f(i,j);
+        if(v<2||u<2){ H[o]=1.2; return (u<2&&((v+4)&15)<3)||(v<2&&((u+6)&15)<3)?rivet:iron; }
+        H[o]=2+fv*1.5; return T(.38+h((i+(row&1)*32)>>6,row,sd)*.16+(fv-.5)*.2-(w(i,j)>.62?.1:0)); }); break; }
+    // dark wet tiles, shallow standing water in the low places
+    case 'flooded': { const f=xFbm(N,R,6), p=xFbm(N,R,3), wet=X('#183640'), hi=X('#6ab0c0');
+      c=xPaint(N,(i,j)=>{ const u=i&31, v=j&31, o=j*N+i, fv=f(i,j), pv=p(i,j), joint=u===31||v===31;
+        let col=mix(joint?T(.06):T(.24+h(i>>5,j>>5,sd)*.1+(fv-.5)*.1),wet,.35); H[o]=joint?-1:2+fv*.5;
+        if(pv>.56){ const k=Math.min(1,(pv-.56)*7); col=mix(col,wet,k*.85); H[o]=1.2; if(pv>.6&&h(i,j,sd)<.025) col=mix(col,hi,.7); }
+        return col; }); break; }
+    // cracked slabs pushed apart by roots, moss in every joint
+    case 'overgrown': { const f=xFbm(N,R,6), m=xFbm(N,R,4), r1=xNoise(N,8,R), r2=xNoise(N,5,R), k=xNoise(N,14,R), moss=X(S.moss||'#4f7a3a'), root=X('#3e2c1c');
+      c=xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j), mv=m(i,j), joint=u===63||v===63||u===0||v===0;
+        let col=joint?mix(moss,T(.1),.45):T(.42+h(i>>6,j>>6,sd)*.12+(fv-.5)*.16); H[o]=joint?-1:2+fv;
+        if(Math.abs(k(i,j)-.5)<.01){ col=mix(col,T(.06),.7); H[o]-=1.5; }
+        if(mv>.6) col=mix(col,mix(moss,T(.25),.3),Math.min(.75,(mv-.6)*2.2));   // moss in patches, not a carpet
+        if(Math.abs(r1(i,j)-.5)<.012||Math.abs(r2(i,j)-.5)<.009){ col=root; H[o]+=1.4; }
+        return col; }); break; }
+    // broken paving: stones heaved and missing, grit in the holes
+    case 'collapsed': { const V=xfVoro(N,9,R,.9), rv=Array.from({length:V.n},()=>R()), f=xFbm(N,R,6), grit=X('#2a241e');
+      c=xPaint(N,(i,j)=>{ const q=j*N+i, e=V.e[q], fv=f(i,j), r=rv[V.id[q]];
+        if(r<.2||e<1.5){ H[q]=-1.5; return mix(grit,T(.18),fv); }
+        H[q]=1.5+fv+Math.min(e,6)*.15; return T(.3+r*.28+(fv-.5)*.16); });
+      pebbles(c,160,.28); break; }
+    // a basket weave of old planks, stained gray and beaten up: water stains with a dark tide line, scratches, worn
+    // ends, dirt packed in the joints, the odd plank rotted dark or gone (grit in the hole)
+    case 'library': { const f=xFbm(N,R,8), st=xFbm(N,R,3), st2=xFbm(N,R,5), sc1=xNoise(N,22,R), sc2=xNoise(N,17,R), dirt=X('#25221f'),
+        Ws=[X('#6c6862'),X('#5a5651'),X('#78736b'),X('#4c4945'),X('#64605a')];
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, sq=((i>>5)+(j>>5))&1, across=sq?i:j, along=sq?j:i, pid=(across>>3)*7+(along>>5)*13+sq, fv=f(i,j);
+        if((across&7)===7||(along&31)===31){ H[o]=-1.2; return mix(dirt,[12,11,10],fv*.6); }
+        if(h(pid,0,sd)<.045){ H[o]=-.9; return mix(dirt,T(.18),fv); }
+        const gr=Math.sin(across*2.3+h(pid,1,sd)*20+fv*6)*.5+.5, e=Math.min(along&31,31-(along&31)), side=Math.min(across&7,6-(across&7));
+        let col=mix(Ws[Math.floor(h(pid,2,sd)*5)],[22,20,18],gr*.2+(fv-.5)*.4); H[o]=2+gr*.35-(e<2?.6:0);
+        if(e<3||side<1) col=mix(col,dirt,e<2?.4:.22);
+        if(h(pid,3,sd)<.12) col=mix(col,dirt,.35);
+        const sv=st(i,j), sv2=st2(i,j); if(sv>.58) col=mix(col,[40,36,32],Math.min(.55,(sv-.58)*2.4)); if(Math.abs(sv-.58)<.005) col=mix(col,[26,23,20],.55);
+        if(sv2>.66) col=mix(col,[92,88,80],Math.min(.3,(sv2-.66)*2));
+        if(Math.abs(sc1(i,j)-.5)<.004||Math.abs(sc2(i,j)-.5)<.003){ col=mix(col,[158,152,142],.32); H[o]-=.35; }
+        return col; }); break; }
+    // big flagstones, some of them grave slabs with a carved border and cross
+    case 'crypt': { const f=xFbm(N,R,6), k=xNoise(N,10,R);
+      c=xPaint(N,(i,j)=>{ const u=i&63, v=j&63, o=j*N+i, fv=f(i,j), tid=h(i>>6,j>>6,sd);
+        if(u===63||v===63){ H[o]=-1.2; return T(.05); }
+        let t=.34+tid*.12+(fv-.5)*.14; H[o]=2+fv;
+        if(tid<.45){ const inR=u>13&&u<49&&v>5&&v<57, edge=inR&&(u===14||u===48||v===6||v===56), cross=(Math.abs(u-31)<1.6&&v>13&&v<45)||(Math.abs(v-24)<1.6&&u>21&&u<41);
+          if(inR) t+=.06; if(edge||cross){ t-=.22; H[o]=.6; } }
+        if(Math.abs(k(i,j)-.5)<.008){ t-=.15; H[o]-=1; }
+        return T(t); }); break; }
+    // soot-black stone split by cracks that still glow
+    case 'forge': { const f=xFbm(N,R,5), k1=xNoise(N,9,R), k2=xNoise(N,5,R), soot=X('#141010'), ember=X('#ff4a10'), hot=X('#ffb040');
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, fv=f(i,j), m=Math.min(Math.abs(k1(i,j)-.5)/.011,Math.abs(k2(i,j)-.5)/.006); let col=mix(T(fv*.35),soot,.6); H[o]=fv*5;
+        if(m<1){ col=mix(ember,hot,1-m); H[o]-=1.6; } else if(m<2.4) col=mix(col,[90,28,8],(2.4-m)/1.4*.6);
+        return col; }); break; }
+    // a mosaic of small tiles: pale ground, blue bands, a ring in each square
+    case 'bathhouse': { const f=xFbm(N,R,6), Cs=[X('#e4e0d4'),X('#b4d4dc'),X('#3a7a9a'),X('#1e4a6a')];
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, ti=i>>3, tj=j>>3; if((i&7)===7||(j&7)===7){ H[o]=-.6; return [72,76,74]; }
+        const band=(ti&15)===0||(tj&15)===0||(ti&15)===1||(tj&15)===1, ring=Math.abs(Math.hypot((ti&15)-8,(tj&15)-8)-4.5)<.8;
+        const k=band?2:ring?3:h(ti,tj,sd)<.16?1:0; H[o]=1.6+h(ti,tj,sd+1)*.6; return mix(Cs[k],[0,0,0],Math.max(0,(f(i,j)-.4)*.4+h(ti,tj,sd+3)*.08)); }); break; }
+    // long plain boards, nailed down
+    case 'barracks': { const f=xFbm(N,R,8), W1=X('#6a4a2c'), W2=X('#56391f');
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, row=j>>4, off=Math.floor(h(row,0,sd)*128), along=(i+off)&127, plank=row*31+((i+off)>>7);
+        if((j&15)===15||along===127){ H[o]=-1; return [26,16,8]; }
+        if((along===5||along===121)&&((j&15)===4||(j&15)===10)){ H[o]=2.6; return [70,68,64]; }
+        const gr=Math.sin(j*1.7+h(plank,2,sd)*30+f(i,j)*5)*.5+.5; H[o]=2+gr*.3; return mix(h(plank,1,sd)<.5?W1:W2,[24,14,6],gr*.22+(f(i,j)-.5)*.3); }); break; }
+    // dark earth laced with mycelium, glowing where it gathers
+    case 'fungus': { const f=xFbm(N,R,4), m=xFbm(N,R,8), t1=xNoise(N,16,R), t2=xNoise(N,11,R), soil=X('#221a14'), thread=X('#d8d0c0'), glow=X(A&&A.glow||'#7fe3ff');
+      c=xPaint(N,(i,j)=>{ const o=j*N+i, fv=f(i,j), mv=m(i,j); let col=mix(soil,T(fv*.4),.35); H[o]=fv*4;
+        if(Math.abs(t1(i,j)-.5)<.006||Math.abs(t2(i,j)-.5)<.005){ col=mix(col,thread,.55); H[o]+=.8; }
+        if(mv>.62) col=mix(col,glow,Math.min(.8,(mv-.62)*2.4));
+        return col; });
+      const x=c.getContext('2d'); for(let k=0;k<110;k++){ x.fillStyle='rgba('+glow.join(',')+','+(.4+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1+(R()<.2?1:0),1); } break; }
+    default: return null; }
+  c.h=H; c.hk=.55;
+  // the planks: twice the pixels over the same eight cells (each plank half the size), laid with texture bombing and
+  // painted vertices (explore.js xBuildScene, look.js xBombShader); 8: the texture's cells a side, the bombing's step
+  if(th==='library'){ c.bomb=8; c.paint=1; }
+  XTHEME_FLOOR_CACHE.set(key,c); return c; }
 
 /* ---------------- normal maps for what has no painted height ----------------
    The floors and walls carry height fields (look.js xLitTag turns them into normal maps). The rest is given one here,

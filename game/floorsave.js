@@ -33,7 +33,7 @@ function storeWrite(st){ const keys=Object.keys(st.floors).sort((a,b)=>st.floors
 // the parts of a floor that only matter while you stand on it
 // in-flight effects (sparks and puffs, shards, floating numbers) are scene objects: kept, they come back as nulls and
 // every frame on the floor would throw
-const TRANSIENT=['cutD','camT','maxHp','lowS','markS','darkS','wdg','action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give','fx','shards','pops'],
+const TRANSIENT=['intro','prewarm','cutD','camT','maxHp','lowS','markS','darkS','wdg','action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give','fx','shards','pops'],
   TRANSIENT_LISTS=['path','fx','shards','pops'];
 // what the 3D scene works out again each time it is built (explore.js xBuildScene, look.js xBakeAO): left out
 const SCENE=['aoData','aoTex','fog','fogCur','fogTgt','fogTex','wIdx','wms','shown','wCut','wList','gSlot','wGhost','dress','decor','onWall','glows',

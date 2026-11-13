@@ -496,8 +496,15 @@ function xBuildScene(){
     const col=new Array(pos.length).fill(1);
     const tv=EX.layout===2?.04:.1; for(let k=0;k<col.length;k+=18){ const t=1-tv+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*tv;   // (small tiles: barely, or the cells show through as big squares)
     for(let j=0;j<18;j++) col[k+j]*=t; }
+    // painted vertices (a bombed floor, nature.js cv.paint): smooth noise over the floor's corners, so neighbouring cells
+    // share it and it drifts across them: lighter and darker patches, a little warmer or cooler
+    if(cv.paint){ const vn=(x,z,s)=>{ const h=(a,b)=>{ const v=Math.sin(a*127.1+b*311.7+s*74.7)*43758.5453; return v-Math.floor(v); }, ix=Math.floor(x), iz=Math.floor(z), fx=x-ix, fz=z-iz, u=fx*fx*(3-2*fx), w=fz*fz*(3-2*fz);
+        return h(ix,iz)*(1-u)*(1-w)+h(ix+1,iz)*u*(1-w)+h(ix,iz+1)*(1-u)*w+h(ix+1,iz+1)*u*w; };
+      for(let v=0;v<pos.length;v+=3){ const x=pos[v]/XCS, z=pos[v+2]/XCS, a=vn(x*.23,z*.23,1)*.65+vn(x*.61,z*.61,2)*.35, b=vn(x*.17+9,z*.17+4,3)-.5, l=.74+.4*a;
+        col[v]*=l*(1+.07*b); col[v+1]*=l; col[v+2]*=l*(1-.07*b); } }
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
     const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off

@@ -342,7 +342,7 @@ function xPrewarmTick(dt){ if(!EX||EX.layout!==2||!EX.active||EX.dlg||EX.fightin
    (look.js xLitTag). Painted once per theme and area, then kept: a floor of five themes costs nothing the second time. */
 const XTHEME_FLOOR_CACHE=new Map();
 function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.has(key)) return XTHEME_FLOOR_CACHE.get(key);
-  const N=256, X=h=>xHexRGB(h), ramp=S.rock.map(X), T=t=>{ t=Math.max(0,Math.min(1,t))*(ramp.length-1); const i=Math.min(ramp.length-2,Math.floor(t)); return xfMix(ramp[i],ramp[i+1],t-i); };
+  const N=th==='library'?512:256, X=h=>xHexRGB(h), ramp=S.rock.map(X), T=t=>{ t=Math.max(0,Math.min(1,t))*(ramp.length-1); const i=Math.min(ramp.length-2,Math.floor(t)); return xfMix(ramp[i],ramp[i+1],t-i); };
   const sd=[...th].reduce((a,c)=>a*31+c.charCodeAt(0),7)&0xffff, R=caveRng(sd+1), H=new Float32Array(N*N), mix=xfMix, h=xfH;
   const pebbles=(c,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, hh=1+R()*2|0;
       x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,hh); x.fillStyle='rgb('+T((lo||.4)+R()*.3).join(',')+')'; x.fillRect(px,py,w,hh); for(let j=py;j<py+hh;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.4; } };
@@ -421,7 +421,11 @@ function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.
         return col; });
       const x=c.getContext('2d'); for(let k=0;k<110;k++){ x.fillStyle='rgba('+glow.join(',')+','+(.4+R()*.6)+')'; x.fillRect(R()*N|0,R()*N|0,1+(R()<.2?1:0),1); } break; }
     default: return null; }
-  c.h=H; c.hk=.55; XTHEME_FLOOR_CACHE.set(key,c); return c; }
+  c.h=H; c.hk=.55;
+  // the planks: twice the pixels over the same eight cells (each plank half the size), laid with texture bombing and
+  // painted vertices (explore.js xBuildScene, look.js xBombShader); 8: the texture's cells a side, the bombing's step
+  if(th==='library'){ c.bomb=8; c.paint=1; }
+  XTHEME_FLOOR_CACHE.set(key,c); return c; }
 
 /* ---------------- normal maps for what has no painted height ----------------
    The floors and walls carry height fields (look.js xLitTag turns them into normal maps). The rest is given one here,

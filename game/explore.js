@@ -1840,7 +1840,15 @@ function xEngage(g,forced){
   if(opening==='strike') xLog('First strike on the '+name+'!','good');
   xFlashView(500); setTimeout(()=>xFlashView(260),560);
   const b=$('#xBang'); b.textContent=opening==='strike'?'First Strike!':opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening==='strike'?'ambush':opening||'');
-  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null,tier:g.tier||0}); },700);
+  // Camera intros: the camera swings in (the camera code above) and the view fades to black; the battle fades in
+  // (the cut waits for the black, up to half a second more: on a slow frame the timers can come before it)
+  const cine=typeof cineOn==='function'&&cineOn(); EX.engDir=Math.random()<.5?-1:1; let black=!cine;
+  if(cine) setTimeout(()=>{ if(EX&&EX.fighting===g) veilTo(1,260,null,()=>{ black=true; }); else black=true; },430);
+  const go=t0=>{ if(!black&&performance.now()-t0<500) return requestAnimationFrame(()=>go(t0));
+    b.className='x-bang'; if(!EX||EX.fighting!==g){ if(cine) veilTo(0,200); return; } EX.active=false;
+    fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null,tier:g.tier||0});
+    if(cine) veilTo(0,480); };
+  setTimeout(()=>go(performance.now()),700);
 }
 
 /* ---------------- floors, camp, death ---------------- */
@@ -1981,12 +1989,23 @@ function xDraw(T,dt){
   // Its angle, distance, lens, look-ahead and aim are the debug menu's Dungeon camera
   if(G.cam.fov!==XLIT.dFov){ G.cam.fov=XLIT.dFov; G.cam.updateProjectionMatrix(); }
   const pitch=XLIT.dPitch*Math.PI/180, k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, D=EX.layout===2?xViewDist(pitch):XLIT.dDist*XCS*k, hgt=D*Math.sin(pitch), back=D*Math.cos(pitch);   // the debug menu's zoom brings it closer
-  const rm=XRM&&XRM.matches; let zk=1; if(EX.fighting&&EX.busy&&!rm){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
+  // a fight starting: the camera rushes in (with Camera intros on, further, lower and swinging round toward the enemy)
+  const rm=XRM&&XRM.matches, cine=typeof cineMoves==='function'&&cineMoves(); let zk=1, swing=0, low=1;
+  if(EX.fighting&&EX.busy&&!rm){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7);
+    if(cine){ const s=e*e*(3-2*e); zk=1-.46*s; swing=(EX.engDir||1)*.42*s; low=1-.22*s; } else zk=1-.32*e*e; } else EX.engT=0;
   const sh=EX.shakeT>0?(EX.shakeT-=dt,rm?0:EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; { const CT=EX.camT||(EX.camT=[0,0]); CT[0]=cx+jx; CT[1]=cz-1.2-XLIT.dAim*XCS; }
+  G.cam.position.set(cx+jx,hgt*zk*low+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; { const CT=EX.camT||(EX.camT=[0,0]); CT[0]=cx+jx; CT[1]=cz-1.2-XLIT.dAim*XCS; }
+  // turn the camera about the spot it looks at by a, and pull it out by s and up by u (the swing and the opening)
+  const orbit=(a,s,u)=>{ const tx=cx+jx, tz=cz-1.2-XLIT.dAim*XCS, P=G.cam.position, ox=P.x-tx, oz=P.z-tz;
+    P.set(tx+(ox*Math.cos(a)+oz*Math.sin(a))*s, P.y*u, tz+(-ox*Math.sin(a)+oz*Math.cos(a))*s); G.cam.lookAt(tx,.6,tz); };
+  if(swing) orbit(swing,1,1);
+  // a level's opening (enterExplore): from high and far round to one side, easing down to you; walking hurries it
+  if(EX.intro){ const I=EX.intro; I.t+=dt*((EX.path&&EX.path.length)||Math.hypot(EX.vx||0,EX.vz||0)>.1?3:1);
+    const u=Math.min(1,I.t/I.dur), e=u*u*u*(u*(u*6-15)+10);
+    if(u>=1||rm) EX.intro=null; else orbit(-(1-e)*1.25,1+(1-e)*1.5,1+(1-e)*1.8); }
   // the debug menu's free dungeon camera: turn around the spot it looks at, then slide along its own right, up and
   // forward (in tiles) and tilt, pan and roll it (degrees)
   const turn=xYaw();
@@ -2195,6 +2214,8 @@ function enterExplore(depth){
     else buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart(); xTip('move');
   xBanner(depth);
+  // the opening: out of black, the camera sweeping down to you (Settings › Camera intros)
+  if(typeof cineOn==='function'&&cineOn()){ veilTo(0,1100,1); if(cineMoves()) EX.intro={t:0, dur:2.6}; }
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over
 // info.ruleOK: a trial's rule was kept (dungeon.js pays out)

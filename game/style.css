@@ -2031,3 +2031,6 @@ html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
 .ducenter{text-align:center;}
 #duMsg:empty{display:none;}
 @media (prefers-reduced-motion:reduce){ .duspin,.duwaiting i::after{animation:none;} }
+
+/* the black veil for fades between screens (ui.js veilTo); never catches a touch */
+#fadeVeil{position:fixed; inset:0; background:#000; opacity:0; pointer-events:none; z-index:100000; transition:opacity .3s ease;}

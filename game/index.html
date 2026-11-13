@@ -580,6 +580,7 @@
       <div class="srow"><span>Cast card<small>How a card shows when you cast it. Big: the full card in the middle. Side: a small card at the left edge. Ribbon: just its name under the top bar. Ghost: the big card, see-through and quick.</small></span><button id="setCastFx" class="btn ghost small"></button></div>
       <div class="srow"><span>Graphics<small>Auto picks Low on devices that can't keep up. Low turns off blur and soft shading and draws simpler walls.</small></span><button id="setGfx" class="btn ghost small">Auto</button></div>
       <div class="srow"><span>Touch movement<small>How a finger moves you on the dungeon floor. Tap + hold (the default): a quick tap walks you there; hold or slide your finger and you steer like a thumbstick (nothing is drawn under your finger). Walk to touch: go where you tap or drag, and keep going after you let go. Floating stick: put a finger down anywhere and slide it like a thumbstick. Fixed stick: a thumbstick in the bottom-left corner (tap elsewhere to walk there). Follow finger: hold and you chase your finger; let go to stop. Trackpad: slide anywhere and you move the same way, as in battle.</small></span><button id="setXMove" class="btn ghost small"></button></div>
+      <div class="srow"><span>Camera intros<small>A slow camera sweep and fade-in as you start a dungeon level, and a swing into the enemy with a fade to the battle screen (and the battle's fly-in). Off: straight cuts. Camera moves also stay off if your device asks for reduced motion.</small></span><button id="setCine" class="btn ghost small"></button></div>
       <div class="srow"><span>Dungeon tips<small>A short tip the first time you meet doors, chests, traps, sleeping enemies and more. Turning them back on shows every tip again.</small></span><button id="setXTips" class="btn ghost small"></button></div>
       <div class="srow"><span>Fire button<small>Which side of the screen Fire sits on. Cast takes the other side.</small></span><button id="setFire" class="btn ghost small"></button></div>
       <div class="srow"><span>Instant buttons<small>Which edge the instants you can tap mid-fight (Heal, Draw…) stack up on.</small></span><button id="setInst" class="btn ghost small"></button></div>
@@ -852,5 +853,6 @@
 <script src="movelab.js"></script>
 <script src="enemylab.js"></script>
 <script src="settingsui.js"></script>
+<div id="fadeVeil" aria-hidden="true"></div>
 </body>
 </html>

@@ -234,7 +234,7 @@ function arFocus(){ const b=B; if(!b) return null;
   return null; }
 function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, S=A.shot, held=A.hold>0, k=1-Math.exp(-dt*(held?30:4));
   if(A.key!==S.key){ S.key=A.key; S.fly=0; S.drift.set(0,0,0); S.swing=0; S.punch=0; }
-  S.fly=Math.min(1,S.fly+dt/AR_FLY); if(held) S.fly=1;
+  S.fly=Math.min(1,S.fly+dt/AR_FLY); if(held||(typeof cineMoves==='function'&&!cineMoves())) S.fly=1;   // (Settings › Camera intros off: no fly-in)
   // what the moment asks for
   const f=held?null:arFocus(), tgt=new THREE.Vector3(), b=B;
   if(f){ const [wx,wz]=posOf(f.u); tgt.copy(arW(wx,0,wz)).sub(A.base.look).multiplyScalar(.06); tgt.y=0; }

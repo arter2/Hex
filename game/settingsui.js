@@ -7,7 +7,7 @@
 const q=s=>document.querySelector(s), panel=q('#settings .panel.settings'); if(!panel) return;
 const TABS=[['display','Display'],['audio','Audio'],['controls','Controls'],['game','Game']];
 // which tab each control's row belongs to (by the control's id or class); anything else goes to Game
-const HOME={layoutBtn:'display',setOrient:'display',setText:'display',setFull:'display',setCastFx:'display',setGfx:'display',setHud:'display',setRune:'display',
+const HOME={layoutBtn:'display',setOrient:'display',setText:'display',setFull:'display',setCastFx:'display',setGfx:'display',setHud:'display',setRune:'display',setCine:'display',
   setSfx:'audio',setMusic:'audio',setXMove:'controls',setFire:'controls',setInst:'controls',setHand:'controls'};
 const bar=panel.querySelector('.bar'), tabs=document.createElement('div'); tabs.className='settabs'; tabs.setAttribute('role','tablist');
 tabs.innerHTML=TABS.map(([k,n])=>`<button class="btn ghost settab" role="tab" data-tab="${k}">${n}</button>`).join('');
@@ -31,7 +31,7 @@ function placeRows(){
 }
 // the kit's short notes (the game's full note stays as the row's tooltip)
 const SHORT={layoutBtn:'One column, or two on a tablet.',setOrient:'Upright, sideways or free.',setText:'',setFull:'',setCastFx:'How a card shows when you cast it.',setGfx:'Low is lighter to draw.',
-  setHud:'The bar at the top of a fight.',setRune:'Takes effect the next time you start.',setSfx:'Clicks, chimes and dungeon sounds.',setXMove:'How a finger moves you in the dungeon.',
+  setHud:'The bar at the top of a fight.',setCine:'Camera sweeps and fades into levels and fights.',setRune:'Takes effect the next time you start.',setSfx:'Clicks, chimes and dungeon sounds.',setXMove:'How a finger moves you in the dungeon.',
   setFire:'Which side Fire sits on.',setInst:'Where instants stack up in a fight.',setHand:'Which thumb the dungeon buttons sit under.',setXTips:'A tip the first time you meet something.',
   setXStairs:'Mark the stairs on the minimap.',setSlots:'Play another save, or delete one.',setDev:'Boss tests and free gear.',btnReset:'Cards, decks, gold and gear. Cannot be undone.'};
 // segmented choices for settings with a short list of values: clicking a segment clicks the game's own button until it shows that value

@@ -1528,6 +1528,20 @@ function applyXTips(){ let tips=true, mark=true; try{ tips=localStorage.getItem(
   $('#setXTips').textContent=tips?'On':'Off'; $('#setXStairs').textContent=mark?'On':'Off'; }
 $('#setXTips').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xtips')!=='0'; localStorage.setItem('hexmancers-xtips',on?'0':'1'); }catch(e){}
   if(on){ if(typeof xTipHide==='function') xTipHide(); } else if(typeof xTipReset==='function') xTipReset(); applyXTips(); };
+// Settings › Camera intros: the dungeon level's opening sweep and fade, the swing and fade into a fight, and the
+// battle's fly-in (explore.js, arena.js). On by default; the camera moves also wait on the device's reduced motion
+const CINE_KEY='hexmancers-cine';
+function cineOn(){ try{ return localStorage.getItem(CINE_KEY)!=='0'; }catch(e){ return true; } }
+const cineMoves=()=>cineOn()&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+function applyCine(){ const b=$('#setCine'); if(b) b.textContent=cineOn()?'On':'Off'; }
+$('#setCine').onclick=()=>{ try{ localStorage.setItem(CINE_KEY,cineOn()?'0':'1'); }catch(e){} applyCine(); };
+applyCine();
+// the black veil over everything: to opacity op over ms (from: start from that opacity at once). The fade begins once
+// a frame has been drawn (two frames on), so a slow frame (a level being built) does not eat it; done runs when it ends
+function veilTo(op,ms,from,done){ const v=$('#fadeVeil'); if(!v){ if(done) done(); return; } const id=(veilTo.n=(veilTo.n||0)+1);
+  if(from!=null){ v.style.transition='none'; v.style.opacity=from; void v.offsetWidth; }
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ if(veilTo.n!==id) return; v.style.transition='opacity '+(ms|0)+'ms ease'; v.style.opacity=op;
+    if(done) setTimeout(()=>{ if(veilTo.n===id) done(); },ms); })); }
 // the battle's top bar: clear over the scene, or a stone bar
 const HUD_KEY='hexmancers-hudbar';
 function applyHudStyle(){ let st='panel'; try{ st=localStorage.getItem(HUD_KEY)||'panel'; }catch(e){} document.body.classList.toggle('hudClear',st==='clear'); const b=$('#setHud'); if(b) b.textContent=st==='clear'?'Clear':'Panel'; }

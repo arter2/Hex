@@ -1,6 +1,6 @@
 # Hexmancers: where we are
 
-Date: 2026-11-03 · Latest build: **v214** (`hexmancers-itch-v214.zip`) · Branch `dungeon-redesign`
+Date: 2026-11-13 · Latest build: **v313** (`hexmancers-itch-v313.zip`, merged to `main`) · Branch `claude/new-session-bzslr6`
 
 This is a snapshot of the game: what is in it, what changed recently, what we plan next, and what
 is still open. The design reasoning behind each feature is in [fun-roadmap.md](fun-roadmap.md).
@@ -32,14 +32,30 @@ JavaScript with three.js (r128) and has no build step.
 | **Reading enemies (v70)** | Each enemy's tile has an attack bar that fills counter-clockwise and flashes twice before it casts. Each kind of move has its own tell. Countering during the flash and perfect dodges are rewarded. The Bestiary records creatures as you fight them. |
 | **Collecting (v58)** | Contracts on the bounty board, area affinities with elemental enemy variants, shards and crafting (breaking cards is manual), and colour mastery with set rewards. |
 | **Dungeon flow (v66)** | Floors twice the size, and a path map at the stairs (Worn Stair / quiet / peril / treasure). The *stirring dark* sends spawns that grow harder over time up to a cap per floor. Teleport traps and trapdoors. Deep falls of 2 or 3 floors, with a Wayshard to fetch from above and a Lost Satchel. |
-| **Special rooms (v67, v68)** | 15 rare rooms every 2 to 3 floors: nest, teleport hub, pit, treasury, mirror, gambler, forge, trade table, camp, chapel, flooded hall, dark room, bridge, library, crystal geode. |
-| **Puzzles (v69)** | 14 puzzle kinds, a puzzle room on 60% of floors. Plus your three: the switch circuit vault, the ghost's table (20 elemental artifacts), and the cursed idol with its cleansing altar. |
+| **Spacious dungeon (v30x–v313)** | The default layout for new games: 12 room shapes (octagon, round, pillared hall, cave pocket, ring and sanctum, keyhole, cathedral, quatrefoil, honeycomb, cloister, spiral, chasm hall), clutter (pillars, fire pillars you snuff with a swing for stealth, ruins, planters, boulders, pots and big urns), and **11 room themes** (Armory, Flooded, Overgrown, Collapsed, Library, Crypt, Forge, Bathhouse, Barracks, Fungus grove, Temple), each with its own clutter, wall furniture, floor and torch light. Theme floors are laid with texture bombing and painted vertices. Cave walls read as one rock mass. A shadow shape shows you and enemies behind walls (v305). |
+| **Special rooms (v67, v68)** | 15 rare rooms every 2 to 3 floors: nest, teleport hub, pit, treasury, mirror, gambler, forge, trade table, camp, chapel, flooded hall, dark room, bridge, library, crystal geode. Since v313 they, the lairs and the puzzles all fit shaped rooms. |
+| **Puzzles** | **20 kinds**, a puzzle room on 60% of floors: levers, plates, mirrors, runes, statues, trial, path, memory, bells, ice, scales, shift, riddle, braziers, and new in v313: lanterns, sliding mural (painted card art), sentries, herding, echo, hidden bridge. Plus your three: the switch circuit vault, the ghost's table, and the cursed idol. |
+| **Duel (v308–v311)** | Phone-to-phone duels over WebRTC with QR pairing: real Wi-Fi addresses, a Switch camera button, a pulsing Accept, a copyable connection log, a warning when a phone has a VPN on, and an optional TURN relay (`game/duelrelay.js`, `tools/turn-worker`). |
 | **Shop and packs** | Madame Oriel's shop: packs by colour or booster, selling cards, pack opening. |
 | **Saving** | Save points, plus a full-floor save in the run (v2 format). |
-| **Settings** | Phone and tablet layouts, text size, orientation, full screen, sound, cast-card style, 4 touch movement modes, dungeon tips, and rebindable keyboard controls. |
+| **Settings** | Display / Audio / Controls / Game tabs: phone and tablet layouts, text size, orientation, full screen, Graphics (Auto picks Low on weak devices), Camera intros (v313), sound, cast-card style, touch movement modes, dungeon tips, and rebindable keyboard controls. |
 | **Debug menu** | Lighting, PBR, normal maps, baked AO and SSAO, haze, a full battle camera (angle, field of view, zoom, move and rotate on X/Y/Z), depth of field, wall see-through, frame rate, auto quality, pause. |
 
-### Recent changes (v71 to v84)
+### Recent changes (v304 to v313)
+
+| Build | Change |
+|---|---|
+| v304 | Saves: with all three slots full, New game turns Continue into red Delete buttons (with a confirm). The bag: scrolls enchant or uncurse a chosen piece of gear (blue glow enchanted, red cursed; an enchant scroll on cursed gear only lifts the curse); potions can be drunk; every use asks first. |
+| v305 | Shadow shape: you and enemies in sight show as a dark shape wherever something covers you. |
+| v306 | Speed: savings that change nothing on screen, and a Low graphics preset that weak devices start on. |
+| v307 | The 12 room shapes; smaller, rockier floor tiles with a second noise relief. |
+| v308–v311 | Dungeon clutter and kitbashed cave walls; debug tools (Pause and Speed in the title bar, the joystick curve); battle stick and flicks scale with the board; the duel connection work. |
+| v312 | Six new puzzles; room themes with their clutter, floors and light; lairs, special rooms and every puzzle fit shaped rooms (puzzle rooms had stopped appearing on spacious floors); tap-to-move no longer plans routes through low walls and clutter. |
+| v313 | Camera intros (a level's opening sweep and fade, a swing and fade into fights; Settings › Display); the next area's floors painted ahead near the stairs; the Library's gray, beaten-up planks with texture bombing and painted vertices. After v313 (on the branch): every theme floor bombed and painted, no moss in libraries. |
+
+Checked: a [400-floor check against v301](test-results/2026-11-13-400-floor-check.md): every floor built and fully reachable, all 192 puzzles and 58 lairs placed and 169 of 172 special rooms; build times at or under v301's.
+
+### Earlier changes (v71 to v96)
 
 | Build | Change |
 |---|---|
@@ -213,6 +229,17 @@ These are agreed or proposed and waiting on a decision or a turn.
 - **Battle and dungeon zoom.** The Zoom slider is shared, so the dungeon also starts at 1.1 now.
   This could be split into a separate battle zoom and dungeon zoom.
 
+### The dungeon plan (done)
+
+[The dungeon design](superpowers/specs/2026-11-09-dungeon-look-speed-variety-design.md) is built in full: shadow
+shape, speed and the Low preset, room shapes and themes, roles in shaped rooms, and six new puzzles. Left over from it:
+
+- The exploring bots across depths 1 to 21 with touch controls (the touch player is too slow on the test machine for
+  a big run; put off for now).
+- A run's first floor, reached from camp, is not painted ahead (camp could do it while you choose).
+- The Trial puzzle's fight sometimes runs past the puzzle lab's time limit.
+- The Barracks boards are painted but not bombed (their joints do not fall on the cell grid).
+
 ### Next features (from the roadmap)
 
 | Feature | Notes |
@@ -233,6 +260,11 @@ These are agreed or proposed and waiting on a decision or a turn.
   the test machine. It needs checking on your phone.
 - Values you set before on the debug sliders still override the new camera defaults. Use
   **Reset all** to pick up the new ones.
+- **Duels on two phones:** local play failed with a VPN on one phone (v311 warns about it). Try again with VPNs and
+  mobile data off; the TURN relay is ready but needs a credentials URL in `game/duelrelay.js`.
+- **Camera intros and fades** (v313) were checked on a slow test browser only: their timing wants a look on a phone.
+- **Movement speed:** you saw movement too fast on some screens; the debug Speed readout (px/s, tiles a second) is
+  there to catch it.
 
 ### Decided not to build
 

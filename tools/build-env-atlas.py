@@ -100,6 +100,19 @@ def tile(path, mode="RGBA"):
     return im.resize((TILE, TILE), Image.LANCZOS)
 
 
+# Textures whose low parts are painted light: grout, glowing cracks or inlay lines lighter than the stone. A normal map
+# read from brightness (the pack's own theme normals were made that way too, measured: they follow it closely) raises
+# those, so theirs is turned inside out: the joints sink.
+INVERT = {"theme-flooded", "theme-forge", "rifts/floor-1", "ruins/floor-0", "ruins/floor-1", "vault/floor-1"}
+
+
+def inverted(im):
+    """The same normal map with its relief turned inside out (x and y slopes negated)."""
+    a = np.asarray(im.convert("RGB")).copy()
+    a[..., :2] = 255 - a[..., :2]
+    return Image.fromarray(a, "RGB")
+
+
 def height_normal(im, k=7.0):
     """A normal map for a painting that came without one (the area floors and walls): its brightness taken as height
     (the dark joints and cracks low, the lit faces high), softened a little, wrapped at the edges like the tile. Same
@@ -151,6 +164,7 @@ def main():
         sheets[f"area-{a}"] = build(f"area-{a}.webp", colour, "RGBA", False)
         normals = [(k, height_normal(im), True) for k, im, _ in items[:6]]   # the floors and walls: from their painting
         normals += [("theme-" + th, tile(f"theme-normals/{THEME_FILE[th]}-normal.png", "RGB"), True) for th in THEME_AREA[a]]
+        normals = [(k, inverted(im) if (k if k.startswith("theme-") else f"{a}/{k}") in INVERT else im, w) for k, im, w in normals]
         sheets[f"area-{a}-n"] = build(f"area-{a}-n.webp", normals, "RGB", False, cols=3)
     fx = [(k, tile(p), m == "wrap") for k, (p, m) in EFFECTS.items()]
     fx.append(("leaf-clumps", leaf_clumps(), False))

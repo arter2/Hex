@@ -481,6 +481,7 @@ function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,
     case 'sapling': { B(SOIL,x,.06,z,1.2,.12,1.2); M.add(XG.cyl,col('#4a3420'),x,1.1,z,0,0,(R()-.5)*.15,.22,2.2,.22);
       for(let k=0;k<7;k++){ const a=R()*6.3, d=R()*.7, s2=.7+R()*.5, lc=R()<.5?LEAF:LEAF2, bx=x+Math.cos(a)*d, by=2.1+R()*.8, bz=z+Math.sin(a)*d;
         if(!xLeafCards(F,lc,bx,by,bz,s2*.62,R)) M.add(XG.ball,lc,bx,by,bz,0,R()*3,0,s2,s2*.8,s2); }   // painted leaf cards (or, before the art is in, a plain ball)
+      if(F.size()) xLeafCore(F,x,2.45,z,.78,.8);   // (one solid core in the middle of the whole canopy: you see through its edges, not through the tree)
       for(let k=0;k<3;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.45,.08,z+Math.sin(a)*.45,Math.PI/2,a,0,.08,.7,.08); } { const Rb=caveRng(it.sd*13+7); if(FB&&typeof xBracketCards==='function'&&Rb()<.4){ const a=Rb()*6.3; xBracketCards(FB,x+Math.cos(a)*.13,.3+Rb()*.7,z+Math.sin(a)*.13,Math.cos(a),Math.sin(a),Rb); } }   // (brackets on the trunk, now and then)
       break; }
     case 'log': { // a fallen log, half rotten, moss along its back and bracket mushrooms on its sides (mushrooms.js)

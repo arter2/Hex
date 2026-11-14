@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "title": "Hexmancers painterly dungeon foliage alternatives",
+  "variant_count": 6,
+  "replacement_note": "Cattails, wheat/dry reeds and marsh reeds are omitted. Dungeon grass, glowing moss and small glowing mushrooms replace the reed family.",
+  "alpha_test": 0.5,
+  "mask_values": {
+    "transparent": 0,
+    "opaque": 255
+  },
+  "master_alpha_threshold": 128,
+  "atlas_alpha_threshold": 96,
+  "repeat_mode": "Repeat independent cutout instances; all outer borders are transparent. Not a continuous end-to-end strip or four-frame sheet.",
+  "implementation_status": "Textures and handoff documentation only; no repository code or runtime atlas rebuilt.",
+  "variants": [
+    {
+      "id": "vine-broad",
+      "family": "vine",
+      "label": "Broad-leaf hanging ivy",
+      "envArtFx_name": "vine-broad",
+      "master": "masters/vine-broad.png",
+      "alpha_mask": "masks/vine-broad-mask.png",
+      "atlas_tile": "atlas-tiles/vine-broad.png",
+      "master_dimensions": [
+        512,
+        1024
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5400390625,
+        0.03173828125
+      ],
+      "atlas_pivot_top_origin": [
+        0.51751708984375,
+        0.09027099609375
+      ],
+      "master_quad_width_over_height": 0.5,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        72,
+        16,
+        112,
+        224
+      ],
+      "orientation": "vertical",
+      "attachment": "top",
+      "suggested_role": "A single hanging broad-leaf ivy vine, slender main stem anchored at the TOP CENTER and descending naturally, with 2 to 3 short side tendrils and rounded heart-shaped leaves in small irregular clusters. Lush but airy, about 14 to 22 clearly readable leaves, varied sizes, a tapered trailing end. Classic healthy woodland ivy with dark olive greens and restrained sage painted accents."
+    },
+    {
+      "id": "vine-fine",
+      "family": "vine",
+      "label": "Fine hanging tendrils",
+      "envArtFx_name": "vine-fine",
+      "master": "masters/vine-fine.png",
+      "alpha_mask": "masks/vine-fine-mask.png",
+      "atlas_tile": "atlas-tiles/vine-fine.png",
+      "master_dimensions": [
+        512,
+        1024
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5283203125,
+        0.03173828125
+      ],
+      "atlas_pivot_top_origin": [
+        0.51239013671875,
+        0.09027099609375
+      ],
+      "master_quad_width_over_height": 0.5,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        72,
+        16,
+        112,
+        224
+      ],
+      "orientation": "vertical",
+      "attachment": "top",
+      "suggested_role": "A single light and delicate hanging vine, slender main stem anchored at the TOP CENTER, two wispy curving side shoots, many SMALL slender lanceolate leaves with generous open gaps. An airy, narrow silhouette, about 20 to 30 tiny leaves in irregular pairs, a few bare tendrils. Dark muted forest green with modest gray-green painted highlights. Clearly finer and sparser than broad-leaf ivy."
+    },
+    {
+      "id": "vine-weathered",
+      "family": "vine",
+      "label": "Weathered hanging ivy",
+      "envArtFx_name": "vine-weathered",
+      "master": "masters/vine-weathered.png",
+      "alpha_mask": "masks/vine-weathered-mask.png",
+      "atlas_tile": "atlas-tiles/vine-weathered.png",
+      "master_dimensions": [
+        512,
+        1024
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5517578125,
+        0.03173828125
+      ],
+      "atlas_pivot_top_origin": [
+        0.52264404296875,
+        0.09027099609375
+      ],
+      "master_quad_width_over_height": 0.5,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        72,
+        16,
+        112,
+        224
+      ],
+      "orientation": "vertical",
+      "attachment": "top",
+      "suggested_role": "A single old hanging ivy vine, a slightly woody crooked main stem anchored at the TOP CENTER and several short bent branches, modest clusters of broad slightly nicked leaves, some bare stem sections. Weathered olive and muted gray-green leaves with a few subtle ochre-brown dry tips. About 12 to 18 leaves, an irregular broken silhouette, sparse rather than a solid bush. Aged dungeon wall foliage, no flowers or berries."
+    },
+    {
+      "id": "grass-dungeon",
+      "family": "grass",
+      "label": "Low dungeon grass",
+      "envArtFx_name": "grass-dungeon",
+      "master": "masters/grass-dungeon.png",
+      "alpha_mask": "masks/grass-dungeon-mask.png",
+      "atlas_tile": "atlas-tiles/grass-dungeon.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4580078125,
+        0.8544921875
+      ],
+      "atlas_pivot_top_origin": [
+        0.4632568359375,
+        0.8101806640625
+      ],
+      "master_quad_width_over_height": 1.0,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "orientation": "vertical",
+      "attachment": "bottom",
+      "suggested_role": "Replace ALL cattail heads and tall marsh blades with one LOW, irregular clump of narrow wild dungeon grass: 20 to 30 short tapered blades of varied lengths, bent tips, sparse broken gaps, a few dull dry blades. Compact tuft spreading from a small shared bottom root. Dark desaturated forest green, gray sage, muted olive; very restrained highlights. No seedheads, wheat, cattails, reeds, flowers, soil mound or rock. Front/three-quarter botanical cutout for an upright crossed card."
+    },
+    {
+      "id": "moss-glow",
+      "family": "moss",
+      "label": "Softly glowing cave moss",
+      "envArtFx_name": "moss-glow",
+      "master": "masters/moss-glow.png",
+      "alpha_mask": "masks/moss-glow-mask.png",
+      "atlas_tile": "atlas-tiles/moss-glow.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5,
+        0.5
+      ],
+      "atlas_pivot_top_origin": [
+        0.5,
+        0.5
+      ],
+      "master_quad_width_over_height": 1.0,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "orientation": "surface conforming / facing up",
+      "attachment": "center",
+      "suggested_role": "Replace the entire plant with one SMALL LOW FLAT PATCH of glowing dungeon moss seen directly from above. An irregular lace-like island of softly rounded moss cushions, tiny fernlike/frond tufts, dense short painted moss rather than big leaves. Broken ragged outline with several interior transparent gaps. Deep muted emerald, desaturated gray green; small pale cyan-green bioluminescent tips scattered sparingly among rich dark moss. A gentle internal glow confined to opaque moss marks; no broad haze or bloom outside the silhouette. No stones, soil, roots, mushrooms or grass. For a floor/wall surface decal card.",
+      "emission_mask": "emission-masks/moss-glow-emission.png",
+      "atlas_emission_mask": "emission-masks/moss-glow-emission-atlas.png",
+      "emission_pairing": "Same tile rectangle as base color in a parallel black-background emission atlas",
+      "emission_color_srgb": "#9AE8CF",
+      "emission_strength_start": 0.35
+    },
+    {
+      "id": "mushrooms-glow",
+      "family": "mushroom",
+      "label": "Small luminous cave mushrooms",
+      "envArtFx_name": "mushrooms-glow",
+      "master": "masters/mushrooms-glow.png",
+      "alpha_mask": "masks/mushrooms-glow-mask.png",
+      "atlas_tile": "atlas-tiles/mushrooms-glow.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.447265625,
+        0.8525390625
+      ],
+      "atlas_pivot_top_origin": [
+        0.453857421875,
+        0.8084716796875
+      ],
+      "master_quad_width_over_height": 1.0,
+      "atlas_quad_width_over_height": 1.0,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "orientation": "vertical",
+      "attachment": "bottom",
+      "suggested_role": "Replace the entire plant with a SMALL LOW CLUSTER of five tiny dungeon mushrooms at varied heights, rooted at a common BOTTOM CENTER. Short crooked ivory-gray stems, asymmetrical small domed and shallow-cup caps, readable undersides and gill suggestions painted as simple strokes. Caps dark muted blue-gray/teal with sparing pale cyan-green bioluminescent rims and tiny freckles. The tallest mushroom only about twice the shortest, compact wider-than-tall grouping. Gentle glow confined to opaque cap marks, no haze outside silhouette. No large heroic toadstool, red caps, grass, reeds, wheat, cattails, soil mound or rock. Front/three-quarter botanical cutout for an upright card.",
+      "emission_mask": "emission-masks/mushrooms-glow-emission.png",
+      "atlas_emission_mask": "emission-masks/mushrooms-glow-emission-atlas.png",
+      "emission_pairing": "Same tile rectangle as base color in a parallel black-background emission atlas",
+      "emission_color_srgb": "#9AE8CF",
+      "emission_strength_start": 0.35
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "all_checks_passed": true,
+  "variant_count": 6,
+  "files": [
+    {
+      "path": "masters/vine-broad.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "c90146ed49f003cc08df3e4dd7ae8f972d89b609afd028afe2bc561e9cb6173a",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 108740
+    },
+    {
+      "path": "masks/vine-broad-mask.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "L",
+      "sha256": "1fc58fe596ce6aa2176b218e123d0548cb714d056ff5de69d09e862046930413"
+    },
+    {
+      "path": "atlas-tiles/vine-broad.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "b18bacfaac743ef1743e905540c79f6b58c0010090c9250f79579a2dfa75a5f2",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 5379
+    },
+    {
+      "path": "masters/vine-fine.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "0f75f3969ebb38a053abf89ec32bd6032b64342f23d38b4ae966edfa6a3a9a9b",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 32028
+    },
+    {
+      "path": "masks/vine-fine-mask.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "L",
+      "sha256": "dacfd3eb87c3bb3a29bff09e55d2326afcec1e47c18c56a0006071d047725fa9"
+    },
+    {
+      "path": "atlas-tiles/vine-fine.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "6789a853153a31e0ea4b02766522ec0f2c1b26431e3768f37b97bfd5c5d3acf9",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 1726
+    },
+    {
+      "path": "masters/vine-weathered.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "18d634fab564d2c2e9461e9a004f06de02b4d393305ade60bb3c98e87028b2e4",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 87691
+    },
+    {
+      "path": "masks/vine-weathered-mask.png",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "L",
+      "sha256": "ef41fa4808917d1468db7d6c1e85f37ddd7f72cabee05b1e78cc00b48ad74c14"
+    },
+    {
+      "path": "atlas-tiles/vine-weathered.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "79a4381444924403d1261d8da2da59e22d258585342192aac9649f07df5fece7",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 4367
+    },
+    {
+      "path": "masters/grass-dungeon.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "045d0debd3d106f973c4e27e0d8a135861a2462025fffe1a553fb4e3ca54bd13",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 45927
+    },
+    {
+      "path": "masks/grass-dungeon-mask.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "f103c8bb35bbe1f4070d2b867d5cbaa5d81829ed47e8fa4e4054f89f4ad10d4d"
+    },
+    {
+      "path": "atlas-tiles/grass-dungeon.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "4187c6661a4f0947e45bf4fd08f0f8dea9f8360c936d796c2f54d8a0287f366a",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 9112
+    },
+    {
+      "path": "masters/moss-glow.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "895dd68f46a039b297c763a52a864b07d19693452223a36cb81d427983e4a6c1",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 66309
+    },
+    {
+      "path": "masks/moss-glow-mask.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "4cf8e7a10dd19b4ebdf62773d12a37bb781b765891ec5b9d04a8c698587abda9"
+    },
+    {
+      "path": "atlas-tiles/moss-glow.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "bf287f41a4524b7fae934dde9ce17c369881a64a41726e7c33266d2e5c629ab8",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 12893
+    },
+    {
+      "path": "emission-masks/moss-glow-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "71455f3c3068fb16826a5237842ee398dc825458d053043ecbe3a5401061d6e3"
+    },
+    {
+      "path": "emission-masks/moss-glow-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "d767e561f53a05c83175cdc13ac29964c6a6bd69a0c647c4264601065bc9911c"
+    },
+    {
+      "path": "masters/mushrooms-glow.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "e608e7648d25386cf60cef0e2fb89344c0c27b57d1c739710c55522854f2915a",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 69608
+    },
+    {
+      "path": "masks/mushrooms-glow-mask.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "b3c0785105549fdeefb410eb436808121ea3629bc48cdc9e4b26546b8c7367cf"
+    },
+    {
+      "path": "atlas-tiles/mushrooms-glow.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "f81ad97835bdaf56cdbbe7d0cb9b051864b322c81faee712ee49505ba36afd5e",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixel_count": 13473
+    },
+    {
+      "path": "emission-masks/mushrooms-glow-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "797b086f4fb6f32abc5e8f249a8576282d26269a8bc0dff7af3af6c82e5040ef"
+    },
+    {
+      "path": "emission-masks/mushrooms-glow-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "acb31a03d4c60874e938aaae0edde984c84b118ad584844cd7440f679ea9cc5b"
+    }
+  ]
+}

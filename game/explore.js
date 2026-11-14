@@ -483,7 +483,7 @@ function xBuildScene(){
     for(const [th,cv] of pick){ at.set(th,floorTex.length); floorTex.push(cv); }
     const vOf=rm=>rm>=0&&EX.rooms[rm].theme&&at.has(EX.rooms[rm].theme)?at.get(EX.rooms[rm].theme):-1;
     for(let i=0;i<XN*XN;i++){ if(variant[i]<0) continue; const v=vOf(EX.room[i]>=0?EX.room[i]:under.has(i)?under.get(i):-1); if(v>=0) variant[i]=v; } }
-  floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
+  floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=(cv.atlas?4:texCells)*XCS;   // (a painted tile repeats every 4 cells: 64 texels a cell, envart.js)
     for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
       uv.push(x0/k,-z0/k, x0/k,-z1/k, x1/k,-z1/k,  x0/k,-z0/k, x1/k,-z1/k, x1/k,-z0/k); }

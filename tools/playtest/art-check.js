@@ -162,9 +162,34 @@ const CHECKS = {
       return true;
     });
   },
+
+  // Task 6: the creepers, tufts and reeds as painted cards
+  async foliageCards(pg, T) {
+    const kinds = () => pg.evaluate(() => { const K = {}; for (const im of EX.natM || []) { const k = im.userData.kind; K[k] = (K[k] || 0) + im.count; } return K; });
+    await T.build(1, 11); const h = await kinds();
+    for (const k of ['vineB', 'vineF', 'grass']) if (!h[k]) return 'Hollows lacks ' + k + ' (' + JSON.stringify(h) + ')';
+    if (h.vine || h.tuft) return 'Hollows still draws old strips or cones';
+    const reeds = await pg.evaluate(() => { if (!EX.rooms.some(r => r.theme === 'flooded')) return 'no flooded room'; const img = envArtFx('grass-dungeon'); let n = 0;
+      X3.group.traverse(o => { if (o.material && o.material.map && o.material.map.image === img) n++; }); return n; });
+    if (typeof reeds === 'string') return reeds; if (!reeds) return 'no grass cards among the clutter (reeds)';
+    // a wall keeps its vine across rebuilds (how many pieces a wall has can change: a low near wall, which depends on the
+    // view, has no creepers or stalactites)
+    const byWall = () => pg.evaluate(() => { const W = {}; for (const [c, L] of EX.nat) for (const [, , kind] of L) if (/^vine[BFW]$/.test(kind)) W[c] = kind; return W; });
+    const w1 = await byWall(); await pg.evaluate(() => { xBuildScene(); xUpdateVis(); }); const w2 = await byWall();
+    for (const c in w1) if (w2[c] && w2[c] !== w1[c]) return 'wall ' + c + ' changed its vine on rebuild';
+    await T.build(18, 4260); const r = await kinds();
+    for (const k of ['vineW', 'grass', 'vine']) if (!r[k]) return 'Ruins lacks ' + k + ' (' + JSON.stringify(r) + ')';
+    return true;
+  },
+  async foliageFallback(pg, T) {
+    await T.build(18, 4260, false);
+    const r = await pg.evaluate(() => { const K = {}; for (const im of EX.natM || []) K[im.userData.kind] = 1; return K; });
+    return r.vine && r.tuft && !r.vineW && !r.grass ? true : 'with no effects sheet: ' + JSON.stringify(r);
+  },
 };
 // checks that need the page set up before it loads
-const ROUTES = { moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };
+const ROUTES = { foliageFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
+  moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };
 
 (async () => {
   const names = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CHECKS);

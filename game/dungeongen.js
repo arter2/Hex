@@ -349,13 +349,26 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
    them, not a solid ball. Their normals point out from the ball's centre, so the clump is lit as one round mass, and the
    cards deep inside are darker. All the cards of a room go into one mesh with one material: one draw call. */
 const XLEAF={cards:12};
-function xLeafMerger(){ const P=[], N=[], U=[], C=[];
-  return { P, N, U, C, size:()=>P.length,
-    build(){ const img=envArtFx('leaf-clumps'), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
+// name: the effects tile its cards show (envart.js; the trees' leaf clumps unless told), one mesh and material each
+function xLeafMerger(name){ name=name||'leaf-clumps'; const P=[], N=[], U=[], C=[];
+  return { P, N, U, C, name, size:()=>P.length,
+    build(){ const img=envArtFx(name), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
       g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
       const m=xDitherMat(xPhong({map:xLeafTex(img),vertexColors:true,alphaTest:.5,side:THREE.DoubleSide})); m.userData.noProj=1; return new THREE.Mesh(g,m); } }; }
-let XLEAF_TEX=null;
-function xLeafTex(img){ if(XLEAF_TEX&&XLEAF_TEX.image===img) return XLEAF_TEX; const t=new THREE.CanvasTexture(img); t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; return XLEAF_TEX=t; }
+// one texture per card tile (a cut-out canvas from envart.js), shared by every material that shows it
+const XLEAF_TEX=new Map();
+function xLeafTex(img){ let t=XLEAF_TEX.get(img); if(!t){ t=new THREE.CanvasTexture(img); t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; XLEAF_TEX.set(img,t); } return t; }
+/* Painted grass (envart.js 'grass-dungeon'): two crossed upright cards on one root at (x,z), size tall (the tile's plant
+   is 224 of its 256 rows), turned and mirrored at random, their normals leaning up so the tuft is lit as one low mass.
+   False if the art is not in yet. */
+const XGRASS_PIVOT=[.4633,.8102];   // the root, in the tile from its top left (foliage-alts.json)
+function xGrassCards(F,x,z,size,R){ if(!F||!envArtFx(F.name)) return false;
+  const yaw=R()*6.3, fl=R()<.5, sh=.9+R()*.15, [pu,pv]=XGRASS_PIVOT;
+  for(const a of [yaw,yaw+Math.PI/2]){ const cx=Math.cos(a), sz=Math.sin(a), nx=-sz, nz=cx, ln=Math.hypot(nx,1.5,nz);
+    const corner=(su,sv)=>{ const u=(su+1)/2, v=(sv+1)/2, ox=(u-(fl?1-pu:pu))*size, oy=(v-(1-pv))*size;   // (v up from the bottom; the root at the pivot)
+      F.P.push(x+cx*ox, oy, z+sz*ox); F.N.push(nx/ln,1.5/ln,nz/ln); F.U.push(fl?1-u:u, v); F.C.push(sh,sh,sh); };
+    for(const [su,sv] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]) corner(su,sv); }
+  return true; }
 // a ball of leaf cards round (cx,cy,cz), radius r, tinted by col; false if the leaf art is not in yet
 function xLeafCards(F,col,cx,cy,cz,r,R){ if(!F||!envArtFx('leaf-clumps')) return false;
   const tint=new THREE.Color(col), mx=Math.max(tint.r,tint.g,tint.b,.01); tint.setRGB(tint.r/mx,tint.g/mx,tint.b/mx).lerp(new THREE.Color(1,1,1),.45);   // the area's leaf hue, kept bright
@@ -384,7 +397,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
     // the area's own stone: light ruins from its upper tones, dark ones from its lower, so they sit with the walls and floor
     const ST=tone(D?.3:.56), SH=tone(D?.18:.42), LT=tone(D?.42:.68), TRIM=D?glow.clone().multiplyScalar(.55):new THREE.Color('#b08a44').lerp(tone(.5),.45);
     const ROCK=tone(.42), ROCK2=tone(.28), ROCK3=tone(.58), SOIL=new THREE.Color('#2b2117'), LEAF=new THREE.Color(S.moss||'#4f7a3a'), LEAF2=LEAF.clone().lerp(new THREE.Color('#1e3a1a'),.45), FLOW=[0xd9465a,0xf2c94c,0xb48cff,0xf0f0e0];
-    const M=xMerger(), L=xMerger(), F=xLeafMerger(), seen=new Set();
+    const M=xMerger(), L=xMerger(), F=xLeafMerger(), FG=xLeafMerger('grass-dungeon'), seen=new Set();
     for(const it of mk.items){ const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;
       for(const c of cs){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
       const B=(col,bx,by,bz,sx,sy,sz,ry,to)=>(to||M).add(XG.box,col,bx,by,bz,0,ry||0,0,sx,sy,sz), C=(col,bx,by,bz,r,h,to)=>(to||M).add(XG.cyl,col,bx,by,bz,0,0,0,r*2,h,r*2);
@@ -416,12 +429,12 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
         for(let k=0;k<n;k++){ const sz=(big?2.2:1.5)*(k?.55+R()*.35:1); rock(k%2?ROCK2:ROCK,x+(R()-.5)*(big?2:.8),sz*.32,z+(R()-.5)*(big?2:.8),sz); }
         if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
       else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); }
-      else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F}); }
+      else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG}); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xDitherMat(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
-    if(F.size()) g.add(F.build());
+    if(F.size()) g.add(F.build()); if(FG.size()) g.add(FG.build());
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
 // the themed rooms' pieces (x2Themes): drawn from boxes, cylinders, cones and balls like the rest of the clutter
-function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F}=P, cs=it.cells;
+function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG}=P, cs=it.cells;
   const col=h=>new THREE.Color(h), WOOD=col('#6e4a2a'), WOOD2=col('#4a3018'), IRON=col('#2e2c2a'), IRON2=col('#55524e'), BONE=col('#d8d0b8'), WATER=col('#1f4f5e'), WATER2=col('#3f8c9a'), CLOTH=[col('#7a2a24'),col('#2a4a6a'),col('#3a5a2a'),col('#5a2a5a')];
   const ry=it.v?Math.PI/2:0, lx=it.v?XCS*.7:len-.35, lz=it.v?len-.35:XCS*.7;   // a two-cell piece's footprint, along its cells
   const A=(u,v)=>[x+along[0]*u+(it.v?v:0)*1, z+along[1]*u+(it.v?0:v)];      // u along the piece, v across it
@@ -472,7 +485,9 @@ function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,
       for(let k=0;k<3;k++){ const [a,b]=A((k-1)*len/3.4,(R()-.5)*.5); C(IRON2,a,.95,b,.1,.18); }
       for(const v of [-1,1]){ const [a,b]=A(0,v*.95); B(WOOD2,a,.45,b,it.v?.35:len-.5,.08,it.v?len-.5:.35); } break; }
     // underfoot: walked over, never in the way
-    case 'reeds': for(let k=0;k<9;k++){ const px=x+(R()-.5)*1.4, pz=z+(R()-.5)*1.4, h=.5+R()*.7; M.add(XG.cone,R()<.5?LEAF:LEAF2,px,h/2,pz,(R()-.5)*.2,0,(R()-.5)*.2,.08,h,.08); } break;
+    case 'reeds': { const card=FG&&envArtFx(FG.name);   // (painted grass tufts, one for every three reeds; the cones only until the art is in)
+      for(let k=0;k<9;k++){ const px=x+(R()-.5)*1.4, pz=z+(R()-.5)*1.4, h=.5+R()*.7, lc=R()<.5?LEAF:LEAF2, tx=(R()-.5)*.2, tz=(R()-.5)*.2;
+        if(card){ if(k%3===0) xGrassCards(FG,px,pz,.55+h*.35,R); } else M.add(XG.cone,lc,px,h/2,pz,tx,0,tz,.08,h,.08); } break; }
     case 'puddle': { M.add(XG.cyl,WATER,x+(R()-.5)*.4,.02,z+(R()-.5)*.4,0,0,0,1.3+R()*.5,.02,1+R()*.4); L.add(XG.cyl,WATER2,x,.035,z,0,0,0,.5,.005,.3); break; }
     case 'roots': for(let k=0;k<5;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.4,.06,z+Math.sin(a)*.4,Math.PI/2,a,0,.07,1+R()*.6,.07); } M.add(XG.ball,LEAF2,x,.05,z,0,0,0,1,.1,.8); break;
     case 'caps': { const g=new THREE.Color(glow); for(let k=0;k<5;k++){ const px=x+(R()-.5)*1.3, pz=z+(R()-.5)*1.3, h=.12+R()*.25; M.add(XG.cyl,col('#d8d0c0'),px,h/2,pz,0,0,0,.06,h,.06); L.add(XG.half,g,px,h,pz,0,0,0,.24,.14,.24); } break; }

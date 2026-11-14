@@ -512,7 +512,7 @@ function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
   else if(el===k) you+='<span class="bad">Your '+COLORS[k].name+' cards are resisted here.</span>';
   else if(el===WEAK_TO[k]) you+='<span class="good">Your cards hit most foes here for WEAK damage.</span>';
   return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`+(typeof areaRuleHTML==='function'?'<br>'+areaRuleHTML(A):''); }
-function openCamp(){
+function openCamp(){ if(typeof envArtWantDepth==='function'&&typeof save!=='undefined'&&save) envArtWantDepth(typeof pickDepth!=='undefined'&&pickDepth?pickDepth:save.deepest||1);   // the dungeon's painted art for where you will start (envart.js)
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   if(typeof artPreload==='function') artPreload(activeDeck().list);   // the deck's full art sheets, before any fight (art.js)
   if(pickDepth==null) pickDepth=save.deepest;

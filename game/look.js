@@ -46,7 +46,7 @@ function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
 function xFreeMat(m){ if(!m) return; if(m.userData&&m.userData.nmap){ m.userData.nmap.dispose(); m.userData.nmap=null; } if(m.userData&&m.userData.rmap){ m.userData.rmap.dispose(); m.userData.rmap=null; } XLITMATS.delete(m); m.dispose(); }
 function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial||m.isMeshStandardMaterial) xLit(m); }); }
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
-  if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
+  if(XLIT.texel&&m.map&&m.map.image&&!m.userData.xatlas){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }   // (not on an atlas: its pixels are the sheet's)
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
   const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
   if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
@@ -56,9 +56,9 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
   const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
-  const bomb=m.userData.xbomb||0;
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'');
+  const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;   // (an atlas tile: envart.js; set on the material when it is made)
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(proj) xProjShader(sh); };
+  m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):''); };
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -95,7 +95,11 @@ void main() {`);
 /* A second, finer relief on the floors (material.userData.xdet), so the painted floor's repeat breaks up: a tiling
    noise normal map laid in world space at two scales that never line up with the floor texture's eight cells, its
    strength wandering across the floor (a third, very wide lookup), added to the floor's own normal before lighting. */
-function xDetailN(){ if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
+function xDetailN(){ const P=typeof envArtFx==='function'&&envArtFx('detail-normal');
+  // the painted detail normal (the art's shared-effects), once it has loaded: the uniform is shared, so every material
+  // takes it at once (its noise channels also drive the bombing's stains and the rock walls' tone: look.js, explore.js)
+  if(P&&!XLITU.uXDetN.painted){ const t=xTexSmooth(P,true); t.anisotropy=4; XLITU.uXDetN.value=t; XLITU.uXDetN.painted=1; return t; }
+  if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=a(i,j)*7+b(i,j)*3+c(i,j)*1.2;
   const t=new THREE.CanvasTexture(xNormalMap(H,N,.9)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return XLITU.uXDetN.value=t; }
 function xDetShader(sh,wall){ let f=sh.fragmentShader;
@@ -115,23 +119,26 @@ function xDetShader(sh,wall){ let f=sh.fragmentShader;
    and two wide world-space noises lay darker stains and damp patches (gray, not green) across the floor. The lookups take
    the derivatives of the unshifted coordinates, so the jumps at cell edges do not drop a mip level and draw a seam.
    uXBombK (0 or 1, the debug menu's or a test's switch) turns all of it off. */
-function xBombShader(sh,n){ let f=sh.fragmentShader; const N=(+n).toFixed(1);
+function xBombShader(sh,n,atlas){ let f=sh.fragmentShader; const N=(+n).toFixed(1), RM=atlas?'uXAtM':'vec4(0.,0.,1.,1.)', RN=atlas?'uXAtN':'vec4(0.,0.,1.,1.)';
+  // (atlas: a painted tile, so no quarter turns: its painted light would turn with them)
   f=f.replace('void main() {',`uniform float uXBombK;
 float xbh(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
-float xBombR(vec2 uv){ return uXBombK>.5?floor(xbh(floor(uv*${N})+3.71)*4.):0.; }
+float xBombR(vec2 uv){ return uXBombK>.5&&${atlas?'false':'true'}?floor(xbh(floor(uv*${N})+3.71)*4.):0.; }
 vec2 xBombUV(vec2 uv){ if(uXBombK<.5) return uv; vec2 c=floor(uv*${N}), q=fract(uv*${N}); float r=xBombR(uv);
   if(r==1.) q=vec2(q.y,1.-q.x); else if(r==2.) q=1.-q; else if(r==3.) q=vec2(1.-q.y,q.x);
   return (floor(vec2(xbh(c),xbh(c+17.31))*${N})+q)/${N}; }
 vec2 xBombN(vec2 n,float r){ return r==1.?vec2(-n.y,n.x):r==2.?-n:r==3.?vec2(n.y,-n.x):n; }
-vec4 xBombTex(sampler2D t,vec2 uv){
+// a lookup at the bombed place, inside the tile R of the texture (the whole texture: (0,0,1,1)), with the slopes of
+// the place before bombing (no mip level drops at a cell's edge)
+vec4 xBombTex(sampler2D t,vec4 R,vec2 uv){ vec2 b=R.xy+fract(xBombUV(uv))*R.zw;
 #if __VERSION__>=300
-  return textureGrad(t,xBombUV(uv),dFdx(uv),dFdy(uv));
+  return textureGrad(t,b,dFdx(uv)*R.zw,dFdy(uv)*R.zw);
 #else
-  return texture2D(t,xBombUV(uv));
+  return texture2D(t,b);
 #endif
 }
 void main() {`);
-  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('texture2D( map, vUv )','xBombTex( map, vUv )')+`
+  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('texture2D( map, vUv )','xBombTex( map, '+RM+', vUv )')+`
 #ifdef USE_MAP
   if(uXBombK>.5){ vec2 xc=floor(vUv*${N}); float xt=xbh(xc+8.9)-.5;
     diffuseColor.rgb*=mix(.68,1.18,xbh(xc+5.13))*vec3(1.+.12*xt,1.,1.-.12*xt);
@@ -142,9 +149,45 @@ void main() {`);
     diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.7,.69,.68),smoothstep(.55,.72,xd)*.85); }
 #endif`);
   if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
-  f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');
+  f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, '+RN+', vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');
   f=f.replace('mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK','mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(1.,1.8,uXBombK)');   // (the finer relief, stronger: the bombed floor's normal changes)
   if(!f.includes('uniform sampler2D uXDetN')) f=f.replace('uniform float uXBombK;','uniform float uXBombK; uniform sampler2D uXDetN;');
+  sh.fragmentShader=f; }
+/* An atlas tile (envart.js): the material's map and normal map are sheets of tiles, and its tile's rectangle (in the
+   sheet's GPU coordinates) comes in uXAtM (colour) and uXAtN (normal). Every lookup wraps inside the tile, so a floor
+   or wall repeats it as if it were a texture of its own, and takes the slopes of the place before wrapping, so the
+   jump at a tile's edge does not drop a mip level; the tiles' gutters (their own wrapped edge) keep the filtering and
+   the first mip levels from reading a neighbour. On a rough rock wall (explore.js xRockShader) its three lookups are
+   wrapped the same way, the turned copy loses its turn (the painted light would turn with it), the Ember Rifts lay
+   their medium rocks over it (uXAtO, three passes, as the art's notes give) and the Frozen Deeps their cell noise. */
+function xAtlasShader(sh,A){ let f=sh.fragmentShader; const V=r=>({value:new THREE.Vector4(r[0],r[1],r[2],r[3])});
+  sh.uniforms.uXAtM=V(A.m); sh.uniforms.uXAtN=V(A.n||[0,0,1,1]); sh.uniforms.uXAtO=V(A.o||[0,0,1,1]); if(A.cell) sh.uniforms.uXCell={value:A.cell};
+  f=`uniform vec4 uXAtM; uniform vec4 uXAtN; uniform vec4 uXAtO;${A.cell?' uniform sampler2D uXCell;':''}
+vec4 xAtG(sampler2D t,vec4 R,vec2 uv,vec2 gx,vec2 gy){ vec2 b=R.xy+fract(uv)*R.zw;
+#if __VERSION__>=300
+  return textureGrad(t,b,gx*R.zw,gy*R.zw);
+#else
+  return texture2D(t,b);
+#endif
+}
+#define xAtMap(u) xAtG(map,uXAtM,(u),dFdx(u),dFdy(u))
+`+f;
+  // (the standard lookups sit in chunks not yet expanded: expand them so the lookups can be swapped)
+  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment);
+  if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
+  f=f.replace('texture2D( map, vUv )','xAtG( map, uXAtM, vUv, dFdx( vUv ), dFdy( vUv ) )');
+  f=f.replace('texture2D( normalMap, vUv )','xAtG( normalMap, uXAtN, vUv, dFdx( vUv ), dFdy( vUv ) )');
+  // the rough rock (xRockShader): its lookups, wrapped; its turned copy, not turned
+  f=f.split('texture2D(map,').join('xAtMap(').split('rt*P.').join('P.');
+  const rock=`
+    { vec2 ou=an.y>max(an.x,an.z)?P.xz:(an.x>an.z?P.zy:P.xy);
+${A.o?`      vec4 o0=xAtG(map,uXAtO,ou+vec2(.17,.43),dFdx(ou),dFdy(ou)); texelColor.rgb=mix(texelColor.rgb,o0.rgb,clamp(o0.a*.7,0.,1.));
+      vec4 o1=xAtG(map,uXAtO,ou*2.+vec2(.61,.09),dFdx(ou)*2.,dFdy(ou)*2.); texelColor.rgb=mix(texelColor.rgb,o1.rgb,clamp(o1.a*.5,0.,1.));
+      vec4 o2=xAtG(map,uXAtO,ou*3.+vec2(.29,.73),dFdx(ou)*3.,dFdy(ou)*3.); texelColor.rgb=mix(texelColor.rgb,o2.rgb,clamp(o2.a*.35,0.,1.));
+`:''}${A.cell?`      float cn=texture2D(uXCell,ou*1.7+.31).r; texelColor.rgb*=mix(1.,mix(.75,1.08,cn),.25);
+`:''}    }
+    texelColor.rgb*=1.0+.12*an.y;`;
+  if(A.o||A.cell) f=f.replace('texelColor.rgb*=1.0+.12*an.y;',rock);
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;
@@ -279,6 +322,8 @@ void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
 function lookBake(){ if(typeof xBakeAO==='function') xBakeAO(); if(typeof arenaBakeAO==='function') arenaBakeAO(); }
 // the shared AO uniforms point at the map of the screen about to draw (its texture, where it starts, how wide it is)
 function lookUse(tex,scale,ox,oz){ XLITU.uXAOTex.value=tex||null; XLITU.uXAOScale.value=scale||96; XLITU.uXAOOrg.value.set(ox||0,oz||0); }
+// a painted effect's canvas (envart.js envArtFx) as a smooth, mipmapped texture
+function xTexSmooth(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; if(rep) t.wrapS=t.wrapT=THREE.RepeatWrapping; return t; }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
 /* PBR (a debug switch, to compare): the surfaces where it shows become MeshStandardMaterial, with a
    roughness and metalness of their own, a roughness map made from the painted stone's height (worn

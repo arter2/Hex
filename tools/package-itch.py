@@ -36,6 +36,8 @@ def ships(rel):
         return False
     if parts[:3] == ("cards", "art", "masters"):
         return False
+    if parts[:3] == ("art", "environment", "painterly-512"):   # the 512 masters: the game reads the atlases built from them
+        return False
     if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
         return False
     if parts[:3] == ("cards", "art", "display"):

@@ -164,7 +164,11 @@ function xNatPools(grp,K,R,floorOK,pz){ if(!K.pool) return; const P=K.pool, free
     let glow=null; if(P.kind==='lava'){ glow=new THREE.Mesh(new THREE.PlaneGeometry(w*XCS*1.5,h*XCS*1.5).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:new THREE.Color(P.rim),transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false})); glow.position.set(mesh.position.x,.035,mesh.position.z); glow.renderOrder=2; glow.visible=false; grp.add(glow); }
     EX.natPools.push({mesh,glow,surf,kind:P.kind,cells:blob,ph:R()*6}); made++; } }
 // a pool's surface: soft ripples (water), cracks of light (ice), slow-turning crust (lava), a few glints (black water)
-function xNatSurface(kind){ const N=64, cv=document.createElement('canvas'); cv.width=cv.height=N; const x=cv.getContext('2d'), R=caveRng(kind.length*97+5);
+function xNatSurface(kind){ const P=typeof envArtFx==='function'&&envArtFx('pool-'+kind);
+  // the painted surface (envart.js): its highlights over a solid white body, so the pool keeps its body where the art is clear
+  if(P){ const c=document.createElement('canvas'); c.width=P.width; c.height=P.height; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height); x.drawImage(P,0,0);
+    const t=xTexSmooth(c,true); t.repeat.set(2,2); return t; }
+  const N=64, cv=document.createElement('canvas'); cv.width=cv.height=N; const x=cv.getContext('2d'), R=caveRng(kind.length*97+5);
   x.fillStyle='#fff'; x.fillRect(0,0,N,N);
   if(kind==='lava'){ for(let k=0;k<30;k++){ x.fillStyle='rgba(60,10,0,'+(.3+R()*.5)+')'; x.beginPath(); x.ellipse(R()*N,R()*N,3+R()*9,2+R()*6,R()*3,0,7); x.fill(); } }
   else if(kind==='ice'){ x.strokeStyle='rgba(120,170,200,.6)'; for(let k=0;k<9;k++){ x.beginPath(); let px=R()*N, py=R()*N; x.moveTo(px,py); for(let j=0;j<4;j++){ px+=(R()-.5)*24; py+=(R()-.5)*24; x.lineTo(px,py); } x.stroke(); } }
@@ -202,7 +206,8 @@ function xfVoro(N,G,R,jit,off){ const S=N/G, P=[];
 // a hash of a stone's place (for the rectangular layouts)
 const xfH=(a,b,s)=>{ const v=Math.sin(a*12.9898+b*78.233+s*.7311)*43758.5453; return v-Math.floor(v); };
 // only: paint just that one of the area's floors and keep it (the background painter, xPrewarmTick), returning null
-function xAreaFloors(A,S,seed,only){ const id=A&&A.id, kept=XAREA_FLOOR_KEEP.get(id);
+function xAreaFloors(A,S,seed,only){ if(only==null&&typeof envArtAreaFloors==='function'){ const P=envArtAreaFloors(A); if(P) return P; }   // the painted art (envart.js), when it has loaded
+  const id=A&&A.id, kept=XAREA_FLOOR_KEEP.get(id);
   if(only==null&&kept&&kept.length&&kept.every(Boolean)) return kept;
   const N=256, T=t=>xTone(S,Math.max(0,Math.min(1,t))), X=h=>xHexRGB(h);
   const make=(sd,fn,speck)=>{ const R=caveRng(sd), H=new Float32Array(N*N), c=fn(R,H); if(speck) xSpeck(c,S,R,speck); c.h=H; c.hk=.55; return c; };
@@ -329,6 +334,9 @@ const XAREA_FLOOR_KEEP=new Map();
 function xPrewarmTick(dt){ if(!EX||EX.layout!==2||!EX.active||EX.dlg||EX.fighting||typeof areaOf!=='function') return;
   const nd=EX.depth+1, NA=areaOf(nd); if(!NA||!EX.area||NA.id===EX.area.id) return;
   let W=EX.prewarm; if(!W||W.depth!==nd){ const S=NA.stone||AREAS[0].stone, jobs=[];
+      // the painted art: its sheets load in the background (envart.js), nothing to paint here; the code-painted
+      // floors are painted ahead only where there is no art to load
+      if(typeof envArtWant==='function'&&typeof ENVART_MAP!=='undefined'){ envArtWant(NA.id); EX.prewarm={depth:nd, jobs:[], still:0, at:-1}; return; }
       for(let k=0;k<3;k++) jobs.push(()=>xAreaFloors(NA,S,nd*31,k));
       const TA=typeof XTHEME_AREA!=='undefined'&&XTHEME_AREA[NA.id]; if(TA) for(const th of Object.keys(TA)) jobs.push(()=>xThemeFloor(th,NA,S));
       W=EX.prewarm={depth:nd, jobs, still:0, at:-1}; }
@@ -342,7 +350,8 @@ function xPrewarmTick(dt){ if(!EX||EX.layout!==2||!EX.active||EX.dlg||EX.fightin
    its own colours where it is wood, tile or earth. 256 pixels over eight cells, with a height field for the lighting
    (look.js xLitTag). Painted once per theme and area, then kept: a floor of five themes costs nothing the second time. */
 const XTHEME_FLOOR_CACHE=new Map();
-function xThemeFloor(th,A,S){ const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.has(key)) return XTHEME_FLOOR_CACHE.get(key);
+function xThemeFloor(th,A,S){ if(typeof envArtTheme==='function'){ const P=envArtTheme(th,A); if(P) return P; }   // the painted art (envart.js), when it has loaded
+  const key=th+'|'+(A&&A.id); if(XTHEME_FLOOR_CACHE.has(key)) return XTHEME_FLOOR_CACHE.get(key);
   const N=th==='library'?512:256, X=h=>xHexRGB(h), ramp=S.rock.map(X), T=t=>{ t=Math.max(0,Math.min(1,t))*(ramp.length-1); const i=Math.min(ramp.length-2,Math.floor(t)); return xfMix(ramp[i],ramp[i+1],t-i); };
   const sd=[...th].reduce((a,c)=>a*31+c.charCodeAt(0),7)&0xffff, R=caveRng(sd+1), H=new Float32Array(N*N), mix=xfMix, h=xfH;
   const pebbles=(c,n,lo)=>{ const x=c.getContext('2d'); for(let k=0;k<n;k++){ const px=R()*N|0, py=R()*N|0, w=1+R()*2|0, hh=1+R()*2|0;

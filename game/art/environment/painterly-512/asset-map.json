@@ -1,0 +1,2030 @@
+{
+  "schema_version": 1,
+  "repository": "arter2/Hex",
+  "inspected_branch": "main",
+  "inspected_date": "2026-11-13",
+  "integration_status": "Art handoff only; loader/shader changes are to be implemented by Claude.",
+  "proposed_repository_asset_root": "game/art/environment/painterly-512/",
+  "runtime_root_from_game_index": "./art/environment/painterly-512/",
+  "source_blob_shas": {
+    "game/surface.js": "d95432635e4779bb75eb0ec80f75123492c444c8",
+    "game/explore.js": "62052e2bf343e93164f18a847a34c836871031f5",
+    "game/look.js": "fae4b63e413ff8f1cd279be897939045be9f5c30",
+    "game/nature.js": "708a65eda4edb91b56c10278812002ba47812a9b",
+    "game/world.js": "1a77c2cbd6f5dcc34c2525a1d131a6f589e90fa4",
+    "game/art-review.html": "60765cef6c71728f2633f6b615726043663617d8"
+  },
+  "asset_count": 68,
+  "assets": [
+    {
+      "source_file": "textures/area-floors/hollows-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/hollows-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/hollows-passage.png",
+      "relative_asset_path": "area-floors/hollows-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "eefd92035d04d66f075ccf7cf0e02135e4fd683dc192306ee1b012f8be455e13",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/hollows-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/hollows-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/hollows-room-a.png",
+      "relative_asset_path": "area-floors/hollows-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "ab0c0d89d78bbb35aaa16ec2b52f3bed1d225afa22b81f82c82a6b749a4c95b1",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/hollows-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/hollows-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/hollows-room-b.png",
+      "relative_asset_path": "area-floors/hollows-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "a823a8d2c279c7ea36a114ba41acce1de1c17023735598a5f1af5968f2bb4035",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/hollows-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/hollows-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/hollows-rock-wall.png",
+      "relative_asset_path": "area-walls/hollows-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "df8cb6c3dd2ad447da6086380e3263b42030225df7beece1ee2dacd1fc4f5020",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/hollows-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/hollows-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/hollows-block-wall.png",
+      "relative_asset_path": "area-walls/hollows-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "0c93eb3aeccdbe57bbc09b88310d8990aa693cd1542cbfb05f0357f85bbf968a",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/hollows-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/hollows-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/hollows-rubble-wall.png",
+      "relative_asset_path": "area-walls/hollows-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "59c937b89774e738de2d03279bda08ca7e926412c37277879b8d6594084343fe",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/deeps-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/deeps-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/deeps-passage.png",
+      "relative_asset_path": "area-floors/deeps-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "840b522b1d90b07ff811296c3d726c0b1365a04d9be280dfbdba1706bebf14be",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/deeps-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/deeps-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/deeps-room-a.png",
+      "relative_asset_path": "area-floors/deeps-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "844f32073a18d23b55b569f14cd73c9623b9bb826fae33345f8f73106c946277",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/deeps-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/deeps-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/deeps-room-b.png",
+      "relative_asset_path": "area-floors/deeps-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "5f3fb234539777fef06edc05ec5a0617565cc87ceacfebaafe67b8c9a068d300",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/deeps-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/deeps-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/deeps-rock-wall.png",
+      "relative_asset_path": "area-walls/deeps-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "65d8a33e8f2f02e6709105d00b6a5496746c79c22ec4a50896c9d6d29517813e",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/deeps-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/deeps-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/deeps-block-wall.png",
+      "relative_asset_path": "area-walls/deeps-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "4eb58cfd4302f2b37df8c671afa99c6e9788ebf27c71a70b9c39b1a4a677b775",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/deeps-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/deeps-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/deeps-rubble-wall.png",
+      "relative_asset_path": "area-walls/deeps-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "98b65b6770a3e50283c4ddefa5e15230e09d7b5a6928cd84a559161542809451",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/vault-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/vault-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/vault-passage.png",
+      "relative_asset_path": "area-floors/vault-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "bbc829e18ad741c9494acd4f47d67fce444bbc80a4fce8d8148120ca5bb2cd38",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/vault-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/vault-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/vault-room-a.png",
+      "relative_asset_path": "area-floors/vault-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "8c4e9728b2dc32d04c8cdc85c7db7c3900d4fee887fe2e11ab398849afc045c0",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/vault-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/vault-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/vault-room-b.png",
+      "relative_asset_path": "area-floors/vault-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "65119107789b97672ee636ab0f409d032d098721d3019466f9a21d5e9ac9f364",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/vault-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/vault-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/vault-rock-wall.png",
+      "relative_asset_path": "area-walls/vault-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "89200fd44f3ae0dd6d6fd320cbd6875b66f08bc1186daa417f638eff5782cd10",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/vault-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/vault-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/vault-block-wall.png",
+      "relative_asset_path": "area-walls/vault-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "85217947840c47d09e3e41290896b9e30323cda9cd0ee51546f2a9e5ff2639dc",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/vault-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/vault-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/vault-rubble-wall.png",
+      "relative_asset_path": "area-walls/vault-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "14026eb5fb9703dc8002d0f37db617504906e199d0a4f35805320e97733a1635",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/rifts-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/rifts-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/rifts-passage.png",
+      "relative_asset_path": "area-floors/rifts-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "2c33d9b960983ab5900ff5566ebad2eb25693d7e0622412680c1c17fe42d4c3d",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/rifts-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/rifts-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/rifts-room-a.png",
+      "relative_asset_path": "area-floors/rifts-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "0c985dd8a4fa73ea84943f0fcaf3cf542bbca71cc2a62cd625fed90442592664",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/rifts-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/rifts-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/rifts-room-b.png",
+      "relative_asset_path": "area-floors/rifts-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "40ad8f63d4e6f989d8df81a63904896eab614299c5df6e6c911087544387b6d0",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/rifts-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/rifts-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/rifts-rock-wall.png",
+      "relative_asset_path": "area-walls/rifts-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "4a36a0c7b755a71c920bba1544f6ea5998aaf3703c61f3153dd099b1a94d62e5",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/rifts-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/rifts-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/rifts-block-wall.png",
+      "relative_asset_path": "area-walls/rifts-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "02e9cc9accd4d58423f5bd25f1389d0b4be03ff4e7dd0aeca39690219bc3fa39",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/rifts-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/rifts-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/rifts-rubble-wall.png",
+      "relative_asset_path": "area-walls/rifts-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "e025b8d64728df27a888d8b0c4bba3638dbe22ee338adceebbfc5f4f52829bba",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/ruins-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/ruins-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/ruins-passage.png",
+      "relative_asset_path": "area-floors/ruins-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "1c537a0ee32a2de767677a6ba8a12a5aeaba29b9198e9b61ef85f296cea42e88",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/ruins-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/ruins-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/ruins-room-a.png",
+      "relative_asset_path": "area-floors/ruins-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "f5a5963bbde3b0a35616b6344d810e670740efea5769f670865b1f80e771a87b",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/ruins-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/ruins-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/ruins-room-b.png",
+      "relative_asset_path": "area-floors/ruins-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "d00fa3d1493a040cda4b67651495e74a8960937555b9830c33fcf1b0224ce726",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/ruins-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/ruins-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/ruins-rock-wall.png",
+      "relative_asset_path": "area-walls/ruins-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "6f4b1d50f8e76621b92da43052e3a16eeebfeb50aa3a499daa9940e210e83a73",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/ruins-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/ruins-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/ruins-block-wall.png",
+      "relative_asset_path": "area-walls/ruins-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "b5408dc64050a357b63bbacfb5d5846237dc73f7f8e26cbd0c67a55b37675cbf",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/ruins-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/ruins-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/ruins-rubble-wall.png",
+      "relative_asset_path": "area-walls/ruins-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "b36463454adab24125c5dea08739ce551f2d0ebc6f5c0307219c665378eafd16",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/abyss-passage.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/abyss-passage.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/abyss-passage.png",
+      "relative_asset_path": "area-floors/abyss-passage.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "d7311d4fa13bede58c341c0a736a39c2efa4493ee0a9690971d212c200f9f78d",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "passage",
+      "array_index": 0,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/abyss-room-a.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/abyss-room-a.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/abyss-room-a.png",
+      "relative_asset_path": "area-floors/abyss-room-a.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "16f956b35b7cf75e5a8304887680f8acf76df22ac132ae84eadda6ac2d8f9462",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "room-a",
+      "array_index": 1,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-floors/abyss-room-b.png",
+      "repository_destination": "game/art/environment/painterly-512/area-floors/abyss-room-b.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-floors/abyss-room-b.png",
+      "relative_asset_path": "area-floors/abyss-room-b.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "4209f3f57c40dff14070b913130952f021e7c165cb5c43bc0ac70e476230b48c",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-floor",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "room-b",
+      "array_index": 2,
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xAreaFloors",
+        "consumer": "game/explore.js:xBuildScene",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/abyss-rock-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/abyss-rock-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/abyss-rock-wall.png",
+      "relative_asset_path": "area-walls/abyss-rock-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "8c195dc631c72fa33e17675ce4a1419ce6fb97786f4034fb4f7bc211a230cb7f",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "rock",
+      "array_index": 0,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/abyss-block-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/abyss-block-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/abyss-block-wall.png",
+      "relative_asset_path": "area-walls/abyss-block-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "b1e28e4692c56f1d728c8bfc497315f07c20cdc89980a9a84c7f273a9d76db92",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "block",
+      "array_index": 1,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/area-walls/abyss-rubble-wall.png",
+      "repository_destination": "game/art/environment/painterly-512/area-walls/abyss-rubble-wall.png",
+      "url_from_game_index": "./art/environment/painterly-512/area-walls/abyss-rubble-wall.png",
+      "relative_asset_path": "area-walls/abyss-rubble-wall.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "3eb32fdc9b894623249692093b435e98b29e7fca33f153878588c80b9e2415d2",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "area-wall",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "variant": "rubble",
+      "array_index": 2,
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xBuildScene",
+        "target": "wallTex[xWT(v)]",
+        "requires_area_aware_loader": true,
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/armory-vault.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/armory-vault.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/armory-vault.png",
+      "relative_asset_path": "theme-floors/armory-vault.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "b6464d5e6de398924ed46b1b04794a9fd996b5841a62033e9cbfd414d50983be",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/armory-vault-normal.png",
+      "role": "theme-floor",
+      "theme_key": "armory",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "armory",
+        "area": "vault",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/flooded-deeps.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/flooded-deeps.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/flooded-deeps.png",
+      "relative_asset_path": "theme-floors/flooded-deeps.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "5840407cc21843d39ba59b96b09cca73b148a6c5b8d202a76c214491231d874b",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/flooded-deeps-normal.png",
+      "role": "theme-floor",
+      "theme_key": "flooded",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "flooded",
+        "area": "deeps",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/overgrown-hollows.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/overgrown-hollows.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/overgrown-hollows.png",
+      "relative_asset_path": "theme-floors/overgrown-hollows.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "f2b76ff516702d178cd9941fcf8b4a744f89ba9acef353d6614369859c2beb4b",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/overgrown-hollows-normal.png",
+      "role": "theme-floor",
+      "theme_key": "overgrown",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "overgrown",
+        "area": "hollows",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/collapsed-rifts.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/collapsed-rifts.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/collapsed-rifts.png",
+      "relative_asset_path": "theme-floors/collapsed-rifts.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "e57096c85da8a66b425e9a61c074eaad07ab46e528fa334ca7a8becc5e3203c7",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/collapsed-rifts-normal.png",
+      "role": "theme-floor",
+      "theme_key": "collapsed",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "collapsed",
+        "area": "rifts",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/library-ruins.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/library-ruins.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/library-ruins.png",
+      "relative_asset_path": "theme-floors/library-ruins.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "e5be730c5187144e038c4148576be5311df43169f19fbd970763dabe595c9934",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/library-ruins-normal.png",
+      "role": "theme-floor",
+      "theme_key": "library",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "library",
+        "area": "ruins",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/crypt-abyss.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/crypt-abyss.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/crypt-abyss.png",
+      "relative_asset_path": "theme-floors/crypt-abyss.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "1084972e28f236838a2b1f7a66395d5319ccd6a4d3939e9454cc381a6ae2b604",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/crypt-abyss-normal.png",
+      "role": "theme-floor",
+      "theme_key": "crypt",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "crypt",
+        "area": "abyss",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/forge-rifts.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/forge-rifts.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/forge-rifts.png",
+      "relative_asset_path": "theme-floors/forge-rifts.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "632c42489f350886d4a6afbcc84ab13e01c6672b8959358d4ca3eec2cdd0d239",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/forge-rifts-normal.png",
+      "role": "theme-floor",
+      "theme_key": "forge",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "forge",
+        "area": "rifts",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/bathhouse-ruins.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/bathhouse-ruins.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/bathhouse-ruins.png",
+      "relative_asset_path": "theme-floors/bathhouse-ruins.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "191e0fef21c4b44fa4ff875054f8db02d02c6674d62845ac8b3741d598ba8478",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/bathhouse-ruins-normal.png",
+      "role": "theme-floor",
+      "theme_key": "bathhouse",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "bathhouse",
+        "area": "ruins",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/barracks-vault.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/barracks-vault.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/barracks-vault.png",
+      "relative_asset_path": "theme-floors/barracks-vault.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "0a67a0c615d0812563f861acdbd645110e401dc2924c94b69afba21ce6191703",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/barracks-vault-normal.png",
+      "role": "theme-floor",
+      "theme_key": "barracks",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "barracks",
+        "area": "vault",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/theme-floors/fungus-grove-hollows.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-floors/fungus-grove-hollows.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-floors/fungus-grove-hollows.png",
+      "relative_asset_path": "theme-floors/fungus-grove-hollows.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "984540abe665f828474f90a06f006cf484b33b82a1e137912c0ebd8885b23c36",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": "theme-normals/fungus-grove-hollows-normal.png",
+      "role": "theme-floor",
+      "theme_key": "fungus",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "fungus",
+        "area": "hollows",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/shared-effects/glow-hole.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/glow-hole.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/glow-hole.png",
+      "relative_asset_path": "shared-effects/glow-hole.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "d11a6a936fb0f26f7644cbd490b3d7fb29f399ca0d365e7b8c0cf7c815d15c39",
+      "color_space": "sRGB",
+      "recommended_addressing": "clamp",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "neutral-tintable-glow",
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xGlowTex",
+        "verified_hook": true
+      },
+      "blend": "retain existing normal/additive emitter choice",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        3,
+        4,
+        509,
+        509
+      ],
+      "alpha_bounds_uv": [
+        0.005859,
+        0.007812,
+        0.994141,
+        0.994141
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/rune-circle.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/rune-circle.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/rune-circle.png",
+      "relative_asset_path": "shared-effects/rune-circle.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "e5e8277b465faa73705f9aa213b096fc4818c1047b74cfd81689f7e5ed58f94f",
+      "color_space": "sRGB",
+      "recommended_addressing": "clamp",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "stair-rune-ring",
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xRuneTex",
+        "verified_hook": true
+      },
+      "blend": "retain existing floor ring material blending",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        11,
+        11,
+        505,
+        501
+      ],
+      "alpha_bounds_uv": [
+        0.021484,
+        0.021484,
+        0.986328,
+        0.978516
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/lantern-fx-glow.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/lantern-fx-glow.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/lantern-fx-glow.png",
+      "relative_asset_path": "shared-effects/lantern-fx-glow.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "647f05abd8444b1ef7ac83a4240140be7aff6cadef5e967e6d61bd75343501fc",
+      "color_space": "sRGB",
+      "recommended_addressing": "clamp",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "warm-amber-glow-variant",
+      "binding": {
+        "file": "game/explore.js",
+        "target": "new warm-only emitter variant; keep neutral xGlowTex for tinted particles and key lanterns",
+        "verified_hook": false
+      },
+      "blend": "additive or normal alpha per warm emitter",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        7,
+        7,
+        505,
+        505
+      ],
+      "alpha_bounds_uv": [
+        0.013672,
+        0.013672,
+        0.986328,
+        0.986328
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/water-ripples.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/water-ripples.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/water-ripples.png",
+      "relative_asset_path": "shared-effects/water-ripples.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "82eec7bf7b977e206e7c42cb5d3cbf67c324a81a4d593b2213699fa4566fdf64",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "quiet-puddle-reflection-overlay",
+      "binding": {
+        "file": "game/nature.js",
+        "target": "new quiet water/flooded surface overlay in xNatPools or material shader",
+        "verified_hook": false
+      },
+      "integration": "Low-opacity surface reflections; preserve pool body. Not the xWaveTex search-wave tile.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/pool-surface-water.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/pool-surface-water.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/pool-surface-water.png",
+      "relative_asset_path": "shared-effects/pool-surface-water.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "491ba46293acbe44e1c702a816ec627f8ffcacc4010e8dacbb049a5c00de82bb",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "pool-surface-detail",
+      "pool_kind": "water",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xNatSurface",
+        "kind": "water",
+        "verified_hook": true
+      },
+      "integration": "Composite over an opaque neutral pool surface or use a separate detail layer; retain xNatPools blob alpha and xNatureTick animation.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/pool-surface-ice.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/pool-surface-ice.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/pool-surface-ice.png",
+      "relative_asset_path": "shared-effects/pool-surface-ice.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "0fcc4a4e97db920623f9912b66e039a8ac55eef6c531ba78d5baa877df31702a",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "pool-surface-detail",
+      "pool_kind": "ice",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xNatSurface",
+        "kind": "ice",
+        "verified_hook": true
+      },
+      "integration": "Composite over an opaque neutral pool surface or use a separate detail layer; retain xNatPools blob alpha and xNatureTick animation.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/pool-surface-lava.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/pool-surface-lava.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/pool-surface-lava.png",
+      "relative_asset_path": "shared-effects/pool-surface-lava.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "76ca31f1ba12232bffbd9355eb2e18ed16eede1963fbda53f31a26f17608acae",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "pool-surface-detail",
+      "pool_kind": "lava",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xNatSurface",
+        "kind": "lava",
+        "verified_hook": true
+      },
+      "integration": "Composite over an opaque neutral pool surface or use a separate detail layer; retain xNatPools blob alpha and xNatureTick animation.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/pool-surface-black.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/pool-surface-black.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/pool-surface-black.png",
+      "relative_asset_path": "shared-effects/pool-surface-black.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "7c67635564eaccd7364c09b9b6483193bcda9549f9f1bbcb1171b78cd2615bdc",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "pool-surface-detail",
+      "pool_kind": "black",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xNatSurface",
+        "kind": "black",
+        "verified_hook": true
+      },
+      "integration": "Composite over an opaque neutral pool surface or use a separate detail layer; retain xNatPools blob alpha and xNatureTick animation.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "source_file": "textures/shared-effects/trim-fx-ruins.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/trim-fx-ruins.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/trim-fx-ruins.png",
+      "relative_asset_path": "shared-effects/trim-fx-ruins.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "4c31406d9e7edfe179d949812ba429d99bc3f07059274d18ee7585e1dde633cc",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "ruins-decorative-trim",
+      "area_id": "ruins",
+      "binding": {
+        "file": "game/explore.js",
+        "function": "xTrimTex",
+        "consumer": "xFloorTrim",
+        "verified_hook": true
+      },
+      "integration": "Extract occupied alpha band into a runtime strip canvas or use its V bounds; other areas retain their own trim.",
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        145,
+        512,
+        475
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.283203,
+        1.0,
+        0.927734
+      ]
+    },
+    {
+      "source_file": "textures/theme-normals/armory-vault-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/armory-vault-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/armory-vault-normal.png",
+      "relative_asset_path": "theme-normals/armory-vault-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "85952096602e18413a44892543adab1c103889d48cd9a71b0e1b35461d8c5f84",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "armory",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "armory",
+        "area": "vault",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/armory-vault.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/flooded-deeps-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/flooded-deeps-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/flooded-deeps-normal.png",
+      "relative_asset_path": "theme-normals/flooded-deeps-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "649cdb3f8d25d2ec3bb08e9be8a5b43d8f093869875a374a4fb8f3840b4af192",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "flooded",
+      "area_id": "deeps",
+      "area_name": "Frozen Deeps",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "flooded",
+        "area": "deeps",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/flooded-deeps.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/overgrown-hollows-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/overgrown-hollows-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/overgrown-hollows-normal.png",
+      "relative_asset_path": "theme-normals/overgrown-hollows-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "4e7c8aa886c7bac5bfd50352a89c68fd491ea1c2050e088d33be689d0e09bb5d",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "overgrown",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "overgrown",
+        "area": "hollows",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/overgrown-hollows.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/collapsed-rifts-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/collapsed-rifts-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/collapsed-rifts-normal.png",
+      "relative_asset_path": "theme-normals/collapsed-rifts-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "550730507e5bcf017ec84c20dba9a5648d8065bf4d379db7c2dea8df5910b5d1",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "collapsed",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "collapsed",
+        "area": "rifts",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/collapsed-rifts.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/library-ruins-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/library-ruins-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/library-ruins-normal.png",
+      "relative_asset_path": "theme-normals/library-ruins-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "ff65780b3327125025a4783141410a648e22dcc893d251607545839df7ff05fd",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "library",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "library",
+        "area": "ruins",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/library-ruins.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/crypt-abyss-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/crypt-abyss-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/crypt-abyss-normal.png",
+      "relative_asset_path": "theme-normals/crypt-abyss-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "ef0ffc701b1da2a316500f99c353006eeb6c94475b21028f5f3390c281cee306",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "crypt",
+      "area_id": "abyss",
+      "area_name": "The Abyss",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "crypt",
+        "area": "abyss",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/crypt-abyss.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/forge-rifts-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/forge-rifts-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/forge-rifts-normal.png",
+      "relative_asset_path": "theme-normals/forge-rifts-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "e4bf5c89180b6e4ad17dbf6d761c3fa8fef2c4779604ffcf52be6151f84ed082",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "forge",
+      "area_id": "rifts",
+      "area_name": "Ember Rifts",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "forge",
+        "area": "rifts",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/forge-rifts.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/bathhouse-ruins-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/bathhouse-ruins-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/bathhouse-ruins-normal.png",
+      "relative_asset_path": "theme-normals/bathhouse-ruins-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "247324e18880d92d2cd722a2a4613321369bf617dd2fce011b994aa62ac9ba89",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "bathhouse",
+      "area_id": "ruins",
+      "area_name": "Gilded Ruins",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "bathhouse",
+        "area": "ruins",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/bathhouse-ruins.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/barracks-vault-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/barracks-vault-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/barracks-vault-normal.png",
+      "relative_asset_path": "theme-normals/barracks-vault-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "f5e14577ece2bd10479efd9f70da9a1910232d01e0a1e5cef78b0af854048e57",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "barracks",
+      "area_id": "vault",
+      "area_name": "Storm Vault",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "barracks",
+        "area": "vault",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/barracks-vault.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/theme-normals/fungus-grove-hollows-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/theme-normals/fungus-grove-hollows-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/theme-normals/fungus-grove-hollows-normal.png",
+      "relative_asset_path": "theme-normals/fungus-grove-hollows-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "9307a942779e55e5828c1f16c7d96dd9408fd2f0656703a6201da960b73cae92",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "theme-normal",
+      "theme_key": "fungus",
+      "area_id": "hollows",
+      "area_name": "Glowworm Hollows",
+      "binding": {
+        "file": "game/nature.js",
+        "function": "xThemeFloor",
+        "theme": "fungus",
+        "area": "hollows",
+        "verified_hook": true
+      },
+      "normal_convention": "OpenGL +Y",
+      "color_companion": "theme-floors/fungus-grove-hollows.png",
+      "material_storage": "userData.nmap"
+    },
+    {
+      "source_file": "textures/shared-effects/detail-normal.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-effects/detail-normal.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-effects/detail-normal.png",
+      "relative_asset_path": "shared-effects/detail-normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGB",
+      "sha256": "303d909a9046e8b6c1141ed8d44078ba2e067083c0f277e7e15d52ccb0cda78b",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "shared-detail-normal",
+      "normal_convention": "OpenGL +Y",
+      "binding": {
+        "file": "game/look.js",
+        "function": "xDetailN",
+        "uniform": "XLITU.uXDetN",
+        "verified_hook": true
+      }
+    },
+    {
+      "source_file": "textures/shared-detail/deeps-rock-cell-noise.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-detail/deeps-rock-cell-noise.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-detail/deeps-rock-cell-noise.png",
+      "relative_asset_path": "shared-detail/deeps-rock-cell-noise.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "L",
+      "sha256": "33493cbef52ed8dbb3fa020d9fe942bc4399e4d3c53df8c6673f384c53f4733d",
+      "color_space": "linear",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "grayscale-rock-cell-noise",
+      "recommended_strength": [
+        0.15,
+        0.3
+      ],
+      "binding": {
+        "file": "game/look.js",
+        "target": "new independent color/roughness detail sampler",
+        "verified_hook": false
+      },
+      "suggested_base": "area-floors/deeps-room-a.png",
+      "pixel_registered_to_base": false
+    },
+    {
+      "source_file": "textures/shared-overlays/rifts-medium-rock-overlay.png",
+      "repository_destination": "game/art/environment/painterly-512/shared-overlays/rifts-medium-rock-overlay.png",
+      "url_from_game_index": "./art/environment/painterly-512/shared-overlays/rifts-medium-rock-overlay.png",
+      "relative_asset_path": "shared-overlays/rifts-medium-rock-overlay.png",
+      "size": [
+        512,
+        512
+      ],
+      "image_mode": "RGBA",
+      "sha256": "74c85fa5cda75fbb0c44727f7818dcaa83dec3df0e479b364ad38c5b4279b669",
+      "color_space": "sRGB",
+      "recommended_addressing": "repeat",
+      "repeat_edges_verified": true,
+      "normal_companion": null,
+      "role": "medium-rock-color-overlay",
+      "base_material": "area-walls/rifts-rock-wall.png",
+      "area_id": "rifts",
+      "binding": {
+        "file": "game/look.js",
+        "target": "new chained color shader hook on Rifts rough-rock solid and ghost materials",
+        "verified_hook": false
+      },
+      "blend": "straight-alpha RGB composition inside opaque wall material",
+      "suggested_passes": [
+        {
+          "tiling": 1,
+          "offset": [
+            0.17,
+            0.43
+          ],
+          "strength": 0.7
+        },
+        {
+          "tiling": 2,
+          "offset": [
+            0.61,
+            0.09
+          ],
+          "strength": 0.5
+        },
+        {
+          "tiling": 3,
+          "offset": [
+            0.29,
+            0.73
+          ],
+          "strength": 0.35
+        }
+      ],
+      "alpha": "real straight RGBA",
+      "alpha_bounds_pixels": [
+        0,
+        1,
+        512,
+        511
+      ],
+      "alpha_bounds_uv": [
+        0.0,
+        0.001953,
+        1.0,
+        0.998047
+      ]
+    }
+  ]
+}

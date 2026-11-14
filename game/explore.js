@@ -462,6 +462,7 @@ function xBuildScene(){
   if(typeof gfxVig==='function') gfxVig(); xDustFill(G.dust,G.low?35:70);
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
+  if(typeof envArtBuildStart==='function'){ envArtWant(A.id); envArtBuildStart(); }   // (the painted art: envart.js)
   EX.natural=EX.layout===2&&XNATURAL.has(A.id);   // a cave area: rough rock walls and floors, no masonry dressing (nature.js)
   // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
   const variant=new Int8Array(XN*XN).fill(-1);
@@ -504,7 +505,8 @@ function xBuildScene(){
         col[v]*=l*(1+.2*b); col[v+1]*=l; col[v+2]*=l*(1-.2*b);
         if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.24*k; col[v+1]*=1-.25*k; col[v+2]*=1-.26*k; } } }   // (damp corners: darker gray)
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
-    const fm=xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    const fm=xLitTag(xPhong({map:cv.atlas?envArtTex(cv.img):xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    if(cv.atlas){ fm.userData.xatlas={m:cv.rect, n:cv.n&&cv.n.rect}; if(cv.n) fm.userData.nmap=envArtTex(cv.n.img); }   // (a tile of a painted sheet, with its normal map: envart.js)
     if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
@@ -533,7 +535,11 @@ function xBuildScene(){
     for(let r=1;r<=3;r++){ const next=[]; for(const f of ring) for(const n of [f-1,f+1,f-XN,f+XN]){ if(n<0||n>=XN*XN||face[n]>=0||EX.t[n]!==T_ROCK||xMarkCell(n)) continue;
         const x=xcx(n), y=xcy(n); if(x<1||y<1||x>=XN-1||y>=XN-1) continue; face[n]=face[f]; next.push(n); walls[6].push(n); deep[n]=face[f]; } ring=next; } }
   EX.deepFace=deep;
-  const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
+  // the area's painted walls (envart.js), or the code-painted ones while they load
+  const wallTex=(typeof envArtAreaWalls==='function'&&envArtAreaWalls(A))||[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
+  const wTex=t=>t.atlas?envArtTex(t.img):xTex(t,true), ov=typeof envArtOverlay==='function'&&envArtOverlay(A), cellN=A.id==='deeps'&&typeof envArtFx==='function'&&envArtFx('cell-noise');
+  const wAt=(m,t,rock)=>{ if(t.atlas){ m.userData.xatlas={m:t.rect}; if(rock&&ov) m.userData.xatlas.o=ov.rect;
+      if(rock&&cellN) m.userData.xatlas.cell=xCellTex(cellN); } return m; };   // (the rough rock's layers: look.js xAtlasShader)
   EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN); EX.wCut=new Float32Array(XN*XN).fill(1); EX.wList=[];
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
   // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
@@ -546,7 +552,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[xWT(v)],true), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]); mat.userData.xdet=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); mat.userData.xdet=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -557,7 +563,7 @@ function xBuildScene(){
       cells.forEach(c=>EX.wIdx.set(c,[wm,-1])); wm.count=0; wm.userData.n=0; wm.visible=false; }
     // the same walls again, see-through: a wall between the camera and you moves here and fades (xWallCut)
     wgeo.setAttribute('aAlpha',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(1),1));
-    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[xWT(v)]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
+    const gm=new THREE.InstancedMesh(wgeo,wAt(xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
     for(let k=0;k<n;k++){ gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
     gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // spacious floors: which cells are solid wall (for the shader's inner faces, xInner) and a black base under every
@@ -653,6 +659,7 @@ function xBuildScene(){
   xShadeLook();
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
   xBakeAO(); xLitAll(); xWarmShaders();
+  if(typeof envArtMissing==='function') EX.artMissing=envArtMissing();   // (painted art still loading: built again once it has, envart.js)
 }
 /* Every shader the floor needs is built now, while the floor loads, not the first time a door, chest
    or room comes into sight (a phone can freeze for a moment on each new one). Hidden things are
@@ -690,7 +697,8 @@ function xChestMesh(c){ if(typeof xChestBuild==='function') return xChestBuild(c
   if(c.open) lid.rotation.x=-1.9;
   g.userData.lid=lid; g.visible=false; c.mesh=g; return g; }
 // a soft round glow, tinted by the sprite's color and added to what is behind it
-function xGlowTex(){ const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
+function xGlowTex(){ const P=typeof envArtFx==='function'&&envArtFx('glow'); if(P) return xTexSmooth(P,false);   // (the painted glow: envart.js)
+  const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
   g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(.35,'rgba(255,255,255,.35)'); g.addColorStop(1,'rgba(255,255,255,0)'); x.fillStyle=g; x.fillRect(0,0,64,64);
   const t=new THREE.CanvasTexture(c); return t; }
 /* Two or three light sources grow from the walls of every room, in the area's look (world.js):
@@ -800,7 +808,8 @@ function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256;
   x.font='700 24px "Jersey 15",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=5; x.strokeStyle='rgba(0,0,0,.85)'; x.strokeText(txt,128,21); x.fillStyle=col; x.fillText(txt,128,21);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(3.2,.5,1); s.center.set(.5,0); s.renderOrder=5; s.userData.text=txt; return s; }
 // a ring of runes for the floor round the stairs down
-function xRuneTex(){ if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), m=N/2;
+function xRuneTex(){ const P=typeof envArtFx==='function'&&envArtFx('rune'); if(P&&!xRuneTex.painted){ xRuneTex.painted=1; return xRuneTex.t=xTexSmooth(P,false); }   // (the painted ring: envart.js)
+  if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), m=N/2;
   x.strokeStyle='#fff'; x.lineWidth=3; x.beginPath(); x.arc(m,m,58,0,7); x.stroke(); x.lineWidth=2; x.beginPath(); x.arc(m,m,44,0,7); x.stroke();
   x.fillStyle='#fff'; for(let k=0;k<12;k++){ const a=k/12*Math.PI*2; x.save(); x.translate(m+Math.cos(a)*51,m+Math.sin(a)*51); x.rotate(a+Math.PI/2); x.fillRect(-3,-4,2,8); x.fillRect(-3,-4,6,2); if(k%2) x.fillRect(1,0,2,4); else x.fillRect(-1,2,4,2); x.restore(); }
   return xRuneTex.t=xTex(c); }
@@ -1146,7 +1155,14 @@ function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas')
     for(let i=0;i<W;i+=4) for(let j=0;j<H;j+=4){ const edge=i<8||j<8||i>=W-8||j>=H-8, d=(Math.abs(((i/4)%8)-4)+Math.abs(((j/4)%8)-4));
       x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
   return c; }
-function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(S,R),true), quads=[];
+function xTrimBand(cv){ const x=cv.getContext('2d'), d=x.getImageData(0,0,cv.width,cv.height).data; let y0=-1, y1=-1;
+  for(let y=0;y<cv.height;y++){ let a=0; for(let i=0;i<cv.width;i++) a=Math.max(a,d[(y*cv.width+i)*4+3]); if(a>24){ if(y0<0) y0=y; y1=y; } }
+  if(y0<0) return null; const c=document.createElement('canvas'); c.width=cv.width; c.height=y1-y0+1; c.getContext('2d').drawImage(cv,0,y0,cv.width,c.height,0,0,cv.width,c.height); return c; }
+// the Frozen Deeps' cell noise for their rock walls: one texture, kept for good (a uniform, not a material's map, so a
+// scene's teardown would not free one made per material)
+function xCellTex(cv){ if(xCellTex.t&&xCellTex.cv===cv) return xCellTex.t; xCellTex.cv=cv; return xCellTex.t=xTexSmooth(cv,true); }
+function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), PT=A&&A.id==='ruins'&&typeof envArtFx==='function'&&envArtFx('trim-ruins'), band=PT&&(xFloorTrim.band||(xFloorTrim.band=xTrimBand(PT))),
+    trim=band?xTexSmooth(band,true):xTex(xTrimTex(S,R),true), quads=[];   // (the Gilded Ruins' painted trim, its occupied band: envart.js)
   const mat=xLitTag(new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),1); if(typeof xNmapLuma==='function') xNmapLuma(mat,.45);   // (its own brightness is its relief: nature.js)
   const ins=.32, bw=.62, pos=[], uv=[], seg=(x0,z0,x1,z1,horiz)=>{ const L=horiz?x1-x0:z1-z0, u=L/(bw*3.2);
     if(horiz){ pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, 0,0, u,0, 0,1, u,0, u,1); }
@@ -1301,7 +1317,8 @@ function xRockFoot(grp,S,seed){ if(!XROCKTEX) return; const R=caveRng(seed+1213)
       for(let k=0;k<n;k++){ const o=(R()-.5)*XCS*.9, sz=.45+R()*.8, out=R()*.35; G.M.add(XG.rock,tone(.5+R()*.25),cx+tx*o+dx*(out-.15),sz*.28,cz+tz*o+dy*(out-.15),R()*3,R()*3,R()*3,sz*1.2,sz*.8,sz); }
       if(R()<.18){ const o=(R()-.5)*XCS*.5, h=1.4+R()*1.1; G.M.add(XG.rock,tone(.55+R()*.2),cx+tx*o-dx*.1,h*.42,cz+tz*o-dy*.1,dy?(R()-.5)*.3+dy*.25:0,R()*3,dx?-dx*.25:0,1.1+R()*.5,h,.8+R()*.4); }   // a slab leaning in
       break; } }
-  const mat=xLitTag(xDitherMat(xPhong({map:xTex(XROCKTEX,true),vertexColors:true}),2),2);   // (no normal map: the merged rocks have no uv for one)
+  const mat=xLitTag(xDitherMat(xPhong({map:XROCKTEX.atlas?envArtTex(XROCKTEX.img):xTex(XROCKTEX,true),vertexColors:true}),2),2);   // (no normal map: the merged rocks have no uv for one)
+  if(XROCKTEX.atlas) mat.userData.xatlas={m:XROCKTEX.rect};   // (the painted rock: a tile of its sheet, look.js xAtlasShader)
   for(const G of groups.values()){ if(!G.M.size()) continue; const g=new THREE.Group(); g.add(G.M.build(mat)); g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...G.cells],ph:0}); } }
 /* Rough rock walls as one mass (uvj 2). Each block's own uv is ignored: the rock texture is laid in world space on
    all three axes (triplanar, so it runs straight across from one block to the next and round diagonal walls), and
@@ -2212,7 +2229,7 @@ function xHud(){ if(!EX) return; const m=EX.maxHp=xmaxHp();   // kept for the pe
   if(typeof xHudExtra==='function') xHudExtra(); }
 
 /* ---------------- entering and returning ---------------- */
-function enterExplore(depth){
+function enterExplore(depth){ if(typeof envArtWantDepth==='function') envArtWantDepth(depth);
   // the long how-to line under the buttons is replaced by first-time tips (xTip)
   document.querySelector('#xBottom .keys').classList.add('learned');
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return tip(v.errors[0]+'. Fix the deck in the deck builder first.',4000);

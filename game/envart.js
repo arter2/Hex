@@ -41,9 +41,10 @@ function tile(sheet,key,nkey){ if(!known()) return null;
 const BOMB={'theme-flooded':8, 'theme-bathhouse':2, 'abyss/floor-1':4};
 const NO_PAINT=new Set(['theme-library']);   // the library's parquet, exactly as painted
 function dress(t,id){ if(!t) return t; const k=t.key.startsWith('theme-')?t.key:id+'/'+t.key; if(!NO_PAINT.has(k)) t.paint=1; if(BOMB[k]){ t.bomb=BOMB[k]; t.bombTurn=0; } return t; }
-// the area's floors (passage, room A, room B) and walls (rock, block, rubble), or null
-function envArtAreaFloors(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>dress(tile(s,'floor-'+k),id)); return out.every(Boolean)?out:null; }
-function envArtAreaWalls(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>tile(s,'wall-'+k)); return out.every(Boolean)?out:null; }
+// the area's floors (passage, room A, room B) and walls (rock, block, rubble), each with its normal map (made from the
+// painting by the build: the pack has none for them), or null
+function envArtAreaFloors(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>dress(tile(s,'floor-'+k,'floor-'+k),id)); return out.every(Boolean)?out:null; }
+function envArtAreaWalls(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>tile(s,'wall-'+k,'wall-'+k)); return out.every(Boolean)?out:null; }
 // a room theme's floor and its normal map, in the area it is in (every area's sheet holds the themes it can roll)
 function envArtTheme(th,A){ const id=A&&A.id; return dress(tile('area-'+id,'theme-'+th,'theme-'+th),id); }
 // the Ember Rifts' medium-rock overlay, laid over their rock walls (explore.js xRockShader)

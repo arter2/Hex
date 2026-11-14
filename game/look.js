@@ -46,7 +46,7 @@ function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
 function xFreeMat(m){ if(!m) return; if(m.userData&&m.userData.nmap){ m.userData.nmap.dispose(); m.userData.nmap=null; } if(m.userData&&m.userData.rmap){ m.userData.rmap.dispose(); m.userData.rmap=null; } XLITMATS.delete(m); m.dispose(); }
 function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial||m.isMeshStandardMaterial) xLit(m); }); }
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
-  if(XLIT.texel&&m.map&&m.map.image&&!m.userData.xatlas){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }   // (not on an atlas: its pixels are the sheet's)
+  if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.userData.xatlas?(typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256:m.map.image.width||64).toFixed(1); }   // (an atlas tile: its own texels, its uv runs a tile per unit)
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
   const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
   if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
@@ -584,7 +584,7 @@ function xDbgCopy(taId,btnId){ taId=typeof taId==='string'?taId:'dbgCopyText'; b
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>done(true),()=>done(ok)); else done(ok); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
-const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
+const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['Textures','PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
 function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
   const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
   for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }

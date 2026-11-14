@@ -10,7 +10,8 @@ look.js xAtlasShader):
   atlas/area-<id>.webp     colour, one per area: its passage and two room floors, its rock, block and rubble walls,
                            the floors of the room themes that area can roll (dungeongen.js XTHEME_AREA) and, for the
                            Ember Rifts, the medium-rock overlay
-  atlas/area-<id>-n.webp   the matching theme floors' normal maps (linear data, lossless)
+  atlas/area-<id>-n.webp   normal maps (linear data, lossless): the theme floors' painted ones, and for the area's
+                           floors and walls (painted without one) one made from the painting's brightness
   atlas/effects.webp       the small effect textures (glows, rune ring, ripples, pool surfaces, trim, detail normal,
                            cell noise, the trees' leaf clumps); the game cuts these back out, as they scroll, tile or draw as sprites
 
@@ -99,6 +100,21 @@ def tile(path, mode="RGBA"):
     return im.resize((TILE, TILE), Image.LANCZOS)
 
 
+def height_normal(im, k=7.0):
+    """A normal map for a painting that came without one (the area floors and walls): its brightness taken as height
+    (the dark joints and cracks low, the lit faces high), softened a little, wrapped at the edges like the tile. Same
+    convention as the game's own (look.js xNormalMap): x from the slope across, y from the slope down the image."""
+    a = np.asarray(im.convert("RGB")).astype(np.float32) / 255
+    h = a @ np.array([.3, .59, .11], np.float32)
+    for _ in range(2):
+        h = (h + np.roll(h, 1, 0) + np.roll(h, -1, 0) + np.roll(h, 1, 1) + np.roll(h, -1, 1)) / 5
+    nx = -(np.roll(h, -1, 1) - np.roll(h, 1, 1)) * k
+    ny = (np.roll(h, -1, 0) - np.roll(h, 1, 0)) * k
+    l = np.sqrt(nx * nx + ny * ny + 1)
+    n = np.stack([nx / l, ny / l, 1 / l], -1) * .5 + .5
+    return Image.fromarray((n * 255).round().astype(np.uint8), "RGB")
+
+
 def place(sheet, im, slot, cols, wrap=True):
     """Paste im into cell `slot`, with its gutter; returns the tile's interior rectangle in pixels."""
     a = np.asarray(im)
@@ -133,8 +149,9 @@ def main():
         if a == "rifts":
             colour.append(("rock-overlay", tile("shared-overlays/rifts-medium-rock-overlay.png"), True))
         sheets[f"area-{a}"] = build(f"area-{a}.webp", colour, "RGBA", False)
-        normals = [("theme-" + th, tile(f"theme-normals/{THEME_FILE[th]}-normal.png", "RGB"), True) for th in THEME_AREA[a]]
-        sheets[f"area-{a}-n"] = build(f"area-{a}-n.webp", normals, "RGB", True, cols=3)
+        normals = [(k, height_normal(im), True) for k, im, _ in items[:6]]   # the floors and walls: from their painting
+        normals += [("theme-" + th, tile(f"theme-normals/{THEME_FILE[th]}-normal.png", "RGB"), True) for th in THEME_AREA[a]]
+        sheets[f"area-{a}-n"] = build(f"area-{a}-n.webp", normals, "RGB", False, cols=3)
     fx = [(k, tile(p), m == "wrap") for k, (p, m) in EFFECTS.items()]
     fx.append(("leaf-clumps", leaf_clumps(), False))
     sheets["effects"] = build("effects.webp", fx, "RGBA", True)

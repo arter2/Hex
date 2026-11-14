@@ -538,7 +538,7 @@ function xBuildScene(){
   // the area's painted walls (envart.js), or the code-painted ones while they load
   const wallTex=(typeof envArtAreaWalls==='function'&&envArtAreaWalls(A))||[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
   const wTex=t=>t.atlas?envArtTex(t.img):xTex(t,true), ov=typeof envArtOverlay==='function'&&envArtOverlay(A), cellN=A.id==='deeps'&&typeof envArtFx==='function'&&envArtFx('cell-noise');
-  const wAt=(m,t,rock)=>{ if(t.atlas){ m.userData.xatlas={m:t.rect}; if(rock&&ov) m.userData.xatlas.o=ov.rect;
+  const wAt=(m,t,rock)=>{ if(t.atlas){ m.userData.xatlas={m:t.rect, n:t.n&&t.n.rect}; if(t.n) m.userData.nmap=envArtTex(t.n.img); if(rock&&ov) m.userData.xatlas.o=ov.rect;
       if(rock&&cellN) m.userData.xatlas.cell=xCellTex(cellN); } return m; };   // (the rough rock's layers: look.js xAtlasShader)
   EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN); EX.wCut=new Float32Array(XN*XN).fill(1); EX.wList=[];
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);

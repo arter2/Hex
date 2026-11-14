@@ -29,7 +29,8 @@ const DBG={pause:false};
 // saves new ones afterwards.
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
-const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSharp:{value:XLIT.texSharp}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
+const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSharp:{value:XLIT.texSharp}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()},
+  uXMoldTex:{value:null}, uXMoldMap:{value:null}, uXMoldR:{value:[0,1,2,3,4,5].map(()=>new THREE.Vector4())}, uXMoldK:{value:new THREE.Vector4(1,1,1,1)} };   // (the mold layer: mold.js)
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
@@ -204,7 +205,8 @@ function xBakeAO(){ if(!EX||!EX.wIdx) return; const R=XAO_R, W=XN*R, d=EX.aoData
       const x0=(cx+dx)*XCS, z0=(cy+dy)*XCS, ex=Math.max(x0-wx,0,wx-x0-XCS), ez=Math.max(z0-wz,0,wz-z0-XCS), w=Math.max(0,1-Math.hypot(ex,ez)/rad); o+=w*w; }
     d[(ty*W+tx)*4]=Math.round(255*(1-Math.exp(-o*.9))); }
   if(!EX.aoTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.aoTex=t; }
-  EX.aoTex.needsUpdate=true; XLITU.uXAOTex.value=EX.aoTex; }
+  EX.aoTex.needsUpdate=true; XLITU.uXAOTex.value=EX.aoTex;
+  if(typeof xMoldBake==='function') xMoldBake(); }   // (the mold map reads the AO map's measure: mold.js)
 /* Screen-space AO: the frame is drawn into a target with its depth; a half-size pass rebuilds each
    pixel's position, takes twelve samples in a disc around it (the disc as wide on screen as
    ssaoRad tiles at that depth) and counts how much of what is near rises in front of its surface;

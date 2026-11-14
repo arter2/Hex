@@ -21,7 +21,7 @@ function load(sheet){ if(!known()||STATE.has(sheet)) return; const S=ENVART_MAP.
   im.onerror=()=>{ STATE.set(sheet,'fail'); envArtArrived(); };
   im.src=BASE+S.file; }
 // start loading what an area needs (its two sheets and the effects)
-function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); }
+function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold'); }
 function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
 const ready=s=>STATE.get(s)==='ok';
 // a tile's rectangle in the sheet as the GPU sees it (three turns images over: v runs up from the bottom)
@@ -59,14 +59,18 @@ function envArtFx(name){ if(CUT.has(name)) return CUT.get(name); if(!known()||!r
 const TEX=new Map();
 function envArtTex(img){ let t=TEX.get(img); if(!t){ t=new THREE.Texture(img); t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; t.magFilter=THREE.LinearFilter;
     t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; TEX.set(img,t); } return t; }
+// the mold sheet (mold.js): its texture and a tile's rectangle as the GPU sees it, or null while it loads (the build
+// notes it is waiting, and is made again once it is in)
+function envArtMold(){ if(!known()||!ENVART_MAP.sheets.mold) return null; if(!ready('mold')){ if(STATE.get('mold')!=='fail'){ load('mold'); missing=true; } return null; }
+  return {tex:envArtTex(IMG.get('mold')), rect:key=>glRect('mold',key)}; }
 // the scene builder asks before and after: did it have to stand a code-painted texture in for one still loading?
 function envArtBuildStart(){ missing=false; }
 const envArtMissing=()=>missing;
 // a sheet came in (or failed): if the scene in front of you stood code-painted textures in for it, build it again
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
-  if(['area-'+id,'area-'+id+'-n','effects'].some(s=>STATE.get(s)==='loading')) return;
+  if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

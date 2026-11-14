@@ -42,6 +42,52 @@ const CHECKS = {
       return true;
     });
   },
+
+  // Task 2: the mold map. Depth 1 (any world seed: the floor is the depth's) rolls a library, overgrown, fungus and
+  // flooded room.
+  async moldPickStable(pg, T) {
+    const snap = () => pg.evaluate(() => {
+      if (typeof xMoldPick !== 'function') return { err: 'no xMoldPick' };
+      if (!EX.moldData) return { err: 'no EX.moldData' };
+      return { picks: JSON.stringify(EX.rooms.map(r => xMoldPick(r.id, xMoldSeed(), XMOLD.area.hollows.length))), sum: Array.from(EX.moldData).reduce((a, v, i) => (a + v * (i % 7 + 1)) % 1000000007, 0) };
+    });
+    // the same floor's scene built again (as when the art arrives, or you come back to it): a newly made floor places
+    // its chests and traps afresh, and the pools keep clear of them, so only a rebuild is the same floor
+    await T.build(1, 11); const a = await snap(); if (a.err) return a.err;
+    await pg.evaluate(() => { xBuildScene(); xUpdateVis(); }); const b = await snap(); if (b.err) return b.err;
+    if (a.picks !== b.picks) return 'room picks differ between builds';
+    if (a.sum !== b.sum) return 'mold map differs between builds';
+    return true;
+  },
+  async moldLibraryClean(pg, T) {
+    await T.build(1, 1);
+    return pg.evaluate(() => {
+      if (!EX.moldData) return 'no EX.moldData';
+      const lib = EX.rooms.filter(r => r.theme === 'library'); if (!lib.length) return 'no library on this floor';
+      const R = XAO_R, W = XN * R; let n = 0;
+      for (let ty = 0; ty < W; ty++) for (let tx = 0; tx < W; tx++) { const c = xi(Math.floor(tx / R), Math.floor(ty / R)), r = EX.room[c];
+        if (r < 0 || EX.rooms[r].theme !== 'library') continue;
+        // (texels on the room's own edge blend with the cell beside it; only the room's inside must be clean)
+        if ([c - 1, c + 1, c - XN, c + XN].some(q => EX.room[q] !== r && EX.t[q] === T_FLOOR)) continue;
+        const o = (ty * W + tx) * 4; if (EX.moldData[o] || EX.moldData[o + 1] || EX.moldData[o + 2]) n++; }
+      return n ? n + ' library texels carry mold' : true;
+    });
+  },
+  async moldDampAtWalls(pg, T) {
+    await T.build(1, 11);
+    return pg.evaluate(() => {
+      if (!EX.moldData) return 'no EX.moldData';
+      const R = XAO_R, W = XN * R, wall = c => EX.wIdx.has(c), near = [], far = [], wet = xMoldWaterField();
+      for (let c = 0; c < XN * XN; c++) { if (EX.t[c] !== T_FLOOR || EX.room[c] < 0) continue;
+        const x = xcx(c), y = xcy(c); let d = 9;
+        for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) if (wall(xi(x + dx, y + dy))) d = Math.min(d, Math.max(Math.abs(dx), Math.abs(dy)));
+        const a = EX.moldData[((y * R + R / 2) * W + x * R + R / 2) * 4 + 3];
+        if (d === 1) near.push(a); else if (d >= 3 && !wet[c]) far.push(a); }
+      const avg = L => L.reduce((s, v) => s + v, 0) / Math.max(1, L.length), an = avg(near), af = avg(far);
+      if (!near.length || !far.length) return 'no cells to compare';
+      return an > 2 * af + 1 ? true : 'damp by walls ' + an.toFixed(1) + ' vs open floor ' + af.toFixed(1);
+    });
+  },
 };
 
 (async () => {

@@ -17,6 +17,16 @@ const BUILD = async ([depth, seed, wait]) => {
   return true;
 };
 
+// in the page: draw a frame, and say whether any program drawn with the mold layer was compiled (and none failed)
+// (with probe: a floor tile and an instanced wall block carrying the mold tag are drawn too, for the checks that run
+// before the dungeon's own materials carry it)
+const MOLD_PROGRAMS = (probe) => {
+  if (probe) { const mk = (k, inst) => { const m = xPhong({ color: 0x888888, vertexColors: false }); m.userData.xmold = k; xLit(m);
+      const g = new THREE.BoxGeometry(2, 2, 2), o = inst ? new THREE.InstancedMesh(g, m, 1) : new THREE.Mesh(g, m);
+      if (inst) o.setMatrixAt(0, new THREE.Matrix4().makeTranslation(EX.px, 1, EX.pz)); else o.position.set(EX.px, .01, EX.pz); X3.scene.add(o); };
+    mk(1, false); mk(2, true); }
+  X3.renderer.render(X3.scene, X3.cam); return (X3.renderer.info.programs || []).filter(p => /xmold/.test(p.cacheKey)).length; };
+
 const CHECKS = {
   // Task 1: the sheets the build makes
   async atlasSheets(pg) {
@@ -88,7 +98,45 @@ const CHECKS = {
       return an > 2 * af + 1 ? true : 'damp by walls ' + an.toFixed(1) + ' vs open floor ' + af.toFixed(1);
     });
   },
+
+  // Task 3: the shader layer
+  async moldShaderCompiles(pg, T) {
+    await T.build(1, 11);
+    await pg.waitForTimeout(1500);
+    const n = await pg.evaluate(MOLD_PROGRAMS, true);
+    if (!n) return 'no program compiled with the mold layer';
+    if (T.errs.some(e => /shader|program/i.test(e))) return 'shader error: ' + T.errs.find(e => /shader|program/i.test(e));
+    return true;
+  },
+  async moldMissingSheet(pg, T) {
+    await T.build(1, 11);
+    await pg.waitForTimeout(1500);
+    const n = await pg.evaluate(MOLD_PROGRAMS, true);
+    return n ? n + ' mold programs with no mold sheet' : true;
+  },
+  async moldBoundaryBlend(pg, T) {
+    await T.build(1, 11);
+    return pg.evaluate(() => {
+      const R = XAO_R, W = XN * R, n = xMoldSlots(EX.area).length, seed = xMoldSeed();
+      for (const [door] of EX.doors) { const x = xcx(door), y = xcy(door);
+        for (const [dx, dy] of [[1, 0], [0, 1]]) { const a = xi(x - dx, y - dy), b = xi(x + dx, y + dy), ra = EX.room[a], rb = EX.room[b];
+          // (a doorway joins a room to a corridor or to another room; a corridor grows the area's first colour)
+          if (EX.t[a] !== T_FLOOR || EX.t[b] !== T_FLOOR || ra === rb) continue;
+          const slot = r => r < 0 ? 0 : xMoldPick(r, seed, n).a, pa = slot(ra), pb = slot(rb);
+          if (pa === pb || xMoldLevel(EX.rooms[ra]) === 0 || xMoldLevel(EX.rooms[rb]) === 0) continue;
+          // along the line from the middle of one room's cell, through the door, to the other's
+          let mixed = 0;
+          for (let s = 0; s <= 2 * R; s++) { const tx = (x - dx) * R + R / 2 + dx * s, ty = (y - dy) * R + R / 2 + dy * s, o = (ty * W + tx) * 4;
+            const ch = [0, 1, 2].filter(k => EX.moldData[o + k] > 0);
+            if (ch.length > 2) return 'three colours at once by door ' + door;
+            if (EX.moldData[o + pa] > 0 && EX.moldData[o + pb] > 0) mixed++; }
+          return mixed >= 6 ? true : 'the colours change over ' + mixed + ' texels at door ' + door; } }
+      return 'no door between two rooms of different colours';
+    });
+  },
 };
+// checks that need the page set up before it loads
+const ROUTES = { moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };
 
 (async () => {
   const names = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CHECKS);
@@ -104,11 +152,13 @@ const CHECKS = {
     pg.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 300)); });
     let r;
     try {
+      if (ROUTES[name]) await ROUTES[name](pg);
       await pg.goto(host.url);
       await pg.waitForFunction(() => typeof enterExplore === 'function' && typeof openCamp === 'function');
       r = await fn(pg, { build: (d, s, wait = true) => pg.evaluate(BUILD, [d, s, wait]), errs });
     } catch (e) { r = String(e.message || e).slice(0, 300); }
-    if (r === true && errs.length) r = 'page errors: ' + errs.slice(0, 2).join(' | ');
+    const real = errs.filter(e => !(ROUTES[name] && /Failed to load resource/.test(e)));   // (a check's own blocked file)
+    if (r === true && real.length) r = 'page errors: ' + real.slice(0, 2).join(' | ');
     console.log(r === true ? 'PASS ' + name : 'FAIL ' + name + ': ' + r);
     if (r !== true) bad++;
     await pg.close();

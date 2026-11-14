@@ -20,7 +20,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ texSharp:1, amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
+const XLIT_DEF={ texSharp:1, mold:true, moldAmt:1, moldSpread:1, moldScale:1, amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
   dPitch:48, dDist:9.4, dView:12, dViewP:7, dStepOn:true, dStepLow:.17, dShOn:false, dShW:1.25, dShUp:1.3, dShDown:2.6, dShBack:1.1, dShEdge:.18, dShInner:true, dShDoor:true, dShDoorH:3.6, dShade:true, dShadeA:.55, dShadeTint:.35, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
@@ -30,7 +30,7 @@ const DBG={pause:false};
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSharp:{value:XLIT.texSharp}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()},
-  uXMoldTex:{value:null}, uXMoldMap:{value:null}, uXMoldR:{value:[0,1,2,3,4,5].map(()=>new THREE.Vector4())}, uXMoldK:{value:new THREE.Vector4(1,1,1,1)} };   // (the mold layer: mold.js)
+  uXMoldTex:{value:null}, uXMoldMap:{value:null}, uXMoldR:{value:[0,1,2,3,4,5].map(()=>new THREE.Vector4())}, uXMoldK:{value:new THREE.Vector4(XLIT.moldAmt,XLIT.moldSpread,XLIT.moldScale,2)} };   // (the mold layer: mold.js)
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
@@ -57,9 +57,10 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
   const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
-  const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;   // (an atlas tile: envart.js; set on the material when it is made)
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):''); };
+  const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;
+  const mold=()=>m.userData.xmold&&XLIT.mold&&typeof xMoldReady==='function'&&xMoldReady()?m.userData.xmold:0;   // (the mold layer: mold.js; 1 a floor, 2 a wall)   // (an atlas tile: envart.js; set on the material when it is made)
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); };
+  m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):'')+(mold()?'|xmold'+mold():''); };
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
@@ -161,12 +162,10 @@ void main() {`);
    the first mip levels from reading a neighbour. On a rough rock wall (explore.js xRockShader) its three lookups are
    wrapped the same way, the turned copy loses its turn (the painted light would turn with it), the Ember Rifts lay
    their medium rocks over it (uXAtO, three passes, as the art's notes give) and the Frozen Deeps their cell noise. */
-function xAtlasShader(sh,A){ let f=sh.fragmentShader; const V=r=>({value:new THREE.Vector4(r[0],r[1],r[2],r[3])}), TEXN=((typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256).toFixed(1);   // (a tile's texels a side)
-  sh.uniforms.uXSharp=XLITU.uXSharp; sh.uniforms.uXAtM=V(A.m); sh.uniforms.uXAtN=V(A.n||[0,0,1,1]); sh.uniforms.uXAtO=V(A.o||[0,0,1,1]); if(A.cell) sh.uniforms.uXCell={value:A.cell};
-  f=`uniform vec4 uXAtM; uniform vec4 uXAtN; uniform vec4 uXAtO;${A.cell?' uniform sampler2D uXCell;':''}
-uniform float uXSharp;
-// a lookup inside tile R, wrapped; uXSharp (the debug menu's Texture sharpen) sets the filtering: 0 smooth, 1 the
-// nearest texel (its centre), above 1 the nearest pushed away from the smooth one (sharper still)
+// a lookup inside tile R of an atlas sheet, wrapped; uXSharp (the debug menu's Texture sharpen) sets the filtering: 0
+// smooth, 1 the nearest texel (its centre), above 1 the nearest pushed away from the smooth one (sharper still). Shared
+// by the painted floors and walls (xAtlasShader) and the mold layer (mold.js), declared once in a program.
+function xAtGlsl(TEXN){ return `uniform float uXSharp;
 vec4 xAtS(sampler2D t,vec2 b,vec2 gx,vec2 gy){
 #if __VERSION__>=300
   return textureGrad(t,b,gx,gy);
@@ -177,7 +176,11 @@ vec4 xAtS(sampler2D t,vec2 b,vec2 gx,vec2 gy){
 vec4 xAtG(sampler2D t,vec4 R,vec2 uv,vec2 gx,vec2 gy){ vec2 l=fract(uv); gx*=R.zw; gy*=R.zw; vec4 s=xAtS(t,R.xy+l*R.zw,gx,gy);
   if(uXSharp>.001){ vec4 q=xAtS(t,R.xy+(floor(l*${TEXN})+.5)/${TEXN}*R.zw,gx,gy); s=uXSharp<=1.?mix(s,q,uXSharp):clamp(q+(q-s)*(uXSharp-1.),0.,1.); }
   return s; }
-#define xAtMap(u) xAtG(map,uXAtM,(u),dFdx(u),dFdy(u))
+`; }
+function xAtlasShader(sh,A){ let f=sh.fragmentShader; const V=r=>({value:new THREE.Vector4(r[0],r[1],r[2],r[3])}), TEXN=((typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256).toFixed(1);   // (a tile's texels a side)
+  sh.uniforms.uXSharp=XLITU.uXSharp; sh.uniforms.uXAtM=V(A.m); sh.uniforms.uXAtN=V(A.n||[0,0,1,1]); sh.uniforms.uXAtO=V(A.o||[0,0,1,1]); if(A.cell) sh.uniforms.uXCell={value:A.cell};
+  f=`uniform vec4 uXAtM; uniform vec4 uXAtN; uniform vec4 uXAtO;${A.cell?' uniform sampler2D uXCell;':''}
+`+xAtGlsl(TEXN)+`#define xAtMap(u) xAtG(map,uXAtM,(u),dFdx(u),dFdy(u))
 `+f;
   // (the standard lookups sit in chunks not yet expanded: expand them so the lookups can be swapped)
   if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment);
@@ -452,7 +455,7 @@ function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
   const c=xPaint(N,(i,j)=>{ const b=out[j*N+i]; if(Hm[j*N+i]>-1.5) Hm[j*N+i]+=f(i,j)*1.4; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); });
   c.h=Hm; c.hk=.6; return c; }
 const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox), what a change does]
-  ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgTexSharp',()=>XLIT,'texSharp','hexmancers-xl-texSharp',2,'sharp'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
+  ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgTexSharp',()=>XLIT,'texSharp','hexmancers-xl-texSharp',2,'sharp'], ['dbgMold',()=>XLIT,'mold','hexmancers-xl-mold',null,'pbr'], ['dbgMoldAmt',()=>XLIT,'moldAmt','hexmancers-xl-moldAmt',2,'mold'], ['dbgMoldSpread',()=>XLIT,'moldSpread','hexmancers-xl-moldSpread',2,'mold'], ['dbgMoldScale',()=>XLIT,'moldScale','hexmancers-xl-moldScale',2,'mold'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
   ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStrF',()=>XLIT,'nstrF','hexmancers-xl-nstrF',2,'lit'], ['dbgNStrW',()=>XLIT,'nstrW','hexmancers-xl-nstrW',2,'lit'],
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
@@ -467,7 +470,8 @@ let xBakeT=0;
 function xDbgApply(what){ if(typeof mlabCurve==='function') mlabCurve();   // (the joystick curve, in the debug menu and the Movement lab)
   if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
-  else if(what==='sharp') XLITU.uXSharp.value=XLIT.texSharp;   // (the painted textures' filtering: look.js xAtlasShader, live)
+  else if(what==='sharp') XLITU.uXSharp.value=XLIT.texSharp;
+  else if(what==='mold'){ const K=XLITU.uXMoldK.value; K.x=XLIT.moldAmt; K.y=XLIT.moldSpread; K.z=XLIT.moldScale; }   // (the mold layer's amount, damp spread and scale, live: mold.js)   // (the painted textures' filtering: look.js xAtlasShader, live)
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
   else if(what==='xpaint'||what==='xwalls'||what==='xshade'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
@@ -586,7 +590,7 @@ function xDbgCopy(taId,btnId){ taId=typeof taId==='string'?taId:'dbgCopyText'; b
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>done(true),()=>done(ok)); else done(ok); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
-const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['Textures','PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
+const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['Textures','Mold','PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
 function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
   const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
   for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }

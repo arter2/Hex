@@ -43,7 +43,7 @@ function xMoldSlots(A){ const ids=(A&&XMOLD.area[A.id])||XMOLD.area.hollows; ret
 function xMoldRect(key){ const S=typeof ENVART_MAP!=='undefined'&&ENVART_MAP.sheets&&ENVART_MAP.sheets.mold, t=S&&S.tiles[key]; if(!t) return [0,0,0,0];
   const [W,H]=S.size; return [t[0]/W,1-(t[1]+t[3])/H,t[2]/W,t[3]/H]; }
 // the uniforms the shader reads: the mold map, its slots' rectangles (dense then sparse, three slots)
-function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null;
+function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null; U.uXMoldK.value.w=XWALL/2;
   for(let k=0;k<3;k++){ const s=slots[k]; U.uXMoldR.value[k*2].fromArray(s?xMoldRect(s.dense):[0,0,0,0]); U.uXMoldR.value[k*2+1].fromArray(s?xMoldRect(s.sparse):[0,0,0,0]); } }
 // the damp of being shut in by walls at texel (tx,ty) of the map: strongest at a wall's foot, gone a cell out, adding up
 // in a corner (the walls of the 3 x 3 cells round about)
@@ -80,3 +80,48 @@ function xMoldArena(A){ if(!A) return; const N=16, d=A.moldData||(A.moldData=new
   for(let i=0;i<N*N;i++){ d[i*4]=v; d[i*4+1]=d[i*4+2]=d[i*4+3]=0; }
   if(!A.moldTex){ const t=new THREE.DataTexture(d,N,N,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; A.moldTex=t; }
   A.moldTex.needsUpdate=true; A.moldSlots=xMoldSlots(A.area); }
+/* The mold layer in a material's shader (look.js xLit, for a material with userData.xmold: 1 a floor, 2 a wall; only
+   while the debug menu's Mold is on and the mold sheet is in). After the base texture and before the vertex colours,
+   so the lighting, AO, fog and cut-aways fall on the mold as on the stone under it. The dense tile grows where it is
+   damp, a sprinkle of the sparse one (at another scale and offset, so their colonies never line up) everywhere it
+   grows; on a wall the dense mold fades out over the lower third, the sparse stops short of the block's top, and the
+   tops stay clean. With the normal maps on, the mold softens the stone's relief under it and stands a little proud. */
+function xMoldReady(){ return typeof envArtMold==='function'&&!!envArtMold(); }
+function xMoldShader(sh,kind){ const M=envArtMold(); if(!M) return; const U=XLITU; U.uXMoldTex.value=M.tex;
+  for(const k of ['uXMoldTex','uXMoldMap','uXMoldR','uXMoldK','uXSharp']) sh.uniforms[k]=U[k];
+  const TEXN=((typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256).toFixed(1), wall=kind===2;
+  // the block's top, for a wall (an instanced block: its matrix; uXMoldK.w is half a block's height)
+  sh.vertexShader='uniform vec4 uXMoldK;\nvarying float vXMTop;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+  #ifdef USE_INSTANCING
+  vXMTop=(modelMatrix*instanceMatrix*vec4(0.0,uXMoldK.w,0.0,1.0)).y;
+  #else
+  vXMTop=1e4;
+  #endif`);
+  let f=sh.fragmentShader;
+  const decl=`uniform sampler2D uXMoldTex; uniform sampler2D uXMoldMap; uniform vec4 uXMoldR[6]; uniform vec4 uXMoldK; varying float vXMTop;
+float xMoldCov=0.0;
+`+(f.includes('vec4 xAtG(')?'':xAtGlsl(TEXN));
+  f=f.replace('void main() {',decl+'void main() {');
+  const body=`
+  { vec3 xwn=normalize(cross(dFdx(vXLW),dFdy(vXLW)));
+    vec2 mu=${wall?'vec2(abs(xwn.x)>abs(xwn.z)?vXLW.z:vXLW.x,vXLW.y)':'vXLW.xz'}/(2.6*uXMoldK.z), mu2=mu*.73+vec2(.37,.61);
+    vec2 gx=dFdx(mu), gy=dFdy(mu), gx2=gx*.73, gy2=gy*.73;
+    vec4 mm=texture2D(uXMoldMap,(vXLW.xz-uXAOOrg)/uXAOScale);
+    float damp=smoothstep(.15,.15+.55/max(uXMoldK.y,.05),mm.a);
+    float hf=1.0, sk=1.0, jt=0.0;
+${wall?`    hf=1.0-smoothstep(0.0,uXMoldK.w*.72,vXLW.y); sk=1.0-smoothstep(vXMTop-.6,vXMTop-.25,vXLW.y); if(abs(xwn.y)>.7){ hf=0.0; sk=0.0; }
+`:`    jt=.25*damp*step(dot(diffuseColor.rgb,vec3(.3,.59,.11)),.32);   // (the floor's dark joints hold more)
+`}    vec3 base=diffuseColor.rgb, acc=base;
+    for(int i=0;i<3;i++){ float w=(i==0?mm.r:i==1?mm.g:mm.b)*2.0; if(w<.004) continue;
+      vec4 dn=xAtG(uXMoldTex,uXMoldR[i*2],mu,gx,gy), sp=xAtG(uXMoldTex,uXMoldR[i*2+1],mu2,gx2,gy2);
+      float cd=dn.a*(damp*w*hf+jt), cs=sp.a*.55*w*(1.0-damp*.6)*sk, c=clamp((cd+cs)*uXMoldK.x,0.0,1.0);
+      vec3 col=(dn.rgb*cd+sp.rgb*cs)/max(cd+cs,.0001);
+      acc=mix(acc,max(col,base*.6),c); xMoldCov=max(xMoldCov,c); }
+    diffuseColor.rgb=acc; }
+`;
+  f=f.replace('#include <color_fragment>',body+'#include <color_fragment>');
+  // the relief: the stone's own bumps softened under the mold, and the mold's edges standing a little proud
+  if(f.includes('mapN.xy *= normalScale;')) f=f.replace('mapN.xy *= normalScale;','mapN.xy *= normalScale;\n  mapN.xy *= 1.0-.6*xMoldCov;');
+  if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>','#include <normal_fragment_maps>\n#ifdef USE_NORMALMAP\n  { vec3 dpx=dFdx(-vViewPosition), dpy=dFdy(-vViewPosition); float h=xMoldCov*.9*normalScale.x, hx=dFdx(h), hy=dFdy(h);\n    vec3 r1=cross(dpy,normal), r2=cross(normal,dpx); float dt=dot(dpx,r1); vec3 g=sign(dt)*(hx*r1+hy*r2); normal=normalize(abs(dt)*normal-g); }\n#endif');
+  else f=f.replace('#include <emissivemap_fragment>','#ifdef USE_NORMALMAP\n  { vec3 dpx=dFdx(-vViewPosition), dpy=dFdy(-vViewPosition); float h=xMoldCov*.9*normalScale.x, hx=dFdx(h), hy=dFdy(h);\n    vec3 r1=cross(dpy,normal), r2=cross(normal,dpx); float dt=dot(dpx,r1); vec3 g=sign(dt)*(hx*r1+hy*r2); normal=normalize(abs(dt)*normal-g); }\n#endif\n#include <emissivemap_fragment>');
+  sh.fragmentShader=f; }

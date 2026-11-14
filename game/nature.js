@@ -147,9 +147,9 @@ function xNatShow(c,cut){ const L=EX.nat&&EX.nat.get(c); if(!L) return; const m=
       case 'tite': y=top-.04; show=top>p.h+1.6; break;                                    // only from a wall standing tall enough
       case 'vine': case 'vineB': case 'vineF': case 'vineW': y=top; h=Math.min(p.h,top-.3); show=h>.4; rz=p.tilt; break;
       case 'grass': break;
-      default: if(kind[0]==='b'&&kind[1]==='r'){ y=p.y; show=top>p.y+.3; }   // (a bracket patch: on the face, gone with a low wall's top)
-
-      case 'shard': y=Math.min(p.y,top-.5); show=top>1.1; rx=p.dz*p.tilt; rz=-p.dx*p.tilt; break; }
+      case 'shard': y=Math.min(p.y,top-.5); show=top>1.1; rx=p.dz*p.tilt; rz=-p.dx*p.tilt; break;
+      default: if(kind[0]==='b'&&kind[1]==='r'){ y=p.y; show=top>p.y+.3; } break;   // (a bracket patch: on the face, gone with a low wall's top; an upright mushroom stands on the floor)
+    }
     if(!show){ im.setMatrixAt(k,zero); continue; }
     if(kind==='rock'||kind==='block'||kind==='tuft'){ rx=p.tilt||0; }
     e.set(rx,p.rot,rz); q.setFromEuler(e); v.set(p.x,y,p.z);

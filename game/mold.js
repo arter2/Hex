@@ -15,9 +15,10 @@ const XMOLD={
   // how much grows, by the room's theme (times the room level); rooms with no theme take room, corridors passage, and
   // the battle floor arena
   theme:{ flooded:1.6, bathhouse:1.6, crypt:1.4, fungus:1.5, overgrown:1.4, collapsed:1.3, forge:.4, armory:.5, barracks:.5, library:0 },
-  room:.7, passage:.45, arena:.35,
+  room:.55, passage:.35, arena:.3,
   big:40,        // a room of this many cells or more grows a second colour, at half weight
-  water:2.5,     // how far (cells) the damp reaches from water
+  water:1.6,     // how far (cells) the damp reaches from water
+  wall:.6,       // how far (cells) the damp reaches out from a wall
 };
 // the floor's own seed for its choices (a floor is the same every time you come to it)
 function xMoldSeed(){ return (EX.depth*31+(((typeof save!=='undefined'&&save&&save.worldSeed)|0)*7))|0; }
@@ -52,7 +53,7 @@ function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null;
 function xMoldWallDamp(tx,ty){ const R=XAO_R, wx=(tx+.5)/R, wz=(ty+.5)/R, cx=Math.floor(wx), cy=Math.floor(wz); let o=0;
   if(cx<0||cy<0||cx>=XN||cy>=XN||EX.t[xi(cx,cy)]!==T_FLOOR) return 1;
   for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const X=cx+dx, Y=cy+dy; if(X<0||Y<0||X>=XN||Y>=XN||EX.t[xi(X,Y)]===T_FLOOR) continue;
-    const ex=Math.max(X-wx,0,wx-X-1), ez=Math.max(Y-wz,0,wz-Y-1), w=Math.max(0,1-Math.hypot(ex,ez)); o+=w*w; }
+    const ex=Math.max(X-wx,0,wx-X-1), ez=Math.max(Y-wz,0,wz-Y-1), w=Math.max(0,1-Math.hypot(ex,ez)/XMOLD.wall); o+=w*w; }
   return 1-Math.exp(-o*1.6); }
 // how damp each cell is (its middle): by walls or by water; for what grows by the damp (mushrooms.js)
 function xMoldDampCells(){ const N=XN*XN, D=xMoldWaterField(), R=XAO_R;

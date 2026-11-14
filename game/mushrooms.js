@@ -11,8 +11,8 @@ const XMUSH={
   upright:['lantern-bells','amber-buttons','ivory-bonnets','violet-waves','moss-puffballs','coral-fingers','copper-cups','black-trumpets','pinlight-colony','split-sage-caps','glow'],
   bracket:['shelf-fans','oyster-rosette'], noBracket:['rifts'], half:{rifts:['amber-buttons']},
   perRoom:[2,3],
-  // card heights (world units: you stand about 1.7 tall): [lowest, highest, how often]
-  size:{ tiny:[.12,.2,.25], small:[.25,.42,.6], knee:[.55,.75,.15] },
+  // card heights (world units: the hero's sprite stands about 2.2 tall; most clusters a quarter of that): [lowest, highest, how often]
+  size:{ tiny:[.2,.32,.25], small:[.42,.66,.6], knee:[.85,1.15,.15] },
   cap:12, capFungus:30, capPassage:10,   // clusters and bracket patches a room grows at most (corridors: the whole floor's)
   damp:['flooded','bathhouse','crypt','fungus','overgrown','collapsed'],   // themes that grow more
 };

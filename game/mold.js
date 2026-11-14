@@ -54,6 +54,9 @@ function xMoldWallDamp(tx,ty){ const R=XAO_R, wx=(tx+.5)/R, wz=(ty+.5)/R, cx=Mat
   for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const X=cx+dx, Y=cy+dy; if(X<0||Y<0||X>=XN||Y>=XN||EX.t[xi(X,Y)]===T_FLOOR) continue;
     const ex=Math.max(X-wx,0,wx-X-1), ez=Math.max(Y-wz,0,wz-Y-1), w=Math.max(0,1-Math.hypot(ex,ez)); o+=w*w; }
   return 1-Math.exp(-o*1.6); }
+// how damp each cell is (its middle): by walls or by water; for what grows by the damp (mushrooms.js)
+function xMoldDampCells(){ const N=XN*XN, D=xMoldWaterField(), R=XAO_R;
+  for(let c=0;c<N;c++){ if(EX.t[c]!==T_FLOOR) continue; const v=xMoldWallDamp(xcx(c)*R+R/2,xcy(c)*R+R/2); if(v>D[c]) D[c]=v; } return D; }
 /* The mold map for the floor in front of you (called by look.js xBakeAO, after the AO map, on its grid). */
 function xMoldBake(){ if(!EX||!EX.rooms||!EX.aoData) return; const R=XAO_R, W=XN*R, N=XN*XN, d=EX.moldData||(EX.moldData=new Uint8Array(W*W*4));
   const slots=xMoldSlots(EX.area), n=slots.length, seed=xMoldSeed(), water=xMoldWaterField();

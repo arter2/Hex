@@ -90,30 +90,42 @@ function xNature(grp,A,S,seed){ EX.nat=new Map(); EX.natM=[]; EX.natPools=[];
       if(!low&&K.tite&&R()<K.tite.n){ const n=K.tite.small?1:2+(R()*3|0); for(let k=0;k<n;k++){ const [x,z]=at((R()-.5)*1.6,.1+R()*.12), L=(K.tite.small?.35:.5)+R()*(K.tite.small?.3:1.1); add('tite',c,{x,z,h:L,r:.1+R()*.1+L*.05,rot:R()*6.3,col:pick(K.tite.col)}); } }
       for(const vk of ['vine','root']) if(!low&&K[vk]&&R()<K[vk].n){ const n=3+(R()*4|0), card=vk==='vine'&&vCard?((xcx(c)*7+xcy(c)*3)%3===2?'vineF':K.vine.card):null;   // (every third wall, by where it stands)
         for(let k=0;k<n;k++){ const [x,z]=at((R()-.5)*1.6,.04), L=.8+R()*(vk==='root'?2.6:2), s={x,z,h:L,r:vk==='root'?.1:.06,rot:Math.atan2(dx,dz),tilt:(R()-.5)*.25,col:pick(K[vk].col),root:vk==='root'};
-          if(card){ if(k%2===0) add(card,c,Object.assign(s,{col:'#ffffff',flip:(c+k)%2})); } else add('vine',c,s); } }
+          if(card){ if(k%2===0){ const off=cave?.45:.3; add(card,c,Object.assign(s,{x:s.x+dx*off,z:s.z+dz*off,col:'#ffffff',flip:(c+k)%2})); } } else add('vine',c,s); } }   // (a flat card stands clear of the face: the walls bulge out up to .4, and would cover it)
       if(!low&&K.shard&&R()<K.shard.n){ const n=2+(R()*3|0), [bx,bz]=at((R()-.5)*1.2,0), y0=.9+R()*2.2; for(let k=0;k<n;k++){ const s=.2+R()*.3; add('shard',c,{x:bx+tx*(R()-.5)*.5,z:bz+tz*(R()-.5)*.5,y:y0+(R()-.5)*.5,h:s*2.2,r:s,rot:R()*6.3,tilt:.5+R()*.6,dx,dz,col:pick(K.shard.col)}); } } } }
+  // the mushrooms (mushrooms.js): at wall feet and on wall faces, on a stream of their own
+  if(typeof xMushrooms==='function'){ const faces=[], water=typeof xMoldWaterField==='function'?xMoldWaterField():new Float32Array(XN*XN);
+    // (not the walls busy with torches and banners: some of those are only set after this, so the set changes between builds)
+    for(const c of EX.wIdx.keys()){ if(xWedge(c)||nearDoorW(c)) continue;
+      for(const [dx,dz] of [[0,1],[0,-1],[1,0],[-1,0]]){ const fl=c+dx+dz*XN; if(!floorOK(fl)||EX.room[fl]===pz&&pz>=0) continue;
+        const fx=xw(c)+dx*XCS/2, fz=xz(c)+dz*XCS/2, tx=-dz, tz=dx; faces.push({c,fl,dx,dz,at:(a,o)=>[fx+tx*a+dx*o, fz+tz*a+dz*o]}); } }
+    faces.sort((a,b)=>a.c-b.c||a.fl-b.fl);   // (the wall index is filled in a different order each build)
+    xMushrooms(add,A,seed,faces,water); }
   // a cave room's inside corners: a cluster of stalagmites (they belong to one of the corner's two walls)
   if(cave&&K.mite) for(let c=0;c<XN*XN;c++){ if(!floorOK(c)||EX.room[c]<0||EX.room[c]===pz||EX.taken.has(c)) continue;
     for(const [dx,dy] of [[1,1],[1,-1],[-1,1],[-1,-1]]){ const a=c+dx, b=c+dy*XN; if(!EX.wIdx.has(a)||!EX.wIdx.has(b)||xLow(a)||busy.has(a)||nearDoorW(a)||R()>K.corner) continue;
       const cx=xw(c)+dx*.62, cz=xz(c)+dy*.62; for(let k=0;k<2+(R()*3|0);k++){ const h=.5+R()*1.4*(k?.6:1); add('mite',a,{x:cx+(R()-.5)*.6,z:cz+(R()-.5)*.6,h,r:.18+R()*.14+h*.08,rot:R()*6.3,col:pick(K.mite.col)}); } } }
   // the meshes
-  const mats={}, mat=kind=>mats[kind]||(mats[kind]=xNatMat(kind,K)), byKind={};
+  const mats={}, mat=kind=>mats[kind]||(mats[kind]=/^(mush|bracket):/.test(kind)?xMushMat(kind.slice(kind.indexOf(':')+1)):xNatMat(kind,K)), byKind={};
   for(const p of pieces) (byKind[p[0]]=byKind[p[0]]||[]).push(p);
   const zero=new THREE.Matrix4().makeScale(0,0,0), geoOf={mite:G.mite,tite:G.tite,rock:G.rock,block:G.block,clump:G.clump,clumpTop:G.clump,vine:G.vine,shard:G.shard,tuft:G.tuft,vineB:G.vineB,vineF:G.vineF,vineW:G.vineW,grass:G.grass};
   // in chunks of the floor (12 x 12 cells, as the walls are), each with its own bounds, so only the chunks on screen are
   // drawn: the view takes in about 12 cells. (They were quarters of the floor, and three.js turns culling off for
   // instanced meshes unless told otherwise, so every piece of growth on the floor was drawn every frame.)
   const CH=12, chunked=[]; for(const kind in byKind){ const by=new Map(); for(const p of byKind[kind]){ const key=((xcy(p[1])/CH)|0)*16+((xcx(p[1])/CH)|0); if(!by.has(key)) by.set(key,[]); by.get(key).push(p); } for(const [key,L] of by) chunked.push([kind,key,L]); }
-  for(const [kind,key,L] of chunked){ const im=new THREE.InstancedMesh(geoOf[kind],mat(kind),L.length); im.frustumCulled=true; im.userData.kind=kind; im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  for(const [kind,key,L] of chunked){ if(!geoOf[kind]&&/^(mush|bracket):/.test(kind)) geoOf[kind]=xMushGeo(kind.slice(kind.indexOf(':')+1),kind[0]==='b');
+    const im=new THREE.InstancedMesh(geoOf[kind],mat(kind),L.length); im.frustumCulled=true; im.userData.kind=kind; im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
     // (growth is drawn darker than its paint: the lamp is strong)
-    const col=new THREE.Color(), dim=kind==='shard'?1:kind==='clump'||kind==='clumpTop'?.62:.85; L.forEach(([,wall,spec],k)=>{ im.setMatrixAt(k,zero); col.set(spec.col).multiplyScalar(dim*(.85+R()*.3)); im.setColorAt(k,col); if(!EX.nat.has(wall)) EX.nat.set(wall,[]); EX.nat.get(wall).push([EX.natM.length,k,kind,spec]); });
+    const col=new THREE.Color(), dim=kind==='shard'?1:kind==='clump'||kind==='clumpTop'?.62:XNAT_CARD[kind]||/^(mush|bracket):/.test(kind)?1.15:.85;   // (painted cards keep their painting's light)
+    L.forEach(([,wall,spec],k)=>{ im.setMatrixAt(k,zero); col.set(spec.col).multiplyScalar(dim*(.85+R()*.3)); im.setColorAt(k,col); if(!EX.nat.has(wall)) EX.nat.set(wall,[]); EX.nat.get(wall).push([EX.natM.length,k,kind,spec]); });
     const g=new THREE.BufferGeometry(); for(const at in geoOf[kind].attributes) g.setAttribute(at,geoOf[kind].attributes[at]); if(geoOf[kind].index) g.index=geoOf[kind].index; im.geometry=g;   // (its own bounds, the shape shared)
     g.boundingSphere=new THREE.Sphere(new THREE.Vector3(((key%16)+.5)*CH*XCS,XWALL/2,(((key/16)|0)+.5)*CH*XCS),CH*XCS*.75+XWALL); grp.add(im); EX.natM.push(im); }
   xNatPatches(grp,K,caveRng(seed+1998),floorOK,pz,A); xNatPools(grp,K,caveRng(seed+1999),floorOK,pz); }   // (the blotches and pools on streams of their own: the dressing before them draws by what the camera sees, low near walls drawing less, so on the shared stream they moved every time the scene was built)
 
 function xNatMat(kind,K){ const ice=(kind==='mite'&&K.mite&&K.mite.ice)||(kind==='tite'&&K.tite&&K.tite.ice);
   let m;
-  if(XNAT_CARD[kind]){ m=xPhong({color:0xffffff, map:xLeafTex(envArtFx(XNAT_CARD[kind])), alphaTest:.5, side:THREE.DoubleSide, shininess:2, specular:0x0a0a0a}); m.userData.noProj=1; }   // (a painted card: dungeongen.js xLeafTex)
+  if(XNAT_CARD[kind]){ m=xPhong({color:0xffffff, map:xLeafTex(envArtFx(XNAT_CARD[kind]),true), alphaTest:.5, side:THREE.DoubleSide, shininess:2, specular:0x0a0a0a}); m.userData.noProj=1;
+    // turned to the area's own green in the shader (dungeongen.js xHueMat): the creepers' and the grass's colours as they were
+    const hue=kind==='grass'?(K.tuft&&K.tuft.col[0]!=='#ffffff'?K.tuft.col[0]:K.patch&&K.patch.col):K.vine&&K.vine.col[0]; if(hue) xHueMat(m,hue); }   // (a painted card: dungeongen.js xLeafTex)
   else if(kind==='shard') m=new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:.9});
   else if(ice) m=xPhong({color:0xffffff, shininess:90, specular:0x9fd8ff, transparent:true, opacity:.82, pbr:'ice'});
   else if(kind==='clump'||kind==='clumpTop') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a});
@@ -135,12 +147,15 @@ function xNatShow(c,cut){ const L=EX.nat&&EX.nat.get(c); if(!L) return; const m=
       case 'tite': y=top-.04; show=top>p.h+1.6; break;                                    // only from a wall standing tall enough
       case 'vine': case 'vineB': case 'vineF': case 'vineW': y=top; h=Math.min(p.h,top-.3); show=h>.4; rz=p.tilt; break;
       case 'grass': break;
+      default: if(kind[0]==='b'&&kind[1]==='r'){ y=p.y; show=top>p.y+.3; }   // (a bracket patch: on the face, gone with a low wall's top)
+
       case 'shard': y=Math.min(p.y,top-.5); show=top>1.1; rx=p.dz*p.tilt; rz=-p.dx*p.tilt; break; }
     if(!show){ im.setMatrixAt(k,zero); continue; }
     if(kind==='rock'||kind==='block'||kind==='tuft'){ rx=p.tilt||0; }
     e.set(rx,p.rot,rz); q.setFromEuler(e); v.set(p.x,y,p.z);
-    if(kind==='vineB'||kind==='vineF'||kind==='vineW'){ const k=h*1.15; s.set(p.flip?-k:k,k,1); }   // (the strand fills 224 of the card's 256 rows)
+    if(kind==='vineB'||kind==='vineF'||kind==='vineW'){ const k=Math.min(p.h*1.7,(top-.3)/.95); s.set(p.flip?-k:k,k,1); }   // (a strand is thin, and fills 224 of its card's 256 rows: the card is drawn big, never longer than the wall)
     else if(kind==='grass'){ const k=p.h*1.9; s.set(p.flip?-k:k,k,k); }
+    else if(/^(mush|bracket):/.test(kind)){ const k=p.h/.875; s.set(p.flip?-k:k,k,k); }   // (a cluster fills 224 of its card's 256 rows)
     else if(kind==='vine') s.set(p.root?p.r*1.2:p.r*1.6,h,p.r*1.6); else if(kind==='clump'||kind==='clumpTop') s.set(r*1.4,h*1.6,r*1.4); else s.set(r*2,h,r*2);
     m.compose(v,q,s); im.setMatrixAt(k,m); }
   for(const im of touched) im.instanceMatrix.needsUpdate=true; }

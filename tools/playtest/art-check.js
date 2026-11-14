@@ -186,9 +186,64 @@ const CHECKS = {
     const r = await pg.evaluate(() => { const K = {}; for (const im of EX.natM || []) K[im.userData.kind] = 1; return K; });
     return r.vine && r.tuft && !r.vineW && !r.grass ? true : 'with no effects sheet: ' + JSON.stringify(r);
   },
+
+  // Task 7: the mushrooms
+  async mushPlacement(pg, T) {
+    const snap = () => pg.evaluate(() => { const out = [];
+      for (const [c, L] of EX.nat) for (const [, , kind, p] of L) if (/^mush:/.test(kind)) out.push([kind, +p.x.toFixed(3), +p.z.toFixed(3)]);
+      return out.sort().map(String); });
+    await T.build(1, 11); const a = await snap();
+    if (a.length < 4) return 'only ' + a.length + ' mushroom clusters in the Hollows';
+    const bad = await pg.evaluate(() => { const allow = new Set(XMUSH.area.hollows);
+      for (const [c, L] of EX.nat) for (const [, , kind, p] of L) { if (!/^mush:/.test(kind)) continue; const name = kind.slice(5), cell = xcellOpen(p.x, p.z), r = cell >= 0 ? EX.room[cell] : -1;
+        if (!allow.has(name) && !(r >= 0 && EX.rooms[r].theme === 'fungus')) return 'a ' + name + ' outside a Fungus room';
+        // by a wall's foot (where the rocks lie) or a log
+        let d = 9; const cx = Math.floor(p.x / XCS), cz = Math.floor(p.z / XCS);
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { const q = xi(cx + dx, cz + dy); if (!EX.wIdx.has(q)) continue;
+          const x0 = (cx + dx) * XCS, z0 = (cz + dy) * XCS; d = Math.min(d, Math.hypot(Math.max(x0 - p.x, 0, p.x - x0 - XCS), Math.max(z0 - p.z, 0, p.z - z0 - XCS))); }
+        if (d > .9) return 'a ' + name + ' ' + d.toFixed(2) + ' from any wall'; }
+      return ''; });
+    if (bad) return bad;
+    await pg.evaluate(() => { xBuildScene(); xUpdateVis(); }); const b = await snap();
+    if (a.join('|') !== b.join('|')) return 'mushrooms moved on rebuild';
+    await T.build(14, 11);
+    const rif = await pg.evaluate(() => { for (const [, L] of EX.nat) for (const [, , kind] of L) if (/^bracket:/.test(kind)) return kind; return ''; });
+    return rif ? 'the Rifts grow ' + rif : true;
+  },
+  async mushGlow(pg, T) {
+    await T.build(1, 11);
+    return pg.evaluate(() => { const M = {}; for (const im of EX.natM) M[im.userData.kind] = im.material;
+      const want = new THREE.Color('#8FE4DA').multiplyScalar(.35);
+      const lb = M['mush:lantern-bells'] || Object.entries(M).find(([k]) => /^mush:/.test(k) && ENVART_MAP.mush['cave20-mushroom-' + k.slice(5)] && ENVART_MAP.mush['cave20-mushroom-' + k.slice(5)].glow);
+      const m = Array.isArray(lb) ? lb[1] : lb, kind = Array.isArray(lb) ? lb[0] : 'mush:lantern-bells';
+      if (!m) return 'no glowing mushroom on this floor';
+      if (!m.emissiveMap) return kind + ' has no glow map';
+      if (kind === 'mush:lantern-bells' && Math.abs(m.emissive.r - want.r) + Math.abs(m.emissive.g - want.g) + Math.abs(m.emissive.b - want.b) > .01) return 'lantern glow colour ' + m.emissive.getHexString();
+      for (const [k, mm] of Object.entries(M)) if (/^mush:/.test(k)) { const meta = ENVART_MAP.mush[k === 'mush:glow' ? 'mushrooms-glow' : 'cave20-mushroom-' + k.slice(5)]; if (meta && !meta.glow && mm.emissiveMap) return k + ' glows but should not'; }
+      return true; });
+  },
+  async mushFallback(pg, T) {
+    await T.build(1, 11, false);
+    const r = await pg.evaluate(() => { for (const im of EX.natM || []) if (/^(mush|bracket):/.test(im.userData.kind)) return im.userData.kind; return ''; });
+    return r ? 'with no effects sheet: ' + r : true;
+  },
+
+  // Task 8: fallen logs with brackets, and brackets on wood
+  async logsAndWood(pg, T) {
+    for (const d of [1, 2, 3, 4]) {
+      await T.build(d, 11);
+      const r = await pg.evaluate(() => { const logs = []; for (const mk of EX.marks || []) if (mk.kind === 'clutter') for (const it of mk.items) if (it.k === 'log') logs.push(it);
+        const imgs = ['cave20-mushroom-shelf-fans', 'cave20-mushroom-oyster-rosette'].map(n => envArtFx(n)); let br = 0;
+        X3.group.traverse(o => { if (o.material && o.material.map && imgs.includes(o.material.map.image)) br++; });
+        return { logs: logs.length, br }; });
+      if (r.logs && r.br) return true;
+    }
+    return 'no floor at depths 1-4 has a log with bracket mushrooms';
+  },
 };
 // checks that need the page set up before it loads
-const ROUTES = { foliageFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
+const ROUTES = { mushFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
+  foliageFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
   moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };
 
 (async () => {

@@ -54,6 +54,11 @@ const CUT=new Map();
 function envArtFx(name){ if(CUT.has(name)) return CUT.get(name); if(!known()||!ready('effects')){ if(known()&&STATE.get('effects')!=='fail'){ load('effects'); missing=true; } return null; }
   const S=ENVART_MAP.sheets.effects, t=S.tiles[name]; if(!t) return null; const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3];
   c.getContext('2d').drawImage(IMG.get('effects'),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); CUT.set(name,c); return c; }
+// an effect's glow mask (the effects-e sheet, in the same place as the effect), cut out the same way, or null
+const CUTE=new Map();
+function envArtFxGlow(name){ if(CUTE.has(name)) return CUTE.get(name); if(!known()||!ENVART_MAP.sheets['effects-e']||!ready('effects-e')){ if(known()&&STATE.get('effects-e')!=='fail'){ load('effects-e'); missing=true; } return null; }
+  const S=ENVART_MAP.sheets['effects-e'], t=S.tiles[name]; if(!t) return null; const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3];
+  c.getContext('2d').drawImage(IMG.get('effects-e'),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); CUTE.set(name,c); return c; }
 // one GPU texture per sheet, shared by every material that samples it: clamped (the shader wraps inside the tile),
 // smooth, mipmapped. The scene's teardown disposes it with the materials; using it again uploads it again.
 const TEX=new Map();
@@ -70,7 +75,7 @@ const envArtMissing=()=>missing;
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
   if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

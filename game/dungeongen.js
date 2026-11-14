@@ -354,10 +354,23 @@ function xLeafMerger(name){ name=name||'leaf-clumps'; const P=[], N=[], U=[], C=
   return { P, N, U, C, name, size:()=>P.length,
     build(){ const img=envArtFx(name), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
       g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
-      const m=xDitherMat(xPhong({map:xLeafTex(img),vertexColors:true,alphaTest:.5,side:THREE.DoubleSide})); m.userData.noProj=1; return new THREE.Mesh(g,m); } }; }
+      const m=xDitherMat(xPhong({map:xLeafTex(img,name!=='leaf-clumps'),vertexColors:true,alphaTest:.5,side:THREE.DoubleSide})); m.userData.noProj=1; if(this.hue) xHueMat(m,this.hue); return new THREE.Mesh(g,m); } }; }
+/* A painted card turned toward a hue (the area's leaf colour) in the shader, keeping the painting's own light and shade:
+   its hue moves most of the way to the target's; its saturation and value stay the painting's. Wraps whatever the material already
+   patches. */
+function xHueMat(m,col,k){ const prev=m.onBeforeCompile, key=m.customProgramCacheKey, U={value:new THREE.Color(col)}, K={value:k==null?.65:k};
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); sh.uniforms.uXHue=U; sh.uniforms.uXHueK=K;
+    sh.fragmentShader='uniform vec3 uXHue; uniform float uXHueK;\n'
+      +'vec3 xRgb2Hsv(vec3 c){ vec4 K=vec4(0.,-1./3.,2./3.,-1.); vec4 p=mix(vec4(c.bg,K.wz),vec4(c.gb,K.xy),step(c.b,c.g)); vec4 q=mix(vec4(p.xyw,c.r),vec4(c.r,p.yzx),step(p.x,c.r)); float d=q.x-min(q.w,q.y); return vec3(abs(q.z+(q.w-q.y)/(6.*d+1e-10)),d/(q.x+1e-10),q.x); }\n'
+      +'vec3 xHsv2Rgb(vec3 c){ vec4 K=vec4(1.,2./3.,1./3.,3.); vec3 p=abs(fract(c.xxx+K.xyz)*6.-K.www); return c.z*mix(K.xxx,clamp(p-K.xxx,0.,1.),c.y); }\n'
+      +sh.fragmentShader.replace('#include <color_fragment>','{ vec3 h=xRgb2Hsv(diffuseColor.rgb), t=xRgb2Hsv(uXHue); float dh=t.x-h.x; dh-=floor(dh+.5); h.x=fract(h.x+dh*uXHueK); diffuseColor.rgb=xHsv2Rgb(h); }\n#include <color_fragment>'); };
+  m.customProgramCacheKey=()=>(key?key.call(m):'')+'|hue'; m.needsUpdate=true; return m; }
 // one texture per card tile (a cut-out canvas from envart.js), shared by every material that shows it
 const XLEAF_TEX=new Map();
-function xLeafTex(img){ let t=XLEAF_TEX.get(img); if(!t){ t=new THREE.CanvasTexture(img); t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; XLEAF_TEX.set(img,t); } return t; }
+// (thin: a card that is mostly clear, a vine's strand or a grass blade, has no mip levels: smaller ones average its
+// stems' alpha below the cut-out, and at a few metres the whole strand would vanish; it is filtered from the full tile)
+function xLeafTex(img,thin){ let t=XLEAF_TEX.get(img); if(!t){ t=new THREE.CanvasTexture(img); t.anisotropy=4;
+    if(thin){ t.generateMipmaps=false; t.minFilter=THREE.LinearFilter; } else t.minFilter=THREE.LinearMipmapLinearFilter; XLEAF_TEX.set(img,t); } return t; }
 /* Painted grass (envart.js 'grass-dungeon'): two crossed upright cards on one root at (x,z), size tall (the tile's plant
    is 224 of its 256 rows), turned and mirrored at random, their normals leaning up so the tuft is lit as one low mass.
    False if the art is not in yet. */
@@ -371,7 +384,8 @@ function xGrassCards(F,x,z,size,R){ if(!F||!envArtFx(F.name)) return false;
   return true; }
 // a ball of leaf cards round (cx,cy,cz), radius r, tinted by col; false if the leaf art is not in yet
 function xLeafCards(F,col,cx,cy,cz,r,R){ if(!F||!envArtFx('leaf-clumps')) return false;
-  const tint=new THREE.Color(col), mx=Math.max(tint.r,tint.g,tint.b,.01); tint.setRGB(tint.r/mx,tint.g/mx,tint.b/mx).lerp(new THREE.Color(1,1,1),.45);   // the area's leaf hue, kept bright
+  if(!F.hue) F.hue=new THREE.Color(col);   // (the room's cards turn to the area's leaf hue in the shader: xHueMat)
+  const tint=new THREE.Color(1,1,1);
   const n=XLEAF.cards, v=new THREE.Vector3(), d=new THREE.Vector3(), t1=new THREE.Vector3(), t2=new THREE.Vector3(), up=new THREE.Vector3(0,1,0), p=new THREE.Vector3(), q=new THREE.Vector3();
   for(let k=0;k<n;k++){
     // spread round the ball (a golden spiral, shaken), a little flattened, more on top than below
@@ -422,8 +436,8 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
       else if(it.k==='planter'){ const lx=it.v?XCS-.25:len-.25, lz=it.v?len-.25:XCS-.25;
         B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.06,z,lx-.3,.06,lz-.3);
         if(D) B(TRIM,x,.55,z,lx+.02,.06,lz+.02,0,L);
-        const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2;
-          M.add(R()<.35?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,R()*3,0,s2*1.3,s2*1.4,s2*1.3); }
+        const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2, cone=R()<.35, ry=R()*3;
+          if(!xLeafCards(F,LEAF,px,1.1+s2*.6,pz,s2*.6,R)) M.add(cone?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,ry,0,s2*1.3,s2*1.4,s2*1.3); }   // (a shrub of painted leaf cards; a plain ball or cone until the art is in)
         for(let k=0;k<4;k++) if(R()<.7) M.add(XG.ball,new THREE.Color(FLOW[R()*FLOW.length|0]),x+(R()-.5)*(lx-.6),1.5+R()*.4,z+(R()-.5)*(lz-.6),0,0,0,.18,.18,.18); }
       else if(it.k==='boulder'||it.k==='bigrock'){ const big=it.k==='bigrock', n=big?5:3;
         for(let k=0;k<n;k++){ const sz=(big?2.2:1.5)*(k?.55+R()*.35:1); rock(k%2?ROCK2:ROCK,x+(R()-.5)*(big?2:.8),sz*.32,z+(R()-.5)*(big?2:.8),sz); }

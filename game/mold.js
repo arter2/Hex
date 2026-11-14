@@ -104,17 +104,17 @@ float xMoldCov=0.0;
   f=f.replace('void main() {',decl+'void main() {');
   const body=`
   { vec3 xwn=normalize(cross(dFdx(vXLW),dFdy(vXLW)));
-    vec2 mu=${wall?'vec2(abs(xwn.x)>abs(xwn.z)?vXLW.z:vXLW.x,vXLW.y)':'vXLW.xz'}/(2.6*uXMoldK.z), mu2=mu*.73+vec2(.37,.61);
-    vec2 gx=dFdx(mu), gy=dFdy(mu), gx2=gx*.73, gy2=gy*.73;
+    vec2 mu=${wall?'vec2(abs(xwn.x)>abs(xwn.z)?vXLW.z:vXLW.x,vXLW.y)':'vXLW.xz'}/(5.0*uXMoldK.z), mu2=mu*1.37+vec2(.37,.61);
+    vec2 gx=dFdx(mu), gy=dFdy(mu), gx2=gx*1.37, gy2=gy*1.37;
     vec4 mm=texture2D(uXMoldMap,(vXLW.xz-uXAOOrg)/uXAOScale);
-    float damp=smoothstep(.15,.15+.55/max(uXMoldK.y,.05),mm.a);
+    float damp=smoothstep(.3,.3+.5/max(uXMoldK.y,.05),mm.a);
     float hf=1.0, sk=1.0, jt=0.0;
 ${wall?`    hf=1.0-smoothstep(0.0,uXMoldK.w*.72,vXLW.y); sk=1.0-smoothstep(vXMTop-.6,vXMTop-.25,vXLW.y); if(abs(xwn.y)>.7){ hf=0.0; sk=0.0; }
 `:`    jt=.25*damp*step(dot(diffuseColor.rgb,vec3(.3,.59,.11)),.32);   // (the floor's dark joints hold more)
 `}    vec3 base=diffuseColor.rgb, acc=base;
     for(int i=0;i<3;i++){ float w=(i==0?mm.r:i==1?mm.g:mm.b)*2.0; if(w<.004) continue;
       vec4 dn=xAtG(uXMoldTex,uXMoldR[i*2],mu,gx,gy), sp=xAtG(uXMoldTex,uXMoldR[i*2+1],mu2,gx2,gy2);
-      float cd=dn.a*(damp*w*hf+jt), cs=sp.a*.55*w*(1.0-damp*.6)*sk, c=clamp((cd+cs)*uXMoldK.x,0.0,1.0);
+      float cd=dn.a*(damp*w*hf+jt), cs=sp.a*.3*w*(1.0-damp*.7)*sk, c=clamp((cd+cs)*uXMoldK.x,0.0,1.0);
       vec3 col=(dn.rgb*cd+sp.rgb*cs)/max(cd+cs,.0001);
       acc=mix(acc,max(col,base*.6),c); xMoldCov=max(xMoldCov,c); }
     diffuseColor.rgb=acc; }

@@ -134,6 +134,34 @@ const CHECKS = {
       return 'no door between two rooms of different colours';
     });
   },
+
+  // Task 4: the dungeon's own floors and walls carry it; the green blotches go where mold replaces them
+  async moldOnFloorsWalls(pg, T) {
+    await T.build(1, 11);
+    await pg.waitForTimeout(1500);
+    const on = await pg.evaluate(() => { const K = []; X3.renderer.render(X3.scene, X3.cam);
+      for (const p of X3.renderer.info.programs || []) { const m = /xmold(\d)/.exec(p.cacheKey); if (m) K.push(+m[1]); }
+      let patch = 0; X3.group.traverse(o => { if (o.userData && o.userData.natPatch) patch++; });
+      return { floor: K.includes(1), wall: K.includes(2), patch }; });
+    if (!on.floor) return 'no floor drawn with mold'; if (!on.wall) return 'no wall drawn with mold';
+    if (on.patch) return 'the Hollows still draw their green blotches with mold on';
+    const off = await pg.evaluate(() => { XLIT.mold = false; xBuildScene(); xUpdateVis(); let patch = 0; X3.group.traverse(o => { if (o.userData && o.userData.natPatch) patch++; }); XLIT.mold = true; return patch; });
+    return off ? true : 'no green blotches with mold off';
+  },
+
+  // Task 5: the battle floor and walls carry a light layer, with no damp
+  async moldArena(pg, T) {
+    await T.build(1, 11);
+    return pg.evaluate(async () => {
+      arenaBuild(1, 5); const A = AR; if (!A || !A.grp) return 'no arena';
+      const tags = new Set(); A.grp.traverse(o => { const M = o.material; for (const m of Array.isArray(M) ? M : M ? [M] : []) if (m.userData && m.userData.xmold) tags.add(m.userData.xmold); });
+      if (!tags.has(1)) return 'the battle floor carries no mold'; if (!tags.has(2) && !A.open) return 'the battle walls carry no mold';
+      if (!A.moldData) return 'no arena mold map';
+      for (let i = 3; i < A.moldData.length; i += 4) if (A.moldData[i]) return 'damp on the battle floor';
+      if (!A.moldData[0]) return 'no mold weight on the battle floor';
+      return true;
+    });
+  },
 };
 // checks that need the page set up before it loads
 const ROUTES = { moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };

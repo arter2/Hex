@@ -92,7 +92,7 @@ function xNature(grp,A,S,seed){ EX.nat=new Map(); EX.natM=[]; EX.natPools=[];
     const col=new THREE.Color(), dim=kind==='shard'?1:kind==='clump'||kind==='clumpTop'?.62:.85; L.forEach(([,wall,spec],k)=>{ im.setMatrixAt(k,zero); col.set(spec.col).multiplyScalar(dim*(.85+R()*.3)); im.setColorAt(k,col); if(!EX.nat.has(wall)) EX.nat.set(wall,[]); EX.nat.get(wall).push([EX.natM.length,k,kind,spec]); });
     const g=new THREE.BufferGeometry(); for(const at in geoOf[kind].attributes) g.setAttribute(at,geoOf[kind].attributes[at]); if(geoOf[kind].index) g.index=geoOf[kind].index; im.geometry=g;   // (its own bounds, the shape shared)
     g.boundingSphere=new THREE.Sphere(new THREE.Vector3(((key%16)+.5)*CH*XCS,XWALL/2,(((key/16)|0)+.5)*CH*XCS),CH*XCS*.75+XWALL); grp.add(im); EX.natM.push(im); }
-  xNatPatches(grp,K,caveRng(seed+1998),floorOK,pz); xNatPools(grp,K,caveRng(seed+1999),floorOK,pz); }   // (the blotches and pools on streams of their own: the dressing before them draws by what the camera sees, low near walls drawing less, so on the shared stream they moved every time the scene was built)
+  xNatPatches(grp,K,caveRng(seed+1998),floorOK,pz,A); xNatPools(grp,K,caveRng(seed+1999),floorOK,pz); }   // (the blotches and pools on streams of their own: the dressing before them draws by what the camera sees, low near walls drawing less, so on the shared stream they moved every time the scene was built)
 
 function xNatMat(kind,K){ const ice=(kind==='mite'&&K.mite&&K.mite.ice)||(kind==='tite'&&K.tite&&K.tite.ice);
   let m;
@@ -125,7 +125,9 @@ function xNatShow(c,cut){ const L=EX.nat&&EX.nat.get(c); if(!L) return; const m=
   for(const im of touched) im.instanceMatrix.needsUpdate=true; }
 
 // the growth spread on the floor along the walls: soft blotches, one merged mesh under the darkness veil
-function xNatPatches(grp,K,R,floorOK,pz){ if(!K.patch) return; const cv=document.createElement('canvas'); cv.width=cv.height=64; const x=cv.getContext('2d');
+function xNatPatches(grp,K,R,floorOK,pz,A){ if(!K.patch) return;
+  if(XLIT.mold&&A&&(A.id==='hollows'||A.id==='ruins')) return;   // (the mold grows there in their place: mold.js)
+  const cv=document.createElement('canvas'); cv.width=cv.height=64; const x=cv.getContext('2d');
   for(let k=0;k<26;k++){ const g=x.createRadialGradient(0,0,0,0,0,1); g.addColorStop(0,'rgba(255,255,255,.85)'); g.addColorStop(.6,'rgba(255,255,255,.4)'); g.addColorStop(1,'rgba(255,255,255,0)');
     x.save(); x.translate(12+R()*40,12+R()*40); x.scale(6+R()*12,5+R()*9); x.fillStyle=g; x.beginPath(); x.arc(0,0,1,0,7); x.fill(); x.restore(); }
   for(let k=0;k<160;k++){ x.fillStyle='rgba(255,255,255,'+(.3+R()*.5)+')'; x.fillRect(R()*64|0,R()*64|0,1,1); }
@@ -138,7 +140,7 @@ function xNatPatches(grp,K,R,floorOK,pz){ if(!K.patch) return; const cv=document
       quad(xw(c)+dx*.55+(R()-.5)*.6,xz(c)+dy*.55+(R()-.5)*.6,1.4+R()*1.2,.9+R()*.8,dx?Math.PI/2:0); } }
   if(!P.length) return; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.computeVertexNormals();
   const mesh=new THREE.Mesh(g,xNmapLuma(new THREE.MeshPhongMaterial({map:tex,color:new THREE.Color(K.patch.col),transparent:true,opacity:.7,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.5));
-  mesh.renderOrder=0; grp.add(mesh); }
+  mesh.renderOrder=0; mesh.userData.natPatch=1; grp.add(mesh); }
 
 /* Pools: a few still pools on the floor of the rooms, each a blob over a few free cells (never on a door, the stairs,
    a chest, a trap, a puzzle's room or anything standing), drawn as one plane with a soft-edged shape of its own and a

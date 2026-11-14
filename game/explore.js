@@ -505,7 +505,7 @@ function xBuildScene(){
         col[v]*=l*(1+.2*b); col[v+1]*=l; col[v+2]*=l*(1-.2*b);
         if(m>.62){ const k=Math.min(1,(m-.62)*4); col[v]*=1-.24*k; col[v+1]*=1-.25*k; col[v+2]*=1-.26*k; } } }   // (damp corners: darker gray)
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
-    const fm=xLitTag(xPhong({map:cv.atlas?envArtTex(cv.img):xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1;   // (a second, finer relief breaks the repeat: look.js xDetShader)
+    const fm=xLitTag(xPhong({map:cv.atlas?envArtTex(cv.img):xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv); fm.userData.xdet=1; fm.userData.xmold=1;   // (a second, finer relief breaks the repeat: look.js xDetShader; the mold layer: mold.js)
     if(cv.atlas){ fm.userData.xatlas={m:cv.rect, n:cv.n&&cv.n.rect}; if(cv.n) fm.userData.nmap=envArtTex(cv.n.img); }   // (a tile of a painted sheet, with its normal map: envart.js)
     if(cv.bomb) fm.userData.xbomb=cv.bomb;   // (texture bombing: look.js xBombShader)
     grp.add(new THREE.Mesh(geo,fm)); });
@@ -552,7 +552,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); mat.userData.xdet=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -563,7 +563,8 @@ function xBuildScene(){
       cells.forEach(c=>EX.wIdx.set(c,[wm,-1])); wm.count=0; wm.userData.n=0; wm.visible=false; }
     // the same walls again, see-through: a wall between the camera and you moves here and fades (xWallCut)
     wgeo.setAttribute('aAlpha',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(1),1));
-    const gm=new THREE.InstancedMesh(wgeo,wAt(xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
+    const gmat=wAt(xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); gmat.userData.xmold=2;   // (a fading wall keeps its mold)
+    const gm=new THREE.InstancedMesh(wgeo,gmat,n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
     for(let k=0;k<n;k++){ gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
     gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // spacious floors: which cells are solid wall (for the shader's inner faces, xInner) and a black base under every

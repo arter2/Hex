@@ -62,3 +62,15 @@ function xMushrooms(add,A,seed,faces,water){ if(!A||!XMUSH.area[A.id]) return; c
         add('mush:'+name,c,{x,z,h,rot:R()*6.3,flip:R()<.5,col:'#ffffff'}); } }
     if(brackets.length&&used(r)<cap(r)&&a2<(fungus?.12:wet?.06:.015)){ use(r); const name=brackets[a3*brackets.length|0], n=2+(R()*3|0), [bx,bz]=at((R()-.5)*1.1,.03), y0=.4+R()*1.0;
       for(let k=0;k<n;k++){ const h=.22+R()*.3; add('bracket:'+name,c,{x:bx-dz*(R()-.5)*.6,z:bz+dx*(R()-.5)*.6,y:y0+(R()-.5)*.5,h,rot:Math.atan2(dx,dz),flip:R()<.5,col:'#ffffff'}); } } } }
+/* A patch of bracket mushrooms (shelf fans or oyster rosettes) on a surface at (x,y,z) facing (nx,nz): two to four
+   cards flat against it, tipped so their shelves jut out, into the merger get(tile) gives for the kind (dungeongen.js
+   xLeafMerger: one draw call per kind per room). For a log's side, a crate's or a shelf's, a sapling's trunk. False if
+   the art is not in. */
+function xBracketCards(get,x,y,z,nx,nz,R){ const names=XMUSH.bracket.filter(xMushReady); if(!names.length) return false;
+  const name=names[R()*names.length|0], F=get(xMushTile(name)), n=2+(R()*3|0), tx=-nz, tz=nx, a=-.3, ux=nx*Math.sin(-a), uy=Math.cos(a), uz=nz*Math.sin(-a);
+  for(let k=0;k<n;k++){ const s=.2+R()*.25, px=x+tx*(R()-.5)*.5+nx*.02, py=y+(R()-.5)*.3, pz=z+tz*(R()-.5)*.5+nz*.02, fl=R()<.5, sh=.92+R()*.12;
+    const ln=Math.hypot(nx,.5,nz);
+    const corner=(su,sv)=>{ F.P.push(px+tx*su*s/2+ux*sv*s/2, py+uy*sv*s/2, pz+tz*su*s/2+uz*sv*s/2); F.N.push(nx/ln,.5/ln,nz/ln);
+      F.U.push(((fl?-su:su)+1)/2,(sv+1)/2); F.C.push(sh,sh,sh); };
+    for(const [su,sv] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]) corner(su,sv); }
+  return true; }

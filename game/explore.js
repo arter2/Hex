@@ -1031,6 +1031,8 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
   EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk0=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], rk=r.theme&&XTHEME_WALL[r.theme]?r.theme:rk0, pool=XTHEME_WALL[r.theme]||XROOM_KINDS[rk];
     const M=xMerger(), L=xMerger(), cells=[];
+    // bracket mushrooms on old wood in a damp room (mushrooms.js), on a stream of their own
+    const damp=typeof XMUSH!=='undefined'&&(r.flood||XMUSH.damp.includes(r.theme))&&!(XMUSH.noBracket.includes(area)), Rb=caveRng(EX.depth*31+ri*71+5113), FBs=new Map(), FB=name=>FBs.get(name)||FBs.set(name,xLeafMerger(name)).get(name);
     const ok=c=>EX.t[c]===T_FLOOR&&!EX.taken.has(c)&&!EX.itemAt.has(c)&&!EX.chests.some(ch=>ch.cell===c)&&c!==EX.up&&c!==EX.down&&!EX.traps.some(t=>t.cell===c)&&!xAdj4(c).some(n=>EX.doors.has(n));
     const edge=[]; for(let x=r.x;x<r.x+r.w;x++){ edge.push([x,r.y,0,-1],[x,r.y+r.h-1,0,1]); } for(let y=r.y+1;y<r.y+r.h-1;y++){ edge.push([r.x,y,-1,0],[r.x+r.w-1,y,1,0]); }
     const n=Math.max(2,Math.round((r.w+r.h)/1.8));
@@ -1038,6 +1040,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
       const kind=pool[R()*pool.length|0], against=XWALLSIDE.includes(kind), off=against?.33:.28, wx=(x+.5+dx*off)*XCS, wz=(y+.5+dy*off)*XCS, ry=Math.atan2(-dx,-dy);
       if(kind==='brazier'){ xBrazier(grp,wx-dx*.4,wz-dy*.4,c,A); cells.push(c); continue; }
       xFurnish(M,L,kind,wx,wz,ry,R,A,S); cells.push(c);
+      if(damp&&['barrel','crate','shelf','rack','table'].includes(kind)&&Rb()<.3) xBracketCards(FB,wx-dx*.45,.3+Rb()*.4,wz-dy*.45,-dx,-dy,Rb);   // (on its side away from the wall)
       // barrels, crates and sacks gather in twos and threes
       if(['barrel','crate','sack'].includes(kind)) for(let j=0;j<1+(R()*2|0);j++){ const s=(j?-1:1)*(.7+R()*.2); xFurnish(M,L,R()<.6?kind:pool[R()*3|0],wx+(dy?s:0)-dx*R()*.3,wz+(dx?s:0)-dy*R()*.3,ry+R(),R,A,S); } }
     // chains hang on crypt walls
@@ -1058,7 +1061,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
         cloth.position.y=XWALL-.15; g.add(xBox(1.05,.06,.06,xMat(0x2a2620),0,XWALL-.12,0), cloth); g.userData.sway=cloth; }
       g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,y),floor:xi(x,y+1),sway:g.userData.sway,ph:R()*6}); }
     if(!M.size()&&!L.size()) return;
-    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
+    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); for(const fb of FBs.values()) if(fb.size()) grpR.add(fb.build()); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
     grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
 }
 // a standing brazier: an iron bowl on three legs, a fire and a real light (it joins the floor's lights)

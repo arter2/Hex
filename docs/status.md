@@ -1,6 +1,6 @@
 # Hexmancers: where we are
 
-Date: 2026-11-13 · Latest build: **v313** (`hexmancers-itch-v313.zip`, merged to `main`) · Branch `claude/new-session-bzslr6`
+Date: 2026-11-14 · Latest build: **v314** (`hexmancers-itch-v314.zip`; not merged yet) · Branch `claude/new-session-bzslr6`
 
 This is a snapshot of the game: what is in it, what changed recently, what we plan next, and what
 is still open. The design reasoning behind each feature is in [fun-roadmap.md](fun-roadmap.md).
@@ -41,7 +41,7 @@ JavaScript with three.js (r128) and has no build step.
 | **Settings** | Display / Audio / Controls / Game tabs: phone and tablet layouts, text size, orientation, full screen, Graphics (Auto picks Low on weak devices), Camera intros (v313), sound, cast-card style, touch movement modes, dungeon tips, and rebindable keyboard controls. |
 | **Debug menu** | Lighting, PBR, normal maps, baked AO and SSAO, haze, a full battle camera (angle, field of view, zoom, move and rotate on X/Y/Z), depth of field, wall see-through, frame rate, auto quality, pause. |
 
-### Recent changes (v304 to v313)
+### Recent changes (v304 to v314, and after)
 
 | Build | Change |
 |---|---|
@@ -52,6 +52,8 @@ JavaScript with three.js (r128) and has no build step.
 | v308–v311 | Dungeon clutter and kitbashed cave walls; debug tools (Pause and Speed in the title bar, the joystick curve); battle stick and flicks scale with the board; the duel connection work. |
 | v312 | Six new puzzles; room themes with their clutter, floors and light; lairs, special rooms and every puzzle fit shaped rooms (puzzle rooms had stopped appearing on spacious floors); tap-to-move no longer plans routes through low walls and clutter. |
 | v313 | Camera intros (a level's opening sweep and fade, a swing and fade into fights; Settings › Display); the next area's floors painted ahead near the stairs; the Library's gray, beaten-up planks with texture bombing and painted vertices. After v313 (on the branch): every theme floor bombed and painted, no moss in libraries. |
+| v314 | The painterly texture pack in GPU atlases (256 px tiles, nearest filtering, a Texture sharpen debug slider); trees as painted leaf cards. |
+| after v314 (branch) | Rock-wall tops no longer float off low near walls; normal maps for the painted floors and walls (the bump settings work again), sunk grout on light-grouted floors. **Mold** ([plan](superpowers/plans/2026-11-14-mold-and-foliage-cards.md)): painted mold on floors and walls by area and room, dense where damp, light in battles, debug Surfaces › Mold. **Foliage**: painted vine cards, grass cards (Ruins tufts, Flooded reeds, Hollows wall feet), planter shrubs as leaf cards, all turned to the area's leaf hue in the shader. **Mushrooms**: twelve painted kinds at wall feet and among rocks, brackets on walls, wood and new fallen logs, the luminous ones glowing. The area's pools and blotches no longer move when a floor is rebuilt. |
 
 Checked: a [400-floor check against v301](test-results/2026-11-13-400-floor-check.md): every floor built and fully reachable, all 192 puzzles and 58 lairs placed and 169 of 172 special rooms; build times at or under v301's.
 

@@ -1,5 +1,7 @@
 # Foliage cards: a guide for giving more plants the painted-leaf look
 
+**Status (2026-11-14):** done for the saplings, the planter shrubs, the wall creepers (vine cards), the grass (Ruins tufts, Flooded reeds, Hollows wall feet) and the mushrooms ([plan](../superpowers/plans/2026-11-14-mold-and-foliage-cards.md), `game/mushrooms.js`). Left: the glowing moss card (art in `shared-foliage/card-tiles/moss-glow.png`; agreed to glow everywhere). Two things learned on the way: cards that are mostly clear (vines, grass, mushrooms) must have no mip levels, or the cut-out loses their stems a few metres away (`xLeafTex(img, thin)`); and the cards take the area's colour by a hue turn in the shader (`xHueMat`), not by multiplying, so the painting keeps its light and shade.
+
 This guide is for Claude, or anyone else, extending the leaf-card look from the trees to the rest of the dungeon's plants.
 
 ## What exists now

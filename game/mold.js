@@ -43,7 +43,9 @@ function xMoldSlots(A){ const ids=(A&&XMOLD.area[A.id])||XMOLD.area.hollows; ret
 function xMoldRect(key){ const S=typeof ENVART_MAP!=='undefined'&&ENVART_MAP.sheets&&ENVART_MAP.sheets.mold, t=S&&S.tiles[key]; if(!t) return [0,0,0,0];
   const [W,H]=S.size; return [t[0]/W,1-(t[1]+t[3])/H,t[2]/W,t[3]/H]; }
 // the uniforms the shader reads: the mold map, its slots' rectangles (dense then sparse, three slots)
-function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null; U.uXMoldK.value.w=XWALL/2;
+// the dungeon and the battle each draw with their own mold map (like their AO maps: look.js lookUse), set before each frame
+function xMoldUse(tex,slots,half){ const U=XLITU; U.uXMoldK.value.w=half; if(U.uXMoldMap.value===tex) return; xMoldUniforms(tex,slots||[]); }
+function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null;
   for(let k=0;k<3;k++){ const s=slots[k]; U.uXMoldR.value[k*2].fromArray(s?xMoldRect(s.dense):[0,0,0,0]); U.uXMoldR.value[k*2+1].fromArray(s?xMoldRect(s.sparse):[0,0,0,0]); } }
 // the damp of being shut in by walls at texel (tx,ty) of the map: strongest at a wall's foot, gone a cell out, adding up
 // in a corner (the walls of the 3 x 3 cells round about)
@@ -74,7 +76,7 @@ function xMoldBake(){ if(!EX||!EX.rooms||!EX.aoData) return; const R=XAO_R, W=XN
       for(let k=0;k<3;k++){ const v=CW[a*3+k]*w00+CW[b*3+k]*w10+CW[c*3+k]*w01+CW[e*3+k]*w11; d[o+k]=Math.min(255,Math.round(v*127.5)); }
       const wv=water[a]*w00+water[b]*w10+water[c]*w01+water[e]*w11; d[o+3]=Math.round(255*Math.max(xMoldWallDamp(tx,ty),Math.min(1,wv))); } }
   if(!EX.moldTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.moldTex=t; }
-  EX.moldTex.needsUpdate=true; xMoldUniforms(EX.moldTex,slots); }
+  EX.moldTex.needsUpdate=true; EX.moldSlots=slots; xMoldUniforms(EX.moldTex,slots); }
 /* The battle floor: the area's first colour, light, everywhere; no damp (its scale and origin are the arena AO map's). */
 function xMoldArena(A){ if(!A) return; const N=16, d=A.moldData||(A.moldData=new Uint8Array(N*N*4)), v=Math.round(XMOLD.arena*127.5);
   for(let i=0;i<N*N;i++){ d[i*4]=v; d[i*4+1]=d[i*4+2]=d[i*4+3]=0; }

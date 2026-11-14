@@ -136,16 +136,16 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   if(A.open){ A.room.back=x1+1.7; A.room.near=x0-1.9; const back=A.room.back, near=A.room.near;   // the island ends just past the board, so the chasm shows beyond
     const t=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
     const sideT=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)); sideT.repeat.set(6,1);
-    const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image));
+    const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image)); top.userData.xmold=1; rim.userData.xmold=2;   // (a light layer of mold: mold.js)
     const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl);
     out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
   out.push(...arChasm(A,Ar,S));
   const ft=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
-  const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)), floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
+  const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)); fm.userData.xmold=1; const floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
-  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B);
+  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B); wm.userData.xmold=2;
   const cells=[]; const B2=XCS;
   for(let z=-side;z<=side+.01;z+=B2) cells.push([back+B2/2,z,1]);                                 // back wall
   for(const s of [-1,1]) for(let x=back;x>=near;x-=B2) cells.push([x,s*(side+B2/2),Math.max(.25,Math.min(1,(x-x0+2)/(back-x0+2)))]);   // sides, lower toward you
@@ -162,7 +162,8 @@ function arenaBakeAO(){ const A=AR; if(!A||!A.room||!A.wallCells) return; const 
     for(const [wx,wz] of A.wallCells){ const ex=Math.max(Math.abs(X-wz)-1,0), ez=Math.max(Math.abs(Z+wx)-1,0), w=Math.max(0,1-Math.hypot(ex,ez)/rad); o+=w*w; }
     d[(j*N+i)*4]=Math.round(255*(1-Math.exp(-o*.9))); }
   if(!A.aoTex){ const t=new THREE.DataTexture(d,N,N,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; A.aoTex=t; }
-  A.aoTex.needsUpdate=true; A.ao={scale:W,ox:z0,oz:-(back+4)}; }
+  A.aoTex.needsUpdate=true; A.ao={scale:W,ox:z0,oz:-(back+4)};
+  if(typeof xMoldArena==='function') xMoldArena(A); }   // (the battle floor's light mold: mold.js)
 
 // a new battle (or a new depth): the arena is built again from the area's look
 function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=areaOf(depth), R=caveRng(seed|0), boss=isBossDepth(depth);
@@ -216,7 +217,7 @@ function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   const q=lookQuality(dt), pr=lookPR(); AR_Q.lights=q.lights; if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
   arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex&&DEC.dirty){ DEC.tex.needsUpdate=true; DEC.dirty=false; }
-  const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
+  const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz); if(typeof xMoldUse==='function') xMoldUse(A.moldTex,A.moldSlots,XWALL_B/2);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit,dof:A.focusD||A.dist}); lookFps(dt,A.renderer); }
 
 /* The camera: its base view, plus the moves of the moment:

@@ -50,7 +50,7 @@ function envArtTheme(th,A){ const id=A&&A.id; return dress(tile('area-'+id,'them
 function envArtOverlay(A){ return A&&A.id==='rifts'?tile('area-rifts','rock-overlay'):null; }
 // an effect, cut out of the effects sheet into a canvas of its own (256 x 256), or null
 const CUT=new Map();
-function envArtFx(name){ if(CUT.has(name)) return CUT.get(name); if(!known()||!ready('effects')){ if(known()&&STATE.get('effects')!=='fail') load('effects'); return null; }
+function envArtFx(name){ if(CUT.has(name)) return CUT.get(name); if(!known()||!ready('effects')){ if(known()&&STATE.get('effects')!=='fail'){ load('effects'); missing=true; } return null; }
   const S=ENVART_MAP.sheets.effects, t=S.tiles[name]; if(!t) return null; const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3];
   c.getContext('2d').drawImage(IMG.get('effects'),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); CUT.set(name,c); return c; }
 // one GPU texture per sheet, shared by every material that samples it: clamped (the shader wraps inside the tile),

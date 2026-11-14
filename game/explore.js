@@ -1327,12 +1327,14 @@ function xRockFoot(grp,S,seed){ if(!XROCKTEX) return; const R=caveRng(seed+1213)
    paler, so a run of blocks reads as one rock face. The noise is the floors' detail map (look.js xDetailN). */
 function xRockShader(sh){
   // the rock's lumps, from where each point stands in the world: blocks side by side move their shared edges alike, so
-  // the joints close and a run of blocks bulges and leans as one face; the tops follow a slow skyline
-  sh.vertexShader='float xrn(vec3 p){ return sin(p.x*1.31+p.y*.73+sin(p.z*.91))*sin(p.z*1.17-p.y*.61+sin(p.x*.83))*.6+sin(p.x*.47+p.z*.59+p.y*.29)*.4; }\n'
+  // the joints close and a run of blocks bulges and leans as one face; the tops follow a slow skyline (the whole top
+  // edge rises, the sides' top ring with the cap: lifting only the faces that look up opened a gap under the cap)
+  sh.uniforms.uXTopY={value:XWALL/2};   // the block's top in its own space (xWallGeo, xWedgeGeo: XWALL tall, centred)
+  sh.vertexShader='uniform float uXTopY;\nfloat xrn(vec3 p){ return sin(p.x*1.31+p.y*.73+sin(p.z*.91))*sin(p.z*1.17-p.y*.61+sin(p.x*.83))*.6+sin(p.x*.47+p.z*.59+p.y*.29)*.4; }\n'
     +sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   #if defined(USE_INSTANCING)&&__VERSION__>=300
   { vec3 wq=(modelMatrix*(instanceMatrix*vec4(transformed,1.0))).xyz, d=vec3(xrn(wq),0.0,xrn(wq.zyx+7.3))*.38*smoothstep(.05,.9,wq.y);
-    if(normal.y>.5) d.y+=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55;
+    d.y+=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55*smoothstep(uXTopY-.9,uXTopY-.3,position.y);   // (the top's ring of the sides rises with the cap, so they stay joined)
     transformed+=inverse(mat3(modelMatrix)*mat3(instanceMatrix))*d; }
   #endif`);
   sh.vertexShader='varying vec3 vXWN;\n'+sh.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n  { vec3 xn=objectNormal;\n  #ifdef USE_INSTANCING\n  xn=mat3(instanceMatrix)*xn;\n  #endif\n  vXWN=normalize(mat3(modelMatrix)*xn); }');

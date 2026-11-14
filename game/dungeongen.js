@@ -418,7 +418,7 @@ function xLeafCards(F,col,cx,cy,cz,r,R){ if(!F||!envArtFx('leaf-clumps')) return
       v.subVectors(q,new THREE.Vector3(cx,cy,cz)).normalize().lerp(d,.4).normalize(); F.N.push(v.x,v.y,v.z);
       F.U.push(u0+((fl?-su:su)*.5+.5)*.5, v0+(sv*.5+.5)*.5); F.C.push(c.r,c.g,c.b); };
     for(const [su,sv] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]) corner(su,sv); }
-  xLeafCore(F,cx,cy,cz,r*.6,.85);   // (the solid middle)
+  xLeafCore(F,cx,cy,cz,r*.4,.85);   // (a small solid core at the bundle's centre: you see into the bundle, not through it)
   return true; }
 /* The clutter, drawn (x2Clutter): one merged mesh per room (or gallery piece), shown once any of its cells is seen.
    Ruins are cut from the area's own stone: light ones from its upper tones with dull gold trim, dark ones from its lower
@@ -481,7 +481,6 @@ function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,
     case 'sapling': { B(SOIL,x,.06,z,1.2,.12,1.2); M.add(XG.cyl,col('#4a3420'),x,1.1,z,0,0,(R()-.5)*.15,.22,2.2,.22);
       for(let k=0;k<7;k++){ const a=R()*6.3, d=R()*.7, s2=.7+R()*.5, lc=R()<.5?LEAF:LEAF2, bx=x+Math.cos(a)*d, by=2.1+R()*.8, bz=z+Math.sin(a)*d;
         if(!xLeafCards(F,lc,bx,by,bz,s2*.62,R)) M.add(XG.ball,lc,bx,by,bz,0,R()*3,0,s2,s2*.8,s2); }   // painted leaf cards (or, before the art is in, a plain ball)
-      if(F.size()) xLeafCore(F,x,2.45,z,.78,.8);   // (one solid core in the middle of the whole canopy: you see through its edges, not through the tree)
       for(let k=0;k<3;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.45,.08,z+Math.sin(a)*.45,Math.PI/2,a,0,.08,.7,.08); } { const Rb=caveRng(it.sd*13+7); if(FB&&typeof xBracketCards==='function'&&Rb()<.4){ const a=Rb()*6.3; xBracketCards(FB,x+Math.cos(a)*.13,.3+Rb()*.7,z+Math.sin(a)*.13,Math.cos(a),Math.sin(a),Rb); } }   // (brackets on the trunk, now and then)
       break; }
     case 'log': { // a fallen log, half rotten, moss along its back and bracket mushrooms on its sides (mushrooms.js)

@@ -1,0 +1,328 @@
+{
+  "checks_passed": true,
+  "variants": 10,
+  "matching_embedded_and_separate_alpha": true,
+  "dense_files_preserved": true,
+  "files": [
+    {
+      "path": "textures-1024/01-olive-powder.png",
+      "sha256": "f6e8b6a0bf2b0bd9365698f7cd314fa16409adc12477e185d156b1fa3b6b32af",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/01-olive-powder-alpha.png",
+      "sha256": "e4993f312c221e0308a0101b7b03a60423393c16080576983ff5ce3ebce50a49",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/01-olive-powder.png",
+      "sha256": "f65880c69a4642d09e3a7e7f003debdc236602abd91094eecf5ec73f8ff1cd15",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/01-olive-powder-alpha.png",
+      "sha256": "9ba67a4644227639c0507d22fa07adfda97a188fc53e1f496aa6d9daa444fb04",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/02-teal-fuzz.png",
+      "sha256": "544dd2d800457ab0a9e47034db7cfb68e4052a70e78b64d6645137045190bc2a",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/02-teal-fuzz-alpha.png",
+      "sha256": "d3d14cc74a94ae9addc13ab214dfbec9e5897254b5bdb49848993e3266a7269f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/02-teal-fuzz.png",
+      "sha256": "34df201201f93c70d8fb598d35361690c7a86e4fb11529aed85c848a82286903",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/02-teal-fuzz-alpha.png",
+      "sha256": "52068da6aedcf4e3e796fa7fe5e45cd464c369792bd7b5ad8b493e284c7d161d",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/03-slate-blue-bloom.png",
+      "sha256": "b7de7b2bc8370a6fd5c9fe4c28b8ab1c01f9651c1c0bae7129312ec3ec05dbe8",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/03-slate-blue-bloom-alpha.png",
+      "sha256": "fec8e08956174a89848cabb081c6cae7fb9bafdc1acfd4f3635a47efe5903df5",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/03-slate-blue-bloom.png",
+      "sha256": "ea949ed741e2750189ae9ec611c9654b6a7210a89c0b5fd93bf479a54be67386",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/03-slate-blue-bloom-alpha.png",
+      "sha256": "102615f5d42aa946f8ff43b2fff678d02a14c9ff54a330d8956ca047406d0d82",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/04-plum-mildew.png",
+      "sha256": "22dfc58fa94187e78cf1c72672591099bd7c34e6cacce82f81aaafbb67a3e4d7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/04-plum-mildew-alpha.png",
+      "sha256": "158381b5d571bbb7e23ae6c8b46ce3e23ee0acabf32c847afd47d1a92b027663",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/04-plum-mildew.png",
+      "sha256": "d8e75f7796a20f84a8e8b8b2f8d567a6f0f39a12247f7463ca99fba7cf0c49da",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/04-plum-mildew-alpha.png",
+      "sha256": "b13ce69e9a7b0cf5997b1a1bec9653f45a071a455fc1f374a7380fb11b531298",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/05-rust-crust.png",
+      "sha256": "b79d0c1970eaf7967a83682e6e6933dfc9d8be2cd82c44915975b62ef1be1225",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/05-rust-crust-alpha.png",
+      "sha256": "4b06eb0b7acfb9dd128d0c2f7796408f84865cb811b5e2a4f325dacd2857e7e8",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/05-rust-crust.png",
+      "sha256": "d14fc1d9ab3addc45b3098d226b4917238c24660f79a7ff7842ad06db7bf3d3f",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/05-rust-crust-alpha.png",
+      "sha256": "2f5e77a5a7a522b49b805d0b4f8feeeac94684214c1c8ab376a403b6b54007ab",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/11-olive-powder-sparse.png",
+      "sha256": "2ca1df071920dac3288193fe385bf2190d5ac87906db39167ab9e282075bb527",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/11-olive-powder-sparse-alpha.png",
+      "sha256": "b5be09ded516627d03e763da396d8c89931e98fb8455db35e855ea3a35895592",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/11-olive-powder-sparse.png",
+      "sha256": "36e3e24767689ff67d0fac7878ae8edfc850581ee2d41c2bf3c8b7df96fd0d20",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/11-olive-powder-sparse-alpha.png",
+      "sha256": "4fbb07aa38b4b22ab26f3e8461237d1fcf7d54d0bebe8ea2f9541d5ac27122ef",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/12-teal-fuzz-sparse.png",
+      "sha256": "2a0d9f15d70b8ee413396be5c502a65fba035cee518b8b897cf1b766652fd3db",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/12-teal-fuzz-sparse-alpha.png",
+      "sha256": "6d77ceb9aeb37abdb68b963924b191cef79ab98c7f5e5e8dae89f86bc9f69119",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/12-teal-fuzz-sparse.png",
+      "sha256": "9d735eaed08160edecab0be4e42bb8af9ee53c396f9f263e148eb52e4ce00dc4",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/12-teal-fuzz-sparse-alpha.png",
+      "sha256": "9ba6a96c08264d31af4da8d3367737067da15a408c6525d5964877d1f9151a92",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/13-slate-blue-bloom-sparse.png",
+      "sha256": "9a230b929c2d91504b399002f70a383ae20223d558d27d2863311121c78025d6",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/13-slate-blue-bloom-sparse-alpha.png",
+      "sha256": "efbd8f59072410e1c8c5026486e3f877deca5e9a1ddba242260fc21dc72e4147",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/13-slate-blue-bloom-sparse.png",
+      "sha256": "2fef40dbcf0b50345df6ccd8a4c435f791b1e8aa31808dc9ddbb73166095164c",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/13-slate-blue-bloom-sparse-alpha.png",
+      "sha256": "b6ad23714f2f59f7afcb2caf5dee174a26f423ec5b3dd5755b43279c5498346a",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/14-plum-mildew-sparse.png",
+      "sha256": "5561888ad7494fa81d6f74921a37cd042c127c4aebfa1a69990ae75909dd563c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/14-plum-mildew-sparse-alpha.png",
+      "sha256": "6877daa268a2fced7294d83b6ca7c0f95723f0fdbb0533eedc414e93435ab640",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/14-plum-mildew-sparse.png",
+      "sha256": "e7b73d1d9773d070af366efef9d9172c3ce56be103f2813f7dd45c90e0e2bd36",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/14-plum-mildew-sparse-alpha.png",
+      "sha256": "aadc3bd560e46c40592453fae47fbd2fc671dcc156332cceff2f787d57b81223",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/15-rust-crust-sparse.png",
+      "sha256": "dcd78dbbfd716ce4cd5085a6ac0d3cc37fc12b88c53819e117d52599a0a8b1e0",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/15-rust-crust-sparse-alpha.png",
+      "sha256": "deb4881eefd11ca4d215b5dde5f17212db6308b674319b0f2b8908560ad3087f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/15-rust-crust-sparse.png",
+      "sha256": "79e073e13c33627bfe7d90adbb07ebe15b093fb6c9d728b85af340788b0afd77",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/15-rust-crust-sparse-alpha.png",
+      "sha256": "fa85252ca161b08dd3148a17b9702c4cb9dd78f12902eb9fe88352319a919132",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ]
+}

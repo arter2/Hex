@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "title": "12 painterly dungeon mushroom alternatives",
+  "variant_count": 12,
+  "selection": "Choose by option 01\u201312; these are the mushroom designs from the 20-option cave pack.",
+  "repeat_mode": "Independent masked card instances; transparent outer borders. Surface patches can overlap. Not opaque edge-to-edge material maps.",
+  "master_alpha_threshold": 128,
+  "atlas_alpha_threshold": 96,
+  "implementation_status": "Art and Claude guide only; no runtime integration performed.",
+  "variants": [
+    {
+      "number": "01",
+      "id": "mushroom-lantern-bells",
+      "label": "Lantern bells",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-lantern-bells",
+      "master": "masters/01-mushroom-lantern-bells.png",
+      "alpha_mask": "alpha-masks/01-mushroom-lantern-bells-alpha.png",
+      "atlas_tile": "atlas-tiles/01-mushroom-lantern-bells.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5869140625,
+        0.9365234375
+      ],
+      "atlas_pivot_top_origin": [
+        0.5760498046875,
+        0.8819580078125
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Three drooping small bell-shaped mushrooms on short crooked stems, with long softly pleated caps. Dark slate teal caps, cool gray stems, a few pale cyan bioluminescent marks at the hanging cap rims. Narrow irregular hanging-bell silhouette, compact grounded cluster.",
+      "emission_mask": "emission-masks/01-mushroom-lantern-bells-emission.png",
+      "atlas_emission_mask": "emission-masks/01-mushroom-lantern-bells-emission-atlas.png",
+      "emission_color_srgb": "#8FE4DA",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "02",
+      "id": "mushroom-amber-buttons",
+      "label": "Amber buttons",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-amber-buttons",
+      "master": "masters/02-mushroom-amber-buttons.png",
+      "alpha_mask": "alpha-masks/02-mushroom-amber-buttons-alpha.png",
+      "atlas_tile": "atlas-tiles/02-mushroom-amber-buttons.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4892578125,
+        0.8486328125
+      ],
+      "atlas_pivot_top_origin": [
+        0.4906005859375,
+        0.8050537109375
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Seven squat round button mushrooms in a tight uneven cluster, chestnut and dusty ochre caps, thick short beige stems, tiny amber luminous freckles concentrated near the cap edges. Broad low silhouette, clearly different sizes, no red spotted toadstools.",
+      "emission_mask": "emission-masks/02-mushroom-amber-buttons-emission.png",
+      "atlas_emission_mask": "emission-masks/02-mushroom-amber-buttons-emission-atlas.png",
+      "emission_color_srgb": "#EAC789",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "03",
+      "id": "mushroom-ivory-bonnets",
+      "label": "Ivory bonnets",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-ivory-bonnets",
+      "master": "masters/03-mushroom-ivory-bonnets.png",
+      "alpha_mask": "alpha-masks/03-mushroom-ivory-bonnets-alpha.png",
+      "atlas_tile": "atlas-tiles/03-mushroom-ivory-bonnets.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4541015625,
+        0.9365234375
+      ],
+      "atlas_pivot_top_origin": [
+        0.4598388671875,
+        0.8819580078125
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Five small ivory bonnet mushrooms with thin uneven dark stems and sharply conical folded caps at staggered heights. Aged bone white, cool stone gray, soft brown creases. Airy tall silhouette with visible spaces between stems, no magical glow."
+    },
+    {
+      "number": "04",
+      "id": "mushroom-violet-waves",
+      "label": "Violet waves",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-violet-waves",
+      "master": "masters/04-mushroom-violet-waves.png",
+      "alpha_mask": "alpha-masks/04-mushroom-violet-waves-alpha.png",
+      "atlas_tile": "atlas-tiles/04-mushroom-violet-waves.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4580078125,
+        0.8056640625
+      ],
+      "atlas_pivot_top_origin": [
+        0.4632568359375,
+        0.7674560546875
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Four broad shallow mushroom caps with asymmetrical wavy edges, slender bent stems and visible painted gills. Muted dusty plum and gray violet caps, subtle olive-gray areas, a few mint luminous gill/rim accents. Wider-than-tall small floor cluster, not saturated purple.",
+      "emission_mask": "emission-masks/04-mushroom-violet-waves-emission.png",
+      "atlas_emission_mask": "emission-masks/04-mushroom-violet-waves-emission-atlas.png",
+      "emission_color_srgb": "#BBDAC2",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "05",
+      "id": "mushroom-shelf-fans",
+      "label": "Shelf fans",
+      "family": "mushroom",
+      "orientation": "wall",
+      "attachment": "center",
+      "envArtFx_name": "cave20-mushroom-shelf-fans",
+      "master": "masters/05-mushroom-shelf-fans.png",
+      "alpha_mask": "alpha-masks/05-mushroom-shelf-fans-alpha.png",
+      "atlas_tile": "atlas-tiles/05-mushroom-shelf-fans.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5,
+        0.5
+      ],
+      "atlas_pivot_top_origin": [
+        0.5,
+        0.5
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "A compact vertical group of six overlapping bracket fungus fans, tiered irregularly as if attached to an unseen wall. Flat scalloped fans with visible concentric painterly growth bands, muted gray taupe and faded rusty cinnamon margins, ivory undersides. Front three-quarter view, no wall or wood included, no stems, no glow."
+    },
+    {
+      "number": "06",
+      "id": "mushroom-oyster-rosette",
+      "label": "Oyster rosette",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-oyster-rosette",
+      "master": "masters/06-mushroom-oyster-rosette.png",
+      "alpha_mask": "alpha-masks/06-mushroom-oyster-rosette-alpha.png",
+      "atlas_tile": "atlas-tiles/06-mushroom-oyster-rosette.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5283203125,
+        0.8017578125
+      ],
+      "atlas_pivot_top_origin": [
+        0.5247802734375,
+        0.7640380859375
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "A low rosette of six overlapping oyster mushrooms, elegant irregular shell-shaped gray-blue caps with soft folds and pale cream radial gills on very short shared stems. Low broad clustered silhouette, restrained sage and slate undertones, no glow."
+    },
+    {
+      "number": "07",
+      "id": "mushroom-moss-puffballs",
+      "label": "Moss puffballs",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-moss-puffballs",
+      "master": "masters/07-mushroom-moss-puffballs.png",
+      "alpha_mask": "alpha-masks/07-mushroom-moss-puffballs-alpha.png",
+      "atlas_tile": "atlas-tiles/07-mushroom-moss-puffballs.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.6298828125,
+        0.8564453125
+      ],
+      "atlas_pivot_top_origin": [
+        0.6136474609375,
+        0.8118896484375
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Five squat puffball fungi on tiny basal stems, uneven round/pear silhouettes with cracked mottled olive-gray skins, short painted lobes and small pale green bioluminescent pinholes. One open mature puffball with a dark mouth, others closed. No mist or floating spores; keep bodies solid.",
+      "emission_mask": "emission-masks/07-mushroom-moss-puffballs-emission.png",
+      "atlas_emission_mask": "emission-masks/07-mushroom-moss-puffballs-emission-atlas.png",
+      "emission_color_srgb": "#B9E4B0",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "08",
+      "id": "mushroom-coral-fingers",
+      "label": "Coral fingers",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-coral-fingers",
+      "master": "masters/08-mushroom-coral-fingers.png",
+      "alpha_mask": "alpha-masks/08-mushroom-coral-fingers-alpha.png",
+      "atlas_tile": "atlas-tiles/08-mushroom-coral-fingers.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4833984375,
+        0.9228515625
+      ],
+      "atlas_pivot_top_origin": [
+        0.4854736328125,
+        0.8699951171875
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "A small irregular clump of branching coral fungus: thick blunt forked fingers splitting into smaller blunt tips, no conventional caps. Weathered cream and gray beige stems, a few subdued pale lilac glowing terminal tips, plenty of open gaps. Fungal material, not ocean coral, no rock base.",
+      "emission_mask": "emission-masks/08-mushroom-coral-fingers-emission.png",
+      "atlas_emission_mask": "emission-masks/08-mushroom-coral-fingers-emission-atlas.png",
+      "emission_color_srgb": "#C5B8E6",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "09",
+      "id": "mushroom-copper-cups",
+      "label": "Copper cups",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-copper-cups",
+      "master": "masters/09-mushroom-copper-cups.png",
+      "alpha_mask": "alpha-masks/09-mushroom-copper-cups-alpha.png",
+      "atlas_tile": "atlas-tiles/09-mushroom-copper-cups.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.3388671875,
+        0.8623046875
+      ],
+      "atlas_pivot_top_origin": [
+        0.3590087890625,
+        0.8170166015625
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Six tiny cup fungi on very short nubs at different angles, irregular hollow saucer-shaped cups, muted burnt copper and umber interiors, dull cream ragged outer edges. Low compact clump with a broken silhouette and open spaces, no stalked umbrella caps, no glow."
+    },
+    {
+      "number": "10",
+      "id": "mushroom-black-trumpets",
+      "label": "Black trumpets",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-black-trumpets",
+      "master": "masters/10-mushroom-black-trumpets.png",
+      "alpha_mask": "alpha-masks/10-mushroom-black-trumpets-alpha.png",
+      "atlas_tile": "atlas-tiles/10-mushroom-black-trumpets.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.53125,
+        0.9365234375
+      ],
+      "atlas_pivot_top_origin": [
+        0.52734375,
+        0.8819580078125
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Four slender black trumpet fungi, funnel-shaped upward-opening caps flowing into tapering curled stems. Charcoal, cool gray and dusty brown painted folds, pale weathered rolled edges, readable hollow dark centers. Lean elegant irregular small cluster, no glow."
+    },
+    {
+      "number": "11",
+      "id": "mushroom-pinlight-colony",
+      "label": "Pinlight colony",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-pinlight-colony",
+      "master": "masters/11-mushroom-pinlight-colony.png",
+      "alpha_mask": "alpha-masks/11-mushroom-pinlight-colony-alpha.png",
+      "atlas_tile": "atlas-tiles/11-mushroom-pinlight-colony.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.4208984375,
+        0.9365234375
+      ],
+      "atlas_pivot_top_origin": [
+        0.4307861328125,
+        0.8819580078125
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "A small colony of ten very tiny pinhead mushrooms, fine gray stems, tiny rounded blue-gray caps, heights varied naturally, clustered root points. Sparse pale icy cyan glowing pinpricks at the cap crowns and edges. Delicate airy miniature silhouette, small readable caps, no haze or particles.",
+      "emission_mask": "emission-masks/11-mushroom-pinlight-colony-emission.png",
+      "atlas_emission_mask": "emission-masks/11-mushroom-pinlight-colony-emission-atlas.png",
+      "emission_color_srgb": "#8DDDE5",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    },
+    {
+      "number": "12",
+      "id": "mushroom-split-sage-caps",
+      "label": "Split sage caps",
+      "family": "mushroom",
+      "orientation": "upright",
+      "attachment": "bottom",
+      "envArtFx_name": "cave20-mushroom-split-sage-caps",
+      "master": "masters/12-mushroom-split-sage-caps.png",
+      "alpha_mask": "alpha-masks/12-mushroom-split-sage-caps-alpha.png",
+      "atlas_tile": "atlas-tiles/12-mushroom-split-sage-caps.png",
+      "master_dimensions": [
+        512,
+        512
+      ],
+      "atlas_dimensions": [
+        256,
+        256
+      ],
+      "frame_count": 1,
+      "uses_leaf_clump_quadrants": false,
+      "master_pivot_top_origin": [
+        0.5771484375,
+        0.8876953125
+      ],
+      "atlas_pivot_top_origin": [
+        0.5675048828125,
+        0.8392333984375
+      ],
+      "full_image_quad_width_over_height": 1,
+      "atlas_inner_rect_xywh": [
+        16,
+        16,
+        224,
+        224
+      ],
+      "alpha_test": 0.5,
+      "suggested_appearance": "Three old squat mushrooms with broken asymmetrical sage-gray caps, chipped edges and radial splits, short thick gnarled stems. Muted gray olive, stone beige and dark brown, a few tiny warm ivory luminous flecks inside cap splits. Weathered and battered painterly surface, no giant caps.",
+      "emission_mask": "emission-masks/12-mushroom-split-sage-caps-emission.png",
+      "atlas_emission_mask": "emission-masks/12-mushroom-split-sage-caps-emission-atlas.png",
+      "emission_color_srgb": "#E2D4A0",
+      "suggested_emission_strength": 0.35,
+      "emission_pairing": "Same layout and tile slot as base color in parallel emission atlas"
+    }
+  ]
+}

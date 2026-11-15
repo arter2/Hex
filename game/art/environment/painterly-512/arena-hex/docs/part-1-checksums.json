@@ -1,0 +1,471 @@
+{
+  "part": 1,
+  "revision": 2,
+  "areas": [
+    "hollows",
+    "deeps",
+    "vault"
+  ],
+  "files": {
+    "CLAUDE.md": {
+      "bytes": 4728,
+      "sha256": "ad7ce0fea2599367edb7e46d17adb32be4bc0ac0436fac50fc438f8f3e6d67a2"
+    },
+    "README.md": {
+      "bytes": 3058,
+      "sha256": "481cdbd708ab6afc72a3fe25190eae314e71ec48925b7e38f9f0d1f851023b9b"
+    },
+    "areas/deeps/deeps--growth-flat-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/deeps/deeps--growth-flat-roughness.png": {
+      "bytes": 86514,
+      "sha256": "93f929cf95b3fb22377b0e0ad1acd70f06773f8dd8f2bada35d99a907f691284"
+    },
+    "areas/deeps/deeps--growth-flat.png": {
+      "bytes": 668651,
+      "sha256": "bb200b76206f8af838f19e2edaee0dbe153944f25e1da8fe12677d8d00a51f97"
+    },
+    "areas/deeps/deeps--growth-glow.png": {
+      "bytes": 5523,
+      "sha256": "2d8cd2732c6bd78cf247dd6cf38a1cc3ba1ec153320610479e3d8a5c5272be55"
+    },
+    "areas/deeps/deeps--growth-upright-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/deeps/deeps--growth-upright-roughness.png": {
+      "bytes": 57783,
+      "sha256": "3e620bf7456bc978011c3eb4407aa8c334485eb677cd21756f8619b12c377bf8"
+    },
+    "areas/deeps/deeps--growth-upright.png": {
+      "bytes": 493819,
+      "sha256": "11a3e87c41fe8afbab5d4b914c53593563f4bdf4bd2874a344e01163d5a417a6"
+    },
+    "areas/deeps/deeps--hex-albedo-a.png": {
+      "bytes": 716250,
+      "sha256": "959363f198d134b9202f79328ce1355cc70fe436c1c10004854968f829e68f9a"
+    },
+    "areas/deeps/deeps--hex-albedo-b.png": {
+      "bytes": 705427,
+      "sha256": "a2d8366ede06eb742828ea5d44debcbefef88f83636b089eee073385402d76f7"
+    },
+    "areas/deeps/deeps--hex-height-a.png": {
+      "bytes": 186195,
+      "sha256": "352b914f3555ced8f5667016a99f242b46a09b9311f6f97ad41116314708f0dd"
+    },
+    "areas/deeps/deeps--hex-height-b.png": {
+      "bytes": 192485,
+      "sha256": "6ae8e72aab58bf129f6d8987da829aa835608c8351f0db2e5a1986476f002138"
+    },
+    "areas/deeps/deeps--hex-metalness-a.png": {
+      "bytes": 3874,
+      "sha256": "1999dd9441e2e47aa7d3b56e056fc0190b7e0b9d5b80f203dc21a44057046678"
+    },
+    "areas/deeps/deeps--hex-metalness-b.png": {
+      "bytes": 3378,
+      "sha256": "97fbc38a5d4b911f30e41a519a3dfb1b2a672be8bd1b0ff76a97ecd32c19f9a4"
+    },
+    "areas/deeps/deeps--hex-roughness-a.png": {
+      "bytes": 107175,
+      "sha256": "6b1b55d1ab865566c47defdcbff503becbd1b0e57f71e08feb5490e5bfee6ce9"
+    },
+    "areas/deeps/deeps--hex-roughness-b.png": {
+      "bytes": 108290,
+      "sha256": "c330075f6b3f4bb408d778c89d0febee1ab7c2625beaa0033d8fc49f662dc088"
+    },
+    "areas/deeps/deeps--joint-albedo.png": {
+      "bytes": 1126746,
+      "sha256": "487e904ff631a4845feddbc8f48b9f6adf3bbfd10e01dc1771d8599f44b7e749"
+    },
+    "areas/deeps/deeps--joint-height.png": {
+      "bytes": 683408,
+      "sha256": "cfb5f5fb8c512b6ae588f425ebb3ceb4f5efed36cd2619c375d831f215fa456f"
+    },
+    "areas/deeps/deeps--joint-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/deeps/deeps--joint-roughness.png": {
+      "bytes": 461813,
+      "sha256": "e15234333c65dda7dfaccebba0694ba4b847f618d7ff7baf87ee16a057d52ff6"
+    },
+    "areas/hollows/hollows--growth-flat-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/hollows/hollows--growth-flat-roughness.png": {
+      "bytes": 73471,
+      "sha256": "bc27d599515a2d1f3aff166895da2d17929bdb635cfa8ca7162313d8cd3a587c"
+    },
+    "areas/hollows/hollows--growth-flat.png": {
+      "bytes": 616505,
+      "sha256": "c67d6bde800d485a4e2c58f786100c71f12b957a8bd6b0484d5c3e5816f1a296"
+    },
+    "areas/hollows/hollows--growth-glow.png": {
+      "bytes": 9033,
+      "sha256": "5337e3e395dd1ae9081afe08a7fcb3b2e454ae7c5b8590f73b33a14bbb95a667"
+    },
+    "areas/hollows/hollows--growth-upright-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/hollows/hollows--growth-upright-roughness.png": {
+      "bytes": 46976,
+      "sha256": "c8d2e340e006b665c1e534710d421cd65ab37dee1b9500cb504a4e74ee769120"
+    },
+    "areas/hollows/hollows--growth-upright.png": {
+      "bytes": 408240,
+      "sha256": "f994e9573289b701e285cba5738ac671434b31f91a883835e063050b3b7f5f90"
+    },
+    "areas/hollows/hollows--hex-albedo-a.png": {
+      "bytes": 705939,
+      "sha256": "e74a7a27ea96ffaaa8f483c14a326ee8ead16257434540fe5d92dc5fd59dfcaf"
+    },
+    "areas/hollows/hollows--hex-albedo-b.png": {
+      "bytes": 679091,
+      "sha256": "eac00bd2c7b2cba922532bbb78c1b5ca8189e2149360ccfe23fe6220c724d197"
+    },
+    "areas/hollows/hollows--hex-height-a.png": {
+      "bytes": 199373,
+      "sha256": "d938ee1b12b20c44a02c49968d4ac22b4b4dfd2ffeaecb9765552082c4a288d7"
+    },
+    "areas/hollows/hollows--hex-height-b.png": {
+      "bytes": 193314,
+      "sha256": "c1963c70bb9e3fbfc07538a04a25a1700d53ff5300a1f5e20962e7f57afda7ca"
+    },
+    "areas/hollows/hollows--hex-metalness-a.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/hollows/hollows--hex-metalness-b.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/hollows/hollows--hex-roughness-a.png": {
+      "bytes": 106162,
+      "sha256": "09b1759a734a50e819a364c091af63635884e6768d5be242b4a1e39ec9ceb902"
+    },
+    "areas/hollows/hollows--hex-roughness-b.png": {
+      "bytes": 104742,
+      "sha256": "bc2b49282a3bd7c23137f8222342921499957ee14f89d5b43bd01a1bf81260c4"
+    },
+    "areas/hollows/hollows--joint-albedo.png": {
+      "bytes": 978828,
+      "sha256": "d292457c6ce68744868da5afd229379f2adc07b76d71266d48dbceb978608b8c"
+    },
+    "areas/hollows/hollows--joint-height.png": {
+      "bytes": 627751,
+      "sha256": "e50efa36ed6ebac3a3669b23aa9a13b8131366fd4a0c037f3ee0093092297da2"
+    },
+    "areas/hollows/hollows--joint-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/hollows/hollows--joint-roughness.png": {
+      "bytes": 416448,
+      "sha256": "d277cd6511bf0e0615c578631bcf143c25c0ec98688ad8dffb47a13bfb9101b2"
+    },
+    "areas/vault/vault--growth-flat-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/vault/vault--growth-flat-roughness.png": {
+      "bytes": 47725,
+      "sha256": "a917b221b704563d35fb6f3cb713ac4e6500db4fad9e41f3b00dc25966fa1391"
+    },
+    "areas/vault/vault--growth-flat.png": {
+      "bytes": 423875,
+      "sha256": "82ecc4433d030847617f4cc0afc0dfe9faf3174b1f736a968ce184e50fadb14b"
+    },
+    "areas/vault/vault--growth-glow.png": {
+      "bytes": 4971,
+      "sha256": "d2694eab004c21fbf39d85e555a3d24eaa98815f3218017d400765a8fa34cf0b"
+    },
+    "areas/vault/vault--growth-upright-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/vault/vault--growth-upright-roughness.png": {
+      "bytes": 45670,
+      "sha256": "2ba90c9f8ebfa4418286b20558e75c4047b6309877f56f4a7c38e0507ba20d3f"
+    },
+    "areas/vault/vault--growth-upright.png": {
+      "bytes": 388590,
+      "sha256": "d09401dcdbf58000d3eff3d0cc11c508b22fd9fdb504a4a50e36d7a673eb708a"
+    },
+    "areas/vault/vault--hex-albedo-a.png": {
+      "bytes": 674791,
+      "sha256": "4038c57f0a8aeedde6b4da4fa964c763bca182f9f7bbb61883edf2eb241cc923"
+    },
+    "areas/vault/vault--hex-albedo-b.png": {
+      "bytes": 681442,
+      "sha256": "e3110a07b91465c14180ba312c090a074bca829b455641fdba7f24bc76edf528"
+    },
+    "areas/vault/vault--hex-height-a.png": {
+      "bytes": 182626,
+      "sha256": "4f87dfa9e3c78595561490c67b01dc4ac71452ac9f667b962a9d50d18e76bffe"
+    },
+    "areas/vault/vault--hex-height-b.png": {
+      "bytes": 190623,
+      "sha256": "4a62d42c68c1ef31457c7fa8baa4fe0c4be95829b1bf47994d2655c7aa321835"
+    },
+    "areas/vault/vault--hex-metalness-a.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/vault/vault--hex-metalness-b.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/vault/vault--hex-roughness-a.png": {
+      "bytes": 98649,
+      "sha256": "fa04e54fa82799b6033fbbfc007182c5bcb9d2185caf0f5fd9f31cb6c0bac479"
+    },
+    "areas/vault/vault--hex-roughness-b.png": {
+      "bytes": 105642,
+      "sha256": "7e4c3d2a68afbd459a10cd29d55b70acf1d01f0838ed6214eb52b3a7bae1e4d9"
+    },
+    "areas/vault/vault--joint-albedo.png": {
+      "bytes": 913834,
+      "sha256": "e4d80b69ad0e582882e10d12083c471774c8c85826ef80cf1577352a8c1b5f7e"
+    },
+    "areas/vault/vault--joint-height.png": {
+      "bytes": 581972,
+      "sha256": "ab70fd3720b6fb301936e1af31ebc2c5705bf1765942edc086640481767672fc"
+    },
+    "areas/vault/vault--joint-metalness.png": {
+      "bytes": 1097,
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    },
+    "areas/vault/vault--joint-roughness.png": {
+      "bytes": 388512,
+      "sha256": "1ffaa6357c1033341559390cb66fce31d8c2e7531fee40a3f0ce57214a66f3d3"
+    },
+    "docs/generation-prompts.json": {
+      "bytes": 56607,
+      "sha256": "61c62e1986d1ab1836bf5561a31eecae2c47dba8d33014152f00991fac5ac461"
+    },
+    "docs/original-art-brief.md": {
+      "bytes": 9691,
+      "sha256": "5877ad9871bdeece705e72b7f75419ab7237c594735729ca55ce6a170bbe5b60"
+    },
+    "docs/repair-prompts.json": {
+      "bytes": 2558,
+      "sha256": "442c674deacaf555a2ef96c5cd45e1baec34d41ef8baf6d2e73832c459d5c278"
+    },
+    "docs/revision2-final-foliage-prompts.json": {
+      "bytes": 17948,
+      "sha256": "4da48479dbe512d12ce50ec2ba027e4f38a3a52c6fe7ce03ba565d1753956a58"
+    },
+    "docs/revision2-mixed-foliage-prompts.json": {
+      "bytes": 16039,
+      "sha256": "0c94ac27195605b94a8c3f483bde367f62aaee6df0913d0a45ebb949f0099ed6"
+    },
+    "docs/revision2-notes.md": {
+      "bytes": 1308,
+      "sha256": "9a1ea77142511d49fef67cd1085bbd0d380794abc2f3bbf9542052fab62abfd6"
+    },
+    "docs/revision2-prompts.json": {
+      "bytes": 12576,
+      "sha256": "e03869da25dff885c05d3b0e9f7c8b1ad6b8f6c369d78992fa4bd74492bc65b7"
+    },
+    "docs/templates/growth-flat-sheet-template.png": {
+      "bytes": 23590,
+      "sha256": "af80e2a8f0dfad1cfe7d6550670125da85eafa12cdb81b03399a7f3334300c37"
+    },
+    "docs/templates/growth-upright-sheet-template.png": {
+      "bytes": 12839,
+      "sha256": "c22b29c0b670439fc95eeb7a4908144d0b0feeb27e2c5d65b8d6fc347dddef0c"
+    },
+    "docs/templates/hex-tile-sheet-template.png": {
+      "bytes": 28860,
+      "sha256": "f22db941810395963fd0cad2ac9916b1824e1fef1a78cc8e5fdb756bb8611b1d"
+    },
+    "docs/templates/joint-fill-template.png": {
+      "bytes": 8926,
+      "sha256": "f65ffbadb9135f904a9164ca1c7b40c40cbab6743e6831245f5d892be3d3c89e"
+    },
+    "docs/validation.json": {
+      "bytes": 50168,
+      "sha256": "715834e31f1c7e71f0f576e6cb465c9260167150d73a2274878a36e7597d2daf"
+    },
+    "review/all-48-tiles-at-55px.png": {
+      "bytes": 236767,
+      "sha256": "42f325afe93dedb97dc93d673359056efb06d8fa477decfcde1fd6260d7bbbdc"
+    },
+    "review/deeps-complete-review.png": {
+      "bytes": 281069,
+      "sha256": "b444c7e95af1f4b4893011527bbd4f78fa81e6a271083b4b0424277dacc71b19"
+    },
+    "review/foliage-4-8-12px-proof.png": {
+      "bytes": 25903,
+      "sha256": "f237c0f95a14b63b103aa432a200e6bca4d605d76284378efaddda7194539fe5"
+    },
+    "review/hollows-complete-review.png": {
+      "bytes": 269849,
+      "sha256": "6b8117b168d655199b2d8d1f3adc5e49d69181ba344fdcee0e53b9bb346a9745"
+    },
+    "review/mixed-triad-foliage-review.png": {
+      "bytes": 202000,
+      "sha256": "352d95dc23498e0d0d022512fad5c156689f889261c5d48767b201d329e81867"
+    },
+    "review/tile-material-revisions.png": {
+      "bytes": 256531,
+      "sha256": "e90373d9be835884eab90e252024593e2d9849f2184ff16edcf1ae81e671af67"
+    },
+    "review/vault-complete-review.png": {
+      "bytes": 257948,
+      "sha256": "12f0fec0fed499a854159c81006aeea96e3221a108e90409937b9fbe5db016ee"
+    },
+    "shared/broad-noise-seamless.png": {
+      "bytes": 290887,
+      "sha256": "f85fb43f5186eec74a9a63b6d8561848d044924dd943ea212509b214d6883985"
+    },
+    "variation/deeps/deeps--mask-a-moss-stain-a.png": {
+      "bytes": 30766,
+      "sha256": "29e254b92c9c98883778fb2494010e0db73c59e3222f1a3ec8e75c92a37b5f3d"
+    },
+    "variation/deeps/deeps--mask-a-moss-stain-b.png": {
+      "bytes": 31787,
+      "sha256": "e369e8ac3a6595b6bd90670083380408e64377cc88f8e0ae565b8b5b7c432b50"
+    },
+    "variation/deeps/deeps--mask-b-colour-patches-a.png": {
+      "bytes": 134139,
+      "sha256": "66c34dbc6862c631b570f53ab41948d970187f3795a1a9f5b900313779bbb75b"
+    },
+    "variation/deeps/deeps--mask-b-colour-patches-b.png": {
+      "bytes": 135496,
+      "sha256": "072765cddd8caadc4ad435d38b0b5ee10529661b2276402033437de1ae3ac96c"
+    },
+    "variation/deeps/deeps--mask-g-cracks-chips-a.png": {
+      "bytes": 82861,
+      "sha256": "2d5487503d28c8563af5bdba1b03866b4a261890e4e9c7ee4fe804cd777ee5e1"
+    },
+    "variation/deeps/deeps--mask-g-cracks-chips-b.png": {
+      "bytes": 91396,
+      "sha256": "0b2f232be3e1528eaadebb6e371cec6f351c32ba62fd071fd8fdabf6a0fa3499"
+    },
+    "variation/deeps/deeps--mask-r-edge-wear-a.png": {
+      "bytes": 91551,
+      "sha256": "453195c9d7b3cad93a2020dde0937ea52b1e3875a01a3b3e0c165890c59dfb90"
+    },
+    "variation/deeps/deeps--mask-r-edge-wear-b.png": {
+      "bytes": 89300,
+      "sha256": "94d13fc459bee3a5b83c7f6700ef25e65f8816e1b1ef97c6a3c7b009456462e0"
+    },
+    "variation/deeps/deeps--tile-coverage-a.png": {
+      "bytes": 8399,
+      "sha256": "60dda61f8bea3caae0c2cbe5fc6e4f9b4d44d51dfa9a3bfb9722ad45d78c5c9a"
+    },
+    "variation/deeps/deeps--tile-coverage-b.png": {
+      "bytes": 8215,
+      "sha256": "852a6c54cbaca83dc20184f991155061e5fbfb59baa946b100d714b335ff9565"
+    },
+    "variation/deeps/deeps--variation-mask-rgba-a.png": {
+      "bytes": 464551,
+      "sha256": "fa73eaaa770866d3b21e924fdfe3594a8d00cc855318d0e1f0cfa5a94f21cc19"
+    },
+    "variation/deeps/deeps--variation-mask-rgba-b.png": {
+      "bytes": 476048,
+      "sha256": "6ae03d941bf13c2cb67ccd13e170c998360049243ab9afdbd117fee27b9b03b7"
+    },
+    "variation/hollows/hollows--mask-a-moss-stain-a.png": {
+      "bytes": 33407,
+      "sha256": "7d0d137b56d8a60881c05949754c7a9645b7bc6612dd832581e362cf525f6568"
+    },
+    "variation/hollows/hollows--mask-a-moss-stain-b.png": {
+      "bytes": 30570,
+      "sha256": "9951d6085e3dba7822928898a613e1f3be3ac9a36ed4808a7cc7d831467ba600"
+    },
+    "variation/hollows/hollows--mask-b-colour-patches-a.png": {
+      "bytes": 140988,
+      "sha256": "2a17eee02f300bf1c0dfe0568187d161377d2ccfc5d3923204816d0b3a02e67f"
+    },
+    "variation/hollows/hollows--mask-b-colour-patches-b.png": {
+      "bytes": 143251,
+      "sha256": "62dffaeb99d4ad740cd69d2eca1027eb3aeb419a8d3eb69a44aca3478711f172"
+    },
+    "variation/hollows/hollows--mask-g-cracks-chips-a.png": {
+      "bytes": 100591,
+      "sha256": "ed3c6e261ea38a63e4496d6a7197ec2c4aa02bd3b2a6e00d242e365b75a89e77"
+    },
+    "variation/hollows/hollows--mask-g-cracks-chips-b.png": {
+      "bytes": 93649,
+      "sha256": "cb1f5e1a23ca49b45898a9c6fb4c2e2f6951ec3e6229a346310b2eb7c0a98dfd"
+    },
+    "variation/hollows/hollows--mask-r-edge-wear-a.png": {
+      "bytes": 71029,
+      "sha256": "3e16f22c6d66ca7686cafda141d95c193cca959d585571e8e3d127a982881e30"
+    },
+    "variation/hollows/hollows--mask-r-edge-wear-b.png": {
+      "bytes": 76303,
+      "sha256": "70a8a03bb9ed5a43f34a9962f9ae898cafc5460199b827074499c1d0655e053b"
+    },
+    "variation/hollows/hollows--tile-coverage-a.png": {
+      "bytes": 8391,
+      "sha256": "633faf8a7aec7c07c5b9fdc8ca6edb617de29e41c5433f35371ab17cbf7645b6"
+    },
+    "variation/hollows/hollows--tile-coverage-b.png": {
+      "bytes": 8656,
+      "sha256": "d743cba6aa15f7c74f8f47800c4b81bd8643a38b1e59fbfb038901dacfa81cee"
+    },
+    "variation/hollows/hollows--variation-mask-rgba-a.png": {
+      "bytes": 475621,
+      "sha256": "850c67c09fa29cba4c4c86a4a46de44a1884e6ee8c3ea1abf21e1a6765d3456a"
+    },
+    "variation/hollows/hollows--variation-mask-rgba-b.png": {
+      "bytes": 469795,
+      "sha256": "f49ad0e2fd803ca25f83002a110478e8b2b36ffff57e5e8119b9aaf54fddc2e1"
+    },
+    "variation/vault/vault--mask-a-moss-stain-a.png": {
+      "bytes": 27387,
+      "sha256": "ee614282aa4ca22064a93cb300ec96de2a2d9d84769fd33cb001eb2554289da0"
+    },
+    "variation/vault/vault--mask-a-moss-stain-b.png": {
+      "bytes": 29236,
+      "sha256": "ee718c9d8f011ae47f29e5309b416c12da0eb5bc516d08d928564e97f888acab"
+    },
+    "variation/vault/vault--mask-b-colour-patches-a.png": {
+      "bytes": 130697,
+      "sha256": "aa92b422ec3799aea3dba07575e0ff9cfc2358c9d73a219500a21890db305750"
+    },
+    "variation/vault/vault--mask-b-colour-patches-b.png": {
+      "bytes": 133663,
+      "sha256": "bcbd8da34f68ad2527da0dd9d8b92c2f5f374e5bd5b0c84a2333fcaa2f4e71f3"
+    },
+    "variation/vault/vault--mask-g-cracks-chips-a.png": {
+      "bytes": 81995,
+      "sha256": "9f5375bc5a8d98cd208211e875858df894769006c1f978809b62003898b81159"
+    },
+    "variation/vault/vault--mask-g-cracks-chips-b.png": {
+      "bytes": 93112,
+      "sha256": "061206980f2ce68052d7f8e981b0968ac33a03777ba90d488fc654ac272f4de5"
+    },
+    "variation/vault/vault--mask-r-edge-wear-a.png": {
+      "bytes": 81644,
+      "sha256": "c73fd9a538e5afa0186a07f7099e8477a6b627d4169bc946cc0a407412010ee8"
+    },
+    "variation/vault/vault--mask-r-edge-wear-b.png": {
+      "bytes": 85694,
+      "sha256": "5589ce717fc8a5f299060af7ff6be6f2ff7c61a852246a5e2ff86a7db6343e3e"
+    },
+    "variation/vault/vault--tile-coverage-a.png": {
+      "bytes": 8126,
+      "sha256": "ce859d05f0400ce7d85133affb37706f4f34f073829c3e53d59d25bb6bfa947b"
+    },
+    "variation/vault/vault--tile-coverage-b.png": {
+      "bytes": 8129,
+      "sha256": "a3b295dfbe7f93ae9de494cdefd3ca1cfeca7098fa016e2ea2549c482553968c"
+    },
+    "variation/vault/vault--variation-mask-rgba-a.png": {
+      "bytes": 438037,
+      "sha256": "79b2fe43d4b4fc1137705d8e7fbd862ea612a5ea6d0c15872f9e34f7d00f7e70"
+    },
+    "variation/vault/vault--variation-mask-rgba-b.png": {
+      "bytes": 469783,
+      "sha256": "121676078b69b04fcce29ed2e5fa5e6bf09b2fb1e62334e8dd754b268cc8f0ff"
+    }
+  }
+}

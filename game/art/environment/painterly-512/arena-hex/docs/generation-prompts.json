@@ -1,0 +1,343 @@
+[
+  {
+    "key": "hollows--hex-albedo-b",
+    "area": "hollows",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA HOLLOWS: cool damp grey-green cave limestone with subdued sage mineral patches. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "deeps--hex-albedo-a",
+    "area": "deeps",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA DEEPS: mid-dark cold slate-blue stone, thin rime frost in corners and small frost accents at crack mouths; no white coating. Entire palette must follow this area, not the green style reference. Tile1 top-left nearly pristine with a few broad quiet mineral colour patches; Tile2 top-right has one readable crack running from the upper-right corner about130px inward, plus a short offshoot; Tile3 bottom-left a different short crack entering from the lower-left corner about120px inward and broad edge abrasion; Tile4 bottom-right one clearly missing40px upper-left corner chip and a smaller opposite edge nick. All still single solid hex flagstones."
+    }
+  },
+  {
+    "key": "deeps--hex-albedo-b",
+    "area": "deeps",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA DEEPS: mid-dark cold slate-blue stone, thin rime frost in corners and small frost accents at crack mouths; no white coating. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "vault--hex-albedo-a",
+    "area": "vault",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA VAULT: mid-dark muted violet and plum dressed limestone, calm desaturated purple mineral patches, refined but worn; absolutely no blue-and-gold. Entire palette must follow this area, not the green style reference. Tile1 top-left nearly pristine with a few broad quiet mineral colour patches; Tile2 top-right has one readable crack running from the upper-right corner about130px inward, plus a short offshoot; Tile3 bottom-left a different short crack entering from the lower-left corner about120px inward and broad edge abrasion; Tile4 bottom-right one clearly missing40px upper-left corner chip and a smaller opposite edge nick. All still single solid hex flagstones."
+    }
+  },
+  {
+    "key": "vault--hex-albedo-b",
+    "area": "vault",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA VAULT: mid-dark muted violet and plum dressed limestone, calm desaturated purple mineral patches, refined but worn; absolutely no blue-and-gold. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "rifts--hex-albedo-a",
+    "area": "rifts",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA RIFTS: dark volcanic umber and charcoal basalt, earthy brown mineral patches, tiny subdued ember-orange mineral accents only deep in cracks; no lava rivers or bright lit edges. Entire palette must follow this area, not the green style reference. Tile1 top-left nearly pristine with a few broad quiet mineral colour patches; Tile2 top-right has one readable crack running from the upper-right corner about130px inward, plus a short offshoot; Tile3 bottom-left a different short crack entering from the lower-left corner about120px inward and broad edge abrasion; Tile4 bottom-right one clearly missing40px upper-left corner chip and a smaller opposite edge nick. All still single solid hex flagstones."
+    }
+  },
+  {
+    "key": "rifts--hex-albedo-b",
+    "area": "rifts",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA RIFTS: dark volcanic umber and charcoal basalt, earthy brown mineral patches, tiny subdued ember-orange mineral accents only deep in cracks; no lava rivers or bright lit edges. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "ruins--hex-albedo-a",
+    "area": "ruins",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA RUINS: mid-dark weathered olive and muted ochre-gold limestone, old and refined, quiet tiny fossil flecks, no metallic shine or golden light. Entire palette must follow this area, not the green style reference. Tile1 top-left nearly pristine with a few broad quiet mineral colour patches; Tile2 top-right has one readable crack running from the upper-right corner about130px inward, plus a short offshoot; Tile3 bottom-left a different short crack entering from the lower-left corner about120px inward and broad edge abrasion; Tile4 bottom-right one clearly missing40px upper-left corner chip and a smaller opposite edge nick. All still single solid hex flagstones."
+    }
+  },
+  {
+    "key": "ruins--hex-albedo-b",
+    "area": "ruins",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA RUINS: mid-dark weathered olive and muted ochre-gold limestone, old and refined, quiet tiny fossil flecks, no metallic shine or golden light. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "abyss--hex-albedo-a",
+    "area": "abyss",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA ABYSS: very dark charcoal and deep navy stone, broad quiet blue-black mineral patches, tiny sparse star-like mineral flecks kept very dim, readable dark slate rims, no cosmic nebula or gold. Entire palette must follow this area, not the green style reference. Tile1 top-left nearly pristine with a few broad quiet mineral colour patches; Tile2 top-right has one readable crack running from the upper-right corner about130px inward, plus a short offshoot; Tile3 bottom-left a different short crack entering from the lower-left corner about120px inward and broad edge abrasion; Tile4 bottom-right one clearly missing40px upper-left corner chip and a smaller opposite edge nick. All still single solid hex flagstones."
+    }
+  },
+  {
+    "key": "abyss--hex-albedo-b",
+    "area": "abyss",
+    "kind": "tile",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/hex-tile-sheet-template.png",
+        "/workspace/scratch/4c1bf8049f93/generated_images/exec-e07998a1-61ab-4a1f-b94a-5888e505586a.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset: a production hand-painted hex flagstone ALBEDO atlas for Hexmancers. Reference image1 is ONLY the exact geometry template; reference image2 is ONLY the approved chunky painterly brushwork and55px readability, NOT its green palette or its exact crack shapes. Square1024x1024 PNG. Exactly FOUR pointy-top hexagons in a2x2 grid of512px cells, circumradius240px, centers(256,256),(768,256),(256,768),(768,768). Paint right up to all six outer edges. Outside and inside missing corner cutouts flat uniform#808080. Remove all template text, lines and guides. Each hex is ONE carved stone with a26–32px worn bevel following all six sides, broad70–130px painted material patches and a quiet smoother middle. Broad visible brush planes; no photographic pores or high-frequency noise. At55px across a tile, the important marks must still read: crack main sections10–16px thick at1024 sheet size, tapering inward; chips30–50px across. Clear modest value separation, not bright white rings. Flat even shadowless ALBEDO material colour, NO directional light, specular highlights, cast shadows, AO halo, vignette, visible extrusion or perspective. Absolutely no bricks, slabs inside a hex, runes, symbols, lines crossing the whole tile, scenery, props, lettering or outlines. Keep face mid-dark and calm for bright units and highlights. AREA ABYSS: very dark charcoal and deep navy stone, broad quiet blue-black mineral patches, tiny sparse star-like mineral flecks kept very dim, readable dark slate rims, no cosmic nebula or gold. Entire palette must follow this area, not the green style reference. Tile5 top-left shallow worn dip in the broad middle, expressed with restrained material colour and rounded brushwork, no shadow or concentric outline; Tile6 top-right has a little area-appropriate moss, frost or mineral crust creeping from one edge, under8% coverage, middle clear; Tile7 bottom-left one quiet readable natural irregular mineral vein starting at an edge, not a decorative line across the whole tile; Tile8 bottom-right visibly weathered with several larger chipped edge facets and one short corner crack, but still a quiet mostly intact center. Do NOT copy the4 damage patterns in the style reference. These are four NEW variants5–8."
+    }
+  },
+  {
+    "key": "hollows--joint-albedo",
+    "area": "hollows",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA HOLLOWS: very dark green-black packed cave earth and grit, flat low moss patches. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "hollows--growth-flat",
+    "area": "hollows",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: hollows--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA HOLLOWS: green moss mats, pale sage lichen, green lantern mushroom caps, pale green crystal fragments, dark fallen fern/leaf litter, cool grey pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette damp sage and forest-green moss, pale green crystals, cream-stemmed green lantern mushrooms, ferns and dark roots. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "hollows--growth-upright",
+    "area": "hollows",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: hollows--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA HOLLOWS. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 pale yellow-green translucent quartz points; cells5–8 four DIFFERENT groups of2–4 small green lantern mushroom caps on ivory stems; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: muted sage ferns, forest green grass and dark brown roots. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  },
+  {
+    "key": "deeps--joint-albedo",
+    "area": "deeps",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA DEEPS: very dark blue-black fine grit with tiny subdued frost crystals. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "deeps--growth-flat",
+    "area": "deeps",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: deeps--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA DEEPS: blue-grey frosted moss mats, pale cold lichen, ivory bonnet mushroom caps, icy crystal fragments, blue-grey needle litter, slate pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette cold blue-grey frosted moss and lichen, ice-white blue-tinted crystals, ivory bonnet mushrooms, sparse frosted plant sprigs. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "deeps--growth-upright",
+    "area": "deeps",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: deeps--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA DEEPS. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 ice-white translucent pointed crystals with a pale icy blue tint; cells5–8 four DIFFERENT groups of2–4 ivory bonnet mushrooms with slender blue-grey stems; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: small frost-dusted pale blue-grey ferns, grass and dark blue-brown twigs. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  },
+  {
+    "key": "vault--joint-albedo",
+    "area": "vault",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA VAULT: very dark muted violet and plum packed grit with only tiny patches of dark purple-grey staining. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "vault--growth-flat",
+    "area": "vault",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: vault--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA VAULT: sparse purple-grey moss stains, violet-grey lichen, dusky violet mushroom caps, pale violet crystal fragments, dried plum-grey leaves, dark violet pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette restrained pale violet crystals, small dusky violet mushrooms, sparse grey-violet lichen, very few muted purple-grey plants. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "vault--growth-upright",
+    "area": "vault",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: vault--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA VAULT. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 pale muted violet quartz clusters; cells5–8 four DIFFERENT groups of2–4 small muted violet-purple mushroom caps on grey-lilac stems; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: sparse tiny desaturated plum-grey fern sprigs, grasses and dark dried twigs. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  },
+  {
+    "key": "rifts--joint-albedo",
+    "area": "rifts",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA RIFTS: nearly black charcoal ash and cinders with occasional dull rusty-brown grit, no bright embers. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "rifts--growth-flat",
+    "area": "rifts",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: rifts--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA RIFTS: sparse dry rust-brown crust mats, charcoal-orange lichen, copper cup mushroom caps, dark ember-red crystal fragments, dry umber needle and leaf litter, charcoal cinders and pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette dull copper-red ember crystals, small copper cup mushrooms, sparse dry ash-brown roots, almost no greenery. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "rifts--growth-upright",
+    "area": "rifts",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: rifts--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA RIFTS. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 dark ember-orange and muted red-brown crystal points with only small bright amber tips; cells5–8 four DIFFERENT groups of2–4 tiny copper cup mushrooms with russet-orange shallow cups and dark brown stems; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: few desiccated brown fern fragments, dry straw-brown grass and twisted charcoal roots. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  },
+  {
+    "key": "ruins--joint-albedo",
+    "area": "ruins",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA RUINS: dark ochre-brown packed dust and fine grit with subdued golden-olive moss patches. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "ruins--growth-flat",
+    "area": "ruins",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: ruins--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA RUINS: golden olive moss mats, pale olive lichen, amber button mushroom caps, warm ochre quartz fragments, old olive leaves and needle litter, tan-grey limestone pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette golden olive moss and lichen, muted amber button mushrooms, small warm smoky quartz crystals, grass, ivy and fallen leaves. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "ruins--growth-upright",
+    "area": "ruins",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: ruins--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA RUINS. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 small smoky ochre and muted amber quartz clusters, not luminous; cells5–8 four DIFFERENT groups of2–4 amber button mushroom clusters on warm ivory stems, not luminous; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: small olive ivy and fern sprigs, ochre-green grasses and dark weathered roots. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  },
+  {
+    "key": "abyss--joint-albedo",
+    "area": "abyss",
+    "kind": "joint",
+    "args": {
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Square1024x1024 full-bleed seamless tileable hand-painted game material ALBEDO for narrow joints between hex stones. AREA ABYSS: void-black very fine grit with rare dark blue-grey mineral grains, extremely subdued. Very dark low-contrast packed fine earth and grit, a few broad flat organic stains, modest soft painterly brushwork matching mobile fantasy dungeon art. Even shadowless material colour only, no directional lighting, no cast shadows, no ambient vignette, no large feature or repeated central motif. No hexes, tiles, flagstones, walls, standing plants, obvious mushrooms, runes, gold or text. Must repeat seamlessly on all4 sides; all four corners match. Keep variation quiet and substantially darker than the stone tops. No photographic speckle noise."
+    }
+  },
+  {
+    "key": "abyss--growth-flat",
+    "area": "abyss",
+    "kind": "flat",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-flat-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: abyss--growth-flat.png. Reference image is a layout template ONLY. Make a1024x1024 PNG sprite sheet with REAL transparent background. Exact4x4 grid of256px cells,16 individual pieces, one per cell centered at(128+256*c,128+256*r). Every piece stays inside a radius100px circle, no clipping or overlap. Remove ALL text, lines, labels, circles, borders and template background. Flat growth seen ORTHOGRAPHICALLY STRAIGHT DOWN, lying flush on the ground, no standing stems, no perspective. Painterly fantasy game art, broad readable brush shapes, clear silhouettes, flat shadowless material color, no cast shadows, no ground discs or pedestals, no glow halos. AREA ABYSS: sparse charcoal-blue moss mats, cold grey lichen, black trumpet mushroom caps viewed from above, pale cyan crystal fragments, nearly black needle litter, deep navy pebbles. Row-major EXACT CONTENT: cells1–4 four distinct moss/crust mats, two elongated and two irregular; cells5–7 three different flat lichen rosettes; cells8–10 three small clusters of mushroom caps seen from above; cells11–12 two sparse embedded crystal-shard scatters from above; cells13–14 two small fallen leaf or needle litters; cells15–16 two pebble-and-grit scatters. Flat and compact, never bushy; detail must resolve at small mobile scale. Colour palette very sparse dark navy moss and cold grey lichen, pale cyan crystals, black trumpet mushrooms, tiny charcoal-blue root and grass fragments. Transparent between all pieces and within holes. Do not include labels or a drawn grid."
+    }
+  },
+  {
+    "key": "abyss--growth-upright",
+    "area": "abyss",
+    "kind": "upright",
+    "args": {
+      "referenced_image_paths": [
+        "/workspace/scratch/4c1bf8049f93/brief/arena-hex-floor/templates/growth-upright-sheet-template.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset: abyss--growth-upright.png. Reference image is an exact layout template ONLY. Make a1024x1024 PNG with REAL transparent background,4x4 grid of256px cells,16 separate compact growth sprigs. One object or connected cluster per cell. SIDE VIEW at ground level, all objects grow UP and stand exactly on cell-local baseline y224. All art fits inside local x40..216 and y24..224 (with6px safety inside), except no roots below y224. Remove ALL text, labels, lines, frames and template background. No overlap, no clipping, no shadows, no ground discs, no pedestals, no cast light or bloom. Hand-painted fantasy sprites with broad simple planes and readable small silhouettes, subdued material colours, even shadowless colour. These will be shorter than a character's ankle in the game; compact low clusters, not towering pillars or huge forests. AREA ABYSS. Row-major EXACT CONTENT: cells1–4 four DIFFERENT compact clusters of2–5 pale cyan crystal clusters with deep navy bases and small ice-cyan tips; cells5–8 four DIFFERENT groups of2–4 black trumpet mushrooms with blue-black funnel caps and dark grey stems, not glowing; cells9–11 three tiny fern/leaf sprigs; cells12–14 three grass/reed tufts; cells15–16 two small root/twig loops. Plant and root palette: extremely sparse charcoal-blue fern fragments, dark blue-grey grass and black twig loops. Crystals and any luminous cap regions are painted localized clean pale material colour, no baked glow or light spill; emission is a separate map. Do not draw glows on plants or ground. True transparent holes between stems and crystals. No labels or drawn grid."
+    }
+  }
+]

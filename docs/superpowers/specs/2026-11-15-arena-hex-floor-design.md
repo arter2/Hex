@@ -1,6 +1,6 @@
 # Arena hex floor: design
 
-**Status:** design, waiting for approval. **Art:** `docs/art-production/arena-hex-floor/BRIEF.md` (for ChatGPT) and its `templates/`.
+**Status:** design, waiting for approval. **Art:** `docs/art-production/arena-hex-floor/BRIEF.md` (for ChatGPT) and its `templates/`; **delivered** 2026-11-15 (revision 2) and stored in `game/art/environment/painterly-512/arena-hex/` (its `README.md` and `INTEGRATION-NOTES.md` are the art's own conventions).
 
 ## Intent
 
@@ -89,6 +89,32 @@ A new `tools/build-arena-hex.py` reads the delivered PNGs (masters stored under 
 4. makes the normal, AO and roughness maps from height and colour;
 5. cuts the growth sheets into card tiles: transparent or #FF00FF cut out, colour carried under clear pixels, glow masks into a matching emission sheet;
 6. writes WebPs to `game/art/environment/arena/hex/`, and their rectangles into the art map.
+
+## What the art delivered (beyond the brief)
+
+Per area, all 1024 px:
+- **Maps for each hex sheet:** colour, height, **roughness** (white is rough; used directly, not inverted) and **metalness** (0, except the Deeps' silver and Abyss's gold flecks, which are real metal where painted).
+- **Variation masks per sheet** (`variation/`), packed as RGBA data, not opacity:
+  - R: edge wear;
+  - G: cracks and chip faces;
+  - B: broad colour patches;
+  - A: moss and mineral staining.
+- **A tile coverage map:** the true hex outline including chipped-off corners. Chipped corners are cut by it (alpha test), so they show the joint beneath, not grey.
+- **Joint fill:** colour, height, roughness and metalness.
+- **Growth sheets:** flat and upright, each with roughness and metalness, plus the upright glow mask (Ruins: none).
+- **Shared:** a seamless broad noise (`shared/broad-noise-seamless.png`) for large-scale tone drift across the board.
+
+**Changes to the design that follow from it:**
+- Roughness and metalness come from the art, not derivation. The debug sliders scale and offset them.
+- The masks drive per-tile variety from the tile key:
+  - edge wear brightness and roughness (R);
+  - crack and chip darkening and roughness (G);
+  - mild tone shifts (B), held within ±7% brightness;
+  - moss staining strength (A).
+- The broad noise adds a slow tone drift across the whole board, so it never looks like a repeated tile.
+- Growth colours are the art's own (complementary hue groups). There's no area colour wash over them.
+- Upright sprigs are dropped (or swapped for flat pieces) where they would draw under about 8 px tall on screen.
+- Height, roughness, metalness, masks, coverage and glow are loaded as linear data; colour is sRGB.
 
 ## Left to the builder
 

@@ -285,6 +285,24 @@ const CHECKS = {
       return null;
     });
   },
+  // Task 3: plain stone on your half (no side wash), a hole black, a claim tinted; the side glow only on your half
+  async hexStateColours(pg) {
+    await pg.evaluate(BATTLE, [1, true]);
+    return pg.evaluate(async () => {
+      const b = AR.board, ca = b.mesh.geometry.attributes.color, P = TILES.filter(t => t.side === 'p' && !t.occ);
+      const [plain, hole, claim] = [P[0], P[P.length - 1], P[(P.length / 2) | 0]];
+      hole.holeT = 1; const lk = Object.keys(LAND_LOOK)[0]; claim.claim = { land: lk, t: 9 };
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const at = t => [ca.getX(t._v0), ca.getY(t._v0), ca.getZ(t._v0)];
+      if (at(plain).some(v => Math.abs(v - XLIT.hexBase) > .02)) return 'a plain tile on your half is tinted ' + at(plain).map(v => v.toFixed(2));
+      if (at(hole).some(v => v > .01)) return 'a hole is not black';
+      if (at(claim).every(v => Math.abs(v - XLIT.hexBase) < .02)) return 'a claimed tile shows no colour';
+      hole.holeT = 0; claim.claim = null;
+      const sg = b.sideGlow; if (!sg) return 'no side glow';
+      const n = sg.geometry.attributes.position.count, want = TILES.filter(t => t.side === 'p').length * 36;
+      return n === want ? null : 'side glow vertices ' + n + ', want ' + want;
+    });
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {

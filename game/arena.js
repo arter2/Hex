@@ -91,7 +91,7 @@ const AR_RELIEF=14;   // the painted stone's relief: its brightness, 0 to 1, tim
 // the hex tiles: one merged mesh, each tile a hex prism with its own window of the area's floor
 // stone on top (as in the old board) and a colour per vertex set every frame from the tile's state
 function arenaBoard(A,Ar,R){
-  if(!SQUARE&&typeof arHexFloor==='function'){ const b=arHexFloor(A,Ar,R); A.board=b; return [b.mesh,b.joint,b.glow,b.lines]; }   // the painted hex floor (arenahex.js); the square board stays as it was
+  if(!SQUARE&&typeof arHexFloor==='function'){ const b=arHexFloor(A,Ar,R); A.board=b; return [b.mesh,b.joint,b.sideGlow,b.glow,b.lines]; }   // the painted hex floor (arenahex.js); the square board stays as it was
   const tex=arTex(xTex(arArt(Ar,'board',()=>xSlabFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*31+5,0)),true)), cvs=tex.image;
   const n=TILES.length, VT=6*3+6*6, pos=new Float32Array(n*VT*3), nor=new Float32Array(n*VT*3), uv=new Float32Array(n*VT*2), col=new Float32Array(n*VT*3).fill(1);
   const rad=.96, lo=-SLAB; let k=0;
@@ -201,9 +201,14 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
 const AR_C=new THREE.Color(), AR_G=new THREE.Color();
 // the tiles' colours: their stone tinted by side and state; anything brighter than the side's own
 // colour (a telegraph, fire, ice, a flash) also glows on the glow layer
+const AR_SIDE={p:'#123756', e:'#23292f', n:'#0a1a14'}, AR_S=new THREE.Color();   // (each side's plain colour, as battle.js floorLayer gives it: on the hex floor only a tile's difference from it tints)
 function arenaTiles(list){ const A=AR; if(!A||!A.board) return; const ca=A.board.mesh.geometry.attributes.color, ga=A.board.glow.geometry.attributes.color;
+  const hex=A.board.art!==undefined;   // (the painted hex floor, arenahex.js: plain stone unless the tile's state tints it)
   for(const {t,base,fill} of list){ AR_C.set(fill); AR_G.set(base);
-    const r=Math.min(1.6,AR_C.r*2.6+.25), g=Math.min(1.6,AR_C.g*2.6+.25), b=Math.min(1.6,AR_C.b*2.6+.25);
+    let r, g, b;
+    if(hex){ AR_S.set(AR_SIDE[t.side]||AR_SIDE.n); const k=XLIT.hexBase; r=Math.max(0,Math.min(1.6,k+(AR_C.r-AR_S.r)*2.6)); g=Math.max(0,Math.min(1.6,k+(AR_C.g-AR_S.g)*2.6)); b=Math.max(0,Math.min(1.6,k+(AR_C.b-AR_S.b)*2.6));
+      if(t.holeT>0) r=g=b=0; }
+    else { r=Math.min(1.6,AR_C.r*2.6+.25); g=Math.min(1.6,AR_C.g*2.6+.25); b=Math.min(1.6,AR_C.b*2.6+.25); }
     for(let v=t._v0;v<t._v1;v++) ca.setXYZ(v,r,g,b);
     const gr=Math.max(0,AR_C.r-AR_G.r)*1.4, gg=Math.max(0,AR_C.g-AR_G.g)*1.4, gb=Math.max(0,AR_C.b-AR_G.b)*1.4;
     for(let v=t._g0;v<t._g0+(SQUARE?12:18);v++) ga.setXYZ(v,gr,gg,gb); }

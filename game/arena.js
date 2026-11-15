@@ -72,12 +72,26 @@ function arenaClear(){ const A=AR; if(!A||!A.grp) return; A.scene.remove(A.grp);
   A.grp.traverse(o=>{ if(o.geometry) o.geometry.dispose(); });
   for(const m of A.mats||[]) xFreeMat(m); A.mats=[];   // with each material's own normal and roughness maps
   for(const t of A.texs||[]) t.dispose(); A.texs=[]; A.grp=null; A.units=new Map(); }
-const arTex=t=>{ (AR.texs||(AR.texs=[])).push(t); return t; };
+const arTex=t=>{ (AR.texs||(AR.texs=[])).push(t); if(t.image&&t.image.painted){ t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; } return t; };   // (a painting is filtered smooth, with mip levels; the code-painted stone stays crisp pixels)
+/* An arena surface's painted texture (envart.js envArtArena: the area's 512 painting) as a canvas, or, until it has
+   loaded, the code-painted one gen() makes. The painting's relief is its own brightness, a height field the lighting
+   turns into a normal map as it does the code-painted stone's (look.js xLitTag), so the debug menu's Normal maps switch
+   and strength apply. flat: no height field (the chasm, the lava). Made once per painting. */
+const AR_ART=new Map();
+function arArt(Ar,slot,gen,flat){ const im=typeof envArtArena==='function'&&Ar&&envArtArena(Ar.id,slot); if(!im) return gen();
+  let c=AR_ART.get(im); if(c) return c; const N=im.naturalWidth||im.width; c=document.createElement('canvas'); c.width=c.height=N;
+  const x=c.getContext('2d'); x.drawImage(im,0,0); c.painted=1;
+  if(!flat){ const D=x.getImageData(0,0,N,N).data, L=new Float32Array(N*N), H=new Float32Array(N*N);
+    for(let i=0;i<N*N;i++) L[i]=(D[i*4]*.3+D[i*4+1]*.59+D[i*4+2]*.11)/255;
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++){ let v=0; for(let dj=-1;dj<=1;dj++) for(let di=-1;di<=1;di++) v+=L[((j+dj+N)%N)*N+((i+di+N)%N)]; H[j*N+i]=v/9*AR_RELIEF; }   // (a little softened: the paint's brush grain is not relief)
+    c.h=H; c.hk=.5; if(slot==='board') c.pbr='slab'; }
+  AR_ART.set(im,c); return c; }
+const AR_RELIEF=14;   // the painted stone's relief: its brightness, 0 to 1, times this (the code-painted stone's heights run about 0 to 7 over 256 pixels)
 
 // the hex tiles: one merged mesh, each tile a hex prism with its own window of the area's floor
 // stone on top (as in the old board) and a colour per vertex set every frame from the tile's state
 function arenaBoard(A,Ar,R){
-  const tex=arTex(xTex(xSlabFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*31+5,0),true)), cvs=tex.image;
+  const tex=arTex(xTex(arArt(Ar,'board',()=>xSlabFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*31+5,0)),true)), cvs=tex.image;
   const n=TILES.length, VT=6*3+6*6, pos=new Float32Array(n*VT*3), nor=new Float32Array(n*VT*3), uv=new Float32Array(n*VT*2), col=new Float32Array(n*VT*3).fill(1);
   const rad=.96, lo=-SLAB; let k=0;
   const put=(x,y,z,nx,ny,nz,u,w)=>{ pos.set([x,y,z],k*3); nor.set([nx,ny,nz],k*3); uv.set([u,w],k*2); k++; };
@@ -134,18 +148,18 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   // rock over the dungeon's chasm, in the area's haze, so you can see it is the same place
   A.open=!boss&&(!XLIT.arWalls||R()<.65);
   if(A.open){ A.room.back=x1+1.7; A.room.near=x0-1.9; const back=A.room.back, near=A.room.near;   // the island ends just past the board, so the chasm shows beyond
-    const t=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
-    const sideT=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)); sideT.repeat.set(6,1);
+    const t=arTex(xTex(arArt(Ar,'floor',()=>xRockFloor(S,(Ar.index||0)*17+3)),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
+    const sideT=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)); sideT.repeat.set(6,1);
     const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image)); top.userData.xmold=1; rim.userData.xmold=2;   // (a light layer of mold: mold.js)
     const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl);
     out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
   out.push(...arChasm(A,Ar,S));
-  const ft=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
+  const ft=arTex(xTex(arArt(Ar,'floor',()=>xRockFloor(S,(Ar.index||0)*17+3)),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)); fm.userData.xmold=1; const floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
-  const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B); wm.userData.xmold=2;
+  const wt=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B); wm.userData.xmold=2;
   const cells=[]; const B2=XCS;
   for(let z=-side;z<=side+.01;z+=B2) cells.push([back+B2/2,z,1]);                                 // back wall
   for(const s of [-1,1]) for(let x=back;x>=near;x-=B2) cells.push([x,s*(side+B2/2),Math.max(.25,Math.min(1,(x-x0+2)/(back-x0+2)))]);   // sides, lower toward you
@@ -300,7 +314,7 @@ function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.unit
   if(!U){ let mesh; const cage=kind==='cage', wall=kind==='wall'||cage, h=cage?.5:wall?.9:.75;   // a cage is low and see-through, so the enemy inside and its tells stay readable
     const geo=SQUARE?new THREE.CylinderGeometry(wall?.86:.94,wall?.9:1,h,4,1,false,Math.PI/4):new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,h,6,1,false,Math.PI/6); geo.translate(0,h/2,0);
     if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong(Object.assign({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(cage?.45:.25)},cage?{transparent:true,opacity:.45,depthWrite:false}:{}))));
-    else { const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
+    else { const t=A.rockTex||(A.rockTex=arTex(xTex(arArt(A.area,'rock',()=>xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2)),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
     A.grp.add(mesh); U={g:mesh,block:true}; A.units.set(u,U); }
   U.seen=A.frameN; U.g.visible=true; U.g.position.copy(arW(u.tile.wx,0,u.tile.wz));
   if(kind==='rock'&&U.g.material.emissive) U.g.material.emissive.set(col?0x303840:0x000000); }
@@ -390,7 +404,7 @@ const ARENA_LOOK={
       return (T,dt)=>{ L[0].intensity=.9; L[1].intensity=.8+.15*Math.sin(T*.8); L[2].intensity=boss?1.4+.3*Math.sin(T*2):0;
         ice.emissive.set('#bfeaff').multiplyScalar(.2+.08*Math.sin(T*1.2)); if(falls) falls.emissive.set('#e6f6ff').multiplyScalar(.35+.15*Math.sin(T*2.4)); arCloudTick(sn,T,dt); }; } },
   vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8,{pbr:'gloss'});
-      const tex=A.rockTex||(A.rockTex=arTex(xTex(xBlockWall(Ar.stone,(Ar.index||0)*7+2,false),true))), pil=arMat(xLitTag(xPhong({map:tex}),2,tex.image));
+      const tex=A.rockTex||(A.rockTex=arTex(xTex(arArt(Ar,'rock',()=>xBlockWall(Ar.stone,(Ar.index||0)*7+2,false)),true))), pil=arMat(xLitTag(xPhong({map:tex}),2,tex.image));
       for(let k=0;k<(boss?6:4);k++){ const sd=k%2?1:-1, wx=m.near+3+(k>>1)*((m.back-m.near-4)/2.5), h=1.5+R()*2.5; arPut(A,new THREE.CylinderGeometry(.45,.5,h,8),pil,wx,h/2-SLAB,sd*(m.side-.6)); }
       const stones=[]; for(let k=0;k<4;k++){ const sd=k%2?1:-1; stones.push(arPut(A,new THREE.OctahedronGeometry(.35,0),glow,m.near+5+k*3,2.4,sd*(m.side-.7))); }
       if(boss){ A.scene.background=new THREE.Color('#2a2650'); }
@@ -401,7 +415,7 @@ const ARENA_LOOK={
         const k=flash>0?(Math.random()<.6?flash:flash*.3):0;
         L[0].intensity=.5+3*k; L[1].intensity=.4+2.4*k; L[2].intensity=(boss?.8:0)+3*k; A.flashAmb=k;
         stones.forEach((s,i)=>{ s.rotation.y=T*(.6+i*.1); s.position.y=2.4+Math.sin(T*1.4+i)*.15; }); glow.emissive.set(Ar.glow).multiplyScalar(.5+.5*k+.2*Math.sin(T*3)); arCloudTick(cl,T,dt); }; } },
-  rifts:{ build(A,R,Ar,boss,m){ const L=A.plights, lt=arLavaTex(R), lava=arMat(new THREE.MeshBasicMaterial({map:lt,fog:true})); lt.repeat.set(1,6);
+  rifts:{ build(A,R,Ar,boss,m){ const L=A.plights, li=typeof envArtArena==='function'&&envArtArena(Ar.id,'lava'), lt=li?arTex(xTex(arArt(Ar,'lava',null,true),true)):arLavaTex(R), lava=arMat(new THREE.MeshBasicMaterial({map:lt,fog:true})); lt.repeat.set(1,6);
       const len=m.back-m.near; for(const sd of [-1,1]){ const p=arPut(A,new THREE.PlaneGeometry(1.4,len),lava,(m.back+m.near)/2,-SLAB+.03,sd*(m.side-1.1)); p.rotation.x=-Math.PI/2; }
       if(boss){ const lk=arPut(A,new THREE.PlaneGeometry(2*m.side,5),lava,m.dais+1.5,-SLAB+.04,0); lk.rotation.x=-Math.PI/2; }
       const bas=arMat(xPhong({color:0x2a1a14})); for(let k=0;k<10;k++){ const s=.4+R()*.7; arPut(A,new THREE.DodecahedronGeometry(s,0),bas,m.near+R()*len,s*.3-SLAB,(R()<.5?-1:1)*(m.side-R()*.6)); }
@@ -429,7 +443,7 @@ const ARENA_LOOK={
         arCloudTick(stars,T,dt); arCloudTick(ghosts,T,dt); }; } },
 };
 // the boss floor's dais: a raised hex platform behind the enemy half, where the boss holds court
-function arDais(A,Ar,m){ const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(Ar.stone,(Ar.index||0)*7+2),true))), mat=arMat(xLitTag(xPhong({map:t}),2,t.image));
+function arDais(A,Ar,m){ const t=A.rockTex||(A.rockTex=arTex(xTex(arArt(Ar,'rock',()=>xRockWall(Ar.stone,(Ar.index||0)*7+2)),true))), mat=arMat(xLitTag(xPhong({map:t}),2,t.image));
   const g=new THREE.CylinderGeometry(3.2,3.6,.9,6,1,false,Math.PI/6); arPut(A,g,mat,m.dais,.45-SLAB,0); }
 function arenaProps(A,Ar,R,boss){ const m=Object.assign({},A.room); if(boss) m.dais=m.back-3.4;
   A.props=new THREE.Group(); A.grp.add(A.props); arPropLights(A).forEach(l=>{ l.intensity=0; });
@@ -439,7 +453,7 @@ function arenaProps(A,Ar,R,boss){ const m=Object.assign({},A.room); if(boss) m.d
 /* The dungeon's chasm under the arena: the same deep (xChasmTex) far below, a slow fog drifting over
    it and dust rising out of it, in the area's light. Seen past the island's edge, and over the
    walls' tops when there are walls. */
-function arChasm(A,Ar,S){ const out=[], t=arTex(xTex(xChasmTex(Ar,S,(Ar.index||0)*29+11),true)); t.repeat.set(6,6);
+function arChasm(A,Ar,S){ const out=[], t=arTex(xTex(arArt(Ar,'chasm',()=>xChasmTex(Ar,S,(Ar.index||0)*29+11),true),true)); t.repeat.set(6,6);
   const deep=new THREE.Mesh(new THREE.PlaneGeometry(160,160),arMat(new THREE.MeshBasicMaterial({map:t,fog:false}))); deep.rotation.x=-Math.PI/2; deep.position.set(0,-12,-8); out.push(deep);
   const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), R=caveRng((Ar.index||0)*5+9), f=xFbm(N,R,4), im=x.createImageData(N,N), fg=xHexRGB(Ar.glow);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const v=Math.max(0,f(i,j)-.5)*2.2, o=(j*N+i)*4; im.data[o]=fg[0]; im.data[o+1]=fg[1]; im.data[o+2]=fg[2]; im.data[o+3]=Math.round(Math.min(1,v)*120); }

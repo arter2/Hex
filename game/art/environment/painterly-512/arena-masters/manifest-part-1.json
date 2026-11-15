@@ -1,0 +1,304 @@
+{
+  "part": 1,
+  "parts": 2,
+  "themes": [
+    "abyss",
+    "hollows",
+    "vault"
+  ],
+  "master_count": 18,
+  "total_master_count": 37,
+  "all_expected_master_paths": [
+    "masters-1024/abyss--board-tile-slab-xSlabFloor.png",
+    "masters-1024/abyss--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/abyss--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/abyss--chasm-below-xChasmTex.png",
+    "masters-1024/abyss--mold-light-layer-charcoal-blight.png",
+    "masters-1024/abyss--rocks-dais-xRockWall.png",
+    "masters-1024/deeps--board-tile-slab-xSlabFloor.png",
+    "masters-1024/deeps--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/deeps--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/deeps--chasm-below-xChasmTex.png",
+    "masters-1024/deeps--mold-light-layer-slate-blue-bloom.png",
+    "masters-1024/deeps--rocks-dais-xRockWall.png",
+    "masters-1024/hollows--board-tile-slab-xSlabFloor.png",
+    "masters-1024/hollows--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/hollows--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/hollows--chasm-below-xChasmTex.png",
+    "masters-1024/hollows--mold-light-layer-olive-powder.png",
+    "masters-1024/hollows--rocks-dais-xRockWall.png",
+    "masters-1024/rifts--board-tile-slab-xSlabFloor.png",
+    "masters-1024/rifts--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/rifts--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/rifts--chasm-below-xChasmTex.png",
+    "masters-1024/rifts--lava-arLavaTex.png",
+    "masters-1024/rifts--mold-light-layer-rust-crust.png",
+    "masters-1024/rifts--rocks-dais-xRockWall.png",
+    "masters-1024/ruins--board-tile-slab-xSlabFloor.png",
+    "masters-1024/ruins--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/ruins--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/ruins--chasm-below-xChasmTex.png",
+    "masters-1024/ruins--mold-light-layer-ochre-spores.png",
+    "masters-1024/ruins--rocks-dais-xRockWall.png",
+    "masters-1024/vault--board-tile-slab-xSlabFloor.png",
+    "masters-1024/vault--cave-floor-island-top-xRockFloor.png",
+    "masters-1024/vault--cave-walls-island-rim-xRockWall.png",
+    "masters-1024/vault--chasm-below-xChasmTex.png",
+    "masters-1024/vault--mold-light-layer-plum-mildew.png",
+    "masters-1024/vault--pillars-dais-xBlockWall.png"
+  ],
+  "files": [
+    {
+      "path": "masters-1024/abyss--board-tile-slab-xSlabFloor.png",
+      "size_bytes": 1255754,
+      "sha256": "e6cbd4985fe3e36b743529c802ca83016bc0a41c5863e245df2ed527e906d8b6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/abyss--cave-floor-island-top-xRockFloor.png",
+      "size_bytes": 1291246,
+      "sha256": "d4b9c273d90b590c4864e10984e7428510c2b2e96fef1c8f766541d857627b97",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/abyss--cave-walls-island-rim-xRockWall.png",
+      "size_bytes": 1224689,
+      "sha256": "d9cdbc0662ee4ed41d24ceb7584ba726b57d5545a26c2f91bef11ca6ee925659",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/abyss--chasm-below-xChasmTex.png",
+      "size_bytes": 1248757,
+      "sha256": "47a43e7379d8df5aa3a74b8fc5da974a15a2474cfbb48fd53ce33cd1cc33e35a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/abyss--mold-light-layer-charcoal-blight.png",
+      "size_bytes": 2032623,
+      "sha256": "5fa7a7b7366c8de80b3eb9c516d69024b4b941a1abecc48b33bcd04f84d9356d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/abyss--rocks-dais-xRockWall.png",
+      "size_bytes": 1143217,
+      "sha256": "74f3cc64ddf4e06081478b68066032597c9623736d74afff6a213f9f3c649d55",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--board-tile-slab-xSlabFloor.png",
+      "size_bytes": 1377818,
+      "sha256": "ab4ea043d2eb066c8489a2fa9892979e9968a2d70e30f16b8962aae52d6afb07",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--cave-floor-island-top-xRockFloor.png",
+      "size_bytes": 1543283,
+      "sha256": "1beadd08c3cca52c04744b55dcee82f29fc76aae53522b39a05cf90ae1b0725e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--cave-walls-island-rim-xRockWall.png",
+      "size_bytes": 1312224,
+      "sha256": "ccd9b227766c547903d71214c49cea42475f3f1a7a4ebfd8c5086c5d019e6d17",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--chasm-below-xChasmTex.png",
+      "size_bytes": 1208588,
+      "sha256": "5ffc04948968d8139a3d13e726578b6c053bf5b283367933a69bf64e463b09e7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--mold-light-layer-olive-powder.png",
+      "size_bytes": 1964244,
+      "sha256": "f6af1af9607ca1b2d148210d04bb76744dd3b16cafecfa68024111b1763efec2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/hollows--rocks-dais-xRockWall.png",
+      "size_bytes": 1334311,
+      "sha256": "706c386852d9fd1d3853a91ede03838085421edf699ee6198ae59395ac31d2b2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--board-tile-slab-xSlabFloor.png",
+      "size_bytes": 1859199,
+      "sha256": "59520b08ca9fe8725d96ed9290896769f9df30e2b67530206b2b6f52688be6ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--cave-floor-island-top-xRockFloor.png",
+      "size_bytes": 1979398,
+      "sha256": "337844df5e6f673e491e668a65bacbd3a4fca0cbff996905a8a3dafd1a97e9d4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--cave-walls-island-rim-xRockWall.png",
+      "size_bytes": 1814882,
+      "sha256": "6ccab2f08c3e185eb3c05430b1017d3c14baf558e3aac515d89f2f2d6ddec6b1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--chasm-below-xChasmTex.png",
+      "size_bytes": 1670972,
+      "sha256": "63f47449efa728f23cb9fa871276565cc954edd8e8c7eb19e7041f7da3361d80",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--mold-light-layer-plum-mildew.png",
+      "size_bytes": 2079893,
+      "sha256": "6b32aba1093d1b3b9166176259bdda4676caa6f58c69491840e3918710cd76b5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "masters-1024/vault--pillars-dais-xBlockWall.png",
+      "size_bytes": 1828081,
+      "sha256": "2d600b97724305dec38e305e3926a9066c9cfdef5a0456c8f0cd5c1aefa93470",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ]
+    }
+  ]
+}

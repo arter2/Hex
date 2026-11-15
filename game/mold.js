@@ -15,7 +15,7 @@ const XMOLD={
   // how much grows, by the room's theme (times the room level); rooms with no theme take room, corridors passage, and
   // the battle floor arena
   theme:{ flooded:1.6, bathhouse:1.6, crypt:1.4, fungus:1.5, overgrown:1.4, collapsed:1.3, forge:.4, armory:.5, barracks:.5, library:0 },
-  room:.55, passage:.35, arena:.3,
+  room:.55, passage:.35, arena:.3, arenaDamp:.5,   // (arenaDamp: with the arena's own mold painting)
   big:40,        // a room of this many cells or more grows a second colour, at half weight
   water:1.6,     // how far (cells) the damp reaches from water
   wall:.6,       // how far (cells) the damp reaches out from a wall
@@ -46,8 +46,9 @@ function xMoldRect(key){ const S=typeof ENVART_MAP!=='undefined'&&ENVART_MAP.she
 // the uniforms the shader reads: the mold map, its slots' rectangles (dense then sparse, three slots)
 // the dungeon and the battle each draw with their own mold map (like their AO maps: look.js lookUse), set before each frame
 function xMoldUse(tex,slots,half){ const U=XLITU; U.uXMoldK.value.w=half; if(U.uXMoldMap.value===tex) return; xMoldUniforms(tex,slots||[]); }
-function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null;
-  for(let k=0;k<3;k++){ const s=slots[k]; U.uXMoldR.value[k*2].fromArray(s?xMoldRect(s.dense):[0,0,0,0]); U.uXMoldR.value[k*2+1].fromArray(s?xMoldRect(s.sparse):[0,0,0,0]); } }
+// (slots.tex: a texture of the slots' own instead of the mold sheet, its slots giving their rectangles as rect: the arena's)
+function xMoldUniforms(tex,slots){ const U=XLITU; U.uXMoldMap.value=tex||null; const M=envArtMold(); U.uXMoldTex.value=slots.tex||(M&&M.tex)||U.uXMoldTex.value;
+  for(let k=0;k<3;k++){ const s=slots[k]; U.uXMoldR.value[k*2].fromArray(!s?[0,0,0,0]:s.rect||xMoldRect(s.dense)); U.uXMoldR.value[k*2+1].fromArray(!s?[0,0,0,0]:s.rect||xMoldRect(s.sparse)); } }
 // the damp of being shut in by walls at texel (tx,ty) of the map: strongest at a wall's foot, gone a cell out, adding up
 // in a corner (the walls of the 3 x 3 cells round about)
 function xMoldWallDamp(tx,ty){ const R=XAO_R, wx=(tx+.5)/R, wz=(ty+.5)/R, cx=Math.floor(wx), cy=Math.floor(wz); let o=0;
@@ -82,10 +83,17 @@ function xMoldBake(){ if(!EX||!EX.rooms||!EX.aoData) return; const R=XAO_R, W=XN
   if(!EX.moldTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.moldTex=t; }
   EX.moldTex.needsUpdate=true; EX.moldSlots=slots; xMoldUniforms(EX.moldTex,slots); }
 /* The battle floor: the area's first colour, light, everywhere; no damp (its scale and origin are the arena AO map's). */
+/* (with the area's own arena mold painting, envart.js envArtArena: that one tile, a little damp everywhere so its colonies
+   show; else the area's first sheet colour, no damp, its sparse sprinkle only) */
+const XMOLD_ARENA=new Map();
 function xMoldArena(A){ if(!A) return; const N=16, d=A.moldData||(A.moldData=new Uint8Array(N*N*4)), v=Math.round(XMOLD.arena*127.5);
-  for(let i=0;i<N*N;i++){ d[i*4]=v; d[i*4+1]=d[i*4+2]=d[i*4+3]=0; }
-  if(!A.moldTex){ const t=new THREE.DataTexture(d,N,N,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; A.moldTex=t; }
-  A.moldTex.needsUpdate=true; A.moldSlots=xMoldSlots(A.area); }
+  const im=typeof envArtArena==='function'&&A.area&&envArtArena(A.area.id,'mold'); let t=im&&XMOLD_ARENA.get(im);
+  if(im&&!t){ t=new THREE.Texture(im); t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; XMOLD_ARENA.set(im,t); }
+  const damp=t?Math.round(XMOLD.arenaDamp*255):0;
+  for(let i=0;i<N*N;i++){ d[i*4]=v; d[i*4+1]=d[i*4+2]=0; d[i*4+3]=damp; }
+  if(!A.moldTex){ const T=new THREE.DataTexture(d,N,N,THREE.RGBAFormat); T.magFilter=T.minFilter=THREE.LinearFilter; A.moldTex=T; }
+  A.moldTex.needsUpdate=true;
+  if(t){ const S=[{id:'arena', rect:[0,0,1,1]}]; S.tex=t; A.moldSlots=S; } else A.moldSlots=xMoldSlots(A.area); }
 /* The mold layer in a material's shader (look.js xLit, for a material with userData.xmold: 1 a floor, 2 a wall; only
    while the debug menu's Mold is on and the mold sheet is in). After the base texture and before the vertex colours,
    so the lighting, AO, fog and cut-aways fall on the mold as on the stone under it. The dense tile grows where it is
@@ -93,7 +101,8 @@ function xMoldArena(A){ if(!A) return; const N=16, d=A.moldData||(A.moldData=new
    grows; on a wall the dense mold fades out over the lower third, the sparse stops short of the block's top, and the
    tops stay clean. With the normal maps on, the mold softens the stone's relief under it and stands a little proud. */
 function xMoldReady(){ return typeof envArtMold==='function'&&!!envArtMold(); }
-function xMoldShader(sh,kind){ const M=envArtMold(); if(!M) return; const U=XLITU; U.uXMoldTex.value=M.tex;
+function xMoldShader(sh,kind){ const M=envArtMold(); if(!M) return; const U=XLITU; if(!U.uXMoldTex.value) U.uXMoldTex.value=M.tex;   // (xMoldUniforms keeps it after: the arena has a texture of its own)
+ 
   for(const k of ['uXMoldTex','uXMoldMap','uXMoldR','uXMoldK','uXSharp']) sh.uniforms[k]=U[k];
   const TEXN=((typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256).toFixed(1), wall=kind===2;
   // the block's top, for a wall (an instanced block: its matrix; uXMoldK.w is half a block's height)

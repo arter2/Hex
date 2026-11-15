@@ -20,8 +20,25 @@ function load(sheet){ if(!known()||STATE.has(sheet)) return; const S=ENVART_MAP.
   im.onload=()=>{ STATE.set(sheet,'ok'); IMG.set(sheet,im); envArtArrived(); };
   im.onerror=()=>{ STATE.set(sheet,'fail'); envArtArrived(); };
   im.src=BASE+S.file; }
-// start loading what an area needs (its two sheets and the effects)
-function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold'); }
+/* The battle arena's painted textures (tools/build-arena-tex.py: art/environment/arena/<area>--<slot>.webp, 512 px), one
+   file per surface rather than a sheet: an area's six or seven load with its dungeon sheets. The slots, as arena.js
+   names them: board (the hex tiles), floor (the cave floor and the island's top), wall (the cave walls and the island's
+   rim), rock (rocks and the boss dais; the Vault's pillars), chasm (the deep below), mold (the light mold over the
+   arena), lava (the Rifts' lava). */
+const ARENA_FILE={ board:'board-tile-slab-xSlabFloor', floor:'cave-floor-island-top-xRockFloor', wall:'cave-walls-island-rim-xRockWall',
+  rock:'rocks-dais-xRockWall', chasm:'chasm-below-xChasmTex', lava:'lava-arLavaTex' };
+const ARENA_ONLY={ rock:{vault:'pillars-dais-xBlockWall'}, lava:{rifts:1} };
+const ARENA_MOLD={ hollows:'olive-powder', deeps:'slate-blue-bloom', vault:'plum-mildew', rifts:'rust-crust', ruins:'ochre-spores', abyss:'charcoal-blight' };
+const AST=new Map(), AIMG=new Map();
+function arenaFile(id,slot){ if(slot==='mold') return ARENA_MOLD[id]?'mold-light-layer-'+ARENA_MOLD[id]:null; const o=ARENA_ONLY[slot];
+  if(o&&typeof o[id]==='string') return o[id]; if(o&&!o[id]) return null; return ARENA_FILE[slot]||null; }
+function arenaLoad(id,slot){ const f=arenaFile(id,slot); if(!f) return; const k=id+'--'+f; if(AST.has(k)) return; AST.set(k,'loading');
+  const im=new Image(); im.decoding='async'; im.onload=()=>{ AST.set(k,'ok'); AIMG.set(k,im); }; im.onerror=()=>AST.set(k,'fail'); im.src='art/environment/arena/'+k+'.webp'; }
+// an arena surface's painting (an Image), or null while it loads (the code-painted one stands in) or if there is none
+function envArtArena(id,slot){ const f=arenaFile(id,slot); if(!f) return null; const k=id+'--'+f; if(!AST.has(k)) arenaLoad(id,slot); return AIMG.get(k)||null; }
+// start loading what an area needs (its two sheets and the effects, and its arena)
+function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
+  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); }
 function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
 const ready=s=>STATE.get(s)==='ok';
 // a tile's rectangle in the sheet as the GPU sees it (three turns images over: v runs up from the bottom)
@@ -75,7 +92,7 @@ const envArtMissing=()=>missing;
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
   if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -27,15 +27,22 @@ function load(sheet){ if(!known()||STATE.has(sheet)) return; const S=ENVART_MAP.
    arena), lava (the Rifts' lava). */
 const ARENA_FILE={ board:'board-tile-slab-xSlabFloor', floor:'cave-floor-island-top-xRockFloor', wall:'cave-walls-island-rim-xRockWall',
   rock:'rocks-dais-xRockWall', chasm:'chasm-below-xChasmTex', lava:'lava-arLavaTex' };
-const ARENA_ONLY={ rock:{vault:'pillars-dais-xBlockWall'}, lava:{rifts:1} };
-const ARENA_MOLD={ hollows:'olive-powder', deeps:'slate-blue-bloom', vault:'plum-mildew', rifts:'rust-crust', ruins:'ochre-spores', abyss:'charcoal-blight' };
+const ARENA_ONLY={ lava:{rifts:1} };
+const ARENA_MOLD={ hollows:'olive-powder', deeps:'slate-blue-bloom', rifts:'rust-crust', ruins:'ochre-spores', abyss:'charcoal-blight' };
+// an area whose arena wears its own dungeon tiles instead (the Vault's arena paintings were too loud to read the board on):
+// slot -> the tile in its area sheet; the slots not named keep their code-painted texture
+const ARENA_DUNGEON={ vault:{ board:'floor-0', floor:'floor-2', wall:'wall-0', rock:'wall-1' } };
+const ACUT=new Map();
+function arenaDungeon(id,slot){ const key=ARENA_DUNGEON[id][slot]; if(!key) return null; const sheet='area-'+id, k=sheet+'/'+key; if(ACUT.has(k)) return ACUT.get(k);
+  if(!known()) return null; if(!ready(sheet)){ load(sheet); return null; } const t=ENVART_MAP.sheets[sheet].tiles[key]; if(!t) return null;
+  const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3]; c.getContext('2d').drawImage(IMG.get(sheet),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); ACUT.set(k,c); return c; }
 const AST=new Map(), AIMG=new Map();
 function arenaFile(id,slot){ if(slot==='mold') return ARENA_MOLD[id]?'mold-light-layer-'+ARENA_MOLD[id]:null; const o=ARENA_ONLY[slot];
   if(o&&typeof o[id]==='string') return o[id]; if(o&&!o[id]) return null; return ARENA_FILE[slot]||null; }
-function arenaLoad(id,slot){ const f=arenaFile(id,slot); if(!f) return; const k=id+'--'+f; if(AST.has(k)) return; AST.set(k,'loading');
+function arenaLoad(id,slot){ if(ARENA_DUNGEON[id]) return; const f=arenaFile(id,slot); if(!f) return; const k=id+'--'+f; if(AST.has(k)) return; AST.set(k,'loading');
   const im=new Image(); im.decoding='async'; im.onload=()=>{ AST.set(k,'ok'); AIMG.set(k,im); }; im.onerror=()=>AST.set(k,'fail'); im.src='art/environment/arena/'+k+'.webp'; }
 // an arena surface's painting (an Image), or null while it loads (the code-painted one stands in) or if there is none
-function envArtArena(id,slot){ const f=arenaFile(id,slot); if(!f) return null; const k=id+'--'+f; if(!AST.has(k)) arenaLoad(id,slot); return AIMG.get(k)||null; }
+function envArtArena(id,slot){ if(ARENA_DUNGEON[id]) return arenaDungeon(id,slot); const f=arenaFile(id,slot); if(!f) return null; const k=id+'--'+f; if(!AST.has(k)) arenaLoad(id,slot); return AIMG.get(k)||null; }
 // start loading what an area needs (its two sheets and the effects, and its arena)
 function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
   for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); }

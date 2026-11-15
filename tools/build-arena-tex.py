@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "game/art/environment/painterly-512/arena-masters"
 OUT = ROOT / "game/art/environment/arena"
 SIZE = 512
+SKIP = ("vault--",)   # the Vault's arena wears its own dungeon tiles (game/envart.js ARENA_DUNGEON): its paintings were too loud
 
 
 def shrink(path):
@@ -56,6 +57,9 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     total = 0
     for p in paths:
+        if p.name.startswith(SKIP):
+            (OUT / (p.stem + ".webp")).unlink(missing_ok=True)
+            continue
         im = shrink(p)
         mold = "--mold-light-layer-" in p.name
         out = OUT / (p.stem + ".webp")
@@ -66,7 +70,7 @@ def main():
             assert np.asarray(im)[..., 3].min() == 255, p.name + " should be opaque"
             im.convert("RGB").save(out, "WEBP", quality=90, method=6)
         total += out.stat().st_size
-    print(f"{len(paths)} textures, {total / 1e6:.1f} MB -> {OUT.relative_to(ROOT)}")
+    print(f"{sum(not p.name.startswith(SKIP) for p in paths)} textures, {total / 1e6:.1f} MB -> {OUT.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

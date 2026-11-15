@@ -206,7 +206,7 @@ function arenaTiles(list){ const A=AR; if(!A||!A.board) return; const ca=A.board
   const hex=A.board.art!==undefined;   // (the painted hex floor, arenahex.js: plain stone unless the tile's state tints it)
   for(const {t,base,fill} of list){ AR_C.set(fill); AR_G.set(base);
     let r, g, b;
-    if(hex){ AR_S.set(AR_SIDE[t.side]||AR_SIDE.n); const k=XLIT.hexBase; r=Math.max(0,Math.min(1.6,k+(AR_C.r-AR_S.r)*2.6)); g=Math.max(0,Math.min(1.6,k+(AR_C.g-AR_S.g)*2.6)); b=Math.max(0,Math.min(1.6,k+(AR_C.b-AR_S.b)*2.6));
+    if(hex){ AR_S.set(AR_SIDE[t.side]||AR_SIDE.n); const k=XLIT.hexBase*((typeof ARENA_HEX_TONE!=='undefined'&&ARENA_HEX_TONE[A.area&&A.area.id])||1); r=Math.max(0,Math.min(1.6,k+(AR_C.r-AR_S.r)*2.6)); g=Math.max(0,Math.min(1.6,k+(AR_C.g-AR_S.g)*2.6)); b=Math.max(0,Math.min(1.6,k+(AR_C.b-AR_S.b)*2.6));
       if(t.holeT>0) r=g=b=0; }
     else { r=Math.min(1.6,AR_C.r*2.6+.25); g=Math.min(1.6,AR_C.g*2.6+.25); b=Math.min(1.6,AR_C.b*2.6+.25); }
     for(let v=t._v0;v<t._v1;v++) ca.setXYZ(v,r,g,b);

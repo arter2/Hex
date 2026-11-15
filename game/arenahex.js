@@ -9,6 +9,7 @@
    Movement lab keeps the old board (arena.js). */
 const HEX_R=.92;   // a tile's circumradius (the grid's is 1): the joints between are about .14 wide
 const HEX_MATS=new Set();
+const ARENA_HEX_TONE={ ruins:.85 };   // an area's plain-stone brightness on top of the debug menu's (the Ruins' pale marble dimmed so yellow highlights read on it)
 const HEX_SPRIG_PX=6;   // a sprig drawn shorter than this many screen pixels is left out (the art's notes say 8; at the battle camera on a 2x phone the tallest sprig the ankle rule allows draws at 7-8, so 8 left none)   // the live hex materials, for the debug menu's rows
 // a tile's stable dice: its painted variant, turn (sixths), mirror, tone and the strengths of its masks
 function hexKey(t){ return Math.imul(t.q*73856093^t.r*19349663,2654435761)>>>0; }

@@ -130,3 +130,14 @@ Keep every area's tiles mid-dark and calm, so the bright battle highlights, unit
 ## Delivering
 
 Name every file as in the table. Zip one or more areas together and send them over. The game's build checks that the sizes are right, the hexes sit where the template says, and each height map lines up with its colour sheet.
+
+## Delivered and integrated (2026-11-15)
+
+Revision 2 was delivered with more than the brief asked for: roughness and metalness maps, four variation masks, tile coverage and a shared broad noise. The masters are in `game/art/environment/painterly-512/arena-hex/`.
+
+`tools/build-arena-hex.py` builds per-area atlases into `game/art/environment/arena/hex/`, in three.js's channel order:
+- `tiles` is colour with the coverage in alpha;
+- `tiles-m` is AO, roughness, metalness and coverage;
+- `tiles-v` is wear, cracks, colour patches and moss.
+
+There are matching joint and growth maps. `game/arenahex.js` draws them.

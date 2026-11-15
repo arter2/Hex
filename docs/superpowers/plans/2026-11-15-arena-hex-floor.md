@@ -136,7 +136,7 @@
 - [ ] **Step 1: Write the checks in `art-check.js`.** Add a `BATTLE` helper that starts a battle at a depth after waiting up to 15 s for `envArtHex`. Don't run them (CLAUDE.md).
   - `hexFloorMaterial`: at depth 1, `AR.board.art===true`, the board material `isMeshStandardMaterial`, its maps set, and `alphaTest===.5`.
   - `hexFallback` (ROUTES: 404 `**/arena/hex/hollows-tiles.webp`): `AR.board.art===false`, the mesh present, no page errors.
-  - `hexSquareBoard`: with `BOARD_TEST={rows:5,cols:4,square:true}`, `AR.board.mesh.material` is not a `MeshStandardMaterial` and the vertex count equals today's formula `n*(6*3+6*6)` for the square corner count.
+  - `hexSquareBoard`: with `BOARD_TEST={rows:5,cols:4,square:true}`, `AR.board.mesh.material` is not a `MeshStandardMaterial` and the vertex count equals today's for the same board. Record that number from the current code before changing `arenaBoard`, and pin it in the check.
   - `hexMaskAligned`: in the page, for one mirrored and turned tile, the shader's cell UV at a corner vertex maps inside its cell, and coverage at the hex centre reads 1. Done through a small render-target probe of the material, as `MOLD_PROGRAMS` does.
 - [ ] **Step 2: Implement `envArtHex`, `arHexFloor`, the debug rows and the `arenaBoard` switch.** `arenaBoard` returns `arHexFloor(...)`'s meshes when `!SQUARE`, else today's code.
 - [ ] **Step 3: Take battle pictures** at depths 1 and 18 (deviceScaleFactor 2), plus one with Normal maps off. Send them.

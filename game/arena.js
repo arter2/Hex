@@ -91,6 +91,7 @@ const AR_RELIEF=14;   // the painted stone's relief: its brightness, 0 to 1, tim
 // the hex tiles: one merged mesh, each tile a hex prism with its own window of the area's floor
 // stone on top (as in the old board) and a colour per vertex set every frame from the tile's state
 function arenaBoard(A,Ar,R){
+  if(!SQUARE&&typeof arHexFloor==='function'){ const b=arHexFloor(A,Ar,R); A.board=b; return [b.mesh,b.joint,b.glow,b.lines]; }   // the painted hex floor (arenahex.js); the square board stays as it was
   const tex=arTex(xTex(arArt(Ar,'board',()=>xSlabFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*31+5,0)),true)), cvs=tex.image;
   const n=TILES.length, VT=6*3+6*6, pos=new Float32Array(n*VT*3), nor=new Float32Array(n*VT*3), uv=new Float32Array(n*VT*2), col=new Float32Array(n*VT*3).fill(1);
   const rad=.96, lo=-SLAB; let k=0;

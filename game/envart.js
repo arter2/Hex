@@ -43,9 +43,24 @@ function arenaLoad(id,slot){ if(ARENA_DUNGEON[id]) return; const f=arenaFile(id,
   const im=new Image(); im.decoding='async'; im.onload=()=>{ AST.set(k,'ok'); AIMG.set(k,im); }; im.onerror=()=>AST.set(k,'fail'); im.src='art/environment/arena/'+k+'.webp'; }
 // an arena surface's painting (an Image), or null while it loads (the code-painted one stands in) or if there is none
 function envArtArena(id,slot){ if(ARENA_DUNGEON[id]) return arenaDungeon(id,slot); const f=arenaFile(id,slot); if(!f) return null; const k=id+'--'+f; if(!AST.has(k)) arenaLoad(id,slot); return AIMG.get(k)||null; }
+/* The battle board's painted hex floor (tools/build-arena-hex.py: art/environment/arena/hex/, ARENA_HEX in arenahexmap.js):
+   ten files an area and one shared noise, loaded with the area's other art. All of them or nothing: until every one has
+   come in, or for good once one fails, the board stands in with its shape-built floor (arenahex.js). */
+const HEX_PARTS={ tiles:'tiles', n:'tiles-n', m:'tiles-m', v:'tiles-v', joint:'joint', jointN:'joint-n', jointM:'joint-m', growth:'growth', growthE:'growth-e', growthM:'growth-m' };
+const HST=new Map(), HIMG=new Map(), HSET=new Map();
+function hexLoad(file){ if(HST.has(file)) return; HST.set(file,'loading'); const im=new Image(); im.decoding='async';
+  im.onload=()=>{ HST.set(file,'ok'); HIMG.set(file,im); }; im.onerror=()=>HST.set(file,'fail'); im.src='art/environment/arena/hex/'+file+'.webp'; }
+const hexFiles=id=>Object.values(HEX_PARTS).map(k=>id+'-'+k).concat('broad-noise');
+function hexWant(id){ if(typeof ARENA_HEX==='undefined'||!ARENA_HEX.areas.includes(id)) return; for(const f of hexFiles(id)) hexLoad(f); }
+// an area's hex floor art {tiles,n,m,v,joint,jointN,jointM,growth,growthE,growthM,noise} (Images, the same objects every
+// time), or null while any is loading or once one has failed
+function envArtHex(id){ if(HSET.has(id)) return HSET.get(id); if(typeof ARENA_HEX==='undefined'||!ARENA_HEX.areas.includes(id)) return null; hexWant(id);
+  const F=hexFiles(id); if(!F.every(f=>HST.get(f)==='ok')) return null;
+  const o={}; for(const k in HEX_PARTS) o[k]=HIMG.get(id+'-'+HEX_PARTS[k]); o.noise=HIMG.get('broad-noise'); HSET.set(id,o); return o; }
+const envArtHexFailed=id=>hexFiles(id).some(f=>HST.get(f)==='fail');
 // start loading what an area needs (its two sheets and the effects, and its arena)
 function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
-  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); }
+  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); hexWant(id); }
 function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
 const ready=s=>STATE.get(s)==='ok';
 // a tile's rectangle in the sheet as the GPU sees it (three turns images over: v runs up from the bottom)
@@ -99,7 +114,7 @@ const envArtMissing=()=>missing;
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
   if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

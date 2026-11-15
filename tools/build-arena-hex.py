@@ -7,14 +7,16 @@
 
 Per area:
   <a>-tiles.webp     colour, 1024 x 512: 4 x 2 cells of 256, tiles 1-4 (sheet A) on row 0, 5-8 (sheet B) on row 1, each
-                     a pointy-top hex of circumradius 120 centred in its cell; colour carried past the hex edge
+                     a pointy-top hex of circumradius 120 centred in its cell; colour carried past the hex edge; alpha the
+                     coverage (chipped corners clear: the material alpha-tests it)
   <a>-tiles-n.webp   tangent-space normal from the height (lossless)
-  <a>-tiles-m.webp   data: R roughness (white rough), G metalness, B ambient occlusion from the height, A coverage
+  <a>-tiles-m.webp   data, in three.js's order: R ambient occlusion (from the height), G roughness (white rough), B metalness,
+                     A coverage
   <a>-tiles-v.webp   data: R edge wear, G cracks and chips, B colour patches, A moss and staining (A is data, not opacity)
-  <a>-joint.webp, -joint-n.webp, -joint-m.webp (R roughness, G metalness, B AO): 256, seamless (a narrow dark gap: 512 was 4 MB of lossless maps for little)
+  <a>-joint.webp, -joint-n.webp, -joint-m.webp (R AO, G roughness, B metalness, as three.js reads them): 256, seamless (a narrow dark gap: 512 was 4 MB of lossless maps for little)
   <a>-growth.webp    1024 x 512 RGBA: the flat sheet's 16 cells (left half) and the upright's (right), 128 a cell
   <a>-growth-e.webp  the glow mask, same layout (the flat half black)
-  <a>-growth-m.webp  data: R roughness, G metalness
+  <a>-growth-m.webp  data: G roughness, B metalness (three.js's channels)
 
   python3 tools/build-arena-hex.py           build
   python3 tools/build-arena-hex.py --check   check what was built
@@ -121,7 +123,7 @@ def save(a, path, mode, lossless):
 def tiles(area, warn):
     A = SRC / "areas" / area
     V = SRC / "variation" / area
-    col = np.zeros((2 * CELL, 4 * CELL, 3), np.float32)
+    col = np.zeros((2 * CELL, 4 * CELL, 4), np.float32)
     nrm = np.zeros((2 * CELL, 4 * CELL, 3), np.float32)
     dat = np.zeros((2 * CELL, 4 * CELL, 4), np.float32)
     var = np.zeros((2 * CELL, 4 * CELL, 4), np.float32)
@@ -149,15 +151,16 @@ def tiles(area, warn):
             ti = si * 4 + k
             oy, ox = (ti // 4) * CELL, (ti % 4) * CELL
             cs = shrink(c, CELL)
-            col[oy:oy + CELL, ox:ox + CELL] = shrink(rgb, CELL)
+            col[oy:oy + CELL, ox:ox + CELL, :3] = shrink(rgb, CELL)
+            col[oy:oy + CELL, ox:ox + CELL, 3] = cs
             hs = shrink(h, CELL)
             nrm[oy:oy + CELL, ox:ox + CELL] = normal_from(hs, 6, False)
-            dat[oy:oy + CELL, ox:ox + CELL, 0] = shrink(rgh[sl], CELL)
-            dat[oy:oy + CELL, ox:ox + CELL, 1] = shrink(met[sl], CELL)
-            dat[oy:oy + CELL, ox:ox + CELL, 2] = ao_from(hs, 6, False)
+            dat[oy:oy + CELL, ox:ox + CELL, 0] = ao_from(hs, 6, False)
+            dat[oy:oy + CELL, ox:ox + CELL, 1] = shrink(rgh[sl], CELL)
+            dat[oy:oy + CELL, ox:ox + CELL, 2] = shrink(met[sl], CELL)
             dat[oy:oy + CELL, ox:ox + CELL, 3] = cs
             var[oy:oy + CELL, ox:ox + CELL] = shrink(vm[sl], CELL) * (cs[..., None] > .02)
-    save(col, OUT / f"{area}-tiles.webp", "RGB", False)
+    save(col, OUT / f"{area}-tiles.webp", "RGBA", False)
     save(nrm, OUT / f"{area}-tiles-n.webp", "RGB", True)
     save(dat, OUT / f"{area}-tiles-m.webp", "RGBA", True)
     save(var, OUT / f"{area}-tiles-v.webp", "RGBA", True)
@@ -178,7 +181,7 @@ def joint(area):
     m = wrap_shrink(arr(A / f"{area}--joint-metalness.png", "L"), J)
     save(alb, OUT / f"{area}-joint.webp", "RGB", False)
     save(normal_from(h, 4, True), OUT / f"{area}-joint-n.webp", "RGB", True)
-    save(np.stack([r, m, ao_from(h, 8, True)], -1), OUT / f"{area}-joint-m.webp", "RGB", True)
+    save(np.stack([ao_from(h, 8, True), r, m], -1), OUT / f"{area}-joint-m.webp", "RGB", True)
 
 
 def growth(area):
@@ -202,8 +205,9 @@ def growth(area):
         s_rgb = np.where(sa > 1e-3, s[..., :3] / np.maximum(sa, 1e-3), shrink(rgb, 512))
         out[:, half * 512:(half + 1) * 512] = np.concatenate([s_rgb, sa], -1)
         glo[:, half * 512:(half + 1) * 512] = shrink(gl, 512)
-        dat[:, half * 512:(half + 1) * 512, 0] = shrink(rg, 512)
-        dat[:, half * 512:(half + 1) * 512, 1] = shrink(mt, 512)
+        dat[:, half * 512:(half + 1) * 512, 0] = 1
+        dat[:, half * 512:(half + 1) * 512, 1] = shrink(rg, 512)
+        dat[:, half * 512:(half + 1) * 512, 2] = shrink(mt, 512)
     save(out, OUT / f"{area}-growth.webp", "RGBA", True)
     save(glo, OUT / f"{area}-growth-e.webp", "L", True)
     save(dat, OUT / f"{area}-growth-m.webp", "RGB", True)
@@ -263,7 +267,9 @@ def check():
                 bad.append(f"{a} tile {t + 1}: coverage not 255 at the centre and 0 at the cell corner")
         if (v[m[..., 3] == 0] > 0).any():
             bad.append(f"{a}: a variation mask value outside the coverage")
-        g = np.asarray(Image.open(OUT / f"{a}-tiles-m.webp").convert("RGBA"))[..., 1]
+        g = np.asarray(Image.open(OUT / f"{a}-tiles-m.webp").convert("RGBA"))[..., 2]
+        if (np.asarray(Image.open(OUT / f"{a}-tiles.webp").convert("RGBA"))[..., 3] != m[..., 3]).mean() > .01:
+            bad.append(f"{a}: the colour's alpha is not the coverage")
         if a in ("deeps", "abyss") and not (g > 0).any():
             bad.append(f"{a}: no metal flecks")
         if a == "hollows" and (g > 0).any():

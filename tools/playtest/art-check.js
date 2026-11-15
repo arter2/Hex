@@ -240,11 +240,65 @@ const CHECKS = {
     }
     return 'no floor at depths 1-4 has a log with bracket mushrooms';
   },
+
+  // ---- the arena's hex floor (docs/superpowers/plans/2026-11-15-arena-hex-floor.md) ----
+  // Task 2: the painted tiles' PBR material, once the art is in
+  async hexFloorMaterial(pg) {
+    await pg.evaluate(BATTLE, [1, true]);
+    return pg.evaluate(() => {
+      const b = AR && AR.board; if (!b) return 'no board';
+      if (b.art !== true) return 'the board did not take the painted art';
+      const m = b.mesh.material;
+      if (!m.isMeshStandardMaterial) return 'not a MeshStandardMaterial';
+      if (!(m.map && m.normalMap && m.roughnessMap && m.metalnessMap && m.aoMap)) return 'a map is missing';
+      if (m.alphaTest !== .5) return 'alphaTest ' + m.alphaTest;
+      if (!b.joint) return 'no joint';
+      return null;
+    });
+  },
+  // Task 2: the art missing: the shape-built stand-in, no errors
+  async hexFallback(pg) {
+    await pg.evaluate(BATTLE, [1, false]);
+    return pg.evaluate(() => { const b = AR && AR.board; if (!b || !b.mesh) return 'no board'; if (b.art !== false) return 'art claimed while a file is missing'; return null; });
+  },
+  // Task 2: the Movement lab's square board stays the old board (54 vertices a tile, as arenaBoard always made)
+  async hexSquareBoard(pg) {
+    await pg.evaluate(() => { BOARD_TEST = { rows: 5, cols: 4, square: true }; });
+    await pg.evaluate(BATTLE, [1, false]);
+    return pg.evaluate(() => { const b = AR && AR.board; BOARD_TEST = null; if (!b) return 'no board';
+      if (b.art !== undefined) return 'the square board took the hex floor';
+      const n = b.mesh.geometry.attributes.position.count; if (n !== 40 * 54) return 'square board vertices ' + n + ', want ' + 40 * 54;
+      return null; });
+  },
+  // Task 2: a mirrored, turned tile's painting lands in its own cell, its centre on the cell's centre, its coverage solid
+  async hexMaskAligned(pg) {
+    await pg.evaluate(BATTLE, [1, true]);
+    return pg.evaluate(() => {
+      const P = hexPicks(), t = TILES.find(t => { const p = P.get(t); return p.mir && p.turn; }); if (!t) return 'no mirrored, turned tile';
+      const p = P.get(t), C = ARENA_HEX.cols, Rw = ARENA_HEX.rows, px = ARENA_HEX.cell, hr = ARENA_HEX.hexR;
+      const cx = (p.v % C + .5) / C, cy = 1 - (((p.v / C) | 0) + .5) / Rw, [u0, v0] = hexUV(0, 0, p, C, Rw, px, hr);
+      if (Math.abs(u0 - cx) > 1e-6 || Math.abs(v0 - cy) > 1e-6) return 'the centre is off its cell';
+      for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3, [u, v] = hexUV(Math.cos(a) * HEX_R, Math.sin(a) * HEX_R, p, C, Rw, px, hr);
+        if (Math.abs(u - cx) > .5 / C || Math.abs(v - cy) > .5 / Rw) return 'corner ' + i + ' leaves its cell'; }
+      const img = envArtHex('hollows').tiles, c = document.createElement('canvas'); c.width = img.width; c.height = img.height; const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+      if (x.getImageData(Math.floor(u0 * img.width), Math.floor((1 - v0) * img.height), 1, 1).data[3] < 250) return 'no coverage at the tile centre';
+      return null;
+    });
+  },
+};
+// in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
+const BATTLE = async ([depth, wait]) => {
+  try { localStorage.setItem('hexmancers-cine', '0'); } catch (e) {}
+  envArtWantDepth(depth); const id = areaOf(depth).id, t0 = performance.now();
+  while (wait && performance.now() - t0 < 15000 && !envArtHex(id)) await new Promise(r => setTimeout(r, 100));
+  save = newSave(STARTERS[0]); save.char = lockChar(newChar('human', 0)); save.deepest = depth; show('scrBattle');
+  startBattle(activeDeck().list, depth, { onEnd: () => {} }, {}); await new Promise(r => setTimeout(r, 500)); return true;
 };
 // checks that need the page set up before it loads
 const ROUTES = { mushFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
   foliageFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
-  moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })) };
+  moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })),
+  hexFallback: pg => pg.route('**/arena/hex/hollows-tiles.webp', r => r.fulfill({ status: 404, body: '' })) };
 
 (async () => {
   const names = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CHECKS);

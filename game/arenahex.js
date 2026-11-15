@@ -9,6 +9,7 @@
    Movement lab keeps the old board (arena.js). */
 const HEX_R=.92;   // a tile's circumradius (the grid's is 1): the joints between are about .14 wide
 const HEX_MATS=new Set();
+const ARENA_HEX_HUE={ vault:['#8f5cff',.8] };   // an area whose tiles are turned toward a hue in the shader (dungeongen.js xHueMat: the painting's light and shade kept): the Vault's pink stone to purple, to match its walls
 const ARENA_HEX_TONE={ ruins:.85 };   // an area's plain-stone brightness on top of the debug menu's (the Ruins' pale marble dimmed so yellow highlights read on it)
 const HEX_SPRIG_PX=6;   // a sprig drawn shorter than this many screen pixels is left out (the art's notes say 8; at the battle camera on a 2x phone the tallest sprig the ankle rule allows draws at 7-8, so 8 left none)   // the live hex materials, for the debug menu's rows
 // a tile's stable dice: its painted variant, turn (sixths), mirror, tone and the strengths of its masks
@@ -66,6 +67,7 @@ function hexMat(H){ const T=hexTex(H.tiles), M=hexTex(H.m), m=new THREE.MeshStan
       .replace('#include <metalnessmap_fragment>','#include <metalnessmap_fragment>\n  metalnessFactor*=uHexK.z;'); };
   m.customProgramCacheKey=()=>'hexfloor';
   HEX_MATS.add(m); return m; }
+const hexHue=(m,Ar)=>{ const h=ARENA_HEX_HUE[Ar&&Ar.id]; if(h&&typeof xHueMat==='function') xHueMat(m,h[0],h[1]); return m; };
 // the stand-in tile: the area's slab, faint, in a hex with a bevel from its distance to the edge (xLitTag makes the relief)
 function hexStandIn(Ar){ const N=256, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d');
   const src=xSlabFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*31+5,0); x.drawImage(src,0,0,N,N);
@@ -103,7 +105,7 @@ function hexJoint(Ar,H){ let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES
    (t._v0..t._v1 and a colour attribute per tile). */
 function arHexFloor(A,Ar,R){ HEX_MATS.clear(); const H=typeof envArtHex==='function'?envArtHex(Ar.id):null, P=hexPicks();
   let mesh;
-  if(H){ const g=hexGeo(P,ARENA_HEX.cols,ARENA_HEX.rows,ARENA_HEX.cell,ARENA_HEX.hexR); mesh=new THREE.Mesh(g,arMat(xLitTag(hexMat(H),1))); }
+  if(H){ const g=hexGeo(P,ARENA_HEX.cols,ARENA_HEX.rows,ARENA_HEX.cell,ARENA_HEX.hexR); mesh=new THREE.Mesh(g,arMat(xLitTag(hexHue(hexMat(H),Ar),1))); }
   else { const cv=hexStandIn(Ar), tex=arTex(xTex(cv,false)); tex.magFilter=THREE.LinearFilter; tex.minFilter=THREE.LinearMipmapLinearFilter;
     const P1=new Map([...P].map(([t,p])=>[t,Object.assign({},p,{v:0})])), g=hexGeo(P1,1,1,256,ARENA_HEX.hexR); mesh=new THREE.Mesh(g,arMat(xLitTag(xPhong({map:tex,vertexColors:true,pbr:'slab'}),1,cv))); }
   mesh.renderOrder=0; const joint=hexJoint(Ar,H), {glow,lines}=hexOverlays(HEX_R);

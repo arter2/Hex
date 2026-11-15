@@ -213,6 +213,9 @@ def growth(area):
     save(dat, OUT / f"{area}-growth-m.webp", "RGB", True)
 
 
+ACCENT_OVERRIDE = {"vault": "#9b5cff"}   # chosen by hand where the picked hue is not the one wanted (the Vault: purple, not its tiles' pink)
+
+
 def accent(area):
     """The area's accent: the most saturated colours of its painted tiles (moss, embers, flecks, veins), averaged, at full
     brightness, for things that glow in its colour (arenahex.js: your side's joint glow)."""
@@ -241,7 +244,7 @@ def write_map():
         gro["upright"][a] = [c["cell"] - 1 for c in g["upright"]["cells"] if c.get("source_alpha_pixels", 0) > 0]
         gro["box"][a] = {("f" if k == "flat" else "u") + str(c["cell"] - 1): [round(x * G) for x in c["box"]] for k in ("flat", "upright") for c in g[k]["cells"]}
         gro["glow"][a] = [c - 1 for c in v["areas"][a]["glow_nonzero_cells"]]
-    M = {"cell": CELL, "cols": 4, "rows": 2, "hexR": HEXR, "areas": AREAS, "accent": {a: accent(a) for a in AREAS}, "joint": 256, "growth": gro}
+    M = {"cell": CELL, "cols": 4, "rows": 2, "hexR": HEXR, "areas": AREAS, "accent": {a: ACCENT_OVERRIDE.get(a) or accent(a) for a in AREAS}, "joint": 256, "growth": gro}
     MAP.write_text("/* Hexmancers - the battle board's painted hex floor: what tools/build-arena-hex.py made (generated; do not edit).\n"
                    "   art/environment/arena/hex/<area>-*.webp; read by arenahex.js. */\nconst ARENA_HEX=" + json.dumps(M, separators=(",", ":")) + ";\n")
 

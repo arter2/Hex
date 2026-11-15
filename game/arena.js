@@ -231,6 +231,8 @@ function arenaPhase(col,ph){ const A=AR; if(!A) return; A.phaseCol=new THREE.Col
 function arenaKick(k){ const A=AR; if(!A) return; A.shot.kick=Math.max(A.shot.kick||0,k==null?1:k); A.shot.kickDir=Math.random()<.5?-1:1; A.shot.punch=1; }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
+  if(A.board&&A.board.art&&!A.board.growth&&typeof arHexGrowth==='function'&&performance.now()-(A.board.t0=A.board.t0||performance.now())>2000){   // (the joints' growth, two seconds in, the opening swoop over: its pixel rule projects through the camera as it then stands; arenahex.js)
+    const g=A.board.growth=arHexGrowth(A,A.area); for(const k in g) if(g[k]){ A.grp.add(g[k]); xLitAll(g[k]); } }
   // keep the 3D canvas exactly under the flat one (the HUD around it can change size without a resize)
   { const cv=View.canvas, g=A.renderer.domElement, k=cv.offsetLeft+','+cv.offsetTop+','+cv.offsetWidth+','+cv.offsetHeight;
     if(A.box!==k){ A.box=k; g.style.left=cv.offsetLeft+'px'; g.style.top=cv.offsetTop+'px'; g.style.width=cv.offsetWidth+'px'; g.style.height=cv.offsetHeight+'px'; } }

@@ -8,7 +8,8 @@
    the area's code-painted slab as faint grain, a bevel from the distance to the hex's edge. The square board of the
    Movement lab keeps the old board (arena.js). */
 const HEX_R=.92;   // a tile's circumradius (the grid's is 1): the joints between are about .14 wide
-const HEX_MATS=new Set();   // the live hex materials, for the debug menu's rows
+const HEX_MATS=new Set();
+const HEX_SPRIG_PX=6;   // a sprig drawn shorter than this many screen pixels is left out (the art's notes say 8; at the battle camera on a 2x phone the tallest sprig the ankle rule allows draws at 7-8, so 8 left none)   // the live hex materials, for the debug menu's rows
 // a tile's stable dice: its painted variant, turn (sixths), mirror, tone and the strengths of its masks
 function hexKey(t){ return Math.imul(t.q*73856093^t.r*19349663,2654435761)>>>0; }
 function hexPicks(){ const P=new Map(), at=new Map(TILES.map(t=>[t.q+','+t.r,t])), nb=[[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]];
@@ -96,7 +97,7 @@ function hexJoint(Ar,H){ let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES
   g.setAttribute('uv2',uv.clone());
   let m; if(H){ const J=hexTex(H.joint,true), JM=hexTex(H.jointM,true); m=new THREE.MeshStandardMaterial({map:J, normalMap:hexTex(H.jointN,true), aoMap:JM, roughnessMap:JM, metalnessMap:JM, roughness:1, metalness:1}); }
   else { const c=xRockFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*17+3), t=arTex(xTex(c,true)); m=xLitTag(xPhong({map:t,color:0x8c8c8c}),1,c); }
-  m.userData.hexJoint=1; m.userData.xmold=1; const mesh=new THREE.Mesh(g,arMat(m)); mesh.position.set((x0+x1)/2,-.05-Hh/2,(z0+z1)/2); mesh.userData.caveFloor=1; return mesh; }
+  m.userData.hexJoint=1; m.userData.xmold=1; const mesh=new THREE.Mesh(g,arMat(m)); mesh.position.set((x0+x1)/2,-.05-Hh/2,(z0+z1)/2); return mesh; }   // (not caveFloor: the Abyss hides those, and the board must stay)
 /* The board (arena.js arenaBoard, for a hex board): {mesh, joint, glow, lines, art} — mesh keeps arenaBoard's contract
    (t._v0..t._v1 and a colour attribute per tile). */
 function arHexFloor(A,Ar,R){ HEX_MATS.clear(); const H=typeof envArtHex==='function'?envArtHex(Ar.id):null, P=hexPicks();
@@ -119,3 +120,37 @@ function hexSideGlow(){ const pos=[], col=[], c=[.5,.83,1].map(v=>v*.9), R1=HEX_
 function hexTune(){ for(const m of HEX_MATS){ const U=m.userData.hexU; if(!U) continue; U.uHexK.value.set(XLIT.hexRough,XLIT.hexRoughOff,XLIT.hexMetal,XLIT.hexWear); m.normalScale.set(XLIT.hexNrm,XLIT.hexNrm); m.aoMapIntensity=XLIT.hexAO; }
   if(typeof AR!=='undefined'&&AR&&AR.board){ if(AR.board.lines) AR.board.lines.material.opacity=XLIT.hexLines; if(AR.board.sideGlow) AR.board.sideGlow.material.opacity=XLIT.hexGlow;
     if(AR.board.growth) for(const k in AR.board.growth) if(AR.board.growth[k]) AR.board.growth[k].visible=XLIT.hexGrowth; } }
+/* The growth in the joints (spec: flat moss, lichen, caps and shards lying along the joints; low sprigs at the corners where
+   three tiles meet). No collision, nothing on a tile's middle: the flat cards lie centred on the joints, a hair over the
+   tile tops so their moss overlaps the rims' edges, the sprigs stand on the joint at a corner, 0.14 to 0.22 tall. A sprig
+   that would draw under HEX_SPRIG_PX (6) pixels tall on screen is left out (the art reads as specks below that). One mesh a sheet, on a
+   stream of its own so nothing else in the arena moves. {flat, upright}, either null (no art, or the switch off). */
+function arHexGrowth(A,Ar){ const H=typeof envArtHex==='function'?envArtHex(Ar.id):null, G=ARENA_HEX.growth; if(!H) return {flat:null, upright:null};
+  const R=caveRng((Ar.index||0)*977+5), id=Ar.id, cs=G.cell, W=8*cs, Hh=4*cs;
+  const rect=(half,c)=>{ const b=G.box[id][(half?'u':'f')+c]||[8,8,cs-8,cs-8], x0=half*4*cs+(c%4)*cs, y0=((c/4)|0)*cs; return {u0:(x0+b[0])/W, u1:(x0+b[2])/W, v0:1-(y0+b[3])/Hh, v1:1-(y0+b[1])/Hh, w:b[2]-b[0], h:b[3]-b[1], base:(y0+G.baseline)/Hh, boxB:b[3]}; };
+  // the grid's own hex corners and edges (circumradius 1), each once
+  const corners=new Map(), edges=new Map(), k3=v=>Math.round(v*1000);
+  for(const t of TILES){ const cx=t.wz, cz=-t.wx; const P=[...Array(6)].map((_,i)=>[cx+Math.cos(i*Math.PI/3),cz+Math.sin(i*Math.PI/3)]);
+    for(let i=0;i<6;i++){ const p=P[i], q=P[(i+1)%6], kc=k3(p[0])+','+k3(p[1]); corners.set(kc,(corners.get(kc)||[p,0]).map((v,j)=>j?v+1:v));
+      const m=[(p[0]+q[0])/2,(p[1]+q[1])/2], ke=k3(m[0])+','+k3(m[1]); edges.set(ke,(edges.get(ke)||[m,[q[0]-p[0],q[1]-p[1]],0]).map((v,j)=>j===2?v+1:v)); } }
+  const cam=A.cam, px=A.renderer?A.renderer.getDrawingBufferSize(new THREE.Vector2()).y:844; if(cam){ cam.updateMatrixWorld(); cam.updateProjectionMatrix(); }   // (arena.js builds this once the camera has settled at its battle view)
+  const tall=(x,z,h)=>{ if(!cam) return 99; const a=new THREE.Vector3(x,-.05,z).project(cam), b=new THREE.Vector3(x,-.05+h,z).project(cam); return Math.abs(b.y-a.y)/2*px; };
+  const mk=(P,N,U)=>{ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); return g; };
+  const mat=glow=>{ const m=new THREE.MeshStandardMaterial({map:xLeafTex(H.growth,true), roughnessMap:hexTex(H.growthM), roughness:1, metalness:0, alphaTest:.5, side:THREE.DoubleSide});
+    if(glow){ m.emissiveMap=xLeafTex(H.growthE,true); m.emissive=new THREE.Color(.6,.6,.6); } m.userData.noProj=1; return arMat(m); };
+  // flat pieces: a third of the edges, one or two each, lying along the joint
+  const FP=[], FN=[], FU=[]; const flat=G.flat[id]||[];
+  for(const [,[m,d,n]] of [...edges].sort((a,b)=>a[0]<b[0]?-1:1)){ if(!flat.length||R()>=.35) continue; const l=Math.hypot(d[0],d[1]), ux=d[0]/l, uz=d[1]/l, vx=-uz, vz=ux;
+    for(let k=0,K=1+(R()<.4?1:0);k<K;k++){ const r=rect(0,flat[R()*flat.length|0]), L=.26+R()*.22, Wd=Math.min(.3,L*r.h/Math.max(1,r.w)), s=(R()-.5)*.6, x=m[0]+ux*s, z=m[1]+uz*s, y=.004+k*.002, fl=R()<.5;   // (a hair over the tile tops, centred on the joint: the moss lies over the rims' edges, as moss creeping out of the joint; under them it hid)
+      const C=[[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]];
+      for(const [a,b] of C){ FP.push(x+ux*a*L/2+vx*b*Wd/2,y,z+uz*a*L/2+vz*b*Wd/2); FN.push(0,1,0); const au=fl?-a:a; FU.push(au<0?r.u0:r.u1, b<0?r.v0:r.v1); } } }
+  // sprigs: a third of the corners where three tiles meet, one to three crossed cards each
+  const UP=[], UN=[], UU=[]; const up=G.upright[id]||[];
+  for(const [,[p,n]] of [...corners].sort((a,b)=>a[0]<b[0]?-1:1)){ if(n<3||!up.length||R()>=1/3) continue;
+    for(let k=0,K=1+(R()*3|0);k<K;k++){ const r=rect(1,up[R()*up.length|0]), h=.14+R()*.08, w=h*r.w/Math.max(1,r.h), x=p[0]+(R()-.5)*.06, z=p[1]+(R()-.5)*.06, a0=R()*Math.PI;
+      if(tall(x,z,h)<HEX_SPRIG_PX) continue;
+      for(const a of [a0,a0+Math.PI/2]){ const ux=Math.cos(a), uz=Math.sin(a);
+        for(const [s,t] of [[-1,0],[1,0],[1,1],[-1,0],[1,1],[-1,1]]){ UP.push(x+ux*s*w/2,-.05+t*h,z+uz*s*w/2); UN.push(0,1,0); UU.push(s<0?r.u0:r.u1, t?r.v1:r.v0); } } } }   // (the box's foot is the art's baseline: the plant stands on the joint)
+  const out={flat:FP.length?new THREE.Mesh(mk(FP,FN,FU),mat(false)):null, upright:UP.length?new THREE.Mesh(mk(UP,UN,UU),mat((G.glow[id]||[]).length>0)):null};
+  for(const k in out) if(out[k]){ out[k].visible=XLIT.hexGrowth; out[k].renderOrder=0; }
+  return out; }

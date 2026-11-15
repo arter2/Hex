@@ -303,6 +303,40 @@ const CHECKS = {
       return n === want ? null : 'side glow vertices ' + n + ', want ' + want;
     });
   },
+  // Task 4: sprigs only at corners, a third of them at most, 0.08-0.22 tall; flat cards never over a tile's middle; Ruins never glows
+  async hexGrowth(pg) {
+    for (const d of [1, 18]) {
+      await pg.evaluate(BATTLE, [d, true]);
+      const r = await pg.evaluate(async () => {
+        for (let i = 0; i < 40 && !(AR.board && AR.board.growth); i++) await new Promise(r => setTimeout(r, 100));
+        const g = AR.board.growth; if (!g) return 'no growth built';
+        const cs = new Set(); for (const t of TILES) for (let i = 0; i < 6; i++) cs.add(Math.round((t.wz + Math.cos(i * Math.PI / 3)) * 100) + ',' + Math.round((-t.wx + Math.sin(i * Math.PI / 3)) * 100));
+        if (g.upright) { const P = g.upright.geometry.attributes.position, n = P.count / 12; let corners = 0;
+          for (const k of cs) corners++;
+          if (n > Math.ceil(corners / 3) * 3 + 3) return 'too many sprigs: ' + n;
+          for (let i = 0; i < P.count; i += 12) { let y0 = 1e9, y1 = -1e9, x = 0, z = 0; for (let j = i; j < i + 12; j++) { y0 = Math.min(y0, P.getY(j)); y1 = Math.max(y1, P.getY(j)); x += P.getX(j) / 12; z += P.getZ(j) / 12; }
+            const h = y1 - y0; if (h < .079 || h > .221) return 'a sprig ' + h.toFixed(3) + ' tall';
+            const near = TILES.some(t => [...Array(6)].some((_, k) => Math.hypot(t.wz + Math.cos(k * Math.PI / 3) - x, -t.wx + Math.sin(k * Math.PI / 3) - z) < .05)); if (!near) return 'a sprig away from any corner'; } }
+        if (g.flat) { const P = g.flat.geometry.attributes.position;
+          for (let i = 0; i < P.count; i += 6) { let x = 0, z = 0; for (let j = i; j < i + 6; j++) { x += P.getX(j) / 6; z += P.getZ(j) / 6; }
+            if (TILES.some(t => Math.hypot(t.wz - x, -t.wx - z) < .85)) return 'a flat card over a tile'; } }
+        if (AR.area.id === 'ruins' && g.upright && g.upright.material.emissiveMap) return 'the Ruins glow';
+        return null; });
+      if (r) return 'depth ' + d + ': ' + r;
+    }
+    return null;
+  },
+  // Task 4: battle after battle, the arena's textures are freed and the decoded art reused
+  async hexRepeat(pg) {
+    let first = null, counts = [];
+    for (let i = 0; i < 5; i++) {
+      await pg.evaluate(BATTLE, [1, true]);
+      const r = await pg.evaluate(() => ({ img: envArtHex('hollows').tiles.src, same: window.__hexImg ? window.__hexImg === envArtHex('hollows').tiles : (window.__hexImg = envArtHex('hollows').tiles, true), texs: (AR.texs || []).length, mem: AR.renderer.info.memory.textures }));
+      if (!r.same) return 'the hex art was decoded again';
+      counts.push(r.mem);
+    }
+    return counts[4] > counts[1] + 2 ? 'textures grow battle by battle: ' + counts.join(',') : null;
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {

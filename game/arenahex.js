@@ -108,9 +108,9 @@ function arHexFloor(A,Ar,R){ HEX_MATS.clear(); const H=typeof envArtHex==='funct
     const P1=new Map([...P].map(([t,p])=>[t,Object.assign({},p,{v:0})])), g=hexGeo(P1,1,1,256,ARENA_HEX.hexR); mesh=new THREE.Mesh(g,arMat(xLitTag(xPhong({map:tex,vertexColors:true,pbr:'slab'}),1,cv))); }
   mesh.renderOrder=0; const joint=hexJoint(Ar,H), {glow,lines}=hexOverlays(HEX_R);
   lines.material.opacity=XLIT.hexLines;
-  return {mesh, joint, sideGlow:hexSideGlow(), glow, lines, art:!!H}; }
-// your half: its joints glow softly in your colour, brightest against the tile and fading into the gap (one mesh, added on)
-function hexSideGlow(){ const pos=[], col=[], c=[.5,.83,1].map(v=>v*.9), R1=HEX_R, R2=1.0, y=-.004;   // (just under the tile tops: over the bevel skirts, so the whole joint glows)
+  return {mesh, joint, sideGlow:hexSideGlow(Ar), glow, lines, art:!!H}; }
+// your half: its joints glow softly in the area's accent (the most saturated hue of its painted tiles: ARENA_HEX.accent, picked by the build), brightest against the tile and fading into the gap (one mesh, added on)
+function hexSideGlow(Ar){ const ac=new THREE.Color((ARENA_HEX.accent&&ARENA_HEX.accent[Ar&&Ar.id])||'#80d4ff'), pos=[], col=[], c=[ac.r,ac.g,ac.b].map(v=>v*.8), R1=HEX_R, R2=1.0, y=-.004;   // (just under the tile tops: over the bevel skirts, so the whole joint glows)
   for(const t of TILES){ if(t.side!=='p') continue; const cx=t.wz, cz=-t.wx;
     for(let i=0;i<6;i++){ const a=i*Math.PI/3, b=(i+1)*Math.PI/3, A1=[cx+Math.cos(a)*R1,cz+Math.sin(a)*R1], B1=[cx+Math.cos(b)*R1,cz+Math.sin(b)*R1], A2=[cx+Math.cos(a)*R2,cz+Math.sin(a)*R2], B2=[cx+Math.cos(b)*R2,cz+Math.sin(b)*R2];
       for(const [p,k] of [[A1,1],[B1,1],[B2,0],[A1,1],[B2,0],[A2,0]]){ pos.push(p[0],y,p[1]); col.push(...c.map(v=>v*k)); } } }

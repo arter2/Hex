@@ -213,6 +213,24 @@ def growth(area):
     save(dat, OUT / f"{area}-growth-m.webp", "RGB", True)
 
 
+def accent(area):
+    """The area's accent: the most saturated colours of its painted tiles (moss, embers, flecks, veins), averaged, at full
+    brightness, for things that glow in its colour (arenahex.js: your side's joint glow)."""
+    a = np.asarray(Image.open(OUT / f"{area}-tiles.webp").convert("RGBA")).astype(np.float32) / 255
+    rgb = a[..., :3][a[..., 3] > .5]
+    mx, mn = rgb.max(1), rgb.min(1)
+    sat = (mx - mn) / (mx + 1e-5)
+    sel = sat >= np.quantile(sat, .97)
+    top, w = rgb[sel], sat[sel]
+    import colorsys
+    hue = np.array([colorsys.rgb_to_hsv(*c)[0] for c in top])
+    hist, edges = np.histogram(hue, bins=36, range=(0, 1), weights=w)
+    hist = hist + np.roll(hist, 1) + np.roll(hist, -1)   # (a hue's neighbours count with it)
+    h = (edges[hist.argmax()] + .5 / 36) % 1
+    c = colorsys.hsv_to_rgb(h, .7, 1)   # (that hue, clearly coloured, at full brightness: it glows)
+    return "#" + "".join(f"{int(round(v * 255)):02x}" for v in c)
+
+
 def write_map():
     v = json.load(open(SRC / "docs/validation.json"))
     G = 128 / 256
@@ -223,7 +241,7 @@ def write_map():
         gro["upright"][a] = [c["cell"] - 1 for c in g["upright"]["cells"] if c.get("source_alpha_pixels", 0) > 0]
         gro["box"][a] = {("f" if k == "flat" else "u") + str(c["cell"] - 1): [round(x * G) for x in c["box"]] for k in ("flat", "upright") for c in g[k]["cells"]}
         gro["glow"][a] = [c - 1 for c in v["areas"][a]["glow_nonzero_cells"]]
-    M = {"cell": CELL, "cols": 4, "rows": 2, "hexR": HEXR, "areas": AREAS, "joint": 256, "growth": gro}
+    M = {"cell": CELL, "cols": 4, "rows": 2, "hexR": HEXR, "areas": AREAS, "accent": {a: accent(a) for a in AREAS}, "joint": 256, "growth": gro}
     MAP.write_text("/* Hexmancers - the battle board's painted hex floor: what tools/build-arena-hex.py made (generated; do not edit).\n"
                    "   art/environment/arena/hex/<area>-*.webp; read by arenahex.js. */\nconst ARENA_HEX=" + json.dumps(M, separators=(",", ":")) + ";\n")
 

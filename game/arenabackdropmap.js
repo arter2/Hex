@@ -1,0 +1,3 @@
+/* Hexmancers - the battle arena's backdrops: what tools/build-arena-backdrops.py made (generated; do not edit).
+   art/environment/arena/backdrops/<id>-*.webp; read by envart.js and arenabackdrop.js. */
+const ARENA_BACKDROP={"areas":["hollows","deeps","vault","rifts","ruins","abyss"],"bosses":["golem","glacier","roc","wyrm","treant","hollow"],"mattes":{"hollows":3,"deeps":3,"vault":3,"rifts":3,"ruins":3,"abyss":3,"boss-golem":1,"boss-glacier":1,"boss-roc":1,"boss-wyrm":1,"boss-treant":1,"boss-hollow":1},"glow":{"hollows":true,"vault":true,"rifts":true,"abyss":true,"boss-golem":true,"boss-glacier":true,"boss-wyrm":true,"boss-treant":true,"boss-hollow":true},"size":512};

@@ -58,9 +58,30 @@ function envArtHex(id){ if(HSET.has(id)) return HSET.get(id); if(typeof ARENA_HE
   const F=hexFiles(id); if(!F.every(f=>HST.get(f)==='ok')) return null;
   const o={}; for(const k in HEX_PARTS) o[k]=HIMG.get(id+'-'+HEX_PARTS[k]); o.noise=HIMG.get('broad-noise'); HSET.set(id,o); return o; }
 const envArtHexFailed=id=>hexFiles(id).some(f=>HST.get(f)==='fail');
+/* The battle arena's backdrops (tools/build-arena-backdrops.py: art/environment/arena/backdrops/, ARENA_BACKDROP in
+   arenabackdropmap.js). An area's material sets (rock, dressed stone, its special material) load with its other art, a
+   boss's special set with its area's; matte paintings, the big ones, only when a battle picks one (envArtMatte). */
+const BST=new Map(), BIMG=new Map(), BSET=new Map(), BMAT=new Map();
+function bdLoad(file){ if(BST.has(file)) return; BST.set(file,'loading'); const im=new Image(); im.decoding='async';
+  im.onload=()=>{ BST.set(file,'ok'); BIMG.set(file,im); }; im.onerror=()=>BST.set(file,'fail'); im.src='art/environment/arena/backdrops/'+file+'.webp'; }
+const bdKnown=id=>typeof ARENA_BACKDROP!=='undefined'&&ARENA_BACKDROP.mattes[id]!=null;
+const bdSets=id=>id.startsWith('boss-')?['special']:['rock','stone','special'];
+const bdFiles=id=>bdSets(id).flatMap(s=>[s,s+'-n',s+'-m'].concat(s==='special'&&ARENA_BACKDROP.glow[id]?['special-e']:[]).map(k=>id+'-'+k));
+function bdWant(id){ if(bdKnown(id)) for(const f of bdFiles(id)) bdLoad(f); }
+// a backdrop's material sets {rock, stone, special} (each {map, n, m, e?}: Images, the same objects every time), or null
+// while any is loading or once one has failed
+function envArtBackdrop(id){ if(BSET.has(id)) return BSET.get(id); if(!bdKnown(id)) return null; bdWant(id);
+  if(!bdFiles(id).every(f=>BST.get(f)==='ok')) return null;
+  const o={}; for(const s of bdSets(id)){ const g=k=>BIMG.get(id+'-'+s+k); o[s]={map:g(''), n:g('-n'), m:g('-m'), e:g('-e')||null}; } BSET.set(id,o); return o; }
+// a matte painting's two layers {far, mid}, loading on the first call; null until both are in, and for good once one fails
+function envArtMatte(id,n){ const k=id+'-matte-'+n; if(BMAT.has(k)) return BMAT.get(k); if(!bdKnown(id)) return null;
+  bdLoad(k+'-far'); bdLoad(k+'-mid'); if(BST.get(k+'-far')!=='ok'||BST.get(k+'-mid')!=='ok') return null;
+  const o={far:BIMG.get(k+'-far'), mid:BIMG.get(k+'-mid')}; BMAT.set(k,o); return o; }
+const envArtMatteFailed=(id,n)=>['far','mid'].some(L=>BST.get(id+'-matte-'+n+'-'+L)==='fail');
 // start loading what an area needs (its two sheets and the effects, and its arena)
 function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
-  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); hexWant(id); }
+  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); hexWant(id);
+  bdWant(id); if(typeof AREAS!=='undefined'){ const A=AREAS.find(a=>a.id===id); if(A&&A.boss) bdWant('boss-'+A.boss); } }
 function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
 const ready=s=>STATE.get(s)==='ok';
 // a tile's rectangle in the sheet as the GPU sees it (three turns images over: v runs up from the bottom)
@@ -114,7 +135,7 @@ const envArtMissing=()=>missing;
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
   if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtBackdrop,envArtMatte,envArtMatteFailed,envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

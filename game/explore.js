@@ -1903,6 +1903,15 @@ function xEngage(g,forced){
 }
 
 /* ---------------- floors, camp, death ---------------- */
+/* Changing floors in the dark: building a floor and drawing its first frame (its shaders compiled and linked, its
+   textures uploaded) holds the page a second or more, which froze the old floor mid-step and then jumped to the new
+   one. The screen fades to black during the stairs' wait (ms: a little less than the wait, so it is fully black when
+   the build starts), the floor is built and drawn under it, and the fade back in starts only once the new floor's
+   first frame has gone to the screen (two frames on), so the hold is all in the dark and the fade never stutters.
+   xVeilIn is called first thing in the wait's callback: it only asks for frames, so the screen clears even if the
+   build throws. */
+function xVeilOut(ms){ if(typeof veilTo==='function') veilTo(1,ms); }
+function xVeilIn(){ if(typeof veilTo!=='function') return; requestAnimationFrame(()=>requestAnimationFrame(()=>veilTo(0,420))); }
 function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
   if(typeof xSealCheck==='function'&&!xSealCheck()) return;   // a Fallen Seal (deepways.js)
@@ -1910,7 +1919,7 @@ function xStairsDown(){
   EX.busy=true; if(typeof xEscortCheck==='function') xEscortCheck(); xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
   if(nd>save.deepest) xXp(20+2*nd,'new depth'); save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
   const route=EX.routeOk; EX.routeOk=null;
-  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up',route); EX.active=true; xHud(); xLoopStart(); xBanner(nd); if(typeof xRouteArrive==='function') xRouteArrive(); },500);
+  xKeep(); xVeilOut(400); setTimeout(()=>{ xVeilIn(); xGoFloor(nd,hp,'up',route); EX.active=true; xHud(); xLoopStart(); xBanner(nd); if(typeof xRouteArrive==='function') xRouteArrive(); },500);
 }
 // floors you have been on are kept as you left them, so the stairs work both ways; floorsave.js keeps them in the save too
 function xFloors(){ return typeof XRUN!=='undefined'&&XRUN?(XRUN.floors||(XRUN.floors=new Map())):null; }
@@ -1941,7 +1950,7 @@ function xStairsUp(){
   EX.busy=true; xLog('You climb the stairs…','dim'); const hp=EX.hp, nd=main?EX.depth:EX.depth-1;
   if(!main) xKeep();
   const at=main?((main.props.find(p=>p.kind==='hstair')||{}).cell??'up'):'down';
-  setTimeout(()=>{ xGoFloor(nd,hp,at); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },450);
+  xVeilOut(360); setTimeout(()=>{ xVeilIn(); xGoFloor(nd,hp,at); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },450);
 }
 let XPARK=null;
 function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortCheck==='function') xEscortCheck(); logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); if(typeof xFloorStore==='function') xFloorStore(EX); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }

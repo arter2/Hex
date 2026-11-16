@@ -154,6 +154,7 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
     const sideT=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)); sideT.repeat.set(6,1);
     const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image)); top.userData.xmold=1; rim.userData.xmold=2;   // (a light layer of mold: mold.js)
     if(typeof arBdIsland==='function') out.push(...(A.bd.kind==='ruins'&&typeof arBdRuins==='function'?arBdRuins:arBdIsland)(A,Ar,R,{back,near,side}));   // (the sculpted floating island, ruined or not: arenabackdrop.js)
+    if(typeof arBdSetPieces==='function') out.push(...arBdSetPieces(A,Ar,R,A.bd.kind));
     else { const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl); }
     out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
@@ -162,7 +163,7 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)); fm.userData.xmold=1; const floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: one sculpted rock face round the board (arenabackdrop.js), or, without it, the old dungeon blocks
-  if(typeof arBdRibbon==='function'){ const rb=arBdRibbon(A,Ar,R,{back,near,side,boss}); out.push(rb.mesh); A.wallCells=rb.cells; return out; }
+  if(typeof arBdRibbon==='function'){ const rb=arBdRibbon(A,Ar,R,{back,near,side,boss}); out.push(rb.mesh); A.wallCells=rb.cells; if(!boss&&typeof arBdSetPieces==='function') out.push(...arBdSetPieces(A,Ar,R,'cave')); return out; }
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
   const wt=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B); wm.userData.xmold=2;
   const cells=[]; const B2=XCS;
@@ -186,7 +187,7 @@ function arenaBakeAO(){ const A=AR; if(!A||!A.room||!A.wallCells) return; const 
 
 // a new battle (or a new depth): the arena is built again from the area's look
 function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=areaOf(depth), R=caveRng(seed|0), boss=isBossDepth(depth);
-  A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map();
+  A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map(); A.bdTicks=[];
   for(const o of arenaBoard(A,Ar,R)) A.grp.add(o);
   A.grp.add(A.decal=arenaDecal(A));
   A.voidWalls=false; A.flashAmb=0; A.tick=null; A.chasm=null; A.phaseCol=null; A.phaseK=0; A.phaseNow=0; A.phaseFlash=0; A.amb.color.set(0xffffff); A.sun.color.set(0xffffff);
@@ -236,7 +237,7 @@ function arenaPhase(col,ph){ const A=AR; if(!A) return; A.phaseCol=new THREE.Col
 function arenaKick(k){ const A=AR; if(!A) return; A.shot.kick=Math.max(A.shot.kick||0,k==null?1:k); A.shot.kickDir=Math.random()<.5?-1:1; A.shot.punch=1; }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
-  if(typeof arBdMatteTick==='function') arBdMatteTick(A,dt);
+  if(typeof arBdMatteTick==='function') arBdMatteTick(A,dt); if(A.bdTicks) for(const f of A.bdTicks) f(T,dt);   // (set pieces that move: arenabackdrop.js)
   if(A.board&&A.board.art&&!A.board.growth&&typeof arHexGrowth==='function'&&performance.now()-(A.board.t0=A.board.t0||performance.now())>2000){   // (the joints' growth, two seconds in, the opening swoop over: its pixel rule projects through the camera as it then stands; arenahex.js)
     const g=A.board.growth=arHexGrowth(A,A.area); for(const k in g) if(g[k]){ A.grp.add(g[k]); xLitAll(g[k]); } }
   // keep the 3D canvas exactly under the flat one (the HUD around it can change size without a resize)

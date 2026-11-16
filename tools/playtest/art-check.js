@@ -391,6 +391,16 @@ const CHECKS = {
       if (m && m === last) return 'the same matte twice running: ' + m; last = m; }
     return null;
   },
+  // Task 4: each area's set pieces by name; every battle of a kind gets one or two
+  async bdSetPieces(pg) {
+    const want = { hollows: ['crystal seam', 'giant root wall', 'lantern-mushroom cluster'], deeps: ['frozen waterfall', 'ice pillars', 'frosted ledge with icicles'], vault: ['rune vault door', 'arcane crystal pylon'],
+      rifts: ['lava fall', 'basalt columns'], ruins: ['collapsed arch', 'statue niche', 'overgrown colonnade'], abyss: ['broken stairs into the void', 'chained floating monolith'] };
+    const names = await pg.evaluate(() => Object.fromEntries(Object.entries(ARENA_SETPIECES).map(([a, L]) => [a, L.map(p => p.name)])));
+    for (const a in want) if (JSON.stringify(names[a]) !== JSON.stringify(want[a])) return a + ': ' + JSON.stringify(names[a]);
+    for (const [d, k] of [[1, 'cave'], [14, 'island'], [18, 'ruins']]) { await pg.evaluate(k => { window.__bdForce = k; }, k); await pg.evaluate(BATTLE, [d, true]);
+      const n = await pg.evaluate(() => { window.__bdForce = null; return (AR.bdPieces || []).length; }); if (n < 1 || n > 2) return 'depth ' + d + ' ' + k + ': ' + n + ' set pieces'; }
+    return null;
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {

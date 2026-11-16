@@ -212,3 +212,65 @@ function arBdDressing(A,Ar,R,feet){ const out=[], n=feet.length*3;
       const m=arMat(new THREE.MeshStandardMaterial({map:xLeafTex(H.growth,true),alphaTest:.5,side:THREE.DoubleSide,roughness:1,metalness:0})); m.userData.noProj=1;
       const mesh=new THREE.Mesh(g,m); mesh.userData.bd='moss'; out.push(mesh); } }
   return out; }
+
+// ---- set pieces (Task 4) ----
+/* Two or three per area, sculpted from the area's materials and its special one (special: the set-piece material; it
+   glows where its mask says). Each stands in a slot {wx, wz, y, face} (battle coordinates; face: the angle it turns to
+   look at the board), returns its meshes, and may add a tick to A.bdTicks (lava running, a pylon turning). */
+const bdMesh=(g,m,tag)=>{ if(!g.attributes.uv2&&g.attributes.uv) g.setAttribute('uv2',g.attributes.uv.clone()); const o=new THREE.Mesh(g,m); o.userData.bd=tag||'setpiece'; return o; };
+const bdAt=(o,s,dy)=>{ o.position.set(s.wz,(s.y||0)+(dy||0),-s.wx); o.rotation.y=s.face||0; return o; };
+function bdCrystals(m,R,n,r,h,spread){ const parts=[];
+  for(let k=0;k<n;k++){ const hh=h*(.4+R()*.8), g=new THREE.OctahedronGeometry(1,0); g.scale(r*(.5+R()*.6),hh,r*(.5+R()*.6));
+    parts.push([g,new THREE.Matrix4().compose(new THREE.Vector3((R()-.5)*spread,hh*.55,(R()-.5)*spread*.6),new THREE.Quaternion().setFromEuler(new THREE.Euler((R()-.5)*.8,R()*3,(R()-.5)*.8)),new THREE.Vector3(1,1,1))]); }
+  return bdMerge(parts); }
+const ARENA_SETPIECES={
+  hollows:[
+    {name:'crystal seam', kinds:['cave','island','ruins'], build:(A,Ar,R,s)=>[bdAt(bdMesh(bdCrystals(arBdRockMat(Ar,'special'),R,10+(R()*6|0),.35,2.2,2.2),arBdRockMat(Ar,'special')),s)]},
+    {name:'giant root wall', kinds:['cave','ruins'], build:(A,Ar,R,s)=>{ const parts=[]; for(let k=0;k<5;k++){ const pts=[]; const x0=(R()-.5)*3; for(let i=0;i<6;i++) pts.push(new THREE.Vector3(x0+(R()-.5)*.8+i*.15*(R()-.5),4-i*.8+(R()-.5)*.3,(i/5)*(R()*1.2)));
+        parts.push([new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),24,.18+R()*.22,7,false),new THREE.Matrix4()]); }
+      const m=arBdRockMat(Ar,'rock'); m.color.multiply(new THREE.Color('#7a5a3a')); return [bdAt(bdMesh(bdMerge(parts),m),s)]; }},
+    {name:'lantern-mushroom cluster', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ if(typeof xMushReady!=='function'||!xMushReady('lantern-bells')) return [];
+      const out=[]; for(let k=0;k<3+(R()*3|0);k++){ const h=.9+R()*1.3, g=xMushGeo('lantern-bells',false).clone(); g.scale(h,h,h); const o=bdMesh(g,arMat(xMushMat('lantern-bells')),'setpiece'); bdAt(o,{wx:s.wx+(R()-.5)*1.6,wz:s.wz+(R()-.5)*1.2,y:s.y},0); o.rotation.y=R()*6; out.push(o); } return out; }} ],
+  deeps:[
+    {name:'frozen waterfall', kinds:['cave'], build:(A,Ar,R,s)=>{ const g=new THREE.PlaneGeometry(2.6,6,10,24), P=g.attributes.position; for(let i=0;i<P.count;i++){ const x=P.getX(i), y=P.getY(i); P.setZ(i,(bdFbm(x*1.3,y*.6,7,3)-.5)*.6+Math.pow((3-y)/6,2)*.8); }
+      g.computeVertexNormals(); const m=arBdRockMat(Ar,'special'); m.transparent=true; m.opacity=.88; return [bdAt(bdMesh(g,m),s,3)]; }},
+    {name:'ice pillars', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ const parts=[]; for(let k=0;k<3+(R()*3|0);k++){ const h=1.5+R()*3, g=bdChip(new THREE.CylinderGeometry(.08,.35+R()*.25,h,7,6),k*31,.06,0); parts.push([g,new THREE.Matrix4().makeTranslation((R()-.5)*2.4,h/2,(R()-.5)*1.2)]); }
+      const m=arBdRockMat(Ar,'special'); m.transparent=true; m.opacity=.9; return [bdAt(bdMesh(bdMerge(parts),m),s)]; }},
+    {name:'frosted ledge with icicles', kinds:['cave','island'], build:(A,Ar,R,s)=>{ const parts=[[bdChip(new THREE.BoxGeometry(3.2,.4,1.1,8,2,3),5,.08,0),new THREE.Matrix4().makeTranslation(0,2.6,0)]];
+      for(let k=0;k<9;k++){ const h=.4+R()*1.1, g=new THREE.ConeGeometry(.07+R()*.07,h,6); g.rotateX(Math.PI); parts.push([g,new THREE.Matrix4().makeTranslation((R()-.5)*3,2.4-h/2,(R()-.5)*.8)]); }
+      return [bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'special')),s)]; }} ],
+  vault:[
+    {name:'rune vault door', kinds:['cave','ruins'], build:(A,Ar,R,s)=>{ const parts=[[bdChip(new THREE.BoxGeometry(3,4,.5,6,8,2),11,.03,0),new THREE.Matrix4().makeTranslation(0,2,0)]];
+      return [bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'special')),s), bdAt(bdMesh(bdMerge([[bdChip(new THREE.BoxGeometry(3.8,.6,.8,6,1,2),12,.04,.2),new THREE.Matrix4().makeTranslation(0,4.3,0)]]),arBdRockMat(Ar,'stone')),s)]; }},
+    {name:'arcane crystal pylon', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ const base=bdAt(bdMesh(arBdRuinKit('plinth',R),arBdRockMat(Ar,'stone')),s);
+      const g=new THREE.OctahedronGeometry(1,0); g.scale(.45,1.2,.45); const c=bdAt(bdMesh(g,arBdRockMat(Ar,'special')),s,2.3); (A.bdTicks=A.bdTicks||[]).push((T)=>{ c.rotation.y=T*.6; c.position.y=(s.y||0)+2.3+Math.sin(T*1.3)*.15; }); return [base,c]; }} ],
+  rifts:[
+    {name:'lava fall', kinds:['cave'], build:(A,Ar,R,s)=>{ const lt=arLavaTex(R); lt.wrapS=lt.wrapT=THREE.RepeatWrapping; lt.repeat.set(1,3); const g=new THREE.PlaneGeometry(1.6,6,6,20), P=g.attributes.position;
+      for(let i=0;i<P.count;i++){ const y=P.getY(i); P.setZ(i,Math.pow((3-y)/6,2)*1.2); } const m=arMat(new THREE.MeshBasicMaterial({map:lt,fog:true}));
+      (A.bdTicks=A.bdTicks||[]).push(T=>{ lt.offset.y=T*.35; }); const pool=bdMesh(new THREE.CircleGeometry(1.4,20).rotateX(-Math.PI/2),m); return [bdAt(bdMesh(g,m),s,3), bdAt(pool,{wx:s.wx-1.2,wz:s.wz,y:-SLAB+.02})]; }},
+    {name:'basalt columns', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ const parts=[]; for(let k=0;k<6+(R()*5|0);k++){ const h=.8+R()*3.2, g=new THREE.CylinderGeometry(.42,.42,h,6,1); parts.push([g,new THREE.Matrix4().makeTranslation((k%4-1.5)*.75+(R()-.5)*.1,h/2,((k/4)|0)*.7)]); }
+      return [bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'rock')),s)]; }} ],
+  ruins:[
+    {name:'collapsed arch', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ const g=arBdRuinKit('arch',R); g.scale(1.5,1.5,1.5); return [bdAt(bdMesh(g,arBdRockMat(Ar,'stone')),s)]; }},
+    {name:'statue niche', kinds:['cave','ruins'], build:(A,Ar,R,s)=>{ const parts=[[new THREE.BoxGeometry(2.4,3.6,.4),new THREE.Matrix4().makeTranslation(0,1.8,-.3)],[new THREE.BoxGeometry(1.2,.6,.9),new THREE.Matrix4().makeTranslation(0,.3,0)],
+        [new THREE.CylinderGeometry(.32,.42,1.6,10),new THREE.Matrix4().makeTranslation(0,1.4,0)],[new THREE.SphereGeometry(.26,12,8),new THREE.Matrix4().makeTranslation(0,2.45,0)]];
+      return [bdAt(bdMesh(bdMerge(parts.map(([g,m],i)=>[bdChip(g,40+i,.02,0),m])),arBdRockMat(Ar,'special')),s)]; }},
+    {name:'overgrown colonnade', kinds:['ruins','island'], build:(A,Ar,R,s)=>{ const parts=[]; for(let k=0;k<4;k++){ const g=arBdRuinKit('drum',R); parts.push([g,new THREE.Matrix4().makeTranslation((k-1.5)*1.3,0,0)]); }
+      parts.push([bdChip(new THREE.BoxGeometry(5.4,.45,.7,10,1,2),77,.05,.2),new THREE.Matrix4().makeTranslation(0,3.4,0)]); return [bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'stone')),s)]; }} ],
+  abyss:[
+    {name:'broken stairs into the void', kinds:['island','ruins'], build:(A,Ar,R,s)=>{ const parts=[]; for(let k=0;k<9;k++){ if(R()<.18) continue; parts.push([bdChip(new THREE.BoxGeometry(1.6,.3,.7,4,1,2),k*7,.04,0),new THREE.Matrix4().makeTranslation((R()-.5)*.15,k*.42,-k*.62)]); }
+      return [bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'stone')),s)]; }},
+    {name:'chained floating monolith', kinds:['island','ruins','cave'], build:(A,Ar,R,s)=>{ const mono=bdAt(bdMesh(bdChip(new THREE.BoxGeometry(1.1,3.6,.6,3,8,2),9,.05,0),arBdRockMat(Ar,'special')),s,3.2);
+      const parts=[]; for(let k=0;k<10;k++){ const g=new THREE.TorusGeometry(.13,.04,5,10); parts.push([g,new THREE.Matrix4().compose(new THREE.Vector3(.4,1.3-k*.22,0),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,k%2?Math.PI/2:0,0)),new THREE.Vector3(1,1,1))]); }
+      const chain=bdAt(bdMesh(bdMerge(parts),arBdRockMat(Ar,'rock')),s,0); (A.bdTicks=A.bdTicks||[]).push(T=>{ mono.position.y=(s.y||0)+3.2+Math.sin(T*.7)*.2; mono.rotation.y=(s.face||0)+Math.sin(T*.3)*.1; }); return [mono,chain]; }} ],
+};
+// the slots a kind of place offers (battle coordinates): at the back, and along each side, beyond the board
+function arBdSlots(A,kind,R){ let z1=0, x1=-1e9, x0=1e9; for(const t of TILES){ z1=Math.max(z1,Math.abs(t.wz)); x1=Math.max(x1,t.wx); x0=Math.min(x0,t.wx); }
+  const back=A.room.back, mid=(x0+x1)/2+2;
+  if(kind==='cave') return [{wx:back+.4,wz:-2.5,y:-SLAB,face:0},{wx:back+.4,wz:3,y:-SLAB,face:0},{wx:mid,wz:-(z1+2.6),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+2.6,y:-SLAB,face:-Math.PI/2}];
+  return [{wx:x1+1.3,wz:(R()<.5?-1:1)*(z1+2.4),y:-SLAB,face:0},{wx:back+3.5,wz:-3,y:-SLAB-2.5,face:0},{wx:mid,wz:-(z1+2.6),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+2.6,y:-SLAB,face:-Math.PI/2}]; }
+// one or two of the area's set pieces that fit the kind of place, at least one at the back
+function arBdSetPieces(A,Ar,R,kind){ const L=(ARENA_SETPIECES[Ar.id]||[]).filter(p=>p.kinds.includes(kind)); if(!L.length) return [];
+  const slots=arBdSlots(A,kind,R), n=Math.min(L.length,1+(R()<.6?1:0)), pick=L.slice().sort(()=>R()-.5).slice(0,n), out=[];
+  pick.forEach((p,i)=>{ const s=i===0?slots[R()<.5?0:1]:slots[2+(R()*2|0)]; try{ out.push(...p.build(A,Ar,R,s)); }catch(e){ console.warn('set piece '+p.name+': '+e.message); } });
+  A.bdPieces=pick.map(p=>p.name); return out; }

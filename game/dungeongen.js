@@ -452,7 +452,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
         M.add(XG.cyl,ST,x,.48,z,rx,0,rz,.9,len-.6,.9); for(let k=-1;k<=1;k++) M.add(XG.cyl,LT,x+along[0]*k*XCS,.48,z+along[1]*k*XCS,rx,0,rz,.96,.08,.96);
         B(LT,x+along[0]*(len/2-.3),.6,z+along[1]*(len/2-.3),1.2,1.2,1.2,R()*.4); for(let k=0;k<4;k++) rock(ST,x+(R()-.5)*len*.8*along[0]+(R()-.5)*.6,.1,z+(R()-.5)*len*.8*along[1]+(R()-.5)*.6,.3); }
       else if(it.k==='planter'){ const lx=it.v?XCS-.25:len-.25, lz=it.v?len-.25:XCS-.25;
-        B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.06,z,lx-.3,.06,lz-.3);
+        B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.08,z,lx-.3,.06,lz-.3);   // (the soil's top 2 cm over the rim slab's: at the same height the two flickered through each other)
         if(D) B(TRIM,x,.55,z,lx+.02,.06,lz+.02,0,L);
         const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2, cone=R()<.35, ry=R()*3;
           if(!xLeafCards(F,LEAF,px,1.1+s2*.6,pz,s2*.6,R)) M.add(cone?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,ry,0,s2*1.3,s2*1.4,s2*1.3); }   // (a shrub of painted leaf cards; a plain ball or cone until the art is in)

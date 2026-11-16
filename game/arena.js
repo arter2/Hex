@@ -199,6 +199,7 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
   A.scene.fog=new THREE.Fog(new THREE.Color(Ar.fog).multiplyScalar(.35),20,46);
   A.amb.color.set(0xffffff).lerp(glowC,.25); A.lamp.color.set(0xffd9a0).lerp(glowC,.3);
   A.scene.environment=lookEnv(A.renderer,Ar);
+  A.bdMatte=null; if(typeof arBdMatte==='function') arBdMatte(A,caveRng((seed|0)+4421));   // (the matte painting behind: arenabackdrop.js)
   A.scene.add(A.grp); arenaBakeAO(); xLitAll(A.grp); }
 
 /* ---------------- each frame ---------------- */
@@ -235,6 +236,7 @@ function arenaPhase(col,ph){ const A=AR; if(!A) return; A.phaseCol=new THREE.Col
 function arenaKick(k){ const A=AR; if(!A) return; A.shot.kick=Math.max(A.shot.kick||0,k==null?1:k); A.shot.kickDir=Math.random()<.5?-1:1; A.shot.punch=1; }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
+  if(typeof arBdMatteTick==='function') arBdMatteTick(A,dt);
   if(A.board&&A.board.art&&!A.board.growth&&typeof arHexGrowth==='function'&&performance.now()-(A.board.t0=A.board.t0||performance.now())>2000){   // (the joints' growth, two seconds in, the opening swoop over: its pixel rule projects through the camera as it then stands; arenahex.js)
     const g=A.board.growth=arHexGrowth(A,A.area); for(const k in g) if(g[k]){ A.grp.add(g[k]); xLitAll(g[k]); } }
   // keep the 3D canvas exactly under the flat one (the HUD around it can change size without a resize)

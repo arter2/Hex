@@ -126,3 +126,30 @@ function arBdIsland(A,Ar,R,o){ const {back,near,side}=o, seed=(Ar.index||0)*53+(
       const m=arMat(xPhong({map:xLeafTex(img,true),alphaTest:.5,side:THREE.DoubleSide,shininess:2,specular:0x0a0a0a})); m.userData.noProj=1; if(typeof xHueMat==='function'&&Ar.moss) xHueMat(m,Ar.moss);
       const v=new THREE.Mesh(g,m); v.userData.bd='vines'; out.push(v); } }
   return out; }
+
+// ---- matte paintings (Task 6) ----
+/* A painted panorama behind the arena, in two layers on curved cards round the board's far side: the far plate (radius
+   70, 110 degrees wide) and its middle layer (radius 45, 100 degrees, with a clear sky). Being at two distances they shift
+   against each other as the camera moves. Their lower quarter fades into the area's fog, so they meet the chasm without a
+   seam; unfogged and unlit (they are paintings of light already). Each battle picks one of its place's mattes, never the
+   last battle's when it has another; only that one loads, and the cards fade in when it has. */
+let AR_LAST_MATTE=null;
+function arBdMatteId(A){ return A.bd&&A.bd.kind==='boss'&&typeof bossFor==='function'?'boss-'+bossFor(A.depth):A.area.id; }
+function arBdMatte(A,R){ if(typeof ARENA_BACKDROP==='undefined') return; const id=arBdMatteId(A), cnt=ARENA_BACKDROP.mattes[id]||0; if(!cnt) return;
+  let n=1+(R()*cnt|0); if(cnt>1&&AR_LAST_MATTE===id+'-'+n) n=n%cnt+1; AR_LAST_MATTE=id+'-'+n;
+  A.bdMatte={id, n, built:false, t:0}; envArtMatte(id,n); }
+function arBdMatteCard(img,radius,width,y0,cz,fog,order,transparent){ const H=radius*width/2;   // (2:1, as painted)
+  const g=new THREE.CylinderGeometry(radius,radius,H,64,1,true,Math.PI-width/2,width), uv=g.attributes.uv; for(let i=0;i<uv.count;i++) uv.setX(i,1-uv.getX(i));   // (seen from inside: unmirrored)
+  const t=arTex(new THREE.Texture(img)); t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true;
+  const U={uFog:{value:new THREE.Color(fog)}, uK:{value:0}};
+  const m=new THREE.MeshBasicMaterial({map:t, side:THREE.BackSide, fog:false, depthWrite:false, transparent:true, opacity:0});
+  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,U); sh.fragmentShader='uniform vec3 uFog;\n'+sh.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n  diffuseColor.rgb=mix(uFog,diffuseColor.rgb*.85,smoothstep(.02,.25,vUv.y));'); };
+  m.customProgramCacheKey=()=>'bdmatte'; m.userData.matte=U; arMat(m);
+  const mesh=new THREE.Mesh(g,m); mesh.position.set(0,y0+H/2,cz); mesh.renderOrder=-10+order; mesh.frustumCulled=false; mesh.userData.bd='matte'; return mesh; }
+// each frame: build the cards once the matte has come in, then fade them in over 0.6 s
+function arBdMatteTick(A,dt){ const M=A.bdMatte; if(!M) return;
+  if(!M.built){ const L=envArtMatte(M.id,M.n); if(!L) return; M.built=true;
+    const cz=-((A.room.back+A.room.near)/2), fog=new THREE.Color(A.area.fog).multiplyScalar(.35);
+    M.cards=[arBdMatteCard(L.far,70,110*Math.PI/180,-30,cz,fog,0), arBdMatteCard(L.mid,45,100*Math.PI/180,-21,cz,fog,1)];   // (low enough that each painting's detailed middle band meets the board's horizon)
+    for(const c of M.cards) A.grp.add(c); }
+  if(M.cards&&M.t<1){ M.t=Math.min(1,M.t+dt/.6); for(const c of M.cards) c.material.opacity=M.t; } }

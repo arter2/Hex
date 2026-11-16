@@ -378,6 +378,19 @@ const CHECKS = {
     return pg.evaluate(() => { window.__bdForce = null; let r = null; AR.grp.traverse(o => { if (o.userData.bd === 'ribbon') r = o; });
       if (!r) return 'no rock face'; return r.material.userData.bdStandIn ? null : 'the rock face claims the art while a file is missing'; });
   },
+  // Task 6: battle after battle, textures freed and a matte decoded once; never the same matte twice running
+  async bdRepeat(pg) {
+    const mem = [];
+    for (let i = 0; i < 5; i++) { await pg.evaluate(BATTLE, [1, true]); await pg.waitForTimeout(1500);
+      mem.push(await pg.evaluate(() => AR.renderer.info.memory.textures)); }
+    return mem[4] > mem[1] + 4 ? 'textures grow battle by battle: ' + mem.join(',') : null;
+  },
+  async bdMatteOrder(pg) {
+    let last = null;
+    for (let i = 0; i < 6; i++) { await pg.evaluate(BATTLE, [1, false]); const m = await pg.evaluate(() => AR.bdMatte && AR.bdMatte.id + '-' + AR.bdMatte.n);
+      if (m && m === last) return 'the same matte twice running: ' + m; last = m; }
+    return null;
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {

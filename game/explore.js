@@ -582,7 +582,7 @@ function xBuildScene(){
   XSINK_DOOR=true;
   EX.doorClip=new Map();
   // (a spacious floor's door is clipped at its arch's crown when it stands in a low near wall: xStepLow)
-  for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
+  for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=xDoorEW(i), g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
     const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
     g.add(F.build(xDitherMat(xPhong({vertexColors:true})))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
@@ -1396,7 +1396,15 @@ function xStepLow(c){ const T=EX.stepT||(EX.stepT=new Uint8Array(XN*XN)); if(!T[
 // a door stands low when the wall it is set in does (there is always floor beyond a doorway, so it is not asked of
 // the door itself): the wall blocks either side of it along the wall's line, two out for a wide doorway's middle
 function xDoorLow(i){ const M=EX.doorLowT||(EX.doorLowT=new Map()); let v=M.get(i); if(v===undefined){ v=xDoorLow0(i); M.set(i,v); } return v; }   // (worked out once per door, again when the camera turns: xWallCut)
-function xDoorLow0(i){ const d=EX.doors.get(i), s=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK?XN:1;
+/* which way you pass through a door's cell: east-west (true) or north-south. Open both ways along one axis and rock
+   on the other is the plain case; where the cell is open all round (a corridor widening at the door), the way through
+   is where the room meets the passage, and failing that the axis whose sides have the less rock round them */
+function xDoorEW(i){ const open=c=>EX.t[c]!==T_ROCK, ew=open(i-1)&&open(i+1), ns=open(i-XN)&&open(i+XN);
+  if(ew!==ns) return ew;
+  const rm=c=>EX.room[c]; if(rm(i-1)!==rm(i+1)&&rm(i-XN)===rm(i+XN)) return true; if(rm(i-XN)!==rm(i+XN)&&rm(i-1)===rm(i+1)) return false;
+  let rx=0, ry=0; for(const k of [-1,1]) for(const j of [-1,0,1]){ if(!open(i+k*XN+j)) rx++; if(!open(i+j*XN+k)) ry++; }   // (rock beside the east-west way, and beside the north-south way)
+  return rx>=ry; }
+function xDoorLow0(i){ const d=EX.doors.get(i), s=xDoorEW(i)?XN:1;
   for(let k=1;k<=(d&&d.wide?2:1);k++) for(let q=-1;q<=1;q+=2){ const n=i+q*s*k; if(n>=0&&n<XN*XN&&EX.t[n]===T_ROCK&&!xLow(n)&&xStepLow(n)) return true; }
   return false; }
 function xHidesFloor(c){ const d=EX.cutD||[0,1], tn=Math.max(.2,EX.stepTan||Math.tan(XLIT.dPitch*Math.PI/180)), W=xWedge(c);

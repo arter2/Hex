@@ -1299,7 +1299,7 @@ function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door,clip); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':'')+(clip?'c':''); return m; }
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
 let XSINK_DOOR=false, XSINK_CLIP=null;
-function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0;
+function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0; if(uvj===2) m.userData.xrock=1;   // (its relief laid like its colour: look.js xRockNormal)
   m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
     // uvj 2 (rough rock, which has no courses to keep level): each block shows its own half of a texture twice the size,

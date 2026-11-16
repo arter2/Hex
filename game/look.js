@@ -59,7 +59,7 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
   const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;
   const mold=()=>m.userData.xmold&&XLIT.mold&&typeof xMoldReady==='function'&&xMoldReady()?m.userData.xmold:0;   // (the mold layer: mold.js; 1 a floor, 2 a wall)   // (an atlas tile: envart.js; set on the material when it is made)
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); };
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(m.userData.xrock) xRockNormal(sh,!!atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); };
   m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):'')+(mold()?'|xmold'+mold():''); };
   xLitDefines(m); m.needsUpdate=true; return m; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
@@ -162,6 +162,35 @@ void main() {`);
    the first mip levels from reading a neighbour. On a rough rock wall (explore.js xRockShader) its three lookups are
    wrapped the same way, the turned copy loses its turn (the painted light would turn with it), the Ember Rifts lay
    their medium rocks over it (uXAtO, three passes, as the art's notes give) and the Frozen Deeps their cell noise. */
+/* The rough rock walls' relief (explore.js xRockShader, uvj 2), laid like their colour: the colour is triplanar in world
+   space, but the standard normal map read each block's own uv (a random half of the texture per block, its tangents
+   along the block), so the bumps neither matched the stone nor joined from block to block, and streaked up the tall
+   faces. Here the normal map is read with the same three projections, the same mix of two copies (the second turned,
+   its slopes turned back) and the walls' world detail relief, each turned into world space round the face (a whiteout
+   blend), mixed by the same weights, and brought into view space. Applied after the atlas lookups (xAtlasShader). */
+function xRockNormal(sh,atlas){ let f=sh.fragmentShader; const a=f.indexOf('vec3 mapN = '), endS='normal = perturbNormal2Arb( -vViewPosition, normal, mapN, faceDirection );';
+  const b=f.indexOf(endS,a); if(a<0||b<0) return; const e=f.indexOf('#endif',b)+6;
+  const look=atlas?'xAtG( normalMap, uXAtN, u, dFdx( u ), dFdy( u ) )':'texture2D( normalMap, u )';
+  f=f.slice(0,a)+`{ vec3 wn=normalize(vXWN)*faceDirection, an=abs(wn); an=pow(an,vec3(4.0)); an/=an.x+an.y+an.z;
+    vec3 P=vXWP*.25;
+    float nb=texture2D(uXDetN,vXWP.xz*.047+vXWP.y*.031).r*.5+texture2D(uXDetN,vXWP.zy*.053+.37).g*.5, bm=smoothstep(.38,.62,nb);
+    vec3 tX=xRkN(P.zy,.41,bm), tY=xRkN(P.xz,.73,bm), tZ=xRkN(P.xy,.17,bm);
+    tX.xy+=xRkD(vXWP.zy); tY.xy+=xRkD(vXWP.xz); tZ.xy+=xRkD(vXWP.xy);
+    tX=vec3(tX.xy+wn.zy,abs(tX.z)*wn.x); tY=vec3(tY.xy+wn.xz,abs(tY.z)*wn.y); tZ=vec3(tZ.xy+wn.xy,abs(tZ.z)*wn.z);
+    normal=normalize((viewMatrix*vec4(normalize(tX.zyx*an.x+tY.xzy*an.y+tZ*an.z),0.0)).xyz); }
+`+f.slice(e);
+  f=f.replace('void main() {',`#ifdef TANGENTSPACE_NORMALMAP
+vec3 xRkS(vec2 u){ return ${look}.xyz*2.-1.; }
+// one projection's relief: two copies mixed as the colour mixes them${atlas?' (the painted tile: the copy not turned)':', the second turned and its slopes turned back'}
+vec3 xRkN(vec2 u,float o,float bm){ vec3 a=xRkS(u), c=xRkS(${atlas?'u*1.37+o':'mat2(.6,-.8,.8,.6)*u*1.37+o'});${atlas?'':' c.xy=mat2(.6,.8,-.8,.6)*c.xy;'}
+  vec3 n=mix(a,c,bm); n.xy*=normalScale; return n; }
+// the walls' finer world relief (as xDetShader lays it), on one projection
+vec2 xRkD(vec2 w){ vec3 d1=texture2D(uXDetN,w*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,w*.067+vec2(.53,.19)).xyz*2.-1.; return (d1.xy*.55+d2.xy*.6)*uXDetK*.9; }
+#endif
+void main() {`);
+  if(!/uniform float uXDetK/.test(f)) f=f.replace('#ifdef TANGENTSPACE_NORMALMAP\nvec3 xRkS','uniform float uXDetK;\n#ifdef TANGENTSPACE_NORMALMAP\nvec3 xRkS');
+  if(!/uniform sampler2D uXDetN/.test(f)) f='uniform sampler2D uXDetN;\n'+f;
+  sh.uniforms.uXDetN=XLITU.uXDetN; sh.uniforms.uXDetK=XLITU.uXDetK; sh.fragmentShader=f; }
 // a lookup inside tile R of an atlas sheet, wrapped; uXSharp (the debug menu's Texture sharpen) sets the filtering: 0
 // smooth, 1 the nearest texel (its centre), above 1 the nearest pushed away from the smooth one (sharper still). Shared
 // by the painted floors and walls (xAtlasShader) and the mold layer (mold.js), declared once in a program.

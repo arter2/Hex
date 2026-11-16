@@ -61,9 +61,10 @@ The user wants **themed, higher-quality backgrounds and geometry**, varied from 
 
 | Kind | Normal battles | Boss battles |
 |---|---|---|
-| Cave | 35% | always (as today) |
+| Cave | 35% | never |
 | Island | 35% | never |
 | Ruins | 30% | never |
+| The boss's own battlefield | never | always |
 
 The matte painting is chosen from the area's set by seed as well, and never the same as the last battle's when another is available. The debug menu's existing "Arena walls" switch keeps its meaning (off: never Cave).
 
@@ -107,6 +108,25 @@ The matte painting is chosen from the area's set by seed as well, and never the 
 
 Each is sculpted geometry, using the area's materials plus at most one special material from its set-piece sheet (ice, crystal, lava, carved panel), and its own glow where luminous.
 
+### Boss battlefields (user: "Bosses should have separate themed battle fields that represent their core feature and gimmick")
+Each boss has its own battlefield, built around its core feature, with:
+- its own matte painting (one or two);
+- its own special material;
+- one or two unique set pieces.
+
+It replaces the Cave, Island and Ruins kinds for that fight only. **The last three bosses' battlefields change as the boss evolves** (at 2/3 and 1/3 of its health; user: "It could change for the last few bosses"). The changes are **visual only**: lighting, weather, glow, lava level, darkness. They never touch gameplay or hide the board. The first three bosses' battlefields stay the same through the fight.
+
+| Boss (area) | Gimmick | Battlefield | Changes with its evolutions |
+|---|---|---|---|
+| Radiant Golem (Hollows) | its weak colour shifts; later reflects | **Prism geode:** inside a huge crystal geode, prism pillars round the board, light beams refracting through them. The crystals glow in the Golem's current weak colour, so the room shows its weakness. | no (the glow follows its weakness all fight) |
+| Glacier Queen (Deeps) | ice walls, freezes your queue, blizzard | **Frozen throne hall:** her ice throne behind the board, a frozen waterfall, a ring of icicles, frost along the floor's edges. | no |
+| Thunder Roc (Vault) | lightning rods; flies off and dives | **Storm aerie:** an open peak above the clouds, a broken stone nest behind the board, iron rod pylons at the edges, a storm-cloud matte with lightning flashes. | no |
+| Magma Wyrm (Rifts) | cracks tiles into lava; burrows and erupts | **Caldera:** the board on a cracked crust over a lava lake, lava falls, the Wyrm's burrow holes in the rock. | yes: the seams glow brighter, the lava lake rises and the light reddens at each evolution |
+| Elder Treant (Ruins) | Root Nodes heal it; vines root you | **Temple heart:** ruins swallowed by giant roots, the great tree behind the board, glowing root veins from the Root Nodes' places to the tree. | yes: the veins pulse while Root Nodes stand, the roots close in round the edges and the light turns autumnal |
+| Hollow King (Abyss) | fog, teleports, steals cards, splits | **Shattered throne:** a floating broken throne in the void, obsidian shards like dark mirrors, fog banks drifting over its side. | yes: darker and more fractured: shards break away, the fog thickens over its half, the void's light dims |
+
+The battle code already announces each evolution (`bossTick`, the phase banner). The arena listens for the phase and eases its changes in over about two seconds.
+
 ### Matte paintings
 - **The set:** two or three per area, each in two layers:
   - **Far plate:** opaque, 2048 × 1024, the distant world: caverns, skylines, lava seas, the void.
@@ -140,7 +160,8 @@ Rubble is sculpted small rocks in the area's rock material, as one instanced mes
 
 ## My calls (correct any)
 
-- The weights are 35 / 35 / 30, and bosses are always Cave.
+- The weights are 35 / 35 / 30 for normal battles; bosses always get their own battlefield.
+- "The last few bosses" read as the last three (Wyrm, Treant, Hollow King). The first three bosses' battlefields stay the same through the fight.
 - Mattes: two layers each, two or three per area, 2048 × 1024, loaded only when chosen.
 - The rock and dressed stone are tileable PBR sets per area (colour, height, roughness), as the hex floor's are, with metalness only where an area's art paints it.
 - Set pieces are sculpted in code from those materials plus one special material each, not separate paintings on cards.

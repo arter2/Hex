@@ -89,6 +89,26 @@ For the middle layer, give ChatGPT the far plate and ask:
 | **Ruins** | olive and gold limestone | aged ivory-grey marble ashlar | carved marble relief (statue niche, colonnade) | warm dark olive-gold haze | sunken ruined city; overgrown colonnade at dusk; collapsed temple |
 | **Abyss** | charcoal and navy rock, faint starry flecks | black stone with gold inlay | void-touched obsidian, faint cyan glow (monolith, chains) | near-black navy | broken stairs into the void; floating islands among stars; shattered citadel |
 
+## Boss battlefields
+
+Each area's boss fights on its own battlefield. Per boss there are 6 images, 36 in all. `<boss>` is `golem`, `glacier`, `roc`, `wyrm`, `treant` or `hollow`.
+
+| # | File | What |
+|---|---|---|
+| E1–E3 | `boss-<boss>--special-albedo.png`, `-height.png`, `-roughness.png` | The battlefield's own material, seamless, as in section C |
+| E4 | `boss-<boss>--special-glow.png` | Its glow mask |
+| E5 | `boss-<boss>--matte-far.png` | Matte painting, far plate, 2048 × 1024 (as section D) |
+| E6 | `boss-<boss>--matte-mid.png` | Its middle layer, transparent sky |
+
+| Boss | Material | Matte |
+|---|---|---|
+| Radiant Golem | clear prism crystal with rainbow refraction (glows) | inside a vast crystal geode, beams of light crossing it |
+| Glacier Queen | carved throne ice, frost-white and deep blue (faint glow) | a frozen throne hall, a frozen waterfall behind it |
+| Thunder Roc | storm-scoured stone with iron streaks | a peak above the clouds in a lightning storm |
+| Magma Wyrm | cracked crust over molten rock (glowing seams) | a caldera with a lava lake and lava falls |
+| Elder Treant | giant living roots and bark with glowing sap veins | a temple swallowed by an enormous ancient tree |
+| Hollow King | shattered obsidian, mirror-dark with faint cyan edges | a broken throne floating in a starless void |
+
 ## Delivering
 
 Name every file as in the table, zip one or more areas together, and send them over. The game's build checks:

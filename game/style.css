@@ -1331,6 +1331,9 @@ body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; f
 #packOpen.burst .popack{animation:poBurst .38s ease-out forwards;}
 @keyframes poBurst{to{transform:scale(1.7); opacity:0; filter:brightness(3);}}
 #packOpen.burst .postage{height:0;}
+#packOpen:not(.burst) .pofan{display:none;} #packOpen:not(.burst) .pohint{visibility:hidden;}
+#packOpen:not(.burst) .postage{height:260px; padding-top:18px;}   /* (the fan lands once the pack bursts: both at once ran the box out of the screen) */
+.pobox{max-height:100%; overflow-y:auto;}
 .pofan{display:flex; justify-content:center; gap:10px; min-height:200px; perspective:900px;}
 .poslot{position:relative; width:104px; aspect-ratio:5/7; transform-style:preserve-3d; transition:transform .45s ease; animation:poLand .4s ease-out backwards; animation-delay:calc((var(--i) + 1) * .08s);}
 @keyframes poLand{from{transform:translateY(-120px) rotate(calc(var(--i) * 25deg)) scale(.4); opacity:0;}}

@@ -1539,6 +1539,8 @@ function xStickDraw(){ const el=$('#xStick'); if(!el) return; const m=xMoveMode(
   el.firstElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 // paused (ui.js): the floor stands still and keys and touches are let go
 let xPaused=false;
+// an overlay that hides the map while it is up (the pack opening): the map need not be drawn under it
+const xOverlayCovers=()=>{ const p=document.getElementById('packOpen'); return !!(p&&p.classList.contains('on')); };
 // Pausing (a dialog, the bag, the menu) stops you dead: keys, finger and any walk you were on.
 // Afterwards you need fresh input (a tap or a new key press, not a key still held) before
 // walking into something acts on it again, so closing a talk never walks you back into the NPC.
@@ -1975,6 +1977,8 @@ function xLoop(ts){
   xRaf=requestAnimationFrame(xLoop);
   // never below 0: the first frame's timestamp can be from a little before the loop was started (xLoopStart)
   const dt=Math.max(0,Math.min(.1,(ts-xLast)/1000)); xLast=ts;
+  // a pack opening over the map covers it (86% black): the map waits, undrawn, so the cards turn smoothly
+  if(xOverlayCovers()) return;
   // a search or disarm never takes more than a few seconds, whatever happens
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
   if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt)); if(EX.active&&!EX.busy&&typeof xPrewarmTick==='function') xGuard(()=>xPrewarmTick(dt));

@@ -187,7 +187,11 @@ function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'
   hint.parentNode.hidden=false;
   slots.forEach((s,i)=>s.addEventListener('click',e=>{ if(!s.classList.contains('up')){ e.stopPropagation(); flip(i); } }));
   if(skip){ ov.classList.add('burst'); stage.innerHTML=''; slots.forEach(s=>s.classList.add('up')); hint.hidden=true; done.hidden=false; }
-  else setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); t=setTimeout(()=>{ stage.innerHTML=''; all.hidden=false; },380); },700);
+  else { // the shake plays out, then the burst, each by its own animation's end (by the clock they were cut short or skipped
+    // when a frame was slow), with a timer only as a fallback if an animation never runs
+    let burst=false; const doBurst=()=>{ if(burst) return; burst=true; ov.classList.add('burst'); if(typeof buzz==='function') buzz(30);
+      const end=()=>{ stage.innerHTML=''; all.hidden=false; }; pk.addEventListener('animationend',end,{once:true}); t=setTimeout(end,900); };
+    pk.addEventListener('animationend',e=>{ if(e.animationName==='poShake') doBurst(); }); setTimeout(doBurst,1600); }
   ov.onclick=null; all.onclick=e=>{ e.stopPropagation(); if(!ov.classList.contains('burst')){ ov.classList.add('burst'); stage.innerHTML=''; } left().forEach((i,n)=>setTimeout(()=>flip(i),n*120)); };
   $('#poX').onclick=e=>done.onclick(e);
   done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); if(onDone) onDone(); }; }

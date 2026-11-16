@@ -116,3 +116,13 @@ Name every file as in the table, zip one or more areas together, and send them o
 - that the materials tile seamlessly;
 - that each height map lines up with its colour image;
 - that each middle layer has a real transparent sky.
+
+## Delivered and integrated (2026-11-16)
+
+All 132 images were delivered. The masters are in `game/art/environment/painterly-512/arena-backdrops/`.
+
+`tools/build-arena-backdrops.py` builds them into `game/art/environment/arena/backdrops/`:
+- material sets at 512: colour, a normal from height, and AO and roughness packed in three.js's channels, plus glow where an area has it;
+- mattes at 2048 × 1024, with the middle layers' colour carried under their clear sky.
+
+`game/arenabackdrop.js` draws them.

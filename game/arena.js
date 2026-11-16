@@ -147,18 +147,22 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   A.room={back,near,side};
   // walls only some of the time (always on a boss floor): otherwise the board stands on an island of
   // rock over the dungeon's chasm, in the area's haze, so you can see it is the same place
-  A.open=!boss&&(!XLIT.arWalls||R()<.65);
+  A.bd={kind:typeof arBdKind==='function'?arBdKind(A,R,boss):(!boss&&(!XLIT.arWalls||R()<.65)?'island':'cave')};   // (cave, island or ruins; a boss its own field: arenabackdrop.js)
+  A.open=A.bd.kind==='island'||A.bd.kind==='ruins';
   if(A.open){ A.room.back=x1+1.7; A.room.near=x0-1.9; const back=A.room.back, near=A.room.near;   // the island ends just past the board, so the chasm shows beyond
     const t=arTex(xTex(arArt(Ar,'floor',()=>xRockFloor(S,(Ar.index||0)*17+3)),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
     const sideT=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)); sideT.repeat.set(6,1);
     const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image)); top.userData.xmold=1; rim.userData.xmold=2;   // (a light layer of mold: mold.js)
-    const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl);
+    if(typeof arBdIsland==='function') out.push(...arBdIsland(A,Ar,R,{back,near,side}));   // (the sculpted floating island: arenabackdrop.js)
+    else { const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl); }
     out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
   out.push(...arChasm(A,Ar,S));
   const ft=arTex(xTex(arArt(Ar,'floor',()=>xRockFloor(S,(Ar.index||0)*17+3)),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)); fm.userData.xmold=1; const floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
+  // the walls: one sculpted rock face round the board (arenabackdrop.js), or, without it, the old dungeon blocks
+  if(typeof arBdRibbon==='function'){ const rb=arBdRibbon(A,Ar,R,{back,near,side,boss}); out.push(rb.mesh); A.wallCells=rb.cells; return out; }
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
   const wt=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3,XWALL_B); wm.userData.xmold=2;
   const cells=[]; const B2=XCS;

@@ -337,6 +337,47 @@ const CHECKS = {
     }
     return counts[4] > counts[1] + 2 ? 'textures grow battle by battle: ' + counts.join(',') : null;
   },
+
+  // ---- the arena's backdrops (docs/superpowers/plans/2026-11-16-arena-backdrops.md) ----
+  // Task 1: the kinds by their weights; a boss its own
+  async bdKinds(pg) {
+    return pg.evaluate(() => { const n = { cave: 0, island: 0, ruins: 0 }; const was = XLIT.arWalls; XLIT.arWalls = true;
+      for (let s = 0; s < 200; s++) n[arBdKind({}, caveRng(s * 7919 + 3), false)]++; XLIT.arWalls = was;
+      const want = { cave: .35, island: .35, ruins: .30 };
+      for (const k in want) if (Math.abs(n[k] / 200 - want[k]) > .08) return k + ' ' + n[k] + '/200';
+      return arBdKind({}, caveRng(1), true) === 'boss' ? null : 'a boss did not get its own field'; });
+  },
+  // Tasks 1-5: nothing of the backdrop inside the board (plus 0.6), nothing tall at the front
+  async bdClearView(pg) {
+    for (const d of [1, 18]) for (const kind of ['cave', 'island', 'ruins']) {
+      await pg.evaluate(k => { window.__bdForce = k; }, kind);
+      await pg.evaluate(BATTLE, [d, true]);
+      const r = await pg.evaluate(() => {
+        let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9; for (const t of TILES) { x0 = Math.min(x0, t.wz); x1 = Math.max(x1, t.wz); z0 = Math.min(z0, -t.wx); z1 = Math.max(z1, -t.wx); }
+        x0 -= 1.6; x1 += 1.6; z0 -= 1.6; z1 += 1.6; let bad = null; const v = new THREE.Vector3();
+        AR.grp.traverse(o => { if (bad || !o.isMesh || !o.userData.bd || !o.visible) return; const P = o.geometry.attributes.position; o.updateMatrixWorld();
+          for (let i = 0; i < P.count; i += 3) { v.fromBufferAttribute(P, i).applyMatrix4(o.matrixWorld);
+            if (v.y > .05 && v.x > x0 && v.x < x1 && v.z > z0 && v.z < z1) { bad = o.userData.bd + ' inside the board at ' + v.toArray().map(n => n.toFixed(1)); return; }
+            if (v.z > z1 && v.z < z1 + 4 && v.y > .6 && v.x > x0 - 4 && v.x < x1 + 4) { bad = o.userData.bd + ' tall at the front'; return; } } });
+        window.__bdForce = null; return bad; });
+      if (r) return 'depth ' + d + ' ' + kind + ': ' + r;
+    }
+    return null;
+  },
+  // Task 2: the Abyss's island stays (its void hides cave floors, not the island)
+  async bdAbyssIsland(pg) {
+    await pg.evaluate(() => { window.__bdForce = 'island'; });
+    await pg.evaluate(BATTLE, [22, true]);
+    return pg.evaluate(() => { window.__bdForce = null; let cliff = 0, spire = 0; AR.grp.traverse(o => { if (o.userData.bd === 'cliff' && o.visible) cliff++; if (o.userData.bd === 'spire' && o.visible) spire++; });
+      return cliff && spire ? null : 'cliff ' + cliff + ', spires ' + spire; });
+  },
+  // Task 7: the art missing: the code-painted rock stands in, no errors
+  async bdFallback(pg) {
+    await pg.evaluate(() => { window.__bdForce = 'cave'; });
+    await pg.evaluate(BATTLE, [1, false]);
+    return pg.evaluate(() => { window.__bdForce = null; let r = null; AR.grp.traverse(o => { if (o.userData.bd === 'ribbon') r = o; });
+      if (!r) return 'no rock face'; return r.material.userData.bdStandIn ? null : 'the rock face claims the art while a file is missing'; });
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {
@@ -350,7 +391,8 @@ const BATTLE = async ([depth, wait]) => {
 const ROUTES = { mushFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
   foliageFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
   moldMissingSheet: pg => pg.route('**/atlas/mold.webp', r => r.fulfill({ status: 404, body: '' })),
-  hexFallback: pg => pg.route('**/arena/hex/hollows-tiles.webp', r => r.fulfill({ status: 404, body: '' })) };
+  hexFallback: pg => pg.route('**/arena/hex/hollows-tiles.webp', r => r.fulfill({ status: 404, body: '' })),
+  bdFallback: pg => pg.route('**/arena/backdrops/hollows-rock.webp', r => r.fulfill({ status: 404, body: '' })) };
 
 (async () => {
   const names = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CHECKS);

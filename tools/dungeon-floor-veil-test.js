@@ -1,7 +1,8 @@
 // node tools/dungeon-floor-veil-test.js — changing floors happens in the dark
 // Building a floor and drawing its first frame (its shaders compiled, its textures uploaded) holds the page a second
 // or more. It used to freeze the old floor mid-step and then jump. The stairs now fade to black during their wait, the
-// floor is built and drawn under it, and the fade back in starts only once the new floor has drawn a frame.
+// floor is built and drawn under it, and the fade back in (and the depth banner) starts only once the new floor has
+// drawn a frame.
 const Lab = require('./playtest/dungeon-lab.js');
 (async () => {
   const lab = await Lab.open({}),
@@ -24,10 +25,11 @@ const Lab = require('./playtest/dungeon-lab.js');
       for (let k = 0; k < 4; k++) frame();
       out.blackBefore = op(); out.caught = !!cb; const d0 = EX.depth;
       if (cb) cb();
-      out.changed = EX.depth !== d0; out.blackAfterBuild = op(); draws = 0;
+      const bang = () => { const b = document.getElementById('xBang'); return !!b && b.classList.contains('on') && b.dataset.key === 'd' + EX.depth; };
+      out.changed = EX.depth !== d0; out.blackAfterBuild = op(); out.bannerInDark = bang(); draws = 0;
       // step frames until the fade back in begins; note how many new-floor frames were drawn by then
       out.drawsAtFadeIn = -1;
-      for (let k = 0; k < 12; k++) { frame(); if (op() < 1) { out.drawsAtFadeIn = draws; break; } }
+      for (let k = 0; k < 12; k++) { frame(); if (op() < 1) { out.drawsAtFadeIn = draws; out.bannerAtFadeIn = bang(); break; } }
       out.final = op();
     } finally { window.setTimeout = st; window.xDraw = realDraw; window.requestAnimationFrame = () => 0; }
     return out;
@@ -39,6 +41,7 @@ const Lab = require('./playtest/dungeon-lab.js');
     check(r.blackAfterBuild === 1, name + ': and still black once it is built', r.blackAfterBuild);
     check(r.drawsAtFadeIn >= 1, name + ': the fade back in starts only after the new floor has drawn', r.drawsAtFadeIn);
     check(r.final === 0, name + ': and the screen ends clear', r.final);
+    check(!r.bannerInDark && r.bannerAtFadeIn, name + ': the depth banner goes up as the fade begins, not in the dark', r.bannerInDark + ' ' + r.bannerAtFadeIn);
   }
   check.done(lab.errors);
   await lab.close();

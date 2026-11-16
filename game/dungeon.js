@@ -955,13 +955,13 @@ function xQuestCheck(){ if(!XRUN||!EX) return;
 function xFall(n,msg,deep){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog(msg,'warn'); xSfx('thud');
   if(deep&&typeof xDropSatchel==='function') xDropSatchel(n);
   const nd=EX.depth+n, hp=EX.hp; save.deepest=Math.max(save.deepest,nd); persist(); if(XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
-  xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(); xGoFloor(nd,hp,'up'); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
+  xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(()=>xBanner(nd)); xGoFloor(nd,hp,'up'); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
     if(land.length&&n>0&&msg.indexOf('chute')<0){ const r=xpick(land); EX.pc=xi(r.cx,r.cy); EX.px=xw(EX.pc); EX.pz=xz(EX.pc); xUpdateVis(); }
     if(deep&&typeof xSealFloor==='function') xSealFloor(n);
-    EX.active=true; xHud(); xLoopStart(); xBanner(nd); },550); }
+    EX.active=true; xHud(); xLoopStart(); },550); }
 // the hidden stair in a secret closet: a small, quiet floor of the same depth with a guarded hoard
 function xEnterBranch(){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog('The hidden stair winds down into the dark…','good'); xSfx('grind');
-  const d=EX.depth, hp=EX.hp; xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(); buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); xBanner(d); const b=$('#xBang'); b.innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; },550); }
+  const d=EX.depth, hp=EX.hp; xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(()=>{ xBanner(d); $('#xBang').innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; }); buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); },550); }
 // a sanctuary's blessing: the first time you fall afterwards, you wake at the stairs up of that floor
 function xTryRevive(){ if(!XRUN||!XRUN.attuned||!EX) return false; XRUN.attuned=0; return true; }
 function xRevived(){ const g=EX.fighting; resumeExplore(Math.round(xmaxHp()*.5),false);

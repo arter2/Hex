@@ -53,7 +53,7 @@ function hexMean(img){ const c=document.createElement('canvas'); c.width=c.heigh
   for(let i=0;i<64;i++){ r+=d[i*4]; g+=d[i*4+1]; b+=d[i*4+2]; } return new THREE.Color(r/64/255,g/64/255,b/64/255); }
 // the tiles' material: PBR, its painted maps, the per-tile variation and the board-wide drift in its shader
 function hexMat(H){ const T=hexTex(H.tiles), M=hexTex(H.m), m=new THREE.MeshStandardMaterial({map:T, normalMap:hexTex(H.n), aoMap:M, roughnessMap:M, metalnessMap:M, roughness:1, metalness:1, alphaTest:.5, vertexColors:true});
-  m.normalScale.set(XLIT.hexNrm,XLIT.hexNrm); m.aoMapIntensity=XLIT.hexAO;
+  m.userData.nmap=m.normalMap; m.userData.nmapShared=1; m.userData.nmapK=XLIT.hexNrm; m.aoMapIntensity=XLIT.hexAO;   // (lighting sets normalMap from userData.nmap: look.js xLitDefines)
   const U={ uHexV:{value:hexTex(H.v)}, uHexNoise:{value:hexTex(H.noise,true)}, uHexK:{value:new THREE.Vector4(XLIT.hexRough,XLIT.hexRoughOff,XLIT.hexMetal,XLIT.hexWear)}, uHexMoss:{value:hexMean(H.joint).multiplyScalar(1.6)} };
   m.userData.hexU=U; m.userData.xmold=1;
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,U);
@@ -99,7 +99,7 @@ function hexJoint(Ar,H){ let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES
   const p=g.attributes.position, uv=g.attributes.uv; for(let i=0;i<p.count;i++){ const X=p.getX(i)+(x0+x1)/2, Y=p.getY(i), Z=p.getZ(i)+(z0+z1)/2; const ny=g.attributes.normal.getY(i);
     if(Math.abs(ny)>.5) uv.setXY(i,X/3,Z/3); else uv.setXY(i,(X+Z)/3,Y/3); }
   g.setAttribute('uv2',uv.clone());
-  let m; if(H){ const J=hexTex(H.joint,true), JM=hexTex(H.jointM,true); m=new THREE.MeshStandardMaterial({map:J, normalMap:hexTex(H.jointN,true), aoMap:JM, roughnessMap:JM, metalnessMap:JM, roughness:1, metalness:1}); }
+  let m; if(H){ const J=hexTex(H.joint,true), JM=hexTex(H.jointM,true); m=new THREE.MeshStandardMaterial({map:J, normalMap:hexTex(H.jointN,true), aoMap:JM, roughnessMap:JM, metalnessMap:JM, roughness:1, metalness:1}); m.userData.nmap=m.normalMap; m.userData.nmapShared=1; }
   else { const c=xRockFloor(Ar.stone||AREAS[0].stone,(Ar.index||0)*17+3), t=arTex(xTex(c,true)); m=xLitTag(xPhong({map:t,color:0x8c8c8c}),1,c); }
   m.userData.hexJoint=1; m.userData.xmold=1; const mesh=new THREE.Mesh(g,arMat(m)); mesh.position.set((x0+x1)/2,-.05-Hh/2,(z0+z1)/2); return mesh; }   // (not caveFloor: the Abyss hides those, and the board must stay)
 /* The board (arena.js arenaBoard, for a hex board): {mesh, joint, glow, lines, art} — mesh keeps arenaBoard's contract
@@ -121,7 +121,7 @@ function hexSideGlow(Ar){ const ac=new THREE.Color((ARENA_HEX.accent&&ARENA_HEX.
   const m=arMat(new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:XLIT.hexGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false,side:THREE.DoubleSide})), mesh=new THREE.Mesh(g,m);
   mesh.renderOrder=1; return mesh; }
 // the debug menu's Arena floor rows, live
-function hexTune(){ for(const m of HEX_MATS){ const U=m.userData.hexU; if(!U) continue; U.uHexK.value.set(XLIT.hexRough,XLIT.hexRoughOff,XLIT.hexMetal,XLIT.hexWear); m.normalScale.set(XLIT.hexNrm,XLIT.hexNrm); m.aoMapIntensity=XLIT.hexAO; }
+function hexTune(){ for(const m of HEX_MATS){ const U=m.userData.hexU; if(!U) continue; U.uHexK.value.set(XLIT.hexRough,XLIT.hexRoughOff,XLIT.hexMetal,XLIT.hexWear); m.userData.nmapK=XLIT.hexNrm; const ns=XLIT.nstrF*XLIT.hexNrm; m.normalScale.set(ns,ns); m.aoMapIntensity=XLIT.hexAO; }
   if(typeof AR!=='undefined'&&AR&&AR.board){ if(AR.board.lines) AR.board.lines.material.opacity=XLIT.hexLines; if(AR.board.sideGlow) AR.board.sideGlow.material.opacity=XLIT.hexGlow;
     if(AR.board.growth) for(const k in AR.board.growth) if(AR.board.growth[k]) AR.board.growth[k].visible=XLIT.hexGrowth; } }
 /* The growth in the joints (spec: flat moss, lichen, caps and shards lying along the joints; low sprigs at the corners where

@@ -27,7 +27,7 @@ function arBdRockMat(Ar,kind,id){ kind=kind||'rock'; const S=typeof envArtBackdr
   if(!set){ const st=Ar.stone||AREAS[0].stone, cv=kind==='stone'?xBlockWall(st,(Ar.index||0)*7+2,false):xRockWall(st,(Ar.index||0)*13+1), t=arTex(xTex(cv,true));
     const m=xLitTag(xPhong({map:t}),2,cv); m.userData.xmold=2; m.userData.bdStandIn=1; return arMat(m); }
   const tx=(img,data)=>{ const t=arTex(new THREE.Texture(img)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; return t; };
-  const M=tx(set.m), m=new THREE.MeshStandardMaterial({map:tx(set.map), normalMap:tx(set.n), aoMap:M, roughnessMap:M, roughness:1, metalness:0, color:new THREE.Color().setScalar(BD_BASE)});
+  const M=tx(set.m), m=new THREE.MeshStandardMaterial({map:tx(set.map), normalMap:tx(set.n), aoMap:M, roughnessMap:M, roughness:1, metalness:0, color:new THREE.Color().setScalar(BD_BASE)}); m.userData.nmap=m.normalMap; m.userData.nmapShared=1;   // (lighting sets normalMap from userData.nmap: look.js xLitDefines)
   if(set.e){ m.emissiveMap=tx(set.e); m.emissive=new THREE.Color(BD_GLOW[id||Ar.id]||Ar.glow||'#ffffff'); m.emissiveIntensity=.9; }
   m.onBeforeCompile=sh=>{ sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
   vec4 bdA=texture2D(map,vUv), bdB=texture2D(map,vUv*.37+vec2(.31,.67));   // (the second sample: 2.7 times as big, elsewhere in the painting)
@@ -55,9 +55,11 @@ function arBdRibbon(A,Ar,R,o){ const {back,near,side,boss}=o, seed=(Ar.index||0)
   const L=[0]; for(let i=1;i<pts.length;i++) L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
   const crags=[...Array(2+(R()*2|0))].map(()=>({at:(.3+R()*.4)*L[L.length-1], w:1.2+R()*1.6, k:.4+R()*.3}));
   const full=XWALL_B*(boss?2.6:1.9);
+  let bx0=1e9; for(const t of TILES) bx0=Math.min(bx0,t.wx); const front=bx0-1;   // (the board's near edge)
   const height=(i)=>{ const [wx]=pts[i], hk=Math.max(.25,Math.min(1,(wx-near+2)/(back-near+2))), s=L[i];
     let h=full*hk*(.7+.6*bdFbm(s*.18,0,seed,2)); for(const c of crags) h*=1+c.k*Math.max(0,1-Math.abs(s-c.at)/c.w);
-    return Math.max(.5,h); };
+    h=Math.max(.5,h); const low=Math.max(0,Math.min(1,(wx-front)/4));   // (in front of the board it stays low, rising over the first 4 units into it: with its broken top, under 0.6 there)
+    return wx<front?.1:.1+(h-.1)*low; };
   // inward normals (toward the board), smoothed round the corners
   const nrm=pts.map((p,i)=>{ const a=pts[Math.max(0,i-2)], b=pts[Math.min(pts.length-1,i+2)], tx=b[0]-a[0], tz=b[1]-a[1], l=Math.hypot(tx,tz)||1; let nx=-tz/l, nz=tx/l;
     if(nx*(-p[0]+(back+near)/2)+nz*(-p[1])<0){ nx=-nx; nz=-nz; } return [nx,nz]; });
@@ -111,11 +113,11 @@ function arBdIsland(A,Ar,R,o){ const {back,near,side}=o, seed=(Ar.index||0)*53+(
     const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.setAttribute('uv2',new THREE.Float32BufferAttribute(uv,2)); g.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); g.setIndex(idx); g.computeVertexNormals();
     const m=arBdRockMat(Ar,'rock'); m.side=THREE.DoubleSide; m.vertexColors=true; const cliff=new THREE.Mesh(g,m); cliff.userData.bd='cliff'; out.push(cliff); }
   // spires and fragments out in the chasm
-  { const n=2+(R()*4|0);
+  { const n=2+(R()*4|0), sm=arBdRockMat(Ar,'rock');   // (one material for all the spires)
     for(let k=0;k<n;k++){ const a=(R()-.5)*Math.PI*1.4, d=hz+6+R()*19, h=3+R()*7, r0=.6+R()*1.4, g=new THREE.CylinderGeometry(r0*.25,r0,h,10,12), P=g.attributes.position;
       for(let i=0;i<P.count;i++){ const x=P.getX(i), y=P.getY(i), z=P.getZ(i), q=(bdFbm(Math.atan2(z,x)*2,y*.8,seed+10+k,2)-.5)*.6*r0; const l=Math.hypot(x,z)||1; P.setXYZ(i,x+x/l*q,y,z+z/l*q); }
       g.computeVertexNormals(); const uv=g.attributes.uv; for(let i=0;i<uv.count;i++) uv.setXY(i,uv.getX(i)*r0*1.5,uv.getY(i)*h/4); g.setAttribute('uv2',uv.clone());
-      const m=arBdRockMat(Ar,'rock'), sp=new THREE.Mesh(g,m); sp.position.set(Math.sin(a)*d,-SLAB-2-R()*8+h/2-(R()<.4?h:0),-(cx+Math.cos(a)*d)); sp.rotation.z=(R()-.5)*.3; sp.userData.bd='spire'; out.push(sp); } }
+      const sp=new THREE.Mesh(g,sm); sp.position.set(Math.sin(a)*d,-SLAB-2-R()*8+h/2-(R()<.4?h:0),-(cx+Math.cos(a)*d)); sp.rotation.z=(R()-.5)*.3; sp.userData.bd='spire'; out.push(sp); } }
   // vines down the far and side edges (the dungeon's vine cards)
   { const img=typeof envArtFx==='function'&&envArtFx('vine-broad');
     if(img){ const pos=[], uv=[], nr=[], k=8+(R()*7|0);
@@ -187,7 +189,7 @@ function arBdRuins(A,Ar,R,o){ const out=arBdIsland(A,Ar,R,o), {back,near,side}=o
   let z1=0, x1=-1e9, x0=1e9; for(const t of TILES){ z1=Math.max(z1,Math.abs(t.wz)); x1=Math.max(x1,t.wx); x0=Math.min(x0,t.wx); }
   const parts=[], feet=[], kinds=['drum','drum','stub','stub','block','plinth','steps','drum'], put=(kind,wx,wz,y,ry)=>{ const g=arBdRuinKit(kind,R); parts.push([g,new THREE.Matrix4().compose(new THREE.Vector3(wz,y,-wx),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,ry,0)),new THREE.Vector3(1,1,1))]); feet.push([wx,wz,y]); };
   const n=10+(R()*9|0);
-  for(let k=0;k<n;k++){ const sd=R()<.5?-1:1, wx=x0+4+R()*(x1-x0-3), wz=sd*(z1+1.9+R()*1.6), kind=kinds[R()*kinds.length|0]; put(kind,wx,wz,-SLAB,R()*6.3); }
+  for(let k=0;k<n;k++){ const sd=R()<.5?-1:1, wx=x0+4+R()*(x1-x0-3), wz=sd*(z1+2.7+R()*1.1), kind=kinds[R()*kinds.length|0], long=kind==='stub'||kind==='steps'; put(kind,wx,wz,-SLAB,long?Math.PI/2+(R()-.5)*.4:R()*6.3); }   // (the long pieces run along the board's side, clear of it)
   put('arch',x1+.6,(R()<.5?-1:1)*(z1+2.2),-SLAB,Math.PI/2);   // (an arch at a back corner)
   for(let k=0,m=2+(R()*3|0);k<m;k++){ const wx=back+1.5+R()*4, wz=(R()-.5)*2*(side), kind=['drum','stub','block','arch'][R()*4|0]; put(kind,wx,wz,-SLAB-1-R()*3,R()*6.3); }   // (broken off the far edge, floating)
   const g=bdMerge(parts.map(([g,m])=>{ const q=g.clone(); return [q,m]; })), mat=arBdRockMat(Ar,'stone'); const mesh=new THREE.Mesh(g,mat); mesh.userData.bd='ruins'; out.push(mesh);
@@ -267,8 +269,8 @@ const ARENA_SETPIECES={
 // the slots a kind of place offers (battle coordinates): at the back, and along each side, beyond the board
 function arBdSlots(A,kind,R){ let z1=0, x1=-1e9, x0=1e9; for(const t of TILES){ z1=Math.max(z1,Math.abs(t.wz)); x1=Math.max(x1,t.wx); x0=Math.min(x0,t.wx); }
   const back=A.room.back, mid=(x0+x1)/2+2;
-  if(kind==='cave') return [{wx:back+.4,wz:-2.5,y:-SLAB,face:0},{wx:back+.4,wz:3,y:-SLAB,face:0},{wx:mid,wz:-(z1+2.6),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+2.6,y:-SLAB,face:-Math.PI/2}];
-  return [{wx:x1+1.3,wz:(R()<.5?-1:1)*(z1+2.4),y:-SLAB,face:0},{wx:back+3.5,wz:-3,y:-SLAB-2.5,face:0},{wx:mid,wz:-(z1+2.6),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+2.6,y:-SLAB,face:-Math.PI/2}]; }
+  if(kind==='cave') return [{wx:back+.4,wz:-2.5,y:-SLAB,face:0},{wx:back+.4,wz:3,y:-SLAB,face:0},{wx:mid,wz:-(z1+3.3),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+3.3,y:-SLAB,face:-Math.PI/2}];
+  return [{wx:x1+1.3,wz:(R()<.5?-1:1)*(z1+3.3),y:-SLAB,face:Math.PI/2},{wx:back+3.5,wz:-3,y:-SLAB-2.5,face:0},{wx:mid,wz:-(z1+3.3),y:-SLAB,face:Math.PI/2},{wx:mid,wz:z1+3.3,y:-SLAB,face:-Math.PI/2}]; }   // (the side slots well clear of the board: a piece reaches a metre toward it)
 // one or two of the area's set pieces that fit the kind of place, at least one at the back
 function arBdSetPieces(A,Ar,R,kind){ const L=(ARENA_SETPIECES[Ar.id]||[]).filter(p=>p.kinds.includes(kind)); if(!L.length) return [];
   const slots=arBdSlots(A,kind,R), n=Math.min(L.length,1+(R()<.6?1:0)), pick=L.slice().sort(()=>R()-.5).slice(0,n), out=[];
@@ -329,6 +331,6 @@ function arBdBossTick(A,T,dt){ if(!A.bd||A.bd.kind!=='boss'||typeof bossFor!=='f
   const boss=typeof B!=='undefined'&&B&&B.enemies?B.enemies.find(e=>e.def&&e.def.boss):null;
   if(F.tick) F.tick(A,T,dt,boss);
   if(F.phase){ const ph=Math.max(1,Math.min(3,(boss&&boss.phase)||1)), want=F.phase[ph-1], cur=A.bdPhase||(A.bdPhase=Object.assign({},F.phase[0]));
-    const k=Math.min(1,dt/2*3);   // (about two seconds to settle)
+    const now=performance.now()/1000, k=Math.min(1,Math.max(0,now-(A.bdPhaseT||now))*1.5); A.bdPhaseT=now;   // (about two seconds to settle, by the clock: a slow frame rate must not slow it)
     for(const key in want) if(typeof want[key]==='number') cur[key]+=(want[key]-cur[key])*k; else cur[key]=want[key];
     F.apply(A,cur,T); } }

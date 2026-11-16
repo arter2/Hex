@@ -49,7 +49,7 @@ function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
   if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.userData.xatlas?(typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256:m.map.image.width||64).toFixed(1); }   // (an atlas tile: its own texels, its uv runs a tile per unit)
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
-  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
+  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=(m.userData.xao===1?XLIT.nstrF:XLIT.nstrW)*(m.userData.nmapK||1); m.normalScale.set(ns,ns);   // (nmapK: a material's own relief, e.g. the arena hex floor's slider)
   if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
 function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(m);
   const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;

@@ -188,7 +188,7 @@ function arenaBakeAO(){ const A=AR; if(!A||!A.room||!A.wallCells) return; const 
 
 // a new battle (or a new depth): the arena is built again from the area's look
 function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=areaOf(depth), R=caveRng(seed|0), boss=isBossDepth(depth);
-  A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map(); A.bdTicks=[];
+  A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map(); A.bdTicks=[]; A.bdPhase=null; A.bdPhaseT=0; A.bdBoss=null;   // (a boss field's state starts afresh each battle)
   for(const o of arenaBoard(A,Ar,R)) A.grp.add(o);
   A.grp.add(A.decal=arenaDecal(A));
   A.voidWalls=false; A.flashAmb=0; A.tick=null; A.chasm=null; A.phaseCol=null; A.phaseK=0; A.phaseNow=0; A.phaseFlash=0; A.amb.color.set(0xffffff); A.sun.color.set(0xffffff);

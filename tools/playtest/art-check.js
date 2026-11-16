@@ -157,7 +157,8 @@ const CHECKS = {
       const tags = new Set(); A.grp.traverse(o => { const M = o.material; for (const m of Array.isArray(M) ? M : M ? [M] : []) if (m.userData && m.userData.xmold) tags.add(m.userData.xmold); });
       if (!tags.has(1)) return 'the battle floor carries no mold'; if (!tags.has(2) && !A.open) return 'the battle walls carry no mold';
       if (!A.moldData) return 'no arena mold map';
-      for (let i = 3; i < A.moldData.length; i += 4) if (A.moldData[i]) return 'damp on the battle floor';
+      const dampWant = A.moldSlots && A.moldSlots.tex ? Math.round(XMOLD.arenaDamp * 255) : 0;   // (with the arena's own mold painting a set damp shows its colonies)
+      for (let i = 3; i < A.moldData.length; i += 4) if (A.moldData[i] !== dampWant) return 'damp ' + A.moldData[i] + ' on the battle floor, want ' + dampWant;
       if (!A.moldData[0]) return 'no mold weight on the battle floor';
       return true;
     });
@@ -330,7 +331,7 @@ const CHECKS = {
   async hexRepeat(pg) {
     let first = null, counts = [];
     for (let i = 0; i < 5; i++) {
-      await pg.evaluate(BATTLE, [1, true]);
+      await pg.evaluate(BATTLE, [1, true, [['rat']]]);
       const r = await pg.evaluate(() => ({ img: envArtHex('hollows').tiles.src, same: window.__hexImg ? window.__hexImg === envArtHex('hollows').tiles : (window.__hexImg = envArtHex('hollows').tiles, true), texs: (AR.texs || []).length, mem: AR.renderer.info.memory.textures }));
       if (!r.same) return 'the hex art was decoded again';
       counts.push(r.mem);
@@ -355,10 +356,13 @@ const CHECKS = {
       const r = await pg.evaluate(() => {
         let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9; for (const t of TILES) { x0 = Math.min(x0, t.wz); x1 = Math.max(x1, t.wz); z0 = Math.min(z0, -t.wx); z1 = Math.max(z1, -t.wx); }
         x0 -= 1.6; x1 += 1.6; z0 -= 1.6; z1 += 1.6; let bad = null; const v = new THREE.Vector3();
+        const im4 = new THREE.Matrix4(), w4 = new THREE.Matrix4();
         AR.grp.traverse(o => { if (bad || !o.isMesh || !o.userData.bd || !o.visible) return; const P = o.geometry.attributes.position; o.updateMatrixWorld();
-          for (let i = 0; i < P.count; i += 3) { v.fromBufferAttribute(P, i).applyMatrix4(o.matrixWorld);
+          const inst = o.isInstancedMesh ? o.count : 1;   // (an instanced mesh: each instance placed by its own matrix)
+          for (let j = 0; j < inst && !bad; j++) { if (o.isInstancedMesh) { o.getMatrixAt(j, im4); w4.multiplyMatrices(o.matrixWorld, im4); } else w4.copy(o.matrixWorld);
+          for (let i = 0; i < P.count; i += 3) { v.fromBufferAttribute(P, i).applyMatrix4(w4);
             if (v.y > .05 && v.x > x0 && v.x < x1 && v.z > z0 && v.z < z1) { bad = o.userData.bd + ' inside the board at ' + v.toArray().map(n => n.toFixed(1)); return; }
-            if (v.z > z1 && v.z < z1 + 4 && v.y > .6 && v.x > x0 - 4 && v.x < x1 + 4) { bad = o.userData.bd + ' tall at the front'; return; } } });
+            if (v.z > z1 && v.z < z1 + 4 && v.y > .6 && v.x > x0 - 4 && v.x < x1 + 4) { bad = o.userData.bd + ' tall at the front'; return; } } } });
         window.__bdForce = null; return bad; });
       if (r) return 'depth ' + d + ' ' + kind + ': ' + r;
     }
@@ -381,7 +385,7 @@ const CHECKS = {
   // Task 6: battle after battle, textures freed and a matte decoded once; never the same matte twice running
   async bdRepeat(pg) {
     const mem = [];
-    for (let i = 0; i < 5; i++) { await pg.evaluate(BATTLE, [1, true]); await pg.waitForTimeout(1500);
+    for (let i = 0; i < 5; i++) { await pg.evaluate(BATTLE, [1, true, [['rat']]]); await pg.waitForTimeout(1500);
       mem.push(await pg.evaluate(() => AR.renderer.info.memory.textures)); }
     return mem[4] > mem[1] + 4 ? 'textures grow battle by battle: ' + mem.join(',') : null;
   },
@@ -404,7 +408,7 @@ const CHECKS = {
   // Task 5: the last three bosses' fields reach their phase-3 state (skipping 2) within 2.5 s; the tick stops after the battle
   async bdBossPhases(pg) {
     for (const [d, key, want] of [[16, 'lava', .8], [20, 'close', 2], [24, 'gone', 6]]) {
-      await pg.evaluate(BATTLE, [d, true]);
+      await pg.evaluate(BATTLE, [d, true, 'boss']);
       const r = await pg.evaluate(async ([key, want]) => { const b = B.enemies.find(e => e.def && e.def.boss); if (!b) return 'no boss'; b.phase = 3;
         await new Promise(r => setTimeout(r, 2500)); const v = AR.bdPhase && AR.bdPhase[key]; return Math.abs(v - want) < .05 * Math.max(1, want) ? null : key + ' ' + v + ', want ' + want; }, [key, want]);
       if (r) return 'depth ' + d + ': ' + r;
@@ -413,12 +417,12 @@ const CHECKS = {
   },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
-const BATTLE = async ([depth, wait]) => {
+const BATTLE = async ([depth, wait, waves]) => {
   try { localStorage.setItem('hexmancers-cine', '0'); } catch (e) {}
   envArtWantDepth(depth); const id = areaOf(depth).id, t0 = performance.now();
   while (wait && performance.now() - t0 < 15000 && !envArtHex(id)) await new Promise(r => setTimeout(r, 100));
   save = newSave(STARTERS[0]); save.char = lockChar(newChar('human', 0)); save.deepest = depth; show('scrBattle');
-  startBattle(activeDeck().list, depth, { onEnd: () => {} }, {}); await new Promise(r => setTimeout(r, 500)); return true;
+  startBattle(activeDeck().list, depth, { onEnd: () => {} }, waves ? { waves: waves === 'boss' ? [[bossFor(depth)]] : waves } : {}); await new Promise(r => setTimeout(r, 500)); return true;
 };
 // checks that need the page set up before it loads
 const ROUTES = { mushFallback: pg => pg.route('**/atlas/effects.webp', r => r.fulfill({ status: 404, body: '' })),
@@ -446,6 +450,7 @@ const ROUTES = { mushFallback: pg => pg.route('**/atlas/effects.webp', r => r.fu
       await pg.waitForFunction(() => typeof enterExplore === 'function' && typeof openCamp === 'function');
       r = await fn(pg, { build: (d, s, wait = true) => pg.evaluate(BUILD, [d, s, wait]), errs });
     } catch (e) { r = String(e.message || e).slice(0, 300); }
+    if (r === null || r === undefined) r = true;   // (the newer checks return null when nothing is wrong)
     const real = errs.filter(e => !(ROUTES[name] && /Failed to load resource/.test(e)));   // (a check's own blocked file)
     if (r === true && real.length) r = 'page errors: ' + real.slice(0, 2).join(' | ');
     console.log(r === true ? 'PASS ' + name : 'FAIL ' + name + ': ' + r);

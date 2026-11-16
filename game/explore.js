@@ -1333,31 +1333,45 @@ const XWM_GLSL=`float xh3(vec3 p){ return fract(sin(dot(p,vec3(12.9898,78.233,37
 float xvn(vec3 p){ vec3 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
   return mix(mix(mix(xh3(i),xh3(i+vec3(1,0,0)),f.x),mix(xh3(i+vec3(0,1,0)),xh3(i+vec3(1,1,0)),f.x),f.y),mix(mix(xh3(i+vec3(0,0,1)),xh3(i+vec3(1,0,1)),f.x),mix(xh3(i+vec3(0,1,1)),xh3(i+vec3(1,1,1)),f.x),f.y),f.z); }
 float xh2(vec2 p){ return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); }
-float xq4(vec3 n){ return mod(floor(atan(n.z,n.x)*.6366+.5)+4.0,4.0); }
-float xLineK(vec3 p,vec3 n){ return floor(dot(p,n)/${'2.0'}+.5)*7.0+xq4(n); }
+float xq8(vec3 n){ return mod(floor(atan(n.z,n.x)*1.2732+.5)+8.0,8.0); }   // (which of the eight ways a face looks)
+float xLineK(vec3 p,vec3 n){ return floor(dot(p,n)/${'2.0'}+.5)*11.0+xq8(n); }
 `;
 function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L=dressed?o.courses:null, n=L?L.length:0;
   if(dressed){ sh.uniforms.uXCB={value:(L||[]).concat([2,2,2,2,2,2]).slice(0,6)}; sh.uniforms.uXCN={value:n}; }
-  // the vertex: the face's normal across the floor, where its block stands along it, and how each end of it turns (0 a
-  // straight run on, 1 an outside corner, 2 an inside corner; the plus end + 3 x the minus end)
+  // the vertex: the face's normal across the floor, where its block stands along it, and at each end of it the face
+  // that comes next round a corner (vXG: its normal, the plus end's then the minus end's) and which way that face's
+  // own place runs as you walk on round (vXF.w: 0 a straight run on or a free end, 1 with you, 2 against; the plus
+  // end + 3 x the minus end). The solid map tells wall (green) from a plain block (red: a diagonal piece is green only).
+  // A plain block's end: a diagonal piece in front (a chamfered inside corner) or beside it (a chamfered outside
+  // corner), else open beside it (an outside corner) or a wall in front (an inside corner). A diagonal piece's end:
+  // another piece on along the diagonal (the run goes on), a plain block there (the chamfer of an inside corner) or
+  // behind it (of an outside corner), the face beyond turned an eighth either way.
   let v=sh.vertexShader.replace('#include <uv_vertex>',`#include <uv_vertex>
   #ifdef USE_INSTANCING
-  { vec3 xn=mat3(modelMatrix)*(mat3(instanceMatrix)*normal); vec2 cw=(modelMatrix*vec4(instanceMatrix[3].xyz,1.0)).xz; float fl=0.0;
+  { vec3 xn=mat3(modelMatrix)*(mat3(instanceMatrix)*normal); vec2 cw=(modelMatrix*vec4(instanceMatrix[3].xyz,1.0)).xz; float fl=0.0; vXG=vec4(0.0);
     vec2 n2=abs(xn.y)<.5?normalize(xn.xz):vec2(0.0), t2=vec2(n2.y,-n2.x);
-    ${corn?`if(max(abs(n2.x),abs(n2.y))>.99){
-      float a=texture2D(uSolid,(cw+t2*2.0)/uSolidK.x).g, b=texture2D(uSolid,(cw+t2*2.0+n2*2.0)/uSolidK.x).g, pt=a<.5?1.0:b>.5?2.0:0.0;
-      a=texture2D(uSolid,(cw-t2*2.0)/uSolidK.x).g; b=texture2D(uSolid,(cw-t2*2.0+n2*2.0)/uSolidK.x).g; fl=pt+3.0*(a<.5?1.0:b>.5?2.0:0.0); }`:''}
+    ${corn?`bool ax=max(abs(n2.x),abs(n2.y))>.99, dg=dot(n2,n2)>.5&&abs(abs(n2.x)-abs(n2.y))<.05;
+    for(int e=0;e<2;e++){ float s=e==0?1.0:-1.0; vec2 nb=vec2(0.0), wb=vec2(0.0);
+      if(ax){ vec4 X=texture2D(uSolid,(cw+s*t2*2.0)/uSolidK.x), F=texture2D(uSolid,(cw+s*t2*2.0+n2*2.0)/uSolidK.x);
+        if(X.g>.5&&F.g>.5&&F.r<.5){ nb=normalize(n2-s*t2); wb=normalize(s*t2+n2); }
+        else if(X.g>.5&&X.r<.5){ nb=normalize(n2+s*t2); wb=normalize(s*t2-n2); }
+        else if(X.g<.5){ nb=s*t2; wb=-n2; }
+        else if(F.g>.5){ nb=-s*t2; wb=n2; } }
+      else if(dg){ vec4 D=texture2D(uSolid,(cw+s*t2*2.8284)/uSolidK.x), B=texture2D(uSolid,(cw+1.4142*(s*t2-n2))/uSolidK.x); float r=0.0;
+        if(!(D.g>.5&&D.r<.5)){ if(D.r>.5) r=s; else if(B.r>.5) r=-s; }
+        if(r!=0.0){ float c=.7071, sn=.7071*r; nb=vec2(n2.x*c-n2.y*sn,n2.x*sn+n2.y*c); vec2 tb=vec2(nb.y,-nb.x); wb=tb*sign(dot(tb,s*t2)); } }
+      if(dot(nb,nb)>.5){ float sg=dot(wb,vec2(nb.y,-nb.x))>0.0?1.0:2.0; fl+=e==0?sg:3.0*sg; if(e==0) vXG.xy=nb; else vXG.zw=nb; } }`:''}
     vXF=vec4(n2,dot(cw,t2),fl); }
   #ifdef USE_INSTANCING_COLOR
   vXIC=instanceColor.x;
   #endif
   #endif`);
-  v='varying vec4 vXF; varying float vXIC;\n'+(corn&&!o.solidDeclared?'uniform sampler2D uSolid; uniform vec3 uSolidK;\n':'')+v;
+  v='varying vec4 vXF; varying vec4 vXG; varying float vXIC;\n'+(corn&&!o.solidDeclared?'uniform sampler2D uSolid; uniform vec3 uSolidK;\n':'')+v;
   if(dressed) v='#define vUv vUvR\n'+v;
   sh.vertexShader=v;
   let f=sh.fragmentShader;
   if(dressed) f=f.replace('#include <uv_pars_fragment>','#if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )\n\tvarying vec2 vUvR;\n\tvec2 vUv;\n#endif');
-  f='varying vec4 vXF; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
+  f='varying vec4 vXF; varying vec4 vXG; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
   if(dressed) f=f.replace('void main() {',`void main() {
   #if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )
   vUv=vUvR;
@@ -1365,14 +1379,14 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
     float yi=1.0-fract(vUv.y), k=0.0;
     for(int i=0;i<6;i++){ if(float(i)>=uXCN) break; if(uXCB[i]<yi) k+=1.0; }
     float id=uXCN>.5?floor(vUv.y)*uXCN-k:floor(vUv.y*5.0);   // the course (the band below a tile's last line is the one above the next tile's first; rubble: fifths)
-    float al=dot(vXWP,t), fl=floor(vXF.w+.5), pt=mod(fl,3.0), mt=floor(fl/3.0), u=al/2.0;
+    float al=dot(vXWP,t), fl=floor(vXF.w+.5), pt=mod(fl,3.0), mt=floor(fl/3.0), u=al/2.0, h=max(abs(n.x),abs(n.z))>.99?1.0:1.4142;
     // a corner: the face beyond (its normal nb), the corner's point and how far from it; for this course one of the
-    // two owns it (a hash of the corner and the course), and its bricks reach this far onto the other
+    // two owns it (a hash of the corner and the course), and its bricks run on round it this far onto the other
     for(int e=0;e<2;e++){ float ty=e==0?pt:mt; if(ty<.5) continue;
-      float d=e==0?vXF.z+1.0-al:al-(vXF.z-1.0); vec3 cp=vXWP+(e==0?d:-d)*t;
-      vec3 nb=e==0?(ty<1.5?t:-t):(ty<1.5?-t:t);
-      float hk=xh2(vec2(id,dot(floor(cp.xz/2.0+.5),vec2(17.0,59.0)))), mine=hk>.5==(xq4(n)<xq4(nb))?1.0:0.0, w=(.12+.8*fract(hk*7.31))*1.0;
-      if(mine<.5&&d<w){ float s=e==0?(ty<1.5?-1.0:1.0):(ty<1.5?1.0:-1.0); u=(dot(vXWP,s*n)+(e==0?-d:d))/2.0; ln=nb; lp=cp; } }
+      float d=e==0?vXF.z+h-al:al-(vXF.z-h); vec3 cp=vXWP+(e==0?d:-d)*t;
+      vec2 nb2=e==0?vXG.xy:vXG.zw; vec3 nb=normalize(vec3(nb2.x,0.0,nb2.y)), tb=vec3(nb.z,0.0,-nb.x);
+      float hk=xh2(vec2(id,dot(floor(cp.xz/2.0+.5),vec2(17.0,59.0)))), mine=hk>.5==(xq8(n)<xq8(nb))?1.0:0.0, w=.12+.8*fract(hk*7.31);
+      if(mine<.5&&d<w){ u=(dot(cp,tb)-(ty<1.5?1.0:-1.0)*d)/2.0; ln=nb; lp=cp; } }
     vUv.x=u;
     if(uXCN>.5) vUv.x+=xh2(vec2(id,xLineK(lp,ln))); }
   #endif`);

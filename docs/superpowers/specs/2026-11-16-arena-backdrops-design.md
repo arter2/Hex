@@ -1,6 +1,6 @@
 # Arena backdrops: design
 
-**Status:** design, waiting for approval. **Art:** `docs/art-production/arena-backdrops/BRIEF.md` (for ChatGPT). This follows the arena hex floor (`2026-11-15-arena-hex-floor-design.md`), which is done.
+**Status:** approved 2026-11-16. **Art:** `docs/art-production/arena-backdrops/BRIEF.md` (for ChatGPT). This follows the arena hex floor (`2026-11-15-arena-hex-floor-design.md`), which is done.
 
 ## Intent
 
@@ -150,6 +150,14 @@ Rubble is sculpted small rocks in the area's rock material, as one instanced mes
 - **A new `tools/build-arena-backdrops.py`** reads the delivered PNGs (masters under `game/art/environment/painterly-512/arena-backdrops/`, which the zip build leaves out). It writes 512–1024 WebPs to `game/art/environment/arena/backdrops/` and a map `game/arenabackdropmap.js`. It checks sizes, seamless tiling of the materials, and that each middle layer's alpha is a real cut-out.
 - **The loader:** `envart.js` loads an area's material sets with its other art (`envArtBackdrop(id)`), and a chosen matte on request (`envArtMatte(id, n)`).
 - **A new `game/arenabackdrop.js`** holds the sculpting, the ruin kit, the set pieces and the mattes. `arenaCave` calls it, and the old block walls remain only as the stand-in until the art has loaded.
+
+## Next: boss arena mechanics (a separate design, after this one)
+The user wants the last three bosses' fields to change in play as well as in look:
+- the field breaks apart, its pieces moving side to side and coming back together;
+- fights on a field of a specific shape;
+- walls rising.
+
+That changes the battle's rules (movement, targeting, AI, fairness), so it gets its own design. This one keeps those three battlefields' geometry ready for it: build them so the board's surroundings can follow moving or missing tiles, and never bake the board's outline into fixed scenery.
 
 ## Left to the builder
 

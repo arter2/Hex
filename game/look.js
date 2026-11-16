@@ -107,7 +107,8 @@ function xDetailN(){ const P=typeof envArtFx==='function'&&envArtFx('detail-norm
 function xDetShader(sh,wall){ let f=sh.fragmentShader;
   if(!f.includes('#include <normal_fragment_maps>')) return;
   f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps.replace('mapN.xy *= normalScale;',`mapN.xy *= normalScale;
-  { vec2 xw=${wall?'vec2(vXLW.x+vXLW.z,vXLW.y)':'vec2(vXLW.x,-vXLW.z)'};
+  { ${wall?`vec3 xdn=abs(normalize(cross(dFdx(vXLW),dFdy(vXLW))));   // (a wall: laid on the face's own plane, as the mold is; along x+z the tops and the faces turned that way read one line of it, as streaks)
+    vec2 xw=xdn.y>.7?vXLW.xz:vec2(xdn.x>xdn.z?vXLW.z:vXLW.x,vXLW.y);`:'vec2 xw=vec2(vXLW.x,-vXLW.z);'}
     vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
     float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
     mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));

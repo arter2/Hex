@@ -1,0 +1,328 @@
+{
+  "checks_passed": true,
+  "variants": 10,
+  "matching_embedded_and_separate_alpha": true,
+  "dense_files_preserved": true,
+  "files": [
+    {
+      "path": "textures-1024/06-ochre-spores.png",
+      "sha256": "fc7171519238641540fc3727dc81fdfb9f1cafd007ef6b234777cd96a4f0fd8d",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/06-ochre-spores-alpha.png",
+      "sha256": "2c3e3f3e7719bad98cdab3b8f3c3f689cfeae0e9a2979fbe78c7c80a1856c5ec",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/06-ochre-spores.png",
+      "sha256": "8c540adc92a975f86ab4e38a785bd408cac802648bec5f7983d7796aab155b9f",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/06-ochre-spores-alpha.png",
+      "sha256": "4ff47a511e8879a09f53d9af3402097c239e331c6225cfd6d82b0c69cbeeaa06",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/07-ivory-mycelium.png",
+      "sha256": "e8ae3b74d0674657fc70dfd75097a5499ab44d33578dc23117ae8feeea66e622",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/07-ivory-mycelium-alpha.png",
+      "sha256": "58d23e524b7845e303a2cafbc3dd2e14965de6cb9f28b839d2b6c58686b60bc9",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/07-ivory-mycelium.png",
+      "sha256": "67127206f80db01d906053ebe5090d6cb05d162732f4284f1e6e63e462af4257",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/07-ivory-mycelium-alpha.png",
+      "sha256": "68d1444df0b0930a70581281ebc74323ee710a2a432352e061fe5fefcc0da4d6",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/08-charcoal-blight.png",
+      "sha256": "04fabecc2b310e936c3fa210b4acb266981b44e88350a2b69a8fc6ac125c3b91",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/08-charcoal-blight-alpha.png",
+      "sha256": "609c201b106c9825a0be2d9f34a3d68b9f74e1beb5a62cc24599365deac3c51e",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/08-charcoal-blight.png",
+      "sha256": "72fc3c548d87e7c3a01853342fdc7776c41312b2ed4c83ea2504c3696c872d2c",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/08-charcoal-blight-alpha.png",
+      "sha256": "b33985eed9d71267dfdde7b2c18fb13d778958dcf292d1d4869a3daca1ed3ef4",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/09-dusty-rose-mildew.png",
+      "sha256": "8434e286b562dc774d3331e848f6f5a85a371e900c174f5e7338ff15958fdbb3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/09-dusty-rose-mildew-alpha.png",
+      "sha256": "6347f22ae477e2ab2c52d73159be5ff5d1c5aa7ecec00bcc7bf5584e6e5eef29",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/09-dusty-rose-mildew.png",
+      "sha256": "5fed181092a6d66a1670658c75a7bed7a99dbf6ff9c586cec88991c6aad6ede2",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/09-dusty-rose-mildew-alpha.png",
+      "sha256": "1df6f062dce3d0b4f752d094feca23ace367b01b3c77c2c6ffa0a06bfff2ca17",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/10-mint-patina-mold.png",
+      "sha256": "93332ebf51dd7df5b420376ff436dbf3b35b6ffa8956ff2c6495bb711778d502",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/10-mint-patina-mold-alpha.png",
+      "sha256": "409d4ff0a8e79baa44eb2076a8c32df19318addfa515c12828fab5bb3f8a5bf5",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/10-mint-patina-mold.png",
+      "sha256": "0fec4db55792d1d158ddc363f4854598e3ccc31bfc9a655abe1a4209317cf966",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/10-mint-patina-mold-alpha.png",
+      "sha256": "45f2faaf2743c3e6d38504d351427e0c4a020126aef6fdf8b1128f7b1a914578",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/16-ochre-spores-sparse.png",
+      "sha256": "cd4737759aa6f91a1648c08c6ef9d3b200bd5e6ba59bcafcbed7f6bcf449a06a",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/16-ochre-spores-sparse-alpha.png",
+      "sha256": "684e2ce96c0540577ef5448c58d8c01ab93ac03d2eb25269ff9b52b8c41197ae",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/16-ochre-spores-sparse.png",
+      "sha256": "8a6f4023c994d8258de817e8261989cbf811a2f54abeac926b55044b5b9c7d72",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/16-ochre-spores-sparse-alpha.png",
+      "sha256": "3b93f61e86d6d6ac498df4a30aaf8ab71fc5e3c62f13431473b015dc094c8f3c",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/17-ivory-mycelium-sparse.png",
+      "sha256": "9dee423b596cf23487312a5d6d4866ffd344a798dadd3bd26959d26ac738eda0",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/17-ivory-mycelium-sparse-alpha.png",
+      "sha256": "38ba3319372395779c99a90ae3782338170866bbd2e4ed5a6fd9cd5c4133525b",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/17-ivory-mycelium-sparse.png",
+      "sha256": "42b0bc520e9de4c675d269c576673886db1d0183a4df55db6253876a2f5b1ca9",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/17-ivory-mycelium-sparse-alpha.png",
+      "sha256": "f19014969fac91ff3210cbd59ae7771696bc1d112aedb2818d289b99874d6557",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/18-charcoal-blight-sparse.png",
+      "sha256": "8f1537c0b7371a1abb9a669aa81d9fc592660d6f411766528bee943318c00250",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/18-charcoal-blight-sparse-alpha.png",
+      "sha256": "ba9ccefae92826bbd274f3b8262a6f1da6910def52548adad3143a39a551f2a9",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/18-charcoal-blight-sparse.png",
+      "sha256": "8ab2a3c847a71020f9b02083eab4a7db774dce496c6a76082508344a453d7c89",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/18-charcoal-blight-sparse-alpha.png",
+      "sha256": "dfbbc3ef668fff97a094c0d62c7ca64e9e706efae1a38d6f46915d4035739e82",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/19-dusty-rose-mildew-sparse.png",
+      "sha256": "012ab8ab6df489d04220bc5f0b10505fe5a567b6e15c42e5eef07178c2bf1e7f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/19-dusty-rose-mildew-sparse-alpha.png",
+      "sha256": "c2807b53e304864c6a699f2b98316bdf7c3bac3ba51ad2c7fa35fd305051bbd2",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/19-dusty-rose-mildew-sparse.png",
+      "sha256": "4f4e62c37dc1d863f7226b7cd87f561156066459e9ae87a1cc5b3866d1e10041",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/19-dusty-rose-mildew-sparse-alpha.png",
+      "sha256": "3a22f2cfc5416111fe9b2a2bd6488599be0f9a89969fb62aef4d1b2f2e8ec9e3",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "textures-1024/20-mint-patina-mold-sparse.png",
+      "sha256": "c54cfd560272112e12dea9e6c4bbaec4ee7998ac65141859084c282c0bd2333c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "alphas-1024/20-mint-patina-mold-sparse-alpha.png",
+      "sha256": "7b023f36116dcafda55c6306c641078b59df5198875b75e2d765fcd1601a99eb",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "textures-512/20-mint-patina-mold-sparse.png",
+      "sha256": "d649833c982023c7b66f3f63b585472430e82cdcbfec6be2f3b9b1fdd771dcc9",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "alphas-512/20-mint-patina-mold-sparse-alpha.png",
+      "sha256": "174756888ec5b30c3d73dc31a20dd5ff46280ea61042f175d8a131910018944d",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ]
+}

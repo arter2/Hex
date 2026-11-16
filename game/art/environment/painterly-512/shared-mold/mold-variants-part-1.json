@@ -1,0 +1,793 @@
+{
+  "schema_version": 2,
+  "title": "Painterly mold textures \u2014 part 1 of 2",
+  "variant_count": 10,
+  "dense_count": 5,
+  "sparse_count": 5,
+  "method": "Distinct ImageGen-painted dense and sparse sources, technically wrapped on periodic tiles. Sparse sources use separated colonies with opaque bodies and wide transparent gaps.",
+  "implementation_status": "Art and Claude guide only; no game files changed.",
+  "variants": [
+    {
+      "number": "01",
+      "id": "mold-olive-powder",
+      "label": "Olive powder",
+      "appearance": "Dusty powdery mold, irregular thin olive-green and muted sage colonies. Fine granular painted stippling inside broad soft uneven islands, dark green cavities, a few aged beige areas. Vary the scale of growth so it does not look like uniform round cell noise.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/01-olive-powder.png",
+      "alpha_1024": "alphas-1024/01-olive-powder-alpha.png",
+      "rgba_512": "textures-512/01-olive-powder.png",
+      "alpha_512": "alphas-512/01-olive-powder-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            178,
+            257
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            821,
+            784
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            769,
+            124
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/01-olive-powder-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 9.013736979166666,
+        "seam_y_mean_step": 8.345836205575981,
+        "interior_x_mean_step": 6.928322867476353,
+        "interior_y_mean_step": 6.707200334217112,
+        "opaque_coverage": 0.6327724456787109,
+        "nonzero_alpha_coverage": 0.6793832778930664
+      },
+      "qa_512": {
+        "seam_x_mean_step": 11.280964690563724,
+        "seam_y_mean_step": 10.465519684436273,
+        "interior_x_mean_step": 7.897320810280447,
+        "interior_y_mean_step": 7.819582815467797,
+        "opaque_coverage": 0.6327247619628906,
+        "nonzero_alpha_coverage": 0.6906509399414062
+      },
+      "density": "dense",
+      "paired_sparse_number": "11"
+    },
+    {
+      "number": "02",
+      "id": "mold-teal-fuzz",
+      "label": "Teal fuzz",
+      "appearance": "Low velvety fuzzy mold with tiny soft radiating fibers and torn frayed fringes. Desaturated deep teal, gray turquoise and muted sea-green, dense darker centers and lighter dusty fuzzy growth edges. Several irregular connected zones, not moss leaves.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/02-teal-fuzz.png",
+      "alpha_1024": "alphas-1024/02-teal-fuzz-alpha.png",
+      "rgba_512": "textures-512/02-teal-fuzz.png",
+      "alpha_512": "alphas-512/02-teal-fuzz-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            189,
+            267
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            763,
+            785
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            747,
+            111
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/02-teal-fuzz-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 5.874229281556373,
+        "seam_y_mean_step": 5.309811580882353,
+        "interior_x_mean_step": 5.314697445315645,
+        "interior_y_mean_step": 5.421303851414405,
+        "opaque_coverage": 0.6507101058959961,
+        "nonzero_alpha_coverage": 0.7030048370361328
+      },
+      "qa_512": {
+        "seam_x_mean_step": 7.9670706954656865,
+        "seam_y_mean_step": 6.100698912377451,
+        "interior_x_mean_step": 7.2315268557123185,
+        "interior_y_mean_step": 7.419006335946192,
+        "opaque_coverage": 0.6508369445800781,
+        "nonzero_alpha_coverage": 0.7118644714355469
+      },
+      "density": "dense",
+      "paired_sparse_number": "12"
+    },
+    {
+      "number": "03",
+      "id": "mold-slate-blue-bloom",
+      "label": "Slate blue bloom",
+      "appearance": "Flat dusty blue mold bloom, dark navy/slate patches mixed with ash-blue powder, delicate branching peripheral colonies and varied grain sizes. Subtle cool gray highlights; muted and dark overall. Organic broken stain shapes rather than repeating circles.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/03-slate-blue-bloom.png",
+      "alpha_1024": "alphas-1024/03-slate-blue-bloom-alpha.png",
+      "rgba_512": "textures-512/03-slate-blue-bloom.png",
+      "alpha_512": "alphas-512/03-slate-blue-bloom-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            233,
+            256
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            773,
+            704
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            692,
+            117
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/03-slate-blue-bloom-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 8.79001416973039,
+        "seam_y_mean_step": 7.357101141237745,
+        "interior_x_mean_step": 6.337293653371356,
+        "interior_y_mean_step": 6.622107689089962,
+        "opaque_coverage": 0.5947818756103516,
+        "nonzero_alpha_coverage": 0.6614408493041992
+      },
+      "qa_512": {
+        "seam_x_mean_step": 14.120825674019606,
+        "seam_y_mean_step": 9.385412837009804,
+        "interior_x_mean_step": 8.947170228322495,
+        "interior_y_mean_step": 9.256779886612177,
+        "opaque_coverage": 0.5949783325195312,
+        "nonzero_alpha_coverage": 0.6740188598632812
+      },
+      "density": "dense",
+      "paired_sparse_number": "13"
+    },
+    {
+      "number": "04",
+      "id": "mold-plum-mildew",
+      "label": "Plum mildew",
+      "appearance": "Low sprawling mildew colonies in dusty plum, gray violet, charcoal purple and a little faded mauve. Thin powdery areas mixed with thicker wrinkled velvety areas, irregular branching stained outlines and ragged open holes. Restrained saturation and distinct color variation within the patch.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/04-plum-mildew.png",
+      "alpha_1024": "alphas-1024/04-plum-mildew-alpha.png",
+      "rgba_512": "textures-512/04-plum-mildew.png",
+      "alpha_512": "alphas-512/04-plum-mildew-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            260,
+            256
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            734,
+            749
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            788,
+            157
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/04-plum-mildew-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 5.563630706188726,
+        "seam_y_mean_step": 6.572572954963235,
+        "interior_x_mean_step": 5.836152802148322,
+        "interior_y_mean_step": 6.085402793987372,
+        "opaque_coverage": 0.7017669677734375,
+        "nonzero_alpha_coverage": 0.7489690780639648
+      },
+      "qa_512": {
+        "seam_x_mean_step": 7.625637637867647,
+        "seam_y_mean_step": 9.523697916666666,
+        "interior_x_mean_step": 7.973240647393376,
+        "interior_y_mean_step": 8.289385262880836,
+        "opaque_coverage": 0.7020301818847656,
+        "nonzero_alpha_coverage": 0.7590675354003906
+      },
+      "density": "dense",
+      "paired_sparse_number": "14"
+    },
+    {
+      "number": "05",
+      "id": "mold-rust-crust",
+      "label": "Rust crust mold",
+      "appearance": "Dry brittle crust-like fungal mold, irregular flaking thin scales and powder between the scales. Earthy rusty sienna, subdued umber, faded burnt copper and stone-gray flecks. Flat growth with many small ragged holes, not stones, bricks or rock cells.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/05-rust-crust.png",
+      "alpha_1024": "alphas-1024/05-rust-crust-alpha.png",
+      "rgba_512": "textures-512/05-rust-crust.png",
+      "alpha_512": "alphas-512/05-rust-crust-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            249,
+            214
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            821,
+            759
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            710,
+            111
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/05-rust-crust-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 8.247892731311275,
+        "seam_y_mean_step": 8.540973498774509,
+        "interior_x_mean_step": 7.546847725393463,
+        "interior_y_mean_step": 7.632353489607293,
+        "opaque_coverage": 0.6495571136474609,
+        "nonzero_alpha_coverage": 0.7000417709350586
+      },
+      "qa_512": {
+        "seam_x_mean_step": 9.770099954044117,
+        "seam_y_mean_step": 10.16174364276961,
+        "interior_x_mean_step": 9.298196407736896,
+        "interior_y_mean_step": 9.339892594987482,
+        "opaque_coverage": 0.6498870849609375,
+        "nonzero_alpha_coverage": 0.7107772827148438
+      },
+      "density": "dense",
+      "paired_sparse_number": "15"
+    },
+    {
+      "number": "11",
+      "id": "mold-olive-powder-sparse",
+      "label": "Olive powder sparse",
+      "density": "sparse",
+      "paired_dense_number": "01",
+      "appearance": "Dusty powdery mold, irregular thin olive-green and muted sage colonies. Fine granular painted stippling inside broad soft uneven islands, dark green cavities, a few aged beige areas. Vary the scale of growth so it does not look like uniform round cell noise.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/11-olive-powder-sparse.png",
+      "alpha_1024": "alphas-1024/11-olive-powder-sparse-alpha.png",
+      "rgba_512": "textures-512/11-olive-powder-sparse.png",
+      "alpha_512": "alphas-512/11-olive-powder-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            181,
+            255
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            815,
+            783
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            701,
+            126
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/11-olive-powder-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.769716988357843,
+        "seam_y_mean_step": 3.8843903186274513,
+        "interior_x_mean_step": 1.2798522744493082,
+        "interior_y_mean_step": 1.281551942051564,
+        "opaque_coverage": 0.05446052551269531,
+        "nonzero_alpha_coverage": 0.07292652130126953
+      },
+      "qa_512": {
+        "seam_x_mean_step": 2.7497606464460786,
+        "seam_y_mean_step": 5.617888327205883,
+        "interior_x_mean_step": 1.88656852777498,
+        "interior_y_mean_step": 1.8873969065365872,
+        "opaque_coverage": 0.0542144775390625,
+        "nonzero_alpha_coverage": 0.078155517578125
+      }
+    },
+    {
+      "number": "12",
+      "id": "mold-teal-fuzz-sparse",
+      "label": "Teal fuzz sparse",
+      "density": "sparse",
+      "paired_dense_number": "02",
+      "appearance": "Low velvety fuzzy mold with tiny soft radiating fibers and torn frayed fringes. Desaturated deep teal, gray turquoise and muted sea-green, dense darker centers and lighter dusty fuzzy growth edges. Several irregular connected zones, not moss leaves.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/12-teal-fuzz-sparse.png",
+      "alpha_1024": "alphas-1024/12-teal-fuzz-sparse-alpha.png",
+      "rgba_512": "textures-512/12-teal-fuzz-sparse.png",
+      "alpha_512": "alphas-512/12-teal-fuzz-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            180,
+            184
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            769,
+            776
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            747,
+            139
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/12-teal-fuzz-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.6755026424632353,
+        "seam_y_mean_step": 1.82167298560049,
+        "interior_x_mean_step": 1.1928921952341847,
+        "interior_y_mean_step": 1.1942468043890635,
+        "opaque_coverage": 0.05582141876220703,
+        "nonzero_alpha_coverage": 0.07515525817871094
+      },
+      "qa_512": {
+        "seam_x_mean_step": 2.5711894914215687,
+        "seam_y_mean_step": 3.0537607230392156,
+        "interior_x_mean_step": 1.8635276071044857,
+        "interior_y_mean_step": 1.860142992342485,
+        "opaque_coverage": 0.0556793212890625,
+        "nonzero_alpha_coverage": 0.0803985595703125
+      }
+    },
+    {
+      "number": "13",
+      "id": "mold-slate-blue-bloom-sparse",
+      "label": "Slate blue bloom sparse",
+      "density": "sparse",
+      "paired_dense_number": "03",
+      "appearance": "Flat dusty blue mold bloom, dark navy/slate patches mixed with ash-blue powder, delicate branching peripheral colonies and varied grain sizes. Subtle cool gray highlights; muted and dark overall. Organic broken stain shapes rather than repeating circles.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/13-slate-blue-bloom-sparse.png",
+      "alpha_1024": "alphas-1024/13-slate-blue-bloom-sparse-alpha.png",
+      "rgba_512": "textures-512/13-slate-blue-bloom-sparse.png",
+      "alpha_512": "alphas-512/13-slate-blue-bloom-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            236,
+            249
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            736,
+            726
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            728,
+            128
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/13-slate-blue-bloom-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.8413871017156862,
+        "seam_y_mean_step": 0.8172583486519607,
+        "interior_x_mean_step": 1.0449507228355663,
+        "interior_y_mean_step": 1.088591800356506,
+        "opaque_coverage": 0.044442176818847656,
+        "nonzero_alpha_coverage": 0.06404781341552734
+      },
+      "qa_512": {
+        "seam_x_mean_step": 2.813149126838235,
+        "seam_y_mean_step": 1.1749961703431373,
+        "interior_x_mean_step": 1.6405998898917444,
+        "interior_y_mean_step": 1.729938286316239,
+        "opaque_coverage": 0.044384002685546875,
+        "nonzero_alpha_coverage": 0.06925582885742188
+      }
+    },
+    {
+      "number": "14",
+      "id": "mold-plum-mildew-sparse",
+      "label": "Plum mildew sparse",
+      "density": "sparse",
+      "paired_dense_number": "04",
+      "appearance": "Low sprawling mildew colonies in dusty plum, gray violet, charcoal purple and a little faded mauve. Thin powdery areas mixed with thicker wrinkled velvety areas, irregular branching stained outlines and ragged open holes. Restrained saturation and distinct color variation within the patch.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/14-plum-mildew-sparse.png",
+      "alpha_1024": "alphas-1024/14-plum-mildew-sparse-alpha.png",
+      "rgba_512": "textures-512/14-plum-mildew-sparse.png",
+      "alpha_512": "alphas-512/14-plum-mildew-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            174,
+            211
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            790,
+            738
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            751,
+            130
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/14-plum-mildew-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 0.6461301317401962,
+        "seam_y_mean_step": 1.7960094975490197,
+        "interior_x_mean_step": 1.4792873682418346,
+        "interior_y_mean_step": 1.3855692521005836,
+        "opaque_coverage": 0.05238628387451172,
+        "nonzero_alpha_coverage": 0.07889366149902344
+      },
+      "qa_512": {
+        "seam_x_mean_step": 0.8932387408088236,
+        "seam_y_mean_step": 2.354972809436275,
+        "interior_x_mean_step": 2.2399745991076228,
+        "interior_y_mean_step": 2.117108482412657,
+        "opaque_coverage": 0.052249908447265625,
+        "nonzero_alpha_coverage": 0.08501052856445312
+      }
+    },
+    {
+      "number": "15",
+      "id": "mold-rust-crust-sparse",
+      "label": "Rust crust mold sparse",
+      "density": "sparse",
+      "paired_dense_number": "05",
+      "appearance": "Dry brittle crust-like fungal mold, irregular flaking thin scales and powder between the scales. Earthy rusty sienna, subdued umber, faded burnt copper and stone-gray flecks. Flat growth with many small ragged holes, not stones, bricks or rock cells.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/15-rust-crust-sparse.png",
+      "alpha_1024": "alphas-1024/15-rust-crust-sparse-alpha.png",
+      "rgba_512": "textures-512/15-rust-crust-sparse.png",
+      "alpha_512": "alphas-512/15-rust-crust-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            190,
+            227
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            796,
+            743
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            707,
+            132
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/15-rust-crust-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.6702138863357843,
+        "seam_y_mean_step": 0.2674756816789216,
+        "interior_x_mean_step": 1.271150136362738,
+        "interior_y_mean_step": 1.2189870634340918,
+        "opaque_coverage": 0.04557609558105469,
+        "nonzero_alpha_coverage": 0.06844425201416016
+      },
+      "qa_512": {
+        "seam_x_mean_step": 2.874419806985294,
+        "seam_y_mean_step": 0.941073069852941,
+        "interior_x_mean_step": 1.9927885650193295,
+        "interior_y_mean_step": 1.9166135535978088,
+        "opaque_coverage": 0.045299530029296875,
+        "nonzero_alpha_coverage": 0.0737457275390625
+      }
+    }
+  ],
+  "part": 1,
+  "total_parts": 2
+}

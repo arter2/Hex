@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v313</title>
-<meta name="application-version" content="313">
+<title>Hexmancers v315</title>
+<meta name="application-version" content="315">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -633,6 +633,25 @@
       <div class="srow"><span>Floor glow around you<small>The soft painted circle of light on the floor around you. 1 is normal.</small></span><span class="srange"><input id="dbgMyGlow" type="range" min="0" max="6" step="0.05"><b id="dbgMyGlowV"></b></span></div>
       <div class="srow"><span>Haze start<small>Battle only: how far from the camera, in tiles, the area's haze starts. The dungeon's haze is under Dungeon view.</small></span><span class="srange"><input id="dbgFogNear" type="range" min="0" max="200" step="1"><b id="dbgFogNearV"></b></span></div>
       <div class="srow"><span>Haze end<small>How far away things fade fully into the haze.</small></span><span class="srange"><input id="dbgFogFar" type="range" min="5" max="300" step="1"><b id="dbgFogFarV"></b></span></div>
+      <h3>Textures</h3>
+      <div class="srow"><span>Texture sharpen<small>How the painted floors and walls are filtered up close. 0 is smooth (soft), 1 is the nearest texel (crisp, the default), above 1 sharper still.</small></span><span class="srange"><input id="dbgTexSharp" type="range" min="0" max="2" step="0.05"><b id="dbgTexSharpV"></b></span></div>
+      <h3>Mold</h3>
+      <div class="srow"><span>Mold<small>Painted mold on the dungeon's floors and walls: thick in damp places (at the foot of walls, in corners, by water), a light sprinkle elsewhere. Off: clean stone, and the old green floor blotches. Rebuilds the scene.</small></span><label class="scheck"><input id="dbgMold" type="checkbox"></label></div>
+      <div class="srow"><span>Mold amount<small>How much grows everywhere. 1 is normal, 0 none.</small></span><span class="srange"><input id="dbgMoldAmt" type="range" min="0" max="3" step="0.05"><b id="dbgMoldAmtV"></b></span></div>
+      <div class="srow"><span>Damp spread<small>How far the thick growth reaches out from walls, corners and water. 1 is normal.</small></span><span class="srange"><input id="dbgMoldSpread" type="range" min="0.25" max="3" step="0.05"><b id="dbgMoldSpreadV"></b></span></div>
+      <div class="srow"><span>Mold scale<small>How big the mold's colonies are. 1 is normal.</small></span><span class="srange"><input id="dbgMoldScale" type="range" min="0.25" max="4" step="0.05"><b id="dbgMoldScaleV"></b></span></div>
+      <h3>Arena floor</h3>
+      <div class="srow"><span>Floor brightness<small>How bright the painted tiles are under the arena's lights (the state colours of a tile still tint on top). 0.6 is normal.</small></span><span class="srange"><input id="dbgHexBase" type="range" min="0.2" max="1.2" step="0.02"><b id="dbgHexBaseV"></b></span></div>
+      <div class="srow"><span>Far half's shade<small>How bright the enemy's half of the board (the far side) is next to yours: below 1 it is the darker. 0.7 is normal.</small></span><span class="srange"><input id="dbgHexSide" type="range" min="0.3" max="1.2" step="0.02"><b id="dbgHexSideV"></b></span></div>
+      <div class="srow"><span>Floor roughness<small>How rough the painted tiles are: a scale on their painted roughness. 1 is as painted.</small></span><span class="srange"><input id="dbgHexRough" type="range" min="0" max="2" step="0.05"><b id="dbgHexRoughV"></b></span></div>
+      <div class="srow"><span>Roughness offset<small>Added to every tile's roughness: below 0 a polished sheen, above 0 dull stone.</small></span><span class="srange"><input id="dbgHexRoughOff" type="range" min="-0.5" max="0.5" step="0.01"><b id="dbgHexRoughOffV"></b></span></div>
+      <div class="srow"><span>Metalness<small>How metallic the painted metal flecks are (only the Deeps' silver and the Abyss's gold have any). 1 is as painted.</small></span><span class="srange"><input id="dbgHexMetal" type="range" min="0" max="1" step="0.05"><b id="dbgHexMetalV"></b></span></div>
+      <div class="srow"><span>Relief<small>The tiles' bevels, chips and cracks catching the light (their normal map). 1 is normal.</small></span><span class="srange"><input id="dbgHexNrm" type="range" min="0" max="3" step="0.05"><b id="dbgHexNrmV"></b></span></div>
+      <div class="srow"><span>Crevice shade<small>How dark the painted cracks and the rim's foot go (ambient occlusion). 1 is normal.</small></span><span class="srange"><input id="dbgHexAO" type="range" min="0" max="2" step="0.05"><b id="dbgHexAOV"></b></span></div>
+      <div class="srow"><span>Edge wear<small>How much brighter the worn rims are. 1 is normal.</small></span><span class="srange"><input id="dbgHexWear" type="range" min="0" max="3" step="0.05"><b id="dbgHexWearV"></b></span></div>
+      <div class="srow"><span>Your side glow<small>How strongly the joints on your half glow. 1 is normal.</small></span><span class="srange"><input id="dbgHexGlow" type="range" min="0" max="3" step="0.05"><b id="dbgHexGlowV"></b></span></div>
+      <div class="srow"><span>Grid lines<small>The faint outline drawn round every hex. 1 is as bright as before the painted floor; 0.25 is normal (the painted joints already show each hex).</small></span><span class="srange"><input id="dbgHexLines" type="range" min="0" max="1.5" step="0.05"><b id="dbgHexLinesV"></b></span></div>
+      <div class="srow"><span>Joint growth<small>Moss, lichen, crystals and mushrooms in the joints between the hexes.</small></span><label class="scheck"><input id="dbgHexGrowth" type="checkbox"></label></div>
       <h3>PBR</h3>
       <div class="srow"><span>PBR materials<small>On: gold, steel, crystals, ice and cut-stone floors become physically based (roughness and metalness, the area's light reflected in them). Off: as before. Rebuilds the scene; costs more to draw on a phone.</small></span><label class="scheck"><input id="dbgPbr" type="checkbox"></label></div>
       <div class="srow"><span>Reflections<small>How strongly PBR surfaces reflect the area's light. 1 is normal.</small></span><span class="srange"><input id="dbgPbrEnv" type="range" min="0" max="6" step="0.05"><b id="dbgPbrEnvV"></b></span></div>
@@ -760,6 +779,7 @@
       <div class="srow"><span>Blur fade<small>Over how many tiles past the sharp band the blur eases in to full. Higher is a softer, more gradual change.</small></span><span class="srange"><input id="dbgDofFade" type="range" min="0" max="60" step="0.1"><b id="dbgDofFadeV"></b></span></div>
       <div class="srow"><span>Near blur<small>How much what is in front of the focus blurs (toward the camera). 0 keeps it sharp.</small></span><span class="srange"><input id="dbgDofNear" type="range" min="0" max="4" step="0.05"><b id="dbgDofNearV"></b></span></div>
       <div class="srow"><span>Far blur<small>How much what is behind the focus blurs. 0 keeps it sharp.</small></span><span class="srange"><input id="dbgDofFar" type="range" min="0" max="4" step="0.05"><b id="dbgDofFarV"></b></span></div>
+      <div class="srow"><span>Backdrop blur<small>How much the depth of field blurs the background (the arena's matte paintings), as a share of the far blur. 0.3 is normal; 1 blurs it as much as anything far.</small></span><span class="srange"><input id="dbgDofBg" type="range" min="0" max="1" step="0.05"><b id="dbgDofBgV"></b></span></div>
       <div class="srow"><span>Show focus<small>Colours the frame to show the blur: a yellow line where it is in focus, green for the sharp depth, pink fading in where things in front blur, blue where things behind blur. Stronger colour means more blur. Works with depth of field on or off.</small></span><label class="scheck"><input id="dbg_dofShow" type="checkbox"></label></div>
       <div class="srow"><span>Vignette<small>Darkens the edges of the frame, in the dungeon and the battle. 0 turns it off.</small></span><span class="srange"><input id="dbg_vig" type="range" min="0" max="2" step="0.01"><b id="dbg_vigV"></b></span></div>
       <div class="srow"><span>Vignette start<small>How far from the middle the darkening begins (0 the middle, 1 the corners).</small></span><span class="srange"><input id="dbg_vigR" type="range" min="0" max="2.5" step="0.01"><b id="dbg_vigRV"></b></span></div>
@@ -831,12 +851,20 @@
 <script src="keys.js"></script>
 <script src="three.min.js"></script>
 <script src="look.js"></script>
+<script src="envartmap.js"></script>
+<script src="arenahexmap.js"></script>
+<script src="arenabackdropmap.js"></script>
+<script src="envart.js"></script>
+<script src="mold.js"></script>
+<script src="mushrooms.js"></script>
 <script src="explore.js"></script>
 <script src="roomshapes.js"></script>
 <script src="dungeongen.js"></script>
 <script src="nature.js"></script>
 <script src="surface.js"></script>
 <script src="arena.js"></script>
+<script src="arenahex.js"></script>
+<script src="arenabackdrop.js"></script>
 <script src="dungeon.js"></script>
 <script src="missions.js"></script>
 <script src="deepways.js"></script>

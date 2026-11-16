@@ -20,7 +20,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
+const XLIT_DEF={ dofBg:.3, hexBase:.6, hexSide:.7, hexRough:1, hexRoughOff:0, hexMetal:1, hexNrm:1, hexAO:1, hexWear:1, hexGlow:1, hexLines:.25, hexGrowth:true, texSharp:1, mold:true, moldAmt:1, moldSpread:1, moldScale:1, amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:58, camFov:71, arWalls:true, camZoom:1, camX:0, camY:-4.5, camZ:2.9, camRX:24, camRY:0, camRZ:0, dof:true, dofFocus:11, dofRange:13.4, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
   dPitch:48, dDist:9.4, dView:12, dViewP:7, dStepOn:true, dStepLow:.17, dShOn:false, dShW:1.25, dShUp:1.3, dShDown:2.6, dShBack:1.1, dShEdge:.18, dShInner:true, dShDoor:true, dShDoorH:3.6, dShade:true, dShadeA:.55, dShadeTint:.35, dFov:46, dAhead:1, dAim:0, dTurn:0, dMoveX:0, dMoveY:0, dMoveZ:0, dRotX:0, dRotY:0, dRotZ:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dCutFollow:true, dCutReach:9, dCutStart:.5, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:0.6, mvDrag:2.5, mvAccel:0, mvShow:false, mvShowGame:false, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mpSpell:10, mpDefend:50, mpBackdate:250, mpSend:16, mpSmooth:33 };   // mp...: a duel's timings (netduel.js NET_DEFAULTS); d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
@@ -29,7 +29,8 @@ const DBG={pause:false};
 // saves new ones afterwards.
 try{ if(localStorage.getItem('hexmancers-mv-defaults')!=='228'){ for(const k in XLIT_DEF) if(/^mv/.test(k)) localStorage.removeItem('hexmancers-xl-'+k); localStorage.setItem('hexmancers-mv-defaults','228'); } }catch(e){}
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
-const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
+const XLITU={ uXDetN:{value:null}, uXDetK:{value:1}, uXBombK:{value:1}, uXSharp:{value:XLIT.texSharp}, uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()},
+  uXMoldTex:{value:null}, uXMoldMap:{value:null}, uXMoldR:{value:[0,1,2,3,4,5].map(()=>new THREE.Vector4())}, uXMoldK:{value:new THREE.Vector4(XLIT.moldAmt,XLIT.moldSpread,XLIT.moldScale,2)} };   // (the mold layer: mold.js)
 const XLITMATS=new Set();
 // a tangent-space normal map from a height field (in texel units, times k)
 function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
@@ -46,9 +47,9 @@ function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
 function xFreeMat(m){ if(!m) return; if(m.userData&&m.userData.nmap){ m.userData.nmap.dispose(); m.userData.nmap=null; } if(m.userData&&m.userData.rmap){ m.userData.rmap.dispose(); m.userData.rmap=null; } XLITMATS.delete(m); m.dispose(); }
 function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial||m.isMeshStandardMaterial) xLit(m); }); }
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
-  if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
+  if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.userData.xatlas?(typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256:m.map.image.width||64).toFixed(1); }   // (an atlas tile: its own texels, its uv runs a tile per unit)
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
-  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=m.userData.xao===1?XLIT.nstrF:XLIT.nstrW; m.normalScale.set(ns,ns);
+  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; const ns=(m.userData.xao===1?XLIT.nstrF:XLIT.nstrW)*(m.userData.nmapK||1); m.normalScale.set(ns,ns);   // (nmapK: a material's own relief, e.g. the arena hex floor's slider)
   if(m.userData.xproj){ if(XLIT.nmap) d.XPROJ_N=''; else delete d.XPROJ_N; } }   // (a surface's own material and relief: surface.js)
 function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(m);
   const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
@@ -56,10 +57,19 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   // no texture of its own: texture coordinates, a material and its relief worked out on the card (surface.js)
   const proj=typeof xProjWants==='function'&&xProjWants(m); if(proj) m.userData.xproj=1;
   const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
-  const bomb=m.userData.xbomb||0;
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb); if(proj) xProjShader(sh); };
-  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'');
+  const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;
+  const mold=()=>m.userData.xmold&&XLIT.mold&&typeof xMoldReady==='function'&&xMoldReady()?m.userData.xmold:0;   // (the mold layer: mold.js; 1 a floor, 2 a wall)   // (an atlas tile: envart.js; set on the material when it is made)
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(m.userData.xrock) xRockNormal(sh,!!atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); if(m.userData.xgrad) xGradFix(sh); };
+  m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):'')+(mold()?'|xmold'+mold():''); };
   xLitDefines(m); m.needsUpdate=true; return m; }
+/* A dressed wall's texture place jumps where a course slides or a corner's bricks stop (explore.js xWallMaskShader):
+   every lookup takes its filtering from the smooth place under it (vUvR), so the jumps draw no line of the wrong mip
+   level or a tile's gutter. Applied last, after every other patch has written its lookups. */
+function xGradFix(sh){ let f=sh.fragmentShader; if(!f.includes('varying vec2 vUvR')) return;
+  f=f.replace(/dFd([xy])\(\s*vUv\s*\)/g,'dFd$1( vUvR )');
+  f=f.replace(/texture2D\(\s*(map|normalMap)\s*,\s*vUv\s*\)/g,'xTG( $1, vUv )');
+  f=f.replace('void main() {','vec4 xTG(sampler2D s,vec2 u){\n#if __VERSION__>=300\n  return textureGrad(s,u,dFdx(vUvR),dFdy(vUvR));\n#else\n  return texture2D(s,u);\n#endif\n}\nvoid main() {');
+  sh.fragmentShader=f; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
   for(const m of XLITMATS){ const d=JSON.stringify(m.defines), n=m.normalMap; xLitDefines(m); if(d!==JSON.stringify(m.defines)||n!==m.normalMap) m.needsUpdate=true; } }
@@ -95,13 +105,18 @@ void main() {`);
 /* A second, finer relief on the floors (material.userData.xdet), so the painted floor's repeat breaks up: a tiling
    noise normal map laid in world space at two scales that never line up with the floor texture's eight cells, its
    strength wandering across the floor (a third, very wide lookup), added to the floor's own normal before lighting. */
-function xDetailN(){ if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
+function xDetailN(){ const P=typeof envArtFx==='function'&&envArtFx('detail-normal');
+  // the painted detail normal (the art's shared-effects), once it has loaded: the uniform is shared, so every material
+  // takes it at once (its noise channels also drive the bombing's stains and the rock walls' tone: look.js, explore.js)
+  if(P&&!XLITU.uXDetN.painted){ const t=xTexSmooth(P,true); t.anisotropy=4; XLITU.uXDetN.value=t; XLITU.uXDetN.painted=1; return t; }
+  if(XLITU.uXDetN.value) return XLITU.uXDetN.value; const N=256, R=caveRng(4242), a=xFbm(N,R,6), b=xFbm(N,R,20), c=xNoise(N,48,R), H=new Float32Array(N*N);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++) H[j*N+i]=a(i,j)*7+b(i,j)*3+c(i,j)*1.2;
   const t=new THREE.CanvasTexture(xNormalMap(H,N,.9)); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return XLITU.uXDetN.value=t; }
 function xDetShader(sh,wall){ let f=sh.fragmentShader;
   if(!f.includes('#include <normal_fragment_maps>')) return;
   f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps.replace('mapN.xy *= normalScale;',`mapN.xy *= normalScale;
-  { vec2 xw=${wall?'vec2(vXLW.x+vXLW.z,vXLW.y)':'vec2(vXLW.x,-vXLW.z)'};
+  { ${wall?`vec3 xdn=abs(normalize(cross(dFdx(vXLW),dFdy(vXLW))));   // (a wall: laid on the face's own plane, as the mold is; along x+z the tops and the faces turned that way read one line of it, as streaks)
+    vec2 xw=xdn.y>.7?vXLW.xz:vec2(xdn.x>xdn.z+.02?vXLW.z:vXLW.x,vXLW.y);   // (+.02: a diagonal face keeps one pick, not a speckle of both)`:'vec2 xw=vec2(vXLW.x,-vXLW.z);'}
     vec3 d1=texture2D(uXDetN,xw*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,xw*.067+vec2(.53,.19)).xyz*2.-1.;
     float xm=smoothstep(.35,.65,texture2D(uXDetN,xw*.013).r*.5+texture2D(uXDetN,xw*.029+.5).g*.5);
     mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(.45,1.35,xm); }`));
@@ -115,23 +130,26 @@ function xDetShader(sh,wall){ let f=sh.fragmentShader;
    and two wide world-space noises lay darker stains and damp patches (gray, not green) across the floor. The lookups take
    the derivatives of the unshifted coordinates, so the jumps at cell edges do not drop a mip level and draw a seam.
    uXBombK (0 or 1, the debug menu's or a test's switch) turns all of it off. */
-function xBombShader(sh,n){ let f=sh.fragmentShader; const N=(+n).toFixed(1);
+function xBombShader(sh,n,atlas){ let f=sh.fragmentShader; const N=(+n).toFixed(1), RM=atlas?'uXAtM':'vec4(0.,0.,1.,1.)', RN=atlas?'uXAtN':'vec4(0.,0.,1.,1.)';
+  // (atlas: a painted tile, so no quarter turns: its painted light would turn with them)
   f=f.replace('void main() {',`uniform float uXBombK;
 float xbh(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
-float xBombR(vec2 uv){ return uXBombK>.5?floor(xbh(floor(uv*${N})+3.71)*4.):0.; }
+float xBombR(vec2 uv){ return uXBombK>.5&&${atlas?'false':'true'}?floor(xbh(floor(uv*${N})+3.71)*4.):0.; }
 vec2 xBombUV(vec2 uv){ if(uXBombK<.5) return uv; vec2 c=floor(uv*${N}), q=fract(uv*${N}); float r=xBombR(uv);
   if(r==1.) q=vec2(q.y,1.-q.x); else if(r==2.) q=1.-q; else if(r==3.) q=vec2(1.-q.y,q.x);
   return (floor(vec2(xbh(c),xbh(c+17.31))*${N})+q)/${N}; }
 vec2 xBombN(vec2 n,float r){ return r==1.?vec2(-n.y,n.x):r==2.?-n:r==3.?vec2(n.y,-n.x):n; }
-vec4 xBombTex(sampler2D t,vec2 uv){
+// a lookup at the bombed place, inside the tile R of the texture (the whole texture: (0,0,1,1)), with the slopes of
+// the place before bombing (no mip level drops at a cell's edge)
+vec4 xBombTex(sampler2D t,vec4 R,vec2 uv){ ${atlas?'return xAtG(t,R,xBombUV(uv),dFdx(uv),dFdy(uv)); }   // (the atlas lookup, with its filtering: xAtlasShader)':`vec2 b=R.xy+fract(xBombUV(uv))*R.zw;
 #if __VERSION__>=300
-  return textureGrad(t,xBombUV(uv),dFdx(uv),dFdy(uv));
+  return textureGrad(t,b,dFdx(uv)*R.zw,dFdy(uv)*R.zw);
 #else
-  return texture2D(t,xBombUV(uv));
+  return texture2D(t,b);
 #endif
-}
+}`}
 void main() {`);
-  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('texture2D( map, vUv )','xBombTex( map, vUv )')+`
+  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('texture2D( map, vUv )','xBombTex( map, '+RM+', vUv )')+`
 #ifdef USE_MAP
   if(uXBombK>.5){ vec2 xc=floor(vUv*${N}); float xt=xbh(xc+8.9)-.5;
     diffuseColor.rgb*=mix(.68,1.18,xbh(xc+5.13))*vec3(1.+.12*xt,1.,1.-.12*xt);
@@ -142,20 +160,99 @@ void main() {`);
     diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.7,.69,.68),smoothstep(.55,.72,xd)*.85); }
 #endif`);
   if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
-  f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');
+  f=f.replace('vec3 mapN = texture2D( normalMap, vUv ).xyz * 2.0 - 1.0;','vec3 mapN = xBombTex( normalMap, '+RN+', vUv ).xyz * 2.0 - 1.0; mapN.xy = xBombN( mapN.xy, xBombR( vUv ) );');
   f=f.replace('mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK','mapN.xy+=(d1.xy*.55+d2.xy*.6)*uXDetK*mix(1.,1.8,uXBombK)');   // (the finer relief, stronger: the bombed floor's normal changes)
   if(!f.includes('uniform sampler2D uXDetN')) f=f.replace('uniform float uXBombK;','uniform float uXBombK; uniform sampler2D uXDetN;');
+  sh.fragmentShader=f; }
+/* An atlas tile (envart.js): the material's map and normal map are sheets of tiles, and its tile's rectangle (in the
+   sheet's GPU coordinates) comes in uXAtM (colour) and uXAtN (normal). Every lookup wraps inside the tile, so a floor
+   or wall repeats it as if it were a texture of its own, and takes the slopes of the place before wrapping, so the
+   jump at a tile's edge does not drop a mip level; the tiles' gutters (their own wrapped edge) keep the filtering and
+   the first mip levels from reading a neighbour. On a rough rock wall (explore.js xRockShader) its three lookups are
+   wrapped the same way, the turned copy loses its turn (the painted light would turn with it), the Ember Rifts lay
+   their medium rocks over it (uXAtO, three passes, as the art's notes give) and the Frozen Deeps their cell noise. */
+/* The rough rock walls' relief (explore.js xRockShader, uvj 2), laid like their colour: the colour is triplanar in world
+   space, but the standard normal map read each block's own uv (a random half of the texture per block, its tangents
+   along the block), so the bumps neither matched the stone nor joined from block to block, and streaked up the tall
+   faces. Here the normal map is read with the same three projections, the same mix of two copies (the second turned,
+   its slopes turned back) and the walls' world detail relief, each turned into world space round the face (a whiteout
+   blend), mixed by the same weights, and brought into view space. Applied after the atlas lookups (xAtlasShader). */
+function xRockNormal(sh,atlas){ let f=sh.fragmentShader; const a=f.indexOf('vec3 mapN = '), endS='normal = perturbNormal2Arb( -vViewPosition, normal, mapN, faceDirection );';
+  const b=f.indexOf(endS,a); if(a<0||b<0) return; const e=f.indexOf('#endif',b)+6;
+  const look=atlas?'xAtG( normalMap, uXAtN, u, dFdx( u ), dFdy( u ) )':'texture2D( normalMap, u )';
+  f=f.slice(0,a)+`{ vec3 wn=normalize(vXWN)*faceDirection, an=abs(wn); an=pow(an,vec3(4.0)); an/=an.x+an.y+an.z;
+    vec3 P=vXWP*.25;
+    float nb=texture2D(uXDetN,vXWP.xz*.047+vXWP.y*.031).r*.5+texture2D(uXDetN,vXWP.zy*.053+.37).g*.5, bm=smoothstep(.38,.62,nb);
+    vec3 tX=xRkN(P.zy,.41,bm), tY=xRkN(P.xz,.73,bm), tZ=xRkN(P.xy,.17,bm);
+    tX.xy+=xRkD(vXWP.zy); tY.xy+=xRkD(vXWP.xz); tZ.xy+=xRkD(vXWP.xy);
+    tX=vec3(tX.xy+wn.zy,abs(tX.z)*wn.x); tY=vec3(tY.xy+wn.xz,abs(tY.z)*wn.y); tZ=vec3(tZ.xy+wn.xy,abs(tZ.z)*wn.z);
+    normal=normalize((viewMatrix*vec4(normalize(tX.zyx*an.x+tY.xzy*an.y+tZ*an.z),0.0)).xyz); }
+`+f.slice(e);
+  f=f.replace('void main() {',`#ifdef TANGENTSPACE_NORMALMAP
+vec3 xRkS(vec2 u){ return ${look}.xyz*2.-1.; }
+// one projection's relief: two copies mixed as the colour mixes them${atlas?' (the painted tile: the copy not turned)':', the second turned and its slopes turned back'}
+vec3 xRkN(vec2 u,float o,float bm){ vec3 a=xRkS(u), c=xRkS(${atlas?'u*1.37+o':'mat2(.6,-.8,.8,.6)*u*1.37+o'});${atlas?'':' c.xy=mat2(.6,.8,-.8,.6)*c.xy;'}
+  vec3 n=mix(a,c,bm); n.xy*=normalScale; return n; }
+// the walls' finer world relief (as xDetShader lays it), on one projection
+vec2 xRkD(vec2 w){ vec3 d1=texture2D(uXDetN,w*.173+vec2(.31,.77)).xyz*2.-1., d2=texture2D(uXDetN,w*.067+vec2(.53,.19)).xyz*2.-1.; return (d1.xy*.55+d2.xy*.6)*uXDetK*.9; }
+#endif
+void main() {`);
+  if(!/uniform float uXDetK/.test(f)) f=f.replace('#ifdef TANGENTSPACE_NORMALMAP\nvec3 xRkS','uniform float uXDetK;\n#ifdef TANGENTSPACE_NORMALMAP\nvec3 xRkS');
+  if(!/uniform sampler2D uXDetN/.test(f)) f='uniform sampler2D uXDetN;\n'+f;
+  sh.uniforms.uXDetN=XLITU.uXDetN; sh.uniforms.uXDetK=XLITU.uXDetK; sh.fragmentShader=f; }
+// a lookup inside tile R of an atlas sheet, wrapped; uXSharp (the debug menu's Texture sharpen) sets the filtering: 0
+// smooth, 1 the nearest texel (its centre), above 1 the nearest pushed away from the smooth one (sharper still). Shared
+// by the painted floors and walls (xAtlasShader) and the mold layer (mold.js), declared once in a program.
+function xAtGlsl(TEXN){ return `uniform float uXSharp;
+vec4 xAtS(sampler2D t,vec2 b,vec2 gx,vec2 gy){
+#if __VERSION__>=300
+  return textureGrad(t,b,gx,gy);
+#else
+  return texture2D(t,b);
+#endif
+}
+vec4 xAtG(sampler2D t,vec4 R,vec2 uv,vec2 gx,vec2 gy){ vec2 l=fract(uv); gx*=R.zw; gy*=R.zw; vec4 s=xAtS(t,R.xy+l*R.zw,gx,gy);
+  if(uXSharp>.001){ vec4 q=xAtS(t,R.xy+(floor(l*${TEXN})+.5)/${TEXN}*R.zw,gx,gy); s=uXSharp<=1.?mix(s,q,uXSharp):clamp(q+(q-s)*(uXSharp-1.),0.,1.); }
+  return s; }
+`; }
+function xAtlasShader(sh,A){ let f=sh.fragmentShader; const V=r=>({value:new THREE.Vector4(r[0],r[1],r[2],r[3])}), TEXN=((typeof ENVART_MAP!=='undefined'&&ENVART_MAP.tile)||256).toFixed(1);   // (a tile's texels a side)
+  sh.uniforms.uXSharp=XLITU.uXSharp; sh.uniforms.uXAtM=V(A.m); sh.uniforms.uXAtN=V(A.n||[0,0,1,1]); sh.uniforms.uXAtO=V(A.o||[0,0,1,1]); if(A.cell) sh.uniforms.uXCell={value:A.cell};
+  f=`uniform vec4 uXAtM; uniform vec4 uXAtN; uniform vec4 uXAtO;${A.cell?' uniform sampler2D uXCell;':''}
+`+xAtGlsl(TEXN)+`#define xAtMap(u) xAtG(map,uXAtM,(u),dFdx(u),dFdy(u))
+`+f;
+  // (the standard lookups sit in chunks not yet expanded: expand them so the lookups can be swapped)
+  if(f.includes('#include <map_fragment>')) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment);
+  if(f.includes('#include <normal_fragment_maps>')) f=f.replace('#include <normal_fragment_maps>',THREE.ShaderChunk.normal_fragment_maps);
+  f=f.replace('texture2D( map, vUv )','xAtG( map, uXAtM, vUv, dFdx( vUv ), dFdy( vUv ) )');
+  f=f.replace('texture2D( normalMap, vUv )','xAtG( normalMap, uXAtN, vUv, dFdx( vUv ), dFdy( vUv ) )');
+  // the rough rock (xRockShader): its lookups, wrapped; its turned copy, not turned
+  f=f.split('texture2D(map,').join('xAtMap(').split('rt*P.').join('P.');
+  const rock=`
+    { vec2 ou=an.y>max(an.x,an.z)?P.xz:(an.x>an.z?P.zy:P.xy);
+${A.o?`      vec4 o0=xAtG(map,uXAtO,ou+vec2(.17,.43),dFdx(ou),dFdy(ou)); texelColor.rgb=mix(texelColor.rgb,o0.rgb,clamp(o0.a*.7,0.,1.));
+      vec4 o1=xAtG(map,uXAtO,ou*2.+vec2(.61,.09),dFdx(ou)*2.,dFdy(ou)*2.); texelColor.rgb=mix(texelColor.rgb,o1.rgb,clamp(o1.a*.5,0.,1.));
+      vec4 o2=xAtG(map,uXAtO,ou*3.+vec2(.29,.73),dFdx(ou)*3.,dFdy(ou)*3.); texelColor.rgb=mix(texelColor.rgb,o2.rgb,clamp(o2.a*.35,0.,1.));
+`:''}${A.cell?`      float cn=texture2D(uXCell,ou*1.7+.31).r; texelColor.rgb*=mix(1.,mix(.75,1.08,cn),.25);
+`:''}    }
+    texelColor.rgb*=1.0+.12*an.y;`;
+  if(A.o||A.cell) f=f.replace('texelColor.rgb*=1.0+.12*an.y;',rock);
   sh.fragmentShader=f; }
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;
 function xBakeAO(){ if(!EX||!EX.wIdx) return; const R=XAO_R, W=XN*R, d=EX.aoData||(EX.aoData=new Uint8Array(W*W*4)), rad=Math.max(.05,XLIT.aoRad)*XCS, sz=XCS/R;
-  const wall=(x,y)=>x<0||y<0||x>=XN||y>=XN||EX.wIdx.has(xi(x,y)), reach=Math.ceil(rad/XCS)+1;
+  // (the walls as a grid, and for each cell whether any wall, or the map's edge, is within reach: a texel of a cell
+  // with none near is open floor, 0, without looking round it. The same map as looking everywhere, a few times faster)
+  const reach=Math.ceil(rad/XCS)+1, G=new Uint8Array(XN*XN), near=new Uint8Array(XN*XN);
+  for(const c of EX.wIdx.keys()) if(c>=0&&c<G.length) G[c]=1;
+  const wall=(x,y)=>x<0||y<0||x>=XN||y>=XN||G[y*XN+x]===1;
+  for(let cy=0;cy<XN;cy++) for(let cx=0;cx<XN;cx++){ let n=0; for(let dy=-reach;dy<=reach&&!n;dy++) for(let dx=-reach;dx<=reach;dx++) if(wall(cx+dx,cy+dy)){ n=1; break; } near[cy*XN+cx]=n; }
   for(let ty=0;ty<W;ty++) for(let tx=0;tx<W;tx++){ const wx=(tx+.5)*sz, wz=(ty+.5)*sz, cx=Math.floor(wx/XCS), cy=Math.floor(wz/XCS); let o=0;
-    if(wall(cx,cy)) o=9; else for(let dy=-reach;dy<=reach;dy++) for(let dx=-reach;dx<=reach;dx++){ if(!wall(cx+dx,cy+dy)) continue;
+    if(wall(cx,cy)) o=9; else if(near[cy*XN+cx]) for(let dy=-reach;dy<=reach;dy++) for(let dx=-reach;dx<=reach;dx++){ if(!wall(cx+dx,cy+dy)) continue;
       const x0=(cx+dx)*XCS, z0=(cy+dy)*XCS, ex=Math.max(x0-wx,0,wx-x0-XCS), ez=Math.max(z0-wz,0,wz-z0-XCS), w=Math.max(0,1-Math.hypot(ex,ez)/rad); o+=w*w; }
     d[(ty*W+tx)*4]=Math.round(255*(1-Math.exp(-o*.9))); }
   if(!EX.aoTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.aoTex=t; }
-  EX.aoTex.needsUpdate=true; XLITU.uXAOTex.value=EX.aoTex; }
+  EX.aoTex.needsUpdate=true; XLITU.uXAOTex.value=EX.aoTex;
+  if(typeof xMoldBake==='function') xMoldBake(); }   // (the mold map reads the AO map's measure: mold.js)
 /* Screen-space AO: the frame is drawn into a target with its depth; a half-size pass rebuilds each
    pixel's position, takes twelve samples in a disc around it (the disc as wide on screen as
    ssaoRad tiles at that depth) and counts how much of what is near rises in front of its surface;
@@ -241,7 +338,7 @@ function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
     S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
     S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(post?S.rt2:null); r.render(S.qs,S.cam); }
   if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uP10.value=G.cam.projectionMatrix.elements[10]; U.uP14.value=G.cam.projectionMatrix.elements[14]; U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
-    const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
+    const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBg.value=XLIT.dofBg; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
     U.uShow.value=show?1:0; U.uVig.value=XLIT.vig; U.uVigR.value=XLIT.vigR; U.uVigSoft.value=Math.max(.05,XLIT.vigSoft);
     S.q.material=S.dM; r.setRenderTarget(null); r.render(S.qs,S.cam); } }
 /* Depth of field (debug menu, battle camera): each pixel's distance from the camera, from the depth
@@ -256,12 +353,13 @@ function xDofInit(w,h){ const S=XSSAO;
   if(!S.dM){ S.rt2=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:false});
     S.dM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }',
       extensions:{derivatives:true},
-      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uP10:{value:-1}, uP14:{value:-1}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
+      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uP10:{value:-1}, uP14:{value:-1}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6}, uBg:{value:.3},
         uShow:{value:0}, uVig:{value:0}, uVigR:{value:.55}, uVigSoft:{value:.7} },
-      fragmentShader:`uniform sampler2D tColor, tDepth; uniform vec2 uRes; uniform float uP10, uP14, uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
+      fragmentShader:`uniform sampler2D tColor, tDepth; uniform vec2 uRes; uniform float uP10, uP14, uFocus, uRange, uFade, uNear, uFar, uBlur, uBg, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
 // distance from the camera, from the perspective projection's two depth terms (exact; a mat4 per tap before)
 float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; return uP14/(d*2.0-1.0+uP10)-uFocus; }
-float coc(vec2 uv){ float z=zof(uv); return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
+float coc(vec2 uv){ if(texture2D(tDepth,uv).x>=.99999) return uBlur*uFar*uBg;   // (the background: the arena's matte paintings, the sky; blurred more gently, uBg)
+  float z=zof(uv); return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
 void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
   if(C>=.05){ vec3 acc=col; float ws=1.0; float a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))));
     for(int i=0;i<32;i++){ float t=(float(i)+.5)/32.0, a=a0+float(i)*2.39996, rr=sqrt(t)*C; vec2 su=vUv+vec2(cos(a),sin(a))*rr/uRes;
@@ -279,6 +377,8 @@ void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
 function lookBake(){ if(typeof xBakeAO==='function') xBakeAO(); if(typeof arenaBakeAO==='function') arenaBakeAO(); }
 // the shared AO uniforms point at the map of the screen about to draw (its texture, where it starts, how wide it is)
 function lookUse(tex,scale,ox,oz){ XLITU.uXAOTex.value=tex||null; XLITU.uXAOScale.value=scale||96; XLITU.uXAOOrg.value.set(ox||0,oz||0); }
+// a painted effect's canvas (envart.js envArtFx) as a smooth, mipmapped texture
+function xTexSmooth(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; if(rep) t.wrapS=t.wrapT=THREE.RepeatWrapping; return t; }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
 /* PBR (a debug switch, to compare): the surfaces where it shows become MeshStandardMaterial, with a
    roughness and metalness of their own, a roughness map made from the painted stone's height (worn
@@ -399,12 +499,12 @@ function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
   const c=xPaint(N,(i,j)=>{ const b=out[j*N+i]; if(Hm[j*N+i]>-1.5) Hm[j*N+i]+=f(i,j)*1.4; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); });
   c.h=Hm; c.hk=.6; return c; }
 const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox), what a change does]
-  ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
+  ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgTexSharp',()=>XLIT,'texSharp','hexmancers-xl-texSharp',2,'sharp'], ['dbgMold',()=>XLIT,'mold','hexmancers-xl-mold',null,'pbr'], ...[['Base','hexBase'],['Side','hexSide'],['Rough','hexRough'],['RoughOff','hexRoughOff'],['Metal','hexMetal'],['Nrm','hexNrm'],['AO','hexAO'],['Wear','hexWear'],['Glow','hexGlow'],['Lines','hexLines']].map(([n,k])=>['dbgHex'+n,()=>XLIT,k,'hexmancers-xl-'+k,2,'hex']), ['dbgHexGrowth',()=>XLIT,'hexGrowth','hexmancers-xl-hexGrowth',null,'hex'], ['dbgMoldAmt',()=>XLIT,'moldAmt','hexmancers-xl-moldAmt',2,'mold'], ['dbgMoldSpread',()=>XLIT,'moldSpread','hexmancers-xl-moldSpread',2,'mold'], ['dbgMoldScale',()=>XLIT,'moldScale','hexmancers-xl-moldScale',2,'mold'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
   ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStrF',()=>XLIT,'nstrF','hexmancers-xl-nstrF',2,'lit'], ['dbgNStrW',()=>XLIT,'nstrW','hexmancers-xl-nstrW',2,'lit'],
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgCamZoom',()=>XLIT,'camZoom','hexmancers-xl-camZoom',2,''], ...['camX','camY','camZ','camRX','camRY','camRZ'].map(k=>['dbgC'+k.slice(1),()=>XLIT,k,'hexmancers-xl-'+k,k.length>4?0:1,'']), ['dbgDof',()=>XLIT,'dof','hexmancers-xl-dof',null,''], ['dbgDofFocus',()=>XLIT,'dofFocus','hexmancers-xl-dofFocus',1,''], ['dbgDofRange',()=>XLIT,'dofRange','hexmancers-xl-dofRange',1,''], ['dbgDofBlur',()=>XLIT,'dofBlur','hexmancers-xl-dofBlur',1,''], ['dbgDofFade',()=>XLIT,'dofFade','hexmancers-xl-dofFade',1,''], ['dbgDofNear',()=>XLIT,'dofNear','hexmancers-xl-dofNear',2,''], ['dbgDofFar',()=>XLIT,'dofFar','hexmancers-xl-dofFar',2,''], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'], ['dbgPbrRMap',()=>XLIT,'pbrRMap','hexmancers-xl-pbrRMap',null,'pbrEnv'],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgDofBg',()=>XLIT,'dofBg','hexmancers-xl-dofBg',2,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgCamZoom',()=>XLIT,'camZoom','hexmancers-xl-camZoom',2,''], ...['camX','camY','camZ','camRX','camRY','camRZ'].map(k=>['dbgC'+k.slice(1),()=>XLIT,k,'hexmancers-xl-'+k,k.length>4?0:1,'']), ['dbgDof',()=>XLIT,'dof','hexmancers-xl-dof',null,''], ['dbgDofFocus',()=>XLIT,'dofFocus','hexmancers-xl-dofFocus',1,''], ['dbgDofRange',()=>XLIT,'dofRange','hexmancers-xl-dofRange',1,''], ['dbgDofBlur',()=>XLIT,'dofBlur','hexmancers-xl-dofBlur',1,''], ['dbgDofFade',()=>XLIT,'dofFade','hexmancers-xl-dofFade',1,''], ['dbgDofNear',()=>XLIT,'dofNear','hexmancers-xl-dofNear',2,''], ['dbgDofFar',()=>XLIT,'dofFar','hexmancers-xl-dofFar',2,''], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'], ['dbgPbrRMap',()=>XLIT,'pbrRMap','hexmancers-xl-pbrRMap',null,'pbrEnv'],
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ...['Spell','Defend','Backdate','Send','Smooth'].map(k=>['dbgMp'+k,()=>XLIT,'mp'+k,'hexmancers-xl-mp'+k,0,'mp']),   // a duel's timings, read live by battle.js duelSettings; the group 'mp' touches nothing else
@@ -414,6 +514,9 @@ let xBakeT=0;
 function xDbgApply(what){ if(typeof mlabCurve==='function') mlabCurve();   // (the joystick curve, in the debug menu and the Movement lab)
   if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
+  else if(what==='sharp') XLITU.uXSharp.value=XLIT.texSharp;
+  else if(what==='mold'){ const K=XLITU.uXMoldK.value; K.x=XLIT.moldAmt; K.y=XLIT.moldSpread; K.z=XLIT.moldScale; }   // (the mold layer's amount, damp spread and scale, live: mold.js)   // (the painted textures' filtering: look.js xAtlasShader, live)
+  else if(what==='hex'){ if(typeof hexTune==='function') hexTune(); }   // (the arena's hex floor, live: arenahex.js)
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
   else if(what==='xpaint'||what==='xwalls'||what==='xshade'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
@@ -532,7 +635,7 @@ function xDbgCopy(taId,btnId){ taId=typeof taId==='string'?taId:'dbgCopyText'; b
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>done(true),()=>done(ok)); else done(ok); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
-const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
+const XDBG_PANES=[['Camera',['Dungeon camera','Battle camera']],['Dungeon',['Dungeon view','Walls']],['Battle',['Battle movement']],['Lights',['Lighting','Lights']],['Surfaces',['Textures','Mold','Arena floor','PBR','Normal maps','Ambient occlusion']],['Post',['Post effects']],['General',['Card art','Multiplayer','Info']]];
 function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
   const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
   for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }

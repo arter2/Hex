@@ -1,0 +1,793 @@
+{
+  "schema_version": 2,
+  "title": "Painterly mold textures \u2014 part 2 of 2",
+  "variant_count": 10,
+  "dense_count": 5,
+  "sparse_count": 5,
+  "method": "Distinct ImageGen-painted dense and sparse sources, technically wrapped on periodic tiles. Sparse sources use separated colonies with opaque bodies and wide transparent gaps.",
+  "implementation_status": "Art and Claude guide only; no game files changed.",
+  "variants": [
+    {
+      "number": "06",
+      "id": "mold-ochre-spores",
+      "label": "Ochre spore mold",
+      "appearance": "Dense granular spore mold in dusty ochre, old mustard, olive-brown and faded parchment accents. Numerous tiny irregular painted granules in asymmetrical spreading lobes, mixed coarse and fine growth, no uniform dot grid. Muted natural dungeon colors, not bright yellow.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/06-ochre-spores.png",
+      "alpha_1024": "alphas-1024/06-ochre-spores-alpha.png",
+      "rgba_512": "textures-512/06-ochre-spores.png",
+      "alpha_512": "alphas-512/06-ochre-spores-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            206,
+            194
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            752,
+            723
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            729,
+            144
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/06-ochre-spores-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 7.589004097732842,
+        "seam_y_mean_step": 9.905322265625,
+        "interior_x_mean_step": 7.539450018785159,
+        "interior_y_mean_step": 7.673305312261909,
+        "opaque_coverage": 0.6743154525756836,
+        "nonzero_alpha_coverage": 0.7287445068359375
+      },
+      "qa_512": {
+        "seam_x_mean_step": 10.361106004901961,
+        "seam_y_mean_step": 11.844759114583333,
+        "interior_x_mean_step": 9.615852868330553,
+        "interior_y_mean_step": 9.66076761986901,
+        "opaque_coverage": 0.6745491027832031,
+        "nonzero_alpha_coverage": 0.7386932373046875
+      },
+      "density": "dense",
+      "paired_sparse_number": "16"
+    },
+    {
+      "number": "07",
+      "id": "mold-ivory-mycelium",
+      "label": "Ivory mycelium",
+      "appearance": "Thin flat spreading mold/mycelium network, branching hair-like ivory threads connecting small fuzzy off-white colonies. Aged bone white, pale gray, warm gray-beige with dark taupe centers; irregular gaps and varied thread thickness. Clearly fungal fibers, no woody roots or fern leaves.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/07-ivory-mycelium.png",
+      "alpha_1024": "alphas-1024/07-ivory-mycelium-alpha.png",
+      "rgba_512": "textures-512/07-ivory-mycelium.png",
+      "alpha_512": "alphas-512/07-ivory-mycelium-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            179,
+            278
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            740,
+            748
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            728,
+            161
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/07-ivory-mycelium-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 12.508384076286765,
+        "seam_y_mean_step": 13.689651309742647,
+        "interior_x_mean_step": 9.874992287340614,
+        "interior_y_mean_step": 9.891851541199172,
+        "opaque_coverage": 0.5477027893066406,
+        "nonzero_alpha_coverage": 0.6561775207519531
+      },
+      "qa_512": {
+        "seam_x_mean_step": 18.91290785845588,
+        "seam_y_mean_step": 22.01827129289216,
+        "interior_x_mean_step": 15.09952616802286,
+        "interior_y_mean_step": 15.21939691223236,
+        "opaque_coverage": 0.5478515625,
+        "nonzero_alpha_coverage": 0.67083740234375
+      },
+      "density": "dense",
+      "paired_sparse_number": "17"
+    },
+    {
+      "number": "08",
+      "id": "mold-charcoal-blight",
+      "label": "Charcoal blight",
+      "appearance": "Very dark soot-like mold in charcoal, brown-black, deep moss-gray and a few ashy gray margins. Matted velvety low patches with fine peppery specks and irregular wispy extensions, natural asymmetrical colonies, no black backing or painted rock.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/08-charcoal-blight.png",
+      "alpha_1024": "alphas-1024/08-charcoal-blight-alpha.png",
+      "rgba_512": "textures-512/08-charcoal-blight.png",
+      "alpha_512": "alphas-512/08-charcoal-blight-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            242,
+            224
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            746,
+            764
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            700,
+            194
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/08-charcoal-blight-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 6.384747434129903,
+        "seam_y_mean_step": 6.962715418198529,
+        "interior_x_mean_step": 6.063718803270789,
+        "interior_y_mean_step": 5.9955806611462705,
+        "opaque_coverage": 0.6515741348266602,
+        "nonzero_alpha_coverage": 0.7127323150634766
+      },
+      "qa_512": {
+        "seam_x_mean_step": 8.347102864583334,
+        "seam_y_mean_step": 9.882285922181373,
+        "interior_x_mean_step": 8.598552348486486,
+        "interior_y_mean_step": 8.549910647585232,
+        "opaque_coverage": 0.6517791748046875,
+        "nonzero_alpha_coverage": 0.725677490234375
+      },
+      "density": "dense",
+      "paired_sparse_number": "18"
+    },
+    {
+      "number": "09",
+      "id": "mold-dusty-rose-mildew",
+      "label": "Dusty rose mildew",
+      "appearance": "Flat dusty rose and desaturated salmon-gray fungal mildew with muted burgundy shadows and chalky pink-beige powder. Irregular thin film broken by small clusters of fine crusty grains and delicate fringes. Subdued aged dungeon material, not fleshy, not bright red.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/09-dusty-rose-mildew.png",
+      "alpha_1024": "alphas-1024/09-dusty-rose-mildew-alpha.png",
+      "rgba_512": "textures-512/09-dusty-rose-mildew.png",
+      "alpha_512": "alphas-512/09-dusty-rose-mildew-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            169,
+            189
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            799,
+            742
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            770,
+            210
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/09-dusty-rose-mildew-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 6.640539790134804,
+        "seam_y_mean_step": 8.06329656862745,
+        "interior_x_mean_step": 6.435109420933421,
+        "interior_y_mean_step": 6.098616468138452,
+        "opaque_coverage": 0.6866350173950195,
+        "nonzero_alpha_coverage": 0.7350254058837891
+      },
+      "qa_512": {
+        "seam_x_mean_step": 8.55368221507353,
+        "seam_y_mean_step": 10.996120557598038,
+        "interior_x_mean_step": 8.867923517330734,
+        "interior_y_mean_step": 8.416293241397588,
+        "opaque_coverage": 0.6868438720703125,
+        "nonzero_alpha_coverage": 0.7455406188964844
+      },
+      "density": "dense",
+      "paired_sparse_number": "19"
+    },
+    {
+      "number": "10",
+      "id": "mold-mint-patina-mold",
+      "label": "Mint patina mold",
+      "appearance": "Low spreading pale mint and gray-green mold, a mix of thin threadlike webbing, soft fuzzy patches and powdery crust. Dark forest-green pockets, dusty celadon highlights, a few subdued seafoam speckles. Uneven scale and irregular branching outline, no glow haze or bright neon.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/10-mint-patina-mold.png",
+      "alpha_1024": "alphas-1024/10-mint-patina-mold-alpha.png",
+      "rgba_512": "textures-512/10-mint-patina-mold.png",
+      "alpha_512": "alphas-512/10-mint-patina-mold-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            203,
+            244
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            800,
+            733
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            703,
+            162
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/10-mint-patina-mold-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 12.089100796568626,
+        "seam_y_mean_step": 8.444752412683824,
+        "interior_x_mean_step": 7.960326443245309,
+        "interior_y_mean_step": 7.748109516843303,
+        "opaque_coverage": 0.6636762619018555,
+        "nonzero_alpha_coverage": 0.7190790176391602
+      },
+      "qa_512": {
+        "seam_x_mean_step": 15.646095664828431,
+        "seam_y_mean_step": 9.519988893995098,
+        "interior_x_mean_step": 10.063540194009969,
+        "interior_y_mean_step": 9.885321468591718,
+        "opaque_coverage": 0.6637344360351562,
+        "nonzero_alpha_coverage": 0.73089599609375
+      },
+      "density": "dense",
+      "paired_sparse_number": "20"
+    },
+    {
+      "number": "16",
+      "id": "mold-ochre-spores-sparse",
+      "label": "Ochre spore mold sparse",
+      "density": "sparse",
+      "paired_dense_number": "06",
+      "appearance": "Dense granular spore mold in dusty ochre, old mustard, olive-brown and faded parchment accents. Numerous tiny irregular painted granules in asymmetrical spreading lobes, mixed coarse and fine growth, no uniform dot grid. Muted natural dungeon colors, not bright yellow.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/16-ochre-spores-sparse.png",
+      "alpha_1024": "alphas-1024/16-ochre-spores-sparse-alpha.png",
+      "rgba_512": "textures-512/16-ochre-spores-sparse.png",
+      "alpha_512": "alphas-512/16-ochre-spores-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            227,
+            225
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            844,
+            733
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            785,
+            186
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/16-ochre-spores-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.7327349494485296,
+        "seam_y_mean_step": 0.3827215456495098,
+        "interior_x_mean_step": 1.1313263151782889,
+        "interior_y_mean_step": 1.0292907327619767,
+        "opaque_coverage": 0.04157257080078125,
+        "nonzero_alpha_coverage": 0.06015777587890625
+      },
+      "qa_512": {
+        "seam_x_mean_step": 2.643462775735294,
+        "seam_y_mean_step": 1.0708716299019607,
+        "interior_x_mean_step": 1.7242651030874676,
+        "interior_y_mean_step": 1.589126457517939,
+        "opaque_coverage": 0.041454315185546875,
+        "nonzero_alpha_coverage": 0.06514739990234375
+      }
+    },
+    {
+      "number": "17",
+      "id": "mold-ivory-mycelium-sparse",
+      "label": "Ivory mycelium sparse",
+      "density": "sparse",
+      "paired_dense_number": "07",
+      "appearance": "Thin flat spreading mold/mycelium network, branching hair-like ivory threads connecting small fuzzy off-white colonies. Aged bone white, pale gray, warm gray-beige with dark taupe centers; irregular gaps and varied thread thickness. Clearly fungal fibers, no woody roots or fern leaves.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/17-ivory-mycelium-sparse.png",
+      "alpha_1024": "alphas-1024/17-ivory-mycelium-sparse-alpha.png",
+      "rgba_512": "textures-512/17-ivory-mycelium-sparse.png",
+      "alpha_512": "alphas-512/17-ivory-mycelium-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            237,
+            267
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            750,
+            703
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            766,
+            178
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/17-ivory-mycelium-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 2.835851332720588,
+        "seam_y_mean_step": 0.7132525275735293,
+        "interior_x_mean_step": 1.3156056439483783,
+        "interior_y_mean_step": 1.3100193987281499,
+        "opaque_coverage": 0.04175567626953125,
+        "nonzero_alpha_coverage": 0.06455612182617188
+      },
+      "qa_512": {
+        "seam_x_mean_step": 4.102449065563725,
+        "seam_y_mean_step": 1.7694910386029414,
+        "interior_x_mean_step": 2.048297065508567,
+        "interior_y_mean_step": 2.0522066355437723,
+        "opaque_coverage": 0.041385650634765625,
+        "nonzero_alpha_coverage": 0.07100296020507812
+      }
+    },
+    {
+      "number": "18",
+      "id": "mold-charcoal-blight-sparse",
+      "label": "Charcoal blight sparse",
+      "density": "sparse",
+      "paired_dense_number": "08",
+      "appearance": "Very dark soot-like mold in charcoal, brown-black, deep moss-gray and a few ashy gray margins. Matted velvety low patches with fine peppery specks and irregular wispy extensions, natural asymmetrical colonies, no black backing or painted rock.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/18-charcoal-blight-sparse.png",
+      "alpha_1024": "alphas-1024/18-charcoal-blight-sparse-alpha.png",
+      "rgba_512": "textures-512/18-charcoal-blight-sparse.png",
+      "alpha_512": "alphas-512/18-charcoal-blight-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            250,
+            280
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            745,
+            752
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            709,
+            120
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 180,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/18-charcoal-blight-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 1.037744140625,
+        "seam_y_mean_step": 1.8375842524509804,
+        "interior_x_mean_step": 0.8612706268013987,
+        "interior_y_mean_step": 0.9172497047832451,
+        "opaque_coverage": 0.040711402893066406,
+        "nonzero_alpha_coverage": 0.05715751647949219
+      },
+      "qa_512": {
+        "seam_x_mean_step": 1.3055108762254903,
+        "seam_y_mean_step": 3.0752393535539215,
+        "interior_x_mean_step": 1.3228723220880818,
+        "interior_y_mean_step": 1.4408234714048291,
+        "opaque_coverage": 0.04067230224609375,
+        "nonzero_alpha_coverage": 0.06166839599609375
+      }
+    },
+    {
+      "number": "19",
+      "id": "mold-dusty-rose-mildew-sparse",
+      "label": "Dusty rose mildew sparse",
+      "density": "sparse",
+      "paired_dense_number": "09",
+      "appearance": "Flat dusty rose and desaturated salmon-gray fungal mildew with muted burgundy shadows and chalky pink-beige powder. Irregular thin film broken by small clusters of fine crusty grains and delicate fringes. Subdued aged dungeon material, not fleshy, not bright red.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/19-dusty-rose-mildew-sparse.png",
+      "alpha_1024": "alphas-1024/19-dusty-rose-mildew-sparse-alpha.png",
+      "rgba_512": "textures-512/19-dusty-rose-mildew-sparse.png",
+      "alpha_512": "alphas-512/19-dusty-rose-mildew-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            192,
+            255
+          ],
+          "size": [
+            1233,
+            1233
+          ],
+          "quarter_turn_degrees": 0,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            767,
+            711
+          ],
+          "size": [
+            903,
+            903
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            779,
+            123
+          ],
+          "size": [
+            602,
+            602
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/19-dusty-rose-mildew-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 2.101254212622549,
+        "seam_y_mean_step": 1.1730028339460785,
+        "interior_x_mean_step": 1.5710653139554942,
+        "interior_y_mean_step": 1.5629420595752352,
+        "opaque_coverage": 0.07274627685546875,
+        "nonzero_alpha_coverage": 0.09809017181396484
+      },
+      "qa_512": {
+        "seam_x_mean_step": 3.807326133578431,
+        "seam_y_mean_step": 1.6625172334558824,
+        "interior_x_mean_step": 2.522459506062699,
+        "interior_y_mean_step": 2.5045403205160492,
+        "opaque_coverage": 0.07234573364257812,
+        "nonzero_alpha_coverage": 0.1044769287109375
+      }
+    },
+    {
+      "number": "20",
+      "id": "mold-mint-patina-mold-sparse",
+      "label": "Mint patina mold sparse",
+      "density": "sparse",
+      "paired_dense_number": "10",
+      "appearance": "Low spreading pale mint and gray-green mold, a mix of thin threadlike webbing, soft fuzzy patches and powdery crust. Dark forest-green pockets, dusty celadon highlights, a few subdued seafoam speckles. Uneven scale and irregular branching outline, no glow haze or bright neon.",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "runtime_dimensions": [
+        512,
+        512
+      ],
+      "rgba_1024": "textures-1024/20-mint-patina-mold-sparse.png",
+      "alpha_1024": "alphas-1024/20-mint-patina-mold-sparse-alpha.png",
+      "rgba_512": "textures-512/20-mint-patina-mold-sparse.png",
+      "alpha_512": "alphas-512/20-mint-patina-mold-sparse-alpha.png",
+      "wrap_u": "repeat",
+      "wrap_v": "repeat",
+      "alpha_mode": "8-bit cutout coverage with narrow antialiased boundary",
+      "source_placement": [
+        {
+          "center_xy": [
+            227,
+            238
+          ],
+          "size": [
+            881,
+            881
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        },
+        {
+          "center_xy": [
+            800,
+            751
+          ],
+          "size": [
+            645,
+            645
+          ],
+          "quarter_turn_degrees": 270,
+          "mirrored": true
+        },
+        {
+          "center_xy": [
+            746,
+            162
+          ],
+          "size": [
+            430,
+            430
+          ],
+          "quarter_turn_degrees": 90,
+          "mirrored": false
+        }
+      ],
+      "repeat_preview": "previews/repeats/20-mint-patina-mold-sparse-3x3.jpg",
+      "qa_1024": {
+        "seam_x_mean_step": 2.803046492034314,
+        "seam_y_mean_step": 3.2464068244485293,
+        "interior_x_mean_step": 1.5153288436128363,
+        "interior_y_mean_step": 1.4284770467288517,
+        "opaque_coverage": 0.05187225341796875,
+        "nonzero_alpha_coverage": 0.07613182067871094
+      },
+      "qa_512": {
+        "seam_x_mean_step": 4.741804534313725,
+        "seam_y_mean_step": 4.825871246936274,
+        "interior_x_mean_step": 2.194050504405529,
+        "interior_y_mean_step": 2.076647805419257,
+        "opaque_coverage": 0.051654815673828125,
+        "nonzero_alpha_coverage": 0.08195877075195312
+      }
+    }
+  ],
+  "part": 2,
+  "total_parts": 2
+}

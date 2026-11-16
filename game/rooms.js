@@ -337,6 +337,7 @@ function xAnimExplore(T){ for(const p of EX.props){ if(!p.mesh||!p.mesh.visible)
   if(p.kind==='water'&&p.waterMat){ p.waterMat.opacity=.46+.06*Math.sin(T*1.7); if(p.ripTex){ p.ripTex.offset.x=(T*.05)%1; p.ripTex.offset.y=(Math.sin(T*.4)*.08)%1; } }
   if(p.kind==='sunken'&&p.glint) p.glint.opacity=Math.max(0,Math.sin(T*1.3+p.cell))**8*.8;
   if(p.kind==='cavecrystal'&&p.cmat){ const R=EX.rooms[p.room], k=R&&!R.geodeDone?R.glow||0:0, pulse=.5+.5*Math.sin(T*(2+10*k)+p.ph); p.cmat.color.setRGB(.35+.4*k*pulse+.1,.6+.35*k*pulse,.75+.25*k*pulse); } } }
-function xRippleTex(){ if(xRippleTex.c) return xRippleTex.c.clone(); const N=64, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.strokeStyle='rgba(255,255,255,.8)'; x.lineWidth=1.5;
+function xRippleTex(){ const P=typeof envArtFx==='function'&&envArtFx('ripples'); if(P&&!xRippleTex.painted){ xRippleTex.painted=1; xRippleTex.c=xTexSmooth(P,true); }   // (the painted puddle: envart.js)
+  if(xRippleTex.c){ const o=xRippleTex.c.clone(); o.needsUpdate=true; return o; } const N=64, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.strokeStyle='rgba(255,255,255,.8)'; x.lineWidth=1.5;
   for(let k=0;k<5;k++){ x.beginPath(); const y0=k*13+4; for(let i=0;i<=N;i+=4) x.lineTo(i,y0+Math.sin(i/N*Math.PI*2+k)*3); x.stroke(); }
   const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=THREE.NearestFilter; xRippleTex.c=t; const o=t.clone(); o.needsUpdate=true; return o; }

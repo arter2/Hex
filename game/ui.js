@@ -512,7 +512,7 @@ function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
   else if(el===k) you+='<span class="bad">Your '+COLORS[k].name+' cards are resisted here.</span>';
   else if(el===WEAK_TO[k]) you+='<span class="good">Your cards hit most foes here for WEAK damage.</span>';
   return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`+(typeof areaRuleHTML==='function'?'<br>'+areaRuleHTML(A):''); }
-function openCamp(){
+function openCamp(){ if(typeof envArtWantDepth==='function'&&typeof save!=='undefined'&&save) envArtWantDepth(typeof pickDepth!=='undefined'&&pickDepth?pickDepth:save.deepest||1);   // the dungeon's painted art for where you will start (envart.js)
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   if(typeof artPreload==='function') artPreload(activeDeck().list);   // the deck's full art sheets, before any fight (art.js)
   if(pickDepth==null) pickDepth=save.deepest;
@@ -785,7 +785,7 @@ function fight(depth,waves,xo){
     onCustom:renderCustom,
     onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
-    onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+    onHurt:d=>{ buzz(d>=15?60:30); hurtPulse($('#hurtFx')); },
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
     onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
@@ -1757,7 +1757,7 @@ function duRun(s){ if(DU.session!==s||DU.over) return;
       onCustom:renderCustom,
       onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
       onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
-      onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+      onHurt:d=>{ buzz(d>=15?60:30); hurtPulse($('#hurtFx')); },
       onCombo:label=>{ B.combos=(B.combos||0)+1; B.hitStop=Math.max(B.hitStop||0,.09); banner('✦ '+label.split(':')[0],'#ffe066'); },
     });
     hud(true);

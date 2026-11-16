@@ -513,7 +513,8 @@ function xPuzzItemMesh(it){
 /* ---------------- how they look ---------------- */
 // a soft warm glow on the floor round a lit lantern (one texture for all)
 let PZ_GLOW=null;
-function pzGlowTex(){ if(PZ_GLOW) return PZ_GLOW; const S=64, cv=document.createElement('canvas'); cv.width=cv.height=S; const c=cv.getContext('2d'), g=c.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);
+function pzGlowTex(){ const P=typeof envArtFx==='function'&&envArtFx('lantern'); if(P&&!pzGlowTex.painted){ pzGlowTex.painted=1; return PZ_GLOW=xTexSmooth(P,false); }   // (the painted lantern glow: envart.js)
+  if(PZ_GLOW) return PZ_GLOW; const S=64, cv=document.createElement('canvas'); cv.width=cv.height=S; const c=cv.getContext('2d'), g=c.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);
   g.addColorStop(0,'rgba(255,214,130,.75)'); g.addColorStop(.45,'rgba(255,170,70,.32)'); g.addColorStop(1,'rgba(255,140,40,0)'); c.fillStyle=g; c.fillRect(0,0,S,S);
   return PZ_GLOW=new THREE.CanvasTexture(cv); }
 function xPuzzMesh(p,g){ const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30), iron=xMat(0x3a3a40,{shininess:40});

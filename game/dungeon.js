@@ -955,13 +955,13 @@ function xQuestCheck(){ if(!XRUN||!EX) return;
 function xFall(n,msg,deep){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog(msg,'warn'); xSfx('thud');
   if(deep&&typeof xDropSatchel==='function') xDropSatchel(n);
   const nd=EX.depth+n, hp=EX.hp; save.deepest=Math.max(save.deepest,nd); persist(); if(XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
-  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up'); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
+  xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(()=>xBanner(nd)); xGoFloor(nd,hp,'up'); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
     if(land.length&&n>0&&msg.indexOf('chute')<0){ const r=xpick(land); EX.pc=xi(r.cx,r.cy); EX.px=xw(EX.pc); EX.pz=xz(EX.pc); xUpdateVis(); }
     if(deep&&typeof xSealFloor==='function') xSealFloor(n);
-    EX.active=true; xHud(); xLoopStart(); xBanner(nd); },550); }
+    EX.active=true; xHud(); xLoopStart(); },550); }
 // the hidden stair in a secret closet: a small, quiet floor of the same depth with a guarded hoard
 function xEnterBranch(){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog('The hidden stair winds down into the dark…','good'); xSfx('grind');
-  const d=EX.depth, hp=EX.hp; xKeep(); setTimeout(()=>{ buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); xBanner(d); const b=$('#xBang'); b.innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; },550); }
+  const d=EX.depth, hp=EX.hp; xKeep(); xVeilOut(440); setTimeout(()=>{ xVeilIn(()=>{ xBanner(d); $('#xBang').innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; }); buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); },550); }
 // a sanctuary's blessing: the first time you fall afterwards, you wake at the stairs up of that floor
 function xTryRevive(){ if(!XRUN||!XRUN.attuned||!EX) return false; XRUN.attuned=0; return true; }
 function xRevived(){ const g=EX.fighting; resumeExplore(Math.round(xmaxHp()*.5),false);
@@ -1053,7 +1053,15 @@ function xCardShow(){ if(!EX) return; EX.cardQT=0; let q=EX.cardQ||[]; if(!q.len
   EX.cardQ=[]; const one=q.length===1;
   xDlg({title:one?(q[0].isNew?'New card!':'Card found'):q.length+' cards found', sub:one?COLORS[q[0].c.color].name+' · '+RARITY[q[0].c.rarity].n+' · '+TYPES[q[0].c.type].name:q.map(x=>x.c.name).join(' · '),
     text:(one?'It goes':'They go')+' into your collection. Add '+(one?'it':'them')+' to a deck from the bag (tap its title) or at camp.',
-    body:b=>{ const row=document.createElement('div'); row.className='xcards'; q.forEach(({c,isNew})=>{ const el=cardEl(c,isNew?'<span class="xnew">NEW</span>':''); el.tabIndex=-1; row.appendChild(el); }); b.appendChild(row); },
+    body:b=>{ const row=document.createElement('div'), badge=isNew=>isNew?'<span class="xnew">NEW</span>':''; row.className='xcards';
+      // one card: the full card, its rules and footer (what it does); several: the short cards side by side, and a tap
+      // on one shows it full size (a tap on that goes back to the row)
+      const full=({c,isNew})=>{ const el=cardEl(c,badge(isNew),false,'expanded'); el.tabIndex=-1; el.classList.add('xfull'); return el; };
+      const fit=()=>{ if(typeof kitFit==='function') kitFit(row); };
+      const showRow=()=>{ row.innerHTML=''; q.forEach(it=>{ const el=cardEl(it.c,badge(it.isNew)); el.tabIndex=-1; el.title='Tap to see what it does';
+        el.addEventListener('click',()=>{ row.innerHTML=''; const f=full(it); f.addEventListener('click',showRow); row.appendChild(f); fit(); }); row.appendChild(el); }); fit(); };
+      if(one){ row.appendChild(full(q[0])); } else showRow();
+      b.appendChild(row); fit(); },
     buttons:[['Got it',null],['Build deck',()=>{ if(typeof openDeckUI==='function') openDeckUI('dungeon'); },true]]}); xSfx('chime'); }
 function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o; clearTimeout(xTipT);   // a tip waits, hidden, while a dialog is open
   $('#xdTitle').textContent=o.title||''; $('#xdSub').textContent=o.sub||''; $('#xdText').textContent=o.text||''; xDlgPic(o);

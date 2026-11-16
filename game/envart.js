@@ -1,0 +1,141 @@
+/* Hexmancers - the dungeon's painted textures (the art handoff: docs/art-production/painterly-textures.md).
+   The painterly masters are packed by tools/build-env-atlas.py into atlas sheets (game/art/environment/atlas/, tile
+   rectangles in envartmap.js): one colour sheet and one normal-map sheet per area, and one sheet of small effects.
+   The floors, walls and theme floors sample their tile straight from the sheet on the GPU (look.js xAtlasShader: the
+   lookup wraps inside the tile, and each tile has a gutter of its own wrapped edge for the filtering and mip levels);
+   the effects are cut back out into canvases of their own, as they scroll, tile or draw as sprites.
+
+   The sheets load in the background, an area's ahead of when it is needed: at camp for the depth you start at, near
+   the stairs for the area below (nature.js xPrewarmTick), and for the floor being entered. The scene builder is
+   synchronous: a tile not loaded yet returns null and the code-painted texture stands in, and once the sheets of the
+   area you are in have come in, the scene is built again once with them (envArtArrived). A sheet that fails to load
+   leaves the code-painted textures in place for good. */
+(function(root){
+const BASE='art/environment/atlas/';
+const STATE=new Map(), IMG=new Map();   // sheet: 'loading' | 'ok' | 'fail'; the decoded image
+let missing=false;
+const known=()=>typeof ENVART_MAP!=='undefined'&&ENVART_MAP&&ENVART_MAP.sheets;
+function load(sheet){ if(!known()||STATE.has(sheet)) return; const S=ENVART_MAP.sheets[sheet]; if(!S) return;
+  STATE.set(sheet,'loading'); const im=new Image(); im.decoding='async';
+  im.onload=()=>{ STATE.set(sheet,'ok'); IMG.set(sheet,im); envArtArrived(); };
+  im.onerror=()=>{ STATE.set(sheet,'fail'); envArtArrived(); };
+  im.src=BASE+S.file; }
+/* The battle arena's painted textures (tools/build-arena-tex.py: art/environment/arena/<area>--<slot>.webp, 512 px), one
+   file per surface rather than a sheet: an area's six or seven load with its dungeon sheets. The slots, as arena.js
+   names them: board (the hex tiles), floor (the cave floor and the island's top), wall (the cave walls and the island's
+   rim), rock (rocks and the boss dais; the Vault's pillars), chasm (the deep below), mold (the light mold over the
+   arena), lava (the Rifts' lava). */
+const ARENA_FILE={ board:'board-tile-slab-xSlabFloor', floor:'cave-floor-island-top-xRockFloor', wall:'cave-walls-island-rim-xRockWall',
+  rock:'rocks-dais-xRockWall', chasm:'chasm-below-xChasmTex', lava:'lava-arLavaTex' };
+const ARENA_ONLY={ lava:{rifts:1} };
+const ARENA_MOLD={ hollows:'olive-powder', deeps:'slate-blue-bloom', rifts:'rust-crust', ruins:'ochre-spores', abyss:'charcoal-blight' };
+// an area whose arena wears its own dungeon tiles instead (the Vault's arena paintings were too loud to read the board on):
+// slot -> the tile in its area sheet; the slots not named keep their code-painted texture
+const ARENA_DUNGEON={ vault:{ board:'floor-0', floor:'floor-2', wall:'wall-0', rock:'wall-1' } };
+const ACUT=new Map();
+function arenaDungeon(id,slot){ const key=ARENA_DUNGEON[id][slot]; if(!key) return null; const sheet='area-'+id, k=sheet+'/'+key; if(ACUT.has(k)) return ACUT.get(k);
+  if(!known()) return null; if(!ready(sheet)){ load(sheet); return null; } const t=ENVART_MAP.sheets[sheet].tiles[key]; if(!t) return null;
+  const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3]; c.getContext('2d').drawImage(IMG.get(sheet),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); ACUT.set(k,c); return c; }
+const AST=new Map(), AIMG=new Map();
+function arenaFile(id,slot){ if(slot==='mold') return ARENA_MOLD[id]?'mold-light-layer-'+ARENA_MOLD[id]:null; const o=ARENA_ONLY[slot];
+  if(o&&typeof o[id]==='string') return o[id]; if(o&&!o[id]) return null; return ARENA_FILE[slot]||null; }
+function arenaLoad(id,slot){ if(ARENA_DUNGEON[id]) return; const f=arenaFile(id,slot); if(!f) return; const k=id+'--'+f; if(AST.has(k)) return; AST.set(k,'loading');
+  const im=new Image(); im.decoding='async'; im.onload=()=>{ AST.set(k,'ok'); AIMG.set(k,im); }; im.onerror=()=>AST.set(k,'fail'); im.src='art/environment/arena/'+k+'.webp'; }
+// an arena surface's painting (an Image), or null while it loads (the code-painted one stands in) or if there is none
+function envArtArena(id,slot){ if(ARENA_DUNGEON[id]) return arenaDungeon(id,slot); const f=arenaFile(id,slot); if(!f) return null; const k=id+'--'+f; if(!AST.has(k)) arenaLoad(id,slot); return AIMG.get(k)||null; }
+/* The battle board's painted hex floor (tools/build-arena-hex.py: art/environment/arena/hex/, ARENA_HEX in arenahexmap.js):
+   ten files an area and one shared noise, loaded with the area's other art. All of them or nothing: until every one has
+   come in, or for good once one fails, the board stands in with its shape-built floor (arenahex.js). */
+const HEX_PARTS={ tiles:'tiles', n:'tiles-n', m:'tiles-m', v:'tiles-v', joint:'joint', jointN:'joint-n', jointM:'joint-m', growth:'growth', growthE:'growth-e', growthM:'growth-m' };
+const HST=new Map(), HIMG=new Map(), HSET=new Map();
+function hexLoad(file){ if(HST.has(file)) return; HST.set(file,'loading'); const im=new Image(); im.decoding='async';
+  im.onload=()=>{ HST.set(file,'ok'); HIMG.set(file,im); }; im.onerror=()=>HST.set(file,'fail'); im.src='art/environment/arena/hex/'+file+'.webp'; }
+const hexFiles=id=>Object.values(HEX_PARTS).map(k=>id+'-'+k).concat('broad-noise');
+function hexWant(id){ if(typeof ARENA_HEX==='undefined'||!ARENA_HEX.areas.includes(id)) return; for(const f of hexFiles(id)) hexLoad(f); }
+// an area's hex floor art {tiles,n,m,v,joint,jointN,jointM,growth,growthE,growthM,noise} (Images, the same objects every
+// time), or null while any is loading or once one has failed
+function envArtHex(id){ if(HSET.has(id)) return HSET.get(id); if(typeof ARENA_HEX==='undefined'||!ARENA_HEX.areas.includes(id)) return null; hexWant(id);
+  const F=hexFiles(id); if(!F.every(f=>HST.get(f)==='ok')) return null;
+  const o={}; for(const k in HEX_PARTS) o[k]=HIMG.get(id+'-'+HEX_PARTS[k]); o.noise=HIMG.get('broad-noise'); HSET.set(id,o); return o; }
+const envArtHexFailed=id=>hexFiles(id).some(f=>HST.get(f)==='fail');
+/* The battle arena's backdrops (tools/build-arena-backdrops.py: art/environment/arena/backdrops/, ARENA_BACKDROP in
+   arenabackdropmap.js). An area's material sets (rock, dressed stone, its special material) load with its other art, a
+   boss's special set with its area's; matte paintings, the big ones, only when a battle picks one (envArtMatte). */
+const BST=new Map(), BIMG=new Map(), BSET=new Map(), BMAT=new Map();
+function bdLoad(file){ if(BST.has(file)) return; BST.set(file,'loading'); const im=new Image(); im.decoding='async';
+  im.onload=()=>{ BST.set(file,'ok'); BIMG.set(file,im); }; im.onerror=()=>BST.set(file,'fail'); im.src='art/environment/arena/backdrops/'+file+'.webp'; }
+const bdKnown=id=>typeof ARENA_BACKDROP!=='undefined'&&ARENA_BACKDROP.mattes[id]!=null;
+const bdSets=id=>id.startsWith('boss-')?['special']:['rock','stone','special'];
+const bdFiles=id=>bdSets(id).flatMap(s=>[s,s+'-n',s+'-m'].concat(s==='special'&&ARENA_BACKDROP.glow[id]?['special-e']:[]).map(k=>id+'-'+k));
+function bdWant(id){ if(bdKnown(id)) for(const f of bdFiles(id)) bdLoad(f); }
+// a backdrop's material sets {rock, stone, special} (each {map, n, m, e?}: Images, the same objects every time), or null
+// while any is loading or once one has failed
+function envArtBackdrop(id){ if(BSET.has(id)) return BSET.get(id); if(!bdKnown(id)) return null; bdWant(id);
+  if(!bdFiles(id).every(f=>BST.get(f)==='ok')) return null;
+  const o={}; for(const s of bdSets(id)){ const g=k=>BIMG.get(id+'-'+s+k); o[s]={map:g(''), n:g('-n'), m:g('-m'), e:g('-e')||null}; } BSET.set(id,o); return o; }
+// a matte painting's two layers {far, mid}, loading on the first call; null until both are in, and for good once one fails
+function envArtMatte(id,n){ const k=id+'-matte-'+n; if(BMAT.has(k)) return BMAT.get(k); if(!bdKnown(id)) return null;
+  bdLoad(k+'-far'); bdLoad(k+'-mid'); if(BST.get(k+'-far')!=='ok'||BST.get(k+'-mid')!=='ok') return null;
+  const o={far:BIMG.get(k+'-far'), mid:BIMG.get(k+'-mid')}; BMAT.set(k,o); return o; }
+const envArtMatteFailed=(id,n)=>['far','mid'].some(L=>BST.get(id+'-matte-'+n+'-'+L)==='fail');
+// start loading what an area needs (its two sheets and the effects, and its arena)
+function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
+  for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); hexWant(id);
+  bdWant(id); if(typeof AREAS!=='undefined'){ const A=AREAS.find(a=>a.id===id); if(A&&A.boss) bdWant('boss-'+A.boss); } }
+function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
+const ready=s=>STATE.get(s)==='ok';
+// a tile's rectangle in the sheet as the GPU sees it (three turns images over: v runs up from the bottom)
+function glRect(sheet,key){ const S=ENVART_MAP.sheets[sheet], t=S&&S.tiles[key]; if(!t) return null; const [W,H]=S.size; return [t[0]/W,1-(t[1]+t[3])/H,t[2]/W,t[3]/H]; }
+// a tile ready to sample: {atlas, img, rect, n:{img, rect}}, or null (and the build notes it is waiting)
+function tile(sheet,key,nkey){ if(!known()) return null;
+  if(!ready(sheet)){ if(STATE.get(sheet)!=='fail') missing=true; return null; } const rect=glRect(sheet,key); if(!rect) return null;
+  const t={atlas:1, sheet, key, img:IMG.get(sheet), rect, width:ENVART_MAP.tile, height:ENVART_MAP.tile};
+  if(nkey){ const ns=sheet+'-n'; if(!ready(ns)){ if(STATE.get(ns)!=='fail'){ missing=true; return null; } }
+    else { const nr=glRect(ns,nkey); if(nr) t.n={img:IMG.get(ns), rect:nr}; } }
+  return t; }
+/* Texture bombing (look.js xBombShader) needs a pattern that repeats on the bombing grid, so a shifted cell still
+   meets its neighbours at a joint; the step is in the tile's cells a side (a tile spans 8 floor cells). Measured on the
+   painted art (the grout lines' places): the flooded tiles fall on every cell, the Abyss's plain room slabs on every
+   other. The rest are painted freehand, laid on a grid that does not fall on the cells (sixths of a tile), or in
+   frames and medallions, and are painted only. No quarter turns: the painted light would turn with them. */
+const BOMB={'theme-flooded':8, 'theme-bathhouse':2, 'abyss/floor-1':4};
+const NO_PAINT=new Set(['theme-library']);   // the library's parquet, exactly as painted
+function dress(t,id){ if(!t) return t; const k=t.key.startsWith('theme-')?t.key:id+'/'+t.key; if(!NO_PAINT.has(k)) t.paint=1; if(BOMB[k]){ t.bomb=BOMB[k]; t.bombTurn=0; } return t; }
+// the area's floors (passage, room A, room B) and walls (rock, block, rubble), each with its normal map (made from the
+// painting by the build: the pack has none for them), or null
+function envArtAreaFloors(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>dress(tile(s,'floor-'+k,'floor-'+k),id)); return out.every(Boolean)?out:null; }
+function envArtAreaWalls(A){ const id=A&&A.id, s='area-'+id, out=[0,1,2].map(k=>tile(s,'wall-'+k,'wall-'+k)); return out.every(Boolean)?out:null; }
+// a room theme's floor and its normal map, in the area it is in (every area's sheet holds the themes it can roll)
+function envArtTheme(th,A){ const id=A&&A.id; return dress(tile('area-'+id,'theme-'+th,'theme-'+th),id); }
+// the Ember Rifts' medium-rock overlay, laid over their rock walls (explore.js xRockShader)
+function envArtOverlay(A){ return A&&A.id==='rifts'?tile('area-rifts','rock-overlay'):null; }
+// an effect, cut out of the effects sheet into a canvas of its own (256 x 256), or null
+const CUT=new Map();
+function envArtFx(name){ if(CUT.has(name)) return CUT.get(name); if(!known()||!ready('effects')){ if(known()&&STATE.get('effects')!=='fail'){ load('effects'); missing=true; } return null; }
+  const S=ENVART_MAP.sheets.effects, t=S.tiles[name]; if(!t) return null; const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3];
+  c.getContext('2d').drawImage(IMG.get('effects'),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); CUT.set(name,c); return c; }
+// an effect's glow mask (the effects-e sheet, in the same place as the effect), cut out the same way, or null
+const CUTE=new Map();
+function envArtFxGlow(name){ if(CUTE.has(name)) return CUTE.get(name); if(!known()||!ENVART_MAP.sheets['effects-e']||!ready('effects-e')){ if(known()&&STATE.get('effects-e')!=='fail'){ load('effects-e'); missing=true; } return null; }
+  const S=ENVART_MAP.sheets['effects-e'], t=S.tiles[name]; if(!t) return null; const c=document.createElement('canvas'); c.width=t[2]; c.height=t[3];
+  c.getContext('2d').drawImage(IMG.get('effects-e'),t[0],t[1],t[2],t[3],0,0,t[2],t[3]); CUTE.set(name,c); return c; }
+// one GPU texture per sheet, shared by every material that samples it: clamped (the shader wraps inside the tile),
+// smooth, mipmapped. The scene's teardown disposes it with the materials; using it again uploads it again.
+const TEX=new Map();
+function envArtTex(img){ let t=TEX.get(img); if(!t){ t=new THREE.Texture(img); t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; t.magFilter=THREE.LinearFilter;
+    t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; TEX.set(img,t); } return t; }
+// the mold sheet (mold.js): its texture and a tile's rectangle as the GPU sees it, or null while it loads (the build
+// notes it is waiting, and is made again once it is in)
+function envArtMold(){ if(!known()||!ENVART_MAP.sheets.mold) return null; if(!ready('mold')){ if(STATE.get('mold')!=='fail'){ load('mold'); missing=true; } return null; }
+  return {tex:envArtTex(IMG.get('mold')), rect:key=>glRect('mold',key)}; }
+// the scene builder asks before and after: did it have to stand a code-painted texture in for one still loading?
+function envArtBuildStart(){ missing=false; }
+const envArtMissing=()=>missing;
+// a sheet came in (or failed): if the scene in front of you stood code-painted textures in for it, build it again
+function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
+  if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
+  EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
+const api={envArtBackdrop,envArtMatte,envArtMatteFailed,envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+Object.assign(root,api);
+envArtWant('hollows');   // where a new game starts
+})(typeof globalThis!=='undefined'?globalThis:this);

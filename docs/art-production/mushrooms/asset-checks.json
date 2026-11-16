@@ -1,0 +1,629 @@
+{
+  "all_checks_passed": true,
+  "variant_count": 12,
+  "source_images_byte_identical": true,
+  "files": [
+    {
+      "path": "masters/01-mushroom-lantern-bells.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "a304398befd037816b92345a5af27d2de0900548f792d6963090625ed14a1456",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 76602
+    },
+    {
+      "path": "alpha-masks/01-mushroom-lantern-bells-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "16cb1b097605b1b417b246774bc49059bfc334bfe7a720a3003f992f6d688b0e"
+    },
+    {
+      "path": "atlas-tiles/01-mushroom-lantern-bells.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "56b1d366714f484eedd7c1c547b2a45c24ae6094f442e4840733c6fca7a9d630",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 14785
+    },
+    {
+      "path": "emission-masks/01-mushroom-lantern-bells-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "b4081d39974c7e5e6640800d876a0c7bc522fde198c0c750fbc251d38bdf4682",
+      "nonzero_pixels": 2206,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/01-mushroom-lantern-bells-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "2b1dd8d0c21d7a1ebd27d15de40095eab1df38888b42002ab3d9ef31e9c032ea",
+      "nonzero_pixels": 953,
+      "peak": 241
+    },
+    {
+      "path": "masters/02-mushroom-amber-buttons.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "0f525603527b391fffc8dd6675f6e080b0710ba3492c86ab10843407e126e704",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 103510
+    },
+    {
+      "path": "alpha-masks/02-mushroom-amber-buttons-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "7b91b82fc561fdb13467614114b26274c2d0f325e3c5ea748b2aaf0792c41361"
+    },
+    {
+      "path": "atlas-tiles/02-mushroom-amber-buttons.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "fe0249b1ce8ab78ee56c011ac08b25aee7b44fda10bdd9bc75a71ed70657ff9f",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 19884
+    },
+    {
+      "path": "emission-masks/02-mushroom-amber-buttons-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "d04a55993db31c20c08ab55002d0810c1cb369c5c003e3d47e4bfbecf809b74a",
+      "nonzero_pixels": 1341,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/02-mushroom-amber-buttons-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "63eb1ba6f7e01bffac737384c3751534e54a5314df85d9b2a1418ba56ae74203",
+      "nonzero_pixels": 1215,
+      "peak": 255
+    },
+    {
+      "path": "masters/03-mushroom-ivory-bonnets.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "77c8716fef5c1e7b5c1a784c056886f4057424564e9537fbb64c9dfea2cd3eed",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 40086
+    },
+    {
+      "path": "alpha-masks/03-mushroom-ivory-bonnets-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "ef6abb29a3e502f62a1e9167578455ef6f61d529b39fb6c402e200d6ea648a6a"
+    },
+    {
+      "path": "atlas-tiles/03-mushroom-ivory-bonnets.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "e4dc890af42bc885d5f1d7d0a62bfc48b0d03928a0b2f403702e3018a49b4cf2",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 7860
+    },
+    {
+      "path": "masters/04-mushroom-violet-waves.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "89b44c8642d6a6e92a5ec2f4752fbd5a3476f3cf120570212d73ee1a7d9105e4",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 69127
+    },
+    {
+      "path": "alpha-masks/04-mushroom-violet-waves-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "886d1446e5dd1dcc20c44ba77703f0b4d0e9851d7aacfe388043f1d97cdb259e"
+    },
+    {
+      "path": "atlas-tiles/04-mushroom-violet-waves.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "4f040792a2954883b2d8199f7a7a59d70e5be2b3ba0e5dcdb5a89f9959349307",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 13376
+    },
+    {
+      "path": "emission-masks/04-mushroom-violet-waves-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "dbfca6883a53dd3af1a4f4d43f81219f7955664aefa449c43e06ac87e0145023",
+      "nonzero_pixels": 1299,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/04-mushroom-violet-waves-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "26a8cab44553fc6be0e3863c157209b239918acb3d3aee0f3afe8ee397d84960",
+      "nonzero_pixels": 827,
+      "peak": 229
+    },
+    {
+      "path": "masters/05-mushroom-shelf-fans.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "651d943b571a021a532cee4b6bd29787dd3b58236bd3dc4fe7b05420f2a881de",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 123916
+    },
+    {
+      "path": "alpha-masks/05-mushroom-shelf-fans-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "af3bb85ea373902e890efa394b6a45282031513980e0a5fbe4cf65ad77b48e8e"
+    },
+    {
+      "path": "atlas-tiles/05-mushroom-shelf-fans.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "1d2fe77f332626abc84194efff12e8d1fc044b6ecc627a23149c19bcee7458a3",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 23813
+    },
+    {
+      "path": "masters/06-mushroom-oyster-rosette.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "fcb38e211fafdb6827ea4b20e5352ed5863d3c8ef30935603f9608537754db43",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 95734
+    },
+    {
+      "path": "alpha-masks/06-mushroom-oyster-rosette-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "43ded9961c19bef22b677e21e977853cdc4c2c29faefb8285b75bd6a40d2dca9"
+    },
+    {
+      "path": "atlas-tiles/06-mushroom-oyster-rosette.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "edd6ecf4f977efe154c76026a8e0786b03da7defab558e56bcb477017d96361d",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 18405
+    },
+    {
+      "path": "masters/07-mushroom-moss-puffballs.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "cb323680b5913b9e00aef03f7d08f89c41df3fe325ef4b7ea779fd811bc37b51",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 118883
+    },
+    {
+      "path": "alpha-masks/07-mushroom-moss-puffballs-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "827b9fb913c4080adf89d82ccdbb96a267ed52347eabf3b0bca0430406aecfea"
+    },
+    {
+      "path": "atlas-tiles/07-mushroom-moss-puffballs.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "27ea5fab9b2aa1444d122aec8b03ffc57e76c395dbc44e76a13bec7a4527319f",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 22840
+    },
+    {
+      "path": "emission-masks/07-mushroom-moss-puffballs-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "9150836185ec7e73bba9b079090d4110662a69fec35302fbc716d5cafa61e42e",
+      "nonzero_pixels": 357,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/07-mushroom-moss-puffballs-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "b7afc7a5615cafef79c1f975504fceef5c46ac4ebd0cc79443fad0675c8e8d5f",
+      "nonzero_pixels": 313,
+      "peak": 220
+    },
+    {
+      "path": "masters/08-mushroom-coral-fingers.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "c0738d088fa7c0cf4053038dc1d67a536532299e2e8c479a4cea3ca3c0f80330",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 84425
+    },
+    {
+      "path": "alpha-masks/08-mushroom-coral-fingers-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "9835ab76762ee9dc1a8e11882663598ec42f8926d3ae6e0008f8d581fd24588e"
+    },
+    {
+      "path": "atlas-tiles/08-mushroom-coral-fingers.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "ea413347ea3bfd457813ff27e6dce149268819f8cc126d9f0eca745627073cf8",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 16387
+    },
+    {
+      "path": "emission-masks/08-mushroom-coral-fingers-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "8a974b35577673c8229c2662a9f36e1fc1aa2af0d605e60e8d9594b1edeae73f",
+      "nonzero_pixels": 2602,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/08-mushroom-coral-fingers-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "9d0731e65671a53f76ebc70bac667fb2d90280c934bd51a821092061520e0f3a",
+      "nonzero_pixels": 691,
+      "peak": 242
+    },
+    {
+      "path": "masters/09-mushroom-copper-cups.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "34b09877a5779ef3d276d24ac4ce5581104edac2b559adb6117653a0361f3379",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 97910
+    },
+    {
+      "path": "alpha-masks/09-mushroom-copper-cups-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "9df7c53f2a8f3a81562e09dc68861294d2ce6db49f1dbd41e274633bc3ebde6a"
+    },
+    {
+      "path": "atlas-tiles/09-mushroom-copper-cups.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "39a03bccacaad5185a1ff4cbdf2c05a35242b9f37ac517bd14821d0967bbeae7",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 18873
+    },
+    {
+      "path": "masters/10-mushroom-black-trumpets.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "c37ef38e1df2912a423b861c41c614455a2d8941f448d323e9fedcfc711d09e2",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 74236
+    },
+    {
+      "path": "alpha-masks/10-mushroom-black-trumpets-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "169f47f5dce68ef1eb85ddd52f9701d201c487fd030f0a5cd2484d7be3df3dda"
+    },
+    {
+      "path": "atlas-tiles/10-mushroom-black-trumpets.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "3e40a41444055ca333548be1f6e3614d75298974a371b827e4372efd5d72fb31",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 14376
+    },
+    {
+      "path": "masters/11-mushroom-pinlight-colony.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "1196caa09df0c9cd47e45534ab75ca5a9ec72a8042c4559c395610bffd71254d",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 53059
+    },
+    {
+      "path": "alpha-masks/11-mushroom-pinlight-colony-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "0043d54e38066e66cc001e0cb393fb5a3d11a1e90ff9f2119c5c92d02468faa2"
+    },
+    {
+      "path": "atlas-tiles/11-mushroom-pinlight-colony.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "157828aaee9f3e299895cd86433ba1dcf37a94370806f3f8140df456fe34d720",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 10363
+    },
+    {
+      "path": "emission-masks/11-mushroom-pinlight-colony-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "438dd5fd85f5bddd61b4a349cf142b835ace03613a4bf5ee300182a60d3d8def",
+      "nonzero_pixels": 898,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/11-mushroom-pinlight-colony-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "c4fa9ecb3aee3a8daac7e79d5159606e3dc2b79f2ae3c8ee89a6bee2856c4452",
+      "nonzero_pixels": 471,
+      "peak": 178
+    },
+    {
+      "path": "masters/12-mushroom-split-sage-caps.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "6a82a1d3cddb20e99ea0bac707ed8b355b27552fef33bfcb38a2afe495c87366",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 100630
+    },
+    {
+      "path": "alpha-masks/12-mushroom-split-sage-caps-alpha.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "6d35acc146fb7966acbe857880ca2cbd66c2090f42739b0e7a63c9b9640c2919"
+    },
+    {
+      "path": "atlas-tiles/12-mushroom-split-sage-caps.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "d58b36c59d814ccadcd1bb253f580dc75fb97a4ae0f2f418a6aa9800bf92c044",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "clear_outer_border": true,
+      "opaque_pixels": 19375
+    },
+    {
+      "path": "emission-masks/12-mushroom-split-sage-caps-emission.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "L",
+      "sha256": "cedea2e95fc497f5a655ca79d1bd062d51464a28908e1d77e8b00d1b502e3d84",
+      "nonzero_pixels": 226,
+      "peak": 255
+    },
+    {
+      "path": "emission-masks/12-mushroom-split-sage-caps-emission-atlas.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "L",
+      "sha256": "6b7fef032c524b92e5d7c104d1f55235033d4889a08eb5da6b5a390bc5b45801",
+      "nonzero_pixels": 239,
+      "peak": 255
+    }
+  ]
+}

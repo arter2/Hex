@@ -114,14 +114,14 @@ const X2C={room:.8, kits:{temple:['pillar','pillar','fire','ruin','ruin','column
 const XTHEMES={
   armory:   {name:'Armory',      kit:['weaprack','weaprack','anvil','cratestack','pillar','cratestack'], walk:['rubble']},
   flooded:  {name:'Flooded',     kit:['pool','pool','pillar','boulder'], walk:['reeds','puddle','puddle']},
-  overgrown:{name:'Overgrown',   kit:['planter','sapling','sapling','boulder','ruin'], walk:['roots','caps']},
-  collapsed:{name:'Collapsed',   kit:['bigrock','beam','beam','column','ruin','boulder'], walk:['rubble','rubble']},
+  overgrown:{name:'Overgrown',   kit:['planter','sapling','sapling','boulder','ruin','log'], walk:['roots','caps']},
+  collapsed:{name:'Collapsed',   kit:['bigrock','beam','beam','column','ruin','boulder','log'], walk:['rubble','rubble']},
   library:  {name:'Library',     kit:['bookcase','bookcase','bookcase','desk','desk','pillar'], walk:['scrolls']},
   crypt:    {name:'Crypt',       kit:['sarcophagus','sarcophagus','urnbig','pillar','urnbig'], walk:['bones','bones']},
   forge:    {name:'Forge',       kit:['furnace','anvil','anvil','trough','cratestack'], walk:['coal','coal']},
   bathhouse:{name:'Bathhouse',   kit:['basin','bench','bench','urnbig','pillar'], walk:['puddle']},
   barracks: {name:'Barracks',    kit:['bunk','bunk','bunk','table2','cratestack','weaprack'], walk:['straw']},
-  fungus:   {name:'Fungus grove',kit:['bigcap','bigcap','bigcap','boulder'], walk:['caps','caps']},
+  fungus:   {name:'Fungus grove',kit:['bigcap','bigcap','bigcap','boulder','log'], walk:['caps','caps']},
   temple:   {name:'Temple',      kit:['pillar','pillar','fire','ruin','ruin','column','planter'], walk:['rubble']},
 };
 const XTHEME_AREA={
@@ -145,7 +145,7 @@ function x2Clutter(rooms,F,R,ri,depth){ const {t,room,doors}=F, low=F.low||(F.lo
   const SH={pillar:[[[0,0]]], fire:[[[0,0]]], boulder:[[[0,0]]], bigrock:[[[0,0],[1,0],[0,1],[1,1]]], planter:[[[0,0],[1,0]],[[0,0],[0,1]]],
     column:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]]], ruin:[[[0,0],[1,0],[2,0]],[[0,0],[0,1],[0,2]],[[0,0],[1,0],[0,1]],[[0,0],[1,0],[1,1]]]};
   const one=[[[0,0]]], two=[[[0,0],[1,0]],[[0,0],[0,1]]], sq=[[[0,0],[1,0],[0,1],[1,1]]];
-  Object.assign(SH,{weaprack:one, anvil:one, cratestack:one, sapling:one, urnbig:one, bigcap:one, pool:sq, basin:sq, furnace:sq, beam:SH.column,
+  Object.assign(SH,{weaprack:one, anvil:one, cratestack:one, sapling:one, urnbig:one, bigcap:one, log:two, pool:sq, basin:sq, furnace:sq, beam:SH.column,
     bookcase:two, desk:two, sarcophagus:two, trough:two, bench:two, bunk:two, table2:two});
   x2Themes(rooms,R,aid);
   for(const r of rooms){ if(r.side||r.nook||r.w<7||r.h<6||R()>X2C.room) continue; const tpl=!!(r.shape&&r.shape.k==='T'), TH=XTHEMES[r.theme];
@@ -344,6 +344,82 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xPhong({vertexColors:true}))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
 
+/* Foliage cards: a ball of leaves drawn as a dozen small cut-out cards of the painted leaf clumps (envart.js 'leaf-clumps',
+   four clumps in one tile), set round the ball at different depths and facing out, so you see leaves and the gaps between
+   them, not a solid ball. Their normals point out from the ball's centre, so the clump is lit as one round mass, and the
+   cards deep inside are darker. All the cards of a room go into one mesh with one material: one draw call. */
+const XLEAF={cards:12};
+// name: the effects tile its cards show (envart.js; the trees' leaf clumps unless told), one mesh and material each
+function xLeafMerger(name){ name=name||'leaf-clumps'; const P=[], N=[], U=[], C=[], core={P:[],N:[],U:[],C:[]};
+  return { P, N, U, C, core, name, size:()=>P.length,
+    build(){ const img=envArtFx(name), mesh=this.buildCards(img); if(!core.P.length) return mesh;
+      // the solid cores (xLeafCore): the leaves painted over solid leaf colour, opaque, one more mesh
+      const g=new THREE.Group(), cg=new THREE.BufferGeometry(); cg.setAttribute('position',new THREE.Float32BufferAttribute(core.P,3)); cg.setAttribute('normal',new THREE.Float32BufferAttribute(core.N,3));
+      cg.setAttribute('uv',new THREE.Float32BufferAttribute(core.U,2)); cg.setAttribute('color',new THREE.Float32BufferAttribute(core.C,3));
+      const cm=xDitherMat(xPhong({map:xLeafCoreTex(img),vertexColors:true})); cm.userData.noProj=1; if(this.hue) xHueMat(cm,this.hue);
+      g.add(new THREE.Mesh(cg,cm),mesh); return g; },
+    buildCards(img){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
+      g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
+      const m=xDitherMat(xPhong({map:xLeafTex(img,name!=='leaf-clumps'),vertexColors:true,alphaTest:.5,side:THREE.DoubleSide})); m.userData.noProj=1; if(this.hue) xHueMat(m,this.hue); return new THREE.Mesh(g,m); } }; }
+/* A leaf ball's solid core: a smaller ball inside the cards, its leaves painted over solid dark leaf colour so it is
+   opaque. You see branches and gaps at the edge of a clump, never through its middle. The texture: the clumps tile
+   composited over the colour (made once). */
+const XLEAF_CORE=new Map();
+function xLeafCoreTex(img){ let t=XLEAF_CORE.get(img); if(t) return t; const c=document.createElement('canvas'); c.width=img.width; c.height=img.height; const x=c.getContext('2d');
+  x.fillStyle='#26331a'; x.fillRect(0,0,c.width,c.height); x.drawImage(img,0,0); x.globalAlpha=.6; x.drawImage(img,c.width/4,c.height/4,c.width/2,c.height/2,0,0,c.width,c.height); x.globalAlpha=1;
+  t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; XLEAF_CORE.set(img,t); return t; }
+const XLEAF_BALL=new THREE.SphereGeometry(1,10,7).toNonIndexed();
+function xLeafCore(F,cx,cy,cz,r,shade){ const P=XLEAF_BALL.attributes.position.array, N=XLEAF_BALL.attributes.normal.array, U=XLEAF_BALL.attributes.uv.array, K=F.core;
+  for(let i=0;i<P.length;i+=3){ K.P.push(cx+P[i]*r, cy+P[i+1]*r*.9, cz+P[i+2]*r); K.N.push(N[i],N[i+1],N[i+2]); const v=shade*(.7+.3*(P[i+1]*.5+.5)); K.C.push(v,v,v); }
+  for(let i=0;i<U.length;i+=2) K.U.push(U[i]*2,U[i+1]); }
+/* A painted card turned toward a hue (the area's leaf colour) in the shader, keeping the painting's own light and shade:
+   its hue moves most of the way to the target's; its saturation and value stay the painting's. Wraps whatever the material already
+   patches. */
+function xHueMat(m,col,k){ const prev=m.onBeforeCompile, key=m.customProgramCacheKey, U={value:new THREE.Color(col)}, K={value:k==null?.65:k};
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); sh.uniforms.uXHue=U; sh.uniforms.uXHueK=K;
+    sh.fragmentShader='uniform vec3 uXHue; uniform float uXHueK;\n'
+      +'vec3 xRgb2Hsv(vec3 c){ vec4 K=vec4(0.,-1./3.,2./3.,-1.); vec4 p=mix(vec4(c.bg,K.wz),vec4(c.gb,K.xy),step(c.b,c.g)); vec4 q=mix(vec4(p.xyw,c.r),vec4(c.r,p.yzx),step(p.x,c.r)); float d=q.x-min(q.w,q.y); return vec3(abs(q.z+(q.w-q.y)/(6.*d+1e-10)),d/(q.x+1e-10),q.x); }\n'
+      +'vec3 xHsv2Rgb(vec3 c){ vec4 K=vec4(1.,2./3.,1./3.,3.); vec3 p=abs(fract(c.xxx+K.xyz)*6.-K.www); return c.z*mix(K.xxx,clamp(p-K.xxx,0.,1.),c.y); }\n'
+      +sh.fragmentShader.replace('#include <color_fragment>','{ vec3 h=xRgb2Hsv(diffuseColor.rgb), t=xRgb2Hsv(uXHue); float dh=t.x-h.x; dh-=floor(dh+.5); h.x=fract(h.x+dh*uXHueK); diffuseColor.rgb=xHsv2Rgb(h); }\n#include <color_fragment>'); };
+  m.customProgramCacheKey=()=>(key?key.call(m):'')+'|hue'; m.needsUpdate=true; return m; }
+// one texture per card tile (a cut-out canvas from envart.js), shared by every material that shows it
+const XLEAF_TEX=new Map();
+// (thin: a card that is mostly clear, a vine's strand or a grass blade, has no mip levels: smaller ones average its
+// stems' alpha below the cut-out, and at a few metres the whole strand would vanish; it is filtered from the full tile)
+function xLeafTex(img,thin){ let t=XLEAF_TEX.get(img); if(!t){ t=new THREE.CanvasTexture(img); t.anisotropy=4;
+    if(thin){ t.generateMipmaps=false; t.minFilter=THREE.LinearFilter; } else t.minFilter=THREE.LinearMipmapLinearFilter; XLEAF_TEX.set(img,t); } return t; }
+/* Painted grass (envart.js 'grass-dungeon'): two crossed upright cards on one root at (x,z), size tall (the tile's plant
+   is 224 of its 256 rows), turned and mirrored at random, their normals leaning up so the tuft is lit as one low mass.
+   False if the art is not in yet. */
+const XGRASS_PIVOT=[.4633,.8102];   // the root, in the tile from its top left (foliage-alts.json)
+function xGrassCards(F,x,z,size,R){ if(!F||!envArtFx(F.name)) return false;
+  const yaw=R()*6.3, fl=R()<.5, sh=.9+R()*.15, [pu,pv]=XGRASS_PIVOT;
+  for(const a of [yaw,yaw+Math.PI/2]){ const cx=Math.cos(a), sz=Math.sin(a), nx=-sz, nz=cx, ln=Math.hypot(nx,1.5,nz);
+    const corner=(su,sv)=>{ const u=(su+1)/2, v=(sv+1)/2, ox=(u-(fl?1-pu:pu))*size, oy=(v-(1-pv))*size;   // (v up from the bottom; the root at the pivot)
+      F.P.push(x+cx*ox, oy, z+sz*ox); F.N.push(nx/ln,1.5/ln,nz/ln); F.U.push(fl?1-u:u, v); F.C.push(sh,sh,sh); };
+    for(const [su,sv] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]) corner(su,sv); }
+  return true; }
+// a ball of leaf cards round (cx,cy,cz), radius r, tinted by col; false if the leaf art is not in yet
+function xLeafCards(F,col,cx,cy,cz,r,R){ if(!F||!envArtFx('leaf-clumps')) return false;
+  if(!F.hue) F.hue=new THREE.Color(col);   // (the room's cards turn to the area's leaf hue in the shader: xHueMat)
+  const tint=new THREE.Color(1,1,1);
+  const n=XLEAF.cards, v=new THREE.Vector3(), d=new THREE.Vector3(), t1=new THREE.Vector3(), t2=new THREE.Vector3(), up=new THREE.Vector3(0,1,0), p=new THREE.Vector3(), q=new THREE.Vector3();
+  for(let k=0;k<n;k++){
+    // spread round the ball (a golden spiral, shaken), a little flattened, more on top than below
+    const yv=1-2*(k+.5)/n*.85, rr=Math.sqrt(Math.max(0,1-yv*yv)), a=k*2.39996+R()*.6;
+    d.set(Math.cos(a)*rr,yv*.8,Math.sin(a)*rr).normalize();
+    const depth=.25+R()*.6, s=r*(1.05+R()*.5), roll=R()*6.3;
+    p.set(cx,cy,cz).addScaledVector(d,r*depth);
+    t1.crossVectors(Math.abs(d.y)>.95?new THREE.Vector3(1,0,0):up,d).normalize(); t2.crossVectors(d,t1);
+    const cr=Math.cos(roll), sr=Math.sin(roll); q.copy(t1).multiplyScalar(cr).addScaledVector(t2,sr); t2.multiplyScalar(cr).addScaledVector(t1,-sr); t1.copy(q);
+    const qd=R()*4|0, u0=(qd&1)*.5, v0=(qd>>1)*.5, fl=R()<.5;
+    const shade=.5+.5*depth+.12*d.y, c=tint.clone().multiplyScalar(Math.min(1.15,shade));
+    const corner=(su,sv)=>{ q.copy(p).addScaledVector(t1,su*s/2).addScaledVector(t2,sv*s/2); F.P.push(q.x,q.y,q.z);
+      v.subVectors(q,new THREE.Vector3(cx,cy,cz)).normalize().lerp(d,.4).normalize(); F.N.push(v.x,v.y,v.z);
+      F.U.push(u0+((fl?-su:su)*.5+.5)*.5, v0+(sv*.5+.5)*.5); F.C.push(c.r,c.g,c.b); };
+    for(const [su,sv] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]) corner(su,sv); }
+  xLeafCore(F,cx,cy,cz,r*.4,.85);   // (a small solid core at the bundle's centre: you see into the bundle, not through it)
+  return true; }
 /* The clutter, drawn (x2Clutter): one merged mesh per room (or gallery piece), shown once any of its cells is seen.
    Ruins are cut from the area's own stone: light ones from its upper tones with dull gold trim, dark ones from its lower
    tones with the area's glow in their cracks. A fire pillar's
@@ -353,7 +429,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
     // the area's own stone: light ruins from its upper tones, dark ones from its lower, so they sit with the walls and floor
     const ST=tone(D?.3:.56), SH=tone(D?.18:.42), LT=tone(D?.42:.68), TRIM=D?glow.clone().multiplyScalar(.55):new THREE.Color('#b08a44').lerp(tone(.5),.45);
     const ROCK=tone(.42), ROCK2=tone(.28), ROCK3=tone(.58), SOIL=new THREE.Color('#2b2117'), LEAF=new THREE.Color(S.moss||'#4f7a3a'), LEAF2=LEAF.clone().lerp(new THREE.Color('#1e3a1a'),.45), FLOW=[0xd9465a,0xf2c94c,0xb48cff,0xf0f0e0];
-    const M=xMerger(), L=xMerger(), seen=new Set();
+    const M=xMerger(), L=xMerger(), F=xLeafMerger(), FG=xLeafMerger('grass-dungeon'), FBs=new Map(), FB=name=>FBs.get(name)||FBs.set(name,xLeafMerger(name)).get(name), seen=new Set();   // (FB: the bracket mushrooms' mergers, one per kind: mushrooms.js)
     for(const it of mk.items){ const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;
       for(const c of cs){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
       const B=(col,bx,by,bz,sx,sy,sz,ry,to)=>(to||M).add(XG.box,col,bx,by,bz,0,ry||0,0,sx,sy,sz), C=(col,bx,by,bz,r,h,to)=>(to||M).add(XG.cyl,col,bx,by,bz,0,0,0,r*2,h,r*2);
@@ -376,20 +452,21 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
         M.add(XG.cyl,ST,x,.48,z,rx,0,rz,.9,len-.6,.9); for(let k=-1;k<=1;k++) M.add(XG.cyl,LT,x+along[0]*k*XCS,.48,z+along[1]*k*XCS,rx,0,rz,.96,.08,.96);
         B(LT,x+along[0]*(len/2-.3),.6,z+along[1]*(len/2-.3),1.2,1.2,1.2,R()*.4); for(let k=0;k<4;k++) rock(ST,x+(R()-.5)*len*.8*along[0]+(R()-.5)*.6,.1,z+(R()-.5)*len*.8*along[1]+(R()-.5)*.6,.3); }
       else if(it.k==='planter'){ const lx=it.v?XCS-.25:len-.25, lz=it.v?len-.25:XCS-.25;
-        B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.06,z,lx-.3,.06,lz-.3);
+        B(SH,x,.5,z,lx,1,lz); B(LT,x,1.04,z,lx+.08,.1,lz+.08); B(SOIL,x,1.08,z,lx-.3,.06,lz-.3);   // (the soil's top 2 cm over the rim slab's: at the same height the two flickered through each other)
         if(D) B(TRIM,x,.55,z,lx+.02,.06,lz+.02,0,L);
-        const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2;
-          M.add(R()<.35?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,R()*3,0,s2*1.3,s2*1.4,s2*1.3); }
+        const n=10+R()*6|0; for(let k=0;k<n;k++){ const px=x+(R()-.5)*(lx-.6), pz=z+(R()-.5)*(lz-.6), s2=.35+R()*.45, col=R()<.5?LEAF:LEAF2, cone=R()<.35, ry=R()*3;
+          if(!xLeafCards(F,LEAF,px,1.1+s2*.6,pz,s2*.6,R)) M.add(cone?XG.cone:XG.ball,col,px,1.1+s2*.5,pz,0,ry,0,s2*1.3,s2*1.4,s2*1.3); }   // (a shrub of painted leaf cards; a plain ball or cone until the art is in)
         for(let k=0;k<4;k++) if(R()<.7) M.add(XG.ball,new THREE.Color(FLOW[R()*FLOW.length|0]),x+(R()-.5)*(lx-.6),1.5+R()*.4,z+(R()-.5)*(lz-.6),0,0,0,.18,.18,.18); }
       else if(it.k==='boulder'||it.k==='bigrock'){ const big=it.k==='bigrock', n=big?5:3;
         for(let k=0;k<n;k++){ const sz=(big?2.2:1.5)*(k?.55+R()*.35:1); rock(k%2?ROCK2:ROCK,x+(R()-.5)*(big?2:.8),sz*.32,z+(R()-.5)*(big?2:.8),sz); }
         if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
       else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); }
-      else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len}); }
+      else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG,FB}); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xDitherMat(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    if(F.size()) g.add(F.build()); if(FG.size()) g.add(FG.build()); for(const fb of FBs.values()) if(fb.size()) g.add(fb.build());
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
 // the themed rooms' pieces (x2Themes): drawn from boxes, cylinders, cones and balls like the rest of the clutter
-function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len}=P, cs=it.cells;
+function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG,FB}=P, cs=it.cells;
   const col=h=>new THREE.Color(h), WOOD=col('#6e4a2a'), WOOD2=col('#4a3018'), IRON=col('#2e2c2a'), IRON2=col('#55524e'), BONE=col('#d8d0b8'), WATER=col('#1f4f5e'), WATER2=col('#3f8c9a'), CLOTH=[col('#7a2a24'),col('#2a4a6a'),col('#3a5a2a'),col('#5a2a5a')];
   const ry=it.v?Math.PI/2:0, lx=it.v?XCS*.7:len-.35, lz=it.v?len-.35:XCS*.7;   // a two-cell piece's footprint, along its cells
   const A=(u,v)=>[x+along[0]*u+(it.v?v:0)*1, z+along[1]*u+(it.v?0:v)];      // u along the piece, v across it
@@ -402,8 +479,17 @@ function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,
     case 'cratestack': { const s1=.95; B(col('#8a6034'),x,s1/2,z,s1,s1,s1,R()*.3); B(WOOD2,x,s1/2,z,s1*1.03,.1,s1*1.03);
       B(col('#8a6034'),x+(R()-.5)*.2,s1+.36,z+(R()-.5)*.2,.7,.7,.7,R()*.8); if(R()<.6){ M.add(XG.cyl,WOOD,x+.75,.42,z+.3,0,0,0,.6,.84,.6); M.add(XG.cyl,IRON,x+.75,.18,z+.3,0,0,0,.62,.06,.62); } break; }
     case 'sapling': { B(SOIL,x,.06,z,1.2,.12,1.2); M.add(XG.cyl,col('#4a3420'),x,1.1,z,0,0,(R()-.5)*.15,.22,2.2,.22);
-      for(let k=0;k<7;k++){ const a=R()*6.3, d=R()*.7, s2=.7+R()*.5; M.add(XG.ball,R()<.5?LEAF:LEAF2,x+Math.cos(a)*d,2.1+R()*.8,z+Math.sin(a)*d,0,R()*3,0,s2,s2*.8,s2); }
-      for(let k=0;k<3;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.45,.08,z+Math.sin(a)*.45,Math.PI/2,a,0,.08,.7,.08); } break; }
+      for(let k=0;k<7;k++){ const a=R()*6.3, d=R()*.7, s2=.7+R()*.5, lc=R()<.5?LEAF:LEAF2, bx=x+Math.cos(a)*d, by=2.1+R()*.8, bz=z+Math.sin(a)*d;
+        if(!xLeafCards(F,lc,bx,by,bz,s2*.62,R)) M.add(XG.ball,lc,bx,by,bz,0,R()*3,0,s2,s2*.8,s2); }   // painted leaf cards (or, before the art is in, a plain ball)
+      for(let k=0;k<3;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.45,.08,z+Math.sin(a)*.45,Math.PI/2,a,0,.08,.7,.08); } { const Rb=caveRng(it.sd*13+7); if(FB&&typeof xBracketCards==='function'&&Rb()<.4){ const a=Rb()*6.3; xBracketCards(FB,x+Math.cos(a)*.13,.3+Rb()*.7,z+Math.sin(a)*.13,Math.cos(a),Math.sin(a),Rb); } }   // (brackets on the trunk, now and then)
+      break; }
+    case 'log': { // a fallen log, half rotten, moss along its back and bracket mushrooms on its sides (mushrooms.js)
+      const rx=it.v?Math.PI/2:0, rz=it.v?0:Math.PI/2, L2=len-.5, r=.27+R()*.06, BARK=col('#4a3420'), END=col('#7a5a3a'), nx=along[1], nz=along[0];
+      M.add(XG.cyl,BARK,x,r,z,rx,0,rz,r*2,L2,r*2);
+      for(const e of [-1,1]) M.add(XG.cyl,END,x+along[0]*e*L2/2,r,z+along[1]*e*L2/2,rx,0,rz,r*1.9,.04,r*1.9);
+      for(let k=0;k<3;k++) M.add(XG.ball,k%2?LEAF2:LEAF,x+along[0]*(R()-.5)*L2*.8,r*1.9,z+along[1]*(R()-.5)*L2*.8,0,R()*3,0,r*1.6,.12,r*1.4);
+      const Rb=caveRng(it.sd*17+11); if(FB&&typeof xBracketCards==='function') for(const sd of [-1,1]) if(Rb()<.8) xBracketCards(FB,x+nx*sd*r+along[0]*(Rb()-.5)*L2*.6,r*(.8+Rb()*.6),z+nz*sd*r+along[1]*(Rb()-.5)*L2*.6,nx*sd,nz*sd,Rb);
+      break; }
     case 'urnbig': { const c=R()<.5?col('#9a5a34'):col('#7a6a5a'); B(SH,x,.12,z,1.1,.24,1.1); M.add(XG.ball,c,x,.85,z,0,0,0,1.05,1.25,1.05); M.add(XG.cyl,c,x,1.55,z,0,0,0,.45,.3,.45);
       M.add(XG.cyl,c.clone().multiplyScalar(.7),x,1.72,z,0,0,0,.6,.08,.6); if(D) B(TRIM,x,.9,z,1.08,.06,1.08,0,L); break; }
     case 'bigcap': { const h=1.6+R()*1.2, rr=.9+R()*.5, g=new THREE.Color(glow); M.add(XG.cyl,col('#d8d0c0'),x,h/2,z,0,0,(R()-.5)*.1,.3,h,.3);
@@ -439,7 +525,9 @@ function xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,P){ const {ST,SH,LT,TRIM,ROCK,
       for(let k=0;k<3;k++){ const [a,b]=A((k-1)*len/3.4,(R()-.5)*.5); C(IRON2,a,.95,b,.1,.18); }
       for(const v of [-1,1]){ const [a,b]=A(0,v*.95); B(WOOD2,a,.45,b,it.v?.35:len-.5,.08,it.v?len-.5:.35); } break; }
     // underfoot: walked over, never in the way
-    case 'reeds': for(let k=0;k<9;k++){ const px=x+(R()-.5)*1.4, pz=z+(R()-.5)*1.4, h=.5+R()*.7; M.add(XG.cone,R()<.5?LEAF:LEAF2,px,h/2,pz,(R()-.5)*.2,0,(R()-.5)*.2,.08,h,.08); } break;
+    case 'reeds': { const card=FG&&envArtFx(FG.name);   // (painted grass tufts, one for every three reeds; the cones only until the art is in)
+      for(let k=0;k<9;k++){ const px=x+(R()-.5)*1.4, pz=z+(R()-.5)*1.4, h=.5+R()*.7, lc=R()<.5?LEAF:LEAF2, tx=(R()-.5)*.2, tz=(R()-.5)*.2;
+        if(card){ if(k%3===0) xGrassCards(FG,px,pz,.55+h*.35,R); } else M.add(XG.cone,lc,px,h/2,pz,tx,0,tz,.08,h,.08); } break; }
     case 'puddle': { M.add(XG.cyl,WATER,x+(R()-.5)*.4,.02,z+(R()-.5)*.4,0,0,0,1.3+R()*.5,.02,1+R()*.4); L.add(XG.cyl,WATER2,x,.035,z,0,0,0,.5,.005,.3); break; }
     case 'roots': for(let k=0;k<5;k++){ const a=R()*6.3; M.add(XG.cyl,col('#4a3420'),x+Math.cos(a)*.4,.06,z+Math.sin(a)*.4,Math.PI/2,a,0,.07,1+R()*.6,.07); } M.add(XG.ball,LEAF2,x,.05,z,0,0,0,1,.1,.8); break;
     case 'caps': { const g=new THREE.Color(glow); for(let k=0;k<5;k++){ const px=x+(R()-.5)*1.3, pz=z+(R()-.5)*1.3, h=.12+R()*.25; M.add(XG.cyl,col('#d8d0c0'),px,h/2,pz,0,0,0,.06,h,.06); L.add(XG.half,g,px,h,pz,0,0,0,.24,.14,.24); } break; }

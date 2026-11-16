@@ -1,0 +1,14 @@
+[
+  {
+    "key": "vault--growth-flat",
+    "prompt": "Use case: background-extraction. EDIT ONLY THE BACKGROUND AND ALPHA of this existing16-piece game sprite sheet. Preserve all16 violet/plum painterly flat growth pieces, their exact colours, brushwork, scale, spacing, placement, and holes. Remove ALL white/grey background, grey haze, white matte, shadow and halos BETWEEN and THROUGH the sprites. The background must be GENUINELY TRANSPARENT with alpha exactly ZERO, NOT painted white, grey, black, or a checkerboard. Keep solid opaque interiors and clean anti-aliased boundaries; fully transparent holes in the lichen. No glow. Do not repaint, add, remove or rearrange any sprite. Square PNG RGBA, exact same4x4 layout. One sprite per cell, clean transparent sprites only."
+  },
+  {
+    "key": "abyss--growth-flat",
+    "prompt": "Use case: background-extraction. EDIT ONLY THE BACKGROUND AND ALPHA of this existing16-piece game sprite sheet. Preserve all16 navy/charcoal and pale cyan painterly flat growth pieces, their exact colours, brushwork, scale, spacing, placement, and holes. Remove ALL pale grey/white textured background, grey haze, matte, shadow and halos BETWEEN and THROUGH the sprites. The background must be GENUINELY TRANSPARENT with alpha exactly ZERO, NOT painted white, grey, black, or a checkerboard. Keep dark mushroom and leaf interiors solid opaque; preserve their dark colours and the fine leaves. Clean anti-aliased boundaries and fully transparent holes in lichen. No glow. Do not repaint, add, remove or rearrange any sprite. Square PNG RGBA, exact same4x4 layout. Transparent sprites only."
+  },
+  {
+    "key": "ruins--growth-upright",
+    "prompt": "Use case: precise-object-edit. Preserve the16-piece4x4 sprite sheet layout, muted amber/olive painterly palette, mushroom clusters, small plant and root silhouettes. CHANGE ONLY: remove EVERY chunk of ground, rubble base, slab, architectural column, wall, platform or pedestal from under and around all sixteen sprigs. First row must be ONLY four small clean smoky-amber crystal clusters with2–5 points, NO surrounding scene, rocks, ivy or ruins. Mushroom and plant rows have only their connected stems/roots, no soil clumps or stone discs. Everything stands at the same local baseline, growing up. Keep all16 cells filled, one separate compact item/cluster per cell, even side-view lighting, no cast shadows or glow. True transparent background between all objects and in holes. No white or grey backdrop. No template lines, numbers or labels. No other changes."
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "deeps": [
+    {
+      "sheet": "a",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/deeps/deeps--hex-albedo-a.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: precise-object-edit. Edit this existing BLUE DEEPS stone tile atlas by adding SPARSE REAL METAL SPECKS embedded in the stone faces. Preserve the exact square canvas,2x2 placement, POINTY-TOP hex silhouettes, chips, existing cracks, broad painterly colour patches, cool slate-blue palette, even material lighting and #808080 background. Do not move, rotate or redesign any tile. Add8–14 small irregular visible SILVER / COOL STEEL-GREY metallic mineral flecks PER HEX, different positions and sizes on each tile. Mostly discrete small angular fragments, with1–2 slightly larger compact flecks; scatter naturally with broad clear spaces. At1024px canvas each fleck roughly9–16px wide, occasional larger fleck20px, so they remain1–2px marks when the hex is only55px wide. Total metal coverage about1percent of each tile, restrained, never glitter covering the face. Flecks lie FLUSH in the stone, not loose pebbles or raised objects. Locate flecks on the inner stone faces, at least35px from the outer hex edges, leaving the worn rim and corner frost alone. Clear material colour separation: the metal is neutral light silver-grey, approximately RGB165,168,170 with a few darker steel facets, distinct from the blue stone. Painterly broad simple angular shapes, no tiny photographic grain. Flat evenly lit ALBEDO BASE COLOUR ONLY; no baked sparkles, glare stars, specular highlights, white glowing dots, cast shadows, glow, light beams or vignette. Metallic reflections will come from a separate metalness map in the game. Absolutely no gold or copper, no symbols, no extra cracks or new moss. Change ONLY by adding these sparse embedded neutral-silver flecks. No labels or guides. Return the same four complete hex tiles on uniform neutral-grey, square PNG."
+      }
+    },
+    {
+      "sheet": "b",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/deeps/deeps--hex-albedo-b.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: precise-object-edit. Edit this existing BLUE DEEPS stone tile atlas by adding SPARSE REAL METAL SPECKS embedded in the stone faces. Preserve the exact square canvas,2x2 placement, POINTY-TOP hex silhouettes, chips, existing cracks, broad painterly colour patches, cool slate-blue palette, even material lighting and #808080 background. Do not move, rotate or redesign any tile. Add8–14 small irregular visible SILVER / COOL STEEL-GREY metallic mineral flecks PER HEX, different positions and sizes on each tile. Mostly discrete small angular fragments, with1–2 slightly larger compact flecks; scatter naturally with broad clear spaces. At1024px canvas each fleck roughly9–16px wide, occasional larger fleck20px, so they remain1–2px marks when the hex is only55px wide. Total metal coverage about1percent of each tile, restrained, never glitter covering the face. Flecks lie FLUSH in the stone, not loose pebbles or raised objects. Locate flecks on the inner stone faces, at least35px from the outer hex edges, leaving the worn rim and corner frost alone. Clear material colour separation: the metal is neutral light silver-grey, approximately RGB165,168,170 with a few darker steel facets, distinct from the blue stone. Painterly broad simple angular shapes, no tiny photographic grain. Flat evenly lit ALBEDO BASE COLOUR ONLY; no baked sparkles, glare stars, specular highlights, white glowing dots, cast shadows, glow, light beams or vignette. Metallic reflections will come from a separate metalness map in the game. Absolutely no gold or copper, no symbols, no extra cracks or new moss. Change ONLY by adding these sparse embedded neutral-silver flecks. No labels or guides. Return the same four complete hex tiles on uniform neutral-grey, square PNG."
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "key": "ruins--hex-albedo-a",
+      "area": "ruins",
+      "sheet": "a",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/ruins/ruins--hex-albedo-a.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: style-transfer / precise-object-edit. Change ONLY THE STONE MATERIAL in the attached Ruins hex tile atlas to AGED IVORY-GREY MARBLE. Preserve the exact square canvas, exact2x2 placement of four POINTY-TOP hexes, silhouettes, beveled six-sided rims, existing crack and chip positions and tile-to-tile damage differences. Do not move or rotate the stones. Outside every hex stays flat#808080. Replace the ochre/olive limestone face with clearly recognizable old marble: subdued warm ivory-grey and pearl-grey base, broad softly cloudy mineral layering, distinct natural irregular medium-grey veins with a few gentle grey-green traces. Keep the marble's base MID-VALUE, around RGB140–160, with occasional worn ivory patches up to180, not dazzling white. Veins use restrained grey about105–120, not black painted crack networks; soft brushed boundaries and a few narrower branches. Each tile has a different natural vein arrangement, with1–2 main broad20–45px softly meandering marble veins and quiet translucent-looking mineral swaths. No vein runs as a strong straight line across the entire tile. The six-sided tile rim remains the primary readable shape. Preserve broad quiet foot-polished centers, gently worn/chipped ivory-grey rims, sparse muted olive staining ONLY where the existing tile already has edge growth. Remove obvious spiral fossil motifs because this is now marble. Match the existing chunky hand-painted fantasy brushwork and55px readability; avoid photorealism and fine noise. This is flat shadowless PBR ALBEDO, with NO directional highlights, mirror reflections, cast shadows, glossy glare, dark halos, glow or perspective. Real polish comes from a separate roughness map. No metal flecks or gold foil on marble, no runes, no symbols, no text. Keep four distinct complete carved marble flagstones, painterly and old, with wear supporting each hex shape. Square1024x1024 PNG."
+      }
+    },
+    {
+      "key": "ruins--hex-albedo-b",
+      "area": "ruins",
+      "sheet": "b",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/ruins/ruins--hex-albedo-b.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: style-transfer / precise-object-edit. Change ONLY THE STONE MATERIAL in the attached Ruins hex tile atlas to AGED IVORY-GREY MARBLE. Preserve the exact square canvas, exact2x2 placement of four POINTY-TOP hexes, silhouettes, beveled six-sided rims, existing crack and chip positions and tile-to-tile damage differences. Do not move or rotate the stones. Outside every hex stays flat#808080. Replace the ochre/olive limestone face with clearly recognizable old marble: subdued warm ivory-grey and pearl-grey base, broad softly cloudy mineral layering, distinct natural irregular medium-grey veins with a few gentle grey-green traces. Keep the marble's base MID-VALUE, around RGB140–160, with occasional worn ivory patches up to180, not dazzling white. Veins use restrained grey about105–120, not black painted crack networks; soft brushed boundaries and a few narrower branches. Each tile has a different natural vein arrangement, with1–2 main broad20–45px softly meandering marble veins and quiet translucent-looking mineral swaths. No vein runs as a strong straight line across the entire tile. The six-sided tile rim remains the primary readable shape. Preserve broad quiet foot-polished centers, gently worn/chipped ivory-grey rims, sparse muted olive staining ONLY where the existing tile already has edge growth. Remove obvious spiral fossil motifs because this is now marble. Match the existing chunky hand-painted fantasy brushwork and55px readability; avoid photorealism and fine noise. This is flat shadowless PBR ALBEDO, with NO directional highlights, mirror reflections, cast shadows, glossy glare, dark halos, glow or perspective. Real polish comes from a separate roughness map. No metal flecks or gold foil on marble, no runes, no symbols, no text. Keep four distinct complete carved marble flagstones, painterly and old, with wear supporting each hex shape. Square1024x1024 PNG."
+      }
+    },
+    {
+      "key": "abyss--hex-albedo-a",
+      "area": "abyss",
+      "sheet": "a",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/abyss/abyss--hex-albedo-a.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: precise-object-edit. Add SPARSE EMBEDDED GOLD METAL SPECKS to the existing VERY DARK NAVY / CHARCOAL ABYSS stone atlas. Preserve the exact square canvas,2x2 placement, POINTY-TOP hex silhouettes, all chips, existing cracks and veins, broad dark painted mineral patches, worn rims and uniform#808080 background. The stone stays very dark navy, not purple, not brighter blue. Change ONLY by adding8–14 tiny irregular angular METALLIC GOLD mineral flecks per tile, different arrangements on all four tiles. Flecks lie flush as small mineral inclusions within stone, never loose coins, gems or pebbles. At1024px sheet scale use about9–16px wide flecks and1–2 larger18–21px fragments per tile, total metal area UNDER1.5percent of the stone face. Keep large calm spaces. Locate the gold specks well inside the face, at least35px away from the outer hex edges. Warm rich muted gold base colour approximately RGB180,139,59 with occasional dull bronze-gold facets, NOT fluorescent yellow. Clear gold colour against dark navy but restrained overall. Simple chunky painterly facets that still show as1–2px gold marks at55px across a hex. This is flat shadowless PBR ALBEDO, not lit rendering: no glow, bloom, sparks, glitter stars, white reflections, cast shadows, light spill or directional lighting. Metal response comes from separate maps. Absolutely no symbols, runes, constellations, gold veins crossing tiles, gold trim on the rim, foil gilding or gold-covered faces. Preserve existing cool dark stone and add just the small gold mineral inclusions. No text, labels, grid lines or guides. Square1024x1024 PNG."
+      }
+    },
+    {
+      "key": "abyss--hex-albedo-b",
+      "area": "abyss",
+      "sheet": "b",
+      "args": {
+        "referenced_image_paths": [
+          "/workspace/scratch/4c1bf8049f93/output/arena-hex-floor-complete-v1/areas/abyss/abyss--hex-albedo-b.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: precise-object-edit. Add SPARSE EMBEDDED GOLD METAL SPECKS to the existing VERY DARK NAVY / CHARCOAL ABYSS stone atlas. Preserve the exact square canvas,2x2 placement, POINTY-TOP hex silhouettes, all chips, existing cracks and veins, broad dark painted mineral patches, worn rims and uniform#808080 background. The stone stays very dark navy, not purple, not brighter blue. Change ONLY by adding8–14 tiny irregular angular METALLIC GOLD mineral flecks per tile, different arrangements on all four tiles. Flecks lie flush as small mineral inclusions within stone, never loose coins, gems or pebbles. At1024px sheet scale use about9–16px wide flecks and1–2 larger18–21px fragments per tile, total metal area UNDER1.5percent of the stone face. Keep large calm spaces. Locate the gold specks well inside the face, at least35px away from the outer hex edges. Warm rich muted gold base colour approximately RGB180,139,59 with occasional dull bronze-gold facets, NOT fluorescent yellow. Clear gold colour against dark navy but restrained overall. Simple chunky painterly facets that still show as1–2px gold marks at55px across a hex. This is flat shadowless PBR ALBEDO, not lit rendering: no glow, bloom, sparks, glitter stars, white reflections, cast shadows, light spill or directional lighting. Metal response comes from separate maps. Absolutely no symbols, runes, constellations, gold veins crossing tiles, gold trim on the rim, foil gilding or gold-covered faces. Preserve existing cool dark stone and add just the small gold mineral inclusions. No text, labels, grid lines or guides. Square1024x1024 PNG."
+      }
+    }
+  ]
+}

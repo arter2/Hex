@@ -2231,7 +2231,13 @@ function xStairsMark(c,s){ if(!xStairsMarkOn()||!EX.seen[EX.down]) return;
 function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(depth)===1, key='d'+depth;
   b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
   b.style.setProperty('--bc',A.glow); b.dataset.key=key; b.className='x-bang on depth'; setTimeout(()=>{ if(b.dataset.key===key) b.className='x-bang'; },first?2200:1400); }
-function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
+function xFlash(){ hurtPulse($('#xHurt')); }
+// a red hurt flash round the screen's edges (the dungeon's #xHurt, the battle's #hurtFx), its class let go after it has played
+// (0.45 s) even if its screen was hidden meanwhile, so showing the screen again can never replay it
+function hurtPulse(h){ if(!h) return; h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); clearTimeout(h._hurtT); h._hurtT=setTimeout(()=>h.classList.remove('on'),500); }
+// a hurt flash (the dungeon's or the battle's) lets go of its class once it has played: a CSS animation replays whenever its
+// element is shown again, so a class left on flashed red round the edges every time you came back from a fight
+document.addEventListener('animationend',e=>{ const t=e.target; if(t&&t.classList&&t.classList.contains('hurt-fx')) t.classList.remove('on'); });
 function xHud(){ if(!EX) return; const m=EX.maxHp=xmaxHp();   // kept for the per-frame low-HP glow (gearMods walks all your gear)
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   if(typeof xpLine==='function'){ const l=$('#xLv'), ch=ensureChar(save); l.textContent='Lv '+save.level+(pointsLeft(ch)>0?' ★':''); l.title=xpLine(); }

@@ -785,7 +785,7 @@ function fight(depth,waves,xo){
     onCustom:renderCustom,
     onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
-    onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+    onHurt:d=>{ buzz(d>=15?60:30); hurtPulse($('#hurtFx')); },
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
     onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
@@ -1757,7 +1757,7 @@ function duRun(s){ if(DU.session!==s||DU.over) return;
       onCustom:renderCustom,
       onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
       onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
-      onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+      onHurt:d=>{ buzz(d>=15?60:30); hurtPulse($('#hurtFx')); },
       onCombo:label=>{ B.combos=(B.combos||0)+1; B.hitStop=Math.max(B.hitStop||0,.09); banner('✦ '+label.split(':')[0],'#ffe066'); },
     });
     hud(true);

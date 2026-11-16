@@ -75,7 +75,7 @@ function arBdRibbon(A,Ar,R,o){ const {back,near,side,boss}=o, seed=(Ar.index||0)
   for(let i=0;i<pts.length-1;i++) for(let r=0;r<ROWS;r++){ const a=i*(ROWS+1)+r, b=a+ROWS+1; idx.push(a,b,a+1, b,b+1,a+1); }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
   g.setAttribute('uv2',new THREE.Float32BufferAttribute(uv,2)); g.setIndex(idx); g.computeVertexNormals();
-  const m=arBdRockMat(Ar,'rock'); m.side=THREE.DoubleSide; const mesh=new THREE.Mesh(g,m); mesh.userData.bd='ribbon';
+  const m=o.wall?arBdRockMat(Ar,'special','boss-'+o.wall):arBdRockMat(Ar,'rock'); m.side=THREE.DoubleSide; const mesh=new THREE.Mesh(g,m); mesh.userData.bd='ribbon';
   // the AO bake's wall cells, sampled along the path (arena.js arenaBakeAO)
   const cells=[]; for(let i=0;i<pts.length;i+=Math.round(XCS/step)){ const [wx,wz]=pts[i]; cells.push([wx,wz,height(i)/full]); }
   return {mesh, cells}; }
@@ -274,3 +274,61 @@ function arBdSetPieces(A,Ar,R,kind){ const L=(ARENA_SETPIECES[Ar.id]||[]).filter
   const slots=arBdSlots(A,kind,R), n=Math.min(L.length,1+(R()<.6?1:0)), pick=L.slice().sort(()=>R()-.5).slice(0,n), out=[];
   pick.forEach((p,i)=>{ const s=i===0?slots[R()<.5?0:1]:slots[2+(R()*2|0)]; try{ out.push(...p.build(A,Ar,R,s)); }catch(e){ console.warn('set piece '+p.name+': '+e.message); } });
   A.bdPieces=pick.map(p=>p.name); return out; }
+
+// ---- boss battlefields (Task 5) ----
+/* Each boss fights in its own field (spec table): enclosed by sculpted walls (open:false) or on a floating rock (open:
+   true), with its own pieces; the last three change as the boss evolves (e.phase 2, 3), eased in over two seconds and
+   visual only. Nothing here bakes in the board's outline: what follows the board's edge is built from TILES by
+   arBdBoardEdge (the next design moves tiles). build(A, Ar, R) -> meshes, keeping its changing parts in A.bdBoss. */
+function arBdBoardEdge(A){ let z1=0, x1=-1e9, x0=1e9; for(const t of TILES){ z1=Math.max(z1,Math.abs(t.wz)); x1=Math.max(x1,t.wx); x0=Math.min(x0,t.wx); } return {z1,x0,x1}; }
+const bdBossMat=(Ar,id)=>arBdRockMat(Ar,'special','boss-'+id);
+const ARENA_BOSSFIELD={
+  golem:{ open:false, wall:'golem', build(A,Ar,R){ const E=arBdBoardEdge(A), out=[], m=bdBossMat(Ar,'golem'); m.emissive=m.emissive||new THREE.Color(); A.bdBoss={glow:m};
+      for(const [wx,wz] of [[E.x1+2.6,-5],[E.x1+2.6,0],[E.x1+2.6,5],[E.x0+6,-(E.z1+2.8)],[E.x0+6,E.z1+2.8],[E.x0+11,-(E.z1+2.8)],[E.x0+11,E.z1+2.8]]) out.push(bdAt(bdMesh(bdCrystals(m,R,7+(R()*5|0),.45,3.2,2.4),m,'boss'),{wx,wz,y:-SLAB}));
+      return out; },
+    tick(A,T,dt,b){ const g=A.bdBoss&&A.bdBoss.glow; if(!g||!b||!b.weak||typeof COLORS==='undefined'||!COLORS[b.weak]) return; g.emissive.lerp(new THREE.Color(COLORS[b.weak].c),Math.min(1,dt*2)); g.emissiveIntensity=.8+.2*Math.sin(T*2); } },
+  glacier:{ open:false, wall:null, build(A,Ar,R){ const E=arBdBoardEdge(A), m=bdBossMat(Ar,'glacier'), out=[];
+      const throne=[[new THREE.BoxGeometry(3,1,2),0,.5,0],[new THREE.BoxGeometry(3.4,4.5,.6),0,2.6,-.8],[new THREE.BoxGeometry(.6,2,2),-1.4,1.5,0],[new THREE.BoxGeometry(.6,2,2),1.4,1.5,0]];
+      out.push(bdAt(bdMesh(bdMerge(throne.map(([g,x,y,z],i)=>[bdChip(g,60+i,.06,i===1?.6:0),new THREE.Matrix4().makeTranslation(x,y,z)])),m,'boss'),{wx:E.x1+3,wz:0,y:-SLAB}));
+      const fall=ARENA_SETPIECES.deeps[0].build(A,Ar,R,{wx:E.x1+3.3,wz:-5.5,y:-SLAB}); fall.forEach(o=>o.userData.bd='boss'); out.push(...fall);
+      const parts=[]; for(let k=0;k<26;k++){ const a=k/26*Math.PI*2, h=.6+R()*1.6, g=new THREE.ConeGeometry(.1+R()*.08,h,6); g.rotateX(Math.PI); parts.push([g,new THREE.Matrix4().makeTranslation(Math.sin(a)*(E.z1+3.4),5.2-h/2,-(((E.x0+E.x1)/2)+Math.cos(a)*(E.x1-E.x0)/2*1.3))]); }
+      out.push(bdMesh(bdMerge(parts),m,'boss')); return out; } },
+  roc:{ open:true, build(A,Ar,R){ const E=arBdBoardEdge(A), out=[], st=bdBossMat(Ar,'roc'), parts=[];
+      for(let k=0;k<14;k++){ const a=k/14*Math.PI*2, pts=[]; for(let i=0;i<5;i++) pts.push(new THREE.Vector3(Math.cos(a+i*.3)*(2+i*.15),.3+i*.12+(R()-.5)*.2,Math.sin(a+i*.3)*(2+i*.15)*.6)); parts.push([new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),12,.12+R()*.08,5,false),new THREE.Matrix4()]); }
+      out.push(bdAt(bdMesh(bdMerge(parts),st,'boss'),{wx:E.x1+3,wz:0,y:-SLAB}));
+      const rod=new THREE.CylinderGeometry(.08,.12,4.5,6); for(const [wx,wz] of [[E.x0+5,-(E.z1+2.4)],[E.x0+5,E.z1+2.4],[E.x1,-(E.z1+2.4)],[E.x1,E.z1+2.4]]){ out.push(bdAt(bdMesh(rod.clone(),st,'boss'),{wx,wz,y:-SLAB},2.25)); out.push(bdAt(bdMesh(arBdRuinKit('plinth',R),st,'boss'),{wx,wz,y:-SLAB})); }
+      return out; } },
+  wyrm:{ open:true, build(A,Ar,R){ const lt=arLavaTex(R); lt.wrapS=lt.wrapT=THREE.RepeatWrapping; lt.repeat.set(12,12); const lm=arMat(new THREE.MeshBasicMaterial({map:lt,fog:false,color:new THREE.Color(.8,.8,.8)}));
+      const lake=bdMesh(new THREE.PlaneGeometry(220,220).rotateX(-Math.PI/2),lm,'lava'); lake.position.set(0,-4.5,-10); A.bdBoss={lake, lm, lt, y0:-4.5}; (A.bdTicks=A.bdTicks||[]).push(T=>{ lt.offset.x=T*.01; lt.offset.y=T*.006; });
+      const E=arBdBoardEdge(A), out=[lake]; for(const wz of [-6,6]) out.push(...ARENA_SETPIECES.rifts[0].build(A,Ar,R,{wx:A.room.back+5,wz,y:-SLAB-1}));
+      for(const wz of [-(E.z1+2.8),E.z1+2.8]){ const g=new THREE.TorusGeometry(.7,.28,8,16); g.rotateX(Math.PI/2); out.push(bdAt(bdMesh(g,arBdRockMat(Ar,'rock'),'boss'),{wx:E.x0+8,wz,y:-SLAB+.05})); }
+      return out; },
+    phase:[{lava:0,glow:.8,light:'#ffffff'},{lava:.4,glow:1.3,light:'#ff8a5a'},{lava:.8,glow:1.8,light:'#ff5a2a'}],
+    apply(A,s){ const B2=A.bdBoss; if(!B2) return; B2.lake.position.y=B2.y0+s.lava; B2.lm.color.setScalar(Math.min(1.6,s.glow)); A.lamp.color.lerp(new THREE.Color(s.light),.5); } },
+  treant:{ open:true, ruins:true, build(A,Ar,R){ const E=arBdBoardEdge(A), out=[], bark=bdBossMat(Ar,'treant');
+      const trunk=new THREE.CylinderGeometry(2.2,3.4,14,16,10), P=trunk.attributes.position; for(let i=0;i<P.count;i++){ const x=P.getX(i), y=P.getY(i), z=P.getZ(i), a=Math.atan2(z,x), k=1+(bdFbm(a*2,y*.3,91,3)-.5)*.5; P.setX(i,x*k); P.setZ(i,z*k); }
+      out.push(bdAt(bdMesh(trunk,bark,'boss'),{wx:A.room.back+7,wz:0,y:-SLAB},4));
+      const roots=new THREE.Group(), parts=[]; for(let k=0;k<8;k++){ const sd=k%2?1:-1, pts=[new THREE.Vector3(sd*1.5,1,-(A.room.back+6))]; for(let i=1;i<6;i++) pts.push(new THREE.Vector3(sd*(E.z1+2.4+(R()-.5)),.2+(R()*.3),-(A.room.back+5-i*((E.x1-E.x0)/5)*(.5+k/16))));
+        parts.push([new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,.22+R()*.18,7,false),new THREE.Matrix4()]); }
+      const rm=bdBossMat(Ar,'treant'); rm.emissiveIntensity=.4; const rmesh=bdMesh(bdMerge(parts),rm,'boss'); rmesh.position.y=-SLAB; roots.add(rmesh); out.push(roots); A.bdBoss={roots, rm};
+      return out; },
+    phase:[{close:0,light:'#ffffff'},{close:1,light:'#f0c890'},{close:2,light:'#d9a050'}],
+    apply(A,s,T){ const B2=A.bdBoss; if(!B2) return; B2.roots.scale.x=Math.max(.6,1-s.close*.08); const nodes=typeof B!=='undefined'&&B&&B.enemies&&B.enemies.some(e=>e.hp>0&&e.def&&e.def.minion&&e.id==='rootnode');
+      B2.rm.emissiveIntensity=nodes?.6+.4*Math.sin(T*4):.25; A.lamp.color.lerp(new THREE.Color(s.light),.5); } },
+  hollow:{ open:true, build(A,Ar,R){ const out=[], ob=bdBossMat(Ar,'hollow'), back=A.room.back;
+      const th=[[new THREE.BoxGeometry(2.6,.8,2),0,.4,0],[new THREE.BoxGeometry(2.8,4.2,.5),0,2.5,-.8],[new THREE.BoxGeometry(.5,1.6,1.8),-1.2,1.2,0],[new THREE.BoxGeometry(.5,1.6,1.8),1.2,1.2,0]];
+      out.push(bdAt(bdMesh(bdMerge(th.map(([g,x,y,z],i)=>[bdChip(g,80+i,.08,i===1?1.2:0),new THREE.Matrix4().makeTranslation(x,y,z)])),ob,'boss'),{wx:back+3.5,wz:0,y:-SLAB-1.5}));
+      const shards=[]; for(let k=0;k<8;k++){ const g=new THREE.OctahedronGeometry(1,0); g.scale(.35,1.6+R()*1.2,.12); const a=-1.2+k/7*2.4, o=bdAt(bdMesh(g,ob,'boss'),{wx:back+2+Math.cos(a)*4,wz:Math.sin(a)*7,y:-SLAB},1.5+R()*2); o.rotation.set(R()-.5,R()*3,R()-.5); shards.push({o,home:o.position.clone(),out:new THREE.Vector3(Math.sin(a)*3,2+R()*2,-2-R()*2)}); out.push(o); }
+      A.bdBoss={shards}; return out; },
+    phase:[{gone:0,fog:1,amb:1},{gone:2,fog:1.4,amb:.85},{gone:6,fog:1.8,amb:.7}],
+    apply(A,s,T){ const B2=A.bdBoss; if(!B2) return; B2.shards.forEach((d,i)=>{ const k=Math.max(0,Math.min(1,s.gone-i)); d.o.position.copy(d.home).addScaledVector(d.out,k); d.o.position.y+=Math.sin(T*.8+i)*.15; });
+      if(A.scene.fog){ A.scene.fog.near/=s.fog; A.scene.fog.far/=s.fog; } A.amb.intensity*=s.amb; } },
+};
+// the boss's field each frame, after the lights: its own tick, and for the last three the state of its evolution, eased
+function arBdBossTick(A,T,dt){ if(!A.bd||A.bd.kind!=='boss'||typeof bossFor!=='function') return; const id=bossFor(A.depth), F=ARENA_BOSSFIELD[id]; if(!F) return;
+  const boss=typeof B!=='undefined'&&B&&B.enemies?B.enemies.find(e=>e.def&&e.def.boss):null;
+  if(F.tick) F.tick(A,T,dt,boss);
+  if(F.phase){ const ph=Math.max(1,Math.min(3,(boss&&boss.phase)||1)), want=F.phase[ph-1], cur=A.bdPhase||(A.bdPhase=Object.assign({},F.phase[0]));
+    const k=Math.min(1,dt/2*3);   // (about two seconds to settle)
+    for(const key in want) if(typeof want[key]==='number') cur[key]+=(want[key]-cur[key])*k; else cur[key]=want[key];
+    F.apply(A,cur,T); } }

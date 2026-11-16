@@ -401,6 +401,16 @@ const CHECKS = {
       const n = await pg.evaluate(() => { window.__bdForce = null; return (AR.bdPieces || []).length; }); if (n < 1 || n > 2) return 'depth ' + d + ' ' + k + ': ' + n + ' set pieces'; }
     return null;
   },
+  // Task 5: the last three bosses' fields reach their phase-3 state (skipping 2) within 2.5 s; the tick stops after the battle
+  async bdBossPhases(pg) {
+    for (const [d, key, want] of [[16, 'lava', .8], [20, 'close', 2], [24, 'gone', 6]]) {
+      await pg.evaluate(BATTLE, [d, true]);
+      const r = await pg.evaluate(async ([key, want]) => { const b = B.enemies.find(e => e.def && e.def.boss); if (!b) return 'no boss'; b.phase = 3;
+        await new Promise(r => setTimeout(r, 2500)); const v = AR.bdPhase && AR.bdPhase[key]; return Math.abs(v - want) < .05 * Math.max(1, want) ? null : key + ' ' + v + ', want ' + want; }, [key, want]);
+      if (r) return 'depth ' + d + ': ' + r;
+    }
+    return null;
+  },
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait]) => {

@@ -59,9 +59,17 @@ function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(
   const det=m.userData.xdet||0; if(det) xDetailN();   // 1: a floor, 2: a wall (its relief laid round the block's sides)
   const bomb=m.userData.xbomb||0, atl=()=>m.userData.xatlas||null;
   const mold=()=>m.userData.xmold&&XLIT.mold&&typeof xMoldReady==='function'&&xMoldReady()?m.userData.xmold:0;   // (the mold layer: mold.js; 1 a floor, 2 a wall)   // (an atlas tile: envart.js; set on the material when it is made)
-  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(m.userData.xrock) xRockNormal(sh,!!atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); };
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); if(det) xDetShader(sh,det===2); if(bomb) xBombShader(sh,bomb,!!atl()); if(atl()) xAtlasShader(sh,atl()); if(m.userData.xrock) xRockNormal(sh,!!atl()); if(proj) xProjShader(sh); const mk=mold(); if(mk) xMoldShader(sh,mk); if(m.userData.xgrad) xGradFix(sh); };
   m.customProgramCacheKey=()=>{ const A=atl(); return (pk?pk.call(m):'p')+'|xlit'+(proj?'|proj':'')+(det?'|det'+det:'')+(bomb?'|bomb'+bomb:'')+(A?'|atlas'+(A.n?'n':'')+(A.o?'o':'')+(A.cell?'c':''):'')+(mold()?'|xmold'+mold():''); };
   xLitDefines(m); m.needsUpdate=true; return m; }
+/* A dressed wall's texture place jumps where a course slides or a corner's bricks stop (explore.js xWallMaskShader):
+   every lookup takes its filtering from the smooth place under it (vUvR), so the jumps draw no line of the wrong mip
+   level or a tile's gutter. Applied last, after every other patch has written its lookups. */
+function xGradFix(sh){ let f=sh.fragmentShader; if(!f.includes('varying vec2 vUvR')) return;
+  f=f.replace(/dFd([xy])\(\s*vUv\s*\)/g,'dFd$1( vUvR )');
+  f=f.replace(/texture2D\(\s*(map|normalMap)\s*,\s*vUv\s*\)/g,'xTG( $1, vUv )');
+  f=f.replace('void main() {','vec4 xTG(sampler2D s,vec2 u){\n#if __VERSION__>=300\n  return textureGrad(s,u,dFdx(vUvR),dFdy(vUvR));\n#else\n  return texture2D(s,u);\n#endif\n}\nvoid main() {');
+  sh.fragmentShader=f; }
 // a lighting switch changed: every lit material is rebuilt with its new defines
 function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
   for(const m of XLITMATS){ const d=JSON.stringify(m.defines), n=m.normalMap; xLitDefines(m); if(d!==JSON.stringify(m.defines)||n!==m.normalMap) m.needsUpdate=true; } }

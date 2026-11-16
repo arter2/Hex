@@ -153,3 +153,62 @@ function arBdMatteTick(A,dt){ const M=A.bdMatte; if(!M) return;
     M.cards=[arBdMatteCard(L.far,70,110*Math.PI/180,-30,cz,fog,0), arBdMatteCard(L.mid,45,100*Math.PI/180,-21,cz,fog,1)];   // (low enough that each painting's detailed middle band meets the board's horizon)
     for(const c of M.cards) A.grp.add(c); }
   if(M.cards&&M.t<1){ M.t=Math.min(1,M.t+dt/.6); for(const c of M.cards) c.material.opacity=M.t; } }
+
+// ---- ruins (Task 3) ----
+// pieces of geometry merged into one, its uv laid by box projection in world space at 4 units a repeat (no stretching)
+function bdMerge(parts){ const P=[], Nn=[], U=[];
+  for(const [g,m] of parts){ const q=g.index?g.toNonIndexed():g; q.applyMatrix4(m); q.computeVertexNormals(); const p=q.attributes.position, n=q.attributes.normal;
+    for(let i=0;i<p.count;i++){ const x=p.getX(i), y=p.getY(i), z=p.getZ(i), ax=Math.abs(n.getX(i)), ay=Math.abs(n.getY(i)), az=Math.abs(n.getZ(i));
+      P.push(x,y,z); Nn.push(n.getX(i),n.getY(i),n.getZ(i)); if(ay>ax&&ay>az) U.push(x/4,z/4); else if(ax>az) U.push(z/4,y/4); else U.push(x/4,y/4); } }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(Nn,3));
+  g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.setAttribute('uv2',new THREE.Float32BufferAttribute(U,2)); return g; }
+// chip and roughen a piece: every vertex nudged by noise, the top ones more (crumbled)
+function bdChip(g,seed,amt,top){ const P=g.attributes.position; let y1=-1e9; for(let i=0;i<P.count;i++) y1=Math.max(y1,P.getY(i));
+  for(let i=0;i<P.count;i++){ const x=P.getX(i), y=P.getY(i), z=P.getZ(i), k=(bdNoise(x*3.1+y*1.7,z*3.3,seed)-.5)*amt*2;
+    const t=top&&y>y1-.01?-bdFbm(x*1.3,z*1.3,seed+5,2)*top:0; P.setXYZ(i,x+k,y+k*.5+t,z+k); } return g; }
+/* One ruin piece's geometry, at the origin, standing on y=0: 'drum' (a broken column), 'stub' (a wall stub, its top
+   stepped and crumbled), 'arch' (whole, or collapsed with one side gone), 'steps', 'block' (fallen), 'plinth'. */
+function arBdRuinKit(kind,R){ const s=(R()*1e6)|0, parts=[], M=(x,y,z,ry,rz)=>new THREE.Matrix4().compose(new THREE.Vector3(x,y,z),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,ry||0,rz||0)),new THREE.Vector3(1,1,1));
+  if(kind==='drum'){ const h=.9+R()*2.6, r=.42+R()*.12, g=new THREE.CylinderGeometry(r*.95,r,h,16,Math.ceil(h*3)); const P=g.attributes.position;
+      for(let i=0;i<P.count;i++){ const x=P.getX(i), z=P.getZ(i), a=Math.atan2(z,x), f=1-.06*Math.max(0,Math.cos(a*8)); P.setX(i,x*f); P.setZ(i,z*f); }   // (fluted)
+      parts.push([bdChip(g,s,.03,.5+R()*.6),M(0,h/2,0)]); parts.push([bdChip(new THREE.BoxGeometry(r*2.5,.22,r*2.5,3,1,3),s+1,.03,0),M(0,.11,0)]); }
+  else if(kind==='stub'){ const w=1.6+R()*1.6, h=.8+R()*1.4; parts.push([bdChip(new THREE.BoxGeometry(w,h,.6,Math.ceil(w*4),Math.ceil(h*4),2),s,.04,.6+R()*.5),M(0,h/2,0)]); }
+  else if(kind==='arch'){ const span=2.4, h=2.8+R()*.8, broke=R()<.5;
+      parts.push([bdChip(new THREE.BoxGeometry(.6,h,.6,2,8,2),s,.03,0),M(-span/2,h/2,0)]);
+      if(!broke) parts.push([bdChip(new THREE.BoxGeometry(.6,h,.6,2,8,2),s+1,.03,0),M(span/2,h/2,0)]);
+      const tor=new THREE.TorusGeometry(span/2,.3,6,18,broke?Math.PI*.55:Math.PI); parts.push([bdChip(tor,s+2,.03,0),new THREE.Matrix4().compose(new THREE.Vector3(0,h,0),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,0,broke?Math.PI*.45:0)),new THREE.Vector3(1,1,1))]); }
+  else if(kind==='steps'){ for(let k=0;k<3;k++) parts.push([bdChip(new THREE.BoxGeometry(2.2-k*.5,.24,1.4-k*.4,6,1,4),s+k,.03,0),M(0,.12+k*.24,0)]); }
+  else if(kind==='block'){ const a=.6+R()*.5; parts.push([bdChip(new THREE.BoxGeometry(a*1.6,a,a,4,3,3),s,.05,0),M(0,a/2-.05,0,R()*3,(R()-.5)*.4)]); }
+  else { parts.push([bdChip(new THREE.BoxGeometry(1.3,.5,1.3,4,2,4),s,.03,0),M(0,.25,0)]); parts.push([bdChip(new THREE.BoxGeometry(1.05,.25,1.05,3,1,3),s+1,.02,.12),M(0,.62,0)]); }
+  return bdMerge(parts); }
+/* The ruins: the island, and 10-18 ruin pieces along its sides and back (beyond the board, never in front of it), a few
+   broken off its far edge floating in the chasm, rubble and moss at their feet. */
+function arBdRuins(A,Ar,R,o){ const out=arBdIsland(A,Ar,R,o), {back,near,side}=o;
+  let z1=0, x1=-1e9, x0=1e9; for(const t of TILES){ z1=Math.max(z1,Math.abs(t.wz)); x1=Math.max(x1,t.wx); x0=Math.min(x0,t.wx); }
+  const parts=[], feet=[], kinds=['drum','drum','stub','stub','block','plinth','steps','drum'], put=(kind,wx,wz,y,ry)=>{ const g=arBdRuinKit(kind,R); parts.push([g,new THREE.Matrix4().compose(new THREE.Vector3(wz,y,-wx),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,ry,0)),new THREE.Vector3(1,1,1))]); feet.push([wx,wz,y]); };
+  const n=10+(R()*9|0);
+  for(let k=0;k<n;k++){ const sd=R()<.5?-1:1, wx=x0+4+R()*(x1-x0-3), wz=sd*(z1+1.9+R()*1.6), kind=kinds[R()*kinds.length|0]; put(kind,wx,wz,-SLAB,R()*6.3); }
+  put('arch',x1+.6,(R()<.5?-1:1)*(z1+2.2),-SLAB,Math.PI/2);   // (an arch at a back corner)
+  for(let k=0,m=2+(R()*3|0);k<m;k++){ const wx=back+1.5+R()*4, wz=(R()-.5)*2*(side), kind=['drum','stub','block','arch'][R()*4|0]; put(kind,wx,wz,-SLAB-1-R()*3,R()*6.3); }   // (broken off the far edge, floating)
+  const g=bdMerge(parts.map(([g,m])=>{ const q=g.clone(); return [q,m]; })), mat=arBdRockMat(Ar,'stone'); const mesh=new THREE.Mesh(g,mat); mesh.userData.bd='ruins'; out.push(mesh);
+  out.push(...arBdDressing(A,Ar,R,feet));
+  return out; }
+
+// ---- dressing (Task 3) ----
+/* Rubble (small sculpted rocks, instanced) and the hex floor's flat growth (moss, lichen, leaves) at the feet of rock and
+   ruins: feet are [wx, wz, y] in battle coordinates. */
+function arBdDressing(A,Ar,R,feet){ const out=[], n=feet.length*3;
+  { const g=bdChip(new THREE.DodecahedronGeometry(.18,1),(R()*1e6)|0,.05,0); g.setAttribute('uv2',g.attributes.uv.clone());
+    const im=new THREE.InstancedMesh(g,arBdRockMat(Ar,'rock'),n), m4=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), sc=new THREE.Vector3();
+    for(let i=0;i<n;i++){ const [wx,wz,y]=feet[i%feet.length], a=R()*6.3, d=.5+R()*.9, s=.5+R()*1.4; e.set(R()*3,R()*3,R()*3); q.setFromEuler(e);
+      v.set(wz+Math.sin(a)*d,y+.05*s,-(wx+Math.cos(a)*d)); sc.set(s,s*.7,s); m4.compose(v,q,sc); im.setMatrixAt(i,m4); }
+    im.userData.bd='rubble'; out.push(im); }
+  const H=typeof envArtHex==='function'&&envArtHex(Ar.id), G=typeof ARENA_HEX!=='undefined'&&ARENA_HEX.growth;
+  if(H&&G){ const flat=G.flat[Ar.id]||[], cs=G.cell, W=8*cs, Hh=4*cs, P=[], N=[], U=[];
+    for(let i=0;i<feet.length*2&&flat.length;i++){ const [wx,wz,y]=feet[i%feet.length], c=flat[R()*flat.length|0], b=G.box[Ar.id]['f'+c]||[8,8,cs-8,cs-8], x0=(c%4)*cs, y0=((c/4)|0)*cs;
+      const u0=(x0+b[0])/W, u1=(x0+b[2])/W, v0=1-(y0+b[3])/Hh, v1=1-(y0+b[1])/Hh, a=R()*6.3, d=.3+R()*.8, L=.5+R()*.5, X=wx+Math.cos(a)*d, Z=wz+Math.sin(a)*d, r=R()*6.3, cr=Math.cos(r), sr=Math.sin(r);
+      for(const [sx,sz] of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]]){ const px=sx*L/2, pz=sz*L/2; P.push(Z+px*cr-pz*sr,y+.02,-(X+px*sr+pz*cr)); N.push(0,1,0); U.push(sx<0?u0:u1,sz<0?v0:v1); } }
+    if(P.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2));
+      const m=arMat(new THREE.MeshStandardMaterial({map:xLeafTex(H.growth,true),alphaTest:.5,side:THREE.DoubleSide,roughness:1,metalness:0})); m.userData.noProj=1;
+      const mesh=new THREE.Mesh(g,m); mesh.userData.bd='moss'; out.push(mesh); } }
+  return out; }

@@ -153,7 +153,7 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
     const t=arTex(xTex(arArt(Ar,'floor',()=>xRockFloor(S,(Ar.index||0)*17+3)),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
     const sideT=arTex(xTex(arArt(Ar,'wall',()=>xRockWall(S,(Ar.index||0)*13+1)),true)); sideT.repeat.set(6,1);
     const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image)); top.userData.xmold=1; rim.userData.xmold=2;   // (a light layer of mold: mold.js)
-    if(typeof arBdIsland==='function') out.push(...arBdIsland(A,Ar,R,{back,near,side}));   // (the sculpted floating island: arenabackdrop.js)
+    if(typeof arBdIsland==='function') out.push(...(A.bd.kind==='ruins'&&typeof arBdRuins==='function'?arBdRuins:arBdIsland)(A,Ar,R,{back,near,side}));   // (the sculpted floating island, ruined or not: arenabackdrop.js)
     else { const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl); }
     out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it

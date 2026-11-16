@@ -329,14 +329,7 @@ const CHECKS = {
   },
   // Task 4: battle after battle, the arena's textures are freed and the decoded art reused
   async hexRepeat(pg) {
-    let first = null, counts = [];
-    for (let i = 0; i < 5; i++) {
-      await pg.evaluate(BATTLE, [1, true, [['rat']]]);
-      const r = await pg.evaluate(() => ({ img: envArtHex('hollows').tiles.src, same: window.__hexImg ? window.__hexImg === envArtHex('hollows').tiles : (window.__hexImg = envArtHex('hollows').tiles, true), texs: (AR.texs || []).length, mem: AR.renderer.info.memory.textures }));
-      if (!r.same) return 'the hex art was decoded again';
-      counts.push(r.mem);
-    }
-    return counts[4] > counts[1] + 2 ? 'textures grow battle by battle: ' + counts.join(',') : null;
+    return LEAKS(pg, 5);
   },
 
   // ---- the arena's backdrops (docs/superpowers/plans/2026-11-16-arena-backdrops.md) ----
@@ -384,10 +377,8 @@ const CHECKS = {
   },
   // Task 6: battle after battle, textures freed and a matte decoded once; never the same matte twice running
   async bdRepeat(pg) {
-    const mem = [];
-    for (let i = 0; i < 5; i++) { await pg.evaluate(BATTLE, [1, true, [['rat']]]); await pg.waitForTimeout(1500);
-      mem.push(await pg.evaluate(() => AR.renderer.info.memory.textures)); }
-    return mem[4] > mem[1] + 4 ? 'textures grow battle by battle: ' + mem.join(',') : null;
+    for (const k of ['cave', 'island', 'ruins']) { await pg.evaluate(k => { window.__bdForce = k; }, k); const r = await LEAKS(pg, 4); if (r) return k + ': ' + r; }
+    await pg.evaluate(() => { window.__bdForce = null; }); return null;
   },
   async bdMatteOrder(pg) {
     let last = null;
@@ -415,6 +406,16 @@ const CHECKS = {
     }
     return null;
   },
+};
+// in the page: count the textures still alive after the arena is cleared, battle after battle (the caches that keep
+// theirs on purpose, the unit sprites and the foliage cards, left out); a leak shows as a count that climbs
+const LEAKS = async (pg, n) => {
+  await pg.evaluate(() => { if (window.__LIVE) return; window.__LIVE = new Set(); const P = THREE.Texture.prototype, d = P.dispose;
+    Object.defineProperty(P, 'needsUpdate', { configurable: true, set(v) { if (v) { this.version++; if (!this.__seen) { this.__seen = 1; const st = new Error().stack || ''; if (!/arPic|xLeafTex|lookEnv|envArtTex/.test(st)) __LIVE.add(this); } } } });
+    P.dispose = function () { __LIVE.delete(this); return d.call(this); }; });
+  const counts = [];
+  for (let i = 0; i < n; i++) { await pg.evaluate(BATTLE, [1, true]); await pg.waitForTimeout(2600); counts.push(await pg.evaluate(() => { arenaClear(); return __LIVE.size; })); }
+  return counts.slice(1).some(c => c !== counts[1]) ? 'textures left alive after each battle: ' + counts.join(',') : null;
 };
 // in the page: start a battle at a depth (wait: for the area's hex floor art, up to 15 s)
 const BATTLE = async ([depth, wait, waves]) => {

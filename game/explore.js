@@ -446,14 +446,22 @@ function xWedges(){ let wide=null; for(const [i,d] of EX.doors) if(d.wide){ wide
   return W; }
 // a point on the floor: in an open cell, or in the open half of a diagonal wall's cell (with the body's margin m)
 function xOpenAt(x,z,c,m){ const W=xWedge(c); if(!W) return false; const u=x/XCS-xcx(c)-.5, v=z/XCS-xcy(c)-.5; return u*W.nx+v*W.nz>(m||0)/XCS; }
+// free a scene group: its geometry, materials and the textures they hold, except anything the group keep still uses
+const XMAT_TEX=['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap'];
+function xGroupParts(grp,into){ const add=x=>{ if(x&&x.dispose) into.add(x); };
+  grp.traverse(o=>{ add(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
+    for(const k of XMAT_TEX) add(m[k]); if(m.userData){ add(m.userData.nmap); add(m.userData.rmap); } add(m); } }); return into; }
+function xFreeGroup(grp,keep){ const used=keep?xGroupParts(keep,new Set()):null;
+  for(const x of xGroupParts(grp,new Set())) if(!used||!used.has(x)) x.dispose(); }
+// after a frame: the floor left behind goes now that the new one's shaders are built
+function xFreeOld(G){ if(G&&G.oldGroup){ const o=G.oldGroup; G.oldGroup=null; xFreeGroup(o,G.group); } }
 function xBuildScene(){
   const G=xInit3D();
-  // the old floor's scene is freed in full (geometry, materials and every texture they hold), so going
-  // up and down the stairs never piles up graphics memory; a shared texture is simply uploaded again
-  if(G.group){ G.scene.remove(G.group); const done=new Set(), free=x=>{ if(x&&x.dispose&&!done.has(x)){ done.add(x); x.dispose(); } };
-    G.group.traverse(o=>{ free(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
-      for(const k of ['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap']) free(m[k]);
-      if(m.userData&&m.userData.nmap) free(m.userData.nmap); if(m.userData&&m.userData.rmap) free(m.userData.rmap); free(m); } }); }
+  // the old floor leaves the scene at once but is freed only after the new floor has drawn (xFreeOld): freeing its
+  // materials first deleted their shader programs, and the new floor then built the same programs again (the stall
+  // on the stairs). Then everything of it the new floor does not use goes (geometry, materials and their textures),
+  // so going up and down the stairs never piles up graphics memory
+  if(G.group){ G.scene.remove(G.group); if(G.oldGroup) xFreeGroup(G.oldGroup,null); G.oldGroup=G.group; }
   XLITMATS.clear();
   // the Graphics setting, read once per floor: Low keeps two of the four torch lights (the others leave the scene, so
   // every material's shader is built for fewer lights) and draws at sharpness 1 with no pass after the picture
@@ -2077,7 +2085,7 @@ function xDraw(T,dt){
     const n0=XLIT.dFog?(EX.camD||25)+XLIT.dFogStart*XCS:900; G.scene.fog.near=n0; G.scene.fog.far=n0+Math.max(1,XLIT.dFogLen)*XCS; const fa=Math.min(300,G.scene.fog.far+4); if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=xDraw.lo||(xDraw.lo=$('#xLowHp')); if(lo){ const r=EX.hp/(EX.maxHp||xmaxHp()), o=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; if(lo.style.opacity!==o) lo.style.opacity=o; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
-  lookUse(EX.aoTex,XN*XCS,0,0); if(typeof xMoldUse==='function') xMoldUse(EX.moldTex,EX.moldSlots,XWALL/2); { const v=(xDraw.v||(xDraw.v=new THREE.Vector3())).set(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G);   // the blur's focus: you xFpsTick(dt);
+  lookUse(EX.aoTex,XN*XCS,0,0); if(typeof xMoldUse==='function') xMoldUse(EX.moldTex,EX.moldSlots,XWALL/2); { const v=(xDraw.v||(xDraw.v=new THREE.Vector3())).set(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G); xFreeOld(G);   // the blur's focus: you xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();   // (ten times a second; it only redraws the ground when something on it changed)
 }
 // the searched wave: the middle tile flashes, then the eight round it a beat later, each fading out in

@@ -560,7 +560,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); if(xWT(v)===1) mat.userData.xcourse=xCourses(wallTex[1]); mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -1302,6 +1302,34 @@ function xSinkPatch(m){ if(!XSINK) return m; const prev=m.onBeforeCompile, key=m
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); xSinkShader(sh,door,clip); }; m.customProgramCacheKey=()=>(key?key.call(m):'')+'xsink'+(door?'d':'')+(clip?'c':''); return m; }
 // doors (and their frames) in the cut are only thinned, not cut away: you can still see where every door is
 let XSINK_DOOR=false, XSINK_CLIP=null;
+/* The courses of a dressed wall's texture (uvj, look.js xBlockWall or the painted wall-1): along a wall the bricks run
+   on from block to block (xDitherMat), and each course slides along by its own amount, the same the whole length of a
+   straight run (vXCrs.y names the run: its plane and the way it faces), so neighbouring blocks never show the same face
+   and nothing is cut at a joint. The courses' edges (the mortar lines) are found in the texture itself, as fractions of
+   its height from the top; a slide's jump falls inside the mortar. The rubble walls have no level courses: no slide.
+   The fragment shader reads its own copy of vUv (vUvR is the varying), so every lookup of the map, the normal map and
+   the atlas takes the slid place. */
+function xCourses(t){ if(!t) return null; if(t.courses!==undefined) return t.courses; let L=null;
+  try{ const N=256, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d');
+    if(t.atlas){ const im=t.img, W=im.naturalWidth||im.width, H=im.naturalHeight||im.height, r=t.rect; x.drawImage(im,r[0]*W,(1-r[1]-r[3])*H,r[2]*W,r[3]*H,0,0,N,N); }
+    else x.drawImage(t,0,0,N,N);
+    const d=x.getImageData(0,0,N,N).data, row=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let i=0;i<N;i++){ const o=(j*N+i)*4; a+=d[o]+d[o+1]+d[o+2]; } row[j]=a/(3*N); }
+    const dt=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let k=-15;k<=15;k++) a+=row[(j+k+N)%N]; dt[j]=row[j]-a/31; }
+    L=[]; for(let j=0;j<N;j++){ let m=true; for(let k=-3;k<=3;k++) if(dt[(j+k+N)%N]<dt[j]) m=false; if(m&&dt[j]<-8&&(!L.length||j-L[L.length-1]*N>12)) L.push((j+.5)/N); }
+    if(L.length>1&&(L[0]+1-L[L.length-1])*N<=12){ const a=Math.round(L[0]*N-.5), b=Math.round(L[L.length-1]*N-.5); if(dt[a]<=dt[b]) L.pop(); else L.shift(); }   // (one line across the tile's wrap, found at both ends)
+    if(L.length<2||L.length>6) L=null; }catch(e){ L=null; }
+  return t.courses=L; }
+function xCourseShader(sh,L){ const n=L?L.length:0; sh.uniforms.uXCB={value:(L||[]).concat([2,2,2,2,2,2]).slice(0,6)}; sh.uniforms.uXCN={value:n};
+  let f=sh.fragmentShader.replace('#include <uv_pars_fragment>','#if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )\n\tvarying vec2 vUvR;\n\tvec2 vUv;\n#endif');
+  f='varying vec2 vXCrs; uniform float uXCB[6]; uniform float uXCN;\n'+f.replace('void main() {',`void main() {
+  #if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )
+  vUv=vUvR;
+  if(uXCN>.5&&vXCrs.x>.5){ float yi=1.0-fract(vUv.y), k=0.0;
+    for(int i=0;i<6;i++){ if(float(i)>=uXCN) break; if(uXCB[i]<yi) k+=1.0; }
+    float id=floor(vUv.y)*uXCN-k;   // (the band below a tile's last line is the same course as the one above the next tile's first)
+    vUv.x+=fract(sin(dot(vec2(id,floor(vXCrs.y+.5)),vec2(12.9898,78.233)))*43758.5453); }
+  #endif`);
+  sh.fragmentShader=f; sh.vertexShader='#define vUv vUvR\n'+sh.vertexShader; }
 function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0; if(uvj===2) m.userData.xrock=1;   // (its relief laid like its colour: look.js xRockNormal)
   m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
@@ -1310,7 +1338,11 @@ function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XS
     // uvj (walls): each block's stone shifted by its own quarter-steps (from where it stands), courses kept level,
     // so no two neighbours show the same face; on a spacious floor a block standing lower (a low near wall, xStepLow)
     // shows fewer courses of the same stone, not squashed stone (its faces' v runs from its foot)
-    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); '+(uvj===2?'vUv=vUv*.5+vec2(hh,fract(hh*7.13));':'vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
+    if(uvj) sh.vertexShader=sh.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n  #ifdef USE_INSTANCING\n'+(sink?'  if(abs(normal.y)<.5) vUv.y*=length(instanceMatrix[1].xyz);\n':'')+'  { vec2 ip=floor(instanceMatrix[3].xz/2.0); float hh=fract(sin(dot(ip,vec2(12.9898,78.233)))*43758.5453); '+(uvj===2?'vUv=vUv*.5+vec2(hh,fract(hh*7.13));':
+      // dressed walls: a side's u runs along the wall in the world (a block's width to a texture), so the courses run
+      // on unbroken from block to block; its v is the block's own, so they stay level. The tops keep the shift.
+      'vec3 wn=mat3(modelMatrix)*(mat3(instanceMatrix)*normal), wp=(modelMatrix*(instanceMatrix*vec4(position,1.0))).xyz; vXCrs=vec2(0.0);\n    if(abs(wn.y)<.5){ wn=normalize(vec3(wn.x,0.0,wn.z)); vUv.x=dot(wp,vec3(wn.z,0.0,-wn.x))/'+XCS.toFixed(1)+'; vXCrs=vec2(1.0,floor(dot(wp,wn)/'+XCS.toFixed(1)+'+.5)*7.0+floor(atan(wn.z,wn.x)*.6366+.5)); }\n    else vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
+    if(uvj===true){ sh.vertexShader='varying vec2 vXCrs;\n'+sh.vertexShader.replace('#include <uv_vertex>','vXCrs=vec2(0.0);\n  #include <uv_vertex>'); xCourseShader(sh,m.userData.xcourse); }
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     // uvj 2 (rough rock): the stone is laid in world space round the whole wall, not per block (xRockShader)
     if(uvj===2) xRockShader(sh);

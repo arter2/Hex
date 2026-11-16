@@ -876,7 +876,10 @@ function xChasmTex(A,S,seed){ const N=256, R=caveRng(seed+5), f=xFbm(N,R,3), c=d
     im.data[o]=Math.min(255,fg[0]*.8+g[0]*q*.55); im.data[o+1]=Math.min(255,fg[1]*.8+g[1]*q*.55); im.data[o+2]=Math.min(255,fg[2]*.8+g[2]*q*.55); im.data[o+3]=255; }
   x.putImageData(im,0,0); for(let n=0;n<420;n++){ x.fillStyle=n%4?'rgba(255,255,255,.55)':A.glow; x.fillRect(R()*N|0,R()*N|0,n%9?1:2,1); }
   return c; }
-function xChasm(grp,A,S,seed){ const span=XN*XCS, t=xTex(xChasmTex(A,S,seed),true); t.repeat.set(5,5);
+// (painted once per area and kept for the last two: a quarter of a second each floor, for dust far below)
+const XCHASM_KEEP=new Map();
+function xChasmCanvas(A,S,seed){ let c=XCHASM_KEEP.get(A.id); if(!c){ c=xChasmTex(A,S,seed); XCHASM_KEEP.set(A.id,c); while(XCHASM_KEEP.size>2) XCHASM_KEEP.delete(XCHASM_KEEP.keys().next().value); } return c; }
+function xChasm(grp,A,S,seed){ const span=XN*XCS, t=xTex(xChasmCanvas(A,S,seed),true); t.repeat.set(5,5);
   const m=new THREE.Mesh(new THREE.PlaneGeometry(span*1.6,span*1.6),new THREE.MeshBasicMaterial({map:t,fog:false}));
   m.rotation.x=-Math.PI/2; m.position.set(span/2,-9,span/2); grp.add(m);
   // dust rising out of the dark below, around you

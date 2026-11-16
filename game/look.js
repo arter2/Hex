@@ -232,9 +232,14 @@ ${A.o?`      vec4 o0=xAtG(map,uXAtO,ou+vec2(.17,.43),dFdx(ou),dFdy(ou)); texelCo
 // the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
 const XAO_R=8;
 function xBakeAO(){ if(!EX||!EX.wIdx) return; const R=XAO_R, W=XN*R, d=EX.aoData||(EX.aoData=new Uint8Array(W*W*4)), rad=Math.max(.05,XLIT.aoRad)*XCS, sz=XCS/R;
-  const wall=(x,y)=>x<0||y<0||x>=XN||y>=XN||EX.wIdx.has(xi(x,y)), reach=Math.ceil(rad/XCS)+1;
+  // (the walls as a grid, and for each cell whether any wall, or the map's edge, is within reach: a texel of a cell
+  // with none near is open floor, 0, without looking round it. The same map as looking everywhere, a few times faster)
+  const reach=Math.ceil(rad/XCS)+1, G=new Uint8Array(XN*XN), near=new Uint8Array(XN*XN);
+  for(const c of EX.wIdx.keys()) if(c>=0&&c<G.length) G[c]=1;
+  const wall=(x,y)=>x<0||y<0||x>=XN||y>=XN||G[y*XN+x]===1;
+  for(let cy=0;cy<XN;cy++) for(let cx=0;cx<XN;cx++){ let n=0; for(let dy=-reach;dy<=reach&&!n;dy++) for(let dx=-reach;dx<=reach;dx++) if(wall(cx+dx,cy+dy)){ n=1; break; } near[cy*XN+cx]=n; }
   for(let ty=0;ty<W;ty++) for(let tx=0;tx<W;tx++){ const wx=(tx+.5)*sz, wz=(ty+.5)*sz, cx=Math.floor(wx/XCS), cy=Math.floor(wz/XCS); let o=0;
-    if(wall(cx,cy)) o=9; else for(let dy=-reach;dy<=reach;dy++) for(let dx=-reach;dx<=reach;dx++){ if(!wall(cx+dx,cy+dy)) continue;
+    if(wall(cx,cy)) o=9; else if(near[cy*XN+cx]) for(let dy=-reach;dy<=reach;dy++) for(let dx=-reach;dx<=reach;dx++){ if(!wall(cx+dx,cy+dy)) continue;
       const x0=(cx+dx)*XCS, z0=(cy+dy)*XCS, ex=Math.max(x0-wx,0,wx-x0-XCS), ez=Math.max(z0-wz,0,wz-z0-XCS), w=Math.max(0,1-Math.hypot(ex,ez)/rad); o+=w*w; }
     d[(ty*W+tx)*4]=Math.round(255*(1-Math.exp(-o*.9))); }
   if(!EX.aoTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.aoTex=t; }

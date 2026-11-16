@@ -129,7 +129,7 @@ function arBdIsland(A,Ar,R,o){ const {back,near,side}=o, seed=(Ar.index||0)*53+(
 
 // ---- matte paintings (Task 6) ----
 /* A painted panorama behind the arena, in two layers on curved cards round the board's far side: the far plate (radius
-   70, 110 degrees wide) and its middle layer (radius 45, 100 degrees, with a clear sky). Being at two distances they shift
+   70, 70 degrees wide) and its middle layer (radius 45, 64 degrees, with a clear sky). Being at two distances they shift
    against each other as the camera moves. Their lower quarter fades into the area's fog, so they meet the chasm without a
    seam; unfogged and unlit (they are paintings of light already). Each battle picks one of its place's mattes, never the
    last battle's when it has another; only that one loads, and the cards fade in when it has. */
@@ -150,7 +150,7 @@ function arBdMatteCard(img,radius,width,y0,cz,fog,order,transparent){ const H=ra
 function arBdMatteTick(A,dt){ const M=A.bdMatte; if(!M) return;
   if(!M.built){ const L=envArtMatte(M.id,M.n); if(!L) return; M.built=true;
     const cz=-((A.room.back+A.room.near)/2), fog=new THREE.Color(A.area.fog).multiplyScalar(.35);
-    M.cards=[arBdMatteCard(L.far,70,110*Math.PI/180,-30,cz,fog,0), arBdMatteCard(L.mid,45,100*Math.PI/180,-21,cz,fog,1)];   // (low enough that each painting's detailed middle band meets the board's horizon)
+    M.cards=[arBdMatteCard(L.far,70,70*Math.PI/180,-18,cz,fog,0), arBdMatteCard(L.mid,45,64*Math.PI/180,-14,cz,fog,1)];   // (narrow arcs: a phone shows about 40 degrees, so the painting is spread over little more than the view and keeps its detail; low enough that each painting's middle band meets the board's horizon)   // (low enough that each painting's detailed middle band meets the board's horizon)
     for(const c of M.cards) A.grp.add(c); }
   if(M.cards&&M.t<1){ M.t=Math.min(1,M.t+dt/.6); for(const c of M.cards) c.material.opacity=M.t; } }
 

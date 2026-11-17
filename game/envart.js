@@ -79,7 +79,7 @@ function envArtMatte(id,n){ const k=id+'-matte-'+n; if(BMAT.has(k)) return BMAT.
   const o={far:BIMG.get(k+'-far'), mid:BIMG.get(k+'-mid')}; BMAT.set(k,o); return o; }
 const envArtMatteFailed=(id,n)=>['far','mid'].some(L=>BST.get(id+'-matte-'+n+'-'+L)==='fail');
 // start loading what an area needs (its two sheets and the effects, and its arena)
-function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold');
+function envArtWant(id){ if(!id) return; load('area-'+id); load('area-'+id+'-n'); load('effects'); load('effects-e'); load('mold'); load('props'); load('props-n');
   for(const slot of ['board','floor','wall','rock','chasm','mold','lava']) arenaLoad(id,slot); hexWant(id);
   bdWant(id); if(typeof AREAS!=='undefined'){ const A=AREAS.find(a=>a.id===id); if(A&&A.boss) bdWant('boss-'+A.boss); } }
 function envArtWantDepth(d){ if(typeof areaOf==='function') envArtWant(areaOf(Math.max(1,d|0)).id); }
@@ -128,14 +128,19 @@ function envArtTex(img){ let t=TEX.get(img); if(!t){ t=new THREE.Texture(img); t
 // notes it is waiting, and is made again once it is in)
 function envArtMold(){ if(!known()||!ENVART_MAP.sheets.mold) return null; if(!ready('mold')){ if(STATE.get('mold')!=='fail'){ load('mold'); missing=true; } return null; }
   return {tex:envArtTex(IMG.get('mold')), rect:key=>glRect('mold',key)}; }
+// the furniture's materials (explore.js xPropShader): both sheets' textures, each material's tile rectangle as the GPU
+// sees it (the two sheets share a layout) and its mean colour, or null while they load (as envArtMold)
+function envArtProps(){ const S=known()&&ENVART_MAP.sheets.props; if(!S||!ENVART_MAP.sheets['props-n']) return null;
+  for(const s of ['props','props-n']) if(!ready(s)){ if(STATE.get(s)!=='fail'){ load(s); missing=true; } return null; }
+  return {tex:envArtTex(IMG.get('props')), ntex:envArtTex(IMG.get('props-n')), rect:key=>glRect('props',key), mean:S.mean}; }
 // the scene builder asks before and after: did it have to stand a code-painted texture in for one still loading?
 function envArtBuildStart(){ missing=false; }
 const envArtMissing=()=>missing;
 // a sheet came in (or failed): if the scene in front of you stood code-painted textures in for it, build it again
 function envArtArrived(){ if(typeof EX==='undefined'||!EX||!EX.artMissing||!EX.active||EX.busy||!EX.area) return; const id=EX.area.id;
-  if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold'].some(s=>STATE.get(s)==='loading')) return;
+  if(['area-'+id,'area-'+id+'-n','effects','effects-e','mold','props','props-n'].some(s=>STATE.get(s)==='loading')) return;
   EX.artMissing=false; if(typeof xBuildScene==='function'){ xBuildScene(); if(typeof xUpdateVis==='function') xUpdateVis(); } }
-const api={envArtBackdrop,envArtMatte,envArtMatteFailed,envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
+const api={envArtBackdrop,envArtMatte,envArtMatteFailed,envArtHex,envArtHexFailed,envArtArena,envArtFxGlow,envArtMold,envArtProps,envArtWant,envArtWantDepth,envArtAreaFloors,envArtAreaWalls,envArtTheme,envArtOverlay,envArtFx,envArtTex,envArtBuildStart,envArtMissing,envArtArrived};
 Object.assign(root,api);
 envArtWant('hollows');   // where a new game starts
 })(typeof globalThis!=='undefined'?globalThis:this);

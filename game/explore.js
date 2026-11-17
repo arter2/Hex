@@ -979,15 +979,63 @@ function xAirTick(T,dt){
    mushrooms, candles, statues, banners, vines and cobwebs. Furniture is merged into one mesh per
    room (and one for the things that glow) so a floor stays cheap to draw. Nothing here blocks you. */
 // collect boxes, cylinders and the rest into one vertex-coloured geometry
-function xMerger(){ const P=[], N=[], C=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler();
-  return { add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
-      tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(sx||1,sy||1,sz||1)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
+function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(); let tex=false;
+  // M.mat: the material (XPROP_MATS) the pieces added next are painted with (xPropShader), or null for flat colour. Each
+  // piece also keeps its own place and normal before it is turned and moved (shifted by a hash of where it stands, so
+  // two crates do not show the same boards), so its material stays on it however it is turned
+  const M={ mat:null, add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
+      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, slot=M.mat?XPROP_MATS.indexOf(M.mat):-1;
+      if(slot>=0) tex=true;
+      const hx=Math.sin(x*12.9898+z*78.233)*43758.5453, ox=hx-Math.floor(hx), oz=(hx*7.13)-Math.floor(hx*7.13), oy=(hx*3.71)-Math.floor(hx*3.71);
+      for(let i=0;i<p0.length;i+=3){ XL.push(p0[i]*kx+ox,p0[i+1]*ky+oy,p0[i+2]*kz+oz,slot); const a=n0[i]/kx, b=n0[i+1]/ky, c=n0[i+2]/kz, l=Math.hypot(a,b,c)||1; XN2.push(a/l,b/l,c/l); }
+      tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(kx,ky,kz)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
       for(let i=0;i<p.length;i++){ P.push(p[i]); N.push(n[i]); } for(let i=0;i<p.length/3;i++) C.push(c.r,c.g,c.b); g.dispose(); },
     size:()=>P.length,
-    build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3)); return new THREE.Mesh(g,mat); } }; }
+    build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
+      if(tex&&mat&&mat.userData.xprop){ g.setAttribute('aXL',new THREE.Float32BufferAttribute(XL,4)); g.setAttribute('aXN',new THREE.Float32BufferAttribute(XN2,3)); }
+      return new THREE.Mesh(g,mat); } };
+  return M; }
+/* The furniture's painted materials (docs/art-production/props/, the atlas sheets props and props-n: envArtProps). Laid on
+   in each piece's own space from its three sides (a tile a metre), a piece keeps its own colour and takes only the
+   painting's detail (the painting divided by its mean), with the relief of the material's height map and its
+   roughness on the shine (iron and brass shine most). The books are in the sheet but not laid on yet: their rows do not
+   meet the shelf boards. */
+const XPROP_MATS=['planks','rough-wood','iron','clay','cloth','carved-stone','bone','brass','books'];
+const XPROP_GLOSS={iron:1,brass:1,bone:.35,'carved-stone':.3,clay:.25};
+// the furniture's material: textured when the sheets are in (the room is built again when they arrive), flat otherwise
+function xPropMat(){ const m=xPhong({vertexColors:true}), A=typeof envArtProps==='function'?envArtProps():null; if(!A||m.isMeshStandardMaterial) return m; m.specular.set(0x2a2a2a);
+  const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
+  const low=!!(X3&&X3.low); m.userData.xprop=1; m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
+  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uXSharp:XLITU.uXSharp});
+    sh.vertexShader=sh.vertexShader.replace('void main() {','attribute vec4 aXL; attribute vec3 aXN; uniform vec4 uPR['+XPROP_MATS.length+']; uniform vec4 uPM['+XPROP_MATS.length+'];\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\nvoid main() {')
+      .replace('#include <begin_vertex>','#include <begin_vertex>\n vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+XPROP_MATS.length+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; }');
+    let f=sh.fragmentShader;
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\n'+xAtGlsl('256.0')+'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xdx=dFdx(vXL), xdy=dFdy(vXL); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1.;\n bool xon=vPR.z>0.;');
+    f=f.replace('#include <color_fragment>',`#include <color_fragment>
+ if(xon){ vec3 c=vec3(0.);
+  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,vXL.zy,xdx.zy,xdy.zy).rgb;
+  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,vXL.xz,xdx.xz,xdy.xz).rgb;
+  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,vXL.xy,xdx.xy,xdy.xy).rgb;
+  diffuseColor.rgb*=mix(vec3(1.),c/max(vPM.rgb,vec3(.02)),uPK); }`);
+    f=f.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+ if(xon){ vec2 u=vXL.xy, gx=xdx.xy, gy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ u=vXL.zy; gx=xdx.zy; gy=xdy.zy; } else if(xan.y>=xan.z){ u=vXL.xz; gx=xdx.xz; gy=xdy.xz; }
+  vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=nt.b;${low?'':`
+  vec3 mn=vec3((nt.xy*2.-1.)*uPNK,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
+  float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);`} }`);
+    f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.; }');
+    sh.fragmentShader=f; };
+  m.customProgramCacheKey=()=>'xprop'+(low?'l':'');
+  return m; }
+const XPROPU={ uPK:{value:1}, uPNK:{value:1} };
 const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
 // one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
-function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K)}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
+// what each kind of furniture is made of (xPropShader), and the colours within it that are something else
+const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay', bones:'bone', skulls:'bone', skeleton:'bone', rubble:'carved-stone', statue:'carved-stone',
+  shelf:'planks', rack:'rough-wood', table:'planks' };
+const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
+  0x7a2a24:null, 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
+function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
+      T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
   const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;
   switch(kind){
@@ -1085,7 +1133,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
         cloth.position.y=XWALL-.15; g.add(xBox(1.05,.06,.06,xMat(0x2a2620),0,XWALL-.12,0), cloth); g.userData.sway=cloth; }
       g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,y),floor:xi(x,y+1),sway:g.userData.sway,ph:R()*6}); }
     if(!M.size()&&!L.size()) return;
-    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); for(const fb of FBs.values()) if(fb.size()) grpR.add(fb.build()); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
+    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPropMat())); for(const fb of FBs.values()) if(fb.size()) grpR.add(fb.build()); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
     grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
 }
 // a standing brazier: an iron bowl on three legs, a fire and a real light (it joins the floor's lights)

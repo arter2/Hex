@@ -1005,7 +1005,8 @@ const XPROP_GLOSS={iron:1,brass:1,bone:.35,'carved-stone':.3,clay:.25};
 // the furniture's material: textured when the sheets are in (the room is built again when they arrive), flat otherwise
 function xPropMat(){ const m=xPhong({vertexColors:true}), A=typeof envArtProps==='function'?envArtProps():null; if(!A||m.isMeshStandardMaterial) return m; m.specular.set(0x2a2a2a);
   const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
-  const low=!!(X3&&X3.low); m.userData.xprop=1; m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
+  const low=!!(X3&&X3.low); m.userData.xprop=1; m.userData.noProj=1;   // (instead of surface.js's code-painted pixel material)
+  m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uXSharp:XLITU.uXSharp});
     sh.vertexShader=sh.vertexShader.replace('void main() {','attribute vec4 aXL; attribute vec3 aXN; uniform vec4 uPR['+XPROP_MATS.length+']; uniform vec4 uPM['+XPROP_MATS.length+'];\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\nvoid main() {')
       .replace('#include <begin_vertex>','#include <begin_vertex>\n vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+XPROP_MATS.length+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; }');

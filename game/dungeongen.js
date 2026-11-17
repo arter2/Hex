@@ -341,7 +341,7 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
         box(ST,u,v,.18,.8,.36,.8); box(LT,u,v,.42,.66,.12,.66);
         const [x,z]=W(u,v), hh=broken?.9+R()*.5:XWALL-.3; M.add(XG.cyl,ST,x,.48+hh/2,z,0,0,0,.95,hh,.95);
         if(!broken) box(LT,u,v,XWALL,.78,.26,.78); else for(let q=0;q<3;q++) M.add(XG.rock,ST,x+(R()-.5)*1.4,.12,z+(R()-.5)*1.4,R()*3,R()*3,0,.4,.25,.4); }); }
-    const g=new THREE.Group(); if(M.size()) g.add(M.build(xPhong({vertexColors:true}))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    const g=new THREE.Group(); if(M.size()) g.add(M.build(xPropTex(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
 
 /* Foliage cards: a ball of leaves drawn as a dozen small cut-out cards of the painted leaf clumps (envart.js 'leaf-clumps',
@@ -462,7 +462,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
         if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
       else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); }
       else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG,FB}); }
-    const g=new THREE.Group(); if(M.size()) g.add(M.build(xDitherMat(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    const g=new THREE.Group(); if(M.size()) g.add(M.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     if(F.size()) g.add(F.build()); if(FG.size()) g.add(FG.build()); for(const fb of FBs.values()) if(fb.size()) g.add(fb.build());
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
 // the themed rooms' pieces (x2Themes): drawn from boxes, cylinders, cones and balls like the rest of the clutter
@@ -570,7 +570,7 @@ function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Col
       const cx=a*Math.cos(tm), cy=b*Math.sin(tm), nx=b*Math.cos(tm), ny=a*Math.sin(tm), nl=Math.hypot(nx,ny), key=k===(N>>1), th=key?T+.14:T;
       const len=Math.hypot(x1-x0,y1-y0)-.03, ang=Math.atan2(y1-y0,x1-x0);
       M.add(XG.box,key?lite:k%2?base:dark.clone().lerp(base,.6),cx+nx/nl*th/2,ys+cy+ny/nl*th/2,0,0,0,ang,len,th,key?.82:.7); }
-    const mesh=M.build(xDitherMat(xPhong({vertexColors:true}))); g.add(mesh); g.visible=false; grp.add(g);
+    const mesh=M.build(xPropTex(xDitherMat(xPhong({vertexColors:true})))); g.add(mesh); g.visible=false; grp.add(g);
     const cells=[]; for(let k=-1;k<=st.w;k++) cells.push(st.ax?xi(Math.round(st.x),Math.round(st.y-(st.w-1)/2)+k):xi(Math.round(st.x-(st.w-1)/2)+k,Math.round(st.y)));
     EX.decor.push({mesh:g,cells,ph:0}); EX.arches.push({g,mesh,cell:st.cell,cut:1}); } }
 // an arch fading out of the way (like a wall between the camera and you)

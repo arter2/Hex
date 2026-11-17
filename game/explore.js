@@ -343,7 +343,7 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
     s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; const sh=s.userData.shade; if(sh){ sh.material.map=s.material.map; sh.material.needsUpdate=true; } } }
-const xMat=(c,o)=>xPhong(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
+const xMat=(c,o)=>{ const m=xPhong(Object.assign({color:c,shininess:6,specular:0x111111},o||{})); return o&&o.flat?m:xPropTex(m,xPropKind(m.color)); };   // (painted from what its colour says it is made of: xPropTex)
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
 // a wall block: a box with chamfered top edges and corners; rough=true pushes its faces in and
@@ -596,7 +596,7 @@ function xBuildScene(){
   for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=xDoorEW(i), g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
     const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
-    g.add(F.build(xDitherMat(xPhong({vertexColors:true})))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
+    g.add(F.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
     const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger();
     if(d.lock==='gate'){ for(let k=0;k<5;k++){ const x=-.6+k*.3, top=HR+Math.sqrt(Math.max(0,AR*AR-x*x))-.04; L.add(XG.box,0x2a2a30,x,top/2,0,0,0,0,.07,top,.07); } L.add(XG.box,0x2a2a30,0,.5,0,0,0,0,XCS-.44,.08,.09); L.add(XG.box,0x2a2a30,0,1.2,0,0,0,0,XCS-.44,.08,.09); }
     else { const LW=XCS-.44;
@@ -606,7 +606,7 @@ function xBuildScene(){
       for(const y of [.38,1.12]) for(const x of [-.55,0,.55]) for(const z of [-.1,.1]) L.add(XG.ball,0x2a2a30,x,y,z,0,0,0,.07,.07,.05);
       L.add(ringG,0x2a2a30,.5,.78,.11);
       if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) L.add(XG.box,LOCK_COL[d.lock],.38,.78,zz,0,0,0,.26,.32,.04); }
-    leaf.add(L.build(xDitherMat(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000}))));
+    leaf.add(L.build(xPropTex(xDitherMat(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000})))));
     // a locked door hangs a lantern of its key's colour over the arch, both sides, seen from across the room
     if(LOCK_COL[d.lock]){ const lc=new THREE.Color(LOCK_COL[d.lock]), tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), lan=[];
       for(const zz of [-.34,.34]){ const lg=new THREE.Group(); lg.position.set(0,HR+1.12,zz); lg.add(xBox(.05,.2,.05,xMat(0x2a2620),0,.12,0));
@@ -980,19 +980,21 @@ function xAirTick(T,dt){
    room (and one for the things that glow) so a floor stays cheap to draw. Nothing here blocks you. */
 // collect boxes, cylinders and the rest into one vertex-coloured geometry
 function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(); let tex=false;
-  // M.mat: the material (XPROP_MATS) the pieces added next are painted with (xPropShader), or null for flat colour. Each
+  // M.mat: the material (XPROP_MATS) the pieces added next are painted with (xPropTex), null for flat colour, or 'auto'
+  // (the default): read from each piece's colour (xPropKind). M.tex: {s,o} lays the material on the next pieces at this
+  // scale and offset of their unit shape instead (a shelf's row of books fills one row of the painting). Each
   // piece also keeps its own place and normal before it is turned and moved (shifted by a hash of where it stands, so
   // two crates do not show the same boards), so its material stays on it however it is turned
-  const M={ mat:null, add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
-      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, slot=M.mat?XPROP_MATS.indexOf(M.mat):-1;
+  const M={ mat:'auto', tex:null, add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
+      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, mk=M.mat==='auto'?xPropKind(col):M.mat, slot=mk?XPROP_MATS.indexOf(mk):-1, T=M.tex;
       if(slot>=0) tex=true;
       const hx=Math.sin(x*12.9898+z*78.233)*43758.5453, ox=hx-Math.floor(hx), oz=(hx*7.13)-Math.floor(hx*7.13), oy=(hx*3.71)-Math.floor(hx*3.71);
-      for(let i=0;i<p0.length;i+=3){ XL.push(p0[i]*kx+ox,p0[i+1]*ky+oy,p0[i+2]*kz+oz,slot); const a=n0[i]/kx, b=n0[i+1]/ky, c=n0[i+2]/kz, l=Math.hypot(a,b,c)||1; XN2.push(a/l,b/l,c/l); }
+      for(let i=0;i<p0.length;i+=3){ if(T) XL.push(p0[i]*T.s[0]+T.o[0],p0[i+1]*T.s[1]+T.o[1],p0[i+2]*T.s[2]+T.o[2],slot); else XL.push(p0[i]*kx+ox,p0[i+1]*ky+oy,p0[i+2]*kz+oz,slot); const a=n0[i]/kx, b=n0[i+1]/ky, c=n0[i+2]/kz, l=Math.hypot(a,b,c)||1; XN2.push(a/l,b/l,c/l); }
       tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(kx,ky,kz)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
       for(let i=0;i<p.length;i++){ P.push(p[i]); N.push(n[i]); } for(let i=0;i<p.length/3;i++) C.push(c.r,c.g,c.b); g.dispose(); },
     size:()=>P.length,
     build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
-      if(tex&&mat&&mat.userData.xprop){ g.setAttribute('aXL',new THREE.Float32BufferAttribute(XL,4)); g.setAttribute('aXN',new THREE.Float32BufferAttribute(XN2,3)); }
+      if(mat&&mat.userData.xprop){ g.setAttribute('aXL',new THREE.Float32BufferAttribute(XL,4)); g.setAttribute('aXN',new THREE.Float32BufferAttribute(XN2,3)); }
       return new THREE.Mesh(g,mat); } };
   return M; }
 /* The furniture's painted materials (docs/art-production/props/, the atlas sheets props and props-n: envArtProps). Laid on
@@ -1002,16 +1004,29 @@ function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4
    meet the shelf boards. */
 const XPROP_MATS=['planks','rough-wood','iron','clay','cloth','carved-stone','bone','brass','books'];
 const XPROP_GLOSS={iron:1,brass:1,bone:.35,'carved-stone':.3,clay:.25};
-// the furniture's material: textured when the sheets are in (the room is built again when they arrive), flat otherwise
-function xPropMat(){ const m=xPhong({vertexColors:true}), A=typeof envArtProps==='function'?envArtProps():null; if(!A||m.isMeshStandardMaterial) return m; m.specular.set(0x2a2a2a);
+// what a surface is made of, from its colour (as surface.js xpKind reads it): dark grey is iron, gold is brass, warm
+// brown is wood, pale is bone, the rest stone
+function xPropKind(col){ const c=col&&col.isColor?col:new THREE.Color(col), mx=Math.max(c.r,c.g,c.b), mn=Math.min(c.r,c.g,c.b), s=mx-mn, warm=c.r>=c.g&&c.g>=c.b;
+  if(mx<.2&&s<.06) return 'iron'; if(warm&&c.r>.55&&s>.3&&c.g>.35) return 'brass'; if(warm&&s>.1&&mx<.7) return 'planks'; if(mx>.72&&s<.25) return 'bone'; return 'carved-stone'; }
+// the furniture's painted materials on a lit material (its own patches kept): textured once the sheets are in (the
+// scene is built again when they arrive), as it was otherwise. one: the material's key for a single piece (laid on in
+// its own space, from its geometry and scale); without it, each vertex says (the merger's aXL and aXN)
+function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():null; if(!A||!m||m.userData.xprop||!(m.isMeshPhongMaterial||m.isMeshStandardMaterial)) return m;
+  const slot=one?XPROP_MATS.indexOf(one):0; if(one&&slot<0) return m;
   const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
-  const low=!!(X3&&X3.low); m.userData.xprop=1; m.userData.noProj=1;   // (instead of surface.js's code-painted pixel material)
+  const low=!!(X3&&X3.low), std=!!m.isMeshStandardMaterial, prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
+  m.userData.xprop=one?2:1; m.userData.noProj=1;   // (instead of surface.js's code-painted pixel material)
+  if(m.specular&&m.specular.getHex()<0x2a2a2a) m.specular.set(0x2a2a2a);
   m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
-  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uXSharp:XLITU.uXSharp});
-    sh.vertexShader=sh.vertexShader.replace('void main() {','attribute vec4 aXL; attribute vec3 aXN; uniform vec4 uPR['+XPROP_MATS.length+']; uniform vec4 uPM['+XPROP_MATS.length+'];\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\nvoid main() {')
-      .replace('#include <begin_vertex>','#include <begin_vertex>\n vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+XPROP_MATS.length+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; }');
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r);
+    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uXSharp:XLITU.uXSharp});
+    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; }';
+    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\nvoid main() {')
+      .replace('#include <begin_vertex>','#include <begin_vertex>\n'+(one
+        ?' { vec3 xp=transformed, xn=objectNormal;\n#ifdef USE_INSTANCING\n xp=(instanceMatrix*vec4(xp,1.0)).xyz-instanceMatrix[3].xyz; xn=mat3(instanceMatrix)*xn;\n#endif\n vXL=xp*vec3(length(modelMatrix[0].xyz),length(modelMatrix[1].xyz),length(modelMatrix[2].xyz))+fract(modelMatrix[3].xyz*.37)*3.; vXN=xn; int xs=int(uPS+.5); '+pick+' }'
+        :' vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); '+pick));
     let f=sh.fragmentShader;
-    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\n'+xAtGlsl('256.0')+'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xdx=dFdx(vXL), xdy=dFdy(vXL); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1.;\n bool xon=vPR.z>0.;');
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))+'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xdx=dFdx(vXL), xdy=dFdy(vXL); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1.;\n bool xon=vPR.z>0.;');
     f=f.replace('#include <color_fragment>',`#include <color_fragment>
  if(xon){ vec3 c=vec3(0.);
   if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,vXL.zy,xdx.zy,xdy.zy).rgb;
@@ -1023,10 +1038,13 @@ function xPropMat(){ const m=xPhong({vertexColors:true}), A=typeof envArtProps==
   vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=nt.b;${low?'':`
   vec3 mn=vec3((nt.xy*2.-1.)*uPNK,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
   float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);`} }`);
-    f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.; }');
+    if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);');
+    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.; }');
     sh.fragmentShader=f; };
-  m.customProgramCacheKey=()=>'xprop'+(low?'l':'');
-  return m; }
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xprop'+(one?'1':'')+(low?'l':'')+(std?'s':'');
+  m.needsUpdate=true; return m; }
+const xPropMat=()=>xPropTex(xPhong({vertexColors:true}));
+const XPROP_BOOKS=()=>typeof envArtProps==='function'&&!!envArtProps();
 const XPROPU={ uPK:{value:1}, uPNK:{value:1} };
 const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
 // one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
@@ -1034,7 +1052,7 @@ const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.
 const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay', bones:'bone', skulls:'bone', skeleton:'bone', rubble:'carved-stone', statue:'carved-stone',
   shelf:'planks', rack:'rough-wood', table:'planks' };
 const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
-  0x7a2a24:null, 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
+  0x684329:'books', 0x7a2a24:null, 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
 function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
       T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
@@ -1052,6 +1070,7 @@ function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||n
     case 'shelf': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs];   // u along the wall, v out from it
       const [a0,b0]=at(0,0); M.add(XG.box,W2,a0,.68,b0,0,ry,0,.92,1.36,.3);
       for(let r=0;r<3;r++){ const y=.18+r*.4; const [a1,b1]=at(0,.02); M.add(XG.box,W,a1,y,b1,0,ry,0,.88,.04,.3);
+        if(XPROP_BOOKS()){ const [bx,bz]=at(0,.04), h=.3, w=.84; M0.tex={s:[w/h*.23,.23,.23],o:[R()*4,.135+(R()*4|0)*.25,0]}; M.add(XG.box,0x684329,bx,y+.02+h/2,bz,0,ry,0,w,h,.2); M0.tex=null; continue; }   // a row of the painted books (each row of the painting a quarter of it, joints at the quarters)
         let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04); M.add(XG.box,[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0],bx,y+.02+h/2,bz,0,ry,R()<.15?.25:0,w,h,.2); u+=w+.01; } } break; }
     case 'rack': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs]; for(const u of [-.36,.36]){ const [a,b]=at(u,0); M.add(XG.box,W2,a,.5,b,0,ry,0,.06,1,.06); }
       { const [a,b]=at(0,0); M.add(XG.box,W2,a,.82,b,0,ry,0,.82,.05,.06); M.add(XG.box,W2,a,.3,b,0,ry,0,.82,.05,.06); }

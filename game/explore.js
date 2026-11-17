@@ -1070,8 +1070,10 @@ function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||n
     case 'shelf': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs];   // u along the wall, v out from it
       const [a0,b0]=at(0,0); M.add(XG.box,W2,a0,.68,b0,0,ry,0,.92,1.36,.3);
       for(let r=0;r<3;r++){ const y=.18+r*.4; const [a1,b1]=at(0,.02); M.add(XG.box,W,a1,y,b1,0,ry,0,.88,.04,.3);
-        if(XPROP_BOOKS()){ const [bx,bz]=at(0,.04), h=.3, w=.84; M0.tex={s:[w/h*.23,.23,.23],o:[R()*4,.135+(R()*4|0)*.25,0]}; M.add(XG.box,0x684329,bx,y+.02+h/2,bz,0,ry,0,w,h,.2); M0.tex=null; continue; }   // a row of the painted books (each row of the painting a quarter of it, joints at the quarters)
-        let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04); M.add(XG.box,[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0],bx,y+.02+h/2,bz,0,ry,R()<.15?.25:0,w,h,.2); u+=w+.01; } } break; }
+        const books=XPROP_BOOKS();   // the painted books: a row of the painting (a quarter of it, the joints at the quarters) along each board
+        if(books){ const [bx,bz]=at(0,.04), h=.3, w=.84, hs=Math.abs(Math.sin(bx*12.99+bz*78.23+r*3.1)*43758.5); M0.tex={s:[w/h*.23,.23,.23],o:[hs%4,.135+((hs*7|0)%4)*.25,0]}; M.add(XG.box,0x684329,bx,y+.02+h/2,bz,0,ry,0,w,h,.2); M0.tex=null; }
+        // (the modelled books otherwise; their dice are thrown either way, so the rest of the floor's dressing stays the same)
+        let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04), col=[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0], tilt=R()<.15?.25:0; if(!books) M.add(XG.box,col,bx,y+.02+h/2,bz,0,ry,tilt,w,h,.2); u+=w+.01; } } break; }
     case 'rack': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs]; for(const u of [-.36,.36]){ const [a,b]=at(u,0); M.add(XG.box,W2,a,.5,b,0,ry,0,.06,1,.06); }
       { const [a,b]=at(0,0); M.add(XG.box,W2,a,.82,b,0,ry,0,.82,.05,.06); M.add(XG.box,W2,a,.3,b,0,ry,0,.82,.05,.06); }
       for(let k=0;k<4;k++){ const u=-.27+k*.18, [a,b]=at(u,.06); M.add(XG.cyl,0x5a4030,a,.6,b,0,0,(R()-.5)*.1,.025,1.2,.025); L.add(XG.cone,0xb8c0c8,a,1.24,b,0,0,0,.05,.12,.05); }

@@ -58,6 +58,19 @@ switch is a search. Different kinds of the same stuff are different materials:
 - **Cloth and fibre:** `cloth` (sacking) and `fabric` (banners, bedding).
 - **Metal:** `steel` as well as `iron`.
 
+### 2.0 Room furniture: `xFurnish` in `game/explore.js` (done with round 1; split it)
+`XFURN_MAT` and `XFURN_PART` name each kind's material. They share materials that round 2 separates:
+- `table`, `shelf` (the frame and boards) → `furniture-wood` (now: `planks`). `crate` stays `planks`.
+- `barrel`: the staves stay `rough-wood`, but the **head** (`W2` disc on top) → `planks`. Today it takes the barrel's
+  `rough-wood` because the part table goes by colour, and `W2` is also the shelf frame and the crate band. Give the
+  head its own material in the `case 'barrel'` code (set `M0.mat` around that one `add`), not through `XFURN_PART`.
+- `statue`: the figure stays `carved-stone`; the plinth `dk` → `dressed-stone` (now: `carved-stone`).
+- `rubble` → `rough-rock` (now: `carved-stone`, see §2.9).
+- `rack` stays `rough-wood`; the shield (`0x7a2a24`, flat today) → `leather` (now: flat).
+- `sack` stays `cloth` (sacking); `urn` stays `clay`; bones stay `bone`; books stay `books`.
+- `XFURN_PART` maps colours shared by different parts (`0x8a8070` is a table's cup and nothing else, but `0x7a2a24`
+  is both a book colour and the rack's shield). Before adding a colour to it, check every `add` that uses the colour.
+
 ### 2.1 Themed-room kit: `xClutter` in `game/dungeongen.js`
 Built with `M.build(xPropTex(xDitherMat(...)))`, but every piece is on `'auto'`. Set `M.mat` per part:
 
@@ -177,6 +190,45 @@ Nothing in the battles is converted. The props sheets are loaded there (same are
 - The Low graphics path skips the relief (by design); check one Low picture so nothing looks broken.
 - `xPropTex` declines `MeshStandardMaterial` only for the merger case. The PBR path is patched for roughness, but
   check that nothing standard-only (`XLIT.pbr`) looks wrong.
+
+### 2.13 Textures shared across different things (outside the props sheet)
+Checked: every place an area, arena, effects or props texture is chosen (`envArtAreaWalls`, `envArtAreaFloors`,
+`envArtTheme`, `envArtArena`/`arArt`, `envArtFx`, `xRockWall`, `xBlockWall`, `XROCKTEX`, `A.rockTex`, the chests'
+`K.tex`, `xMat`). These share one texture between things that are different and should be split:
+
+1. **Arena rocks, the boss dais and the Vault's arena pillars share `A.rockTex`** (`game/arena.js`: `arenaBlock`,
+   `arDais`, the `vault` build). Whichever is built first fills the cache, and the others take it. In the Vault, the
+   arena's `rock` slot is the dungeon's **block wall** tile (`ARENA_DUNGEON.vault.rock='wall-1'` in envart.js), so the
+   Vault's arena rocks are drawn as cut blocks. Split the cache into `A.rockTex` (rocks: `rough-rock`), `A.daisTex`
+   (the dais: `dressed-stone`) and `A.pillarTex` (Vault pillars: `dressed-stone`), each with its own fallback
+   generator. Until round 2: rocks take the area's rock wall tile (never the block wall), and the dais and pillars the
+   block wall.
+2. **The Vault's arena reuses dungeon tiles** (`ARENA_DUNGEON`): the board is the dungeon's passage floor, the arena
+   floor is room floor B, the walls are the rock wall and the rocks the block wall. This was done on purpose (the
+   Vault's arena paintings were too loud to read the board on), but it means the battle board looks exactly like a
+   corridor. It only needs fixing if the user wants a Vault board of its own: that is a new arena texture, not a prop
+   material (ask first).
+3. **Arena cave walls and the island's rim share the `wall` slot** (`arena.js`, the cave and island builds). Both are
+   natural rock faces, so this is acceptable; listed so it is a decision, not an accident.
+4. **The stairs** (`xStairs` area of `game/explore.js`, the `stoneC` steps and `rimM`) go through `xMat`, so they guess
+   `carved-stone`, a statue's finish. Steps are building stone: `xMat(col,{mat:'dressed-stone'})` (now: `carved-stone`).
+5. **The caves' rock pillars** (`xRockShaft`, `EX.pillShaft` when `cave`) are plain colour on the old pixel pattern,
+   while the rocks heaped at the walls' feet (`xRockFoot`) use the area's rock wall tile. The pillars should match the
+   rocks: the area's rock wall tile, or `rough-rock` when it lands.
+6. **The rocks at the walls' feet** (`xRockFoot`) share the area's rock wall tile with the walls. That is on purpose
+   (they are broken off the wall); keep it.
+7. **Theme floors are one painting per theme in every area** (`THEME_FILE` in `tools/build-env-atlas.py`): a Library
+   floor is the same in the Hollows and the Ruins, only tinted. That is by design in the floor pack; area variants would
+   be new floor art (ask first).
+8. **Chests share one plank texture** for body, lid and inside floor (`K.tex` in `game/surface.js`). That is correct
+   (all boards), but it moves to `planks` with §2.8.
+9. **`xMat` is used by everything small** (puzzle props, NPC stalls, chains, banners, stairs, brazier), and each takes
+   the colour guess. §2.7 lists the ones the guess gets wrong; after round 2 lands, check that list again, as the guess
+   never returns a round-2 material.
+
+Not shared, and fine: the area floors and walls (one set per area); the mold layers; the effects sheet (glows, runes,
+ripples and pool surfaces are separate tiles); the arena backdrops (their own painted sets per area and per boss); the
+leaf, grass and mushroom cards.
 
 ## 3. Art: round 2
 

@@ -13,8 +13,8 @@ Every lit prop in the dungeon and the battle arenas, by material. **Bold** = new
 | Material | What it looks like | Used on |
 |---|---|---|
 | carved stone *(have)* | smooth, fine grain, no joints | statues, altars, sarcophagi, pedestals, rune stones, tablets, inscriptions, shrines |
-| **dressed stone** | squared building stone, chisel-tooled faces, worn arrises | pillars and their bases and caps, pilasters, columns, arches, cornices, skirting, niche frames, door frames, benches, basin and pool rims, troughs, planters, ruin walls, landmark hall stonework, arena pillars |
-| **rough rock** | broken natural rock, fractures and facets | boulders, big rocks, rubble, rocks round pools, rocks in collapsed rooms, rock blocks on cave walls, arena rocks and islands |
+| **dressed stone** | squared building stone, chisel-tooled faces, worn arrises | pillars and their bases and caps, pilasters, columns, arches, cornices, skirting, niche frames, door frames, stairs, benches, basin and pool rims, troughs, planters, ruin walls, landmark hall stonework, arena pillars, the battle's boss dais |
+| **rough rock** | broken natural rock, fractures and facets | boulders, big rocks, rubble, rocks round pools, rocks in collapsed rooms, rock blocks on cave walls, the caves' rock pillars, arena rocks |
 | **sandstone** | soft layered stone, bedding lines, eroded | the pushable puzzle block, the Ruins' crumbling pieces |
 | **marble** | pale polished stone with soft veins | bathhouse basins and benches, temple columns, the mirror puzzle's frames' plinths |
 

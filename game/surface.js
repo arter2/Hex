@@ -91,7 +91,8 @@ function xChestPlanks(){ if(XCHEST.tex) return XCHEST; const N=64, R=caveRng(313
   { const U=lid.attributes.uv, P=lid.attributes.position, Nn=lid.attributes.normal; for(let i=0;i<U.count;i++){ if(Math.abs(Nn.getX(i))>.9){ U.setXY(i,P.getZ(i)/.64,P.getY(i)/.64); continue; }   // the ends: up and across
       U.setXY(i,P.getX(i)/.64,(Math.atan2(P.getY(i)/LY,P.getZ(i)-D/2))*LR/.64); } }   // the curve: planks along the chest
   XCHEST.body=body; XCHEST.lid=lid; return XCHEST; }
-function xChestBuild(c){ const K=xChestPlanks(), {W,H:BH,D,R:LR,LY,FOOT}=K;
+function xChestBuild(c){ return typeof xPropKindRun==='function'?xPropKindRun('chest',()=>xChestBuild0(c)):xChestBuild0(c); }
+function xChestBuild0(c){ const K=xChestPlanks(), {W,H:BH,D,R:LR,LY,FOOT}=K;
   // the boards: the painted planks (explore.js xPropTex) once the props sheets are in, else the code-painted ones
   const PW=typeof envArtProps==='function'&&!!envArtProps(), woodM=(col,sh)=>PW?xPropTex(xLitTag(xPhong({color:col==null?0x8a6038:col,shininess:sh,specular:0x161210}),2),'planks'):xLitTag(xPhong({map:K.tex,color:col==null?0xffffff:col,shininess:sh,specular:0x161210}),2,K.cv);
   const wood=woodM(null,6), lidWood=woodM(c.rich?(PW?0x7a5a8a:0xa888d8):null,6);

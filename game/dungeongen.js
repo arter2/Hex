@@ -270,7 +270,7 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
   // cloth in the area's colour, dyed dark: the lamp you carry washes a bright cloth out into a glowing strip
   const AREA=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').lerp(tone(.22),.6).multiplyScalar(.5);
   for(const mk of EX.marks){ if(mk.kind==='clutter') continue;   // (drawn by xClutter)
-    const M=xMerger(), L=xMerger(), seen=new Set(), {horiz,s}=mk;
+    const M=xMerger(), L=xMerger(), seen=new Set(), {horiz,s}=mk; XPROP_KIND='hall:'+mk.kind;
     { const add0=M.add, stone=new Set([ST,DK,LT,MID].map(c=>c.getHex())), byHex={0x5a3a20:'planks',0x3e2814:'planks',0x7a5232:'furniture-wood',0xe0d4b4:'parchment',0xa83a2a:'leather',0x3a6a9a:'leather',0x7a8a3a:'leather',0x9a6a3a:'leather',0x6a3a8a:'leather',0xc8b890:'leather'};
       M.add=(geo,col,...a)=>{ const h=col&&col.isColor?col.getHex():new THREE.Color(col).getHex(); M.mat=geo===XG.rock?(A.id==='rifts'?'basalt':'rough-rock'):col===AREA?'fabric':stone.has(h)?'dressed-stone':byHex[h]||null; return add0(geo,col,...a); }; }   // (what each part is made of: xPropTex)
     // hall-local (u along, v across, toward the piece's side) to world
@@ -344,7 +344,7 @@ function xLandmarks(grp,A,S,seed){ const R=caveRng(seed+509), tone=v=>new THREE.
         const [x,z]=W(u,v), hh=broken?.9+R()*.5:XWALL-.3; M.add(XG.cyl,ST,x,.48+hh/2,z,0,0,0,.95,hh,.95);
         if(!broken) box(LT,u,v,XWALL,.78,.26,.78); else for(let q=0;q<3;q++) M.add(XG.rock,ST,x+(R()-.5)*1.4,.12,z+(R()-.5)*1.4,R()*3,R()*3,0,.4,.25,.4); }); }
     const g=new THREE.Group(); if(M.size()) g.add(M.build(xPropTex(xPhong({vertexColors:true})))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
-    g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } }
+    g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:R()*6}); } XPROP_KIND=null; }
 
 /* Foliage cards: a ball of leaves drawn as a dozen small cut-out cards of the painted leaf clumps (envart.js 'leaf-clumps',
    four clumps in one tile), set round the ball at different depths and facing out, so you see leaves and the gaps between
@@ -434,7 +434,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
     const M=xMerger(), L=xMerger(), F=xLeafMerger(), FG=xLeafMerger('grass-dungeon'), FBs=new Map(), FB=name=>FBs.get(name)||FBs.set(name,xLeafMerger(name)).get(name), seen=new Set();   // (FB: the bracket mushrooms' mergers, one per kind: mushrooms.js)
     // what each part is made of (xClutterMat): by the piece's kind and the part's colour, the area's stone tones by kind
     let KIND=null; { const add0=M.add, stone=new Set([ST,SH,LT,ROCK,ROCK2,ROCK3].map(c=>c.getHex())); M.add=(geo,col,...a)=>{ M.mat=xClutterMat(KIND,geo,col,stone,A); return add0(geo,col,...a); }; }
-    for(const it of mk.items){ KIND=it.k; const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;
+    for(const it of mk.items){ KIND=it.k; XPROP_KIND='kit:'+it.k; const R=caveRng(it.sd*7+seed), cs=it.cells, mx=cs.reduce((a,c)=>a+xcx(c),0)/cs.length, my=cs.reduce((a,c)=>a+xcy(c),0)/cs.length, x=(mx+.5)*XCS, z=(my+.5)*XCS;
       for(const c of cs){ seen.add(c); for(const n of [c-1,c+1,c-XN,c+XN]) seen.add(n); }
       const B=(col,bx,by,bz,sx,sy,sz,ry,to)=>(to||M).add(XG.box,col,bx,by,bz,0,ry||0,0,sx,sy,sz), C=(col,bx,by,bz,r,h,to)=>(to||M).add(XG.cyl,col,bx,by,bz,0,0,0,r*2,h,r*2);
       const rock=(col,bx,by,bz,sz)=>M.add(XG.rock,col,bx,by,bz,R()*3,R()*3,R()*3,sz*(.8+R()*.4),sz*(.6+R()*.3),sz*(.8+R()*.4));
@@ -466,7 +466,7 @@ function xClutter(grp,A,S,seed){ EX.fireL=new Map(); if(!EX.marks) return; const
         if(R()<.5) M.add(XG.ball,LEAF2,x+(R()-.5),.15,z+(R()-.5),0,0,0,.9,.15,.7); }   // moss at its foot
       else if(it.k==='rubble'){ for(let k=0;k<6;k++) rock(R()<.5?ROCK:ROCK3,x+(R()-.5)*1.6,.06,z+(R()-.5)*1.6,.18+R()*.25); }
       else xClutterThemed(it,x,z,R,B,C,rock,M,L,grp,{ST,SH,LT,TRIM,ROCK,ROCK2,SOIL,LEAF,LEAF2,FLOW,D,glow,along,len,F,FG,FB}); }
-    const g=new THREE.Group(); if(M.size()) g.add(M.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
+    XPROP_KIND=null; const g=new THREE.Group(); if(M.size()) g.add(M.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(L.size()) g.add(L.build(new THREE.MeshBasicMaterial({vertexColors:true})));
     if(F.size()) g.add(F.build()); if(FG.size()) g.add(FG.build()); for(const fb of FBs.values()) if(fb.size()) g.add(fb.build());
     g.visible=false; grp.add(g); EX.decor.push({mesh:g,cells:[...seen],ph:0}); } }
 // the themed rooms' pieces (x2Themes): drawn from boxes, cylinders, cones and balls like the rest of the clutter
@@ -583,7 +583,7 @@ function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Col
     if(!ok) continue; const mx=ax?x:x+(w-1)/2, my=ax?y+(w-1)/2:y; if(near(mx,my,9)||busy(Math.round(mx),Math.round(my))) continue;
     if(R()<(w>3?.9:.55)) sites.push({x:mx,y:my,w,ax,cell:at((w-1)>>1,0)}); }   // (nearly every gallery stretch gets one)
   EX.arches=[];
-  for(const st of sites){ const M=xMerger(); M.mat='dressed-stone'; const span=st.w*XCS, a=span/2-.1, b=st.w>3?1.15:1.05, ys=XWALL-b+.02, g=new THREE.Group();
+  for(const st of sites){ const M=xMerger(); M.mat='dressed-stone'; XPROP_KIND='arch'; const span=st.w*XCS, a=span/2-.1, b=st.w>3?1.15:1.05, ys=XWALL-b+.02, g=new THREE.Group();
     g.position.set((st.x+.5)*XCS,0,(st.y+.5)*XCS); if(st.ax) g.rotation.y=Math.PI/2;
     for(const sx of [-1,1]){ const px=sx*(span/2+.05);
       M.add(XG.box,lite,px,.18,0,0,0,0,.62,.36,.92); M.add(XG.box,base.clone().multiplyScalar(.92+R()*.12),px,(ys+.36)/2,0,0,0,0,.5,ys-.36,.78);
@@ -595,7 +595,7 @@ function xArches(grp,A,S,seed){ const R=caveRng(seed+733), tone=v=>new THREE.Col
       M.add(XG.box,key?lite:k%2?base:dark.clone().lerp(base,.6),cx+nx/nl*th/2,ys+cy+ny/nl*th/2,0,0,0,ang,len,th,key?.82:.7); }
     const mesh=M.build(xPropTex(xDitherMat(xPhong({vertexColors:true})))); g.add(mesh); g.visible=false; grp.add(g);
     const cells=[]; for(let k=-1;k<=st.w;k++) cells.push(st.ax?xi(Math.round(st.x),Math.round(st.y-(st.w-1)/2)+k):xi(Math.round(st.x-(st.w-1)/2)+k,Math.round(st.y)));
-    EX.decor.push({mesh:g,cells,ph:0}); EX.arches.push({g,mesh,cell:st.cell,cut:1}); } }
+    EX.decor.push({mesh:g,cells,ph:0}); EX.arches.push({g,mesh,cell:st.cell,cut:1}); } XPROP_KIND=null; }
 // an arch fading out of the way (like a wall between the camera and you)
 function xArchOp(a){ const op=Math.max(.12,a.cut), solid=op>=.995, M=a.mesh.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; a.mesh.renderOrder=solid?0:7; }
 
@@ -638,14 +638,14 @@ function xWallSections(grp,S,seed){ const R=caveRng(seed+911), tone=v=>new THREE
         L.push(['d'+k,n.d[k]++,dx,dy,w,h,y,sh+(R()-.5)*.3]); } } }
   const zero=new THREE.Matrix4().makeScale(0,0,0), inst=(geo,mat,cnt)=>{ const im=new THREE.InstancedMesh(geo,mat,Math.max(1,cnt)); for(let k=0;k<im.count;k++) im.setMatrixAt(k,zero); grp.add(im); return im; };
   // the pilaster (built facing +z, standing on the face plane z=0, the wall's full height)
-  const P=xMerger(), st=tone(.52), lt=tone(.64), H=XWALL; P.mat='dressed-stone';
+  XPROP_KIND='pilaster'; const P=xMerger(), st=tone(.52), lt=tone(.64), H=XWALL; P.mat='dressed-stone';
   P.add(XG.box,lt,0,.22,.25,0,0,0,1.02,.44,.5); P.add(xOctPrism(),st,0,(.44+H-.5)/2,.19,0,0,0,.8,H-.94,.38);   // (its shaft's corners bevelled: eight-sided) P.add(XG.box,lt,0,H-.36,.24,0,0,0,.98,.22,.48); P.add(XG.box,st,0,H-.15,.2,0,0,0,.84,.2,.4);
   // the niche: a dark recess with a stepped head, a pale frame and a sill
-  const Q=xMerger(), dk=tone(.08), fr=tone(.6); { const add0=Q.add; Q.add=(g,c,...a)=>{ Q.mat=c===dk?null:'dressed-stone'; return add0(g,c,...a); }; }
+  XPROP_KIND='niche'; const Q=xMerger(), dk=tone(.08), fr=tone(.6); { const add0=Q.add; Q.add=(g,c,...a)=>{ Q.mat=c===dk?null:'dressed-stone'; return add0(g,c,...a); }; }
   Q.add(XG.box,dk,0,1.95,.02,0,0,0,.92,2.0,.04); [.84,.7,.5].forEach((w,k)=>Q.add(XG.box,dk,0,3.0+k*.12,.02,0,0,0,w,.12,.04));
   for(const sx of [-1,1]) Q.add(XG.box,fr,sx*.52,1.95,.05,0,0,0,.12,2.1,.1); [1.06,.92,.74,.54].forEach((w,k)=>Q.add(XG.box,fr,0,3.0+k*.12+.02,.05,0,0,0,w,.08,.1));
   Q.add(XG.box,fr,0,.9,.1,0,0,0,1.2,.12,.22);
-  const smat=xPropTex(xDitherMat(xPhong({vertexColors:true})));   // (patched before P and Q are built, so they carry each part's material)
+  XPROP_KIND=null; const smat=xPropTex(xDitherMat(xPhong({vertexColors:true})));   // (patched before P and Q are built, so they carry each part's material)
   EX.sectM={p:inst(P.build(smat).geometry,smat,n.p),n:inst(Q.build(smat).geometry,smat,n.n),d:[0,1,2,3].map(k=>{ const g=new THREE.PlaneGeometry(1,1), U=g.attributes.uv; for(let i=0;i<U.count;i++) U.setX(i,(k+U.getX(i))/4);
     const dm=xSinkPatch(xPhong({map:xDecalTex(S,seed),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2})); if(typeof xNmapLuma==='function') xNmapLuma(dm,.4);   // (a crack or streak catches the light: nature.js)
     return inst(g,dm,n.d[k]); })}; }

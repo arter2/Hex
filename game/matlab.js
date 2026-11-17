@@ -26,7 +26,10 @@ const mlTPKeep=()=>{ try{ localStorage.setItem(ML_KEY+'-3pt',JSON.stringify(ML_T
 const ML_TP_SLIDERS=[['#Key light (directional)'],['keyI','Intensity',0,3,.01],['keyC','Colour'],['keyAz','Around',-180,180,1],['keyEl','Height',5,90,1],
   ['#Rim light (spot, from behind)'],['rimI','Intensity',0,6,.01],['rimC','Colour'],['rimAz','Around',-180,180,1],['rimEl','Height',0,85,1],['rimAng','Cone width',5,80,1],
   ['#Fill (HDRI)'],['hdri','Environment'],['fillI','Intensity',0,3,.01],['fillRot','Rotation',-180,180,1],['ambI','Extra flat ambient',0,1,.01]];
-const ML_HDRI=['Studio softboxes','Overcast sky','Warm interior','The area\'s air'];
+const ML_HDRI_PAINT=['Studio softboxes','Overcast sky','Warm interior','The area\'s air'];
+// and the battle backdrops' matte paintings (2:1 panoramas: arenabackdropmap.js), each its far layer with its mid layer over it
+const ML_MATTES=()=>{ const M=typeof ARENA_BACKDROP!=='undefined'&&ARENA_BACKDROP.mattes||{}, out=[]; for(const id in M) for(let n=1;n<=M[id];n++) out.push([id,n]); return out; };
+const ML_HDRI=()=>ML_HDRI_PAINT.concat(ML_MATTES().map(([id,n])=>'Matte: '+id.replace('boss-','boss ')+' '+n));
 // an environment picture (equirectangular, 256 x 128) painted here: the HDRI fill's light and the chrome ball's reflection
 function mlHdri(k,A){ const W=256, H=128, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
   const grad=(stops)=>{ const g=x.createLinearGradient(0,0,0,H); for(const [t,col] of stops) g.addColorStop(t,col); x.fillStyle=g; x.fillRect(0,0,W,H); };
@@ -161,11 +164,18 @@ function mlLight(){ const S=MLS, A=ML_A(), L=ML_LIGHTS[ML.light].id, g=new THREE
   const tpb=document.getElementById('mlTP'); if(tpb) tpb.hidden=L!=='tp';
   S.G.grade=ML.grade?1:0; S.G.low=ML.low; }
 const ML_HCACHE=new Map();
-function mlHdriGet(k,A){ const key=k+'|'+(k===3?A.id:''); if(!ML_HCACHE.has(key)) ML_HCACHE.set(key,mlHdri(k,A)); return ML_HCACHE.get(key); }
+function mlHdriGet(k,A){ if(k>=ML_HDRI_PAINT.length){ const mt=ML_MATTES()[k-ML_HDRI_PAINT.length]; if(mt){ const key='m|'+mt.join('|'); if(ML_HCACHE.has(key)) return ML_HCACHE.get(key);
+      const im=typeof envArtMatte==='function'&&envArtMatte(mt[0],mt[1]); if(im){ const E=mlHdriMatte(im); ML_HCACHE.set(key,E); return E; }
+      if(!(typeof envArtMatteFailed==='function'&&envArtMatteFailed(mt[0],mt[1]))){ clearTimeout(mlHdriGet.t); mlHdriGet.t=setTimeout(()=>ML.on&&mlLight(),400); } } k=0; }   // (the studio's until the painting has loaded)
+  const key=k+'|'+(k===3?A.id:''); if(!ML_HCACHE.has(key)) ML_HCACHE.set(key,mlHdri(k,A)); return ML_HCACHE.get(key); }
+function mlHdriMatte(im){ const c=document.createElement('canvas'); c.width=1024; c.height=512; const x=c.getContext('2d'); x.drawImage(im.far,0,0,1024,512); x.drawImage(im.mid,0,0,1024,512);
+  const t=new THREE.CanvasTexture(c); t.mapping=THREE.EquirectangularReflectionMapping; t.wrapS=THREE.RepeatWrapping;
+  const b=document.createElement('canvas'); b.width=32; b.height=16; const bx=b.getContext('2d'); bx.filter='blur(2px)'; bx.drawImage(c,0,0,32,16); const tb=new THREE.CanvasTexture(b); tb.wrapS=THREE.RepeatWrapping; tb.magFilter=tb.minFilter=THREE.LinearFilter; tb.generateMipmaps=false;
+  return {sharp:t, soft:tb}; }
 function mlTPSliders(){ const box=document.getElementById('mlTPBody'); if(!box) return; box.innerHTML=''; const T=ML_TP;
   for(const [k,label,lo,hi,st] of ML_TP_SLIDERS){ if(k[0]==='#'){ const h=document.createElement('h4'); h.textContent=k.slice(1); box.appendChild(h); continue; }
     const row=document.createElement('div'); row.className='mlr';
-    if(k==='hdri'){ row.innerHTML='<label>'+label+'</label><select style="grid-column:2/4">'+ML_HDRI.map((n,i)=>'<option value="'+i+'">'+n+'</option>').join('')+'</select>'; const se=row.querySelector('select'); se.value=String(T.hdri); se.onchange=()=>{ T.hdri=+se.value; mlTPKeep(); mlLight(); }; }
+    if(k==='hdri'){ row.innerHTML='<label>'+label+'</label><select style="grid-column:2/4">'+ML_HDRI().map((n,i)=>'<option value="'+i+'">'+n+'</option>').join('')+'</select>'; const se=row.querySelector('select'); se.value=String(T.hdri<ML_HDRI().length?T.hdri:0); se.onchange=()=>{ T.hdri=+se.value; mlTPKeep(); mlLight(); }; }
     else if(/C$/.test(k)){ row.innerHTML='<label>'+label+'</label><input type="color" value="'+T[k]+'" style="grid-column:2/4;width:100%;height:28px">'; const ci=row.querySelector('input'); ci.oninput=()=>{ T[k]=ci.value; mlTPKeep(); mlLight(); }; }
     else { row.innerHTML='<label>'+label+'</label><input type="range" min="'+lo+'" max="'+hi+'" step="'+st+'" value="'+T[k]+'"><output>'+(+T[k]).toFixed(st<1?2:0)+'</output>';
       const inp=row.querySelector('input'), out=row.querySelector('output'); inp.oninput=()=>{ T[k]=+inp.value; out.textContent=(+inp.value).toFixed(st<1?2:0); mlLight(); }; inp.onchange=mlTPKeep;

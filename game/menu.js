@@ -65,7 +65,7 @@ const CATS={
   market:['Market',[['goShop','Shop','market'],['goTrade','Trading post','coin']]],
   journal:['Journal',[['goBounty','Bounty board','journal'],['goBestiary','Bestiary','skull'],['goMastery','Mastery','rune']]],
   character:['Character',[['goChar','Character','character']]],
-  lab:['Lab',[['lpMove','Movement lab','map'],['lpFoes','Enemy lab','skull'],['@battle','Battle','battle']]] };
+  lab:['Lab',[['lpMove','Movement lab','map'],['lpFoes','Enemy lab','skull'],['lpMats','Materials lab','rune'],['@battle','Battle','battle']]] };
 document.querySelectorAll('#scrMenu .hm-cat').forEach(b=>b.onclick=()=>{ const [t,list]=CATS[b.dataset.cat];
   if(list.length===1){ const go=document.getElementById(list[0][0]); if(go) withChar(()=>go.click()); return; }   // one place: go straight there
   openDlg(t,'<div class="hm-list">'+list.map(([id,label,ic])=>`<button class="hm-btn" type="button" data-go="${id}">${ico(ic)}<span>${label}</span>${id==='goChar'&&save&&pointsLeft(ensureChar(save))>0?'<b class="hm-badge">+'+pointsLeft(save.char)+'</b>':''}</button>`).join('')+'</div>',b);

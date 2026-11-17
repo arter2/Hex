@@ -52,7 +52,9 @@ THEME_FILE = {"armory": "armory-vault", "flooded": "flooded-deeps", "overgrown":
               "forge": "forge-rifts", "bathhouse": "bathhouse-ruins", "barracks": "barracks-vault",
               "fungus": "fungus-grove-hollows"}
 # the props' materials (painterly-512/props/<name>-albedo|height|roughness.png)
-PROPS = ["planks", "rough-wood", "iron", "clay", "cloth", "carved-stone", "bone", "brass", "books"]
+PROPS = ["planks", "rough-wood", "iron", "clay", "cloth", "carved-stone", "bone", "brass", "books",
+         # round 2 (docs/art-production/props/CHATGPT-PROMPTS-2.md): appended, never reordered (the index is the slot)
+         "dressed-stone", "rough-rock", "bark", "fabric", "furniture-wood", "sandstone", "end-grain", "steel", "marble", "brick", "leather", "parchment", "straw", "soil", "coal", "fungus", "basalt"]
 # effects: name -> (master, how it is used: 'wrap' repeats or scrolls, 'clamp' is a sprite)
 EFFECTS = {
     "glow": ("shared-effects/glow-hole.png", "clamp"),
@@ -217,9 +219,9 @@ def main():
         normals = [(k, inverted(im) if (k if k.startswith("theme-") else f"{a}/{k}") in INVERT else im, w) for k, im, w in normals]
         sheets[f"area-{a}-n"] = build(f"area-{a}-n.webp", normals, "RGB", False, cols=3)
     props = [(k, tile(f"props/{k}-albedo.png", "RGB"), True) for k in PROPS]
-    sheets["props"] = build("props.webp", [(k, im.convert("RGBA"), w) for k, im, w in props], "RGBA", False, cols=3)
+    sheets["props"] = build("props.webp", [(k, im.convert("RGBA"), w) for k, im, w in props], "RGBA", False, cols=6)
     sheets["props"]["mean"] = {k: [round(float(x) / 255, 4) for x in np.asarray(im).reshape(-1, 3).mean(0)] for k, im, _ in props}
-    sheets["props-n"] = build("props-n.webp", [(k, props_normal(k), True) for k in PROPS], "RGB", False, cols=3)
+    sheets["props-n"] = build("props-n.webp", [(k, props_normal(k), True) for k in PROPS], "RGB", False, cols=6)
     fx = [(k, tile(p), m == "wrap") for k, (p, m) in EFFECTS.items()]
     fx.append(("leaf-clumps", leaf_clumps(), False))
     # single plant cards (docs/art-production/foliage-alts/): already 256 tiles with cut-out alpha and colour carried

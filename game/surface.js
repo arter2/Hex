@@ -92,29 +92,31 @@ function xChestPlanks(){ if(XCHEST.tex) return XCHEST; const N=64, R=caveRng(313
       U.setXY(i,P.getX(i)/.64,(Math.atan2(P.getY(i)/LY,P.getZ(i)-D/2))*LR/.64); } }   // the curve: planks along the chest
   XCHEST.body=body; XCHEST.lid=lid; return XCHEST; }
 function xChestBuild(c){ const K=xChestPlanks(), {W,H:BH,D,R:LR,LY,FOOT}=K;
-  const wood=xLitTag(xPhong({map:K.tex,shininess:6,specular:0x161210}),2,K.cv), lidWood=xLitTag(xPhong({map:K.tex,color:c.rich?0xa888d8:0xffffff,shininess:6,specular:0x161210}),2,K.cv);
+  // the boards: the painted planks (explore.js xPropTex) once the props sheets are in, else the code-painted ones
+  const PW=typeof envArtProps==='function'&&!!envArtProps(), woodM=(col,sh)=>PW?xPropTex(xLitTag(xPhong({color:col==null?0x8a6038:col,shininess:sh,specular:0x161210}),2),'planks'):xLitTag(xPhong({map:K.tex,color:col==null?0xffffff:col,shininess:sh,specular:0x161210}),2,K.cv);
+  const wood=woodM(null,6), lidWood=woodM(c.rich?(PW?0x7a5a8a:0xa888d8):null,6);
   const fit=c.rich?0xc8a040:0x34343a, glow=c.legend?0x806010:c.rich?0x2a1c06:0x000000;
-  const ironM=xPhong({vertexColors:true,shininess:c.rich?50:30,specular:c.rich?0x806a30:0x303038,emissive:glow});
+  const ironM=xPropTex(xPhong({vertexColors:true,shininess:c.rich?50:30,specular:c.rich?0x806a30:0x303038,emissive:glow}));
   const g=new THREE.Group(); g.position.set(xw(c.cell),0,xz(c.cell)); g.rotation.y=(Math.random()-.5)*.6;
   g.add(new THREE.Mesh(K.body,wood));
   // the body's iron: two straps, four corner guards, the lock plate and its keyhole, four feet
-  const I=xMerger(), y0=FOOT, y1=FOOT+BH, keyC=0x0a0a0c;
+  const I=xMerger(); I.mat=c.rich?'brass':'iron'; const y0=FOOT, y1=FOOT+BH, keyC=0x0a0a0c;
   for(const sx of [-.3,.3]) I.add(xChamferBox(.08,BH+.02,D+.03,.012),fit,sx,y0+BH/2,0);
   for(const sx of [-1,1]) for(const sz of [-1,1]) I.add(xChamferBox(.07,BH+.015,.07,.01),fit,sx*(W/2-.025),y0+BH/2,sz*(D/2-.025));
   I.add(xChamferBox(.17,.19,.03,.01),fit,0,y1-.12,D/2+.012); I.add(XG.box,keyC,0,y1-.14,D/2+.03,0,0,0,.03,.06,.01); I.add(XG.ball,keyC,0,y1-.1,D/2+.03,0,0,0,.04,.04,.01);
   for(const sx of [-1,1]) for(const sz of [-1,1]) I.add(xChamferBox(.11,FOOT+.01,.11,.012),fit,sx*(W/2-.06),FOOT/2,sz*(D/2-.06));
   g.add(I.build(ironM));
   // inside: dark boards just under the rim, and a glint of what it holds (seen while the lid is up)
-  { const inner=new THREE.Mesh(xBakeUV(xChamferBox(W-.09,.012,D-.09,.004),.64).translate(0,y1+.002,0),xLitTag(xPhong({map:K.tex,color:0x3a2a20,shininess:4}),2,K.cv)); g.add(inner);
+  { const inner=new THREE.Mesh(xBakeUV(xChamferBox(W-.09,.012,D-.09,.004),.64).translate(0,y1+.002,0),woodM(PW?0x3a2a20:0x3a2a20,4)); g.add(inner);
     const hoard=new THREE.Mesh(new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2),xPhong({color:c.legend||c.rich?0xf2c94c:0xb08a3a,shininess:60,specular:0x806a30,emissive:c.legend?0x403008:0x100a02})); hoard.scale.set(W*.8,.1,D*.75); hoard.position.y=y1-.02; g.add(hoard); }
   // the lid, about its hinge along the back top edge
   const lid=new THREE.Group(); lid.position.set(0,y1,-D/2); lid.add(new THREE.Mesh(K.lid,lidWood));
-  const L=xMerger(), strap=new THREE.CylinderGeometry(LR+.014,LR+.014,.08,14,1,true,Math.PI,Math.PI); strap.rotateZ(-Math.PI/2); strap.scale(1,LY,1); strap.computeVertexNormals();
+  const L=xMerger(); L.mat=c.rich?'brass':'iron'; const strap=new THREE.CylinderGeometry(LR+.014,LR+.014,.08,14,1,true,Math.PI,Math.PI); strap.rotateZ(-Math.PI/2); strap.scale(1,LY,1); strap.computeVertexNormals();
   for(const sx of [-.3,.3]) L.add(strap,fit,sx,0,D/2);
   // the lid's iron rim where it meets the body: four bars round the edge (an open frame, so the boards inside show)
   L.add(xChamferBox(W+.02,.04,.03,.01),fit,0,.02,D+.005); L.add(xChamferBox(W+.02,.04,.03,.01),fit,0,.02,-.005);
   for(const sx of [-1,1]) L.add(xChamferBox(.03,.04,D,.01),fit,sx*(W/2+.005),.02,D/2);
-  lid.add(new THREE.Mesh(xBakeUV(xChamferBox(W-.04,.02,D-.04,.006),.64).translate(0,.015,D/2),xLitTag(xPhong({map:K.tex,color:0x8a6a50,shininess:4}),2,K.cv)));   // the boards on the lid's underside
+  lid.add(new THREE.Mesh(xBakeUV(xChamferBox(W-.04,.02,D-.04,.006),.64).translate(0,.015,D/2),woodM(PW?0x5a4028:0x8a6a50,4)));   // the boards on the lid's underside
   L.add(xChamferBox(.09,.13,.025,.01),fit,0,-.02,D+.014);   // the hasp, hanging over the lock
   lid.add(L.build(ironM)); g.add(lid);
   if(c.open) lid.rotation.x=-1.9;

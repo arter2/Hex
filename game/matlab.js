@@ -83,7 +83,7 @@ function mlMatsOf(root){ const S=new Set(); root.traverse(o=>{ const m=o.materia
 let MLS=null;
 function mlStudio(){ if(MLS) return MLS;
   const cv=$('#mlCanvas'), r=new THREE.WebGLRenderer({canvas:cv, antialias:false}); r.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
-  const scene=new THREE.Scene(); scene.background=new THREE.Color('#2a2b2e'); const cam=new THREE.PerspectiveCamera(40,1,.1,200);
+  const scene=new THREE.Scene(); scene.background=new THREE.Color('#2a2b2e'); const cam=new THREE.PerspectiveCamera(40,1,.5,50);   // (a tight depth range: a phone's depth buffer bands a long flat floor into stripes under the ambient occlusion)
   const grey=c=>{ const m=xPhong({color:c,shininess:3,specular:0x080808}); m.userData.noProj=1; return m; };
   // the cyclorama: a floor, a curve and a wall, in one grey
   const cyc=new THREE.Group(), cm=grey(0x6e6e6e); cyc.add(new THREE.Mesh(mlCycGeo(),cm));
@@ -149,7 +149,7 @@ function mlPanel(){ if($('#matLab')) return;
 #matLab button.mb{background:#1f2630;color:#e8eef8;border:1px solid #4a5a6a;border-radius:6px;padding:6px 10px;font-size:12px}
 #matLab button.mb.on{background:#2b5b73;border-color:#8fe4ff} #mlJson{width:100%;height:120px;box-sizing:border-box;background:#0a0b0d;color:#cfe;border:1px solid #445;font:11px monospace}
 </style>
-<div id="mlView"><canvas id="mlCanvas"></canvas><div id="mlHud"><button class="mb" id="mlExit">✕ Exit</button><button class="mb" id="mlSpin">Spin</button><button class="mb" id="mlGrade">Grade</button><button class="mb" id="mlLow">Low gfx</button><button class="mb" id="mlRefs">Refs</button><button class="mb" id="mlCamR">Game view</button></div></div>
+<div id="mlView"><canvas id="mlCanvas"></canvas><div id="mlHud"><button class="mb" id="mlExit">✕ Exit</button><button class="mb" id="mlSpin">Spin</button><button class="mb" id="mlGrade">Grade</button><button class="mb" id="mlLow">Low gfx</button><button class="mb" id="mlRefs">Refs</button><button class="mb" id="mlAO">SSAO</button><button class="mb" id="mlCamR">Game view</button></div></div>
 <div id="mlBody">
  <h4>Lighting</h4>
  <div class="mlc"><button class="mb" id="mlAreaP">◀</button><span class="mln" id="mlAreaN"></span><button class="mb" id="mlAreaN2">▶</button></div>
@@ -170,6 +170,7 @@ function mlPanel(){ if($('#matLab')) return;
   $('#mlGrade').onclick=()=>{ ML.grade=!ML.grade; mlLight(); mlButtons(); mlKeep(); };
   $('#mlLow').onclick=()=>{ ML.low=!ML.low; mlLight(); mlButtons(); mlKeep(); };
   $('#mlRefs').onclick=()=>{ ML.refs=!ML.refs; MLS.refs.visible=ML.refs; mlButtons(); mlKeep(); };
+  $('#mlAO').onclick=()=>{ XLIT.ssao=!XLIT.ssao; mlButtons(); };
   $('#mlCamR').onclick=()=>{ ML.yaw=.3; ML.pitch=.62; ML.dist=12.5; };
   const area=n=>{ ML.area=step('area',n,ML_AREAS().length); mlArea(); }; $('#mlAreaP').onclick=()=>area(-1); $('#mlAreaN2').onclick=()=>area(1);
   const light=n=>{ ML.light=step('light',n,ML_LIGHTS.length); mlLight(); mlNames(); mlKeep(); }; $('#mlLightP').onclick=()=>light(-1); $('#mlLightN2').onclick=()=>light(1);
@@ -190,7 +191,7 @@ function mlPanel(){ if($('#matLab')) return;
     p.x=e.clientX; p.y=e.clientY; });
   const up=e=>{ P.delete(e.pointerId); }; v.addEventListener('pointerup',up); v.addEventListener('pointercancel',up);
   v.addEventListener('wheel',e=>{ e.preventDefault(); ML.dist=Math.max(3,Math.min(22,ML.dist*(1+Math.sign(e.deltaY)*.1))); },{passive:false}); }
-function mlButtons(){ for(const [id,on] of [['#mlSpin',ML.spin],['#mlGrade',ML.grade],['#mlLow',ML.low],['#mlRefs',ML.refs]]) $(id).classList.toggle('on',!!on); }
+function mlButtons(){ for(const [id,on] of [['#mlSpin',ML.spin],['#mlGrade',ML.grade],['#mlLow',ML.low],['#mlRefs',ML.refs],['#mlAO',XLIT.ssao]]) $(id).classList.toggle('on',!!on); }
 function mlNames(){ const A=ML_A(); $('#mlAreaN').textContent='Area: '+(A.name||A.id); $('#mlLightN').textContent=ML_LIGHTS[ML.light].name; }
 function mlAssetList(){ const s=$('#mlAsset'), list=mlAssets(); let html='', grp=null;
   list.forEach((it,i)=>{ if(it.group!==grp){ if(grp) html+='</optgroup>'; grp=it.group; html+='<optgroup label="'+grp+'">'; } html+='<option value="'+i+'">'+it.name+'</option>'; }); s.innerHTML=html+'</optgroup>'; }

@@ -979,6 +979,9 @@ function xAirTick(T,dt){
    mushrooms, candles, statues, banners, vines and cobwebs. Furniture is merged into one mesh per
    room (and one for the things that glow) so a floor stays cheap to draw. Nothing here blocks you. */
 // collect boxes, cylinders and the rest into one vertex-coloured geometry
+// a unit eight-sided prism (1 across its flats, 1 tall, centred), its flats facing along x and z, flat-shaded
+let XOCT=null;
+function xOctPrism(){ if(XOCT) return XOCT; const g=new THREE.CylinderGeometry(.5/Math.cos(Math.PI/8),.5/Math.cos(Math.PI/8),1,8).toNonIndexed(); g.rotateY(Math.PI/8); g.computeVertexNormals(); return XOCT=g; }
 function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(); let tex=false;
   // M.mat: the material (XPROP_MATS) the pieces added next are painted with (xPropTex), null for flat colour, or 'auto'
   // (the default): read from each piece's colour (xPropKind). M.tex: {s,o} lays the material on the next pieces at this
@@ -1115,11 +1118,12 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   // along the same room faces: a stone cornice at the top (the lit line sits on it) and a dark skirting at the foot
   const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,cells)=>xChunkInst(grp,XG.box,mat,cells);
   EX.corMesh=inst(xDitherMat(xPhong({color:tone(.62)})),trimCells); EX.skirtMesh=inst(xDitherMat(xPhong({color:tone(.16)})),trimCells);
-  // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
-  // where the halls are built, rough rock columns in the caves
-  const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
-  EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),pills);
-  EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills); EX.pillCave=cave;
+  // pillars by area: carved columns (a base, a shaft standing proud of the wall, a capital) where the halls are built,
+  // rough rock columns in the caves. The carved ones are eight-sided, a face square to each wall: what stands out of
+  // the wall is a flat face with its corners bevelled back at 45 degrees (xOctPrism)
+  const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), oct=cave?null:xOctPrism(), shaftG=cave?xRockShaft():oct, pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
+  EX.pillBase=xChunkInst(grp,oct||XG.box,xLitTag(xDitherMat(xPhong({color:pc2})),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),pills);
+  EX.pillCap=xChunkInst(grp,oct||XG.box,xDitherMat(xPhong({color:pc2})),pills); EX.pillCave=cave;
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';

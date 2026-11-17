@@ -670,8 +670,8 @@ function xBuildScene(){
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   // a soft contact shadow under you, so you stand on the floor instead of floating over it, and your picture takes a
   // little of your lamp's colour and brightness, so you sit in the room's light (debug menu > Colour: Hero shadow, Hero tint)
-  EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.5,1.0),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
-  EX.meShadow.rotation.x=-Math.PI/2; EX.meShadow.position.y=.045; EX.meShadow.renderOrder=2; grp.add(EX.meShadow); xHeroTint();
+  EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.25),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
+  EX.meShadow.rotation.x=-Math.PI/2; EX.meShadow.position.y=.08; EX.meShadow.renderOrder=3; grp.add(EX.meShadow); xHeroTint();   // (drawn after your glow, which would lift it again)
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   xShadeLook();
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
@@ -1478,7 +1478,9 @@ function xRockShader(sh){
     +sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   #if defined(USE_INSTANCING)&&__VERSION__>=300
   { vec3 wq=(modelMatrix*(instanceMatrix*vec4(transformed,1.0))).xyz, d=vec3(xrn(wq),0.0,xrn(wq.zyx+7.3))*.38*smoothstep(.05,.9,wq.y);
-    d.y+=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55*smoothstep(uXTopY-.9,uXTopY-.3,position.y);   // (the top's ring of the sides rises with the cap, so they stay joined)
+    { float lift=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55*smoothstep(uXTopY-.9,uXTopY-.3,position.y);   // (the top's ring of the sides rises with the cap, so they stay joined)
+      if(length(instanceMatrix[1].xyz)<.98) lift=min(lift,0.0);   // a block cut down low (a near wall standing low, xStepLow) only dips: a flat cap lies on it, and a rising top came up through the cap as dark shards
+      d.y+=lift; }
     transformed+=inverse(mat3(modelMatrix)*mat3(instanceMatrix))*d; }
   #endif`);
   sh.vertexShader='varying vec3 vXWN;\n'+sh.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n  { vec3 xn=objectNormal;\n  #ifdef USE_INSTANCING\n  xn=mat3(instanceMatrix)*xn;\n  #endif\n  vXWN=normalize(mat3(modelMatrix)*xn); }');
@@ -2175,7 +2177,7 @@ function xDraw(T,dt){
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
   EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz);
-  if(EX.meShadow){ EX.meShadow.position.x=EX.px; EX.meShadow.position.z=EX.pz+.05; EX.meShadow.material.opacity=XLIT.heroShadow*(1-.35*step); }
+  if(EX.meShadow){ EX.meShadow.position.x=EX.px; EX.meShadow.position.z=EX.pz+.3; EX.meShadow.material.opacity=XLIT.heroShadow*(1-.35*step); }
   // your picture is looked up again when your pose, view or facing changes, and a few times a second besides (new gear,
   // a picture that has just loaded), not every frame: the lookup builds a description of your gear each time
   { const M=EX.me.userData, fl=EX.face<0; if(M.pose!==EX.pose||M.view!==EX.view||M.fl!==fl||!M.img||(M.age=(M.age||0)+1)>15){ M.pose=EX.pose; M.view=EX.view; M.fl=fl; M.age=0; xRefresh(EX.me,fl); } }

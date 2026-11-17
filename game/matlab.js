@@ -19,9 +19,11 @@ const ML_LIGHTS=[
   {id:'battle', name:'Battle arena'},
   {id:'studio', name:'Studio: neutral key light'} ];
 const ML_SLIDERS=[
-  ['hue','Hue shift',-180,180,1], ['sat','Saturation',0,2,.01], ['con','Contrast',0,3,.01], ['bri','Brightness',0,2,.01],
-  ['detail','Texture strength',0,2,.01], ['rough','Roughness',0,2,.01], ['metal','Metalness',0,1,.01], ['normal','Normal strength',0,4,.01],
-  ['bump','Bump (painted detail)',0,4,.01], ['height','Height (cavities)',0,3,.01], ['ao','AO (broad occlusion)',0,3,.01], ['scale','Scale (tiles a metre)',.25,4,.01] ];
+  ['#Colour'], ['hue','Hue shift',-180,180,1], ['sat','Saturation',0,2,.01], ['con','Contrast',0,3,.01], ['bri','Brightness',0,2,.01], ['detail','Texture strength',0,2,.01],
+  ['#Surface'], ['rough','Roughness',0,2,.01], ['metal','Metalness',0,1,.01], ['normal','Normal strength',0,4,.01],
+  ['bump','Bump (painted detail)',0,4,.01], ['height','Height (cavities)',0,3,.01], ['ao','AO (broad occlusion)',0,3,.01],
+  ['#Tiling'], ['scale','Scale (tiles a metre)',.25,4,.01], ['rot','Rotation',-180,180,1], ['offu','Offset U',0,1,.01], ['offv','Offset V',0,1,.01],
+  ['#Detail (the game\'s noises)'], ['dnoise','Noise'], ['dscale','Detail scale (repeats a tile)',1,32,.1], ['dstr','Detail strength',0,1,.01], ['drelief','Detail relief',0,4,.01] ];
 
 // ---- the props that can go on the turntable ----
 const ML_FURN=['barrel','crate','sack','urn','bones','skulls','rubble','statue','candles','shelf','rack','table','skeleton','mushrooms'];
@@ -194,7 +196,11 @@ function mlAssetList(){ const s=$('#mlAsset'), list=mlAssets(); let html='', grp
   list.forEach((it,i)=>{ if(it.group!==grp){ if(grp) html+='</optgroup>'; grp=it.group; html+='<optgroup label="'+grp+'">'; } html+='<option value="'+i+'">'+it.name+'</option>'; }); s.innerHTML=html+'</optgroup>'; }
 function mlMatList(on){ const s=$('#mlMat'); s.innerHTML='<optgroup label="On this prop">'+on.map(k=>'<option>'+k+'</option>').join('')+'</optgroup><optgroup label="All materials">'+XPROP_MATS.filter(k=>!on.includes(k)).map(k=>'<option>'+k+'</option>').join('')+'</optgroup>'; s.value=ML.mat; }
 function mlSliders(){ const box=$('#mlSliders'), t=XPROP_TUNE[ML.mat]; if(!t) return; box.innerHTML='';
-  for(const [k,label,lo,hi,st] of ML_SLIDERS){ const row=document.createElement('div'); row.className='mlr';
+  for(const [k,label,lo,hi,st] of ML_SLIDERS){
+    if(k[0]==='#'){ const h=document.createElement('h4'); h.textContent=k.slice(1); box.appendChild(h); continue; }
+    const row=document.createElement('div'); row.className='mlr';
+    if(k==='dnoise'){ row.innerHTML='<label>'+label+'</label><select style="grid-column:2/4">'+XPROP_NOISES.map((n,i)=>'<option value="'+i+'">'+n+'</option>').join('')+'</select>';
+      const sel=row.querySelector('select'); sel.value=String(t.dnoise|0); sel.onchange=()=>{ t.dnoise=+sel.value; xPropTuneApply(); xPropTuneSave(); }; box.appendChild(row); continue; }
     row.innerHTML='<label>'+label+'</label><input type="range" min="'+lo+'" max="'+hi+'" step="'+st+'" value="'+t[k]+'"><output>'+(+t[k]).toFixed(st<1?2:0)+'</output>';
     const inp=row.querySelector('input'), out=row.querySelector('output');
     inp.oninput=()=>{ t[k]=+inp.value; out.textContent=(+inp.value).toFixed(st<1?2:0); xPropTuneApply(); };

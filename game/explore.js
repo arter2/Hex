@@ -1024,35 +1024,45 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
   if(m.specular&&m.specular.getHex()<0x2a2a2a) m.specular.set(0x2a2a2a);
   m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r);
-    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPT1:XPROPU.uPT1,uPT2:XPROPU.uPT2,uPT3:XPROPU.uPT3,uXSharp:XLITU.uXSharp});
-    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); vT1=vec4(0.,1.,1.,1.); vT2=vec4(1.,0.,1.,0.); vT3=vec4(0.,0.,1.,1.); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; vT1=uPT1[i]; vT2=uPT2[i]; vT3=uPT3[i]; }';
-    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform vec4 uPT1['+n+']; uniform vec4 uPT2['+n+']; uniform vec4 uPT3['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3;\nvoid main() {')
+    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPT1:XPROPU.uPT1,uPT2:XPROPU.uPT2,uPT3:XPROPU.uPT3,uPT4:XPROPU.uPT4,uPT5:XPROPU.uPT5,uPD:{value:xPropNoise()},uPDN:XLITU.uXDetN,uXSharp:XLITU.uXSharp}); if(typeof xDetailN==='function') xDetailN();
+    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); vT1=vec4(0.,1.,1.,1.); vT2=vec4(1.,0.,1.,0.); vT3=vec4(0.,0.,1.,1.); vSlot=float(xs); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; vT1=uPT1[i]; vT2=uPT2[i]; vT3=uPT3[i]; }';
+    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform vec4 uPT1['+n+']; uniform vec4 uPT2['+n+']; uniform vec4 uPT3['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\nvoid main() {')
       .replace('#include <begin_vertex>','#include <begin_vertex>\n'+(one
         ?' { vec3 xp=transformed, xn=objectNormal;\n#ifdef USE_INSTANCING\n xp=(instanceMatrix*vec4(xp,1.0)).xyz-instanceMatrix[3].xyz; xn=mat3(instanceMatrix)*xn;\n#endif\n vXL=xp*vec3(length(modelMatrix[0].xyz),length(modelMatrix[1].xyz),length(modelMatrix[2].xyz))+fract(modelMatrix[3].xyz*.37)*3.; vXN=xn; int xs=int(uPS+.5); '+pick+' }'
         :' vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); '+pick));
     let f=sh.fragmentShader;
     // the tuning (the Materials lab, XPROP_TUNE): vT1 hue (radians), saturation, contrast, brightness; vT2 roughness,
     // metalness, normal, bump; vT3 height (cavities), ao (broad occlusion), scale (tiles a metre), detail (the painting's strength)
-    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN, uPD, uPDN; uniform float uPK, uPNK; uniform vec4 uPT4['+n+']; uniform vec4 uPT5['+n+']; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
       +'\nvec3 xHue(vec3 c,float a){ const mat3 toY=mat3(.299,.596,.211,.587,-.274,-.523,.114,-.322,.312); const mat3 toR=mat3(1.,1.,1.,.956,-.272,-1.106,.621,-.647,1.703); vec3 y=toY*c; float cs=cos(a), sn=sin(a); y.yz=vec2(y.y*cs-y.z*sn,y.y*sn+y.z*cs); return max(toR*y,vec3(0.)); }'
-      +'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xP=vXL*vT3.z; vec3 xdx=dFdx(xP), xdy=dFdy(xP); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1., xlum=0.;\n bool xon=vPR.z>0.;');
+      +'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xP=vXL*vT3.z; vec3 xdx=dFdx(xP), xdy=dFdy(xP); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1., xlum=0.;\n bool xon=vPR.z>0.;'
+      // the slot's texture place (rotation, offset) and its detail (the game's noises: xPropNoise, the walls' detail normal)
+      +'\n vec4 xT4=vec4(0.,8.,0.,0.), xT5=vec4(0.); int xsl=int(vSlot+.5); for(int i=0;i<'+n+';i++) if(i==xsl){ xT4=uPT4[i]; xT5=uPT5[i]; }'
+      +'\n mat2 xRot=mat2(cos(xT5.x),sin(xT5.x),-sin(xT5.x),cos(xT5.x)); vec2 xOff=xT5.yz;'
+      +'\n vec2 xu=xP.xy, xgx=xdx.xy, xgy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ xu=xP.zy; xgx=xdx.zy; xgy=xdy.zy; } else if(xan.y>=xan.z){ xu=xP.xz; xgx=xdx.xz; xgy=xdy.xz; }'
+      +'\n float xdv=.5; vec2 xdg=vec2(0.);'
+      +'\n if(xon&&xT4.x>.5){ vec2 du=xu*xT4.y, dgx=xgx*xT4.y, dgy=xgy*xT4.y;'
+      +'\n  if(xT4.x<1.5){ vec4 t=xAtS(uPDN,du,dgx,dgy); xdv=t.r*.5+t.g*.5; xdg=(t.xy*2.-1.)*.6; }'
+      +'\n  else { int ch=int(xT4.x+.5); float e=1./256.; vec4 a=xAtS(uPD,du,dgx,dgy), b=xAtS(uPD,du+vec2(e,0.),dgx,dgy), c=xAtS(uPD,du+vec2(0.,e),dgx,dgy);'
+      +'\n   vec4 m=ch==2?vec4(0.,0.,0.,1.):ch==3?vec4(1.,0.,0.,0.):ch==4?vec4(0.,1.,0.,0.):vec4(0.,0.,1.,0.); xdv=dot(a,m); xdg=vec2(xdv-dot(b,m),xdv-dot(c,m))*24.; } }');
     f=f.replace('#include <color_fragment>',`#include <color_fragment>
  if(xon){ vec3 c=vec3(0.);
-  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,xP.zy,xdx.zy,xdy.zy).rgb;
-  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,xP.xz,xdx.xz,xdy.xz).rgb;
-  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,xP.xy,xdx.xy,xdy.xy).rgb;
+  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,xRot*xP.zy+xOff,xRot*xdx.zy,xRot*xdy.zy).rgb;
+  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,xRot*xP.xz+xOff,xRot*xdx.xz,xRot*xdy.xz).rgb;
+  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,xRot*xP.xy+xOff,xRot*xdx.xy,xRot*xdy.xy).rgb;
   vec3 det=c/max(vPM.rgb,vec3(.02)); det=max(vec3(0.),1.+(det-1.)*vT1.z);
   diffuseColor.rgb*=mix(vec3(1.),det,uPK*vT3.w); diffuseColor.rgb*=vT1.w;
   float l=dot(diffuseColor.rgb,vec3(.299,.587,.114)); diffuseColor.rgb=max(mix(vec3(l),diffuseColor.rgb,vT1.y),vec3(0.));
+  if(xT4.z>.001) diffuseColor.rgb*=max(0.,1.+(xdv-.5)*2.*xT4.z);   // the detail noise in the colour
   if(abs(vT1.x)>.001) diffuseColor.rgb=xHue(diffuseColor.rgb,vT1.x);
   xlum=dot(c,vec3(.299,.587,.114)); }
  vec2 xdB=vec2(dFdx(xlum),dFdy(xlum));`);
     f=f.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
- if(xon){ vec2 u=xP.xy, gx=xdx.xy, gy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ u=xP.zy; gx=xdx.zy; gy=xdy.zy; } else if(xan.y>=xan.z){ u=xP.xz; gx=xdx.xz; gy=xdy.xz; }
+ if(xon){ vec2 u=xRot*xu+xOff, gx=xRot*xgx, gy=xRot*xgy;
   vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=clamp(nt.b*vT2.x,0.,1.);
   if(vT3.x>.001) diffuseColor.rgb*=pow(clamp(.25+nt.a*1.5,0.,1.),vT3.x);
   if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.2+hb*1.6,0.,1.),vT3.y); }${low?'':`
-  vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
+  vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z+(xRot*xdg)*xT4.w,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
   float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);
   if(vT2.w>.001){ vec2 dB=xdB*vT2.w*2.; vec3 R1=cross(xq1,normal), R2=cross(normal,xq0); float fd=dot(xq0,R1); vec3 vg=sign(fd)*(dB.x*R1+dB.y*R2); normal=normalize(abs(fd)*normal-vg); }`} }`);
     if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);')
@@ -1063,19 +1073,33 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
   m.needsUpdate=true; return m; }
 const xPropMat=()=>xPropTex(xPhong({vertexColors:true}));
 const XPROP_BOOKS=()=>typeof envArtProps==='function'&&!!envArtProps();
-const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPT1:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,1,1,1))}, uPT2:{value:XPROP_MATS.map(()=>new THREE.Vector4(1,0,1,0))}, uPT3:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,1,1))} };
+const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPT4:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,8,0,0))}, uPT5:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,0,0))}, uPT1:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,1,1,1))}, uPT2:{value:XPROP_MATS.map(()=>new THREE.Vector4(1,0,1,0))}, uPT3:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,1,1))} };
 /* Each painted material's tuning (the Materials lab, matlab.js): the game's defaults (XPROP_TUNE_DEF, propmats.js, set from
    the lab's JSON), then what was tuned in this browser on top. The uniforms are shared by every material, so a change shows
    at once everywhere. */
-const XPROP_TUNE_KEYS=['hue','sat','con','bri','detail','rough','metal','normal','bump','height','ao','scale'];
-const XPROP_TUNE_ZERO={hue:0,sat:1,con:1,bri:1,detail:1,rough:1,metal:0,normal:1,bump:0,height:0,ao:0,scale:1};
+/* The detail noises the props can take (the Materials lab's Detail): the game's own. dnoise 1 is the walls' painted
+   detail normal (XLITU.uXDetN); 2-5 are channels of one repeating sheet made here: 2 cells (the Deeps rock's cell
+   noise when it has loaded, else cells worked out the same way), 3 broad noise, 4 fine noise, 5 grain (look.js xFbm, xNoise). */
+const XPROP_NOISES=['None','Painted detail (the walls\' relief)','Cells (the Deeps rock)','Broad noise','Fine noise','Grain'];
+let XPROP_NOISE=null;
+function xPropNoise(){ if(XPROP_NOISE) return XPROP_NOISE; const N=256, R=caveRng(5151), a=xFbm(N,R,3), b=xFbm(N,R,12), g=xNoise(N,64,R);
+  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }
+  const pts=[]; if(!cd) for(let k=0;k<40;k++) pts.push([R()*N,R()*N]);
+  const worley=(i,j)=>{ let d=1e9; for(const [px,py] of pts) for(const ox of [-N,0,N]) for(const oy of [-N,0,N]){ const dx=i-px-ox, dy=j-py-oy; d=Math.min(d,dx*dx+dy*dy); } return Math.min(1,Math.sqrt(d)/(N*.12)); };
+  const F=[new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N)];
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const o=j*N+i; F[0][o]=a(i,j); F[1][o]=b(i,j); F[2][o]=g(i,j); F[3][o]=cd?cd[o*4]/255:worley(i,j); }
+  for(const f of F){ let lo=1e9, hi=-1e9; for(const v of f){ lo=Math.min(lo,v); hi=Math.max(hi,v); } for(let o=0;o<f.length;o++) f[o]=(f[o]-lo)/Math.max(1e-6,hi-lo); }
+  const D=new Uint8Array(N*N*4); for(let o=0;o<N*N;o++){ D[o*4]=F[0][o]*255; D[o*4+1]=F[1][o]*255; D[o*4+2]=F[2][o]*255; D[o*4+3]=F[3][o]*255; }   // (raw data: a canvas would premultiply the cells in alpha into the other three)
+  const t=new THREE.DataTexture(D,N,N,THREE.RGBAFormat); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.generateMipmaps=true; t.anisotropy=4; t.needsUpdate=true; return XPROP_NOISE=t; }
+const XPROP_TUNE_KEYS=['hue','sat','con','bri','detail','rough','metal','normal','bump','height','ao','scale','rot','offu','offv','dnoise','dscale','dstr','drelief'];
+const XPROP_TUNE_ZERO={hue:0,sat:1,con:1,bri:1,detail:1,rough:1,metal:0,normal:1,bump:0,height:0,ao:0,scale:1,rot:0,offu:0,offv:0,dnoise:0,dscale:8,dstr:0,drelief:0};
 const XPROP_TUNE_STORE='hexmancers-propmats';
 let XPROP_TUNE={};
 function xPropTuneLoad(){ let mine={}; try{ mine=JSON.parse(localStorage.getItem(XPROP_TUNE_STORE)||'{}')||{}; }catch(e){}
   const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{};
   XPROP_TUNE={}; for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,def[k]||{},mine[k]||{}); xPropTuneApply(); }
 function xPropTuneApply(){ XPROP_MATS.forEach((k,i)=>{ const t=XPROP_TUNE[k]||XPROP_TUNE_ZERO;
-    XPROPU.uPT1.value[i].set(t.hue*Math.PI/180,t.sat,t.con,t.bri); XPROPU.uPT2.value[i].set(t.rough,t.metal,t.normal,t.bump); XPROPU.uPT3.value[i].set(t.height,t.ao,t.scale,t.detail); }); }
+    XPROPU.uPT1.value[i].set(t.hue*Math.PI/180,t.sat,t.con,t.bri); XPROPU.uPT2.value[i].set(t.rough,t.metal,t.normal,t.bump); XPROPU.uPT3.value[i].set(t.height,t.ao,t.scale,t.detail); XPROPU.uPT4.value[i].set(t.dnoise,t.dscale,t.dstr,t.drelief); XPROPU.uPT5.value[i].set(t.rot*Math.PI/180,t.offu,t.offv,0); }); }
 // what this browser changed from the game's defaults (kept), and the full set as JSON (the lab's Copy)
 function xPropTuneSave(){ const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{}, out={};
   for(const k of XPROP_MATS){ const base=Object.assign({},XPROP_TUNE_ZERO,def[k]||{}), d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-base[q])>1e-6) d[q]=XPROP_TUNE[k][q]; if(Object.keys(d).length) out[k]=d; }

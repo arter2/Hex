@@ -1,6 +1,6 @@
 /* ---------------- the Materials lab ----------------
    A look-development studio, from the lab picker: a grey cyclorama, a wooden turntable that turns the prop on it, a
-   matte grey ball, a chrome ball (it reflects the studio) and a colour chart, lit by the game's own lighting set-ups:
+   matte grey ball and a chrome ball (it reflects the studio), lit by the game's own lighting set-ups:
    each area's lamp and ambient, a torch, a glow, a dark corridor, a battle arena, or a plain studio key light. Every
    prop in the dungeon and the battles can be put on the turntable, and every painted material on it tuned with
    sliders (explore.js XPROP_TUNE: hue, saturation, contrast, brightness, detail, roughness, metalness, normal, bump,
@@ -89,27 +89,18 @@ function mlStudio(){ if(MLS) return MLS;
   const mat=new THREE.Mesh(new THREE.PlaneGeometry(9,7),grey(0x3a3b3e)); mat.rotation.x=-Math.PI/2; mat.position.set(.6,.005,.4); cyc.add(mat); scene.add(cyc);
   // the turntable and what turns on it
   const tt=new THREE.Group(); scene.add(tt); const spin=new THREE.Group(); spin.position.y=.18; tt.add(spin);
-  // the references: a grey ball and a chrome ball on a bar, a colour chart against the stand
-  const refs=new THREE.Group(); refs.position.set(2.7,0,-2.6); refs.rotation.y=-.35; scene.add(refs);
-  const dark=grey(0x1c1c1e), leg=(x,z)=>{ const l=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,1.9,6),dark); l.position.set(x*.5,.85,z*.5); l.rotation.set(z*.28,0,-x*.28); refs.add(l); };
-  leg(1,0); leg(-.5,.87); leg(-.5,-.87); const post=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,1.2,8),dark); post.position.y=2.1; refs.add(post);
-  const bar=new THREE.Mesh(new THREE.BoxGeometry(1.8,.05,.08),dark); bar.position.y=2.7; refs.add(bar);
-  const gb=new THREE.Mesh(new THREE.SphereGeometry(.4,48,32),grey(0x777777)); gb.position.set(-.55,3.15,0); refs.add(gb);   // 18% grey
+  // the references, floating beside the turntable: a matte grey ball (18% grey) and a chrome ball that reflects the studio
+  const refs=new THREE.Group(); refs.position.set(1.5,0,-2.6); refs.rotation.y=-.3; scene.add(refs);
+  const gb=new THREE.Mesh(new THREE.SphereGeometry(.4,48,32),grey(0x777777)); gb.position.set(-.5,1.6,0); refs.add(gb);   // 18% grey
   const crt=new THREE.WebGLCubeRenderTarget(128,{generateMipmaps:true,minFilter:THREE.LinearMipmapLinearFilter}), cc=new THREE.CubeCamera(.1,60,crt);
   const chrome=new THREE.Mesh(new THREE.SphereGeometry(.4,48,32),new THREE.MeshStandardMaterial({color:0xffffff,metalness:1,roughness:.04,envMap:crt.texture}));
-  chrome.position.set(.55,3.15,0); refs.add(chrome); chrome.add(cc); cc.position.set(0,0,0);
-  const chart=new THREE.Mesh(new THREE.PlaneGeometry(1.3,.9),new THREE.MeshPhongMaterial({map:mlChartTex(),shininess:2,specular:0x050505})); chart.position.set(-.1,.46,1.15); chart.rotation.x=-.35; refs.add(chart);
-  for(const o of [gb,chrome,chart]) o.material.userData.xlit=1;
-  // a light stand where the key or the lamp stands, its head lit while it is on
-  const stand=new THREE.Group(); const sp=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,1,6),dark); stand.add(sp); const head=new THREE.Mesh(new THREE.BoxGeometry(.4,.36,.3),dark); stand.add(head);
-  const lens=new THREE.Mesh(new THREE.CircleGeometry(.13,16),new THREE.MeshBasicMaterial({color:0xffffff})); lens.position.z=.16; head.add(lens); scene.add(stand);
+  chrome.position.set(.5,1.6,0); refs.add(chrome); chrome.add(cc); cc.position.set(0,0,0);
+  for(const o of [gb,chrome]) o.material.userData.xlit=1;
   // the lights (set by mlLight)
   const amb=new THREE.AmbientLight(0xffffff,.2), sun=new THREE.DirectionalLight(0xffffff,.22), lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4), torch=new THREE.PointLight(0xffa040,0,10,1.6),
     glow=new THREE.PointLight(0xffffff,0,10,1.6), key=new THREE.DirectionalLight(0xffffff,0), fill=new THREE.DirectionalLight(0xffffff,0);
   scene.add(amb,sun,lamp,torch,glow,key,fill,key.target,fill.target);
-  const torchFx=new THREE.Mesh(new THREE.ConeGeometry(.12,.35,8),new THREE.MeshBasicMaterial({color:0xffb060})); scene.add(torchFx);
-  const glowFx=new THREE.Mesh(new THREE.OctahedronGeometry(.18,0),new THREE.MeshBasicMaterial({color:0xffffff})); scene.add(glowFx);
-  MLS={r,scene,cam,cyc,tt,spin,refs,gb,chrome,cc,chart,stand,head,lens,amb,sun,lamp,torch,glow,key,fill,torchFx,glowFx,G:{renderer:r,scene,cam,grade:1,low:false}};
+  MLS={r,scene,cam,cyc,tt,spin,refs,gb,chrome,cc,amb,sun,lamp,torch,glow,key,fill,G:{renderer:r,scene,cam,grade:1,low:false}};
   return MLS; }
 // the cyclorama's sweep: a floor running back into a curve and up a wall, one sheet with no seam
 function mlCycGeo(){ const W=40, N=60, pts=[]; const R=3, z0=-5;   // the floor to z0, a quarter circle of radius R, the wall at z0-R
@@ -117,26 +108,17 @@ function mlCycGeo(){ const W=40, N=60, pts=[]; const R=3, z0=-5;   // the floor 
   const g=new THREE.PlaneGeometry(W,1,1,N), P=g.attributes.position; for(let i=0;i<P.count;i++){ const row=Math.round((.5-P.getY(i))*N), [y,z]=pts[N-row]; P.setXYZ(i,P.getX(i),y,z); }
   g.computeVertexNormals();
   return g; }
-// a colour chart: the 24 patches of the usual checker, in sRGB
-function mlChartTex(){ const P=['#735244','#c29682','#627a9d','#576c43','#8580b1','#67bdaa','#d67e2c','#505ba6','#c15a63','#5e3c6c','#9dbc40','#e0a32e',
-    '#383d96','#469449','#af363c','#e7c71f','#bb5695','#0885a1','#f3f3f2','#c8c8c8','#a0a0a0','#7a7a79','#555555','#343434'];
-  const c=document.createElement('canvas'); c.width=390; c.height=270; const x=c.getContext('2d'); x.fillStyle='#111'; x.fillRect(0,0,390,270);
-  P.forEach((h,i)=>{ x.fillStyle=h; x.fillRect(10+(i%6)*63,10+(i/6|0)*63,56,56); }); const t=new THREE.CanvasTexture(c); return t; }
 function mlLight(){ const S=MLS, A=ML_A(), L=ML_LIGHTS[ML.light].id, g=new THREE.Color(A.glow||'#ffb060');
   const lampC=new THREE.Color(0xffd9a0).lerp(g,.3*XLIT.gTint), ambC=new THREE.Color(0xffffff).lerp(g,.25*XLIT.gTint), lampY=Math.max(XLIT.lampY||3,XWALL+1.2);
   S.amb.color.copy(ambC); S.amb.intensity=.2*XLIT.amb; S.sun.intensity=.22*XLIT.sun; S.sun.position.set(-4,10,6);
   S.lamp.color.copy(lampC); S.lamp.intensity=1.6*XLIT.lamp; S.lamp.distance=16*XLIT.lampRad; S.lamp.position.set(-2.9,lampY,.2);
-  S.torch.intensity=0; S.glow.intensity=0; S.key.intensity=0; S.fill.intensity=0; S.torchFx.visible=S.glowFx.visible=false;
-  if(L==='torch'){ S.torch.position.set(-2.6,2.3,-1.4); S.torch.intensity=1.5*XLIT.torch; S.torchFx.visible=true; S.torchFx.position.copy(S.torch.position); }
-  if(L==='glow'){ S.glow.color.copy(g); S.glow.position.set(-2.2,.6,.9); S.glow.intensity=.9*XLIT.torch; S.glowFx.visible=true; S.glowFx.material.color.copy(g); S.glowFx.position.copy(S.glow.position); }
+  S.torch.intensity=0; S.glow.intensity=0; S.key.intensity=0; S.fill.intensity=0;
+  if(L==='torch'){ S.torch.position.set(-2.6,2.3,-1.4); S.torch.intensity=1.5*XLIT.torch; }
+  if(L==='glow'){ S.glow.color.copy(g); S.glow.position.set(-2.2,.6,.9); S.glow.intensity=.9*XLIT.torch; }
   if(L==='dark'){ S.amb.intensity=.04; S.sun.intensity=0; }
   if(L==='battle'){ S.lamp.intensity=0; S.amb.color.set(0xffffff); S.glow.color.copy(g); S.glow.position.set(-2.5,3,2); S.glow.intensity=1.1; S.torch.color.set(0xffd9a0); S.torch.position.set(2.8,3,1.5); S.torch.intensity=.9; }
   else S.torch.color.set(0xffa040);
   if(L==='studio'){ S.lamp.intensity=0; S.amb.color.set(0xffffff); S.amb.intensity=.35; S.sun.intensity=0; S.key.position.set(-6,7,3); S.key.intensity=.8; S.fill.position.set(6,3,4); S.fill.intensity=.35; }
-  // the stand stands under the light that leads
-  const lead=L==='studio'?new THREE.Vector3(-3.6,0,1.2):L==='battle'?S.glow.position:S.lamp.position, top=L==='studio'?4:lead.y;
-  S.stand.position.set(lead.x,0,lead.z); S.stand.children[0].scale.y=top; S.stand.children[0].position.y=top/2; S.head.position.y=top; S.head.lookAt(new THREE.Vector3(0,1,0).sub(S.stand.position).add(new THREE.Vector3(0,top,0)));
-  S.lens.material.color.set(L==='studio'?0xffffff:L==='battle'?g:lampC);
   S.G.grade=ML.grade?1:0; S.G.low=ML.low; }
 function mlTurntable(){ const S=MLS; while(S.tt.children.length>1) S.tt.remove(S.tt.children[1]);
   const A=envArtProps(), pc=A&&A.mean.planks?new THREE.Color(...A.mean.planks):new THREE.Color(0x8a6a48);

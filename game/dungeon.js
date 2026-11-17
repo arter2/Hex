@@ -577,7 +577,8 @@ const PERM_COL={vigor:0xff5d6c, might:0xff9a3a, insight:0x8fe4ff, fortune:0xf2c9
 function xKeyMesh(col){ const g=new THREE.Group(), m=xMat(new THREE.Color(col),{emissive:new THREE.Color(col).multiplyScalar(.35)});
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.16,.05,6,12),m); ring.position.set(-.22,0,0); g.add(ring, xBox(.42,.07,.07,m,.1,0,0), xBox(.06,.14,.07,m,.24,-.07,0), xBox(.06,.1,.07,m,.14,-.05,0)); return g; }
 function xNameMark(txt,col){ const s=xTextSprite(txt,col); s.scale.set(.7,.7,1); return s; }
-function xMeshProp(p){
+function xMeshProp(p){ return xPropKindRun('prop:'+p.kind,()=>xMeshProp0(p)); }   // (its object, for its materials' tuning: xPropSlot)
+function xMeshProp0(p){
   if(!X3||!X3.group) return null; const g=new THREE.Group(); let px=xw(p.cell), pz=xz(p.cell);
   if(p.wall){ const dx=xcx(p.front)-xcx(p.cell), dz=xcy(p.front)-xcy(p.cell); px+=dx*(XCS/2+.02); pz+=dz*(XCS/2+.02); g.rotation.y=Math.atan2(dx,dz); }
   g.position.set(px,0,pz);

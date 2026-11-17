@@ -595,9 +595,9 @@ function xBuildScene(){
   // (a spacious floor's door is clipped at its arch's crown when it stands in a low near wall: xStepLow)
   for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=xDoorEW(i), g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
-    const F=xMerger(), FL=xMerger(); F.mat='dressed-stone'; const WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
+    const F=xMerger(), FL=xMerger(); F.mat='dressed-stone'; { const add0=F.add; F.add=(...a)=>xPropKindRun('door frame',()=>add0(...a)); } const WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
     g.add(F.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
-    const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger(); { const add0=L.add; L.add=(g,c,...a)=>{ L.mat=c===0xff5d6c||LOCK_COL[d.lock]===c?null:c===0x2a2a30?'iron':'planks'; return add0(g,c,...a); }; }   // (boards, iron fittings; the glowing bands and lock plates plain)
+    const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger(); { const add0=L.add; L.add=(g,c,...a)=>{ L.mat=c===0xff5d6c||LOCK_COL[d.lock]===c?null:c===0x2a2a30?'iron':'planks'; return xPropKindRun('door',()=>add0(g,c,...a)); }; }   // (boards, iron fittings; the glowing bands and lock plates plain)
     if(d.lock==='gate'){ for(let k=0;k<5;k++){ const x=-.6+k*.3, top=HR+Math.sqrt(Math.max(0,AR*AR-x*x))-.04; L.add(XG.box,0x2a2a30,x,top/2,0,0,0,0,.07,top,.07); } L.add(XG.box,0x2a2a30,0,.5,0,0,0,0,XCS-.44,.08,.09); L.add(XG.box,0x2a2a30,0,1.2,0,0,0,0,XCS-.44,.08,.09); }
     else { const LW=XCS-.44;
       for(let k=0;k<4;k++) L.add(XG.box,k%2?(boss?0x2e1014:0x5a3820):planks,-LW/2+LW/8+k*LW/4,HR/2,0,0,0,0,LW/4-.025,HR,.15);
@@ -629,9 +629,9 @@ function xBuildScene(){
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
   down.add(xBox(W,.02,D,xMat(0x020203),0,.012,0));   // the dark at the bottom
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.3*(1-k/N);   // the nearest step is at floor level, the far ones sink
-    const col=stoneC.clone().multiplyScalar(1-.17*k); down.add(xBox(W-.2,Math.max(.02,h),d*.96,xMat(col,{mat:'dressed-stone'}),0,Math.max(.01,h/2),z));
+    const col=stoneC.clone().multiplyScalar(1-.17*k); down.add(xBox(W-.2,Math.max(.02,h),d*.96,xPropKindRun('stairs',()=>xMat(col,{mat:'dressed-stone'})),0,Math.max(.01,h/2),z));
     down.add(xBox(W-.2,.012,d*.22,xMat(0x050506),0,Math.max(.02,h)+.004,z-d*.38)); }   // the dark lip where each step drops to the next
-  const rimM=xMat(stoneC.clone().multiplyScalar(.8),{mat:'dressed-stone'});
+  const rimM=xPropKindRun('stairs',()=>xMat(stoneC.clone().multiplyScalar(.8),{mat:'dressed-stone'}));
   down.add(xBox(.12,.42,D,rimM,-W/2,.21,0), xBox(.12,.42,D,rimM,W/2,.21,0), xBox(W+.12,.42,.12,rimM,0,.21,-D/2));
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.12,.05,6,12),new THREE.MeshBasicMaterial({color:glow})); ring.rotation.x=Math.PI/2; ring.position.set(0,.45,-D/2);
   const rim=new THREE.Mesh(new THREE.BoxGeometry(W+.16,.03,.06),new THREE.MeshBasicMaterial({color:glow})); rim.position.set(0,.44,-D/2); down.add(rim);
@@ -640,7 +640,7 @@ function xBuildScene(){
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
   const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.65).multiplyScalar(.7);
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.1+.11*k;
-    const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xMat(col,{mat:'dressed-stone'}),0,h/2,z));
+    const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xPropKindRun('stairs',()=>xMat(col,{mat:'dressed-stone'})),0,h/2,z));
     const h0=k?.1+.11*(k-1):0; up.add(xBox(W-.2,h-h0,.02,xMat(col.clone().multiplyScalar(.45)),0,h0+(h-h0)/2,z+d*.49+.011));   // each riser in shadow
     up.add(xBox(W-.2,.012,d*.12,xMat(col.clone().lerp(new THREE.Color(0xffffff),.25)),0,h+.006,z+d*.43)); }   // a worn, lighter nosing on each tread
   up.add(xBox(.12,.7,D,rimM,-W/2,.35,0), xBox(.12,.7,D,rimM,W/2,.35,0));
@@ -989,7 +989,7 @@ function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4
   // piece also keeps its own place and normal before it is turned and moved (shifted by a hash of where it stands, so
   // two crates do not show the same boards), so its material stays on it however it is turned
   const M={ mat:'auto', tex:null, add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
-      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, mk=M.mat==='auto'?xPropKind(col):M.mat, slot=mk?XPROP_MATS.indexOf(mk):-1, T=M.tex;
+      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, mk=M.mat==='auto'?xPropKind(col):M.mat, slot=mk?xPropSlot(mk):-1, T=M.tex;
       if(slot>=0) tex=true;
       const hx=Math.sin(x*12.9898+z*78.233)*43758.5453, ox=hx-Math.floor(hx), oz=(hx*7.13)-Math.floor(hx*7.13), oy=(hx*3.71)-Math.floor(hx*3.71);
       for(let i=0;i<p0.length;i+=3){ if(T) XL.push(p0[i]*T.s[0]+T.o[0],p0[i+1]*T.s[1]+T.o[1],p0[i+2]*T.s[2]+T.o[2],slot); else XL.push(p0[i]*kx+ox,p0[i+1]*ky+oy,p0[i+2]*kz+oz,slot); const a=n0[i]/kx, b=n0[i+1]/ky, c=n0[i+2]/kz, l=Math.hypot(a,b,c)||1; XN2.push(a/l,b/l,c/l); }
@@ -1017,27 +1017,27 @@ function xPropKind(col){ const c=col&&col.isColor?col:new THREE.Color(col), mx=M
 // scene is built again when they arrive), as it was otherwise. one: the material's key for a single piece (laid on in
 // its own space, from its geometry and scale); without it, each vertex says (the merger's aXL and aXN)
 function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():null; if(!A||!m||m.userData.xprop||!(m.isMeshPhongMaterial||m.isMeshStandardMaterial)) return m;
-  const slot=one?XPROP_MATS.indexOf(one):0; if(one&&slot<0) return m;
+  const slot=one?xPropSlot(one):0; if(one&&slot<0) return m;
   const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
   const low=!!(X3&&X3.low), std=!!m.isMeshStandardMaterial, prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
-  m.userData.xprop=one?2:1; m.userData.noProj=1; m.userData.xpropSlot=one?slot:-1;   // (instead of surface.js's code-painted pixel material)
+  m.userData.xprop=one?2:1; m.userData.noProj=1; m.userData.xpropSlot=one?slot:-1; m.userData.xpropKind=XPROP_KIND;   // (instead of surface.js's code-painted pixel material)
   if(m.specular&&m.specular.getHex()<0x2a2a2a) m.specular.set(0x2a2a2a);
   m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r);
-    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPT1:XPROPU.uPT1,uPT2:XPROPU.uPT2,uPT3:XPROPU.uPT3,uPT4:XPROPU.uPT4,uPT5:XPROPU.uPT5,uPD:{value:xPropNoise()},uPDN:XLITU.uXDetN,uXSharp:XLITU.uXSharp}); if(typeof xDetailN==='function') xDetailN();
-    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); vT1=vec4(0.,1.,1.,1.); vT2=vec4(1.,0.,1.,0.); vT3=vec4(0.,0.,1.,1.); vSlot=float(xs); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; vT1=uPT1[i]; vT2=uPT2[i]; vT3=uPT3[i]; }';
-    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform vec4 uPT1['+n+']; uniform vec4 uPT2['+n+']; uniform vec4 uPT3['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\nvoid main() {')
+    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPTT:XPROPU.uPTT,uPD:{value:xPropNoise()},uPDN:XLITU.uXDetN,uXSharp:XLITU.uXSharp}); if(typeof xDetailN==='function') xDetailN();
+    const n=XPROP_MATS.length, pick='vSlot=float(xs); float xsv=(float(xs)+.5)/'+XPROP_SLOT_MAX+'.; vT1=texture2D(uPTT,vec2(.5/8.,xsv)); vT2=texture2D(uPTT,vec2(1.5/8.,xsv)); vT3=texture2D(uPTT,vec2(2.5/8.,xsv)); int xb=xs<0?-1:int(texture2D(uPTT,vec2(4.5/8.,xsv)).w+.5); vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+n+';i++) if(i==xb){ vPR=uPR[i]; vPM=uPM[i]; }';
+    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform sampler2D uPTT; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\nvoid main() {')
       .replace('#include <begin_vertex>','#include <begin_vertex>\n'+(one
         ?' { vec3 xp=transformed, xn=objectNormal;\n#ifdef USE_INSTANCING\n xp=(instanceMatrix*vec4(xp,1.0)).xyz-instanceMatrix[3].xyz; xn=mat3(instanceMatrix)*xn;\n#endif\n vXL=xp*vec3(length(modelMatrix[0].xyz),length(modelMatrix[1].xyz),length(modelMatrix[2].xyz))+fract(modelMatrix[3].xyz*.37)*3.; vXN=xn; int xs=int(uPS+.5); '+pick+' }'
         :' vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); '+pick));
     let f=sh.fragmentShader;
     // the tuning (the Materials lab, XPROP_TUNE): vT1 hue (radians), saturation, contrast, brightness; vT2 roughness,
     // metalness, normal, bump; vT3 height (cavities), ao (broad occlusion), scale (tiles a metre), detail (the painting's strength)
-    f=f.replace('void main() {','uniform sampler2D uPA, uPN, uPD, uPDN; uniform float uPK, uPNK; uniform vec4 uPT4['+n+']; uniform vec4 uPT5['+n+']; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN, uPD, uPDN, uPTT; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
       +'\nvec3 xHue(vec3 c,float a){ const mat3 toY=mat3(.299,.596,.211,.587,-.274,-.523,.114,-.322,.312); const mat3 toR=mat3(1.,1.,1.,.956,-.272,-1.106,.621,-.647,1.703); vec3 y=toY*c; float cs=cos(a), sn=sin(a); y.yz=vec2(y.y*cs-y.z*sn,y.y*sn+y.z*cs); return max(toR*y,vec3(0.)); }'
       +'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xP=vXL*vT3.z; vec3 xdx=dFdx(xP), xdy=dFdy(xP); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1., xlum=0.;\n bool xon=vPR.z>0.;'
       // the slot's texture place (rotation, offset) and its detail (the game's noises: xPropNoise, the walls' detail normal)
-      +'\n vec4 xT4=vec4(0.,8.,0.,0.), xT5=vec4(0.); int xsl=int(vSlot+.5); for(int i=0;i<'+n+';i++) if(i==xsl){ xT4=uPT4[i]; xT5=uPT5[i]; }'
+      +'\n float xsf=(vSlot+.5)/'+XPROP_SLOT_MAX+'.; vec4 xT4=texture2D(uPTT,vec2(3.5/8.,xsf)), xT5=texture2D(uPTT,vec2(4.5/8.,xsf));'
       +'\n mat2 xRot=mat2(cos(xT5.x),sin(xT5.x),-sin(xT5.x),cos(xT5.x)); vec2 xOff=xT5.yz;'
       +'\n vec2 xu=xP.xy, xgx=xdx.xy, xgy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ xu=xP.zy; xgx=xdx.zy; xgy=xdy.zy; } else if(xan.y>=xan.z){ xu=xP.xz; xgx=xdx.xz; xgy=xdy.xz; }'
       +'\n float xdv=.5; vec2 xdg=vec2(0.);'
@@ -1073,7 +1073,20 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
   m.needsUpdate=true; return m; }
 const xPropMat=()=>xPropTex(xPhong({vertexColors:true}));
 const XPROP_BOOKS=()=>typeof envArtProps==='function'&&!!envArtProps();
-const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPT4:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,8,0,0))}, uPT5:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,0,0))}, uPT1:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,1,1,1))}, uPT2:{value:XPROP_MATS.map(()=>new THREE.Vector4(1,0,1,0))}, uPT3:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,1,1))} };
+/* Each painted material's tuning (the Materials lab, matlab.js), per material and per object. The slots: the materials
+   (XPROP_MATS, slot = their index), then object variants named 'object/material' (an object's own tuning of a material:
+   'room:barrel/iron'), up to XPROP_SLOT_MAX. Every builder says what it is building (XPROP_KIND), and a piece takes its
+   object's variant of a material where there is one (xPropSlot). The values live in a small texture (a row a slot: the
+   shader reads its own), so a change shows at once everywhere. A variant inherits its material's values, and holds
+   only what it changes (XPROP_OVR). */
+const XPROP_SLOT_MAX=256, XPROP_SLOTS=XPROP_MATS.slice(), XPROP_BASE=XPROP_MATS.map((k,i)=>i);
+let XPROP_KIND=null; const XPROP_SEEN=new Set();   // (what was built, 'object/material': the lab's list of objects)
+function xPropKindRun(kind,fn){ const was=XPROP_KIND; XPROP_KIND=kind; try{ return fn(); } finally{ XPROP_KIND=was; } }
+function xPropSlot(mat){ const b=XPROP_MATS.indexOf(mat); if(b<0) return -1; if(!XPROP_KIND) return b; const v=XPROP_KIND+'/'+mat; XPROP_SEEN.add(v); const i=XPROP_SLOTS.indexOf(v); return i>=0?i:b; }
+function xPropVariant(name){ let i=XPROP_SLOTS.indexOf(name); if(i>=0) return i; const mat=name.split('/').pop(), b=XPROP_MATS.indexOf(mat); if(b<0||XPROP_SLOTS.length>=XPROP_SLOT_MAX) return -1;
+  XPROP_SLOTS.push(name); XPROP_BASE.push(b); return XPROP_SLOTS.length-1; }
+const XPROP_TT=(()=>{ const t=new THREE.DataTexture(new Float32Array(8*XPROP_SLOT_MAX*4),8,XPROP_SLOT_MAX,THREE.RGBAFormat,THREE.FloatType); t.magFilter=t.minFilter=THREE.NearestFilter; t.generateMipmaps=false; t.needsUpdate=true; return t; })();
+const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPTT:{value:XPROP_TT} };
 /* Each painted material's tuning (the Materials lab, matlab.js): the game's defaults (XPROP_TUNE_DEF, propmats.js, set from
    the lab's JSON), then what was tuned in this browser on top. The uniforms are shared by every material, so a change shows
    at once everywhere. */
@@ -1094,17 +1107,29 @@ function xPropNoise(){ if(XPROP_NOISE) return XPROP_NOISE; const N=256, R=caveRn
 const XPROP_TUNE_KEYS=['hue','sat','con','bri','detail','rough','metal','normal','bump','height','ao','scale','rot','offu','offv','dnoise','dscale','dstr','drelief'];
 const XPROP_TUNE_ZERO={hue:0,sat:1,con:1,bri:1,detail:1,rough:1,metal:0,normal:1,bump:0,height:0,ao:0,scale:1,rot:0,offu:0,offv:0,dnoise:0,dscale:8,dstr:0,drelief:0};
 const XPROP_TUNE_STORE='hexmancers-propmats';
-let XPROP_TUNE={};
+let XPROP_TUNE={}, XPROP_OVR={};   // a material's values (full); an object variant's changes over its material's
+const xPropBaseOf=name=>name.includes('/')?name.split('/').pop():name;
+// the values a slot draws with
+function xPropTuneOf(name){ const b=xPropBaseOf(name), t=XPROP_TUNE[b]||XPROP_TUNE_ZERO; return name===b?t:Object.assign({},t,XPROP_OVR[name]||{}); }
 function xPropTuneLoad(){ let mine={}; try{ mine=JSON.parse(localStorage.getItem(XPROP_TUNE_STORE)||'{}')||{}; }catch(e){}
   const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{};
-  XPROP_TUNE={}; for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,def[k]||{},mine[k]||{}); xPropTuneApply(); }
-function xPropTuneApply(){ XPROP_MATS.forEach((k,i)=>{ const t=XPROP_TUNE[k]||XPROP_TUNE_ZERO;
-    XPROPU.uPT1.value[i].set(t.hue*Math.PI/180,t.sat,t.con,t.bri); XPROPU.uPT2.value[i].set(t.rough,t.metal,t.normal,t.bump); XPROPU.uPT3.value[i].set(t.height,t.ao,t.scale,t.detail); XPROPU.uPT4.value[i].set(t.dnoise,t.dscale,t.dstr,t.drelief); XPROPU.uPT5.value[i].set(t.rot*Math.PI/180,t.offu,t.offv,0); }); }
-// what this browser changed from the game's defaults (kept), and the full set as JSON (the lab's Copy)
-function xPropTuneSave(){ const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{}, out={};
-  for(const k of XPROP_MATS){ const base=Object.assign({},XPROP_TUNE_ZERO,def[k]||{}), d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-base[q])>1e-6) d[q]=XPROP_TUNE[k][q]; if(Object.keys(d).length) out[k]=d; }
-  try{ localStorage.setItem(XPROP_TUNE_STORE,JSON.stringify(out)); }catch(e){} }
-function xPropTuneJSON(){ const out={}; for(const k of XPROP_MATS){ const d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-XPROP_TUNE_ZERO[q])>1e-6) d[q]=+XPROP_TUNE[k][q].toFixed(3); if(Object.keys(d).length) out[k]=d; } return JSON.stringify(out,null,1); }
+  XPROP_TUNE={}; XPROP_OVR={}; for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,def[k]||{},mine[k]||{});
+  for(const src of [def,mine]) for(const k in src) if(k.includes('/')&&xPropVariant(k)>=0) XPROP_OVR[k]=Object.assign(XPROP_OVR[k]||{},src[k]);
+  xPropTuneApply(); }
+function xPropTuneApply(){ const D=XPROP_TT.image.data;
+  XPROP_SLOTS.forEach((name,i)=>{ const t=xPropTuneOf(name), o=i*8*4, set=(k,a,b,c,d)=>{ D[o+k*4]=a; D[o+k*4+1]=b; D[o+k*4+2]=c; D[o+k*4+3]=d; };
+    set(0,t.hue*Math.PI/180,t.sat,t.con,t.bri); set(1,t.rough,t.metal,t.normal,t.bump); set(2,t.height,t.ao,t.scale,t.detail); set(3,t.dnoise,t.dscale,t.dstr,t.drelief); set(4,t.rot*Math.PI/180,t.offu,t.offv,XPROP_BASE[i]); });
+  XPROP_TT.needsUpdate=true; }
+// the changes: a material's from the game's defaults, a variant's over its material
+function xPropTuneDiff(){ const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{}, out={};
+  for(const k of XPROP_MATS){ const base=Object.assign({},XPROP_TUNE_ZERO,def[k]||{}), d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-base[q])>1e-6) d[q]=+(+XPROP_TUNE[k][q]).toFixed(4); if(Object.keys(d).length) out[k]=d; }
+  for(const k in XPROP_OVR){ const o=XPROP_OVR[k], d={}; for(const q in o) d[q]=+(+o[q]).toFixed(4); if(Object.keys(d).length) out[k]=d; }
+  return out; }
+function xPropTuneSave(){ try{ localStorage.setItem(XPROP_TUNE_STORE,JSON.stringify(xPropTuneDiff())); }catch(e){} }
+// the whole set (the game's defaults with this browser's changes), for propmats.js: materials as values, objects as changes
+function xPropTuneJSON(){ const out={}; for(const k of XPROP_MATS){ const d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-XPROP_TUNE_ZERO[q])>1e-6) d[q]=+(+XPROP_TUNE[k][q]).toFixed(4); if(Object.keys(d).length) out[k]=d; }
+  for(const k in XPROP_OVR){ const o=XPROP_OVR[k], d={}; for(const q in o) d[q]=+(+o[q]).toFixed(4); if(Object.keys(d).length) out[k]=d; }
+  return JSON.stringify(out,null,1); }
 xPropTuneLoad();
 const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
 // one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
@@ -1113,7 +1138,8 @@ const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay',
   shelf:'furniture-wood', rack:'rough-wood', table:'furniture-wood' };
 const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
   0x684329:'books', 0x7a2a24:'leather', 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
-function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
+function xFurnish(M0,L0,kind,...a){ return xPropKindRun('room:'+kind,()=>xFurnish0(M0,L0,kind,...a)); }   // (its object, for its materials' tuning: xPropSlot)
+function xFurnish0(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
       T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
   const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;
@@ -1174,14 +1200,15 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   trims.forEach(([c,dx,dy],k)=>{ const a=EX.dress.get(c)||{}; (a.trim=a.trim||[]).push([k,dx,dy]); EX.dress.set(c,a); });
   // along the same room faces: a stone cornice at the top (the lit line sits on it) and a dark skirting at the foot
   const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,cells)=>xChunkInst(grp,XG.box,mat,cells);
-  EX.corMesh=inst(xPropTex(xDitherMat(xPhong({color:tone(.62)})),'dressed-stone'),trimCells); EX.skirtMesh=inst(xPropTex(xDitherMat(xPhong({color:tone(.16)})),'dressed-stone'),trimCells);
+  EX.corMesh=inst(xPropKindRun('cornice',()=>xPropTex(xDitherMat(xPhong({color:tone(.62)})),'dressed-stone')),trimCells); EX.skirtMesh=inst(xPropKindRun('skirting',()=>xPropTex(xDitherMat(xPhong({color:tone(.16)})),'dressed-stone')),trimCells);
   // pillars by area: carved columns (a base, a shaft standing proud of the wall, a capital) where the halls are built,
   // rough rock columns in the caves. The carved ones are eight-sided, a face square to each wall: what stands out of
   // the wall is a flat face with its corners bevelled back at 45 degrees (xOctPrism)
   const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), oct=cave?null:xOctPrism(), shaftG=cave?xRockShaft():oct, pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
   const pk=cave?(A.id==='rifts'?'basalt':'rough-rock'):'dressed-stone';   // (built columns are dressed stone; the caves' are the rock)
+  const pkind=cave?'cave pillar':'pillar', was=XPROP_KIND; XPROP_KIND=pkind;
   EX.pillBase=xChunkInst(grp,oct||XG.box,xLitTag(xPropTex(xDitherMat(xPhong({color:pc2})),pk),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xPropTex(xDitherMat(xPhong({color:pc})),pk),2),pills);
-  EX.pillCap=xChunkInst(grp,oct||XG.box,xPropTex(xDitherMat(xPhong({color:pc2})),pk),pills); EX.pillCave=cave;
+  EX.pillCap=xChunkInst(grp,oct||XG.box,xPropTex(xDitherMat(xPhong({color:pc2})),pk),pills); XPROP_KIND=was; EX.pillCave=cave;
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
@@ -1213,7 +1240,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
       const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,(y+1)*XCS+.03);
       if(rk==='cave'&&area==='hollows'){ for(let v=0;v<3;v++){ const h=.8+R()*1.2; g.add(xBox(.07,h,.03,xMat(0x3f7a3a,{flat:true}),(v-1)*.35+(R()-.5)*.1,XWALL-h/2,0)); g.add(xBox(.2,.12,.03,xMat(0x5a9a4a,{flat:true}),(v-1)*.35,XWALL-h+.1,0)); } }
       else { const cl=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').multiplyScalar(.55), cloth=new THREE.Group();
-        cloth.add(xBox(.9,1.3,.03,xMat(cl,{mat:'fabric'}),0,-.65,0), xBox(.9,.08,.04,xMat(0x2a2620),0,0,0), xBox(.24,.24,.04,xMat(new THREE.Color(A.glow).multiplyScalar(.8)),0,-.6,.01));
+        cloth.add(xBox(.9,1.3,.03,xPropKindRun('banner',()=>xMat(cl,{mat:'fabric'})),0,-.65,0), xBox(.9,.08,.04,xMat(0x2a2620),0,0,0), xBox(.24,.24,.04,xMat(new THREE.Color(A.glow).multiplyScalar(.8)),0,-.6,.01));
         cloth.position.y=XWALL-.15; g.add(xBox(1.05,.06,.06,xMat(0x2a2620),0,XWALL-.12,0), cloth); g.userData.sway=cloth; }
       g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,y),floor:xi(x,y+1),sway:g.userData.sway,ph:R()*6}); }
     if(!M.size()&&!L.size()) return;
@@ -1242,7 +1269,8 @@ function xPortal(F,FL,base,S,cell,zs,wide,top){ const ow=wide?2.62:.78, HR=1.4, 
   if(!wide) B(dark,0,2.3,0,0,.5,.3,.78);   // the stone above the keystone
   B(lite,0,ctop,0,0,W+.22,.14,1.18); B(tone(.5),0,ctop-.1,0,0,W+.06,.07,1.08);   // cornice and its bed
   B(lite,0,.03,0,0,ow*2-.04,.06,1.0); }   // threshold
-function xBrazier(grp,x,z,cell,A){ const g=new THREE.Group(), iron=xMat(0x2c2a28), mats=[], tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); g.position.set(x,0,z);
+function xBrazier(...a){ return xPropKindRun('brazier',()=>xBrazier0(...a)); }
+function xBrazier0(grp,x,z,cell,A){ const g=new THREE.Group(), iron=xMat(0x2c2a28), mats=[], tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); g.position.set(x,0,z);
   for(let k=0;k<3;k++){ const a=k*2.1; g.add(xBox(.05,.9,.05,iron,Math.cos(a)*.22,.45,Math.sin(a)*.22)); }
   const bowl=new THREE.Mesh(new THREE.CylinderGeometry(.38,.22,.24,10),iron); bowl.position.y=.95; g.add(bowl);
   const coal=new THREE.Mesh(new THREE.CylinderGeometry(.33,.33,.04,10),new THREE.MeshBasicMaterial({color:0xff5a20})); coal.position.y=1.06; g.add(coal);

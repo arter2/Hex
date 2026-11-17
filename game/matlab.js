@@ -108,8 +108,8 @@ function mlArena(A,kind){ const g=new THREE.Group(), Ar=A, wasAR=typeof AR!=='un
 const ML_A=()=>ML_AREAS()[ML.area]||ML_AREAS()[0];
 // the painted materials on what is on the turntable, by name
 function mlMatsOf(root){ const S=new Set(); root.traverse(o=>{ const m=o.material; if(!m||!m.userData) return;
-    if(m.userData.xprop===2&&m.userData.xpropSlot>=0) S.add(XPROP_MATS[m.userData.xpropSlot]);
-    else if(m.userData.xprop===1&&o.geometry&&o.geometry.attributes.aXL){ const a=o.geometry.attributes.aXL.array; for(let i=3;i<a.length;i+=4) if(a[i]>=0) S.add(XPROP_MATS[a[i]|0]); } });
+    if(m.userData.xprop===2&&m.userData.xpropSlot>=0) S.add(XPROP_MATS[XPROP_BASE[m.userData.xpropSlot]]);
+    else if(m.userData.xprop===1&&o.geometry&&o.geometry.attributes.aXL){ const a=o.geometry.attributes.aXL.array; for(let i=3;i<a.length;i+=4) if(a[i]>=0) S.add(XPROP_MATS[XPROP_BASE[a[i]|0]]); } });
   return XPROP_MATS.filter(k=>S.has(k)); }
 
 // ---- the studio ----
@@ -186,10 +186,11 @@ function mlTurntable(){ const S=MLS; while(S.tt.children.length>1) S.tt.remove(S
   const top=new THREE.Mesh(new THREE.CylinderGeometry(2.2,2.2,.18,64),xPropTex(xPhong({color:pc}),'planks')); top.position.y=.09; S.tt.add(top); mlEnvPatch(top);
   const dk=new THREE.MeshBasicMaterial({color:0x222224}); for(const r of [0,Math.PI/2]){ const b=new THREE.Mesh(new THREE.BoxGeometry(1.2,.005,.08),dk); b.position.y=.181; b.rotation.y=r; S.tt.add(b); } }
 // which props use each material (built once in the background, a few props a frame): material -> [asset index]
-const ML_USE=new Map(); let ML_USE_AT=0, ML_USE_DONE=false;
+const ML_USE=new Map(), ML_KINDAT=new Map();   // (and which prop each object is: the saved list's jump)
+ let ML_USE_AT=0, ML_USE_DONE=false;
 function mlIndex(){ if(ML_USE_DONE||!ML.on) return; if(!envArtProps()){ setTimeout(mlIndex,500); return; } const list=mlAssets(), A=ML_A(), t0=performance.now();
   while(ML_USE_AT<list.length&&performance.now()-t0<25){ const i=ML_USE_AT++, it=list[i]; if(it.group==='Material swatches') continue;
-    let g=null; try{ g=it.make(A); } catch(e){} if(!g) continue;
+    XPROP_SEEN.clear(); let g=null; try{ g=it.make(A); } catch(e){} for(const v of XPROP_SEEN){ const kd=v.slice(0,v.lastIndexOf('/')); if(!ML_KINDAT.has(kd)) ML_KINDAT.set(kd,i); } if(!g) continue;
     for(const k of mlMatsOf(g)){ if(!ML_USE.has(k)) ML_USE.set(k,[]); ML_USE.get(k).push(i); }
     g.traverse(o=>{ if(o.geometry&&!Object.values(XG).includes(o.geometry)) o.geometry.dispose(); }); }
   if(ML_USE_AT>=list.length) ML_USE_DONE=true; mlUseName(); if(!ML_USE_DONE) setTimeout(mlIndex,0); }
@@ -205,13 +206,14 @@ function mlSide(){ const S=MLS; if(!S.side){ S.side=new THREE.Group(); S.side.po
   if(ML.side&&ML.mat){ const g=mlSwatch(ML.mat); if(typeof xLitAll==='function') xLitAll(g); mlEnvPatch(g); S.sideSpin.add(g); } }
 function mlShow(){ const S=MLS, list=mlAssets(); ML.asset=(ML.asset+list.length)%list.length; const it=list[ML.asset], A=ML_A();
   for(const c of [...S.spin.children]){ S.spin.remove(c); c.traverse(o=>{ if(o.geometry&&!Object.values(XG).includes(o.geometry)) o.geometry.dispose(); }); }
-  let g=null; try{ g=it.make(A); } catch(e){ console.warn('matlab',it.name,e); }
+  XPROP_SEEN.clear(); let g=null; try{ g=it.make(A); } catch(e){ console.warn('matlab',it.name,e); }
+  ML.kinds={}; for(const v of XPROP_SEEN){ const k=v.lastIndexOf('/'), kd=v.slice(0,k), mt=v.slice(k+1); if(!ML.kinds[mt]) ML.kinds[mt]=kd; }
   if(g){ if(typeof xLitAll==='function') xLitAll(g); mlEnvPatch(g); S.spin.add(g);
     // frame it: the camera comes in to fit the prop (the turntable's own size for anything bigger)
     const sp=new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere()); if(isFinite(sp.radius)&&sp.radius>0){ ML.ty=Math.max(.4,sp.center.y); ML.dist=Math.max(3,Math.min(12.5,sp.radius*4.2+1.5)); } }
   const mats=g?mlMatsOf(g):[]; if(!mats.includes(ML.mat)) ML.mat=mats[0]||ML.mat||XPROP_MATS[0];
   $('#mlAsset').value=String(ML.asset); $('#mlAssetName').textContent=it.group+' · '+it.name+(g?'':' (could not be built)');
-  mlMatList(mats); mlSliders(); mlUseName(); mlSide(); mlKeep(); }
+  mlMatList(mats); mlScope(); mlUseName(); mlSide(); mlKeep(); }
 
 // ---- the panel ----
 function mlPanel(){ if($('#matLab')) return;
@@ -239,11 +241,16 @@ function mlPanel(){ if($('#matLab')) return;
  <div class="mlc"><span class="mln" id="mlAssetName"></span></div>
  <h4>Material</h4>
  <div class="mlc"><select id="mlMat"></select><button class="mb" id="mlMatReset">Reset</button></div>
+ <div class="mlc"><span>Tune for</span><button class="mb" id="mlScA">All objects</button><button class="mb" id="mlScO">This object only</button></div>
+ <div class="mlc"><span class="mln" id="mlTarget"></span></div>
+ <div class="mlc"><button class="mb" id="mlSave">Save</button><button class="mb" id="mlRevert">Revert</button><span class="mln" id="mlDirty"></span></div>
  <div class="mlc"><span>Used on</span><button class="mb" id="mlUseP">◀</button><span class="mln" id="mlUseName"></span><button class="mb" id="mlUseN">▶</button></div>
  <div id="mlSliders"></div>
- <h4>Defaults</h4>
- <div class="mlc"><button class="mb" id="mlCopy">Copy JSON</button><button class="mb" id="mlApply">Apply pasted JSON</button><button class="mb" id="mlResetAll">Reset all</button></div>
- <textarea id="mlJson" placeholder="Copy JSON puts every tuned material here (and on the clipboard). Paste a JSON here and Apply to load it."></textarea>
+ <h4>Saved</h4>
+ <div id="mlSaved" class="mlc" style="flex-wrap:wrap"></div>
+ <h4>Export</h4>
+ <div class="mlc"><button class="mb" id="mlExport">Export JSON</button><button class="mb" id="mlApply">Apply pasted JSON</button><button class="mb" id="mlResetAll">Reset all</button></div>
+ <textarea id="mlJson" placeholder="Export JSON saves a file and copies it (and shows it here). Paste a JSON here and Apply to load it."></textarea>
 </div>`; document.body.appendChild(d);
   const step=(k,n,len)=>(ML[k]+n+len)%len;
   $('#mlExit').onclick=mlExit;
@@ -257,15 +264,23 @@ function mlPanel(){ if($('#matLab')) return;
   const light=n=>{ ML.light=step('light',n,ML_LIGHTS.length); mlLight(); mlNames(); mlKeep(); }; $('#mlLightP').onclick=()=>light(-1); $('#mlLightN2').onclick=()=>light(1);
   $('#mlAssetP').onclick=()=>{ ML.asset--; mlShow(); }; $('#mlAssetN').onclick=()=>{ ML.asset++; mlShow(); };
   $('#mlAsset').onchange=e=>{ ML.asset=+e.target.value; mlShow(); };
-  $('#mlMat').onchange=e=>{ ML.mat=e.target.value; mlSliders(); mlUseName(); mlSide(); };
+  $('#mlMat').onchange=e=>{ ML.mat=e.target.value; mlScope(); mlUseName(); mlSide(); };
   $('#mlTPReset').onclick=()=>{ Object.assign(ML_TP,ML_TP_DEF); mlTPKeep(); mlTPSliders(); mlLight(); };
   $('#mlUseP').onclick=()=>mlUseStep(-1); $('#mlUseN').onclick=()=>mlUseStep(1);
   $('#mlSideB').onclick=()=>{ ML.side=!ML.side; mlSide(); mlButtons(); mlKeep(); };
-  $('#mlMatReset').onclick=()=>{ const def=typeof XPROP_TUNE_DEF!=='undefined'&&XPROP_TUNE_DEF[ML.mat]||{}; XPROP_TUNE[ML.mat]=Object.assign({},XPROP_TUNE_ZERO,def); xPropTuneApply(); xPropTuneSave(); mlSliders(); };
-  $('#mlResetAll').onclick=()=>{ if(!confirm('Put every material back to the game\'s defaults?')) return; try{ localStorage.removeItem(XPROP_TUNE_STORE); }catch(e){} xPropTuneLoad(); mlSliders(); };
-  $('#mlCopy').onclick=()=>{ const j=xPropTuneJSON(); $('#mlJson').value=j; try{ navigator.clipboard.writeText(j); }catch(e){} $('#mlJson').select(); };
+  $('#mlMatReset').onclick=()=>{ const n=mlTarget(); if(n.includes('/')) XPROP_OVR[n]={}; else { const def=typeof XPROP_TUNE_DEF!=='undefined'&&XPROP_TUNE_DEF[n]||{}; XPROP_TUNE[n]=Object.assign({},XPROP_TUNE_ZERO,def); } xPropTuneApply(); mlDirty(true); mlSliders(); };
+  $('#mlScA').onclick=()=>{ ML.scope='all'; mlScope(); };
+  $('#mlScO').onclick=()=>{ const kd=ML.kinds&&ML.kinds[ML.mat]; if(!kd) return alert('This prop is a swatch (or has no object of its own): pick a game prop to tune a material for it alone.');
+    ML.scope='obj'; const n=kd+'/'+ML.mat; if(XPROP_SLOTS.indexOf(n)<0){ if(xPropVariant(n)<0) return alert('No room for more object tunings.'); XPROP_OVR[n]=XPROP_OVR[n]||{}; xPropTuneApply(); const keep=ML.mat; mlShow(); ML.mat=keep; } mlScope(); };
+  $('#mlSave').onclick=()=>{ xPropTuneSave(); mlDirty(false); mlSavedList(); };
+  $('#mlRevert').onclick=()=>{ xPropTuneLoad(); mlDirty(false); mlSliders(); };
+  $('#mlResetAll').onclick=()=>{ if(!confirm('Put every material and object back to the game\'s defaults (and forget what is saved here)?')) return; try{ localStorage.removeItem(XPROP_TUNE_STORE); }catch(e){} xPropTuneLoad(); mlDirty(false); mlSliders(); mlSavedList(); };
+  $('#mlExport').onclick=()=>{ if(ML.dirty&&confirm('Save your unsaved changes first?')){ xPropTuneSave(); mlDirty(false); mlSavedList(); }
+    const j=xPropTuneJSON(); $('#mlJson').value=j; try{ navigator.clipboard.writeText(j); }catch(e){}
+    try{ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([j],{type:'application/json'})); a.download='hexmancers-materials.json'; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); }catch(e){} };
   $('#mlApply').onclick=()=>{ let o; try{ o=JSON.parse($('#mlJson').value); }catch(e){ return alert('That is not valid JSON.'); }
-    for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,(o&&o[k])||{}); xPropTuneApply(); xPropTuneSave(); mlSliders(); };
+    for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,(o&&o[k])||{}); XPROP_OVR={}; for(const k in o||{}) if(k.includes('/')&&xPropVariant(k)>=0) XPROP_OVR[k]=Object.assign({},o[k]);
+    xPropTuneApply(); mlDirty(true); mlShow(); };
   // orbit: drag to turn and tilt, wheel or pinch to come closer
   const v=$('#mlView'), P=new Map(); let pd=0;
   v.addEventListener('pointerdown',e=>{ if(e.target.closest('#mlHud')) return; P.set(e.pointerId,{x:e.clientX,y:e.clientY}); v.setPointerCapture(e.pointerId); });
@@ -280,16 +295,32 @@ function mlNames(){ const A=ML_A(); $('#mlAreaN').textContent='Area: '+(A.name||
 function mlAssetList(){ const s=$('#mlAsset'), list=mlAssets(); let html='', grp=null;
   list.forEach((it,i)=>{ if(it.group!==grp){ if(grp) html+='</optgroup>'; grp=it.group; html+='<optgroup label="'+grp+'">'; } html+='<option value="'+i+'">'+it.name+'</option>'; }); s.innerHTML=html+'</optgroup>'; }
 function mlMatList(on){ const s=$('#mlMat'); s.innerHTML='<optgroup label="On this prop">'+on.map(k=>'<option>'+k+'</option>').join('')+'</optgroup><optgroup label="All materials">'+XPROP_MATS.filter(k=>!on.includes(k)).map(k=>'<option>'+k+'</option>').join('')+'</optgroup>'; s.value=ML.mat; }
-function mlSliders(){ const box=$('#mlSliders'), t=XPROP_TUNE[ML.mat]; if(!t) return; box.innerHTML='';
+// what the sliders tune: the material, or this object's own tuning of it (made by This object only)
+function mlTarget(){ const kd=ML.kinds&&ML.kinds[ML.mat], n=kd&&kd+'/'+ML.mat; return ML.scope==='obj'&&n&&XPROP_SLOTS.indexOf(n)>=0?n:ML.mat; }
+function mlScope(){ const n=mlTarget(), obj=n.includes('/'); $('#mlScA').classList.toggle('on',!obj); $('#mlScO').classList.toggle('on',obj);
+  const kd=ML.kinds&&ML.kinds[ML.mat]; $('#mlTarget').textContent=obj?'Only '+kd+' — the rest of '+ML.mat+' is left as it is':'Every object made of '+ML.mat+(kd?' (this prop: '+kd+')':'');
+  mlSliders(); }
+function mlDirty(on){ ML.dirty=!!on; const d=$('#mlDirty'); if(d) d.textContent=on?'● unsaved changes':'saved'; }
+// what has been saved in this browser: a chip each, a tap goes to it
+function mlSavedList(){ const box=$('#mlSaved'); if(!box) return; let saved={}; try{ saved=JSON.parse(localStorage.getItem(XPROP_TUNE_STORE)||'{}')||{}; }catch(e){}
+  const keys=Object.keys(saved); box.innerHTML=keys.length?'':'<span class="mln">Nothing saved yet.</span>';
+  for(const k of keys){ const b=document.createElement('button'); b.className='mb'; b.textContent=k.replace('/',' · ')+' ('+Object.keys(saved[k]).length+')';
+    b.onclick=()=>{ const obj=k.includes('/'), mat=xPropBaseOf(k), kd=obj?k.slice(0,k.lastIndexOf('/')):null, list=mlAssets();
+      let at=obj?ML_KINDAT.get(kd):list.findIndex(it=>it.group==='Material swatches'&&it.name===mat); if(at==null||at<0){ if(obj) return alert('Still finding that object: try again in a moment.'); at=ML.asset; }
+      ML.asset=at; ML.scope=obj?'obj':'all'; mlShow(); ML.mat=mat; mlMatList(mlMatsOf(MLS.spin)); mlScope(); }; box.appendChild(b); } }
+function mlSliders(){ const box=$('#mlSliders'), n=mlTarget(), obj=n.includes('/'), t=xPropTuneOf(n); if(!t) return; box.innerHTML='';
+  const set=(k,v)=>{ if(obj){ (XPROP_OVR[n]=XPROP_OVR[n]||{})[k]=v; } else XPROP_TUNE[n][k]=v; xPropTuneApply(); mlDirty(true); };
+  const unset=k=>{ if(obj){ if(XPROP_OVR[n]) delete XPROP_OVR[n][k]; } else XPROP_TUNE[n][k]=XPROP_TUNE_ZERO[k]; xPropTuneApply(); mlDirty(true); return xPropTuneOf(n)[k]; };
   for(const [k,label,lo,hi,st] of ML_SLIDERS){
     if(k[0]==='#'){ const h=document.createElement('h4'); h.textContent=k.slice(1); box.appendChild(h); continue; }
-    const row=document.createElement('div'); row.className='mlr';
-    if(k==='dnoise'){ row.innerHTML='<label>'+label+'</label><select style="grid-column:2/4">'+XPROP_NOISES.map((n,i)=>'<option value="'+i+'">'+n+'</option>').join('')+'</select>';
-      const sel=row.querySelector('select'); sel.value=String(t.dnoise|0); sel.onchange=()=>{ t.dnoise=+sel.value; xPropTuneApply(); xPropTuneSave(); }; box.appendChild(row); continue; }
-    row.innerHTML='<label>'+label+'</label><input type="range" min="'+lo+'" max="'+hi+'" step="'+st+'" value="'+t[k]+'"><output>'+(+t[k]).toFixed(st<1?2:0)+'</output>';
+    const row=document.createElement('div'); row.className='mlr'; const own=!!(obj&&XPROP_OVR[n]&&k in XPROP_OVR[n]);
+    const lab='<label'+(own?' style="color:#8fe4ff"':'')+'>'+label+(own?' •':'')+'</label>';
+    if(k==='dnoise'){ row.innerHTML=lab+'<select style="grid-column:2/4">'+XPROP_NOISES.map((nm,i)=>'<option value="'+i+'">'+nm+'</option>').join('')+'</select>';
+      const sel=row.querySelector('select'); sel.value=String(t.dnoise|0); sel.onchange=()=>set('dnoise',+sel.value); box.appendChild(row); continue; }
+    row.innerHTML=lab+'<input type="range" min="'+lo+'" max="'+hi+'" step="'+st+'" value="'+t[k]+'"><output>'+(+t[k]).toFixed(st<1?2:0)+'</output>';
     const inp=row.querySelector('input'), out=row.querySelector('output');
-    inp.oninput=()=>{ t[k]=+inp.value; out.textContent=(+inp.value).toFixed(st<1?2:0); xPropTuneApply(); };
-    inp.onchange=()=>xPropTuneSave(); row.querySelector('label').ondblclick=()=>{ t[k]=XPROP_TUNE_ZERO[k]; inp.value=t[k]; out.textContent=(+t[k]).toFixed(st<1?2:0); xPropTuneApply(); xPropTuneSave(); };
+    inp.oninput=()=>{ set(k,+inp.value); out.textContent=(+inp.value).toFixed(st<1?2:0); };
+    row.querySelector('label').ondblclick=()=>{ const v=unset(k); inp.value=v; out.textContent=(+v).toFixed(st<1?2:0); mlSliders(); };
     box.appendChild(row); } }
 // the area changes the props' stone and the lights: wait for its sheets, then build again
 function mlArea(){ const A=ML_A(); if(typeof envArtWant==='function') envArtWant(A.id); mlNames(); mlKeep();
@@ -297,7 +328,7 @@ function mlArea(){ const A=ML_A(); if(typeof envArtWant==='function') envArtWant
   mlTurntable(); mlLight(); mlShow(); }
 
 // ---- start, frames, exit ----
-function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlTPSliders(); mlButtons(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); setTimeout(mlIndex,1500); }
+function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlTPSliders(); mlButtons(); mlDirty(false); mlSavedList(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); setTimeout(mlIndex,1500); }
 function mlFrame(now){ if(!ML.on) return; requestAnimationFrame(mlFrame); const S=MLS, dt=Math.min(.05,(now-ML.last)/1000); ML.last=now; ML.T+=dt;
   const cv=S.r.domElement, w=cv.clientWidth|0, h=cv.clientHeight|0; if(w&&h&&(cv.width!==Math.round(w*S.r.getPixelRatio())||cv.height!==Math.round(h*S.r.getPixelRatio()))){ S.r.setSize(w,h,false); S.cam.aspect=w/h; S.cam.updateProjectionMatrix(); }
   if(ML.spin){ S.spin.rotation.y+=dt*.45; if(S.sideSpin) S.sideSpin.rotation.y+=dt*.45; }
@@ -305,6 +336,7 @@ function mlFrame(now){ if(!ML.on) return; requestAnimationFrame(mlFrame); const 
   if(S.torch.intensity>0&&ML_LIGHTS[ML.light].id==='torch'){ const FL=XLIT.flick; S.torch.intensity=1.5*XLIT.torch*(.85+FL*(.1*Math.sin(ML.T*11)+.07*Math.sin(ML.T*23.7))); }
   if(ML.refs&&((ML.T*10)|0)%6===0){ S.chrome.visible=false; S.cc.update(S.r,S.scene); S.chrome.visible=true; }   // the chrome ball's reflection, now and then
   xRender(S.G); }
-function mlExit(){ ML.on=false; $('#matLab').classList.remove('on'); if(typeof openMenu==='function'&&(!save||save.temp)){ if(save&&save.temp) save=null; openMenu(); } }
+function mlExit(){ if(ML.dirty){ if(confirm('Save your changes before leaving? (Cancel throws them away.)')) xPropTuneSave(); else xPropTuneLoad(); mlDirty(false); }
+  ML.on=false; $('#matLab').classList.remove('on'); if(typeof openMenu==='function'&&(!save||save.temp)){ if(save&&save.temp) save=null; openMenu(); } }
 
 $('#lpMats').onclick=()=>{ $('#labPick').classList.remove('on'); matlabStart(); };

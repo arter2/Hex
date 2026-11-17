@@ -130,7 +130,7 @@ function xNatMat(kind,K){ const ice=(kind==='mite'&&K.mite&&K.mite.ice)||(kind==
   else if(ice) m=xPhong({color:0xffffff, shininess:90, specular:0x9fd8ff, transparent:true, opacity:.82, pbr:'ice'});
   else if(kind==='clump'||kind==='clumpTop') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a});
   else if(kind==='vine') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a, side:THREE.DoubleSide});
-  else { m=xPhong({color:0xffffff, shininess:kind==='block'?6:10, specular:0x161616}); if(kind==='block'&&typeof xPropTex==='function') xPropTex(m,EX.area&&EX.area.id==='rifts'?'basalt':'rough-rock'); }   // (rock blocks: the painted rough rock)
+  else { m=xPhong({color:0xffffff, shininess:kind==='block'?6:10, specular:0x161616}); if(kind==='block'&&typeof xPropTex==='function') xPropKindRun('nature rock',()=>xPropTex(m,EX.area&&EX.area.id==='rifts'?'basalt':'rough-rock')); }   // (rock blocks: the painted rough rock)
   if(kind!=='shard') m.userData.xao=2;   // (the foot shade of things standing on the floor; their faces get their material and relief from surface.js)
   return typeof xSinkPatch==='function'?xSinkPatch(m):m; }
 

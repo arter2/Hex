@@ -374,7 +374,7 @@ const XBEV_LOOP=.3;   // how far in from a dressed block's upright corner its ed
    cap showing in the joints between them (a broken skyline, read from far off). The same four heights in every
    block, but each wall is turned a quarter at random (xWallMatrix), so neighbours rarely match. Only the cells of
    the open quarter (q) are stacked for a diagonal piece. */
-function xCapsOn(g,hh,seed,q){ const parts=[g.index?g.toNonIndexed():g], hs=[.5,.18,.36,.08], s=XCS/2-.07;
+function xCapsOn(g,hh,seed,q){ const parts=[g.index?g.toNonIndexed():g], hs=[.26,.1,.19,.04], s=XCS/2-.07;   // (the steps between them kept small: the tops read as one calm mass)
   if(q){ const hw=XCS/2, e=.06; [[[0,0],[0,-hw],[hw,-hw]],[[0,0],[-hw,0],[-hw,hw]]].forEach((T,k)=>{ const cx=(T[0][0]+T[1][0]+T[2][0])/3, cz=(T[0][1]+T[1][1]+T[2][1])/3;
       parts.push(xPrism(T.map(([x,z])=>[x+(cx-x)*e*2,z+(cz-z)*e*2]),hh-.02,hs[(k+1+seed)%4]+.1,k+1)); }); }   // a diagonal piece: its two half-quarters filled by bent blocks
   [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz],k)=>{ if(q&&!q(sx,sz)) return; const h=hs[(k+seed)%4]+.1, b=new THREE.BoxGeometry(s,h,s).toNonIndexed();
@@ -560,7 +560,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); if(xWT(v)===1) mat.userData.xcourse=xCourses(wallTex[1]); mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); if(xWT(v)===1) mat.userData.xcourse=xCourses(wallTex[1]); if(xWT(v)!==0){ xCourses(wallTex[xWT(v)]); mat.userData.xtop=wallTex[xWT(v)].mean||null; } mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -577,7 +577,10 @@ function xBuildScene(){
     gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // spacious floors: which cells are solid wall (for the shader's inner faces, xInner) and a black base under every
   // wall cell, so a cut through the stonework shows black, never the depths below
-  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()){ if(!xLow(c)) D[c*4+1]=255; if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; } }   // (green: any wall block beside, for the rounded corners: xBevelV)
+  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()){ if(!xLow(c)) D[c*4+1]=255; if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; } }
+    { const far=new Uint8Array(XN*XN).fill(4), q=[]; for(let c=0;c<XN*XN;c++) if(!EX.wIdx.has(c)){ far[c]=0; q.push(c); }   // (blue: a wall cell's steps from open floor, up to four: the tops fade into the dark, xWallMaskShader)
+      for(let h=0;h<q.length;h++){ const c=q[h], x=xcx(c), y=xcy(c); for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=c+dx+dy*XN; if(far[n]>far[c]+1){ far[n]=far[c]+1; q.push(n); } } }
+      for(const c of EX.wIdx.keys()) D[c*4+2]=far[c]*63; }   // (green: any wall block beside, for the rounded corners: xBevelV)
     const T=new THREE.DataTexture(D,XN,XN,THREE.RGBAFormat); T.magFilter=T.minFilter=THREE.NearestFilter; T.needsUpdate=true;
     XDITHER.uSolid.value=T; XDITHER.uSolidK.value.set(XN*XCS,1,XWALL-.1);
     const P=[]; for(const c of EX.wIdx.keys()){ const x0=xcx(c)*XCS, z0=xcy(c)*XCS, x1=x0+XCS, z1=z0+XCS; P.push(x0,-.03,z0, x0,-.03,z1, x1,-.03,z1, x0,-.03,z0, x1,-.03,z1, x1,-.03,z0); }
@@ -613,7 +616,7 @@ function xBuildScene(){
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
     // a warm glow on the threshold, so a doorway reads from across the room even in shadow
-    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),xLightMat(new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,depthWrite:false,fog:false}),2.6));
       sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'&&!d.wide; if(d.state==='open'&&!d.wide) xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   XSINK_DOOR=false; XSINK_CLIP=null;
@@ -622,7 +625,7 @@ function xBuildScene(){
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
   // last, between low stone walls, into the dark; a thin glow of the area's colour rims the top
-  const W=XCS*.86, D=XCS*.86, N=5, stoneC=new THREE.Color(A.lit).lerp(new THREE.Color(0x6a6458),.55);
+  const W=XCS*.86, D=XCS*.86, N=5, stoneC=new THREE.Color(A.lit).lerp(new THREE.Color(0x6a6458),.7).multiplyScalar(.62);   // (the floor's own value range: brighter, they read as a white cut-out)
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
   down.add(xBox(W,.02,D,xMat(0x020203),0,.012,0));   // the dark at the bottom
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.3*(1-k/N);   // the nearest step is at floor level, the far ones sink
@@ -635,7 +638,7 @@ function xBuildScene(){
   ring.visible=false; down.add(ring); down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
   // the way up: worn stone steps climbing away from you toward a pale glow of daylight
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
-  const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.5);
+  const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.65).multiplyScalar(.7);
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.1+.11*k;
     const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xMat(col),0,h/2,z));
     const h0=k?.1+.11*(k-1):0; up.add(xBox(W-.2,h-h0,.02,xMat(col.clone().multiplyScalar(.45)),0,h0+(h-h0)/2,z+d*.49+.011));   // each riser in shadow
@@ -658,12 +661,17 @@ function xBuildScene(){
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
   if(!EX.natural) xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
-  G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
+  G.grade=1;   // (the colour grade is the dungeon's: look.js xRender)
+  xAreaTint(); G.dust.material.color.copy(glowC);
   xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(typeof xClutter==='function') xClutter(grp,A,S,seed); if(EX.natural&&EX.layout===2) xRockFoot(grp,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
   if(typeof xNature==='function') xNature(grp,A,S,seed);   // the area's own natural dressing (nature.js)
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
+  // a soft contact shadow under you, so you stand on the floor instead of floating over it, and your picture takes a
+  // little of your lamp's colour and brightness, so you sit in the room's light (debug menu > Colour: Hero shadow, Hero tint)
+  EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.5,1.0),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
+  EX.meShadow.rotation.x=-Math.PI/2; EX.meShadow.position.y=.045; EX.meShadow.renderOrder=2; grp.add(EX.meShadow); xHeroTint();
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   xShadeLook();
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
@@ -687,7 +695,7 @@ function xStairLights(grp,A){ const tex=xGlowTex(), boss=isBossDepth(EX.depth);
   for(const [cell,col,torches] of [[EX.down,boss?'#ff5d6c':A.glow,true],[EX.up,'#fff2c0',false]]){
     const beam=new THREE.Mesh(new THREE.CylinderGeometry(.75,.95,7,16,1,true),new THREE.MeshBasicMaterial({color:new THREE.Color(col),transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
     beam.position.set(xw(cell),3.5,xz(cell)); beam.renderOrder=3; beam.visible=false; grp.add(beam);
-    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),.6,xz(cell)); halo.renderOrder=3; halo.visible=false; grp.add(halo);
+    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col).multiplyScalar(torches?.6:.35),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),torches?.6:1.3,xz(cell));   // (dimmer, and the daylight's held above the steps: added over them at full, it washed the stairs white) halo.renderOrder=3; halo.visible=false; grp.add(halo);
     EX.glows.push({g:beam,floor:cell,mats:[beam.material],halo,ph:Math.random()*6,beam:true});
     if(torches){ const rr=new THREE.Mesh(new THREE.PlaneGeometry(4.2,4.2),new THREE.MeshBasicMaterial({map:xRuneTex(),color:new THREE.Color(col),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
       rr.rotation.x=-Math.PI/2; rr.position.set(xw(cell),.03,xz(cell)); rr.renderOrder=2; rr.visible=false; grp.add(rr); EX.runeRing=rr; }
@@ -714,6 +722,11 @@ function xGlowTex(){ const P=typeof envArtFx==='function'&&envArtFx('glow'); if(
    crystals (Hollows, Storm Vault), ice (Deeps), lava cracks (Rifts), gold veins (Ruins) or
    floating motes (Abyss). They show once you have seen the floor in front of them and dim with
    it, so a remembered room glows faintly and the room you stand in glows bright. */
+// the area's colour in the ambient light and your lamp (debug menu, Area tint: 1 as it was, all of it; less leaves the
+// walls and floor their own colours instead of washing everything in the area's hue)
+function xHeroTint(){ if(!EX||!EX.me||!X3) return; const k=Math.max(0,Math.min(1,XLIT.heroTint)); EX.me.material.color.set(0xffffff).lerp(X3.lamp.color,k).multiplyScalar(1-.25*k); }
+function xAreaTint(){ const G=X3; if(!G||!EX||!EX.area) return; const glowC=new THREE.Color(EX.area.glow);
+  G.amb.color.set(0xffffff).lerp(glowC,.25*XLIT.gTint); G.lamp.color.set(0xffd9a0).lerp(glowC,.3*XLIT.gTint); xHeroTint(); }
 function xAreaLights(grp,A){
   for(const p of EX.props||[]) if(/brazier/.test(p.kind)&&p.lit&&EX.room[p.cell]>=0&&!EX.rooms[EX.room[p.cell]].dark) EX.rooms[EX.room[p.cell]].lit=true;   // a burning brazier lights its room
   EX.glows=[]; const R=caveRng(EX.depth*53+7), tex=xGlowTex(), col=new THREE.Color(A.glow), pale=col.clone().lerp(new THREE.Color(0xffffff),.55);
@@ -831,7 +844,7 @@ function xWeather(grp,A){ const kind=XWEATHER[A.veins]||'twinkle', N=Math.round(
   const base=new THREE.Color({fireflies:'#9dff7a',snow:'#eef6ff',sparks:'#fff39a',ash:'#a09890',gold:'#f2c94c',twinkle:'#e9f0ff'}[kind]);
   for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*30; pos[k*3+1]=Math.random()*6; pos[k*3+2]=(Math.random()-.5)*24; st.push({ph:Math.random()*6.3,sp:.5+Math.random(),ember:kind==='ash'&&Math.random()<.25}); col[k*3]=base.r; col[k*3+1]=base.g; col[k*3+2]=base.b; }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const p=new THREE.Points(g,new THREE.PointsMaterial({size:kind==='snow'?.12:kind==='ash'?.11:kind==='fireflies'?.24:.18,vertexColors:true,transparent:true,opacity:.85,blending:kind==='ash'?THREE.NormalBlending:THREE.AdditiveBlending,depthWrite:false}));
+  const p=new THREE.Points(g,new THREE.PointsMaterial({size:kind==='snow'?.075:kind==='ash'?.11:kind==='fireflies'?.24:.18,vertexColors:true,transparent:true,opacity:kind==='snow'?.5:.85,blending:kind==='ash'?THREE.NormalBlending:THREE.AdditiveBlending,depthWrite:false}));
   p.renderOrder=3; p.userData={kind,st,base}; grp.add(p); EX.weather=p; EX.lifeT=6+Math.random()*6; EX.dripT=2; }
 function xWeatherTick(T,dt){ const W=EX.weather; if(!W) return; const a=W.geometry.attributes.position.array, c=W.geometry.attributes.color.array, {kind,st,base}=W.userData, cx=EX.px, cz=EX.pz; let rs=W.userData.rs|0||0x2545F491;
   for(let k=0;k<st.length;k++){ const s=st[k], i=k*3; let x=a[i], y=a[i+1], z=a[i+2], b=1;
@@ -944,7 +957,7 @@ function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalShee
       for(let k=0;k<3;k++){ const c=n+k*(dx+dy*XN); if(c<0||EX.t[c]!==T_FLOOR) break; quad(0,xw(c),xz(c),2.4-k*.4,5,0); } } }
   const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=0; grp.add(m); return m; };   // drawn before the darkness veil (1), so ground you have not found hides its stains, puddles and glowing pools
   mk(0,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.45));
-  EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  EX.puddles=mk(1,xLightMat(new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,depthWrite:false}),3));   // (a glowing pool lights the floor it lies on: xLightMat)
   mk(2,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3}),.8)); }
 // glowing motes that rise and wink around the lights near you
 function xMotes(grp,A){ const N=X3&&X3.low?24:48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
@@ -1191,7 +1204,12 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), PT=A&&A.id==='ruins
   if(pos.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.computeVertexNormals();
     const band=new THREE.Mesh(g,mat); band.position.y=.012; grp.add(band); } }
 // a soft pool of colored light on the floor in front of a wall light (an additive decal: cheap, no real light)
-function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
+/* A light on the floor: it brightens what it falls on (the floor times one and a bit) instead of adding a flat colour, so
+   a pool on dark stone stays stone, only lit, and never reads as a sticker. Premultiplied, so the glow texture's
+   alpha and the opacity (the flicker, xDrawGlows) still shape it; gain: how strong at its middle. */
+function xLightMat(m,gain){ m.blending=THREE.CustomBlending; m.blendEquation=THREE.AddEquation; m.blendSrc=THREE.DstColorFactor; m.blendDst=THREE.OneFactor;
+  m.premultipliedAlpha=true; m.color.multiplyScalar(gain*XLIT.poolGain); m.userData.lightGain=gain; return m; }
+function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),xLightMat(new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,depthWrite:false}),3.2));
   m.rotation.x=-Math.PI/2; m.position.set(0,.06,size*.32); m.renderOrder=2; m.userData.pool=1; return m; }
 // a group is gone (beaten): take every piece of it off the map, its name tag and rings too
 function xDropGroup(g){ for(const o of [g.sprite,g.zz,g.bang,g.ring,g.tag,g.base,g.label]){ if(!o) continue; if(o.parent) o.parent.remove(o);
@@ -1314,6 +1332,7 @@ function xCourses(t){ if(!t) return null; if(t.courses!==undefined) return t.cou
     if(t.atlas){ const im=t.img, W=im.naturalWidth||im.width, H=im.naturalHeight||im.height, r=t.rect; x.drawImage(im,r[0]*W,(1-r[1]-r[3])*H,r[2]*W,r[3]*H,0,0,N,N); }
     else x.drawImage(t,0,0,N,N);
     const d=x.getImageData(0,0,N,N).data, row=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let i=0;i<N;i++){ const o=(j*N+i)*4; a+=d[o]+d[o+1]+d[o+2]; } row[j]=a/(3*N); }
+    { let r=0,g=0,b=0; for(let i=0;i<d.length;i+=4){ r+=d[i]; g+=d[i+1]; b+=d[i+2]; } const k=255*N*N; t.mean=[r/k,g/k,b/k]; }   // (the tops' colour: xWallMaskShader)
     const dt=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let k=-15;k<=15;k++) a+=row[(j+k+N)%N]; dt[j]=row[j]-a/31; }
     L=[]; for(let j=0;j<N;j++){ let m=true; for(let k=-3;k<=3;k++) if(dt[(j+k+N)%N]<dt[j]) m=false; if(m&&dt[j]<-8&&(!L.length||j-L[L.length-1]*N>12)) L.push((j+.5)/N); }
     if(L.length>1&&(L[0]+1-L[L.length-1])*N<=12){ const a=Math.round(L[0]*N-.5), b=Math.round(L[L.length-1]*N-.5); if(dt[a]<=dt[b]) L.pop(); else L.shift(); }   // (one line across the tile's wrap, found at both ends)
@@ -1337,6 +1356,7 @@ float xq8(vec3 n){ return mod(floor(atan(n.z,n.x)*1.2732+.5)+8.0,8.0); }   // (w
 float xLineK(vec3 p,vec3 n){ return floor(dot(p,n)/${'2.0'}+.5)*11.0+xq8(n); }
 `;
 function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L=dressed?o.courses:null, n=L?L.length:0;
+  const top=dressed&&o.top; if(top) sh.uniforms.uXTopC={value:new THREE.Vector3(o.top[0],o.top[1],o.top[2])};
   if(dressed){ sh.uniforms.uXCB={value:(L||[]).concat([2,2,2,2,2,2]).slice(0,6)}; sh.uniforms.uXCN={value:n}; }
   // the vertex: the face's normal across the floor, where its block stands along it, and at each end of it the face
   // that comes next round a corner (vXG: its normal, the plus end's then the minus end's) and which way that face's
@@ -1371,7 +1391,7 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
   sh.vertexShader=v;
   let f=sh.fragmentShader;
   if(dressed) f=f.replace('#include <uv_pars_fragment>','#if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )\n\tvarying vec2 vUvR;\n\tvec2 vUv;\n#endif');
-  f='varying vec4 vXF; varying vec4 vXG; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
+  f='varying vec4 vXF; varying vec4 vXG; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(top?'uniform vec3 uXTopC;\n':'')+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
   if(dressed) f=f.replace('void main() {',`void main() {
   #if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )
   vUv=vUvR;
@@ -1390,6 +1410,12 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
     vUv.x=u;
     if(uXCN>.5) vUv.x+=xh2(vec2(id,xLineK(lp,ln))); }
   #endif`);
+  // the tops: the wall tile's own mean colour (each top showed one point of it, so the caps were a field of random
+  // swatches), each cap a little lighter or darker, and on a spacious floor darker the further it is from open floor
+  if(top) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('diffuseColor *= texelColor;',`if(dot(vXF.xy,vXF.xy)<.5&&vXWP.y>.5){ vec3 tc=uXTopC*(.86+.16*xh3(floor(vXWP*vec3(1.0,4.0,1.0))));
+  ${o.corn?'tc*=mix(1.0,.5,smoothstep(.3,.95,texture2D(uSolid,vXWP.xz/uSolidK.x).b));':''}
+  texelColor.rgb=tc; }
+  diffuseColor *= texelColor;`));
   // the light and the foot, on the block's colour
   f=f.replace('#include <color_fragment>',`#include <color_fragment>
   { vec2 n2=vXF.xy; bool side=dot(n2,n2)>.5; vec2 t2=side?vec2(n2.y,-n2.x):vec2(.7071,.7071);
@@ -1402,7 +1428,7 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
       float g=1.0-smoothstep(fh-.2,fh,vXWP.y); diffuseColor.rgb*=mix(1.0,${o.rock?'.82':'.7'},g); } }`);
   sh.fragmentShader=f; }
 function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0; if(uvj===2) m.userData.xrock=1; if(uvj===true) m.userData.xgrad=1;   // (its relief laid like its colour: look.js xRockNormal)
-  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(m.userData.xtop?'t':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
     // uvj 2 (rough rock, which has no courses to keep level): each block shows its own half of a texture twice the size,
     // anywhere in it, so no two blocks share a face.
@@ -1413,7 +1439,7 @@ function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XS
       // dressed walls: a side's u runs along the wall in the world (a block's width to a texture), so the courses run
       // on unbroken from block to block; its v is the block's own, so they stay level. The tops keep the shift.
       'vec3 wn=mat3(modelMatrix)*(mat3(instanceMatrix)*normal), wp=(modelMatrix*(instanceMatrix*vec4(position,1.0))).xyz;\n    if(abs(wn.y)<.5){ wn=normalize(vec3(wn.x,0.0,wn.z)); vUv.x=dot(wp,vec3(wn.z,0.0,-wn.x))/'+XCS.toFixed(1)+'; }\n    else vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
-    if(uvj) xWallMaskShader(sh,{dressed:uvj===true, rock:uvj===2, courses:m.userData.xcourse, corn:sink, solidDeclared:!!bev});
+    if(uvj) xWallMaskShader(sh,{dressed:uvj===true, rock:uvj===2, courses:m.userData.xcourse, top:m.userData.xtop, corn:sink, solidDeclared:!!bev});
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     // uvj 2 (rough rock): the stone is laid in world space round the whole wall, not per block (xRockShader)
     if(uvj===2) xRockShader(sh);
@@ -2149,6 +2175,7 @@ function xDraw(T,dt){
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
   EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz);
+  if(EX.meShadow){ EX.meShadow.position.x=EX.px; EX.meShadow.position.z=EX.pz+.05; EX.meShadow.material.opacity=XLIT.heroShadow*(1-.35*step); }
   // your picture is looked up again when your pose, view or facing changes, and a few times a second besides (new gear,
   // a picture that has just loaded), not every frame: the lookup builds a description of your gear each time
   { const M=EX.me.userData, fl=EX.face<0; if(M.pose!==EX.pose||M.view!==EX.view||M.fl!==fl||!M.img||(M.age=(M.age||0)+1)>15){ M.pose=EX.pose; M.view=EX.view; M.fl=fl; M.age=0; xRefresh(EX.me,fl); } }

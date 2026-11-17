@@ -581,7 +581,7 @@ function xMeshProp(p){
   if(!X3||!X3.group) return null; const g=new THREE.Group(); let px=xw(p.cell), pz=xz(p.cell);
   if(p.wall){ const dx=xcx(p.front)-xcx(p.cell), dz=xcy(p.front)-xcy(p.cell); px+=dx*(XCS/2+.02); pz+=dz*(XCS/2+.02); g.rotation.y=Math.atan2(dx,dz); }
   g.position.set(px,0,pz);
-  const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30), wood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:0x402a08});
+  const stone=xMat(0x6e6a64,{mat:'carved-stone'}), dark=xMat(0x2a2a30,{mat:'iron'}), wood=xMat(0x7a4a22,{mat:'furniture-wood'}), bark=xMat(0x7a4a22,{mat:'bark'}), gold=xMat(0xf2c94c,{emissive:0x402a08});
   switch(p.kind){
     case 'npc': case 'merchant': {
       p.spr=xSprite(()=>lookSprite(p.look,'front',true),XSPR*.96); g.add(p.spr);
@@ -591,14 +591,14 @@ function xMeshProp(p){
       const halo=new THREE.Mesh(new THREE.TorusGeometry(.4,.03,6,20),xGlowMat(c)); halo.rotation.x=Math.PI/2; halo.position.y=.8; g.add(halo); break; }
     case 'decor': { const c=THEME_COL[p.theme]||0xfff2c0;
       if(p.theme==='crystal'||p.theme==='arcane') for(let k=0;k<3;k++){ const o=xCone(.12,.7+k*.2,xGlowMat(c,{transparent:true,opacity:.85}),(k-1)*.25,.35+k*.1,(k%2)*.2,4); o.rotation.z=(k-1)*.3; g.add(o); }
-      else if(p.theme==='camp'){ g.add(xBox(.8,.12,.18,wood,0,.08,0), xBox(.18,.12,.8,wood,0,.1,0)); const f=xCone(.22,.6,xGlowMat(0xff9a3a,{transparent:true,opacity:.9}),0,.4,0); p.flame=f; g.add(f); }
-      else if(p.theme==='garden'){ g.add(xBall(.32,xMat(0x2e7a4a),0,.3,0), xBall(.22,xMat(0x3f9a5a),.25,.25,.2)); for(let k=0;k<4;k++) g.add(xBall(.06,xGlowMat([0xff6a9a,0xffffff,0xc08aff,0xff9a3a][k]),Math.cos(k*1.6)*.4,.12,Math.sin(k*1.6)*.4)); }
+      else if(p.theme==='camp'){ g.add(xBox(.8,.12,.18,bark,0,.08,0), xBox(.18,.12,.8,bark,0,.1,0)); const f=xCone(.22,.6,xGlowMat(0xff9a3a,{transparent:true,opacity:.9}),0,.4,0); p.flame=f; g.add(f); }
+      else if(p.theme==='garden'){ g.add(xBall(.32,xMat(0x2e7a4a,{flat:true}),0,.3,0), xBall(.22,xMat(0x3f9a5a,{flat:true}),.25,.25,.2)); for(let k=0;k<4;k++) g.add(xBall(.06,xGlowMat([0xff6a9a,0xffffff,0xc08aff,0xff9a3a][k]),Math.cos(k*1.6)*.4,.12,Math.sin(k*1.6)*.4)); }
       else g.add(xBox(.4,1.6,.4,stone,0,.8,0), xBox(.55,.12,.55,xMat(0x8a8478),0,1.62,0));
       break; }
     case 'statue': { g.add(xBox(.8,.3,.8,stone,0,.15,0), xCyl(.22,.9,xMat(0x9a958a),0,.75,0), xBall(.2,xMat(0x9a958a),0,1.35,0));
       const arm=xCone(.1,.45,xMat(0xf2c94c,{emissive:0x403010}),0,1.1,-.35); arm.rotation.x=-Math.PI/2; g.add(arm); p.rot=g; g.rotation.y=-p.face*Math.PI/2; break; }
     case 'core': { g.add(xBox(1,.5,1,dark,0,.25,0)); const s=xBall(.18,xGlowMat(0xf2c94c),0,.75,0); g.add(s); p.glow=s; break; }
-    case 'mirror': { const fr=new THREE.Group(); fr.add(xBox(1.3,1.2,.06,xMat(0xcfd8e6,{shininess:80,specular:0xffffff,emissive:0x202830}),0,.85,0), xBox(1.4,.08,.12,xMat(0x6e5418),0,.25,0)); fr.rotation.y=p.o==='/'?Math.PI/4:-Math.PI/4; p.rot=fr; g.add(fr, xBox(.3,.25,.3,dark,0,.12,0)); break; }
+    case 'mirror': { const fr=new THREE.Group(); fr.add(xBox(1.3,1.2,.06,xMat(0xcfd8e6,{flat:true,shininess:80,specular:0xffffff,emissive:0x202830}),0,.85,0), xBox(1.4,.08,.12,xMat(0x6e5418,{mat:'steel'}),0,.25,0)); fr.rotation.y=p.o==='/'?Math.PI/4:-Math.PI/4; p.rot=fr; g.add(fr, xBox(.3,.25,.3,dark,0,.12,0)); break; }
     case 'crystal': { const m=xGlowMat(0x8fe4ff,{transparent:true,opacity:.75}); g.add(xCone(.25,1.1,m,0,.55,0,5), xCone(.14,.6,m,.25,.3,.1,5)); p.glowMat=m; break; }
     case 'emitter': { if(p.wall){ g.add(xBox(.5,.5,.08,dark,0,.9,0)); const e=xBall(.14,xGlowMat(0xfff2a0),0,.9,.06); g.add(e); break; }
       // standing at the west end of the mirrors' floor, shining east (floors from before stood it in the wall)
@@ -614,25 +614,25 @@ function xMeshProp(p){
       break; }
     case 'plate': g.add(xBox(1.3,.06,1.3,xMat(0x8a7a4a,{emissive:0x201808}),0,.03,0)); p.top=g.children[0]; break;
     case 'reset': { const r=new THREE.Mesh(new THREE.TorusGeometry(.45,.05,4,16),xGlowMat(0x7fd4ff)); r.rotation.x=Math.PI/2; r.position.y=.06; g.add(r); break; }
-    case 'block': { const sand=xMat(0xc0904a), dark=xMat(0x6a4a24), rc=new THREE.Color(EX.area.glow);
+    case 'block': { const sand=xMat(0xc0904a,{mat:'sandstone'}), dark=xMat(0x6a4a24,{mat:'sandstone'}), rc=new THREE.Color(EX.area.glow);
       g.add(xBox(1.5,1.25,1.5,sand,0,.68,0), xBox(1.6,.12,1.6,dark,0,.06,0), xBox(1.58,.1,1.58,dark,0,1.3,0));
       const rune=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:xBlockRuneTex(),color:rc,transparent:true,depthWrite:false})); rune.rotation.x=-Math.PI/2; rune.position.y=1.36; g.add(rune);
       for(const [x,z,ry] of [[0,.76,0],[0,-.76,Math.PI],[.76,0,Math.PI/2],[-.76,0,-Math.PI/2]]){ const ar=new THREE.Mesh(new THREE.PlaneGeometry(.7,.7),new THREE.MeshBasicMaterial({map:xBlockRuneTex(true),color:rc,transparent:true,depthWrite:false})); ar.position.set(x,.68,z); ar.rotation.y=ry; g.add(ar); }
       break; }
     case 'trialaltar': { g.add(xBox(1.2,.7,1.2,dark,0,.35,0)); p.flame=xCone(.3,.7,xGlowMat(0xff5d6c,{transparent:true,opacity:.85}),0,1.05,0); g.add(p.flame); break; }
-    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL_B-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
+    case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL_B-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e,{mat:'steel'}),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{mat:'steel',shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
     case 'jet': { g.add(xBox(.9,.05,.9,dark,0,.03,0)); const f=xCone(.32,1.6,xGlowMat(0xff7a2a,{transparent:true,opacity:.85}),0,.8,0); f.visible=false; g.add(f); p.flame=f; break; }
-    case 'totem': { g.add(xCyl(.12,1.5,wood,0,.75,0), xBall(.25,xMat(0xe8e0c8),0,1.62,0)); for(const s of [-.09,.09]) g.add(xBall(.05,xGlowMat(0xff3a4a),s,1.65,.2)); break; }
+    case 'totem': { g.add(xCyl(.12,1.5,bark,0,.75,0), xBall(.25,xMat(0xe8e0c8,{mat:'bone'}),0,1.62,0)); for(const s of [-.09,.09]) g.add(xBall(.05,xGlowMat(0xff3a4a),s,1.65,.2)); break; }
     case 'cache': { const m=xGlowMat(0xf2c94c,{transparent:true,opacity:.7}); g.add(xBox(.5,.35,.05,dark,0,.5,0), xBox(.36,.22,.06,m,0,.5,.01)); break; }
     case 'loose': { const m=new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.14}); const t=xBox(1.7,.02,1.7,m,0,.05,0); g.add(t); p.top=t; p.mat=m; break; }
     case 'pedestal': { g.add(xBox(.5,.9,.5,stone,0,.45,0), xBox(.7,.1,.7,xMat(0x8a8478),0,.92,0));
       if(p.orb){ const o=xBall(.2,xGlowMat(PERM_COL[p.orb]||0xffffff),0,1.25,0); g.add(o); p.glow=o; } else { const sc=xBox(.45,.06,.32,xMat(0xd9dee2),0,1.0,0); g.add(sc); p.glow=sc; } break; }
     case 'hstair': case 'chute': { g.add(xBox(XCS*.7,.3,XCS*.7,xMat(0x050507),0,.02,0)); const r=new THREE.Mesh(new THREE.TorusGeometry(.65,.06,6,20),xGlowMat(p.kind==='chute'?0x8fe4ff:0xb48cff)); r.rotation.x=Math.PI/2; r.position.y=.2; g.add(r); p.ring=r;
-      if(p.kind==='chute') for(let k=-1;k<=1;k++) g.add(xBox(1.3,.05,.06,xMat(0x5c656e),0,.18,k*.4)); break; }
+      if(p.kind==='chute') for(let k=-1;k<=1;k++) g.add(xBox(1.3,.05,.06,xMat(0x5c656e,{mat:'steel'}),0,.18,k*.4)); break; }
     case 'bones': for(let k=0;k<9;k++){ const b=xBox(.12+XR()*.2,.08,.08,xMat(0xe8e0c8),(XR()-.5)*.9,.06+XR()*.3,(XR()-.5)*.9); b.rotation.y=XR()*3; g.add(b); } g.add(xBall(.16,xMat(0xe8e0c8),.1,.45,0)); break;
     case 'puddle': { const m=new THREE.MeshBasicMaterial({color:0x8fd14f,transparent:true,opacity:.35}); const c=new THREE.Mesh(new THREE.CircleGeometry(.6,12),m); c.rotation.x=-Math.PI/2; c.position.y=.05; g.add(c); break; }
     case 'keystand': { g.add(xBox(.4,.8,.4,stone,0,.4,0)); const k=xKeyMesh(KEYS[p.key].col); k.position.y=1.15; g.add(k); p.spin=k; break; }
-    case 'corpse': { const bone=xMat(0xe8e0c8), cloth=xMat(0x5a2a8a);
+    case 'corpse': { const bone=xMat(0xe8e0c8,{mat:'bone'}), cloth=xMat(0x5a2a8a,{mat:'fabric'});
       for(let k=0;k<6;k++){ const b=xBox(.1+XR()*.25,.07,.07,bone,(XR()-.5)*.8,.05,(XR()-.5)*.6); b.rotation.y=XR()*3; g.add(b); }
       g.add(xBall(.15,bone,.15,.12,-.1), xBox(.8,.05,.5,cloth,-.05,.03,.05));
       const hat=xCone(.22,.5,cloth,-.25,.25,.15); hat.rotation.z=1.1; g.add(hat);
@@ -659,7 +659,7 @@ function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(
     m.add(xBall(.19,xMat(col,{emissive:col.clone().multiplyScalar(.45),transparent:true,opacity:.9}),0,-.04,0), xCyl(.06,.16,xMat(0xbfe6ff,{transparent:true,opacity:.7}),0,.17,0), xCyl(.07,.07,xMat(0x8a5a32),0,.28,0)); }
   else if(it.kind==='scroll'){ m=new THREE.Group(); const roll=xCyl(.09,.5,xMat(0xf0e2bc),0,0,0); roll.rotation.z=Math.PI/2; m.add(roll);
     for(const x of [-.27,.27]){ const k=xCyl(.11,.04,xMat(0x6a4a2a),x,0,0); k.rotation.z=Math.PI/2; m.add(k); } m.add(xBox(.08,.2,.2,xMat(it.scroll==='purify'?0xf2c94c:0x7fe3ff,{emissive:it.scroll==='purify'?0x403008:0x103040}),0,0,0)); }
-  else if(it.kind==='gear'){ const G=typeof GEAR!=='undefined'&&GEAR[it.gear], slot=G?G.slot:'weapon', steel=xMat(0xc7d0d8,{shininess:70,specular:0xffffff}), gold=xMat(0xf2c94c,{emissive:0x302008}); m=new THREE.Group();
+  else if(it.kind==='gear'){ const G=typeof GEAR!=='undefined'&&GEAR[it.gear], slot=G?G.slot:'weapon', steel=xMat(0xc7d0d8,{mat:'steel',shininess:70,specular:0xffffff}), gold=xMat(0xf2c94c,{emissive:0x302008}); m=new THREE.Group();
     if(slot==='weapon'){ m.add(xBox(.07,.62,.03,steel,0,.12,0), xBox(.3,.05,.06,gold,0,-.2,0), xBox(.05,.16,.05,xMat(0x5a3a22),0,-.31,0)); m.rotation.z=.5; }
     else if(slot==='ring'){ const r=new THREE.Mesh(new THREE.TorusGeometry(.14,.04,8,16),gold); r.rotation.x=.6; m.add(r, xBall(.06,xMat(0x7fe3ff,{emissive:0x104050}),0,.15,0)); }
     else if(slot==='offhand'){ const sh=xCyl(.26,.06,xMat(0x6a4a2a),0,0,0); sh.rotation.x=Math.PI/2; m.add(sh); const b=xCyl(.08,.08,steel,0,0,.04); b.rotation.x=Math.PI/2; m.add(b); }

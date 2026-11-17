@@ -12,6 +12,11 @@ look.js xAtlasShader):
                            Ember Rifts, the medium-rock overlay
   atlas/area-<id>-n.webp   normal maps (linear data, lossless): the theme floors' painted ones, and for the area's
                            floors and walls (painted without one) one made from the painting's brightness
+  atlas/props.webp         the dungeon furniture's materials (planks, rough wood, iron, clay, cloth, carved stone, bone,
+                           brass, books: docs/art-production/props/), laid on in each piece's own space (explore.js
+                           xPropShader); their mean colours go to the map, as the game keeps each piece's own colour and
+                           takes only the detail from the painting
+  atlas/props-n.webp       their normal maps, from the pack's height maps, with the roughness in the blue channel
   atlas/effects.webp       the small effect textures (glows, rune ring, ripples, pool surfaces, trim, detail normal,
                            cell noise, the trees' leaf clumps); the game cuts these back out, as they scroll, tile or draw as sprites
 
@@ -46,6 +51,10 @@ THEME_FILE = {"armory": "armory-vault", "flooded": "flooded-deeps", "overgrown":
               "collapsed": "collapsed-rifts", "library": "library-ruins", "crypt": "crypt-abyss",
               "forge": "forge-rifts", "bathhouse": "bathhouse-ruins", "barracks": "barracks-vault",
               "fungus": "fungus-grove-hollows"}
+# the props' materials (painterly-512/props/<name>-albedo|height|roughness.png)
+PROPS = ["planks", "rough-wood", "iron", "clay", "cloth", "carved-stone", "bone", "brass", "books",
+         # round 2 (docs/art-production/props/CHATGPT-PROMPTS-2.md): appended, never reordered (the index is the slot)
+         "dressed-stone", "rough-rock", "bark", "fabric", "furniture-wood", "sandstone", "end-grain", "steel", "marble", "brick", "leather", "parchment", "straw", "soil", "coal", "fungus", "basalt"]
 # effects: name -> (master, how it is used: 'wrap' repeats or scrolls, 'clamp' is a sprite)
 EFFECTS = {
     "glow": ("shared-effects/glow-hole.png", "clamp"),
@@ -158,6 +167,21 @@ def height_normal(im, k=7.0):
     return Image.fromarray((n * 255).round().astype(np.uint8), "RGB")
 
 
+def props_normal(name, k=5.0):
+    """A prop material's normal map from its height map (same convention as height_normal), with its roughness map in
+    the blue channel (the shader rebuilds the normal's z) and the height itself in alpha (the Materials lab's height
+    and ao: cavities and broad occlusion)."""
+    h = np.asarray(tile(f"props/{name}-height.png", "L")).astype(np.float32) / 255
+    h = (h + np.roll(h, 1, 0) + np.roll(h, -1, 0) + np.roll(h, 1, 1) + np.roll(h, -1, 1)) / 5
+    nx = -(np.roll(h, -1, 1) - np.roll(h, 1, 1)) * k
+    ny = (np.roll(h, -1, 0) - np.roll(h, 1, 0)) * k
+    l = np.sqrt(nx * nx + ny * ny + 1)
+    r = np.asarray(tile(f"props/{name}-roughness.png", "L")).astype(np.float32) / 255
+    h0 = np.asarray(tile(f"props/{name}-height.png", "L")).astype(np.float32) / 255
+    n = np.stack([nx / l * .5 + .5, ny / l * .5 + .5, r, h0], -1)
+    return Image.fromarray((n * 255).round().astype(np.uint8), "RGBA")
+
+
 def place(sheet, im, slot, cols, wrap=True):
     """Paste im into cell `slot`, with its gutter; returns the tile's interior rectangle in pixels."""
     a = np.asarray(im)
@@ -196,6 +220,10 @@ def main():
         normals += [("theme-" + th, tile(f"theme-normals/{THEME_FILE[th]}-normal.png", "RGB"), True) for th in THEME_AREA[a]]
         normals = [(k, inverted(im) if (k if k.startswith("theme-") else f"{a}/{k}") in INVERT else im, w) for k, im, w in normals]
         sheets[f"area-{a}-n"] = build(f"area-{a}-n.webp", normals, "RGB", False, cols=3)
+    props = [(k, tile(f"props/{k}-albedo.png", "RGB"), True) for k in PROPS]
+    sheets["props"] = build("props.webp", [(k, im.convert("RGBA"), w) for k, im, w in props], "RGBA", False, cols=6)
+    sheets["props"]["mean"] = {k: [round(float(x) / 255, 4) for x in np.asarray(im).reshape(-1, 3).mean(0)] for k, im, _ in props}
+    sheets["props-n"] = build("props-n.webp", [(k, props_normal(k), True) for k in PROPS], "RGBA", False, cols=6)
     fx = [(k, tile(p), m == "wrap") for k, (p, m) in EFFECTS.items()]
     fx.append(("leaf-clumps", leaf_clumps(), False))
     # single plant cards (docs/art-production/foliage-alts/): already 256 tiles with cut-out alpha and colour carried

@@ -343,7 +343,7 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
     s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; const sh=s.userData.shade; if(sh){ sh.material.map=s.material.map; sh.material.needsUpdate=true; } } }
-const xMat=(c,o)=>xPhong(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
+const xMat=(c,o)=>{ const q=Object.assign({color:c,shininess:6,specular:0x111111},o||{}), flat=q.flat, mat=q.mat; delete q.flat; delete q.mat; const m=xPhong(q); return flat?m:xPropTex(m,mat||xPropKind(m.color)); };   // (o.mat names its painted material, o.flat keeps it plain; else its colour says: xPropKind)   // (painted from what its colour says it is made of: xPropTex)
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
 // a wall block: a box with chamfered top edges and corners; rough=true pushes its faces in and
@@ -374,7 +374,7 @@ const XBEV_LOOP=.3;   // how far in from a dressed block's upright corner its ed
    cap showing in the joints between them (a broken skyline, read from far off). The same four heights in every
    block, but each wall is turned a quarter at random (xWallMatrix), so neighbours rarely match. Only the cells of
    the open quarter (q) are stacked for a diagonal piece. */
-function xCapsOn(g,hh,seed,q){ const parts=[g.index?g.toNonIndexed():g], hs=[.5,.18,.36,.08], s=XCS/2-.07;
+function xCapsOn(g,hh,seed,q){ const parts=[g.index?g.toNonIndexed():g], hs=[.26,.1,.19,.04], s=XCS/2-.07;   // (the steps between them kept small: the tops read as one calm mass)
   if(q){ const hw=XCS/2, e=.06; [[[0,0],[0,-hw],[hw,-hw]],[[0,0],[-hw,0],[-hw,hw]]].forEach((T,k)=>{ const cx=(T[0][0]+T[1][0]+T[2][0])/3, cz=(T[0][1]+T[1][1]+T[2][1])/3;
       parts.push(xPrism(T.map(([x,z])=>[x+(cx-x)*e*2,z+(cz-z)*e*2]),hh-.02,hs[(k+1+seed)%4]+.1,k+1)); }); }   // a diagonal piece: its two half-quarters filled by bent blocks
   [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz],k)=>{ if(q&&!q(sx,sz)) return; const h=hs[(k+seed)%4]+.1, b=new THREE.BoxGeometry(s,h,s).toNonIndexed();
@@ -560,7 +560,7 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
   // the renderer skips the chunks off screen: a big floor costs little more than a small one
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); if(xWT(v)===1) mat.userData.xcourse=xCourses(wallTex[1]); mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=wTex(wallTex[xWT(v)]), mat=wAt(xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true}),xWT(v)===0?2:true,bev(v)),2,wallTex[xWT(v)]),wallTex[xWT(v)],xWT(v)===0); if(xWT(v)===1) mat.userData.xcourse=xCourses(wallTex[1]); if(xWT(v)!==0){ xCourses(wallTex[xWT(v)]); mat.userData.xtop=wallTex[xWT(v)].mean||null; } mat.userData.xdet=2; mat.userData.xmold=2;   // (rough rock: uvj 2; and the walls' own noise relief, look.js xDetShader)
     const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
     for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
       const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
@@ -577,7 +577,10 @@ function xBuildScene(){
     gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // spacious floors: which cells are solid wall (for the shader's inner faces, xInner) and a black base under every
   // wall cell, so a cut through the stonework shows black, never the depths below
-  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()){ if(!xLow(c)) D[c*4+1]=255; if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; } }   // (green: any wall block beside, for the rounded corners: xBevelV)
+  if(XSINK){ const D=new Uint8Array(XN*XN*4); for(const c of EX.wIdx.keys()){ if(!xLow(c)) D[c*4+1]=255; if(!xWedge(c)&&!xLow(c)){ D[c*4]=255; D[c*4+3]=255; } }
+    { const far=new Uint8Array(XN*XN).fill(4), q=[]; for(let c=0;c<XN*XN;c++) if(!EX.wIdx.has(c)){ far[c]=0; q.push(c); }   // (blue: a wall cell's steps from open floor, up to four: the tops fade into the dark, xWallMaskShader)
+      for(let h=0;h<q.length;h++){ const c=q[h], x=xcx(c), y=xcy(c); for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=c+dx+dy*XN; if(far[n]>far[c]+1){ far[n]=far[c]+1; q.push(n); } } }
+      for(const c of EX.wIdx.keys()) D[c*4+2]=far[c]*63; }   // (green: any wall block beside, for the rounded corners: xBevelV)
     const T=new THREE.DataTexture(D,XN,XN,THREE.RGBAFormat); T.magFilter=T.minFilter=THREE.NearestFilter; T.needsUpdate=true;
     XDITHER.uSolid.value=T; XDITHER.uSolidK.value.set(XN*XCS,1,XWALL-.1);
     const P=[]; for(const c of EX.wIdx.keys()){ const x0=xcx(c)*XCS, z0=xcy(c)*XCS, x1=x0+XCS, z1=z0+XCS; P.push(x0,-.03,z0, x0,-.03,z1, x1,-.03,z1, x0,-.03,z0, x1,-.03,z1, x1,-.03,z0); }
@@ -592,9 +595,9 @@ function xBuildScene(){
   // (a spacious floor's door is clipped at its arch's crown when it stands in a low near wall: xStepLow)
   for(const [i,d] of EX.doors){ XSINK_CLIP={value:1e3}; EX.doorClip.set(i,XSINK_CLIP); const ew=xDoorEW(i), g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2; const dk=XWALL>XWALL_B?1.3:1; g.scale.y=dk;   // a spacious floor's doors stand taller, in keeping with its walls
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
-    const F=xMerger(), FL=xMerger(), WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
-    g.add(F.build(xDitherMat(xPhong({vertexColors:true})))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
-    const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger();
+    const F=xMerger(), FL=xMerger(); F.mat='dressed-stone'; const WD=d.wide?3*XCS:XCS, base0=d.wide?4.5:2.58; for(const zs of [-1,1]) xPortal(F,FL,doorC,S,i,zs,d.wide,XWALL/dk); F.add(XG.box,new THREE.Color('rgb('+xTone(S,.28).join(',')+')'),0,XWALL/dk-.17,0,0,0,0,WD,.34,XCS-.3); if(dk>1&&XWALL/dk-.34>base0) F.add(XG.box,new THREE.Color('rgb('+xTone(S,.42).join(',')+')'),0,(base0+XWALL/dk-.34)/2,0,0,0,0,WD,XWALL/dk-.34-base0,XCS-.2);   // a wide doorway (dungeongen.js x2WideDoors): one grand arch over three cells   // a portal on each face, roofed between
+    g.add(F.build(xPropTex(xDitherMat(xPhong({vertexColors:true}))))); if(FL.size()){ const rune=FL.build(xSinkPatch(new THREE.MeshBasicMaterial({vertexColors:true}))); g.add(rune); }
+    const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger(); { const add0=L.add; L.add=(g,c,...a)=>{ L.mat=c===0xff5d6c||LOCK_COL[d.lock]===c?null:c===0x2a2a30?'iron':'planks'; return add0(g,c,...a); }; }   // (boards, iron fittings; the glowing bands and lock plates plain)
     if(d.lock==='gate'){ for(let k=0;k<5;k++){ const x=-.6+k*.3, top=HR+Math.sqrt(Math.max(0,AR*AR-x*x))-.04; L.add(XG.box,0x2a2a30,x,top/2,0,0,0,0,.07,top,.07); } L.add(XG.box,0x2a2a30,0,.5,0,0,0,0,XCS-.44,.08,.09); L.add(XG.box,0x2a2a30,0,1.2,0,0,0,0,XCS-.44,.08,.09); }
     else { const LW=XCS-.44;
       for(let k=0;k<4;k++) L.add(XG.box,k%2?(boss?0x2e1014:0x5a3820):planks,-LW/2+LW/8+k*LW/4,HR/2,0,0,0,0,LW/4-.025,HR,.15);
@@ -603,7 +606,7 @@ function xBuildScene(){
       for(const y of [.38,1.12]) for(const x of [-.55,0,.55]) for(const z of [-.1,.1]) L.add(XG.ball,0x2a2a30,x,y,z,0,0,0,.07,.07,.05);
       L.add(ringG,0x2a2a30,.5,.78,.11);
       if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) L.add(XG.box,LOCK_COL[d.lock],.38,.78,zz,0,0,0,.26,.32,.04); }
-    leaf.add(L.build(xDitherMat(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000}))));
+    leaf.add(L.build(xPropTex(xDitherMat(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000})))));
     // a locked door hangs a lantern of its key's colour over the arch, both sides, seen from across the room
     if(LOCK_COL[d.lock]){ const lc=new THREE.Color(LOCK_COL[d.lock]), tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), lan=[];
       for(const zz of [-.34,.34]){ const lg=new THREE.Group(); lg.position.set(0,HR+1.12,zz); lg.add(xBox(.05,.2,.05,xMat(0x2a2620),0,.12,0));
@@ -613,7 +616,7 @@ function xBuildScene(){
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
     // a warm glow on the threshold, so a doorway reads from across the room even in shadow
-    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*(d.wide?3.3:1.3),XCS*1.3),xLightMat(new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,depthWrite:false,fog:false}),2.6));
       sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'&&!d.wide; if(d.state==='open'&&!d.wide) xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   XSINK_DOOR=false; XSINK_CLIP=null;
@@ -622,22 +625,22 @@ function xBuildScene(){
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
   // last, between low stone walls, into the dark; a thin glow of the area's colour rims the top
-  const W=XCS*.86, D=XCS*.86, N=5, stoneC=new THREE.Color(A.lit).lerp(new THREE.Color(0x6a6458),.55);
+  const W=XCS*.86, D=XCS*.86, N=5, stoneC=new THREE.Color(A.lit).lerp(new THREE.Color(0x6a6458),.7).multiplyScalar(.62);   // (the floor's own value range: brighter, they read as a white cut-out)
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
   down.add(xBox(W,.02,D,xMat(0x020203),0,.012,0));   // the dark at the bottom
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.3*(1-k/N);   // the nearest step is at floor level, the far ones sink
-    const col=stoneC.clone().multiplyScalar(1-.17*k); down.add(xBox(W-.2,Math.max(.02,h),d*.96,xMat(col),0,Math.max(.01,h/2),z));
+    const col=stoneC.clone().multiplyScalar(1-.17*k); down.add(xBox(W-.2,Math.max(.02,h),d*.96,xMat(col,{mat:'dressed-stone'}),0,Math.max(.01,h/2),z));
     down.add(xBox(W-.2,.012,d*.22,xMat(0x050506),0,Math.max(.02,h)+.004,z-d*.38)); }   // the dark lip where each step drops to the next
-  const rimM=xMat(stoneC.clone().multiplyScalar(.8));
+  const rimM=xMat(stoneC.clone().multiplyScalar(.8),{mat:'dressed-stone'});
   down.add(xBox(.12,.42,D,rimM,-W/2,.21,0), xBox(.12,.42,D,rimM,W/2,.21,0), xBox(W+.12,.42,.12,rimM,0,.21,-D/2));
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.12,.05,6,12),new THREE.MeshBasicMaterial({color:glow})); ring.rotation.x=Math.PI/2; ring.position.set(0,.45,-D/2);
   const rim=new THREE.Mesh(new THREE.BoxGeometry(W+.16,.03,.06),new THREE.MeshBasicMaterial({color:glow})); rim.position.set(0,.44,-D/2); down.add(rim);
   ring.visible=false; down.add(ring); down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
   // the way up: worn stone steps climbing away from you toward a pale glow of daylight
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
-  const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.5);
+  const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.65).multiplyScalar(.7);
   for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.1+.11*k;
-    const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xMat(col),0,h/2,z));
+    const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xMat(col,{mat:'dressed-stone'}),0,h/2,z));
     const h0=k?.1+.11*(k-1):0; up.add(xBox(W-.2,h-h0,.02,xMat(col.clone().multiplyScalar(.45)),0,h0+(h-h0)/2,z+d*.49+.011));   // each riser in shadow
     up.add(xBox(W-.2,.012,d*.12,xMat(col.clone().lerp(new THREE.Color(0xffffff),.25)),0,h+.006,z+d*.43)); }   // a worn, lighter nosing on each tread
   up.add(xBox(.12,.7,D,rimM,-W/2,.35,0), xBox(.12,.7,D,rimM,W/2,.35,0));
@@ -658,12 +661,17 @@ function xBuildScene(){
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
   if(!EX.natural) xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
   if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
-  G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
+  G.grade=1;   // (the colour grade is the dungeon's: look.js xRender)
+  xAreaTint(); G.dust.material.color.copy(glowC);
   xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed); if(EX.layout===2&&!EX.natural) xWallSections(grp,S,seed); if(EX.marks) xLandmarks(grp,A,S,seed); if(typeof xClutter==='function') xClutter(grp,A,S,seed); if(EX.natural&&EX.layout===2) xRockFoot(grp,S,seed); if(EX.layout===2&&!EX.natural) xArches(grp,A,S,seed); else EX.arches=[];   // (a cave has no pilasters, niches or built arches)
   if(typeof xNature==='function') xNature(grp,A,S,seed);   // the area's own natural dressing (nature.js)
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
+  // a soft contact shadow under you, so you stand on the floor instead of floating over it, and your picture takes a
+  // little of your lamp's colour and brightness, so you sit in the room's light (debug menu > Colour: Hero shadow, Hero tint)
+  EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.25),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
+  EX.meShadow.rotation.x=-Math.PI/2; EX.meShadow.position.y=.08; EX.meShadow.renderOrder=3; grp.add(EX.meShadow); xHeroTint();   // (drawn after your glow, which would lift it again)
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   xShadeLook();
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
@@ -687,7 +695,7 @@ function xStairLights(grp,A){ const tex=xGlowTex(), boss=isBossDepth(EX.depth);
   for(const [cell,col,torches] of [[EX.down,boss?'#ff5d6c':A.glow,true],[EX.up,'#fff2c0',false]]){
     const beam=new THREE.Mesh(new THREE.CylinderGeometry(.75,.95,7,16,1,true),new THREE.MeshBasicMaterial({color:new THREE.Color(col),transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
     beam.position.set(xw(cell),3.5,xz(cell)); beam.renderOrder=3; beam.visible=false; grp.add(beam);
-    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),.6,xz(cell)); halo.renderOrder=3; halo.visible=false; grp.add(halo);
+    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col).multiplyScalar(torches?.6:.35),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),torches?.6:1.3,xz(cell));   // (dimmer, and the daylight's held above the steps: added over them at full, it washed the stairs white) halo.renderOrder=3; halo.visible=false; grp.add(halo);
     EX.glows.push({g:beam,floor:cell,mats:[beam.material],halo,ph:Math.random()*6,beam:true});
     if(torches){ const rr=new THREE.Mesh(new THREE.PlaneGeometry(4.2,4.2),new THREE.MeshBasicMaterial({map:xRuneTex(),color:new THREE.Color(col),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
       rr.rotation.x=-Math.PI/2; rr.position.set(xw(cell),.03,xz(cell)); rr.renderOrder=2; rr.visible=false; grp.add(rr); EX.runeRing=rr; }
@@ -714,6 +722,11 @@ function xGlowTex(){ const P=typeof envArtFx==='function'&&envArtFx('glow'); if(
    crystals (Hollows, Storm Vault), ice (Deeps), lava cracks (Rifts), gold veins (Ruins) or
    floating motes (Abyss). They show once you have seen the floor in front of them and dim with
    it, so a remembered room glows faintly and the room you stand in glows bright. */
+// the area's colour in the ambient light and your lamp (debug menu, Area tint: 1 as it was, all of it; less leaves the
+// walls and floor their own colours instead of washing everything in the area's hue)
+function xHeroTint(){ if(!EX||!EX.me||!X3) return; const k=Math.max(0,Math.min(1,XLIT.heroTint)); EX.me.material.color.set(0xffffff).lerp(X3.lamp.color,k).multiplyScalar(1-.25*k); }
+function xAreaTint(){ const G=X3; if(!G||!EX||!EX.area) return; const glowC=new THREE.Color(EX.area.glow);
+  G.amb.color.set(0xffffff).lerp(glowC,.25*XLIT.gTint); G.lamp.color.set(0xffd9a0).lerp(glowC,.3*XLIT.gTint); xHeroTint(); }
 function xAreaLights(grp,A){
   for(const p of EX.props||[]) if(/brazier/.test(p.kind)&&p.lit&&EX.room[p.cell]>=0&&!EX.rooms[EX.room[p.cell]].dark) EX.rooms[EX.room[p.cell]].lit=true;   // a burning brazier lights its room
   EX.glows=[]; const R=caveRng(EX.depth*53+7), tex=xGlowTex(), col=new THREE.Color(A.glow), pale=col.clone().lerp(new THREE.Color(0xffffff),.55);
@@ -831,7 +844,7 @@ function xWeather(grp,A){ const kind=XWEATHER[A.veins]||'twinkle', N=Math.round(
   const base=new THREE.Color({fireflies:'#9dff7a',snow:'#eef6ff',sparks:'#fff39a',ash:'#a09890',gold:'#f2c94c',twinkle:'#e9f0ff'}[kind]);
   for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*30; pos[k*3+1]=Math.random()*6; pos[k*3+2]=(Math.random()-.5)*24; st.push({ph:Math.random()*6.3,sp:.5+Math.random(),ember:kind==='ash'&&Math.random()<.25}); col[k*3]=base.r; col[k*3+1]=base.g; col[k*3+2]=base.b; }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const p=new THREE.Points(g,new THREE.PointsMaterial({size:kind==='snow'?.12:kind==='ash'?.11:kind==='fireflies'?.24:.18,vertexColors:true,transparent:true,opacity:.85,blending:kind==='ash'?THREE.NormalBlending:THREE.AdditiveBlending,depthWrite:false}));
+  const p=new THREE.Points(g,new THREE.PointsMaterial({size:kind==='snow'?.075:kind==='ash'?.11:kind==='fireflies'?.24:.18,vertexColors:true,transparent:true,opacity:kind==='snow'?.5:.85,blending:kind==='ash'?THREE.NormalBlending:THREE.AdditiveBlending,depthWrite:false}));
   p.renderOrder=3; p.userData={kind,st,base}; grp.add(p); EX.weather=p; EX.lifeT=6+Math.random()*6; EX.dripT=2; }
 function xWeatherTick(T,dt){ const W=EX.weather; if(!W) return; const a=W.geometry.attributes.position.array, c=W.geometry.attributes.color.array, {kind,st,base}=W.userData, cx=EX.px, cz=EX.pz; let rs=W.userData.rs|0||0x2545F491;
   for(let k=0;k<st.length;k++){ const s=st[k], i=k*3; let x=a[i], y=a[i+1], z=a[i+2], b=1;
@@ -944,7 +957,7 @@ function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalShee
       for(let k=0;k<3;k++){ const c=n+k*(dx+dy*XN); if(c<0||EX.t[c]!==T_FLOOR) break; quad(0,xw(c),xz(c),2.4-k*.4,5,0); } } }
   const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=0; grp.add(m); return m; };   // drawn before the darkness veil (1), so ground you have not found hides its stains, puddles and glowing pools
   mk(0,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.45));
-  EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  EX.puddles=mk(1,xLightMat(new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,depthWrite:false}),3));   // (a glowing pool lights the floor it lies on: xLightMat)
   mk(2,xNmapLuma(new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3}),.8)); }
 // glowing motes that rise and wink around the lights near you
 function xMotes(grp,A){ const N=X3&&X3.low?24:48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
@@ -966,31 +979,161 @@ function xAirTick(T,dt){
    mushrooms, candles, statues, banners, vines and cobwebs. Furniture is merged into one mesh per
    room (and one for the things that glow) so a floor stays cheap to draw. Nothing here blocks you. */
 // collect boxes, cylinders and the rest into one vertex-coloured geometry
-function xMerger(){ const P=[], N=[], C=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler();
-  return { add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
-      tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(sx||1,sy||1,sz||1)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
+// a unit eight-sided prism (1 across its flats, 1 tall, centred), its flats facing along x and z, flat-shaded
+let XOCT=null;
+function xOctPrism(){ if(XOCT) return XOCT; const g=new THREE.CylinderGeometry(.5/Math.cos(Math.PI/8),.5/Math.cos(Math.PI/8),1,8).toNonIndexed(); g.rotateY(Math.PI/8); g.computeVertexNormals(); return XOCT=g; }
+function xMerger(){ const P=[], N=[], C=[], XL=[], XN2=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(); let tex=false;
+  // M.mat: the material (XPROP_MATS) the pieces added next are painted with (xPropTex), null for flat colour, or 'auto'
+  // (the default): read from each piece's colour (xPropKind). M.tex: {s,o} lays the material on the next pieces at this
+  // scale and offset of their unit shape instead (a shelf's row of books fills one row of the painting). Each
+  // piece also keeps its own place and normal before it is turned and moved (shifted by a hash of where it stands, so
+  // two crates do not show the same boards), so its material stays on it however it is turned
+  const M={ mat:'auto', tex:null, add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
+      const p0=g.attributes.position.array, n0=g.attributes.normal.array, kx=sx||1, ky=sy||1, kz=sz||1, mk=M.mat==='auto'?xPropKind(col):M.mat, slot=mk?XPROP_MATS.indexOf(mk):-1, T=M.tex;
+      if(slot>=0) tex=true;
+      const hx=Math.sin(x*12.9898+z*78.233)*43758.5453, ox=hx-Math.floor(hx), oz=(hx*7.13)-Math.floor(hx*7.13), oy=(hx*3.71)-Math.floor(hx*3.71);
+      for(let i=0;i<p0.length;i+=3){ if(T) XL.push(p0[i]*T.s[0]+T.o[0],p0[i+1]*T.s[1]+T.o[1],p0[i+2]*T.s[2]+T.o[2],slot); else XL.push(p0[i]*kx+ox,p0[i+1]*ky+oy,p0[i+2]*kz+oz,slot); const a=n0[i]/kx, b=n0[i+1]/ky, c=n0[i+2]/kz, l=Math.hypot(a,b,c)||1; XN2.push(a/l,b/l,c/l); }
+      tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(kx,ky,kz)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
       for(let i=0;i<p.length;i++){ P.push(p[i]); N.push(n[i]); } for(let i=0;i<p.length/3;i++) C.push(c.r,c.g,c.b); g.dispose(); },
     size:()=>P.length,
-    build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3)); return new THREE.Mesh(g,mat); } }; }
+    build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
+      if(mat&&mat.userData.xprop){ g.setAttribute('aXL',new THREE.Float32BufferAttribute(XL,4)); g.setAttribute('aXN',new THREE.Float32BufferAttribute(XN2,3)); }
+      return new THREE.Mesh(g,mat); } };
+  return M; }
+/* The furniture's painted materials (docs/art-production/props/, the atlas sheets props and props-n: envArtProps). Laid on
+   in each piece's own space from its three sides (a tile a metre), a piece keeps its own colour and takes only the
+   painting's detail (the painting divided by its mean), with the relief of the material's height map and its
+   roughness on the shine (iron and brass shine most). The books are in the sheet but not laid on yet: their rows do not
+   meet the shelf boards. */
+const XPROP_MATS=['planks','rough-wood','iron','clay','cloth','carved-stone','bone','brass','books',
+  // round 2 (CHATGPT-PROMPTS-2.md): appended, never reordered (the index is the slot)
+  'dressed-stone','rough-rock','bark','fabric','furniture-wood','sandstone','end-grain','steel','marble','brick','leather','parchment','straw','soil','coal','fungus','basalt'];
+const XPROP_GLOSS={iron:1,brass:1,steel:1,marble:.5,leather:.3,bone:.35,'carved-stone':.3,clay:.25};
+// what a surface is made of, from its colour (as surface.js xpKind reads it): dark grey is iron, gold is brass, warm
+// brown is wood, pale is bone, the rest stone
+function xPropKind(col){ const c=col&&col.isColor?col:new THREE.Color(col), mx=Math.max(c.r,c.g,c.b), mn=Math.min(c.r,c.g,c.b), s=mx-mn, warm=c.r>=c.g&&c.g>=c.b;
+  if(mx<.2&&s<.06) return 'iron'; if(warm&&c.r>.55&&s>.3&&c.g>.35) return 'brass'; if(warm&&s>.1&&mx<.7) return 'planks'; if(mx>.72&&s<.25) return 'bone'; return 'carved-stone'; }
+// the furniture's painted materials on a lit material (its own patches kept): textured once the sheets are in (the
+// scene is built again when they arrive), as it was otherwise. one: the material's key for a single piece (laid on in
+// its own space, from its geometry and scale); without it, each vertex says (the merger's aXL and aXN)
+function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():null; if(!A||!m||m.userData.xprop||!(m.isMeshPhongMaterial||m.isMeshStandardMaterial)) return m;
+  const slot=one?XPROP_MATS.indexOf(one):0; if(one&&slot<0) return m;
+  const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
+  const low=!!(X3&&X3.low), std=!!m.isMeshStandardMaterial, prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
+  m.userData.xprop=one?2:1; m.userData.noProj=1; m.userData.xpropSlot=one?slot:-1;   // (instead of surface.js's code-painted pixel material)
+  if(m.specular&&m.specular.getHex()<0x2a2a2a) m.specular.set(0x2a2a2a);
+  m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
+  m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r);
+    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPT1:XPROPU.uPT1,uPT2:XPROPU.uPT2,uPT3:XPROPU.uPT3,uPT4:XPROPU.uPT4,uPT5:XPROPU.uPT5,uPD:{value:xPropNoise()},uPDN:XLITU.uXDetN,uXSharp:XLITU.uXSharp}); if(typeof xDetailN==='function') xDetailN();
+    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); vT1=vec4(0.,1.,1.,1.); vT2=vec4(1.,0.,1.,0.); vT3=vec4(0.,0.,1.,1.); vSlot=float(xs); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; vT1=uPT1[i]; vT2=uPT2[i]; vT3=uPT3[i]; }';
+    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform vec4 uPT1['+n+']; uniform vec4 uPT2['+n+']; uniform vec4 uPT3['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\nvoid main() {')
+      .replace('#include <begin_vertex>','#include <begin_vertex>\n'+(one
+        ?' { vec3 xp=transformed, xn=objectNormal;\n#ifdef USE_INSTANCING\n xp=(instanceMatrix*vec4(xp,1.0)).xyz-instanceMatrix[3].xyz; xn=mat3(instanceMatrix)*xn;\n#endif\n vXL=xp*vec3(length(modelMatrix[0].xyz),length(modelMatrix[1].xyz),length(modelMatrix[2].xyz))+fract(modelMatrix[3].xyz*.37)*3.; vXN=xn; int xs=int(uPS+.5); '+pick+' }'
+        :' vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); '+pick));
+    let f=sh.fragmentShader;
+    // the tuning (the Materials lab, XPROP_TUNE): vT1 hue (radians), saturation, contrast, brightness; vT2 roughness,
+    // metalness, normal, bump; vT3 height (cavities), ao (broad occlusion), scale (tiles a metre), detail (the painting's strength)
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN, uPD, uPDN; uniform float uPK, uPNK; uniform vec4 uPT4['+n+']; uniform vec4 uPT5['+n+']; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3; varying float vSlot;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
+      +'\nvec3 xHue(vec3 c,float a){ const mat3 toY=mat3(.299,.596,.211,.587,-.274,-.523,.114,-.322,.312); const mat3 toR=mat3(1.,1.,1.,.956,-.272,-1.106,.621,-.647,1.703); vec3 y=toY*c; float cs=cos(a), sn=sin(a); y.yz=vec2(y.y*cs-y.z*sn,y.y*sn+y.z*cs); return max(toR*y,vec3(0.)); }'
+      +'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xP=vXL*vT3.z; vec3 xdx=dFdx(xP), xdy=dFdy(xP); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1., xlum=0.;\n bool xon=vPR.z>0.;'
+      // the slot's texture place (rotation, offset) and its detail (the game's noises: xPropNoise, the walls' detail normal)
+      +'\n vec4 xT4=vec4(0.,8.,0.,0.), xT5=vec4(0.); int xsl=int(vSlot+.5); for(int i=0;i<'+n+';i++) if(i==xsl){ xT4=uPT4[i]; xT5=uPT5[i]; }'
+      +'\n mat2 xRot=mat2(cos(xT5.x),sin(xT5.x),-sin(xT5.x),cos(xT5.x)); vec2 xOff=xT5.yz;'
+      +'\n vec2 xu=xP.xy, xgx=xdx.xy, xgy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ xu=xP.zy; xgx=xdx.zy; xgy=xdy.zy; } else if(xan.y>=xan.z){ xu=xP.xz; xgx=xdx.xz; xgy=xdy.xz; }'
+      +'\n float xdv=.5; vec2 xdg=vec2(0.);'
+      +'\n if(xon&&xT4.x>.5){ vec2 du=xu*xT4.y, dgx=xgx*xT4.y, dgy=xgy*xT4.y;'
+      +'\n  if(xT4.x<1.5){ vec4 t=xAtS(uPDN,du,dgx,dgy); xdv=t.r*.5+t.g*.5; xdg=(t.xy*2.-1.)*.6; }'
+      +'\n  else { int ch=int(xT4.x+.5); float e=1./256.; vec4 a=xAtS(uPD,du,dgx,dgy), b=xAtS(uPD,du+vec2(e,0.),dgx,dgy), c=xAtS(uPD,du+vec2(0.,e),dgx,dgy);'
+      +'\n   vec4 m=ch==2?vec4(0.,0.,0.,1.):ch==3?vec4(1.,0.,0.,0.):ch==4?vec4(0.,1.,0.,0.):vec4(0.,0.,1.,0.); xdv=dot(a,m); xdg=vec2(xdv-dot(b,m),xdv-dot(c,m))*24.; } }');
+    f=f.replace('#include <color_fragment>',`#include <color_fragment>
+ if(xon){ vec3 c=vec3(0.);
+  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,xRot*xP.zy+xOff,xRot*xdx.zy,xRot*xdy.zy).rgb;
+  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,xRot*xP.xz+xOff,xRot*xdx.xz,xRot*xdy.xz).rgb;
+  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,xRot*xP.xy+xOff,xRot*xdx.xy,xRot*xdy.xy).rgb;
+  vec3 det=c/max(vPM.rgb,vec3(.02)); det=max(vec3(0.),1.+(det-1.)*vT1.z);
+  diffuseColor.rgb*=mix(vec3(1.),det,uPK*vT3.w); diffuseColor.rgb*=vT1.w;
+  float l=dot(diffuseColor.rgb,vec3(.299,.587,.114)); diffuseColor.rgb=max(mix(vec3(l),diffuseColor.rgb,vT1.y),vec3(0.));
+  if(xT4.z>.001) diffuseColor.rgb*=max(0.,1.+(xdv-.5)*2.*xT4.z);   // the detail noise in the colour
+  if(abs(vT1.x)>.001) diffuseColor.rgb=xHue(diffuseColor.rgb,vT1.x);
+  xlum=dot(c,vec3(.299,.587,.114)); }
+ vec2 xdB=vec2(dFdx(xlum),dFdy(xlum));`);
+    f=f.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+ if(xon){ vec2 u=xRot*xu+xOff, gx=xRot*xgx, gy=xRot*xgy;
+  vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=clamp(nt.b*vT2.x,0.,1.);
+  if(vT3.x>.001) diffuseColor.rgb*=pow(clamp(.25+nt.a*1.5,0.,1.),vT3.x);
+  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.2+hb*1.6,0.,1.),vT3.y); }${low?'':`
+  vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z+(xRot*xdg)*xT4.w,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
+  float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);
+  if(vT2.w>.001){ vec2 dB=xdB*vT2.w*2.; vec3 R1=cross(xq1,normal), R2=cross(normal,xq0); float fd=dot(xq0,R1); vec3 vg=sign(fd)*(dB.x*R1+dB.y*R2); normal=normalize(abs(fd)*normal-vg); }`} }`);
+    if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);')
+      .replace('#include <metalnessmap_fragment>','#include <metalnessmap_fragment>\n if(xon) metalnessFactor=max(metalnessFactor,vT2.y);');
+    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.;\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
+    sh.fragmentShader=f; };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xprop'+(one?'1':'')+(low?'l':'')+(std?'s':'');
+  m.needsUpdate=true; return m; }
+const xPropMat=()=>xPropTex(xPhong({vertexColors:true}));
+const XPROP_BOOKS=()=>typeof envArtProps==='function'&&!!envArtProps();
+const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPT4:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,8,0,0))}, uPT5:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,0,0))}, uPT1:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,1,1,1))}, uPT2:{value:XPROP_MATS.map(()=>new THREE.Vector4(1,0,1,0))}, uPT3:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,1,1))} };
+/* Each painted material's tuning (the Materials lab, matlab.js): the game's defaults (XPROP_TUNE_DEF, propmats.js, set from
+   the lab's JSON), then what was tuned in this browser on top. The uniforms are shared by every material, so a change shows
+   at once everywhere. */
+/* The detail noises the props can take (the Materials lab's Detail): the game's own. dnoise 1 is the walls' painted
+   detail normal (XLITU.uXDetN); 2-5 are channels of one repeating sheet made here: 2 cells (the Deeps rock's cell
+   noise when it has loaded, else cells worked out the same way), 3 broad noise, 4 fine noise, 5 grain (look.js xFbm, xNoise). */
+const XPROP_NOISES=['None','Painted detail (the walls\' relief)','Cells (the Deeps rock)','Broad noise','Fine noise','Grain'];
+let XPROP_NOISE=null;
+function xPropNoise(){ if(XPROP_NOISE) return XPROP_NOISE; const N=256, R=caveRng(5151), a=xFbm(N,R,3), b=xFbm(N,R,12), g=xNoise(N,64,R);
+  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }
+  const pts=[]; if(!cd) for(let k=0;k<40;k++) pts.push([R()*N,R()*N]);
+  const worley=(i,j)=>{ let d=1e9; for(const [px,py] of pts) for(const ox of [-N,0,N]) for(const oy of [-N,0,N]){ const dx=i-px-ox, dy=j-py-oy; d=Math.min(d,dx*dx+dy*dy); } return Math.min(1,Math.sqrt(d)/(N*.12)); };
+  const F=[new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N)];
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const o=j*N+i; F[0][o]=a(i,j); F[1][o]=b(i,j); F[2][o]=g(i,j); F[3][o]=cd?cd[o*4]/255:worley(i,j); }
+  for(const f of F){ let lo=1e9, hi=-1e9; for(const v of f){ lo=Math.min(lo,v); hi=Math.max(hi,v); } for(let o=0;o<f.length;o++) f[o]=(f[o]-lo)/Math.max(1e-6,hi-lo); }
+  const D=new Uint8Array(N*N*4); for(let o=0;o<N*N;o++){ D[o*4]=F[0][o]*255; D[o*4+1]=F[1][o]*255; D[o*4+2]=F[2][o]*255; D[o*4+3]=F[3][o]*255; }   // (raw data: a canvas would premultiply the cells in alpha into the other three)
+  const t=new THREE.DataTexture(D,N,N,THREE.RGBAFormat); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.generateMipmaps=true; t.anisotropy=4; t.needsUpdate=true; return XPROP_NOISE=t; }
+const XPROP_TUNE_KEYS=['hue','sat','con','bri','detail','rough','metal','normal','bump','height','ao','scale','rot','offu','offv','dnoise','dscale','dstr','drelief'];
+const XPROP_TUNE_ZERO={hue:0,sat:1,con:1,bri:1,detail:1,rough:1,metal:0,normal:1,bump:0,height:0,ao:0,scale:1,rot:0,offu:0,offv:0,dnoise:0,dscale:8,dstr:0,drelief:0};
+const XPROP_TUNE_STORE='hexmancers-propmats';
+let XPROP_TUNE={};
+function xPropTuneLoad(){ let mine={}; try{ mine=JSON.parse(localStorage.getItem(XPROP_TUNE_STORE)||'{}')||{}; }catch(e){}
+  const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{};
+  XPROP_TUNE={}; for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,def[k]||{},mine[k]||{}); xPropTuneApply(); }
+function xPropTuneApply(){ XPROP_MATS.forEach((k,i)=>{ const t=XPROP_TUNE[k]||XPROP_TUNE_ZERO;
+    XPROPU.uPT1.value[i].set(t.hue*Math.PI/180,t.sat,t.con,t.bri); XPROPU.uPT2.value[i].set(t.rough,t.metal,t.normal,t.bump); XPROPU.uPT3.value[i].set(t.height,t.ao,t.scale,t.detail); XPROPU.uPT4.value[i].set(t.dnoise,t.dscale,t.dstr,t.drelief); XPROPU.uPT5.value[i].set(t.rot*Math.PI/180,t.offu,t.offv,0); }); }
+// what this browser changed from the game's defaults (kept), and the full set as JSON (the lab's Copy)
+function xPropTuneSave(){ const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{}, out={};
+  for(const k of XPROP_MATS){ const base=Object.assign({},XPROP_TUNE_ZERO,def[k]||{}), d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-base[q])>1e-6) d[q]=XPROP_TUNE[k][q]; if(Object.keys(d).length) out[k]=d; }
+  try{ localStorage.setItem(XPROP_TUNE_STORE,JSON.stringify(out)); }catch(e){} }
+function xPropTuneJSON(){ const out={}; for(const k of XPROP_MATS){ const d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-XPROP_TUNE_ZERO[q])>1e-6) d[q]=+XPROP_TUNE[k][q].toFixed(3); if(Object.keys(d).length) out[k]=d; } return JSON.stringify(out,null,1); }
+xPropTuneLoad();
 const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
 // one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
-function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K)}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
+// what each kind of furniture is made of (xPropShader), and the colours within it that are something else
+const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay', bones:'bone', skulls:'bone', skeleton:'bone', rubble:'rough-rock', statue:'carved-stone',
+  shelf:'furniture-wood', rack:'rough-wood', table:'furniture-wood' };
+const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
+  0x684329:'books', 0x7a2a24:'leather', 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
+function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
+      T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
   const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;
   switch(kind){
-    case 'barrel': M.add(XG.cyl,W,x,.34,z,0,ry,0,.56,.68,.56); M.add(XG.cyl,IRON,x,.14,z,0,0,0,.58,.05,.58); M.add(XG.cyl,IRON,x,.54,z,0,0,0,.58,.05,.58); M.add(XG.cyl,W2,x,.69,z,0,0,0,.5,.02,.5); break;
+    case 'barrel': M.add(XG.cyl,W,x,.34,z,0,ry,0,.56,.68,.56); M.add(XG.cyl,IRON,x,.14,z,0,0,0,.58,.05,.58); M.add(XG.cyl,IRON,x,.54,z,0,0,0,.58,.05,.58); M0.force='planks'; M.add(XG.cyl,W2,x,.69,z,0,0,0,.5,.02,.5); delete M0.force; break;   // (the head: boards across)
     case 'crate': { const s=.5+R()*.15; M.add(XG.box,0x8a6034,x,s/2,z,0,ry+R()*.4,0,s,s,s); M.add(XG.box,W2,x,s/2,z,0,ry,0,s*1.02,s*.14,s*1.02); if(R()<.5) M.add(XG.box,0x8a6034,x+.05,s+s*.35,z,0,ry+.6,0,s*.7,s*.7,s*.7); break; }
     case 'sack': M.add(XG.ball,0xb09060,x,.22,z,0,ry,0,.5,.44,.46); M.add(XG.cone,0xa08050,x,.48,z,0,0,0,.2,.16,.2); break;
     case 'urn': { const c=R()<.5?0xb05a30:0x8a6a4a; M.add(XG.ball,c,x,.3,z,0,0,0,.42,.5,.42); M.add(XG.cyl,c,x,.6,z,0,0,0,.2,.16,.2); M.add(XG.cyl,0x3a2014,x,.67,z,0,0,0,.26,.03,.26); M.add(XG.cyl,0x1a0e08,x,.3,z,0,0,0,.43,.05,.43); break; }
     case 'bones': for(let k=0;k<3;k++) M.add(XG.box,BONE,x+(R()-.5)*.5,.03,z+(R()-.5)*.5,0,R()*3,0,.42,.05,.06); M.add(XG.ball,BONE,x+(R()-.5)*.3,.1,z+(R()-.5)*.3,0,0,0,.2,.18,.2); break;
     case 'skulls': for(let k=0;k<4;k++) M.add(XG.ball,BONE,x+(k%2-.5)*.22,.1+(k>1?.15:0),z+(k>1?0:(R()-.5)*.2),0,0,0,.2,.18,.2); break;
     case 'rubble': for(let k=0;k<4;k++){ const s=.15+R()*.25; M.add(XG.rock,R()<.5?st:dk,x+(R()-.5)*.6,s*.4,z+(R()-.5)*.6,R()*3,R()*3,0,s,s,s); } break;
-    case 'statue': M.add(XG.box,dk,x,.25,z,0,ry,0,.62,.5,.62); M.add(XG.box,st,x,.6,z,0,ry,0,.36,.3,.3); M.add(XG.ball,st,x,.92,z,0,0,0,.28,.3,.28); M.add(XG.box,st,x,.62,z,0,ry,0,.62,.1,.14); break;
+    case 'statue': M0.force='dressed-stone'; M.add(XG.box,dk,x,.25,z,0,ry,0,.62,.5,.62); delete M0.force; M.add(XG.box,st,x,.6,z,0,ry,0,.36,.3,.3); M.add(XG.ball,st,x,.92,z,0,0,0,.28,.3,.28); M.add(XG.box,st,x,.62,z,0,ry,0,.62,.1,.14); break;
     case 'candles': for(let k=0;k<3;k++){ const cx=x+(k-1)*.16, h=.14+R()*.14; M.add(XG.cyl,0xeae2c8,cx,h/2,z+(R()-.5)*.1,0,0,0,.07,h,.07); L.add(XG.cone,0xffc060,cx,h+.06,z,0,0,0,.05,.1,.05); } break;
     case 'shelf': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs];   // u along the wall, v out from it
       const [a0,b0]=at(0,0); M.add(XG.box,W2,a0,.68,b0,0,ry,0,.92,1.36,.3);
       for(let r=0;r<3;r++){ const y=.18+r*.4; const [a1,b1]=at(0,.02); M.add(XG.box,W,a1,y,b1,0,ry,0,.88,.04,.3);
-        let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04); M.add(XG.box,[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0],bx,y+.02+h/2,bz,0,ry,R()<.15?.25:0,w,h,.2); u+=w+.01; } } break; }
+        const books=XPROP_BOOKS();   // the painted books: a row of the painting (a quarter of it, the joints at the quarters) along each board
+        if(books){ const [bx,bz]=at(0,.04), h=.3, w=.84, hs=Math.abs(Math.sin(bx*12.99+bz*78.23+r*3.1)*43758.5); M0.tex={s:[w/h*.23,.23,.23],o:[hs%4,.135+((hs*7|0)%4)*.25,0]}; M.add(XG.box,0x684329,bx,y+.02+h/2,bz,0,ry,0,w,h,.2); M0.tex=null; }
+        // (the modelled books otherwise; their dice are thrown either way, so the rest of the floor's dressing stays the same)
+        let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04), col=[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0], tilt=R()<.15?.25:0; if(!books) M.add(XG.box,col,bx,y+.02+h/2,bz,0,ry,tilt,w,h,.2); u+=w+.01; } } break; }
     case 'rack': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs]; for(const u of [-.36,.36]){ const [a,b]=at(u,0); M.add(XG.box,W2,a,.5,b,0,ry,0,.06,1,.06); }
       { const [a,b]=at(0,0); M.add(XG.box,W2,a,.82,b,0,ry,0,.82,.05,.06); M.add(XG.box,W2,a,.3,b,0,ry,0,.82,.05,.06); }
       for(let k=0;k<4;k++){ const u=-.27+k*.18, [a,b]=at(u,.06); M.add(XG.cyl,0x5a4030,a,.6,b,0,0,(R()-.5)*.1,.025,1.2,.025); L.add(XG.cone,0xb8c0c8,a,1.24,b,0,0,0,.05,.12,.05); }
@@ -1031,12 +1174,14 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   trims.forEach(([c,dx,dy],k)=>{ const a=EX.dress.get(c)||{}; (a.trim=a.trim||[]).push([k,dx,dy]); EX.dress.set(c,a); });
   // along the same room faces: a stone cornice at the top (the lit line sits on it) and a dark skirting at the foot
   const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,cells)=>xChunkInst(grp,XG.box,mat,cells);
-  EX.corMesh=inst(xDitherMat(xPhong({color:tone(.62)})),trimCells); EX.skirtMesh=inst(xDitherMat(xPhong({color:tone(.16)})),trimCells);
-  // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
-  // where the halls are built, rough rock columns in the caves
-  const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
-  EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),pills);
-  EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills); EX.pillCave=cave;
+  EX.corMesh=inst(xPropTex(xDitherMat(xPhong({color:tone(.62)})),'dressed-stone'),trimCells); EX.skirtMesh=inst(xPropTex(xDitherMat(xPhong({color:tone(.16)})),'dressed-stone'),trimCells);
+  // pillars by area: carved columns (a base, a shaft standing proud of the wall, a capital) where the halls are built,
+  // rough rock columns in the caves. The carved ones are eight-sided, a face square to each wall: what stands out of
+  // the wall is a flat face with its corners bevelled back at 45 degrees (xOctPrism)
+  const cave=EX.natural||['crystal','lava','stars'].includes(A.veins), oct=cave?null:xOctPrism(), shaftG=cave?xRockShaft():oct, pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
+  const pk=cave?(A.id==='rifts'?'basalt':'rough-rock'):'dressed-stone';   // (built columns are dressed stone; the caves' are the rock)
+  EX.pillBase=xChunkInst(grp,oct||XG.box,xLitTag(xPropTex(xDitherMat(xPhong({color:pc2})),pk),2),pills); EX.pillShaft=xChunkInst(grp,shaftG,xLitTag(xPropTex(xDitherMat(xPhong({color:pc})),pk),2),pills);
+  EX.pillCap=xChunkInst(grp,oct||XG.box,xPropTex(xDitherMat(xPhong({color:pc2})),pk),pills); EX.pillCave=cave;
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
@@ -1066,13 +1211,13 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
     const faces=[]; for(let x=r.x;x<r.x+r.w;x++) if(EX.room[xi(x,r.y)]===r.id&&rock(x,r.y-1)&&!used.has(xi(x,r.y-1))) faces.push([x,r.y-1,0,1]);
     for(let k=0;k<(rk==='shrine'?2:rk==='store'?1:area==='hollows'?2:0)&&faces.length;k++){ const [x,y,dx,dy]=faces.splice(R()*faces.length|0,1)[0]; used.add(xi(x,y));
       const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,(y+1)*XCS+.03);
-      if(rk==='cave'&&area==='hollows'){ for(let v=0;v<3;v++){ const h=.8+R()*1.2; g.add(xBox(.07,h,.03,xMat(0x3f7a3a),(v-1)*.35+(R()-.5)*.1,XWALL-h/2,0)); g.add(xBox(.2,.12,.03,xMat(0x5a9a4a),(v-1)*.35,XWALL-h+.1,0)); } }
+      if(rk==='cave'&&area==='hollows'){ for(let v=0;v<3;v++){ const h=.8+R()*1.2; g.add(xBox(.07,h,.03,xMat(0x3f7a3a,{flat:true}),(v-1)*.35+(R()-.5)*.1,XWALL-h/2,0)); g.add(xBox(.2,.12,.03,xMat(0x5a9a4a,{flat:true}),(v-1)*.35,XWALL-h+.1,0)); } }
       else { const cl=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').multiplyScalar(.55), cloth=new THREE.Group();
-        cloth.add(xBox(.9,1.3,.03,xMat(cl),0,-.65,0), xBox(.9,.08,.04,xMat(0x2a2620),0,0,0), xBox(.24,.24,.04,xMat(new THREE.Color(A.glow).multiplyScalar(.8)),0,-.6,.01));
+        cloth.add(xBox(.9,1.3,.03,xMat(cl,{mat:'fabric'}),0,-.65,0), xBox(.9,.08,.04,xMat(0x2a2620),0,0,0), xBox(.24,.24,.04,xMat(new THREE.Color(A.glow).multiplyScalar(.8)),0,-.6,.01));
         cloth.position.y=XWALL-.15; g.add(xBox(1.05,.06,.06,xMat(0x2a2620),0,XWALL-.12,0), cloth); g.userData.sway=cloth; }
       g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,y),floor:xi(x,y+1),sway:g.userData.sway,ph:R()*6}); }
     if(!M.size()&&!L.size()) return;
-    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); for(const fb of FBs.values()) if(fb.size()) grpR.add(fb.build()); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
+    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPropMat())); for(const fb of FBs.values()) if(fb.size()) grpR.add(fb.build()); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
     grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
 }
 // a standing brazier: an iron bowl on three legs, a fire and a real light (it joins the floor's lights)
@@ -1191,7 +1336,12 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), PT=A&&A.id==='ruins
   if(pos.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.computeVertexNormals();
     const band=new THREE.Mesh(g,mat); band.position.y=.012; grp.add(band); } }
 // a soft pool of colored light on the floor in front of a wall light (an additive decal: cheap, no real light)
-function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
+/* A light on the floor: it brightens what it falls on (the floor times one and a bit) instead of adding a flat colour, so
+   a pool on dark stone stays stone, only lit, and never reads as a sticker. Premultiplied, so the glow texture's
+   alpha and the opacity (the flicker, xDrawGlows) still shape it; gain: how strong at its middle. */
+function xLightMat(m,gain){ m.blending=THREE.CustomBlending; m.blendEquation=THREE.AddEquation; m.blendSrc=THREE.DstColorFactor; m.blendDst=THREE.OneFactor;
+  m.premultipliedAlpha=true; m.color.multiplyScalar(gain*XLIT.poolGain); m.userData.lightGain=gain; return m; }
+function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),xLightMat(new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,depthWrite:false}),3.2));
   m.rotation.x=-Math.PI/2; m.position.set(0,.06,size*.32); m.renderOrder=2; m.userData.pool=1; return m; }
 // a group is gone (beaten): take every piece of it off the map, its name tag and rings too
 function xDropGroup(g){ for(const o of [g.sprite,g.zz,g.bang,g.ring,g.tag,g.base,g.label]){ if(!o) continue; if(o.parent) o.parent.remove(o);
@@ -1314,6 +1464,7 @@ function xCourses(t){ if(!t) return null; if(t.courses!==undefined) return t.cou
     if(t.atlas){ const im=t.img, W=im.naturalWidth||im.width, H=im.naturalHeight||im.height, r=t.rect; x.drawImage(im,r[0]*W,(1-r[1]-r[3])*H,r[2]*W,r[3]*H,0,0,N,N); }
     else x.drawImage(t,0,0,N,N);
     const d=x.getImageData(0,0,N,N).data, row=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let i=0;i<N;i++){ const o=(j*N+i)*4; a+=d[o]+d[o+1]+d[o+2]; } row[j]=a/(3*N); }
+    { let r=0,g=0,b=0; for(let i=0;i<d.length;i+=4){ r+=d[i]; g+=d[i+1]; b+=d[i+2]; } const k=255*N*N; t.mean=[r/k,g/k,b/k]; }   // (the tops' colour: xWallMaskShader)
     const dt=new Float32Array(N); for(let j=0;j<N;j++){ let a=0; for(let k=-15;k<=15;k++) a+=row[(j+k+N)%N]; dt[j]=row[j]-a/31; }
     L=[]; for(let j=0;j<N;j++){ let m=true; for(let k=-3;k<=3;k++) if(dt[(j+k+N)%N]<dt[j]) m=false; if(m&&dt[j]<-8&&(!L.length||j-L[L.length-1]*N>12)) L.push((j+.5)/N); }
     if(L.length>1&&(L[0]+1-L[L.length-1])*N<=12){ const a=Math.round(L[0]*N-.5), b=Math.round(L[L.length-1]*N-.5); if(dt[a]<=dt[b]) L.pop(); else L.shift(); }   // (one line across the tile's wrap, found at both ends)
@@ -1337,6 +1488,7 @@ float xq8(vec3 n){ return mod(floor(atan(n.z,n.x)*1.2732+.5)+8.0,8.0); }   // (w
 float xLineK(vec3 p,vec3 n){ return floor(dot(p,n)/${'2.0'}+.5)*11.0+xq8(n); }
 `;
 function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L=dressed?o.courses:null, n=L?L.length:0;
+  const top=dressed&&o.top; if(top) sh.uniforms.uXTopC={value:new THREE.Vector3(o.top[0],o.top[1],o.top[2])};
   if(dressed){ sh.uniforms.uXCB={value:(L||[]).concat([2,2,2,2,2,2]).slice(0,6)}; sh.uniforms.uXCN={value:n}; }
   // the vertex: the face's normal across the floor, where its block stands along it, and at each end of it the face
   // that comes next round a corner (vXG: its normal, the plus end's then the minus end's) and which way that face's
@@ -1371,7 +1523,7 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
   sh.vertexShader=v;
   let f=sh.fragmentShader;
   if(dressed) f=f.replace('#include <uv_pars_fragment>','#if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )\n\tvarying vec2 vUvR;\n\tvec2 vUv;\n#endif');
-  f='varying vec4 vXF; varying vec4 vXG; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
+  f='varying vec4 vXF; varying vec4 vXG; varying float vXIC; uniform sampler2D uXFog; uniform float uXFogK;\n'+(top?'uniform vec3 uXTopC;\n':'')+(dressed?'uniform float uXCB[6]; uniform float uXCN;\n':'')+XWM_GLSL+f;
   if(dressed) f=f.replace('void main() {',`void main() {
   #if ( defined( USE_UV ) && ! defined( UVS_VERTEX_ONLY ) )
   vUv=vUvR;
@@ -1390,6 +1542,12 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
     vUv.x=u;
     if(uXCN>.5) vUv.x+=xh2(vec2(id,xLineK(lp,ln))); }
   #endif`);
+  // the tops: the wall tile's own mean colour (each top showed one point of it, so the caps were a field of random
+  // swatches), each cap a little lighter or darker, and on a spacious floor darker the further it is from open floor
+  if(top) f=f.replace('#include <map_fragment>',THREE.ShaderChunk.map_fragment.replace('diffuseColor *= texelColor;',`if(dot(vXF.xy,vXF.xy)<.5&&vXWP.y>.5){ vec3 tc=uXTopC*(.86+.16*xh3(floor(vXWP*vec3(1.0,4.0,1.0))));
+  ${o.corn?'tc*=mix(1.0,.5,smoothstep(.3,.95,texture2D(uSolid,vXWP.xz/uSolidK.x).b));':''}
+  texelColor.rgb=tc; }
+  diffuseColor *= texelColor;`));
   // the light and the foot, on the block's colour
   f=f.replace('#include <color_fragment>',`#include <color_fragment>
   { vec2 n2=vXF.xy; bool side=dot(n2,n2)>.5; vec2 t2=side?vec2(n2.y,-n2.x):vec2(.7071,.7071);
@@ -1402,7 +1560,7 @@ function xWallMaskShader(sh,o){ const dressed=o.dressed, corn=o.corn&&dressed, L
       float g=1.0-smoothstep(fh-.2,fh,vXWP.y); diffuseColor.rgb*=mix(1.0,${o.rock?'.82':'.7'},g); } }`);
   sh.fragmentShader=f; }
 function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XSINK_CLIP; if(clip) m.side=THREE.DoubleSide; bev=sink&&bev||0; if(uvj===2) m.userData.xrock=1; if(uvj===true) m.userData.xgrad=1;   // (its relief laid like its colour: look.js xRockNormal)
-  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
+  m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v':'')+(m.map?'m':'')+(uvj?'j'+uvj:'')+(m.userData.xtop?'t':'')+(sink?'s':'')+(door?'d':'')+(clip?'c':'')+(bev?'b'+bev:'');
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,XDITHER); if(sink) xSinkShader(sh,door,clip);
     // uvj 2 (rough rock, which has no courses to keep level): each block shows its own half of a texture twice the size,
     // anywhere in it, so no two blocks share a face.
@@ -1413,7 +1571,7 @@ function xDitherMat(m,uvj,bev){ const sink=XSINK, door=XSINK_DOOR, clip=sink&&XS
       // dressed walls: a side's u runs along the wall in the world (a block's width to a texture), so the courses run
       // on unbroken from block to block; its v is the block's own, so they stay level. The tops keep the shift.
       'vec3 wn=mat3(modelMatrix)*(mat3(instanceMatrix)*normal), wp=(modelMatrix*(instanceMatrix*vec4(position,1.0))).xyz;\n    if(abs(wn.y)<.5){ wn=normalize(vec3(wn.x,0.0,wn.z)); vUv.x=dot(wp,vec3(wn.z,0.0,-wn.x))/'+XCS.toFixed(1)+'; }\n    else vUv+=vec2(floor(hh*4.0)*.25+.13,floor(fract(hh*7.13)*4.0)*.25);')+' }\n  #endif');
-    if(uvj) xWallMaskShader(sh,{dressed:uvj===true, rock:uvj===2, courses:m.userData.xcourse, corn:sink, solidDeclared:!!bev});
+    if(uvj) xWallMaskShader(sh,{dressed:uvj===true, rock:uvj===2, courses:m.userData.xcourse, top:m.userData.xtop, corn:sink, solidDeclared:!!bev});
     sh.vertexShader='varying vec3 vXWP;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xwp=instanceMatrix*xwp;\n  #endif\n  vXWP=(modelMatrix*xwp).xyz;');
     // uvj 2 (rough rock): the stone is laid in world space round the whole wall, not per block (xRockShader)
     if(uvj===2) xRockShader(sh);
@@ -1452,7 +1610,9 @@ function xRockShader(sh){
     +sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   #if defined(USE_INSTANCING)&&__VERSION__>=300
   { vec3 wq=(modelMatrix*(instanceMatrix*vec4(transformed,1.0))).xyz, d=vec3(xrn(wq),0.0,xrn(wq.zyx+7.3))*.38*smoothstep(.05,.9,wq.y);
-    d.y+=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55*smoothstep(uXTopY-.9,uXTopY-.3,position.y);   // (the top's ring of the sides rises with the cap, so they stay joined)
+    { float lift=xrn(vec3(wq.x*.35,1.0,wq.z*.35))*.55*smoothstep(uXTopY-.9,uXTopY-.3,position.y);   // (the top's ring of the sides rises with the cap, so they stay joined)
+      if(length(instanceMatrix[1].xyz)<.98) lift=min(lift,0.0);   // a block cut down low (a near wall standing low, xStepLow) only dips: a flat cap lies on it, and a rising top came up through the cap as dark shards
+      d.y+=lift; }
     transformed+=inverse(mat3(modelMatrix)*mat3(instanceMatrix))*d; }
   #endif`);
   sh.vertexShader='varying vec3 vXWN;\n'+sh.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n  { vec3 xn=objectNormal;\n  #ifdef USE_INSTANCING\n  xn=mat3(instanceMatrix)*xn;\n  #endif\n  vXWN=normalize(mat3(modelMatrix)*xn); }');
@@ -2149,6 +2309,7 @@ function xDraw(T,dt){
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
   EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz);
+  if(EX.meShadow){ EX.meShadow.position.x=EX.px; EX.meShadow.position.z=EX.pz+.3; EX.meShadow.material.opacity=XLIT.heroShadow*(1-.35*step); }
   // your picture is looked up again when your pose, view or facing changes, and a few times a second besides (new gear,
   // a picture that has just loaded), not every frame: the lookup builds a description of your gear each time
   { const M=EX.me.userData, fl=EX.face<0; if(M.pose!==EX.pose||M.view!==EX.view||M.fl!==fl||!M.img||(M.age=(M.age||0)+1)>15){ M.pose=EX.pose; M.view=EX.view; M.fl=fl; M.age=0; xRefresh(EX.me,fl); } }

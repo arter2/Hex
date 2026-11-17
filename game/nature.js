@@ -130,7 +130,7 @@ function xNatMat(kind,K){ const ice=(kind==='mite'&&K.mite&&K.mite.ice)||(kind==
   else if(ice) m=xPhong({color:0xffffff, shininess:90, specular:0x9fd8ff, transparent:true, opacity:.82, pbr:'ice'});
   else if(kind==='clump'||kind==='clumpTop') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a});
   else if(kind==='vine') m=xPhong({color:0xffffff, shininess:2, specular:0x0a0a0a, side:THREE.DoubleSide});
-  else m=xPhong({color:0xffffff, shininess:kind==='block'?6:10, specular:0x161616});
+  else { m=xPhong({color:0xffffff, shininess:kind==='block'?6:10, specular:0x161616}); if(kind==='block'&&typeof xPropTex==='function') xPropTex(m,EX.area&&EX.area.id==='rifts'?'basalt':'rough-rock'); }   // (rock blocks: the painted rough rock)
   if(kind!=='shard') m.userData.xao=2;   // (the foot shade of things standing on the floor; their faces get their material and relief from surface.js)
   return typeof xSinkPatch==='function'?xSinkPatch(m):m; }
 
@@ -175,9 +175,11 @@ function xNatPatches(grp,K,R,floorOK,pz,A){ if(!K.patch) return;
     for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]){ const w=c+dx+dy*XN; if(!EX.wIdx.has(w)||R()>K.patch.n) continue;
       quad(xw(c)+dx*.55+(R()-.5)*.6,xz(c)+dy*.55+(R()-.5)*.6,1.4+R()*1.2,.9+R()*.8,dx?Math.PI/2:0); } }
   if(!P.length) return; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U,2)); g.computeVertexNormals();
-  const mesh=new THREE.Mesh(g,xNmapLuma(new THREE.MeshPhongMaterial({map:tex,color:new THREE.Color(K.patch.col),transparent:true,opacity:.7,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.5));
+  const mesh=new THREE.Mesh(g,xNmapLuma(new THREE.MeshPhongMaterial({map:tex,color:new THREE.Color(K.patch.col),transparent:true,opacity:.7*(1-.5*xLuma(K.patch.col)),depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}),.5));
   mesh.renderOrder=0; mesh.userData.natPatch=1; grp.add(mesh); }
 
+// how bright a colour is (0 black to 1 white): a pale patch, snow or frost, is laid thinner (it read as white paint)
+function xLuma(c){ const k=new THREE.Color(c); return .2126*k.r+.7152*k.g+.0722*k.b; }
 /* Pools: a few still pools on the floor of the rooms, each a blob over a few free cells (never on a door, the stairs,
    a chest, a trap, a puzzle's room or anything standing), drawn as one plane with a soft-edged shape of its own and a
    slowly moving surface; lava glows. Just for looks: you walk through them. */

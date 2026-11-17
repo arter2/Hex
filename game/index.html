@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>Hexmancers v315</title>
-<meta name="application-version" content="315">
+<title>Hexmancers v316</title>
+<meta name="application-version" content="316">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -515,6 +515,7 @@
       <p class="hint">What do you want to test?</p>
       <button id="lpMove" class="btn lpopt sel"><img src="art/menu/lp-move.webp" alt=""><i></i><span><b>Movement</b><small>Walking, the joystick and dodging shots</small></span></button>
       <button id="lpFoes" class="btn lpopt"><img src="art/menu/lp-foes.webp" alt=""><i></i><span><b>Enemies</b><small>Summon any enemy, see and change its attacks</small></span></button>
+      <button id="lpMats" class="btn lpopt"><img src="art/menu/lp-foes.webp" alt=""><i></i><span><b>Materials</b><small>A studio turntable: every prop under every light, and tune each material</small></span></button>
       <button id="lpCancel" class="btn ghost" hidden>Cancel</button>
     </div>
   </div>
@@ -784,6 +785,15 @@
       <div class="srow"><span>Vignette<small>Darkens the edges of the frame, in the dungeon and the battle. 0 turns it off.</small></span><span class="srange"><input id="dbg_vig" type="range" min="0" max="2" step="0.01"><b id="dbg_vigV"></b></span></div>
       <div class="srow"><span>Vignette start<small>How far from the middle the darkening begins (0 the middle, 1 the corners).</small></span><span class="srange"><input id="dbg_vigR" type="range" min="0" max="2.5" step="0.01"><b id="dbg_vigRV"></b></span></div>
       <div class="srow"><span>Vignette softness<small>Over how far the darkening fades in.</small></span><span class="srange"><input id="dbg_vigSoft" type="range" min="0.05" max="3" step="0.01"><b id="dbg_vigSoftV"></b></span></div>
+      <h3>Colour (the dungeon)</h3>
+      <div class="srow"><span>Brightness<small>The dungeon's exposure, after everything is drawn. 1 leaves it as drawn.</small></span><span class="srange"><input id="dbg_gExp" type="range" min="0.5" max="2" step="0.01"><b id="dbg_gExpV"></b></span></div>
+      <div class="srow"><span>Contrast<small>Spreads the darks and lights apart (about a mid grey). 1 leaves it as drawn.</small></span><span class="srange"><input id="dbg_gCon" type="range" min="0.5" max="2" step="0.01"><b id="dbg_gConV"></b></span></div>
+      <div class="srow"><span>Saturation<small>How strong the colours are. 1 leaves it as drawn, 0 is grey.</small></span><span class="srange"><input id="dbg_gSat" type="range" min="0" max="2" step="0.01"><b id="dbg_gSatV"></b></span></div>
+      <div class="srow"><span>Split tone<small>Cool shadows and warm lights, so the walls, the floor and the lit spots part. 0 turns it off.</small></span><span class="srange"><input id="dbg_gSplit" type="range" min="0" max="2" step="0.01"><b id="dbg_gSplitV"></b></span></div>
+      <div class="srow"><span>Area tint in the light<small>How much of the area's colour the ambient light and your lamp take. 1 is as it was; lower keeps the walls and floor their own colours.</small></span><span class="srange"><input id="dbg_gTint" type="range" min="0" max="1.5" step="0.01"><b id="dbg_gTintV"></b></span></div>
+      <div class="srow"><span>Light pools<small>How strongly the torch and glow pools brighten the floor they fall on (from the next floor). 1 is normal.</small></span><span class="srange"><input id="dbg_poolGain" type="range" min="0" max="3" step="0.01"><b id="dbg_poolGainV"></b></span></div>
+      <div class="srow"><span>Hero shadow<small>How dark the soft shadow under you is. 0 turns it off.</small></span><span class="srange"><input id="dbg_heroShadow" type="range" min="0" max="1" step="0.01"><b id="dbg_heroShadowV"></b></span></div>
+      <div class="srow"><span>Hero tint<small>How much of your lamp's colour and dimness your picture takes, so you sit in the light. 0 is the picture as painted.</small></span><span class="srange"><input id="dbg_heroTint" type="range" min="0" max="1" step="0.01"><b id="dbg_heroTintV"></b></span></div>
       <h3>Walls</h3>
       <div class="srow"><span>See-through ball<small>Radius in tiles of the dither ball in front of you, on walls that are not cut.</small></span><span class="srange"><input id="setXBall" type="range" min="0" max="12" step="0.05"><b id="setXBallV"></b></span></div>
       <div class="srow"><span>See-through strip<small>How far either side of you, in tiles, the walls in front fade with alpha.</small></span><span class="srange"><input id="setXStrip" type="range" min="0" max="16" step="0.05"><b id="setXStripV"></b></span></div>
@@ -857,6 +867,7 @@
 <script src="envart.js"></script>
 <script src="mold.js"></script>
 <script src="mushrooms.js"></script>
+<script src="propmats.js"></script>
 <script src="explore.js"></script>
 <script src="roomshapes.js"></script>
 <script src="dungeongen.js"></script>
@@ -880,6 +891,7 @@
 <script src="cardlab.js"></script>
 <script src="movelab.js"></script>
 <script src="enemylab.js"></script>
+<script src="matlab.js"></script>
 <script src="settingsui.js"></script>
 <div id="fadeVeil" aria-hidden="true"></div>
 </body>

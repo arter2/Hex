@@ -68,6 +68,12 @@ function arenaProject(wx,y,wz){ const A=AR; if(!A||!A.w) return [0,0]; const v=a
 /* ---------------- building the arena ---------------- */
 // every material the arena made, so a new battle frees the old ones
 function arMat(m){ (AR.mats||(AR.mats=[])).push(m); return m; }
+// a painted prop material (explore.js xPropTex) in the area's stone tone, or null while the props sheets load (the caller
+// then keeps its old texture). Each kind of thing has its own: the rocks rough rock (basalt in the Rifts), the dais and
+// the built pillars dressed stone; they no longer share one cached texture.
+function arPropMat(Ar,key,v){ if(typeof xPropTex!=='function') return null; const st=(Ar&&Ar.stone)||AREAS[0].stone, m=xPhong({color:new THREE.Color('rgb('+xTone(st,v==null?.5:v).join(',')+')')});
+  return xPropTex(m,key).userData.xprop?arMat(xLitTag(m,2)):null; }
+const arRocky=Ar=>Ar&&Ar.id==='rifts'?'basalt':'rough-rock';
 function arenaClear(){ const A=AR; if(!A||!A.grp) return; A.scene.remove(A.grp);
   A.grp.traverse(o=>{ if(o.geometry) o.geometry.dispose(); });
   for(const m of A.mats||[]) xFreeMat(m); A.mats=[];   // with each material's own normal and roughness maps
@@ -330,7 +336,7 @@ function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.unit
   if(!U){ let mesh; const cage=kind==='cage', wall=kind==='wall'||cage, h=cage?.5:wall?.9:.75;   // a cage is low and see-through, so the enemy inside and its tells stay readable
     const geo=SQUARE?new THREE.CylinderGeometry(wall?.86:.94,wall?.9:1,h,4,1,false,Math.PI/4):new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,h,6,1,false,Math.PI/6); geo.translate(0,h/2,0);
     if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong(Object.assign({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(cage?.45:.25)},cage?{transparent:true,opacity:.45,depthWrite:false}:{}))));
-    else { const t=A.rockTex||(A.rockTex=arTex(xTex(arArt(A.area,'rock',()=>xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2)),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
+    else { const pm=arPropMat(A.area,arRocky(A.area),.45); if(pm){ mesh=new THREE.Mesh(geo,pm); } else { const t=A.rockTex||(A.rockTex=arTex(xTex(arArt(A.area,'rock',()=>xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2)),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); } }
     A.grp.add(mesh); U={g:mesh,block:true}; A.units.set(u,U); }
   U.seen=A.frameN; U.g.visible=true; U.g.position.copy(arW(u.tile.wx,0,u.tile.wz));
   if(kind==='rock'&&U.g.material.emissive) U.g.material.emissive.set(col?0x303840:0x000000); }
@@ -419,8 +425,8 @@ const ARENA_LOOK={
       L.forEach(l=>{ l.color.set('#9fd8ff'); l.distance=16; });
       return (T,dt)=>{ L[0].intensity=.9; L[1].intensity=.8+.15*Math.sin(T*.8); L[2].intensity=boss?1.4+.3*Math.sin(T*2):0;
         ice.emissive.set('#bfeaff').multiplyScalar(.2+.08*Math.sin(T*1.2)); if(falls) falls.emissive.set('#e6f6ff').multiplyScalar(.35+.15*Math.sin(T*2.4)); arCloudTick(sn,T,dt); }; } },
-  vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8,{pbr:'gloss'});
-      const tex=A.rockTex||(A.rockTex=arTex(xTex(arArt(Ar,'rock',()=>xBlockWall(Ar.stone,(Ar.index||0)*7+2,false)),true))), pil=arMat(xLitTag(xPhong({map:tex}),2,tex.image));
+  vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arPropMat(Ar,'dressed-stone',.4)||arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8,{pbr:'gloss'});
+      const tex=A.pillarTex||(A.pillarTex=arTex(xTex(arArt(Ar,'rock',()=>xBlockWall(Ar.stone,(Ar.index||0)*7+2,false)),true))), pil=arPropMat(Ar,'dressed-stone',.55)||arMat(xLitTag(xPhong({map:tex}),2,tex.image));
       for(let k=0;k<(boss?6:4);k++){ const sd=k%2?1:-1, wx=m.near+3+(k>>1)*((m.back-m.near-4)/2.5), h=1.5+R()*2.5; arPut(A,new THREE.CylinderGeometry(.45,.5,h,8),pil,wx,h/2-SLAB,sd*(m.side-.6)); }
       const stones=[]; for(let k=0;k<4;k++){ const sd=k%2?1:-1; stones.push(arPut(A,new THREE.OctahedronGeometry(.35,0),glow,m.near+5+k*3,2.4,sd*(m.side-.7))); }
       if(boss){ A.scene.background=new THREE.Color('#2a2650'); }
@@ -434,12 +440,12 @@ const ARENA_LOOK={
   rifts:{ build(A,R,Ar,boss,m){ const L=A.plights, li=typeof envArtArena==='function'&&envArtArena(Ar.id,'lava'), lt=li?arTex(xTex(arArt(Ar,'lava',null,true),true)):arLavaTex(R), lava=arMat(new THREE.MeshBasicMaterial({map:lt,fog:true})); lt.repeat.set(1,6);
       const len=m.back-m.near; for(const sd of [-1,1]){ const p=arPut(A,new THREE.PlaneGeometry(1.4,len),lava,(m.back+m.near)/2,-SLAB+.03,sd*(m.side-1.1)); p.rotation.x=-Math.PI/2; }
       if(boss){ const lk=arPut(A,new THREE.PlaneGeometry(2*m.side,5),lava,m.dais+1.5,-SLAB+.04,0); lk.rotation.x=-Math.PI/2; }
-      const bas=arMat(xPhong({color:0x2a1a14})); for(let k=0;k<10;k++){ const s=.4+R()*.7; arPut(A,new THREE.DodecahedronGeometry(s,0),bas,m.near+R()*len,s*.3-SLAB,(R()<.5?-1:1)*(m.side-R()*.6)); }
+      const bas=arPropMat(Ar,'basalt',.2)||arMat(xPhong({color:0x2a1a14})); for(let k=0;k<10;k++){ const s=.4+R()*.7; arPut(A,new THREE.DodecahedronGeometry(s,0),bas,m.near+R()*len,s*.3-SLAB,(R()<.5?-1:1)*(m.side-R()*.6)); }
       const em=arCloud(A,90,'#ffb25a',.1,[-m.side,m.side,-SLAB,5,-m.back,-m.near],'embers',R);
       L[0].position.copy(arW(m.near+len*.3,.6,-(m.side-1.1))); L[1].position.copy(arW(m.near+len*.7,.6,m.side-1.1)); L[2].position.copy(arW(m.dais||0,1,0));
       L.forEach(l=>{ l.color.set('#ff7a2a'); l.distance=10; });
       return (T,dt)=>{ lt.offset.y=-T*.05; const f=XLIT.flick; L[0].intensity=1.5*(.85+f*.15*Math.sin(T*7.3)); L[1].intensity=1.5*(.85+f*.15*Math.sin(T*6.1+1)); L[2].intensity=boss?2*(.85+f*.15*Math.sin(T*5)):0; arCloudTick(em,T,dt); }; } },
-  ruins:{ build(A,R,Ar,boss,m){ const L=A.plights, gold=arGlow(Ar.glow,.35,{shininess:60,specular:0x886622,pbr:'gold'}), stone=arMat(xPhong({color:0x8a8478}));
+  ruins:{ build(A,R,Ar,boss,m){ const L=A.plights, gold=arGlow(Ar.glow,.35,{shininess:60,specular:0x886622,pbr:'gold'}), stone=arPropMat(Ar,'dressed-stone',.6)||arMat(xPhong({color:0x8a8478}));
       const flames=[]; const spots=[[m.near+4,-(m.side-.8)],[m.near+4,m.side-.8],[m.back-2,-(m.side-.8)]];
       spots.forEach(([wx,wz],i)=>{ arPut(A,new THREE.CylinderGeometry(.3,.38,1.2,8),gold,wx,.6-SLAB,wz); const f=arPut(A,new THREE.ConeGeometry(.22,.6,6),arGlow('#ffcf6a',1.4),wx,1.6-SLAB,wz); flames.push(f);
         L[i].position.copy(arW(wx,1.9,wz)); L[i].color.set('#ffc060'); L[i].distance=11; });
@@ -449,7 +455,7 @@ const ARENA_LOOK={
       for(let k=0;k<3;k++){ const p=arPut(A,new THREE.PlaneGeometry(1.6,9),sh,m.near+5+k*4,3,(k-1)*2.5); p.rotation.z=.35; }
       const cl=arCloud(A,70,'#fff3b0',.07,[-m.side,m.side,.3,4,-m.back,-m.near],'motes',R);
       return (T,dt)=>{ const fl=XLIT.flick; flames.forEach((f,i)=>{ f.scale.set(1,.85+fl*.25*Math.sin(T*11+i*2),1); L[i].intensity=1.4*(.85+fl*(.1*Math.sin(T*11+i)+.07*Math.sin(T*23.7+i*3))); }); arCloudTick(cl,T,dt); }; } },
-  abyss:{ build(A,R,Ar,boss,m){ const L=A.plights, rock=arMat(xPhong({color:0x2a3040})), isl=[];
+  abyss:{ build(A,R,Ar,boss,m){ const L=A.plights, rock=arPropMat(Ar,'rough-rock',.25)||arMat(xPhong({color:0x2a3040})), isl=[];
       A.voidWalls=true;   // no cave walls here: the board floats in the dark
       for(let k=0;k<(boss?14:9);k++){ const s=.4+R()*1.1, ang=R()*6.28, r=m.side+2+R()*6; isl.push({m:arPut(A,new THREE.DodecahedronGeometry(s,0),rock,(R()*2-1)*(m.back-2),-1-R()*3,Math.cos(ang)*r),y:-1-R()*3,ph:R()*6}); }
       const stars=arCloud(A,260,'#e9fbff',.14,[-40,40,-30,-4,-60,10],'stars',R);
@@ -459,7 +465,7 @@ const ARENA_LOOK={
         arCloudTick(stars,T,dt); arCloudTick(ghosts,T,dt); }; } },
 };
 // the boss floor's dais: a raised hex platform behind the enemy half, where the boss holds court
-function arDais(A,Ar,m){ const t=A.rockTex||(A.rockTex=arTex(xTex(arArt(Ar,'rock',()=>xRockWall(Ar.stone,(Ar.index||0)*7+2)),true))), mat=arMat(xLitTag(xPhong({map:t}),2,t.image));
+function arDais(A,Ar,m){ const mat=arPropMat(Ar,'dressed-stone',.5)||(()=>{ const t=A.daisTex||(A.daisTex=arTex(xTex(arArt(Ar,'rock',()=>xRockWall(Ar.stone,(Ar.index||0)*7+2)),true))); return arMat(xLitTag(xPhong({map:t}),2,t.image)); })();
   const g=new THREE.CylinderGeometry(3.2,3.6,.9,6,1,false,Math.PI/6); arPut(A,g,mat,m.dais,.45-SLAB,0); }
 function arenaProps(A,Ar,R,boss){ const m=Object.assign({},A.room); if(boss) m.dais=m.back-3.4;
   A.props=new THREE.Group(); A.grp.add(A.props); arPropLights(A).forEach(l=>{ l.intensity=0; });

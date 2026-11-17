@@ -17,7 +17,37 @@ const ML_LIGHTS=[
   {id:'glow', name:'Dungeon: by a glow (crystal, pool)'},
   {id:'dark', name:'Dungeon: dark corridor, lamp only'},
   {id:'battle', name:'Battle arena'},
-  {id:'studio', name:'Studio: neutral key light'} ];
+  {id:'studio', name:'Studio: neutral key light'},
+  {id:'tp', name:'Studio: 3-point (key, rim, HDRI fill)'} ];
+// the 3-point set-up's settings (kept in this browser): key (directional), rim (a spot from behind), fill (an HDRI)
+const ML_TP_DEF={ keyI:1, keyC:'#fff4e6', keyAz:-40, keyEl:40, rimI:2, rimC:'#cfe4ff', rimAz:160, rimEl:35, rimAng:30, fillI:.6, fillRot:0, hdri:0, ambI:0 };
+const ML_TP=Object.assign({},ML_TP_DEF,(()=>{ try{ return JSON.parse(localStorage.getItem(ML_KEY+'-3pt'))||{}; }catch(e){ return {}; } })());
+const mlTPKeep=()=>{ try{ localStorage.setItem(ML_KEY+'-3pt',JSON.stringify(ML_TP)); }catch(e){} };
+const ML_TP_SLIDERS=[['#Key light (directional)'],['keyI','Intensity',0,3,.01],['keyC','Colour'],['keyAz','Around',-180,180,1],['keyEl','Height',5,90,1],
+  ['#Rim light (spot, from behind)'],['rimI','Intensity',0,6,.01],['rimC','Colour'],['rimAz','Around',-180,180,1],['rimEl','Height',0,85,1],['rimAng','Cone width',5,80,1],
+  ['#Fill (HDRI)'],['hdri','Environment'],['fillI','Intensity',0,3,.01],['fillRot','Rotation',-180,180,1],['ambI','Extra flat ambient',0,1,.01]];
+const ML_HDRI=['Studio softboxes','Overcast sky','Warm interior','The area\'s air'];
+// an environment picture (equirectangular, 256 x 128) painted here: the HDRI fill's light and the chrome ball's reflection
+function mlHdri(k,A){ const W=256, H=128, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+  const grad=(stops)=>{ const g=x.createLinearGradient(0,0,0,H); for(const [t,col] of stops) g.addColorStop(t,col); x.fillStyle=g; x.fillRect(0,0,W,H); };
+  const box=(az,el,w,h,col)=>{ x.fillStyle=col; const cx=(az/360+.5)*W, cy=(.5-el/180)*H; x.filter='blur(3px)'; x.fillRect(cx-w/2,cy-h/2,w,h); x.filter='none'; };
+  if(k===0){ grad([[0,'#2a2a2c'],[.5,'#3a3a3c'],[.52,'#262628'],[1,'#141416']]); box(-60,25,34,40,'#ffffff'); box(75,30,30,36,'#f2f4ff'); box(0,70,120,10,'#d8d8d8'); }
+  else if(k===1){ grad([[0,'#e8eef6'],[.45,'#c6ccd4'],[.5,'#a8a49a'],[.55,'#6a6256'],[1,'#3a342c']]); }
+  else if(k===2){ grad([[0,'#1a120c'],[.4,'#4a2c18'],[.5,'#8a5a30'],[.6,'#3a2414'],[1,'#120c08']]); box(-90,15,20,20,'#ffcf8a'); box(120,10,14,16,'#ffb060'); }
+  else { const g=new THREE.Color(A.glow||'#ffb060'), f=new THREE.Color(A.fog||'#202028'); const hx=c=>'#'+c.getHexString();
+    grad([[0,hx(f.clone().multiplyScalar(.6))],[.45,hx(f.clone().lerp(g,.35))],[.5,hx(g.clone().multiplyScalar(.7))],[.58,hx(f)],[1,hx(f.clone().multiplyScalar(.4))]]); }
+  const t=new THREE.CanvasTexture(c); t.mapping=THREE.EquirectangularReflectionMapping; t.wrapS=THREE.RepeatWrapping;
+  // a blurred copy for the diffuse fill (a surface sees the half of the sky around its normal, not a sharp picture of it)
+  const b=document.createElement('canvas'); b.width=32; b.height=16; const bx=b.getContext('2d'); bx.filter='blur(2px)'; bx.drawImage(c,0,0,32,16); const tb=new THREE.CanvasTexture(b); tb.wrapS=THREE.RepeatWrapping; tb.magFilter=tb.minFilter=THREE.LinearFilter; tb.generateMipmaps=false;
+  return {sharp:t, soft:tb}; }
+const ML_ENVU={ uLabEnv:{value:null}, uLabEnvK:{value:0}, uLabEnvRot:{value:0} };
+// the HDRI fill on a lit material of the studio's: its light as indirect diffuse, from the blurred picture round the normal
+function mlEnvPatch(root){ root.traverse(o=>{ const m=o.material; if(!m||Array.isArray(m)||m.userData.labEnv||!(m.isMeshPhongMaterial||m.isMeshStandardMaterial)) return; if(m.envMap) return;
+    m.userData.labEnv=1; const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey.bind(m):null;
+    m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r); Object.assign(sh.uniforms,ML_ENVU);
+      sh.fragmentShader=sh.fragmentShader.replace('void main() {','uniform sampler2D uLabEnv; uniform float uLabEnvK, uLabEnvRot;\nvoid main() {')
+        .replace('#include <lights_fragment_end>','#include <lights_fragment_end>\n if(uLabEnvK>0.){ vec3 d=normalize(inverseTransformDirection(normal,viewMatrix)); vec2 eu=vec2(atan(d.z,d.x)/6.2832+.5+uLabEnvRot,asin(clamp(d.y,-1.,1.))/3.1416+.5);\n  reflectedLight.indirectDiffuse+=texture2D(uLabEnv,eu).rgb*uLabEnvK*diffuseColor.rgb; }'); };
+    m.customProgramCacheKey=()=>(pk?pk():'p')+'|labenv'; m.needsUpdate=true; }); }
 const ML_SLIDERS=[
   ['#Colour'], ['hue','Hue shift',-180,180,1], ['sat','Saturation',0,2,.01], ['con','Contrast',0,3,.01], ['bri','Brightness',0,2,.01], ['detail','Texture strength',0,2,.01],
   ['#Surface'], ['rough','Roughness',0,2,.01], ['metal','Metalness',0,1,.01], ['normal','Normal strength',0,4,.01],
@@ -100,9 +130,10 @@ function mlStudio(){ if(MLS) return MLS;
   for(const o of [gb,chrome]) o.material.userData.xlit=1;
   // the lights (set by mlLight)
   const amb=new THREE.AmbientLight(0xffffff,.2), sun=new THREE.DirectionalLight(0xffffff,.22), lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4), torch=new THREE.PointLight(0xffa040,0,10,1.6),
-    glow=new THREE.PointLight(0xffffff,0,10,1.6), key=new THREE.DirectionalLight(0xffffff,0), fill=new THREE.DirectionalLight(0xffffff,0);
-  scene.add(amb,sun,lamp,torch,glow,key,fill,key.target,fill.target);
-  MLS={r,scene,cam,cyc,tt,spin,refs,gb,chrome,cc,amb,sun,lamp,torch,glow,key,fill,G:{renderer:r,scene,cam,grade:1,low:false}};
+    glow=new THREE.PointLight(0xffffff,0,10,1.6), key=new THREE.DirectionalLight(0xffffff,0), fill=new THREE.DirectionalLight(0xffffff,0), rim=new THREE.SpotLight(0xffffff,0,30,Math.PI/6,.45,1);
+  scene.add(amb,sun,lamp,torch,glow,key,fill,rim,key.target,fill.target,rim.target); rim.target.position.set(0,1,0);
+  MLS={r,scene,cam,cyc,tt,spin,refs,gb,chrome,cc,amb,sun,lamp,torch,glow,key,fill,rim,G:{renderer:r,scene,cam,grade:1,low:false}};
+  mlEnvPatch(cyc); mlEnvPatch(refs);
   return MLS; }
 // the cyclorama's sweep: a floor running back into a curve and up a wall, one sheet with no seam
 function mlCycGeo(){ const W=40, N=60, pts=[]; const R=3, z0=-5;   // the floor to z0, a quarter circle of radius R, the wall at z0-R
@@ -121,10 +152,28 @@ function mlLight(){ const S=MLS, A=ML_A(), L=ML_LIGHTS[ML.light].id, g=new THREE
   if(L==='battle'){ S.lamp.intensity=0; S.amb.color.set(0xffffff); S.glow.color.copy(g); S.glow.position.set(-2.5,3,2); S.glow.intensity=1.1; S.torch.color.set(0xffd9a0); S.torch.position.set(2.8,3,1.5); S.torch.intensity=.9; }
   else S.torch.color.set(0xffa040);
   if(L==='studio'){ S.lamp.intensity=0; S.amb.color.set(0xffffff); S.amb.intensity=.35; S.sun.intensity=0; S.key.position.set(-6,7,3); S.key.intensity=.8; S.fill.position.set(6,3,4); S.fill.intensity=.35; }
+  S.rim.intensity=0; ML_ENVU.uLabEnvK.value=0; S.scene.background=new THREE.Color('#2a2b2e');
+  if(L==='tp'){ const T=ML_TP, at=(az,el,d)=>new THREE.Vector3(Math.sin(az*Math.PI/180)*Math.cos(el*Math.PI/180)*d, Math.sin(el*Math.PI/180)*d+1, Math.cos(az*Math.PI/180)*Math.cos(el*Math.PI/180)*d);
+    S.lamp.intensity=0; S.sun.intensity=0; S.amb.color.set(0xffffff); S.amb.intensity=T.ambI;
+    S.key.color.set(T.keyC); S.key.intensity=T.keyI; S.key.position.copy(at(T.keyAz,T.keyEl,10)); S.key.target.position.set(0,1,0);
+    S.rim.color.set(T.rimC); S.rim.intensity=T.rimI; S.rim.position.copy(at(T.rimAz,T.rimEl,7)); S.rim.angle=T.rimAng*Math.PI/180;
+    const E=mlHdriGet(T.hdri,A); ML_ENVU.uLabEnv.value=E.soft; ML_ENVU.uLabEnvK.value=T.fillI; ML_ENVU.uLabEnvRot.value=T.fillRot/360; S.scene.background=E.sharp; }
+  const tpb=document.getElementById('mlTP'); if(tpb) tpb.hidden=L!=='tp';
   S.G.grade=ML.grade?1:0; S.G.low=ML.low; }
+const ML_HCACHE=new Map();
+function mlHdriGet(k,A){ const key=k+'|'+(k===3?A.id:''); if(!ML_HCACHE.has(key)) ML_HCACHE.set(key,mlHdri(k,A)); return ML_HCACHE.get(key); }
+function mlTPSliders(){ const box=document.getElementById('mlTPBody'); if(!box) return; box.innerHTML=''; const T=ML_TP;
+  for(const [k,label,lo,hi,st] of ML_TP_SLIDERS){ if(k[0]==='#'){ const h=document.createElement('h4'); h.textContent=k.slice(1); box.appendChild(h); continue; }
+    const row=document.createElement('div'); row.className='mlr';
+    if(k==='hdri'){ row.innerHTML='<label>'+label+'</label><select style="grid-column:2/4">'+ML_HDRI.map((n,i)=>'<option value="'+i+'">'+n+'</option>').join('')+'</select>'; const se=row.querySelector('select'); se.value=String(T.hdri); se.onchange=()=>{ T.hdri=+se.value; mlTPKeep(); mlLight(); }; }
+    else if(/C$/.test(k)){ row.innerHTML='<label>'+label+'</label><input type="color" value="'+T[k]+'" style="grid-column:2/4;width:100%;height:28px">'; const ci=row.querySelector('input'); ci.oninput=()=>{ T[k]=ci.value; mlTPKeep(); mlLight(); }; }
+    else { row.innerHTML='<label>'+label+'</label><input type="range" min="'+lo+'" max="'+hi+'" step="'+st+'" value="'+T[k]+'"><output>'+(+T[k]).toFixed(st<1?2:0)+'</output>';
+      const inp=row.querySelector('input'), out=row.querySelector('output'); inp.oninput=()=>{ T[k]=+inp.value; out.textContent=(+inp.value).toFixed(st<1?2:0); mlLight(); }; inp.onchange=mlTPKeep;
+      row.querySelector('label').ondblclick=()=>{ T[k]=ML_TP_DEF[k]; inp.value=T[k]; out.textContent=(+T[k]).toFixed(st<1?2:0); mlTPKeep(); mlLight(); }; }
+    box.appendChild(row); } }
 function mlTurntable(){ const S=MLS; while(S.tt.children.length>1) S.tt.remove(S.tt.children[1]);
   const A=envArtProps(), pc=A&&A.mean.planks?new THREE.Color(...A.mean.planks):new THREE.Color(0x8a6a48);
-  const top=new THREE.Mesh(new THREE.CylinderGeometry(2.2,2.2,.18,64),xPropTex(xPhong({color:pc}),'planks')); top.position.y=.09; S.tt.add(top);
+  const top=new THREE.Mesh(new THREE.CylinderGeometry(2.2,2.2,.18,64),xPropTex(xPhong({color:pc}),'planks')); top.position.y=.09; S.tt.add(top); mlEnvPatch(top);
   const dk=new THREE.MeshBasicMaterial({color:0x222224}); for(const r of [0,Math.PI/2]){ const b=new THREE.Mesh(new THREE.BoxGeometry(1.2,.005,.08),dk); b.position.y=.181; b.rotation.y=r; S.tt.add(b); } }
 // which props use each material (built once in the background, a few props a frame): material -> [asset index]
 const ML_USE=new Map(); let ML_USE_AT=0, ML_USE_DONE=false;
@@ -141,13 +190,13 @@ function mlUseStep(n){ const L=ML_USE.get(ML.mat)||[]; if(!L.length) return; con
 // the selected material on its test shapes, small, on a second turntable beside the prop
 function mlSide(){ const S=MLS; if(!S.side){ S.side=new THREE.Group(); S.side.position.set(-2.9,0,-1.3); S.scene.add(S.side);
     const A=envArtProps(), pc=A&&A.mean.planks?new THREE.Color(...A.mean.planks):new THREE.Color(0x8a6a48), top=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.12,48),xPropTex(xPhong({color:pc}),'planks'));
-    top.position.y=.06; S.side.add(top); S.sideSpin=new THREE.Group(); S.sideSpin.position.y=.12; S.sideSpin.scale.setScalar(.5); S.side.add(S.sideSpin); }
+    top.position.y=.06; S.side.add(top); mlEnvPatch(top); S.sideSpin=new THREE.Group(); S.sideSpin.position.y=.12; S.sideSpin.scale.setScalar(.5); S.side.add(S.sideSpin); }
   S.side.visible=!!ML.side; for(const c of [...S.sideSpin.children]) S.sideSpin.remove(c);
-  if(ML.side&&ML.mat){ const g=mlSwatch(ML.mat); if(typeof xLitAll==='function') xLitAll(g); S.sideSpin.add(g); } }
+  if(ML.side&&ML.mat){ const g=mlSwatch(ML.mat); if(typeof xLitAll==='function') xLitAll(g); mlEnvPatch(g); S.sideSpin.add(g); } }
 function mlShow(){ const S=MLS, list=mlAssets(); ML.asset=(ML.asset+list.length)%list.length; const it=list[ML.asset], A=ML_A();
   for(const c of [...S.spin.children]){ S.spin.remove(c); c.traverse(o=>{ if(o.geometry&&!Object.values(XG).includes(o.geometry)) o.geometry.dispose(); }); }
   let g=null; try{ g=it.make(A); } catch(e){ console.warn('matlab',it.name,e); }
-  if(g){ if(typeof xLitAll==='function') xLitAll(g); S.spin.add(g);
+  if(g){ if(typeof xLitAll==='function') xLitAll(g); mlEnvPatch(g); S.spin.add(g);
     // frame it: the camera comes in to fit the prop (the turntable's own size for anything bigger)
     const sp=new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere()); if(isFinite(sp.radius)&&sp.radius>0){ ML.ty=Math.max(.4,sp.center.y); ML.dist=Math.max(3,Math.min(12.5,sp.radius*4.2+1.5)); } }
   const mats=g?mlMatsOf(g):[]; if(!mats.includes(ML.mat)) ML.mat=mats[0]||ML.mat||XPROP_MATS[0];
@@ -174,6 +223,7 @@ function mlPanel(){ if($('#matLab')) return;
  <h4>Lighting</h4>
  <div class="mlc"><button class="mb" id="mlAreaP">◀</button><span class="mln" id="mlAreaN"></span><button class="mb" id="mlAreaN2">▶</button></div>
  <div class="mlc"><button class="mb" id="mlLightP">◀</button><span class="mln" id="mlLightN"></span><button class="mb" id="mlLightN2">▶</button></div>
+ <div id="mlTP" hidden><div id="mlTPBody"></div><div class="mlc"><button class="mb" id="mlTPReset">3-point defaults</button></div></div>
  <h4>Prop</h4>
  <div class="mlc"><button class="mb" id="mlAssetP">◀</button><select id="mlAsset"></select><button class="mb" id="mlAssetN">▶</button></div>
  <div class="mlc"><span class="mln" id="mlAssetName"></span></div>
@@ -198,6 +248,7 @@ function mlPanel(){ if($('#matLab')) return;
   $('#mlAssetP').onclick=()=>{ ML.asset--; mlShow(); }; $('#mlAssetN').onclick=()=>{ ML.asset++; mlShow(); };
   $('#mlAsset').onchange=e=>{ ML.asset=+e.target.value; mlShow(); };
   $('#mlMat').onchange=e=>{ ML.mat=e.target.value; mlSliders(); mlUseName(); mlSide(); };
+  $('#mlTPReset').onclick=()=>{ Object.assign(ML_TP,ML_TP_DEF); mlTPKeep(); mlTPSliders(); mlLight(); };
   $('#mlUseP').onclick=()=>mlUseStep(-1); $('#mlUseN').onclick=()=>mlUseStep(1);
   $('#mlSideB').onclick=()=>{ ML.side=!ML.side; mlSide(); mlButtons(); mlKeep(); };
   $('#mlMatReset').onclick=()=>{ const def=typeof XPROP_TUNE_DEF!=='undefined'&&XPROP_TUNE_DEF[ML.mat]||{}; XPROP_TUNE[ML.mat]=Object.assign({},XPROP_TUNE_ZERO,def); xPropTuneApply(); xPropTuneSave(); mlSliders(); };
@@ -236,7 +287,7 @@ function mlArea(){ const A=ML_A(); if(typeof envArtWant==='function') envArtWant
   mlTurntable(); mlLight(); mlShow(); }
 
 // ---- start, frames, exit ----
-function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlButtons(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); setTimeout(mlIndex,1500); }
+function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlTPSliders(); mlButtons(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); setTimeout(mlIndex,1500); }
 function mlFrame(now){ if(!ML.on) return; requestAnimationFrame(mlFrame); const S=MLS, dt=Math.min(.05,(now-ML.last)/1000); ML.last=now; ML.T+=dt;
   const cv=S.r.domElement, w=cv.clientWidth|0, h=cv.clientHeight|0; if(w&&h&&(cv.width!==Math.round(w*S.r.getPixelRatio())||cv.height!==Math.round(h*S.r.getPixelRatio()))){ S.r.setSize(w,h,false); S.cam.aspect=w/h; S.cam.updateProjectionMatrix(); }
   if(ML.spin){ S.spin.rotation.y+=dt*.45; if(S.sideSpin) S.sideSpin.rotation.y+=dt*.45; }

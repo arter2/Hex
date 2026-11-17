@@ -9,7 +9,7 @@
 const ML_KEY='hexmancers-matlab';
 const ML={ on:false, area:0, light:0, asset:0, mat:null, spin:true, grade:true, low:false, refs:true, yaw:.3, pitch:.62, dist:12.5, T:0 };
 try{ Object.assign(ML,JSON.parse(localStorage.getItem(ML_KEY)||'{}'),{on:false}); }catch(e){}
-const mlKeep=()=>{ try{ const {area,light,asset,spin,grade,low,refs}=ML; localStorage.setItem(ML_KEY,JSON.stringify({area,light,asset,spin,grade,low,refs})); }catch(e){} };
+const mlKeep=()=>{ try{ const {area,light,asset,spin,grade,low,refs,side}=ML; localStorage.setItem(ML_KEY,JSON.stringify({area,light,asset,spin,grade,low,refs,side})); }catch(e){} };
 const ML_AREAS=()=>(typeof AREAS!=='undefined'?AREAS:[]).filter(a=>a&&a.id&&a.stone);
 const ML_LIGHTS=[
   {id:'room', name:'Dungeon: your lamp in a room'},
@@ -126,13 +126,33 @@ function mlTurntable(){ const S=MLS; while(S.tt.children.length>1) S.tt.remove(S
   const A=envArtProps(), pc=A&&A.mean.planks?new THREE.Color(...A.mean.planks):new THREE.Color(0x8a6a48);
   const top=new THREE.Mesh(new THREE.CylinderGeometry(2.2,2.2,.18,64),xPropTex(xPhong({color:pc}),'planks')); top.position.y=.09; S.tt.add(top);
   const dk=new THREE.MeshBasicMaterial({color:0x222224}); for(const r of [0,Math.PI/2]){ const b=new THREE.Mesh(new THREE.BoxGeometry(1.2,.005,.08),dk); b.position.y=.181; b.rotation.y=r; S.tt.add(b); } }
+// which props use each material (built once in the background, a few props a frame): material -> [asset index]
+const ML_USE=new Map(); let ML_USE_AT=0, ML_USE_DONE=false;
+function mlIndex(){ if(ML_USE_DONE||!ML.on) return; if(!envArtProps()){ setTimeout(mlIndex,500); return; } const list=mlAssets(), A=ML_A(), t0=performance.now();
+  while(ML_USE_AT<list.length&&performance.now()-t0<25){ const i=ML_USE_AT++, it=list[i]; if(it.group==='Material swatches') continue;
+    let g=null; try{ g=it.make(A); } catch(e){} if(!g) continue;
+    for(const k of mlMatsOf(g)){ if(!ML_USE.has(k)) ML_USE.set(k,[]); ML_USE.get(k).push(i); }
+    g.traverse(o=>{ if(o.geometry&&!Object.values(XG).includes(o.geometry)) o.geometry.dispose(); }); }
+  if(ML_USE_AT>=list.length) ML_USE_DONE=true; mlUseName(); if(!ML_USE_DONE) setTimeout(mlIndex,0); }
+function mlUseName(){ const el=$('#mlUseName'); if(!el) return; const L=ML_USE.get(ML.mat)||[], list=mlAssets(), at=L.indexOf(ML.asset);
+  el.textContent=(L.length?(at>=0?(at+1)+' of '+L.length+': '+list[ML.asset].name:L.length+' props'):'no props')+(ML_USE_DONE?'':' (still counting…)'); }
+function mlUseStep(n){ const L=ML_USE.get(ML.mat)||[]; if(!L.length) return; const keep=ML.mat; let at=L.indexOf(ML.asset); at=at<0?(n>0?0:L.length-1):(at+n+L.length)%L.length;
+  ML.asset=L[at]; ML.mat=keep; mlShow(); }
+// the selected material on its test shapes, small, on a second turntable beside the prop
+function mlSide(){ const S=MLS; if(!S.side){ S.side=new THREE.Group(); S.side.position.set(-2.9,0,-1.3); S.scene.add(S.side);
+    const A=envArtProps(), pc=A&&A.mean.planks?new THREE.Color(...A.mean.planks):new THREE.Color(0x8a6a48), top=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.12,48),xPropTex(xPhong({color:pc}),'planks'));
+    top.position.y=.06; S.side.add(top); S.sideSpin=new THREE.Group(); S.sideSpin.position.y=.12; S.sideSpin.scale.setScalar(.5); S.side.add(S.sideSpin); }
+  S.side.visible=!!ML.side; for(const c of [...S.sideSpin.children]) S.sideSpin.remove(c);
+  if(ML.side&&ML.mat){ const g=mlSwatch(ML.mat); if(typeof xLitAll==='function') xLitAll(g); S.sideSpin.add(g); } }
 function mlShow(){ const S=MLS, list=mlAssets(); ML.asset=(ML.asset+list.length)%list.length; const it=list[ML.asset], A=ML_A();
   for(const c of [...S.spin.children]){ S.spin.remove(c); c.traverse(o=>{ if(o.geometry&&!Object.values(XG).includes(o.geometry)) o.geometry.dispose(); }); }
   let g=null; try{ g=it.make(A); } catch(e){ console.warn('matlab',it.name,e); }
-  if(g){ if(typeof xLitAll==='function') xLitAll(g); S.spin.add(g); }
+  if(g){ if(typeof xLitAll==='function') xLitAll(g); S.spin.add(g);
+    // frame it: the camera comes in to fit the prop (the turntable's own size for anything bigger)
+    const sp=new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere()); if(isFinite(sp.radius)&&sp.radius>0){ ML.ty=Math.max(.4,sp.center.y); ML.dist=Math.max(3,Math.min(12.5,sp.radius*4.2+1.5)); } }
   const mats=g?mlMatsOf(g):[]; if(!mats.includes(ML.mat)) ML.mat=mats[0]||ML.mat||XPROP_MATS[0];
   $('#mlAsset').value=String(ML.asset); $('#mlAssetName').textContent=it.group+' · '+it.name+(g?'':' (could not be built)');
-  mlMatList(mats); mlSliders(); mlKeep(); }
+  mlMatList(mats); mlSliders(); mlUseName(); mlSide(); mlKeep(); }
 
 // ---- the panel ----
 function mlPanel(){ if($('#matLab')) return;
@@ -149,7 +169,7 @@ function mlPanel(){ if($('#matLab')) return;
 #matLab button.mb{background:#1f2630;color:#e8eef8;border:1px solid #4a5a6a;border-radius:6px;padding:6px 10px;font-size:12px}
 #matLab button.mb.on{background:#2b5b73;border-color:#8fe4ff} #mlJson{width:100%;height:120px;box-sizing:border-box;background:#0a0b0d;color:#cfe;border:1px solid #445;font:11px monospace}
 </style>
-<div id="mlView"><canvas id="mlCanvas"></canvas><div id="mlHud"><button class="mb" id="mlExit">✕ Exit</button><button class="mb" id="mlSpin">Spin</button><button class="mb" id="mlGrade">Grade</button><button class="mb" id="mlLow">Low gfx</button><button class="mb" id="mlRefs">Refs</button><button class="mb" id="mlAO">SSAO</button><button class="mb" id="mlCamR">Game view</button></div></div>
+<div id="mlView"><canvas id="mlCanvas"></canvas><div id="mlHud"><button class="mb" id="mlExit">✕ Exit</button><button class="mb" id="mlSpin">Spin</button><button class="mb" id="mlGrade">Grade</button><button class="mb" id="mlLow">Low gfx</button><button class="mb" id="mlRefs">Refs</button><button class="mb" id="mlAO">SSAO</button><button class="mb" id="mlSideB">Swatch</button><button class="mb" id="mlCamR">Game view</button></div></div>
 <div id="mlBody">
  <h4>Lighting</h4>
  <div class="mlc"><button class="mb" id="mlAreaP">◀</button><span class="mln" id="mlAreaN"></span><button class="mb" id="mlAreaN2">▶</button></div>
@@ -159,6 +179,7 @@ function mlPanel(){ if($('#matLab')) return;
  <div class="mlc"><span class="mln" id="mlAssetName"></span></div>
  <h4>Material</h4>
  <div class="mlc"><select id="mlMat"></select><button class="mb" id="mlMatReset">Reset</button></div>
+ <div class="mlc"><span>Used on</span><button class="mb" id="mlUseP">◀</button><span class="mln" id="mlUseName"></span><button class="mb" id="mlUseN">▶</button></div>
  <div id="mlSliders"></div>
  <h4>Defaults</h4>
  <div class="mlc"><button class="mb" id="mlCopy">Copy JSON</button><button class="mb" id="mlApply">Apply pasted JSON</button><button class="mb" id="mlResetAll">Reset all</button></div>
@@ -171,12 +192,14 @@ function mlPanel(){ if($('#matLab')) return;
   $('#mlLow').onclick=()=>{ ML.low=!ML.low; mlLight(); mlButtons(); mlKeep(); };
   $('#mlRefs').onclick=()=>{ ML.refs=!ML.refs; MLS.refs.visible=ML.refs; mlButtons(); mlKeep(); };
   $('#mlAO').onclick=()=>{ XLIT.ssao=!XLIT.ssao; mlButtons(); };
-  $('#mlCamR').onclick=()=>{ ML.yaw=.3; ML.pitch=.62; ML.dist=12.5; };
+  $('#mlCamR').onclick=()=>{ ML.yaw=.3; ML.pitch=.62; ML.dist=12.5; ML.ty=1; };
   const area=n=>{ ML.area=step('area',n,ML_AREAS().length); mlArea(); }; $('#mlAreaP').onclick=()=>area(-1); $('#mlAreaN2').onclick=()=>area(1);
   const light=n=>{ ML.light=step('light',n,ML_LIGHTS.length); mlLight(); mlNames(); mlKeep(); }; $('#mlLightP').onclick=()=>light(-1); $('#mlLightN2').onclick=()=>light(1);
   $('#mlAssetP').onclick=()=>{ ML.asset--; mlShow(); }; $('#mlAssetN').onclick=()=>{ ML.asset++; mlShow(); };
   $('#mlAsset').onchange=e=>{ ML.asset=+e.target.value; mlShow(); };
-  $('#mlMat').onchange=e=>{ ML.mat=e.target.value; mlSliders(); };
+  $('#mlMat').onchange=e=>{ ML.mat=e.target.value; mlSliders(); mlUseName(); mlSide(); };
+  $('#mlUseP').onclick=()=>mlUseStep(-1); $('#mlUseN').onclick=()=>mlUseStep(1);
+  $('#mlSideB').onclick=()=>{ ML.side=!ML.side; mlSide(); mlButtons(); mlKeep(); };
   $('#mlMatReset').onclick=()=>{ const def=typeof XPROP_TUNE_DEF!=='undefined'&&XPROP_TUNE_DEF[ML.mat]||{}; XPROP_TUNE[ML.mat]=Object.assign({},XPROP_TUNE_ZERO,def); xPropTuneApply(); xPropTuneSave(); mlSliders(); };
   $('#mlResetAll').onclick=()=>{ if(!confirm('Put every material back to the game\'s defaults?')) return; try{ localStorage.removeItem(XPROP_TUNE_STORE); }catch(e){} xPropTuneLoad(); mlSliders(); };
   $('#mlCopy').onclick=()=>{ const j=xPropTuneJSON(); $('#mlJson').value=j; try{ navigator.clipboard.writeText(j); }catch(e){} $('#mlJson').select(); };
@@ -191,7 +214,7 @@ function mlPanel(){ if($('#matLab')) return;
     p.x=e.clientX; p.y=e.clientY; });
   const up=e=>{ P.delete(e.pointerId); }; v.addEventListener('pointerup',up); v.addEventListener('pointercancel',up);
   v.addEventListener('wheel',e=>{ e.preventDefault(); ML.dist=Math.max(3,Math.min(22,ML.dist*(1+Math.sign(e.deltaY)*.1))); },{passive:false}); }
-function mlButtons(){ for(const [id,on] of [['#mlSpin',ML.spin],['#mlGrade',ML.grade],['#mlLow',ML.low],['#mlRefs',ML.refs],['#mlAO',XLIT.ssao]]) $(id).classList.toggle('on',!!on); }
+function mlButtons(){ for(const [id,on] of [['#mlSpin',ML.spin],['#mlGrade',ML.grade],['#mlLow',ML.low],['#mlRefs',ML.refs],['#mlAO',XLIT.ssao],['#mlSideB',ML.side]]) $(id).classList.toggle('on',!!on); }
 function mlNames(){ const A=ML_A(); $('#mlAreaN').textContent='Area: '+(A.name||A.id); $('#mlLightN').textContent=ML_LIGHTS[ML.light].name; }
 function mlAssetList(){ const s=$('#mlAsset'), list=mlAssets(); let html='', grp=null;
   list.forEach((it,i)=>{ if(it.group!==grp){ if(grp) html+='</optgroup>'; grp=it.group; html+='<optgroup label="'+grp+'">'; } html+='<option value="'+i+'">'+it.name+'</option>'; }); s.innerHTML=html+'</optgroup>'; }
@@ -213,11 +236,11 @@ function mlArea(){ const A=ML_A(); if(typeof envArtWant==='function') envArtWant
   mlTurntable(); mlLight(); mlShow(); }
 
 // ---- start, frames, exit ----
-function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlButtons(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); }
+function matlabStart(){ mlPanel(); mlStudio(); ML.on=true; $('#matLab').classList.add('on'); mlAssetList(); mlButtons(); MLS.refs.visible=ML.refs; mlArea(); ML.last=performance.now(); requestAnimationFrame(mlFrame); setTimeout(mlIndex,1500); }
 function mlFrame(now){ if(!ML.on) return; requestAnimationFrame(mlFrame); const S=MLS, dt=Math.min(.05,(now-ML.last)/1000); ML.last=now; ML.T+=dt;
   const cv=S.r.domElement, w=cv.clientWidth|0, h=cv.clientHeight|0; if(w&&h&&(cv.width!==Math.round(w*S.r.getPixelRatio())||cv.height!==Math.round(h*S.r.getPixelRatio()))){ S.r.setSize(w,h,false); S.cam.aspect=w/h; S.cam.updateProjectionMatrix(); }
-  if(ML.spin) S.spin.rotation.y+=dt*.45;
-  const tg=new THREE.Vector3(0,1,0); S.cam.position.set(tg.x+Math.sin(ML.yaw)*Math.cos(ML.pitch)*ML.dist, tg.y+Math.sin(ML.pitch)*ML.dist, tg.z+Math.cos(ML.yaw)*Math.cos(ML.pitch)*ML.dist); S.cam.lookAt(tg);
+  if(ML.spin){ S.spin.rotation.y+=dt*.45; if(S.sideSpin) S.sideSpin.rotation.y+=dt*.45; }
+  const tg=new THREE.Vector3(0,ML.ty==null?1:ML.ty,0); S.cam.position.set(tg.x+Math.sin(ML.yaw)*Math.cos(ML.pitch)*ML.dist, tg.y+Math.sin(ML.pitch)*ML.dist, tg.z+Math.cos(ML.yaw)*Math.cos(ML.pitch)*ML.dist); S.cam.lookAt(tg);
   if(S.torch.intensity>0&&ML_LIGHTS[ML.light].id==='torch'){ const FL=XLIT.flick; S.torch.intensity=1.5*XLIT.torch*(.85+FL*(.1*Math.sin(ML.T*11)+.07*Math.sin(ML.T*23.7))); }
   if(ML.refs&&((ML.T*10)|0)%6===0){ S.chrome.visible=false; S.cc.update(S.r,S.scene); S.chrome.visible=true; }   // the chrome ball's reflection, now and then
   xRender(S.G); }

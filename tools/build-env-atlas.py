@@ -169,15 +169,17 @@ def height_normal(im, k=7.0):
 
 def props_normal(name, k=5.0):
     """A prop material's normal map from its height map (same convention as height_normal), with its roughness map in
-    the blue channel (the shader rebuilds the normal's z)."""
+    the blue channel (the shader rebuilds the normal's z) and the height itself in alpha (the Materials lab's height
+    and ao: cavities and broad occlusion)."""
     h = np.asarray(tile(f"props/{name}-height.png", "L")).astype(np.float32) / 255
     h = (h + np.roll(h, 1, 0) + np.roll(h, -1, 0) + np.roll(h, 1, 1) + np.roll(h, -1, 1)) / 5
     nx = -(np.roll(h, -1, 1) - np.roll(h, 1, 1)) * k
     ny = (np.roll(h, -1, 0) - np.roll(h, 1, 0)) * k
     l = np.sqrt(nx * nx + ny * ny + 1)
     r = np.asarray(tile(f"props/{name}-roughness.png", "L")).astype(np.float32) / 255
-    n = np.stack([nx / l * .5 + .5, ny / l * .5 + .5, r], -1)
-    return Image.fromarray((n * 255).round().astype(np.uint8), "RGB")
+    h0 = np.asarray(tile(f"props/{name}-height.png", "L")).astype(np.float32) / 255
+    n = np.stack([nx / l * .5 + .5, ny / l * .5 + .5, r, h0], -1)
+    return Image.fromarray((n * 255).round().astype(np.uint8), "RGBA")
 
 
 def place(sheet, im, slot, cols, wrap=True):
@@ -221,7 +223,7 @@ def main():
     props = [(k, tile(f"props/{k}-albedo.png", "RGB"), True) for k in PROPS]
     sheets["props"] = build("props.webp", [(k, im.convert("RGBA"), w) for k, im, w in props], "RGBA", False, cols=6)
     sheets["props"]["mean"] = {k: [round(float(x) / 255, 4) for x in np.asarray(im).reshape(-1, 3).mean(0)] for k, im, _ in props}
-    sheets["props-n"] = build("props-n.webp", [(k, props_normal(k), True) for k in PROPS], "RGB", False, cols=6)
+    sheets["props-n"] = build("props-n.webp", [(k, props_normal(k), True) for k in PROPS], "RGBA", False, cols=6)
     fx = [(k, tile(p), m == "wrap") for k, (p, m) in EFFECTS.items()]
     fx.append(("leaf-clumps", leaf_clumps(), False))
     # single plant cards (docs/art-production/foliage-alts/): already 256 tiles with cut-out alpha and colour carried

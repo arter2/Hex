@@ -1020,37 +1020,68 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
   const slot=one?XPROP_MATS.indexOf(one):0; if(one&&slot<0) return m;
   const R=XPROP_MATS.map(k=>{ const r=A.rect(k); return new THREE.Vector4(...(r||[0,0,0,0])); }), Mn=XPROP_MATS.map(k=>{ const c=A.mean[k]||[.5,.5,.5]; return new THREE.Vector4(c[0],c[1],c[2],XPROP_GLOSS[k]||.12); });
   const low=!!(X3&&X3.low), std=!!m.isMeshStandardMaterial, prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
-  m.userData.xprop=one?2:1; m.userData.noProj=1;   // (instead of surface.js's code-painted pixel material)
+  m.userData.xprop=one?2:1; m.userData.noProj=1; m.userData.xpropSlot=one?slot:-1;   // (instead of surface.js's code-painted pixel material)
   if(m.specular&&m.specular.getHex()<0x2a2a2a) m.specular.set(0x2a2a2a);
   m.extensions=Object.assign(m.extensions||{},{derivatives:true,shaderTextureLOD:true});
   m.onBeforeCompile=(sh,r)=>{ if(prev) prev.call(m,sh,r);
-    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uXSharp:XLITU.uXSharp});
-    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; }';
-    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\nvoid main() {')
+    Object.assign(sh.uniforms,{uPA:{value:A.tex},uPN:{value:A.ntex},uPR:{value:R},uPM:{value:Mn},uPS:{value:slot},uPK:XPROPU.uPK,uPNK:XPROPU.uPNK,uPT1:XPROPU.uPT1,uPT2:XPROPU.uPT2,uPT3:XPROPU.uPT3,uXSharp:XLITU.uXSharp});
+    const n=XPROP_MATS.length, pick='vPR=vec4(0.); vPM=vec4(1.); vT1=vec4(0.,1.,1.,1.); vT2=vec4(1.,0.,1.,0.); vT3=vec4(0.,0.,1.,1.); for(int i=0;i<'+n+';i++) if(i==xs){ vPR=uPR[i]; vPM=uPM[i]; vT1=uPT1[i]; vT2=uPT2[i]; vT3=uPT3[i]; }';
+    sh.vertexShader=sh.vertexShader.replace('void main() {',(one?'':'attribute vec4 aXL; attribute vec3 aXN; ')+'uniform vec4 uPR['+n+']; uniform vec4 uPM['+n+']; uniform vec4 uPT1['+n+']; uniform vec4 uPT2['+n+']; uniform vec4 uPT3['+n+']; uniform float uPS;\nvarying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3;\nvoid main() {')
       .replace('#include <begin_vertex>','#include <begin_vertex>\n'+(one
         ?' { vec3 xp=transformed, xn=objectNormal;\n#ifdef USE_INSTANCING\n xp=(instanceMatrix*vec4(xp,1.0)).xyz-instanceMatrix[3].xyz; xn=mat3(instanceMatrix)*xn;\n#endif\n vXL=xp*vec3(length(modelMatrix[0].xyz),length(modelMatrix[1].xyz),length(modelMatrix[2].xyz))+fract(modelMatrix[3].xyz*.37)*3.; vXN=xn; int xs=int(uPS+.5); '+pick+' }'
         :' vXL=aXL.xyz; vXN=aXN; int xs=int(aXL.w+.5); '+pick));
     let f=sh.fragmentShader;
-    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))+'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xdx=dFdx(vXL), xdy=dFdy(vXL); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1.;\n bool xon=vPR.z>0.;');
+    // the tuning (the Materials lab, XPROP_TUNE): vT1 hue (radians), saturation, contrast, brightness; vT2 roughness,
+    // metalness, normal, bump; vT3 height (cavities), ao (broad occlusion), scale (tiles a metre), detail (the painting's strength)
+    f=f.replace('void main() {','uniform sampler2D uPA, uPN; uniform float uPK, uPNK; varying vec3 vXL; varying vec3 vXN; varying vec4 vPR; varying vec4 vPM; varying vec4 vT1; varying vec4 vT2; varying vec4 vT3;\n'+(/uniform float uXSharp/.test(f)?xAtGlsl('256.0').replace('uniform float uXSharp;',''):xAtGlsl('256.0'))
+      +'\nvec3 xHue(vec3 c,float a){ const mat3 toY=mat3(.299,.596,.211,.587,-.274,-.523,.114,-.322,.312); const mat3 toR=mat3(1.,1.,1.,.956,-.272,-1.106,.621,-.647,1.703); vec3 y=toY*c; float cs=cos(a), sn=sin(a); y.yz=vec2(y.y*cs-y.z*sn,y.y*sn+y.z*cs); return max(toR*y,vec3(0.)); }'
+      +'\nvoid main() {\n vec3 xan=abs(normalize(vXN)); xan=pow(xan,vec3(4.)); xan/=xan.x+xan.y+xan.z;\n vec3 xP=vXL*vT3.z; vec3 xdx=dFdx(xP), xdy=dFdy(xP); vec3 xq0=dFdx(-vViewPosition), xq1=dFdy(-vViewPosition); float xrough=1., xlum=0.;\n bool xon=vPR.z>0.;');
     f=f.replace('#include <color_fragment>',`#include <color_fragment>
  if(xon){ vec3 c=vec3(0.);
-  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,vXL.zy,xdx.zy,xdy.zy).rgb;
-  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,vXL.xz,xdx.xz,xdy.xz).rgb;
-  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,vXL.xy,xdx.xy,xdy.xy).rgb;
-  diffuseColor.rgb*=mix(vec3(1.),c/max(vPM.rgb,vec3(.02)),uPK); }`);
+  if(xan.x>.01) c+=xan.x*xAtG(uPA,vPR,xP.zy,xdx.zy,xdy.zy).rgb;
+  if(xan.y>.01) c+=xan.y*xAtG(uPA,vPR,xP.xz,xdx.xz,xdy.xz).rgb;
+  if(xan.z>.01) c+=xan.z*xAtG(uPA,vPR,xP.xy,xdx.xy,xdy.xy).rgb;
+  vec3 det=c/max(vPM.rgb,vec3(.02)); det=max(vec3(0.),1.+(det-1.)*vT1.z);
+  diffuseColor.rgb*=mix(vec3(1.),det,uPK*vT3.w); diffuseColor.rgb*=vT1.w;
+  float l=dot(diffuseColor.rgb,vec3(.299,.587,.114)); diffuseColor.rgb=max(mix(vec3(l),diffuseColor.rgb,vT1.y),vec3(0.));
+  if(abs(vT1.x)>.001) diffuseColor.rgb=xHue(diffuseColor.rgb,vT1.x);
+  xlum=dot(c,vec3(.299,.587,.114)); }
+ vec2 xdB=vec2(dFdx(xlum),dFdy(xlum));`);
     f=f.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
- if(xon){ vec2 u=vXL.xy, gx=xdx.xy, gy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ u=vXL.zy; gx=xdx.zy; gy=xdy.zy; } else if(xan.y>=xan.z){ u=vXL.xz; gx=xdx.xz; gy=xdy.xz; }
-  vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=nt.b;${low?'':`
-  vec3 mn=vec3((nt.xy*2.-1.)*uPNK,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
-  float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);`} }`);
-    if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);');
-    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.; }');
+ if(xon){ vec2 u=xP.xy, gx=xdx.xy, gy=xdy.xy; if(xan.x>=xan.y&&xan.x>=xan.z){ u=xP.zy; gx=xdx.zy; gy=xdy.zy; } else if(xan.y>=xan.z){ u=xP.xz; gx=xdx.xz; gy=xdy.xz; }
+  vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=clamp(nt.b*vT2.x,0.,1.);
+  if(vT3.x>.001) diffuseColor.rgb*=pow(clamp(.25+nt.a*1.5,0.,1.),vT3.x);
+  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.2+hb*1.6,0.,1.),vT3.y); }${low?'':`
+  vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
+  float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);
+  if(vT2.w>.001){ vec2 dB=xdB*vT2.w*2.; vec3 R1=cross(xq1,normal), R2=cross(normal,xq0); float fd=dot(xq0,R1); vec3 vg=sign(fd)*(dB.x*R1+dB.y*R2); normal=normalize(abs(fd)*normal-vg); }`} }`);
+    if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);')
+      .replace('#include <metalnessmap_fragment>','#include <metalnessmap_fragment>\n if(xon) metalnessFactor=max(metalnessFactor,vT2.y);');
+    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.;\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
     sh.fragmentShader=f; };
   m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xprop'+(one?'1':'')+(low?'l':'')+(std?'s':'');
   m.needsUpdate=true; return m; }
 const xPropMat=()=>xPropTex(xPhong({vertexColors:true}));
 const XPROP_BOOKS=()=>typeof envArtProps==='function'&&!!envArtProps();
-const XPROPU={ uPK:{value:1}, uPNK:{value:1} };
+const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPT1:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,1,1,1))}, uPT2:{value:XPROP_MATS.map(()=>new THREE.Vector4(1,0,1,0))}, uPT3:{value:XPROP_MATS.map(()=>new THREE.Vector4(0,0,1,1))} };
+/* Each painted material's tuning (the Materials lab, matlab.js): the game's defaults (XPROP_TUNE_DEF, propmats.js, set from
+   the lab's JSON), then what was tuned in this browser on top. The uniforms are shared by every material, so a change shows
+   at once everywhere. */
+const XPROP_TUNE_KEYS=['hue','sat','con','bri','detail','rough','metal','normal','bump','height','ao','scale'];
+const XPROP_TUNE_ZERO={hue:0,sat:1,con:1,bri:1,detail:1,rough:1,metal:0,normal:1,bump:0,height:0,ao:0,scale:1};
+const XPROP_TUNE_STORE='hexmancers-propmats';
+let XPROP_TUNE={};
+function xPropTuneLoad(){ let mine={}; try{ mine=JSON.parse(localStorage.getItem(XPROP_TUNE_STORE)||'{}')||{}; }catch(e){}
+  const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{};
+  XPROP_TUNE={}; for(const k of XPROP_MATS) XPROP_TUNE[k]=Object.assign({},XPROP_TUNE_ZERO,def[k]||{},mine[k]||{}); xPropTuneApply(); }
+function xPropTuneApply(){ XPROP_MATS.forEach((k,i)=>{ const t=XPROP_TUNE[k]||XPROP_TUNE_ZERO;
+    XPROPU.uPT1.value[i].set(t.hue*Math.PI/180,t.sat,t.con,t.bri); XPROPU.uPT2.value[i].set(t.rough,t.metal,t.normal,t.bump); XPROPU.uPT3.value[i].set(t.height,t.ao,t.scale,t.detail); }); }
+// what this browser changed from the game's defaults (kept), and the full set as JSON (the lab's Copy)
+function xPropTuneSave(){ const def=typeof XPROP_TUNE_DEF!=='undefined'?XPROP_TUNE_DEF:{}, out={};
+  for(const k of XPROP_MATS){ const base=Object.assign({},XPROP_TUNE_ZERO,def[k]||{}), d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-base[q])>1e-6) d[q]=XPROP_TUNE[k][q]; if(Object.keys(d).length) out[k]=d; }
+  try{ localStorage.setItem(XPROP_TUNE_STORE,JSON.stringify(out)); }catch(e){} }
+function xPropTuneJSON(){ const out={}; for(const k of XPROP_MATS){ const d={}; for(const q of XPROP_TUNE_KEYS) if(Math.abs(XPROP_TUNE[k][q]-XPROP_TUNE_ZERO[q])>1e-6) d[q]=+XPROP_TUNE[k][q].toFixed(3); if(Object.keys(d).length) out[k]=d; } return JSON.stringify(out,null,1); }
+xPropTuneLoad();
 const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
 // one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
 // what each kind of furniture is made of (xPropShader), and the colours within it that are something else

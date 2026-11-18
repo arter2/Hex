@@ -1096,7 +1096,7 @@ const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPTT:{value:XPROP_TT} };
 const XPROP_NOISES=['None','Painted detail (the walls\' relief)','Cells (the Deeps rock)','Broad noise','Fine noise','Grain'];
 let XPROP_NOISE=null;
 function xPropNoise(){ if(XPROP_NOISE) return XPROP_NOISE; const N=256, R=caveRng(5151), a=xFbm(N,R,3), b=xFbm(N,R,12), g=xNoise(N,64,R);
-  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }
+  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ try{ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }catch(e){ cd=null; } }   // (a page opened as a file cannot read its art back: the worked-out cells then)
   const pts=[]; if(!cd) for(let k=0;k<40;k++) pts.push([R()*N,R()*N]);
   const worley=(i,j)=>{ let d=1e9; for(const [px,py] of pts) for(const ox of [-N,0,N]) for(const oy of [-N,0,N]){ const dx=i-px-ox, dy=j-py-oy; d=Math.min(d,dx*dx+dy*dy); } return Math.min(1,Math.sqrt(d)/(N*.12)); };
   const F=[new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N)];
@@ -1343,7 +1343,7 @@ function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas')
     for(let i=0;i<W;i+=4) for(let j=0;j<H;j+=4){ const edge=i<8||j<8||i>=W-8||j>=H-8, d=(Math.abs(((i/4)%8)-4)+Math.abs(((j/4)%8)-4));
       x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
   return c; }
-function xTrimBand(cv){ const x=cv.getContext('2d'), d=x.getImageData(0,0,cv.width,cv.height).data; let y0=-1, y1=-1;
+function xTrimBand(cv){ const x=cv.getContext('2d'); let d; try{ d=x.getImageData(0,0,cv.width,cv.height).data; }catch(e){ return null; } let y0=-1, y1=-1;   // (null: the code-painted trim, as when the art is missing)
   for(let y=0;y<cv.height;y++){ let a=0; for(let i=0;i<cv.width;i++) a=Math.max(a,d[(y*cv.width+i)*4+3]); if(a>24){ if(y0<0) y0=y; y1=y; } }
   if(y0<0) return null; const c=document.createElement('canvas'); c.width=cv.width; c.height=y1-y0+1; c.getContext('2d').drawImage(cv,0,y0,cv.width,c.height,0,0,cv.width,c.height); return c; }
 // the Frozen Deeps' cell noise for their rock walls: one texture, kept for good (a uniform, not a material's map, so a

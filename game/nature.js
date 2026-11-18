@@ -492,7 +492,8 @@ function xNormalMapWH(H,W,Hh,k){ const c=document.createElement('canvas'); c.wid
     im.data[o]=(nx/l*.5+.5)*255; im.data[o+1]=(ny/l*.5+.5)*255; im.data[o+2]=(1/l*.5+.5)*255; im.data[o+3]=255; }
   x.putImageData(im,0,0); return c; }
 function xNmapLuma(m,k){ const t=m&&m.map, cv=t&&t.image; if(!cv||!cv.getContext) return m;
-  const W=cv.width, Hh=cv.height, D=cv.getContext('2d').getImageData(0,0,W,Hh).data, H=new Float32Array(W*Hh);
+  const W=cv.width, Hh=cv.height; let D; try{ D=cv.getContext('2d').getImageData(0,0,W,Hh).data; }catch(e){ return m; }   // (a page opened as a file cannot read its art back: no relief then)
+  const H=new Float32Array(W*Hh);
   for(let i=0;i<W*Hh;i++) H[i]=(D[i*4]*.3+D[i*4+1]*.59+D[i*4+2]*.11)/255*(D[i*4+3]/255)*10;
   const n=new THREE.CanvasTexture(xNormalMapWH(H,W,Hh,k||.35)); n.wrapS=t.wrapS; n.wrapT=t.wrapT; n.repeat.copy(t.repeat); n.magFilter=t.magFilter; n.minFilter=t.minFilter;
   m.userData.nmap=n; m.normalMap=n; m.needsUpdate=true; return m; }

@@ -458,7 +458,10 @@ function xOpenAt(x,z,c,m){ const W=xWedge(c); if(!W) return false; const u=x/XCS
 const XMAT_TEX=['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap'];
 function xGroupParts(grp,into){ const add=x=>{ if(x&&x.dispose) into.add(x); };
   grp.traverse(o=>{ add(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
-    for(const k of XMAT_TEX) add(m[k]); if(m.userData){ add(m.userData.nmap); add(m.userData.rmap); } add(m); } }); return into; }
+    for(const k of XMAT_TEX) add(m[k]); if(m.userData){ add(m.userData.nmap); add(m.userData.rmap); } add(m); }
+    // a sprite's cached pictures (xRefresh, xSpriteWarm: every pose and view it has shown or was warmed with, plain and
+    // mirrored), not only the one it shows: they went with nothing before, a dozen textures a floor
+    const tc=o.userData&&o.userData.tex; if(tc&&tc.forEach) tc.forEach(pair=>{ for(const t of pair) add(t); }); }); return into; }
 function xFreeGroup(grp,keep){ const used=keep?xGroupParts(keep,new Set()):null;
   for(const x of xGroupParts(grp,new Set())) if(!used||!used.has(x)) x.dispose(); }
 // after a frame: the floor left behind goes now that the new one's shaders are built

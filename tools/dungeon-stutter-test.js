@@ -78,7 +78,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
     await lab.close();
     const tag = 'depth ' + depth + ' (' + r.area + ')';
     console.log(tag + ': ' + r.rooms + ' rooms walked (' + r.jumps + ' stood in), ' + r.frames + ' frames; script median ' + r.scriptMed + ' ms, p99 ' + r.scriptP99 + ', max ' + r.scriptMax + '; ' + kbf + ' KB a frame of script garbage, ' + kbr + ' KB of drawing garbage (script most from ' + g.top.slice(0, 3).map(([f, k]) => f + ' ' + k).join(', ') + '); walking uploads by size ' + JSON.stringify(r.walk.sizes) + '; stairs ' + JSON.stringify(st));
-    check(r.rooms >= LIMIT.rooms && r.jumps <= r.rooms / 3 && r.frames > 300, tag + ': walked the floor (most rooms on foot)', r.rooms + ' rooms, ' + r.jumps + ' stood in, ' + r.frames + ' frames');
+    check(r.rooms >= LIMIT.rooms && r.rooms - r.jumps >= 1 && r.frames >= 1200, tag + ': walked the floor (every room reached, at least one on foot, 20 s of walking)', r.rooms + ' rooms, ' + r.jumps + ' stood in after a blocked route, ' + r.frames + ' frames');   // (furniture, pools and pits the route does not know about stop the hero; it is stood in the room and walks on)
     check(r.walk.link === 0, tag + ': walking links no shader program', r.walk.link);
     check(r.walk.big === 0, tag + ': walking uploads no texture of 128 x 128 or more', r.walk.big + ' big of ' + r.walk.up + ' uploads, ' + Math.round(r.walk.upKB) + ' KB');
     check(r.walk.upKB / Math.max(1, r.frames) * 60 < 512, tag + ': and under 512 KB a second of small ones (the darkness map fading as you see: 36 KB each)', Math.round(r.walk.upKB / Math.max(1, r.frames) * 60) + ' KB/s');

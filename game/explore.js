@@ -524,7 +524,7 @@ function xBuildScene(){
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
-  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
+  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN); EX.fadeQ=null; EX.fadeIn=null;   // (the cells still fading: xFadeCells)
   const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft; XDITHER.uXFog.value=ft; XDITHER.uXFogK.value=span;   // (the walls read their light from it: xWallMaskShader)
   const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
   veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
@@ -1417,13 +1417,13 @@ function xPaintCells(){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
   // a low glow where you have been, black where you have not
   const px=xcx(EX.pc), py=xcy(EX.pc), here=EX.room[EX.pc], rad=here>=0&&EX.rooms[here].lit?9:4;
-  const m=new THREE.Matrix4();
+  const m=new THREE.Matrix4(), fq=EX.fadeIn, FQ=EX.fadeQ;
   for(let c=0;c<XN*XN;c++){ let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=xLitAt(c)?XLIT.dMemLit:XLIT.dMemDark;   // remembered: a lit room stays lit, a dark one dim
     else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.35;   // behind a wall you have seen: the chasm below shows, faintly
     const df=EX.deepFace?EX.deepFace[c]:-1; if(df>=0){ if(EX.seen[df]) EX.seen[c]=1; b=EX.vis[df]?1-.55*Math.min(1,Math.max(0,(Math.hypot(xcx(df)-px,xcy(df)-py)-1)/rad)):EX.seen[df]?(xLitAt(df)?XLIT.dMemLit:XLIT.dMemDark):0; b*=.9; }
-    EX.fogTgt[c]=b;
+    EX.fogTgt[c]=b; if(FQ&&!fq[c]&&Math.abs(EX.fogCur[c]-b)>=.004){ fq[c]=1; FQ.push(c); }   // (now fading)
     if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ if(w[1]<0){ const wm=w[0], f=EX.fogCur[c]; w[1]=wm.userData.n++; wm.count=wm.userData.n; wm.visible=true; wm.setColorAt(w[1],new THREE.Color(f,f,f*1.05)); wm.instanceColor.needsUpdate=true; } EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[w[0].userData.v]]) M.instanceMatrix.needsUpdate=true; } } }
   for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
@@ -1773,11 +1773,16 @@ function xDbgDungeon(what){ if(!EX||!EX.wList) return;
     for(const M of touched) M.instanceMatrix.needsUpdate=true; for(const [,d] of EX.doors) if(d.mesh) xDoorOp(d); }
   xUpdateVis(); }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
+// only the cells still fading are visited (EX.fadeQ, filled as their target changes: xPaintCells), not the whole floor
+// a frame; the first frame of a floor finds them by looking at every cell
 function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=XS_COL; let moved=false;
-  for(let c=0;c<XN*XN;c++){ const cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004) continue; moved=true;
+  if(!EX.fadeQ){ EX.fadeIn=new Uint8Array(XN*XN); EX.fadeQ=[]; for(let c=0;c<XN*XN;c++) if(Math.abs(EX.fogCur[c]-EX.fogTgt[c])>=.004){ EX.fadeIn[c]=1; EX.fadeQ.push(c); } }
+  const FQ=EX.fadeQ, fq=EX.fadeIn; let wq=0;
+  for(let qi=0;qi<FQ.length;qi++){ const c=FQ[qi], cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004){ fq[c]=0; continue; } FQ[wq++]=c; moved=true;
     const v=cur+(tg-cur)*k; EX.fogCur[c]=v; const y=XN-1-xcy(c), o=(y*XN+xcx(c))*4; EX.fog[o]=EX.fog[o+1]=EX.fog[o+2]=Math.round((1-v)*255);
     const w=EX.wIdx.get(c); if(w&&w[1]>=0){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; const gm=EX.wGhost[w[0].userData.v], gs=EX.gSlot[c]; if(gs>=0){ gm.setColorAt(gs,col); gm.instanceColor.needsUpdate=true; } } }
+  FQ.length=wq;
   if(moved) EX.fogTex.needsUpdate=true;
 }
 /* Trap tells: a hidden trap is never shown, but it leaves small signs an attentive player can

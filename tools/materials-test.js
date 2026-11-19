@@ -66,7 +66,7 @@ const PLAIN = ['Room furniture / candles', 'Room furniture / mushrooms', 'Themed
     document.getElementById('mlSave').click(); const saved = JSON.parse(localStorage.getItem(XPROP_TUNE_STORE) || '{}'); out.saved = saved;
     xPropTuneLoad(); out.reloaded = (XPROP_OVR[out.target] || {}).bri;
     // export, wipe, apply the exported JSON: the same values again
-    XPROP_TUNE['rough-wood'].bri = .8; xPropTuneApply(); const j = xPropTuneJSON();   // (XPROP_TUNE is made afresh by a load: not the tw from before) localStorage.removeItem(XPROP_TUNE_STORE); xPropTuneLoad(); out.wiped = [XPROP_TUNE['rough-wood'].bri, (XPROP_OVR[out.target] || {}).bri];
+    XPROP_TUNE['rough-wood'].bri = .8; xPropTuneApply(); const j = xPropTuneJSON(); /* (XPROP_TUNE is made afresh by a load: not the tw from before) */ localStorage.removeItem(XPROP_TUNE_STORE); xPropTuneLoad(); out.wiped = [XPROP_TUNE['rough-wood'].bri, (XPROP_OVR[out.target] || {}).bri];
     document.getElementById('mlJson').value = j; document.getElementById('mlApply').click(); out.applied = [XPROP_TUNE['rough-wood'].bri, (XPROP_OVR[out.target] || {}).bri];
     try { localStorage.removeItem(XPROP_TUNE_STORE); } catch (e) {} xPropTuneLoad();
     // the 3-point set-up and a matte environment draw

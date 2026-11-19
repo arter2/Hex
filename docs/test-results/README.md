@@ -6,6 +6,7 @@ run (out of 30), from `tools/playtest/difficulty.js`. Bots are not people: compa
 
 | Date | Commit | Tap tests | Depth reached (random / average / good / combo) | Details |
 |---|---|---|---|---|
+| 2026-11-19 | 8670736 | 9 / 18 ⚠ | 16 / 16 / 22 / 27 | [2026-11-19](2026-11-19.md) |
 | 2026-11-18 | ec73734 | 8 / 18 ⚠ | 16 / 16 / 22 / 27 | [2026-11-18](2026-11-18.md) |
 | 2026-11-17 | ddada4b | 5 / 18 ⚠ | 16 / 16 / 22 / 27 | [2026-11-17](2026-11-17.md) |
 | 2026-11-16 | 4092d77 | 8 / 18 ⚠ | 16 / 16 / 22 / 27 | [2026-11-16](2026-11-16.md) |

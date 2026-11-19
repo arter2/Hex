@@ -11,7 +11,7 @@
 const Lab = require('./playtest/dungeon-lab.js');
 const DEPTHS = process.argv.slice(2).map(Number).filter(Boolean);
 const AREAS = DEPTHS.length ? DEPTHS : [1, 5, 9, 13, 17, 21];   // one floor of each area
-const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 40, rooms: 4 };   // ms on this machine (a phone is a few times slower); KB a frame
+const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms on this machine (a phone is a few times slower); KB a frame (as the frame test: 3000 KB over 600)
 (async () => {
   const check = Lab.checker('dungeon-stutter-test');
   for (const depth of AREAS) {
@@ -67,7 +67,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 40, rooms: 4 };   // ms
       return out; });
     await lab.close();
     const tag = 'depth ' + depth + ' (' + r.area + ')';
-    console.log(tag + ': ' + r.rooms + ' rooms walked (' + r.jumps + ' stood in), ' + r.frames + ' frames; script median ' + r.scriptMed + ' ms, p99 ' + r.scriptP99 + ', max ' + r.scriptMax + '; ' + kbf + ' KB a frame; stairs ' + JSON.stringify(st));
+    console.log(tag + ': ' + r.rooms + ' rooms walked (' + r.jumps + ' stood in), ' + r.frames + ' frames; script median ' + r.scriptMed + ' ms, p99 ' + r.scriptP99 + ', max ' + r.scriptMax + '; ' + kbf + ' KB a frame (most from ' + g.top.slice(0, 3).map(([f, k]) => f + ' ' + k).join(', ') + '); stairs ' + JSON.stringify(st));
     check(r.rooms >= Math.min(LIMIT.rooms, r.rooms + r.jumps) && r.frames > 200, tag + ': walked the floor', r.rooms + ' rooms ' + r.frames + ' frames');
     check(r.walk.link === 0, tag + ': walking links no shader program', r.walk.link);
     check(r.walk.up === 0, tag + ': walking uploads no texture', r.walk.up + ' uploads, ' + Math.round(r.walk.upKB) + ' KB');

@@ -1341,6 +1341,9 @@ function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'s
 // kept for the session (a new box and material for every shard of every pot was set up again on the GPU at each pot,
 // and never freed)
 const XSHARD={geo:null, mat:new Map()};
+// a shard ready for the floor's warm-up (explore.js xWarmShaders): its program compiled in the dark, not at the first pot
+// you break (every shard colour shares the one program); kept in the shard cache, so it lives as long as they do
+function xShardWarm(){ const col=0xa0603a, g=XSHARD.geo||(XSHARD.geo=new THREE.BoxGeometry(1,1,1)), m=XSHARD.mat.get(col)||XSHARD.mat.set(col,xMat(col)).get(col); return new THREE.Mesh(g,m); }
 function xShards(x,z,col){ if(!X3||!X3.group) return; EX.shards=EX.shards||[];
   const g=XSHARD.geo||(XSHARD.geo=new THREE.BoxGeometry(1,1,1)), m=XSHARD.mat.get(col)||XSHARD.mat.set(col,xMat(col)).get(col);
   for(let k=0;k<10;k++){ const o=new THREE.Mesh(g,m); o.scale.set(.08+Math.random()*.12,.05,.08+Math.random()*.1); o.position.set(x,.4,z); const a=Math.random()*6.3, v=1.5+Math.random()*2.5;

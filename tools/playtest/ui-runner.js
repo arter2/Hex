@@ -79,8 +79,11 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
         ];
         for (const [name, cat, go, active, back] of screens) {
           await tap(page, '#scrMenu .hm-cat[data-cat="' + cat + '"]');
-          await visible('#hmDlg.on');
-          await tap(page, '#hmDlgB [data-go="' + go + '"]');
+          // a category with one place goes straight there (menu.js CATS: Character, since v284); the rest ask which
+          if (cat !== 'character') {
+            await visible('#hmDlg.on');
+            await tap(page, '#hmDlgB [data-go="' + go + '"]');
+          }
           await visible(active);
           await audit(name, active);
           await tap(page, back);

@@ -252,8 +252,11 @@ function xUpdateVis(){
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
   for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN||dx*dx+dy*dy>rad*rad) continue; const i=xi(nx,ny); if(xLos(pc,i)) v[i]=1; }
   // a lit room's light shows in it from the doorway, but its walls only from inside; you never see through rock
-  for(let i=0;i<v.length;i++) if(v[i]) EX.seen[i]=1;
-  xPaintCells();
+  // (and the box round what is in sight now and what was a moment ago: only there can a cell's brightness change)
+  let x0=XN, y0=XN, x1=-1, y1=-1; for(let i=0;i<v.length;i++) if(v[i]){ EX.seen[i]=1; const cx=i%XN, cy=(i/XN)|0; if(cx<x0) x0=cx; if(cx>x1) x1=cx; if(cy<y0) y0=cy; if(cy>y1) y1=cy; }
+  const was=EX.visBox, box=x1<0?was:was?[Math.min(x0,was[0]),Math.min(y0,was[1]),Math.max(x1,was[2]),Math.max(y1,was[3])]:[x0,y0,x1,y1];
+  EX.visBox=x1<0?null:[x0,y0,x1,y1];
+  if(EX.paintAll){ EX.paintAll=false; xPaintCells(); } else xPaintCells(box);
 }
 
 /* ---------------- 3D scene ---------------- */
@@ -343,6 +346,11 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
     s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; const sh=s.userData.shade; if(sh){ sh.material.map=s.material.map; sh.material.needsUpdate=true; } } }
+// a sprite's pictures made and uploaded ahead (the floor's warm-up, in the dark): every image getImgs gives, plain and
+// mirrored, so turning or changing pose never uploads a picture mid-walk
+function xSpriteWarm(s,imgs){ const G=X3, cache=s.userData.tex||(s.userData.tex=new Map());
+  for(const im of imgs){ if(!im) continue; let pair=cache.get(im); if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(im,pair); }
+    if(G&&G.renderer&&G.renderer.initTexture) for(const t of pair) try{ G.renderer.initTexture(t); }catch(e){} } }
 const xMat=(c,o)=>{ const q=Object.assign({color:c,shininess:6,specular:0x111111},o||{}), flat=q.flat, mat=q.mat; delete q.flat; delete q.mat; const m=xPhong(q); return flat?m:xPropTex(m,mat||xPropKind(m.color)); };   // (o.mat names its painted material, o.flat keeps it plain; else its colour says: xPropKind)   // (painted from what its colour says it is made of: xPropTex)
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
@@ -519,7 +527,7 @@ function xBuildScene(){
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
-  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
+  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN); EX.fadeQ=null; EX.fadeIn=null; EX.visBox=null; EX.paintAll=true;   // (the cells still fading: xFadeCells; the first look paints every cell: xUpdateVis)
   const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft; XDITHER.uXFog.value=ft; XDITHER.uXFogK.value=span;   // (the walls read their light from it: xWallMaskShader)
   const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
   veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
@@ -542,7 +550,7 @@ function xBuildScene(){
   if(deep){ const face=new Int32Array(XN*XN).fill(-1); let ring=[]; for(let v=0;v<6;v++) for(const c of walls[v]){ face[c]=c; ring.push(c); }
     for(let r=1;r<=3;r++){ const next=[]; for(const f of ring) for(const n of [f-1,f+1,f-XN,f+XN]){ if(n<0||n>=XN*XN||face[n]>=0||EX.t[n]!==T_ROCK||xMarkCell(n)) continue;
         const x=xcx(n), y=xcy(n); if(x<1||y<1||x>=XN-1||y>=XN-1) continue; face[n]=face[f]; next.push(n); walls[6].push(n); deep[n]=face[f]; } ring=next; } }
-  EX.deepFace=deep;
+  EX.deepFace=deep; EX.deepFaceR=null;
   // the area's painted walls (envart.js), or the code-painted ones while they load
   const wallTex=(typeof envArtAreaWalls==='function'&&envArtAreaWalls(A))||[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
   const wTex=t=>t.atlas?envArtTex(t.img):xTex(t,true), ov=typeof envArtOverlay==='function'&&envArtOverlay(A), cellN=A.id==='deeps'&&typeof envArtFx==='function'&&envArtFx('cell-noise');
@@ -668,6 +676,7 @@ function xBuildScene(){
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
+  EX.meWarm=()=>{ const L=gearLook(save), out=[]; for(const view of ['front','back']) for(const pose of ['idle','walk','cast']){ const sp=unitSprite({kind:'player',look:L,view,pose}); if(sp&&sp.img) out.push(sp.img); } xSpriteWarm(EX.me,out); };   // (your pictures, ahead: xWarmShaders)
   // a soft contact shadow under you, so you stand on the floor instead of floating over it, and your picture takes a
   // little of your lamp's colour and brightness, so you sit in the room's light (debug menu > Colour: Hero shadow, Hero tint)
   EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.25),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
@@ -685,8 +694,17 @@ function xBuildScene(){
    the run is untouched; what you have found is shown again at once. */
 function xGfxRebuild(){ if(!EX||!X3) return; xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed) xTrapMesh(tr); xUpdateVis(); xFadeCells(10); }
 function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) return; const hid=[];
+  const extra=[]; if(typeof xShardWarm==='function') try{ const o=xShardWarm(); o.visible=false; G.scene.add(o); extra.push(o); }catch(e){}   // (what a floor makes only while you play: pot shards)
   G.scene.traverse(o=>{ if(!o.visible){ hid.push(o); o.visible=true; } });
   try{ G.renderer.compile(G.scene,G.cam); }catch(e){ console.warn('warm-up:',e); }
+  // and every texture the floor's materials use (their maps and their shaders' own: the painted sheets, noises, the
+  // tuning), uploaded now while the screen is dark, not on the frame a room's decor first comes into view
+  if(G.renderer.initTexture){ const tex=new Set(), slots=['map','normalMap','alphaMap','emissiveMap','roughnessMap','metalnessMap','aoMap','bumpMap','specularMap','lightMap'];
+    G.scene.traverse(o=>{ for(const m of [].concat(o.material||[])){ if(!m) continue; for(const k of slots) if(m[k]&&m[k].isTexture) tex.add(m[k]);
+      const u=G.renderer.properties.get(m).uniforms; if(u) for(const n in u){ const v=u[n]&&u[n].value; if(v&&v.isTexture) tex.add(v); else if(Array.isArray(v)) for(const x of v) if(x&&x.isTexture) tex.add(x); } } });
+    for(const t of tex) if(t.image&&!t.isRenderTargetTexture&&!t.isCubeTexture) try{ G.renderer.initTexture(t); }catch(e){} }
+  if(EX&&EX.meWarm) try{ EX.meWarm(); }catch(e){}
+  for(const o of extra) G.scene.remove(o);
   for(const o of hid) o.visible=false; }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
@@ -1061,13 +1079,13 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
  if(xon){ vec2 u=xRot*xu+xOff, gx=xRot*xgx, gy=xRot*xgy;
   vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=clamp(nt.b*vT2.x,0.,1.);
   if(vT3.x>.001) diffuseColor.rgb*=pow(clamp(.25+nt.a*1.5,0.,1.),vT3.x);
-  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.2+hb*1.6,0.,1.),vT3.y); }${low?'':`
+  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.3+hb*1.1,.05,1.),vT3.y); }   // (broad occlusion: the low ground darker, a mid-height surface a little)${low?'':`
   vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z+(xRot*xdg)*xT4.w,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
   float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);
   if(vT2.w>.001){ vec2 dB=xdB*vT2.w*2.; vec3 R1=cross(xq1,normal), R2=cross(normal,xq0); float fd=dot(xq0,R1); vec3 vg=sign(fd)*(dB.x*R1+dB.y*R2); normal=normalize(abs(fd)*normal-vg); }`} }`);
     if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);')
       .replace('#include <metalnessmap_fragment>','#include <metalnessmap_fragment>\n if(xon) metalnessFactor=max(metalnessFactor,vT2.y);');
-    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.;\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
+    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.*(1.+3.*(1.-xrough)*(1.-xrough));   // (smooth: a tighter and a brighter shine)\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
     sh.fragmentShader=f; };
   m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xprop'+(one?'1':'')+(low?'l':'')+(std?'s':'');
   m.needsUpdate=true; return m; }
@@ -1096,7 +1114,7 @@ const XPROPU={ uPK:{value:1}, uPNK:{value:1}, uPTT:{value:XPROP_TT} };
 const XPROP_NOISES=['None','Painted detail (the walls\' relief)','Cells (the Deeps rock)','Broad noise','Fine noise','Grain'];
 let XPROP_NOISE=null;
 function xPropNoise(){ if(XPROP_NOISE) return XPROP_NOISE; const N=256, R=caveRng(5151), a=xFbm(N,R,3), b=xFbm(N,R,12), g=xNoise(N,64,R);
-  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }
+  const cell=typeof envArtFx==='function'&&envArtFx('cell-noise'); let cd=null; if(cell){ try{ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.drawImage(cell,0,0,N,N); cd=x.getImageData(0,0,N,N).data; }catch(e){ cd=null; } }   // (a page opened as a file cannot read its art back: the worked-out cells then)
   const pts=[]; if(!cd) for(let k=0;k<40;k++) pts.push([R()*N,R()*N]);
   const worley=(i,j)=>{ let d=1e9; for(const [px,py] of pts) for(const ox of [-N,0,N]) for(const oy of [-N,0,N]){ const dx=i-px-ox, dy=j-py-oy; d=Math.min(d,dx*dx+dy*dy); } return Math.min(1,Math.sqrt(d)/(N*.12)); };
   const F=[new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N),new Float32Array(N*N)];
@@ -1139,7 +1157,8 @@ const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay',
 const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
   0x684329:'books', 0x7a2a24:'leather', 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
 function xFurnish(M0,L0,kind,...a){ return xPropKindRun('room:'+kind,()=>xFurnish0(M0,L0,kind,...a)); }   // (its object, for its materials' tuning: xPropSlot)
-function xFurnish0(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
+function xFurnish0(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=kind==='rubble'&&A&&A.id==='rifts'?'basalt':XFURN_MAT[kind]||null,   // (rubble is the area's rock: basalt in the Rifts)
+    sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
       T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
   const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;
@@ -1343,7 +1362,7 @@ function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas')
     for(let i=0;i<W;i+=4) for(let j=0;j<H;j+=4){ const edge=i<8||j<8||i>=W-8||j>=H-8, d=(Math.abs(((i/4)%8)-4)+Math.abs(((j/4)%8)-4));
       x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
   return c; }
-function xTrimBand(cv){ const x=cv.getContext('2d'), d=x.getImageData(0,0,cv.width,cv.height).data; let y0=-1, y1=-1;
+function xTrimBand(cv){ const x=cv.getContext('2d'); let d; try{ d=x.getImageData(0,0,cv.width,cv.height).data; }catch(e){ return null; } let y0=-1, y1=-1;   // (null: the code-painted trim, as when the art is missing)
   for(let y=0;y<cv.height;y++){ let a=0; for(let i=0;i<cv.width;i++) a=Math.max(a,d[(y*cv.width+i)*4+3]); if(a>24){ if(y0<0) y0=y; y1=y; } }
   if(y0<0) return null; const c=document.createElement('canvas'); c.width=cv.width; c.height=y1-y0+1; c.getContext('2d').drawImage(cv,0,y0,cv.width,c.height,0,0,cv.width,c.height); return c; }
 // the Frozen Deeps' cell noise for their rock walls: one texture, kept for good (a uniform, not a material's map, so a
@@ -1400,17 +1419,21 @@ const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); let wall=false;
   return wall; };
 // a cell in (or a wall beside) a room whose lights burn
 const xLitAt=c=>{ const r=EX.room[c]; if(r>=0) return !!EX.rooms[r].lit; for(const n of [c-1,c+1,c-XN,c+XN]){ const q=EX.room[n]; if(q>=0&&EX.rooms[q]&&EX.rooms[q].lit) return true; } return false; };
-function xPaintCells(){
+function xPaintCells(box){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
-  // a low glow where you have been, black where you have not
+  // a low glow where you have been, black where you have not. box [x0,y0,x1,y1]: only the cells there (what is in sight
+  // and was a moment ago: xUpdateVis), with a margin for the cells that look at their neighbours (a remembered wall's
+  // rock, a chasm face's cell above); no box, every cell (a setting changed, a room was lit)
   const px=xcx(EX.pc), py=xcy(EX.pc), here=EX.room[EX.pc], rad=here>=0&&EX.rooms[here].lit?9:4;
-  const m=new THREE.Matrix4();
-  for(let c=0;c<XN*XN;c++){ let b=0;
+  const m=new THREE.Matrix4(), fq=EX.fadeIn, FQ=EX.fadeQ;
+  if(EX.deepFace&&EX.deepFaceR==null){ let r=0; for(let c=0;c<XN*XN;c++){ const d=EX.deepFace[c]; if(d>=0) r=Math.max(r,Math.abs(xcx(d)-xcx(c)),Math.abs(xcy(d)-xcy(c))); } EX.deepFaceR=r; }
+  const mg=2+(EX.deepFaceR||0), bx0=box?Math.max(0,box[0]-mg):0, by0=box?Math.max(0,box[1]-mg):0, bx1=box?Math.min(XN-1,box[2]+mg):XN-1, by1=box?Math.min(XN-1,box[3]+mg):XN-1;
+  for(let yy=by0;yy<=by1;yy++) for(let xx=bx0;xx<=bx1;xx++){ const c=yy*XN+xx; let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=xLitAt(c)?XLIT.dMemLit:XLIT.dMemDark;   // remembered: a lit room stays lit, a dark one dim
     else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.35;   // behind a wall you have seen: the chasm below shows, faintly
     const df=EX.deepFace?EX.deepFace[c]:-1; if(df>=0){ if(EX.seen[df]) EX.seen[c]=1; b=EX.vis[df]?1-.55*Math.min(1,Math.max(0,(Math.hypot(xcx(df)-px,xcy(df)-py)-1)/rad)):EX.seen[df]?(xLitAt(df)?XLIT.dMemLit:XLIT.dMemDark):0; b*=.9; }
-    EX.fogTgt[c]=b;
+    EX.fogTgt[c]=b; if(FQ&&!fq[c]&&Math.abs(EX.fogCur[c]-b)>=.004){ fq[c]=1; FQ.push(c); }   // (now fading)
     if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ if(w[1]<0){ const wm=w[0], f=EX.fogCur[c]; w[1]=wm.userData.n++; wm.count=wm.userData.n; wm.visible=true; wm.setColorAt(w[1],new THREE.Color(f,f,f*1.05)); wm.instanceColor.needsUpdate=true; } EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[w[0].userData.v]]) M.instanceMatrix.needsUpdate=true; } } }
   for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
@@ -1760,11 +1783,16 @@ function xDbgDungeon(what){ if(!EX||!EX.wList) return;
     for(const M of touched) M.instanceMatrix.needsUpdate=true; for(const [,d] of EX.doors) if(d.mesh) xDoorOp(d); }
   xUpdateVis(); }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
+// only the cells still fading are visited (EX.fadeQ, filled as their target changes: xPaintCells), not the whole floor
+// a frame; the first frame of a floor finds them by looking at every cell
 function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=XS_COL; let moved=false;
-  for(let c=0;c<XN*XN;c++){ const cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004) continue; moved=true;
+  if(!EX.fadeQ){ EX.fadeIn=new Uint8Array(XN*XN); EX.fadeQ=[]; for(let c=0;c<XN*XN;c++) if(Math.abs(EX.fogCur[c]-EX.fogTgt[c])>=.004){ EX.fadeIn[c]=1; EX.fadeQ.push(c); } }
+  const FQ=EX.fadeQ, fq=EX.fadeIn; let wq=0;
+  for(let qi=0;qi<FQ.length;qi++){ const c=FQ[qi], cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004){ fq[c]=0; continue; } FQ[wq++]=c; moved=true;
     const v=cur+(tg-cur)*k; EX.fogCur[c]=v; const y=XN-1-xcy(c), o=(y*XN+xcx(c))*4; EX.fog[o]=EX.fog[o+1]=EX.fog[o+2]=Math.round((1-v)*255);
     const w=EX.wIdx.get(c); if(w&&w[1]>=0){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; const gm=EX.wGhost[w[0].userData.v], gs=EX.gSlot[c]; if(gs>=0){ gm.setColorAt(gs,col); gm.instanceColor.needsUpdate=true; } } }
+  FQ.length=wq;
   if(moved) EX.fogTex.needsUpdate=true;
 }
 /* Trap tells: a hidden trap is never shown, but it leaves small signs an attentive player can
@@ -2321,10 +2349,10 @@ function xDrawStand(T){
     g.sprite.scale.y*=sq; g.sprite.scale.x*=g.state==='chase'&&hop<.25?1.08-hop*.32:1; }
 }
 function xDrawGlows(T,dt,G){
-  for(const L of EX.glows){ if(!L.g.visible) continue; const f=xLightF(L);
+  const GL=EX.glows; for(let gi=0;gi<GL.length;gi++){ const L=GL[gi]; if(!L.g.visible) continue; const f=xLightF(L);   // (index loops: no iterator garbage each frame)
     const FL=XLIT.flick, fl=L.torch?.8+FL*(.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3)):.85+FL*.15*Math.sin(T*1.7+L.ph);
-    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
-    for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
+    L.halo.material.opacity=.6*f*fl; { const ms=L.mats, mo=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f; for(let i=0;i<ms.length;i++) ms[i].opacity=mo; }
+    { const ch=L.g.children; for(let i=0;i<ch.length;i++){ const o=ch[i]; if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl; } }
     if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
     if(EX.area.veins==='stars'){ const ch=L.g.children; for(let i=0;i<ch.length;i++){ const o=ch[i]; if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; } } }
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;

@@ -78,7 +78,7 @@ function tris() {
 // in the page: switch the setting on a live floor and back; the run must be untouched
 function live() {
   DPROF.toRoom();
-  DPROF.settle(20);
+  DPROF.settle(120); // (long enough for the room's walls to finish rising into view: a snapshot mid-reveal counts fewer)
   const doors = () => [...EX.doors.values()].map(d => d.state).join(',');
   const shown = () => {
     let n = 0;

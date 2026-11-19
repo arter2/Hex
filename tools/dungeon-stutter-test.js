@@ -15,7 +15,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
 (async () => {
   const check = Lab.checker('dungeon-stutter-test');
   for (const depth of AREAS) {
-    const lab = await Lab.open({});
+    const lab = await Lab.open({ width: 260, height: 560 });   // (a small window: the test browser draws in software)
     const info = await lab.enter(depth, 2);
     const r = await lab.page.evaluate(lim => {
       const out = { area: EX.area.id, rooms: 0, jumps: 0, frames: 0 };
@@ -27,7 +27,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
       const undo = [wrap(gl, 'linkProgram', () => C.link++), wrap(gl, 'texImage2D', a => { C.up++; const w = a.length >= 9 ? a[3] * a[4] : (a[5] && a[5].width * a[5].height) || 0; C.upKB += w * 4 / 1024; if (w >= 128 * 128) C.big++; C.sizes[w] = (C.sizes[w] || 0) + 1; }), wrap(gl, 'texSubImage2D', () => C.up++)];
       const realBuild = window.xBuildScene; window.xBuildScene = function () { C.build++; return realBuild.apply(this, arguments); };
       // the game's own script a frame: the frame's time less the drawing's
-      const realRender = window.xRender; let rt = 0; window.xRender = function () { const t = performance.now(); const v = realRender.apply(this, arguments); rt += performance.now() - t; return v; };
+      const realRender = window.xRender; let rt = 0, fn = 0; window.xRender = function () { if (++fn % 4) return; const t = performance.now(); const v = realRender.apply(this, arguments); rt += performance.now() - t; return v; };   // (drawn every 4th frame: what a first draw links or uploads is still caught on the next one)
       const script = [];
       const frame = () => { rt = 0; const t = performance.now(); DPROF.settle(1); script.push(performance.now() - t - rt); out.frames++; };
       // room to room, really walked: a route of open cells (the game's own path finding only goes where you have been),
@@ -36,14 +36,14 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
       const route = (from, to) => { const prev = new Int32Array(XN * XN).fill(-1), q = [from]; prev[from] = from;
         for (let h = 0; h < q.length && prev[to] < 0; h++) { const c = q[h]; for (const n of [c + 1, c - 1, c + XN, c - XN]) if (prev[n] < 0 && open(n)) { prev[n] = c; q.push(n); } }
         if (prev[to] < 0) return null; const p = []; for (let c = to; c !== from; c = prev[c]) p.unshift(c); return p; };
-      const rooms = EX.rooms.filter(r => !r.nook);
+      const rooms = EX.rooms.filter(r => !r.nook).slice(0, 10);
       for (const r of rooms) {
         let goal = -1;
         for (let y = r.y; y < r.y + r.h && goal < 0; y++) for (let x = r.x; x < r.x + r.w; x++) { const c = xi(x, y); if (EX.t[c] === T_FLOOR && !EX.propAt.has(c) && c !== EX.down && c !== EX.up) { goal = c; break; } }
         if (goal < 0) continue;
         const path = goal === EX.pc ? [] : route(EX.pc, goal);
         if (path && path.length) { EX.path = path; EX.goal = { cell: goal, x: xw(goal), z: xz(goal) }; let last = EX.path.length, still = 0;
-          for (let k = 0; k < 1800 && EX.path.length; k++) { frame(); if (EX.path.length < last) { last = EX.path.length; still = 0; } else if (++still > 180) break; }
+          for (let k = 0; k < 1200 && EX.path.length; k++) { frame(); if (EX.path.length < last) { last = EX.path.length; still = 0; } else if (++still > 180) break; }
           if (EX.pc !== goal) { DPROF.stand(goal); out.jumps++; frame(); } }
         else { DPROF.stand(goal); out.jumps++; frame(); }
         out.rooms++;

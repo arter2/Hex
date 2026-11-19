@@ -42,15 +42,20 @@ const PLAIN = ['Room furniture / candles', 'Room furniture / mushrooms', 'Themed
   const t = await page.evaluate(async () => {
     const out = {}, list = mlAssets(), barrel = list.findIndex(a => a.group === 'Room furniture' && a.name === 'barrel'), crate = list.findIndex(a => a.group === 'Room furniture' && a.name === 'crate');
     ML.area = 0; ML.light = ML_LIGHTS.findIndex(l => l.id === 'studio'); mlArea(); ML.asset = barrel; mlShow(); ML.yaw = .3; ML.pitch = .62; ML.dist = 6; ML.ty = .5;
+    ML.refs = false; MLS.refs.visible = false;   // (the chrome ball's reflection refreshes between shots: not part of what is compared)
     const shot = () => { mlFrame(performance.now()); mlFrame(performance.now()); const gl = MLS.r.getContext(), w = gl.drawingBufferWidth, h = gl.drawingBufferHeight, p = new Uint8Array(w * h * 4); gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, p); return p; };
     const diff = (a, b) => { let n = 0; for (let i = 0; i < a.length; i += 4) if (Math.abs(a[i] - b[i]) + Math.abs(a[i + 1] - b[i + 1]) + Math.abs(a[i + 2] - b[i + 2]) > 24) n++; return n; };
     out.mats = mlMatsOf(MLS.spin);
     const base = shot();
     // every slider of the barrel's staves moves the picture
     ML.mat = 'rough-wood'; ML.scope = 'all'; mlScope(); const tw = XPROP_TUNE['rough-wood'], moved = {};
-    const tries = { hue: 120, sat: 0, con: 3, bri: .4, detail: 0, rough: 0, metal: 1, normal: 4, bump: 4, height: 3, ao: 3, scale: 3.7, rot: 90, offu: .5, offv: .5, dstr: 1 };
+    const tries = { hue: 120, sat: 0, con: 3, bri: .4, detail: 0, normal: 4, bump: 4, height: 3, ao: 3, scale: 3.7, rot: 90, offu: .5, offv: .5, dstr: 1 };
     for (const k in tries) { const was = tw[k]; tw[k] = tries[k]; if (k === 'dstr') { tw.dnoise = 3; tw.dscale = 2; } xPropTuneApply(); moved[k] = diff(base, shot()); tw[k] = was; if (k === 'dstr') { tw.dnoise = 0; tw.dscale = 8; } xPropTuneApply(); }
     out.moved = moved; out.backToBase = diff(base, shot());
+    // roughness and metalness on a shiny material: the iron swatch, under the 3-point key and rim
+    { const sw = list.findIndex(a => a.group === 'Material swatches' && a.name === 'iron'); ML.asset = sw; mlShow(); ML.yaw = .3; ML.pitch = .62; ML.dist = 6; ML.ty = .5; ML.light = ML_LIGHTS.findIndex(l => l.id === 'tp'); ML_TP.hdri = 0; mlLight();
+      const ti = XPROP_TUNE.iron, b2 = shot(); for (const [k, v] of [['rough', 0], ['metal', 1]]) { const was = ti[k]; ti[k] = k === 'rough' ? (was > .5 ? 0 : 2) : v; xPropTuneApply(); moved[k] = diff(b2, shot()); ti[k] = was; xPropTuneApply(); }
+      ML.light = ML_LIGHTS.findIndex(l => l.id === 'studio'); mlLight(); ML.asset = barrel; mlShow(); ML.yaw = .3; ML.pitch = .62; ML.dist = 6; ML.ty = .5; }
     // an object's own tuning: the barrel's iron alone
     ML.mat = 'iron'; mlScope(); document.getElementById('mlScO').click(); out.target = mlTarget();
     XPROP_OVR[out.target] = { bri: .05 }; xPropTuneApply(); out.barrelMoved = diff(base, shot());

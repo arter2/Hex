@@ -252,8 +252,11 @@ function xUpdateVis(){
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
   for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN||dx*dx+dy*dy>rad*rad) continue; const i=xi(nx,ny); if(xLos(pc,i)) v[i]=1; }
   // a lit room's light shows in it from the doorway, but its walls only from inside; you never see through rock
-  for(let i=0;i<v.length;i++) if(v[i]) EX.seen[i]=1;
-  xPaintCells();
+  // (and the box round what is in sight now and what was a moment ago: only there can a cell's brightness change)
+  let x0=XN, y0=XN, x1=-1, y1=-1; for(let i=0;i<v.length;i++) if(v[i]){ EX.seen[i]=1; const cx=i%XN, cy=(i/XN)|0; if(cx<x0) x0=cx; if(cx>x1) x1=cx; if(cy<y0) y0=cy; if(cy>y1) y1=cy; }
+  const was=EX.visBox, box=x1<0?was:was?[Math.min(x0,was[0]),Math.min(y0,was[1]),Math.max(x1,was[2]),Math.max(y1,was[3])]:[x0,y0,x1,y1];
+  EX.visBox=x1<0?null:[x0,y0,x1,y1];
+  if(EX.paintAll){ EX.paintAll=false; xPaintCells(); } else xPaintCells(box);
 }
 
 /* ---------------- 3D scene ---------------- */
@@ -524,7 +527,7 @@ function xBuildScene(){
     grp.add(new THREE.Mesh(geo,fm)); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
-  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN); EX.fadeQ=null; EX.fadeIn=null;   // (the cells still fading: xFadeCells)
+  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN); EX.fadeQ=null; EX.fadeIn=null; EX.visBox=null; EX.paintAll=true;   // (the cells still fading: xFadeCells; the first look paints every cell: xUpdateVis)
   const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft; XDITHER.uXFog.value=ft; XDITHER.uXFogK.value=span;   // (the walls read their light from it: xWallMaskShader)
   const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
   veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
@@ -547,7 +550,7 @@ function xBuildScene(){
   if(deep){ const face=new Int32Array(XN*XN).fill(-1); let ring=[]; for(let v=0;v<6;v++) for(const c of walls[v]){ face[c]=c; ring.push(c); }
     for(let r=1;r<=3;r++){ const next=[]; for(const f of ring) for(const n of [f-1,f+1,f-XN,f+XN]){ if(n<0||n>=XN*XN||face[n]>=0||EX.t[n]!==T_ROCK||xMarkCell(n)) continue;
         const x=xcx(n), y=xcy(n); if(x<1||y<1||x>=XN-1||y>=XN-1) continue; face[n]=face[f]; next.push(n); walls[6].push(n); deep[n]=face[f]; } ring=next; } }
-  EX.deepFace=deep;
+  EX.deepFace=deep; EX.deepFaceR=null;
   // the area's painted walls (envart.js), or the code-painted ones while they load
   const wallTex=(typeof envArtAreaWalls==='function'&&envArtAreaWalls(A))||[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)]; XROCKTEX=wallTex[0];
   const wTex=t=>t.atlas?envArtTex(t.img):xTex(t,true), ov=typeof envArtOverlay==='function'&&envArtOverlay(A), cellN=A.id==='deeps'&&typeof envArtFx==='function'&&envArtFx('cell-noise');
@@ -691,6 +694,7 @@ function xBuildScene(){
    the run is untouched; what you have found is shown again at once. */
 function xGfxRebuild(){ if(!EX||!X3) return; xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed) xTrapMesh(tr); xUpdateVis(); xFadeCells(10); }
 function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) return; const hid=[];
+  const extra=[]; if(typeof xShardWarm==='function') try{ const o=xShardWarm(); o.visible=false; G.scene.add(o); extra.push(o); }catch(e){}   // (what a floor makes only while you play: pot shards)
   G.scene.traverse(o=>{ if(!o.visible){ hid.push(o); o.visible=true; } });
   try{ G.renderer.compile(G.scene,G.cam); }catch(e){ console.warn('warm-up:',e); }
   // and every texture the floor's materials use (their maps and their shaders' own: the painted sheets, noises, the
@@ -700,6 +704,7 @@ function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) re
       const u=G.renderer.properties.get(m).uniforms; if(u) for(const n in u){ const v=u[n]&&u[n].value; if(v&&v.isTexture) tex.add(v); else if(Array.isArray(v)) for(const x of v) if(x&&x.isTexture) tex.add(x); } } });
     for(const t of tex) if(t.image&&!t.isRenderTargetTexture&&!t.isCubeTexture) try{ G.renderer.initTexture(t); }catch(e){} }
   if(EX&&EX.meWarm) try{ EX.meWarm(); }catch(e){}
+  for(const o of extra) G.scene.remove(o);
   for(const o of hid) o.visible=false; }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
@@ -1413,12 +1418,16 @@ const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); let wall=false;
   return wall; };
 // a cell in (or a wall beside) a room whose lights burn
 const xLitAt=c=>{ const r=EX.room[c]; if(r>=0) return !!EX.rooms[r].lit; for(const n of [c-1,c+1,c-XN,c+XN]){ const q=EX.room[n]; if(q>=0&&EX.rooms[q]&&EX.rooms[q].lit) return true; } return false; };
-function xPaintCells(){
+function xPaintCells(box){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
-  // a low glow where you have been, black where you have not
+  // a low glow where you have been, black where you have not. box [x0,y0,x1,y1]: only the cells there (what is in sight
+  // and was a moment ago: xUpdateVis), with a margin for the cells that look at their neighbours (a remembered wall's
+  // rock, a chasm face's cell above); no box, every cell (a setting changed, a room was lit)
   const px=xcx(EX.pc), py=xcy(EX.pc), here=EX.room[EX.pc], rad=here>=0&&EX.rooms[here].lit?9:4;
   const m=new THREE.Matrix4(), fq=EX.fadeIn, FQ=EX.fadeQ;
-  for(let c=0;c<XN*XN;c++){ let b=0;
+  if(EX.deepFace&&EX.deepFaceR==null){ let r=0; for(let c=0;c<XN*XN;c++){ const d=EX.deepFace[c]; if(d>=0) r=Math.max(r,Math.abs(xcx(d)-xcx(c)),Math.abs(xcy(d)-xcy(c))); } EX.deepFaceR=r; }
+  const mg=2+(EX.deepFaceR||0), bx0=box?Math.max(0,box[0]-mg):0, by0=box?Math.max(0,box[1]-mg):0, bx1=box?Math.min(XN-1,box[2]+mg):XN-1, by1=box?Math.min(XN-1,box[3]+mg):XN-1;
+  for(let yy=by0;yy<=by1;yy++) for(let xx=bx0;xx<=bx1;xx++){ const c=yy*XN+xx; let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=xLitAt(c)?XLIT.dMemLit:XLIT.dMemDark;   // remembered: a lit room stays lit, a dark one dim
     else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.35;   // behind a wall you have seen: the chasm below shows, faintly

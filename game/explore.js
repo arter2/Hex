@@ -465,14 +465,20 @@ function xGroupParts(grp,into){ const add=x=>{ if(x&&x.dispose) into.add(x); };
 function xFreeGroup(grp,keep){ const used=keep?xGroupParts(keep,new Set()):null;
   for(const x of xGroupParts(grp,new Set())) if(!used||!used.has(x)) x.dispose(); }
 // after a frame: the floor left behind goes now that the new one's shaders are built
-function xFreeOld(G){ if(G&&G.oldGroup){ const o=G.oldGroup; G.oldGroup=null; xFreeGroup(o,G.group); } }
+function xFreeOld(G){ if(!G) return; if(G.oldGroup){ const o=G.oldGroup; G.oldGroup=null; xFreeGroup(o,G.group); xFreeFloorTex(G); } else if(!G.curFloorTex) G.curFloorTex=xFloorTexNow(); }
+// the floor-wide maps the shaders read through uniforms, not materials (the light, mould, solid-wall and darkness maps):
+// no material holds them, so freeing the old group missed them, and each floor kept 5 MB of them on the GPU (the soak
+// test). The old floor's go once the new floor's are in; a kept floor's are uploaded again if you climb back to it. A floor's
+// own are noted when it has drawn (curFloorTex): a fight points the uniforms at the arena's, so they alone would miss it.
+const xFloorTexNow=()=>[XLITU.uXAOTex.value,XLITU.uXMoldMap.value,XDITHER.uSolid.value,XDITHER.uXFog.value].filter(Boolean);
+function xFreeFloorTex(G){ const now=xFloorTexNow(); for(const t of G.oldFloorTex||[]) if(!now.includes(t)) t.dispose(); G.oldFloorTex=null; G.curFloorTex=now; }
 function xBuildScene(){
   const G=xInit3D();
   // the old floor leaves the scene at once but is freed only after the new floor has drawn (xFreeOld): freeing its
   // materials first deleted their shader programs, and the new floor then built the same programs again (the stall
   // on the stairs). Then everything of it the new floor does not use goes (geometry, materials and their textures),
   // so going up and down the stairs never piles up graphics memory
-  if(G.group){ G.scene.remove(G.group); if(G.oldGroup) xFreeGroup(G.oldGroup,null); G.oldGroup=G.group; }
+  if(G.group){ G.scene.remove(G.group); if(G.oldGroup) xFreeGroup(G.oldGroup,null); G.oldGroup=G.group; G.oldFloorTex=[...new Set([...(G.oldFloorTex||[]),...(G.curFloorTex||[]),...xFloorTexNow()])]; G.curFloorTex=null; }
   XLITMATS.clear();
   // the Graphics setting, read once per floor: Low keeps two of the four torch lights (the others leave the scene, so
   // every material's shader is built for fewer lights) and draws at sharpness 1 with no pass after the picture

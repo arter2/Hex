@@ -1079,13 +1079,13 @@ function xPropTex(m,one){ const A=typeof envArtProps==='function'?envArtProps():
  if(xon){ vec2 u=xRot*xu+xOff, gx=xRot*xgx, gy=xRot*xgy;
   vec4 nt=xAtG(uPN,vPR,u,gx,gy); xrough=clamp(nt.b*vT2.x,0.,1.);
   if(vT3.x>.001) diffuseColor.rgb*=pow(clamp(.25+nt.a*1.5,0.,1.),vT3.x);
-  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.2+hb*1.6,0.,1.),vT3.y); }${low?'':`
+  if(vT3.y>.001){ float hb=xAtG(uPN,vPR,u,gx*14.,gy*14.).a; diffuseColor.rgb*=pow(clamp(.3+hb*1.1,.05,1.),vT3.y); }   // (broad occlusion: the low ground darker, a mid-height surface a little)${low?'':`
   vec3 mn=vec3((nt.xy*2.-1.)*uPNK*vT2.z+(xRot*xdg)*xT4.w,1.); vec3 N=normal, q1p=cross(xq1,N), q0p=cross(N,xq0), T=q1p*gx.x+q0p*gy.x, B=q1p*gx.y+q0p*gy.y; float det=max(dot(T,T),dot(B,B));
   float sc=det==0.?0.:inversesqrt(det); normal=normalize(T*(mn.x*sc)+B*(mn.y*sc)+N*mn.z);
   if(vT2.w>.001){ vec2 dB=xdB*vT2.w*2.; vec3 R1=cross(xq1,normal), R2=cross(normal,xq0); float fd=dot(xq0,R1); vec3 vg=sign(fd)*(dB.x*R1+dB.y*R2); normal=normalize(abs(fd)*normal-vg); }`} }`);
     if(std) f=f.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\n if(xon) roughnessFactor=clamp(roughnessFactor*mix(.6,1.2,xrough),.04,1.);')
       .replace('#include <metalnessmap_fragment>','#include <metalnessmap_fragment>\n if(xon) metalnessFactor=max(metalnessFactor,vT2.y);');
-    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.;\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
+    else f=f.replace('#include <lights_phong_fragment>','#include <lights_phong_fragment>\n if(xon){ material.specularShininess=mix(70.,6.,xrough); material.specularStrength*=mix(1.,.15,xrough)*vPM.w*3.*(1.+3.*(1.-xrough)*(1.-xrough));   // (smooth: a tighter and a brighter shine)\n  float mt=vT2.y; material.specularColor=mix(material.specularColor,max(diffuseColor.rgb,vec3(.04))*1.6,mt); material.diffuseColor*=1.-.75*mt; material.specularStrength*=1.+5.*mt; }');
     sh.fragmentShader=f; };
   m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xprop'+(one?'1':'')+(low?'l':'')+(std?'s':'');
   m.needsUpdate=true; return m; }
@@ -1157,7 +1157,8 @@ const XFURN_MAT={ barrel:'rough-wood', crate:'planks', sack:'cloth', urn:'clay',
 const XFURN_PART={ 0x2c2a28:'iron', 0xd8d0b8:'bone', 0xc8a040:'brass', 0x8a8070:'iron', 0xeae2c8:null, 0xd8c8a0:null, 0xd8d0c0:null,
   0x684329:'books', 0x7a2a24:'leather', 0x2a4a6a:null, 0x3a5a2a:null, 0x8a6a2a:null, 0x5a2a5a:null };   // (wax, paper, mushroom stems; the books and the rack's shield stay flat)
 function xFurnish(M0,L0,kind,...a){ return xPropKindRun('room:'+kind,()=>xFurnish0(M0,L0,kind,...a)); }   // (its object, for its materials' tuning: xPropSlot)
-function xFurnish0(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=XFURN_MAT[kind]||null, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
+function xFurnish0(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, base=kind==='rubble'&&A&&A.id==='rifts'?'basalt':XFURN_MAT[kind]||null,   // (rubble is the area's rock: basalt in the Rifts)
+    sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>{ if(T===M0) T.mat=T.force!==undefined?T.force:typeof c==='number'&&c in XFURN_PART?XFURN_PART[c]:base;
       T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K); }}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
   const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
   const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;

@@ -29,7 +29,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
       // the game's own script a frame: the frame's time less the drawing's
       const realRender = window.xRender; let rt = 0, fn = 0; window.xRender = function () { if (++fn % 4) return; const t = performance.now(); const v = realRender.apply(this, arguments); rt += performance.now() - t; return v; };   // (drawn every 4th frame: what a first draw links or uploads is still caught on the next one)
       const script = [];
-      const frame = () => { rt = 0; const t = performance.now(); DPROF.settle(1); script.push(performance.now() - t - rt); out.frames++; };
+      const frame = () => { rt = 0; const t = performance.now(); if (!EX.busy) xMove(1 / 60); DPROF.settle(1); script.push(performance.now() - t - rt); out.frames++; };   // (the game's loop moves you, then draws: xLoop)
       // room to room, really walked: a route of open cells (the game's own path finding only goes where you have been),
       // handed to the game as its path; the hero walks it with the game's own movement. Locked and secret doors are walls.
       const open = c => { if (c < 0 || c >= XN * XN || EX.t[c] === T_ROCK) return false; const d = EX.doors.get(c); if (d && (d.lock || d.state === 'secret')) return false; return !(typeof xSolid === 'function' && xSolid(c)); };

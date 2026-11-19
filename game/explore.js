@@ -343,6 +343,11 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
     s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; const sh=s.userData.shade; if(sh){ sh.material.map=s.material.map; sh.material.needsUpdate=true; } } }
+// a sprite's pictures made and uploaded ahead (the floor's warm-up, in the dark): every image getImgs gives, plain and
+// mirrored, so turning or changing pose never uploads a picture mid-walk
+function xSpriteWarm(s,imgs){ const G=X3, cache=s.userData.tex||(s.userData.tex=new Map());
+  for(const im of imgs){ if(!im) continue; let pair=cache.get(im); if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(im,pair); }
+    if(G&&G.renderer&&G.renderer.initTexture) for(const t of pair) try{ G.renderer.initTexture(t); }catch(e){} } }
 const xMat=(c,o)=>{ const q=Object.assign({color:c,shininess:6,specular:0x111111},o||{}), flat=q.flat, mat=q.mat; delete q.flat; delete q.mat; const m=xPhong(q); return flat?m:xPropTex(m,mat||xPropKind(m.color)); };   // (o.mat names its painted material, o.flat keeps it plain; else its colour says: xPropKind)   // (painted from what its colour says it is made of: xPropTex)
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
@@ -668,6 +673,7 @@ function xBuildScene(){
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
+  EX.meWarm=()=>{ const L=gearLook(save), out=[]; for(const view of ['front','back']) for(const pose of ['idle','walk','cast']){ const sp=unitSprite({kind:'player',look:L,view,pose}); if(sp&&sp.img) out.push(sp.img); } xSpriteWarm(EX.me,out); };   // (your pictures, ahead: xWarmShaders)
   // a soft contact shadow under you, so you stand on the floor instead of floating over it, and your picture takes a
   // little of your lamp's colour and brightness, so you sit in the room's light (debug menu > Colour: Hero shadow, Hero tint)
   EX.meShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.25),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0x000000,transparent:true,opacity:XLIT.heroShadow,depthWrite:false,fog:false}));
@@ -693,6 +699,7 @@ function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) re
     G.scene.traverse(o=>{ for(const m of [].concat(o.material||[])){ if(!m) continue; for(const k of slots) if(m[k]&&m[k].isTexture) tex.add(m[k]);
       const u=G.renderer.properties.get(m).uniforms; if(u) for(const n in u){ const v=u[n]&&u[n].value; if(v&&v.isTexture) tex.add(v); else if(Array.isArray(v)) for(const x of v) if(x&&x.isTexture) tex.add(x); } } });
     for(const t of tex) if(t.image&&!t.isRenderTargetTexture&&!t.isCubeTexture) try{ G.renderer.initTexture(t); }catch(e){} }
+  if(EX&&EX.meWarm) try{ EX.meWarm(); }catch(e){}
   for(const o of hid) o.visible=false; }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
@@ -2327,10 +2334,10 @@ function xDrawStand(T){
     g.sprite.scale.y*=sq; g.sprite.scale.x*=g.state==='chase'&&hop<.25?1.08-hop*.32:1; }
 }
 function xDrawGlows(T,dt,G){
-  for(const L of EX.glows){ if(!L.g.visible) continue; const f=xLightF(L);
+  const GL=EX.glows; for(let gi=0;gi<GL.length;gi++){ const L=GL[gi]; if(!L.g.visible) continue; const f=xLightF(L);   // (index loops: no iterator garbage each frame)
     const FL=XLIT.flick, fl=L.torch?.8+FL*(.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3)):.85+FL*.15*Math.sin(T*1.7+L.ph);
-    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
-    for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
+    L.halo.material.opacity=.6*f*fl; { const ms=L.mats, mo=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f; for(let i=0;i<ms.length;i++) ms[i].opacity=mo; }
+    { const ch=L.g.children; for(let i=0;i<ch.length;i++){ const o=ch[i]; if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl; } }
     if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
     if(EX.area.veins==='stars'){ const ch=L.g.children; for(let i=0;i<ch.length;i++){ const o=ch[i]; if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; } } }
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;

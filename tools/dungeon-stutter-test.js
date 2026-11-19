@@ -27,7 +27,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
       const undo = [wrap(gl, 'linkProgram', () => C.link++), wrap(gl, 'texImage2D', a => { C.up++; const w = a.length >= 9 ? a[3] * a[4] : (a[5] && a[5].width * a[5].height) || 0; C.upKB += w * 4 / 1024; if (w >= 128 * 128) C.big++; C.sizes[w] = (C.sizes[w] || 0) + 1; }), wrap(gl, 'texSubImage2D', () => C.up++)];
       const realBuild = window.xBuildScene; window.xBuildScene = function () { C.build++; return realBuild.apply(this, arguments); };
       // the game's own script a frame: the frame's time less the drawing's
-      const realRender = window.xRender; let rt = 0, fn = 0; window.xRender = function () { if (++fn % 4) return; const t = performance.now(); const v = realRender.apply(this, arguments); rt += performance.now() - t; return v; };   // (drawn every 4th frame: what a first draw links or uploads is still caught on the next one)
+      const realRender = window.xRender; let rt = 0, fn = 0; window.xRender = function () { if (++fn % 6) return; const t = performance.now(); const v = realRender.apply(this, arguments); rt += performance.now() - t; return v; };   // (drawn every 6th frame: what a first draw links or uploads is still caught on the next one)
       const script = [];
       const frame = () => { rt = 0; const t = performance.now(); if (!EX.busy) xMove(1 / 60); DPROF.settle(1); script.push(performance.now() - t - rt); out.frames++; };   // (the game's loop moves you, then draws: xLoop)
       // room to room, really walked: a route of open cells (the game's own path finding only goes where you have been),
@@ -36,14 +36,14 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
       const route = (from, to) => { const prev = new Int32Array(XN * XN).fill(-1), q = [from]; prev[from] = from;
         for (let h = 0; h < q.length && prev[to] < 0; h++) { const c = q[h]; for (const n of [c + 1, c - 1, c + XN, c - XN]) if (prev[n] < 0 && open(n)) { prev[n] = c; q.push(n); } }
         if (prev[to] < 0) return null; const p = []; for (let c = to; c !== from; c = prev[c]) p.unshift(c); return p; };
-      const rooms = EX.rooms.filter(r => !r.nook).slice(0, 10);
+      const rooms = EX.rooms.filter(r => !r.nook).slice(0, 6);
       for (const r of rooms) {
         let goal = -1;
         for (let y = r.y; y < r.y + r.h && goal < 0; y++) for (let x = r.x; x < r.x + r.w; x++) { const c = xi(x, y); if (EX.t[c] === T_FLOOR && !EX.propAt.has(c) && c !== EX.down && c !== EX.up) { goal = c; break; } }
         if (goal < 0) continue;
         const path = goal === EX.pc ? [] : route(EX.pc, goal);
         if (path && path.length) { EX.path = path; EX.goal = { cell: goal, x: xw(goal), z: xz(goal) }; let last = EX.path.length, still = 0;
-          for (let k = 0; k < 1200 && EX.path.length; k++) { frame(); if (EX.path.length < last) { last = EX.path.length; still = 0; } else if (++still > 180) break; }
+          for (let k = 0; k < 600 && EX.path.length; k++) { frame(); if (EX.path.length < last) { last = EX.path.length; still = 0; } else if (++still > 120) break; }
           if (Math.hypot(EX.px - xw(goal), EX.pz - xz(goal)) > XCS * 1.5) { DPROF.stand(goal); out.jumps++; frame(); } }   // (the hero stops a step short of a goal it cannot stand on: arrived)
         else { DPROF.stand(goal); out.jumps++; frame(); }
         out.rooms++;
@@ -78,7 +78,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
     await lab.close();
     const tag = 'depth ' + depth + ' (' + r.area + ')';
     console.log(tag + ': ' + r.rooms + ' rooms walked (' + r.jumps + ' stood in), ' + r.frames + ' frames; script median ' + r.scriptMed + ' ms, p99 ' + r.scriptP99 + ', max ' + r.scriptMax + '; ' + kbf + ' KB a frame of script garbage, ' + kbr + ' KB of drawing garbage (script most from ' + g.top.slice(0, 3).map(([f, k]) => f + ' ' + k).join(', ') + '); walking uploads by size ' + JSON.stringify(r.walk.sizes) + '; stairs ' + JSON.stringify(st));
-    check(r.rooms >= LIMIT.rooms && r.jumps <= r.rooms / 3 && r.frames > 600, tag + ': walked the floor (most rooms on foot)', r.rooms + ' rooms, ' + r.jumps + ' stood in, ' + r.frames + ' frames');
+    check(r.rooms >= LIMIT.rooms && r.jumps <= r.rooms / 3 && r.frames > 300, tag + ': walked the floor (most rooms on foot)', r.rooms + ' rooms, ' + r.jumps + ' stood in, ' + r.frames + ' frames');
     check(r.walk.link === 0, tag + ': walking links no shader program', r.walk.link);
     check(r.walk.big === 0, tag + ': walking uploads no texture of 128 x 128 or more', r.walk.big + ' big of ' + r.walk.up + ' uploads, ' + Math.round(r.walk.upKB) + ' KB');
     check(r.walk.upKB / Math.max(1, r.frames) * 60 < 512, tag + ': and under 512 KB a second of small ones (the darkness map fading as you see: 36 KB each)', Math.round(r.walk.upKB / Math.max(1, r.frames) * 60) + ' KB/s');

@@ -33,6 +33,7 @@ function install() {
       save.deepest = 30;
       persist();
       enterExplore(depth);
+      EX.intro = null; // no opening fly-in (explore.js xIntro): the camera is where it plays from the first frame
       DPROF.T = 0;
       return { area: EX.area.id, layout: EX.layout };
     },

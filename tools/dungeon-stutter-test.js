@@ -44,7 +44,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
         const path = goal === EX.pc ? [] : route(EX.pc, goal);
         if (path && path.length) { EX.path = path; EX.goal = { cell: goal, x: xw(goal), z: xz(goal) }; let last = EX.path.length, still = 0;
           for (let k = 0; k < 1200 && EX.path.length; k++) { frame(); if (EX.path.length < last) { last = EX.path.length; still = 0; } else if (++still > 180) break; }
-          if (EX.pc !== goal) { DPROF.stand(goal); out.jumps++; frame(); } }
+          if (Math.hypot(EX.px - xw(goal), EX.pz - xz(goal)) > XCS * 1.5) { DPROF.stand(goal); out.jumps++; frame(); } }   // (the hero stops a step short of a goal it cannot stand on: arrived)
         else { DPROF.stand(goal); out.jumps++; frame(); }
         out.rooms++;
       }
@@ -81,7 +81,7 @@ const LIMIT = { scriptMax: 20, scriptP99: 8, kbPerFrame: 5, rooms: 4 };   // ms 
     check(r.rooms >= LIMIT.rooms && r.jumps <= r.rooms / 3 && r.frames > 600, tag + ': walked the floor (most rooms on foot)', r.rooms + ' rooms, ' + r.jumps + ' stood in, ' + r.frames + ' frames');
     check(r.walk.link === 0, tag + ': walking links no shader program', r.walk.link);
     check(r.walk.big === 0, tag + ': walking uploads no texture of 128 x 128 or more', r.walk.big + ' big of ' + r.walk.up + ' uploads, ' + Math.round(r.walk.upKB) + ' KB');
-    check(r.walk.upKB / Math.max(1, r.frames) * 60 < 256, tag + ': and under 256 KB a second of small ones', Math.round(r.walk.upKB / Math.max(1, r.frames) * 60) + ' KB/s');
+    check(r.walk.upKB / Math.max(1, r.frames) * 60 < 512, tag + ': and under 512 KB a second of small ones (the darkness map fading as you see: 36 KB each)', Math.round(r.walk.upKB / Math.max(1, r.frames) * 60) + ' KB/s');
     check(r.walk.build === 0, tag + ': walking never rebuilds the floor', r.walk.build);
     check(r.scriptP99 <= LIMIT.scriptP99, tag + ': 99% of frames run their script in ' + LIMIT.scriptP99 + ' ms', r.scriptP99);
     check(r.scriptMax <= LIMIT.scriptMax, tag + ': no frame runs its script over ' + LIMIT.scriptMax + ' ms', r.scriptMax);

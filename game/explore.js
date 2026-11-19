@@ -687,6 +687,12 @@ function xGfxRebuild(){ if(!EX||!X3) return; xBuildScene(); for(const tr of EX.t
 function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) return; const hid=[];
   G.scene.traverse(o=>{ if(!o.visible){ hid.push(o); o.visible=true; } });
   try{ G.renderer.compile(G.scene,G.cam); }catch(e){ console.warn('warm-up:',e); }
+  // and every texture the floor's materials use (their maps and their shaders' own: the painted sheets, noises, the
+  // tuning), uploaded now while the screen is dark, not on the frame a room's decor first comes into view
+  if(G.renderer.initTexture){ const tex=new Set(), slots=['map','normalMap','alphaMap','emissiveMap','roughnessMap','metalnessMap','aoMap','bumpMap','specularMap','lightMap'];
+    G.scene.traverse(o=>{ for(const m of [].concat(o.material||[])){ if(!m) continue; for(const k of slots) if(m[k]&&m[k].isTexture) tex.add(m[k]);
+      const u=G.renderer.properties.get(m).uniforms; if(u) for(const n in u){ const v=u[n]&&u[n].value; if(v&&v.isTexture) tex.add(v); else if(Array.isArray(v)) for(const x of v) if(x&&x.isTexture) tex.add(x); } } });
+    for(const t of tex) if(t.image&&!t.isRenderTargetTexture&&!t.isCubeTexture) try{ G.renderer.initTexture(t); }catch(e){} }
   for(const o of hid) o.visible=false; }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and

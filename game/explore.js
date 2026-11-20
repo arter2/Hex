@@ -308,6 +308,10 @@ function xInit3D(){
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
+  // iPad Safari closes full screen on a downward drag it sees as its own (its swipe-to-dismiss), and walking is a drag.
+  // touch-action and a cancelled pointerdown do not stop it; cancelling the touch itself, from its start, keeps the
+  // drag the game's. The floor view acts on pointer events only, which still come.
+  for(const ev of ['touchstart','touchmove']) cv.addEventListener(ev,e=>{ if(e.cancelable) e.preventDefault(); },{passive:false});
   // the minimap: a tap opens it big, and it stays open. Tap a place you have discovered and the map
   // closes while you walk there on your own; tap the dark (or ✕) to close it.
   const mm=$('#xMini');

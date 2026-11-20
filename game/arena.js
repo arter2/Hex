@@ -77,7 +77,7 @@ const arRocky=Ar=>Ar&&Ar.id==='rifts'?'basalt':'rough-rock';
 function arenaClear(){ const A=AR; if(!A||!A.grp) return; A.scene.remove(A.grp);
   A.grp.traverse(o=>{ if(o.geometry) o.geometry.dispose(); });
   for(const m of A.mats||[]) xFreeMat(m); A.mats=[];   // with each material's own normal and roughness maps
-  for(const t of A.texs||[]) t.dispose(); A.texs=[]; A.grp=null; A.units=new Map(); }
+  for(const t of A.texs||[]) t.dispose(); A.texs=[]; arPicsFree(); A.grp=null; A.units=new Map(); }
 const arTex=t=>{ (AR.texs||(AR.texs=[])).push(t); if(t.image&&t.image.painted){ t.magFilter=THREE.LinearFilter; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4; t.needsUpdate=true; } return t; };   // (a painting is filtered smooth, with mip levels; the code-painted stone stays crisp pixels)
 /* An arena surface's painted texture (envart.js envArtArena: the area's 512 painting) as a canvas, or, until it has
    loaded, the code-painted one gen() makes. The painting's relief is its own brightness, a height field the lighting
@@ -309,7 +309,11 @@ if(typeof document!=='undefined'){ if(document.readyState==='loading') document.
    past lights up the monsters. A soft round shadow sits under it. A second quad just in front shows
    the white flash when hit, or a frozen or stunned tint. Each picture's texture is made once. */
 const AR_TEX=new WeakMap();
-function arPic(img,flip){ let p=AR_TEX.get(img); if(!p){ const a=xTex(img,true), b=xTex(img,true); b.repeat.x=-1; b.offset.x=1; p=[a,b]; AR_TEX.set(img,p); } return p[flip?1:0]; }
+// (the pictures a fight made are freed when its arena is cleared, arenaClear: the cache is keyed by the picture, and
+// a picture that went away left its two textures on the GPU, a dozen a fight in the soak test)
+const AR_PICS=new Set();
+function arPic(img,flip){ let p=AR_TEX.get(img); if(!p){ const a=xTex(img,true), b=xTex(img,true); b.repeat.x=-1; b.offset.x=1; p=[a,b]; AR_TEX.set(img,p); AR_PICS.add(img); } return p[flip?1:0]; }
+function arPicsFree(){ for(const img of AR_PICS){ const p=AR_TEX.get(img); if(p) for(const t of p) t.dispose(); AR_TEX.delete(img); } AR_PICS.clear(); }
 let AR_SHADOW=null;
 function arShadowTex(){ if(AR_SHADOW) return AR_SHADOW; const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
   g.addColorStop(0,'rgba(0,0,0,.6)'); g.addColorStop(.6,'rgba(0,0,0,.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.fillRect(0,0,64,64); return AR_SHADOW=new THREE.CanvasTexture(c); }

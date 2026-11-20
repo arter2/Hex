@@ -308,6 +308,10 @@ function xInit3D(){
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
+  // iPad Safari closes full screen on a downward drag it sees as its own (its swipe-to-dismiss), and walking is a drag.
+  // touch-action and a cancelled pointerdown do not stop it; cancelling the touch itself, from its start, keeps the
+  // drag the game's. The floor view acts on pointer events only, which still come.
+  for(const ev of ['touchstart','touchmove']) cv.addEventListener(ev,e=>{ if(e.cancelable) e.preventDefault(); },{passive:false});
   // the minimap: a tap opens it big, and it stays open. Tap a place you have discovered and the map
   // closes while you walk there on your own; tap the dark (or ✕) to close it.
   const mm=$('#xMini');
@@ -458,18 +462,27 @@ function xOpenAt(x,z,c,m){ const W=xWedge(c); if(!W) return false; const u=x/XCS
 const XMAT_TEX=['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap'];
 function xGroupParts(grp,into){ const add=x=>{ if(x&&x.dispose) into.add(x); };
   grp.traverse(o=>{ add(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
-    for(const k of XMAT_TEX) add(m[k]); if(m.userData){ add(m.userData.nmap); add(m.userData.rmap); } add(m); } }); return into; }
+    for(const k of XMAT_TEX) add(m[k]); if(m.userData){ add(m.userData.nmap); add(m.userData.rmap); } add(m); }
+    // a sprite's cached pictures (xRefresh, xSpriteWarm: every pose and view it has shown or was warmed with, plain and
+    // mirrored), not only the one it shows: they went with nothing before, a dozen textures a floor
+    const tc=o.userData&&o.userData.tex; if(tc&&tc.forEach) tc.forEach(pair=>{ for(const t of pair) add(t); }); }); return into; }
 function xFreeGroup(grp,keep){ const used=keep?xGroupParts(keep,new Set()):null;
   for(const x of xGroupParts(grp,new Set())) if(!used||!used.has(x)) x.dispose(); }
 // after a frame: the floor left behind goes now that the new one's shaders are built
-function xFreeOld(G){ if(G&&G.oldGroup){ const o=G.oldGroup; G.oldGroup=null; xFreeGroup(o,G.group); } }
+function xFreeOld(G){ if(!G) return; if(G.oldGroup){ const o=G.oldGroup; G.oldGroup=null; xFreeGroup(o,G.group); xFreeFloorTex(G); } else if(!G.curFloorTex) G.curFloorTex=xFloorTexNow(); }
+// the floor-wide maps the shaders read through uniforms, not materials (the light, mould, solid-wall and darkness maps):
+// no material holds them, so freeing the old group missed them, and each floor kept 5 MB of them on the GPU (the soak
+// test). The old floor's go once the new floor's are in; a kept floor's are uploaded again if you climb back to it. A floor's
+// own are noted when it has drawn (curFloorTex): a fight points the uniforms at the arena's, so they alone would miss it.
+const xFloorTexNow=()=>[XLITU.uXAOTex.value,XLITU.uXMoldMap.value,XDITHER.uSolid.value,XDITHER.uXFog.value].filter(Boolean);
+function xFreeFloorTex(G){ const now=xFloorTexNow(); for(const t of G.oldFloorTex||[]) if(!now.includes(t)) t.dispose(); G.oldFloorTex=null; G.curFloorTex=now; }
 function xBuildScene(){
   const G=xInit3D();
   // the old floor leaves the scene at once but is freed only after the new floor has drawn (xFreeOld): freeing its
   // materials first deleted their shader programs, and the new floor then built the same programs again (the stall
   // on the stairs). Then everything of it the new floor does not use goes (geometry, materials and their textures),
   // so going up and down the stairs never piles up graphics memory
-  if(G.group){ G.scene.remove(G.group); if(G.oldGroup) xFreeGroup(G.oldGroup,null); G.oldGroup=G.group; }
+  if(G.group){ G.scene.remove(G.group); if(G.oldGroup) xFreeGroup(G.oldGroup,null); G.oldGroup=G.group; G.oldFloorTex=[...new Set([...(G.oldFloorTex||[]),...(G.curFloorTex||[]),...xFloorTexNow()])]; G.curFloorTex=null; }
   XLITMATS.clear();
   // the Graphics setting, read once per floor: Low keeps two of the four torch lights (the others leave the scene, so
   // every material's shader is built for fewer lights) and draws at sharpness 1 with no pass after the picture
